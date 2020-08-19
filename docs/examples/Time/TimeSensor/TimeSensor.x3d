@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Fri, 21 Dec 2018 04:34:14 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d'/>
+    <meta name='modified' content='Mon, 07 Jan 2019 04:02:09 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='ArcOpen2D' url='"assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D"'>
+      <field accessType='inputOutput' type='SFInt32' name='dimension'/>
+      <field accessType='inputOutput' type='SFFloat' name='startAngle'/>
+      <field accessType='inputOutput' type='SFFloat' name='endAngle'/>
+      <field accessType='inputOutput' type='SFFloat' name='innerRadius'/>
+      <field accessType='inputOutput' type='SFFloat' name='outerRadius'/>
+      <field accessType='initializeOnly' type='SFBool' name='solid'/>
+    </ExternProtoDeclare>
+    <WorldInfo/>
+    <NavigationInfo
+        type='"NONE"'/>
+    <Viewpoint
+        position='0 0 34.142'/>
+    <TimeSensor DEF='_1'
+        loop='true'/>
+    <Script DEF='ClockScript'>
+      <field accessType='inputOnly' type='SFTime' name='set_time'/>
+      <field accessType='outputOnly' type='SFFloat' name='seconds_changed'/>
+      <field accessType='outputOnly' type='SFFloat' name='minutes_changed'/>
+      <field accessType='outputOnly' type='SFFloat' name='hours_changed'/>
+      <field accessType='outputOnly' type='MFString' name='string_changed'/>
+<![CDATA[ecmascript:
+
+var
+	zero   = Math .PI / 2,
+	offset = new Date () .getTimezoneOffset () * 60;
+
+function set_time (value, time)
+{
+	value = Math .floor (value) - offset;
+
+	var
+		seconds = (value % 60)    / 60,
+		minutes = (value % 3600)  / 3600,
+		hours12 = (value % 43200) / 43200,
+		hours24 = (value % 86400) / 86400;
+
+	seconds_changed = zero - seconds * Math .PI * 2;
+	minutes_changed = zero - minutes * Math .PI * 2;
+	hours_changed   = zero - hours12 * Math .PI * 2;
+	
+	string_changed [0] = fill (hours24 * 24) + ":" + fill (minutes * 60) + ":" + fill (seconds * 60);
+}
+
+function fill (value)
+{
+	value = Math .floor (value);
+
+	if (value < 10)
+		return "0" + value;
+		
+	return value .toString ();
+}
+]]>
+    </Script>
+    <Group DEF='Clock'>
+      <Shape DEF='Seconds_2'>
+        <Appearance DEF='_3'>
+          <Material
+              diffuseColor='0 0 0'
+              emissiveColor='0 1 0.995191'/>
+        </Appearance>
+        <ProtoInstance name='ArcOpen2D' DEF='_4' containerField='geometry'>
+          <fieldValue name='dimension' value='64'/>
+          <fieldValue name='startAngle' value='0.733038'/>
+          <fieldValue name='innerRadius' value='9'/>
+          <fieldValue name='outerRadius' value='10'/>
+          <fieldValue name='solid' value='true'/>
+        </ProtoInstance>
+      </Shape>
+      <Shape DEF='Minutes_5'>
+        <Appearance USE='_3'/>
+        <ProtoInstance name='ArcOpen2D' DEF='_6' containerField='geometry'>
+          <fieldValue name='dimension' value='64'/>
+          <fieldValue name='startAngle' value='1.34739'/>
+          <fieldValue name='innerRadius' value='10.3'/>
+          <fieldValue name='outerRadius' value='11.3'/>
+        </ProtoInstance>
+      </Shape>
+      <Shape DEF='Hours_7'>
+        <Appearance USE='_3'/>
+        <ProtoInstance name='ArcOpen2D' DEF='_8' containerField='geometry'>
+          <fieldValue name='dimension' value='64'/>
+          <fieldValue name='startAngle' value='-1.06581'/>
+          <fieldValue name='innerRadius' value='11.6'/>
+          <fieldValue name='outerRadius' value='12.6'/>
+          <fieldValue name='solid' value='true'/>
+        </ProtoInstance>
+      </Shape>
+      <Shape DEF='Text_9'>
+        <Appearance USE='_3'/>
+        <Text DEF='_10'
+            string='"05:02:08"'
+            solid='true'>
+          <FontStyle
+              family='"assets/Papertape-Letters.otf"'
+              size='2.63'
+              justify='"MIDDLE", "MIDDLE"'/>
+        </Text>
+      </Shape>
+      <Transform DEF='LocalTime'
+          translation='0 -2.67569 0'>
+        <Shape>
+          <Appearance USE='_3'/>
+          <Text
+              string='"Local Time"'
+              solid='true'>
+            <FontStyle
+                family='"assets/Papertape-Letters.otf"'
+                size='1.01'
+                justify='"MIDDLE", "MIDDLE"'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Group DEF='Minutes5_11'>
+        <Shape>
+          <Appearance USE='_3'/>
+          <ProtoInstance name='ArcOpen2D' containerField='geometry'>
+            <fieldValue name='dimension' value='64'/>
+            <fieldValue name='startAngle' value='1.0472'/>
+            <fieldValue name='innerRadius' value='12.9'/>
+            <fieldValue name='outerRadius' value='13.4'/>
+          </ProtoInstance>
+        </Shape>
+        <Shape>
+          <Appearance USE='_3'/>
+          <ProtoInstance name='ArcOpen2D' containerField='geometry'>
+            <fieldValue name='dimension' value='64'/>
+            <fieldValue name='endAngle' value='0.523599'/>
+            <fieldValue name='innerRadius' value='12.9'/>
+            <fieldValue name='outerRadius' value='13.4'/>
+          </ProtoInstance>
+        </Shape>
+        <Shape>
+          <Appearance USE='_3'/>
+          <ProtoInstance name='ArcOpen2D' containerField='geometry'>
+            <fieldValue name='dimension' value='64'/>
+            <fieldValue name='startAngle' value='-1.0472'/>
+            <fieldValue name='endAngle' value='-0.523599'/>
+            <fieldValue name='innerRadius' value='12.9'/>
+            <fieldValue name='outerRadius' value='13.4'/>
+          </ProtoInstance>
+        </Shape>
+        <Shape>
+          <Appearance USE='_3'/>
+          <ProtoInstance name='ArcOpen2D' containerField='geometry'>
+            <fieldValue name='dimension' value='64'/>
+            <fieldValue name='startAngle' value='-2.0944'/>
+            <fieldValue name='endAngle' value='-1.5708'/>
+            <fieldValue name='innerRadius' value='12.9'/>
+            <fieldValue name='outerRadius' value='13.4'/>
+          </ProtoInstance>
+        </Shape>
+        <Shape>
+          <Appearance USE='_3'/>
+          <ProtoInstance name='ArcOpen2D' containerField='geometry'>
+            <fieldValue name='dimension' value='64'/>
+            <fieldValue name='startAngle' value='-3.14159'/>
+            <fieldValue name='endAngle' value='-2.61799'/>
+            <fieldValue name='innerRadius' value='12.9'/>
+            <fieldValue name='outerRadius' value='13.4'/>
+          </ProtoInstance>
+        </Shape>
+        <Shape>
+          <Appearance USE='_3'/>
+          <ProtoInstance name='ArcOpen2D' containerField='geometry'>
+            <fieldValue name='dimension' value='64'/>
+            <fieldValue name='startAngle' value='-4.18879'/>
+            <fieldValue name='endAngle' value='-3.66519'/>
+            <fieldValue name='innerRadius' value='12.9'/>
+            <fieldValue name='outerRadius' value='13.4'/>
+          </ProtoInstance>
+        </Shape>
+      </Group>
+    </Group>
+    <ROUTE fromNode='ClockScript' fromField='string_changed' toNode='_10' toField='set_string'/>
+    <ROUTE fromNode='_1' fromField='cycleTime' toNode='ClockScript' toField='set_time'/>
+    <ROUTE fromNode='ClockScript' fromField='seconds_changed' toNode='_4' toField='set_startAngle'/>
+    <ROUTE fromNode='ClockScript' fromField='minutes_changed' toNode='_6' toField='set_startAngle'/>
+    <ROUTE fromNode='ClockScript' fromField='hours_changed' toNode='_8' toField='set_startAngle'/>
+  </Scene>
+</X3D>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Interpolation' level='4'/>
+    <component name='Layering' level='1'/>
+    <component name='NURBS' level='1'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Navigation/LogarithmicDepthBuffer/LogarithmicDepthBuffer.O.x3d'/>
+    <meta name='modified' content='Sun, 17 Nov 2019 07:54:42 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='SizeText'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFVec3f' name='translation'/>
+        <field accessType='inputOutput' type='SFFloat' name='xOffset' value='1'/>
+        <field accessType='inputOutput' type='SFFloat' name='displaySize' value='0.1'/>
+        <field accessType='inputOutput' type='SFFloat' name='fieldOfView' value='0.7854'/>
+        <field accessType='inputOutput' type='MFString' name='string' value='"child sized (1 m)"'/>
+        <field accessType='inputOutput' type='SFDouble' name='size' value='1'/>
+        <field accessType='inputOutput' type='SFColor' name='color' value='0.8 0.8 0.8'/>
+        <field accessType='outputOnly' type='SFVec3f' name='viewpointPosition_changed'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='Group'>
+          <IS>
+            <connect nodeField='translation' protoField='translation'/>
+          </IS>
+          <Transform DEF='Text_1'
+              translation='1 0 0'>
+            <Shape>
+              <Appearance DEF='_2'>
+                <Material>
+                  <IS>
+                    <connect nodeField='diffuseColor' protoField='color'/>
+                  </IS>
+                </Material>
+              </Appearance>
+              <Text DEF='_3'>
+                <IS>
+                  <connect nodeField='string' protoField='string'/>
+                </IS>
+                <FontStyle DEF='_4'
+                    family='"TYPEWRITER"'
+                    justify='"BEGIN", "MIDDLE"'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='Sphere'>
+            <Shape>
+              <Appearance USE='_2'/>
+              <Sphere DEF='_5'
+                  radius='0.5'/>
+            </Shape>
+          </Transform>
+        </Transform>
+        <Script DEF='SizeTextScript'
+            directOutput='true'>
+          <field accessType='inputOutput' type='SFFloat' name='xOffset'/>
+          <field accessType='inputOutput' type='SFFloat' name='displaySize'/>
+          <field accessType='inputOutput' type='SFFloat' name='fieldOfView'/>
+          <field accessType='inputOnly' type='SFVec2f' name='set_textBounds'/>
+          <field accessType='inputOutput' type='SFDouble' name='size'/>
+          <field accessType='outputOnly' type='SFVec3f' name='viewpointPosition_changed'/>
+          <field accessType='initializeOnly' type='SFNode' name='sphere'>
+            <Sphere USE='_5' containerField='sphere'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='text'>
+            <Transform USE='Text_1' containerField='text'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='fontStyle'>
+            <FontStyle USE='_4'/>
+          </field>
+          <IS>
+            <connect nodeField='xOffset' protoField='xOffset'/>
+            <connect nodeField='displaySize' protoField='displaySize'/>
+            <connect nodeField='fieldOfView' protoField='fieldOfView'/>
+            <connect nodeField='size' protoField='size'/>
+            <connect nodeField='viewpointPosition_changed' protoField='viewpointPosition_changed'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	set_size (size, 0);
+	eventsProcessed ();
+}
+
+function set_size (value, time)
+{
+	sphere .radius       = value / 2;
+	text .translation .x = value * 1;
+	fontStyle .size      = value;
+}
+
+function eventsProcessed ()
+{
+	var
+		z = (size / displaySize) / (Math .tan (fieldOfView / 2) * 2),
+		s = z * Math .tan (fieldOfView / 2) * 2,
+		x = s / 2 * xOffset;
+
+	viewpointPosition_changed = new SFVec3f (x, 0, z);
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_3' fromField='textBounds' toNode='SizeTextScript' toField='set_textBounds'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='Sizes'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFTime' name='textInterval' value='1'/>
+        <field accessType='inputOutput' type='SFFloat' name='xOffset' value='1'/>
+        <field accessType='inputOutput' type='SFFloat' name='displaySize' value='0.1'/>
+        <field accessType='inputOutput' type='SFFloat' name='fieldOfView' value='0.7854'/>
+        <field accessType='inputOutput' type='MFString' name='string'/>
+        <field accessType='inputOutput' type='MFDouble' name='size'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Group>
+          <Viewpoint DEF='_6'
+              description='Animation'>
+            <IS>
+              <connect nodeField='fieldOfView' protoField='fieldOfView'/>
+            </IS>
+          </Viewpoint>
+          <Group DEF='_7'/>
+          <Switch>
+            <Shape DEF='Line'>
+              <Appearance>
+                <Material
+                    diffuseColor='0 0 0'
+                    emissiveColor='1 1 1'/>
+              </Appearance>
+              <LineSet
+                  vertexCount='2'>
+                <CoordinateDouble DEF='_8'
+                    point='0 -nan 0, 0 nan 0'/>
+              </LineSet>
+            </Shape>
+          </Switch>
+        </Group>
+        <TimeSensor DEF='_9'
+            cycleInterval='0'
+            loop='true'/>
+        <SplinePositionInterpolator DEF='_10'/>
+        <Script DEF='SizesScript'
+            directOutput='true'>
+          <field accessType='inputOutput' type='SFTime' name='textInterval'/>
+          <field accessType='inputOutput' type='SFFloat' name='xOffset'/>
+          <field accessType='inputOutput' type='SFFloat' name='displaySize'/>
+          <field accessType='inputOutput' type='SFFloat' name='fieldOfView'/>
+          <field accessType='inputOutput' type='MFString' name='string'/>
+          <field accessType='inputOutput' type='MFDouble' name='size'/>
+          <field accessType='initializeOnly' type='SFNode' name='timeSensor'>
+            <TimeSensor USE='_9' containerField='timeSensor'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
+            <Viewpoint USE='_6' containerField='viewpoint'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='group'>
+            <Group USE='_7' containerField='group'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='lineCoord'>
+            <CoordinateDouble USE='_8' containerField='lineCoord'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='script'>
+            <Script DEF='ViewpointScript' containerField='script'
+                directOutput='true'>
+              <field accessType='inputOnly' type='SFVec3f' name='set_viewpointPosition'/>
+              <field accessType='initializeOnly' type='SFNode' name='interpolator'>
+                <SplinePositionInterpolator USE='_10' containerField='interpolator'/>
+              </field>
+              <field accessType='initializeOnly' type='SFNode' name='group'>
+                <Group USE='_7' containerField='group'/>
+              </field>
+<![CDATA[ecmascript:
+
+function set_viewpointPosition (value, time)
+{
+	interpolator .key         .length = 0;
+	interpolator .keyValue    .length = 0;
+	interpolator .keyVelocity .length = 0;
+	
+	for (var i = 0, length = group .children .length; i < length; ++ i)
+	{
+		interpolator .key .push ((i + 1) / (length + 1));
+		interpolator .keyValue .push (group .children [i] .viewpointPosition_changed .add (group .children [i] .translation));
+		interpolator .keyVelocity .push (new SFVec3f ());
+	}
+	
+	interpolator .key .unshift (0);
+	interpolator .keyValue .unshift (interpolator .keyValue [0]);
+	interpolator .keyVelocity .unshift (new SFVec3f ());
+	
+	interpolator .key .push (1);
+	interpolator .keyValue .push (interpolator .keyValue [interpolator .keyValue .length - 1]);
+	interpolator .keyVelocity .push (new SFVec3f ());
+}
+]]>
+            </Script>
+          </field>
+          <IS>
+            <connect nodeField='textInterval' protoField='textInterval'/>
+            <connect nodeField='xOffset' protoField='xOffset'/>
+            <connect nodeField='displaySize' protoField='displaySize'/>
+            <connect nodeField='fieldOfView' protoField='fieldOfView'/>
+            <connect nodeField='string' protoField='string'/>
+            <connect nodeField='size' protoField='size'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	viewpoint .set_bind = true;
+
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	var color = new SFColor ();
+
+	for (var i = 0, length = group .children .length; i < length; ++ i)
+	{
+		Browser .deleteRoute (group .children [i], "viewpointPosition_changed", script, "set_viewpointPosition");
+	}
+
+	group .children .length = 0;
+	
+	for (var i = 0, length = string .length; i < length; ++ i)
+	{
+		var
+			text = Browser .currentScene .createProto ("SizeText"),
+			hue  = Math .PI * 2 * (i / length); 
+
+		color .setHSV (hue, 1, 1);
+
+		text .xOffset     = xOffset;
+		text .displaySize = displaySize;
+		text .fieldOfView = fieldOfView;
+		text .string [0]  = string [i];
+		text .size        = size [i];
+		text .color       = color;
+		
+		group .children .push (text);
+		
+		Browser .addRoute (group .children [i], "viewpointPosition_changed", script, "set_viewpointPosition");
+	}
+
+	var s = 0;
+
+	for (var i = 1, length = group .children .length; i < length; ++ i)
+	{
+		var p = i - 1;
+
+		s += group .children [i] .size;
+		
+		group .children [i] .translation .y = s;
+	}
+
+	timeSensor .cycleInterval = group .children .length * textInterval;
+
+	// Test line
+
+	var y = 10 * size [size .length - 1];
+
+	lineCoord .point [0] = new SFVec3d (0, -y, 0);
+	lineCoord .point [1] = new SFVec3d (0,  y, 0);
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_9' fromField='fraction_changed' toNode='_10' toField='set_fraction'/>
+        <ROUTE fromNode='_10' fromField='value_changed' toNode='_6' toField='set_position'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo/>
+    <Script DEF='LogarithmicDepthBufferScript'>
+      <field accessType='inputOutput' type='SFTime' name='startTime'/>
+      <field accessType='outputOnly' type='MFString' name='string_changed'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	Browser .setBrowserOption ("LogarithmicDepthBuffer", true);
+	
+	startTime = 0;
+}
+
+function set_startTime (value, time)
+{
+	string_changed [0] = "Logarithmic Depth Buffer: " + Browser .getRenderingProperty ("LogarithmicDepthBuffer");
+}
+]]>
+    </Script>
+    <LayerSet
+        activeLayer='-1'
+        order='0, 1, 2'>
+      <Layer DEF='Sizes'>
+        <NavigationInfo
+            type='"EXAMINE"'
+            avatarSize='1e-05, 1.6, 0.75'
+            visibilityLimit='1e+24'/>
+        <ProtoInstance name='Sizes'>
+          <fieldValue name='textInterval' value='4'/>
+          <fieldValue name='xOffset' value='1.35'/>
+          <fieldValue name='displaySize' value='0.111111'/>
+          <fieldValue name='string' value='"microscopic (1 μm)", "minuscule (1 mm)", "tiny (1 cm)", "small (1 dm)", "child-sized (1 m)", "tree-sized (10 m)", "building-sized (100 m)", "medium (1 km)", "city-sized (10 km)", "moon-sized (3,400 km)", "planet-sized (12,000 km)", "sun-sized (1,400,000 km)", "solar system (50 Au)", "gargantuan (1 ly)", "ludicrous (1 pc)", "mind boggling (1,000 ly)", "galaxy-sized (120,000 ly)", "ooops (100,000,000 ly)"'/>
+          <fieldValue name='size' value='1e-06, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23'/>
+        </ProtoInstance>
+      </Layer>
+      <Layer DEF='HUD'>
+        <Transform DEF='LDB'
+            translation='6.84654 -3.7207 0'
+            scale='0.233881 0.233881 0.233881'>
+          <Shape>
+            <Appearance>
+              <Material/>
+            </Appearance>
+            <Text DEF='_11'
+                string='"Logarithmic Depth Buffer: false"'
+                solid='true'>
+              <FontStyle
+                  family='"TYPEWRITER"'
+                  justify='"END"'/>
+            </Text>
+          </Shape>
+        </Transform>
+      </Layer>
+    </LayerSet>
+    <ROUTE fromNode='LogarithmicDepthBufferScript' fromField='string_changed' toNode='_11' toField='set_string'/>
+  </Scene>
+</X3D>

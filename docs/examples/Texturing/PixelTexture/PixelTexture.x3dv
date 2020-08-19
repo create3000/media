@@ -1,0 +1,475 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT Grouping : 3
+COMPONENT Interpolation : 4
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Mon, 27 Nov 2017 03:13:31 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d"
+META "modified" "Mon, 07 Jan 2019 03:59:38 GMT"
+
+PROTO Canvas [
+  inputOutput    SFVec2f  size 8 8
+  inputOutput    SFInt32  components 3
+  inputOutput    MFInt32  array [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+  initializeOnly SFBool   repeatS FALSE
+  initializeOnly SFBool   repeatT FALSE
+  inputOutput    SFColor  bgColor 0 0 0
+  inputOutput    SFColor  fgColor 0 0 0
+  inputOutput    SFFloat  opacity 0
+  inputOutput    SFTime   clear 0
+  inputOutput    SFBool   enabled FALSE
+  inputOnly      SFVec2f  set_hitTexCoord
+  inputOutput    SFBool   horizontallyWrap FALSE
+  inputOutput    SFBool   verticallyWrap FALSE
+  inputOutput    SFString combineMode "STAMP"
+  inputOutput    SFNode   brush NULL
+]
+{
+  PROTO Data [
+    inputOutput SFVec2f  size 8 8
+    inputOutput SFInt32  components 3
+    inputOutput MFInt32  array [ ]
+    inputOutput SFColor  bgColor 0 0 0
+    inputOutput SFColor  fgColor 0 0 0
+    inputOutput SFFloat  opacity 0
+    inputOutput SFTime   clear 0
+    inputOutput SFBool   enabled FALSE
+    inputOutput SFBool   horizontallyWrap FALSE
+    inputOutput SFBool   verticallyWrap FALSE
+    inputOutput SFString combineMode "STAMP"
+    inputOutput SFNode   brush NULL
+  ]
+  {
+    Group { }
+  }
+
+  DEF _1 PixelTexture {
+    image 8 8 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    repeatS IS repeatS
+    repeatT IS repeatT
+  }
+
+  DEF CanvasScript Script {
+    outputOnly     SFImage image_changed
+    inputOnly      SFVec2f set_size
+    inputOnly      MFInt32 set_array
+    inputOnly      SFColor set_bgColor
+    inputOnly      SFColor set_fgColor
+    inputOnly      SFTime  set_clear
+    inputOnly      SFVec2f set_hitTexCoord IS set_hitTexCoord
+    initializeOnly SFInt32 bgColor 0
+    initializeOnly SFInt32 fgColor 0
+    initializeOnly SFNode  data DEF _2 Data {
+      size IS size
+      components IS components
+      array IS array
+      bgColor IS bgColor
+      fgColor IS fgColor
+      opacity IS opacity
+      clear IS clear
+      enabled IS enabled
+      horizontallyWrap IS horizontallyWrap
+      verticallyWrap IS verticallyWrap
+      combineMode IS combineMode
+      brush IS brush
+    }
+
+    url "ecmascript:
+
+function set_array(value, time) {
+	// send out new picture 
+	image_changed = new SFImage(data.size.x, data.size.y, data.components, value);
+}
+
+function color2int (value, alpha) {
+	color = (Math.floor(value.r * 0xFF) << 16) | (Math.floor(value.g * 0xFF) << 8) | Math.floor(value.b * 0xFF);
+	if (data.components == 4) color = (color << 8) | Math.floor(alpha * 0xFF);
+	return color;
+}
+
+function set_bgColor (value, time) { bgColor = color2int(value, data.opacity); }
+function set_fgColor (value, time) { fgColor = color2int(value, data.opacity); }
+
+function set_clear (value, time) {
+	// create new clean picture
+	array = new MFInt32();
+	for(j = 0; j < data.size.y; j++) {
+		for(k = 0; k < data.size.x; k++) {
+			i = j * data.size.x + k;
+			array[i] = bgColor;
+		}
+	}
+	data.array = array;
+}
+
+function set_size(value, time) {
+	if (data.array.length < value.x * value.y) {
+		array = new MFInt32();
+		for(j = 0; j < data.size.y; j++) {
+			for(k = 0; k < data.size.x; k++) {
+				i = j * data.size.x + k;
+				if (i < data.array.length) array[i] = data.array[i];
+				else array[i] = bgColor;
+			}
+		}
+		data.array = array;
+		return TRUE;
+	} else {
+		set_array(data.array, 1);
+		return FALSE;
+	}
+}
+
+function add_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = c1 + c2; if (c > 255) c = 255;
+		color |= (c << s);
+	}
+	return color;
+}
+
+function sub_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = c1 - c2; if (c < 0) c = 0;
+		color |= (c << s);
+	}
+	return color;
+}
+
+function mult_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor((c1 * c2) / 65024);
+		color |= (c << s);
+	}
+	return color;
+}
+
+function div_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor(c1 / c2);
+		color |= (c << s);
+	}
+	return color;
+}
+
+function avrg_pixel (pixel1, pixel2) {
+	o1 = pixel1 & 0xFF;
+	o2 = pixel2 & 0xFF;
+	o = o1 + o2; if (o > 255) o = 255;
+
+	color = o; o2 /= 255;
+	for (i = 1, s = 8 * i; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor((c1 + c2) / 2);
+		color |= (c << s);
+	}
+
+	return color;
+}
+
+function brush_pixel (pixel1, pixel2) {
+	o1 = pixel1 & 0xFF;
+	o2 = pixel2 & 0xFF;
+	o = o1 + o2; if (o > 255) o = 255;
+
+	color = o; o2 /= 255;
+	for (i = 1, s = 8 * i; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor(c1 + ((c2 - c1) * o2));
+		color |= (c << s);
+	}
+
+	return color;
+}
+
+function set_pixel(value) {
+	// color pixel using current foreground color
+	out = 0;
+	pixel = new SFVec2f(
+		               value.x < 0 ? (data.horizontallyWrap ? value.x + data.size.x : out = 1 ) :
+		(value.x > data.size.x - 1 ? (data.horizontallyWrap ? value.x % data.size.x : out = 1 ) : value.x),
+		               value.y < 0 ? (data.verticallyWrap ? value.y + data.size.y : out = 1 ) :
+		(value.y > data.size.y - 1 ? (data.verticallyWrap ? value.y % data.size.y : out = 1 ) : value.y)
+	);
+	if (out) return ;
+	if (data.combineMode == 'STAMP') data.array[pixel.y * data.size.x + pixel.x] = fgColor;
+	else if (data.combineMode == 'BRUSH') data.array[pixel.y * data.size.x + pixel.x] = brush_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'OR')   data.array[pixel.y * data.size.x + pixel.x] |= fgColor;
+	else if (data.combineMode == 'XOR')  data.array[pixel.y * data.size.x + pixel.x] ^= fgColor;
+	else if (data.combineMode == 'AND')  data.array[pixel.y * data.size.x + pixel.x] &= fgColor;
+	else if (data.combineMode == 'ADD')  data.array[pixel.y * data.size.x + pixel.x] = add_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'SUB')  data.array[pixel.y * data.size.x + pixel.x] = sub_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'AVRG') data.array[pixel.y * data.size.x + pixel.x] = avrg_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'MULT') data.array[pixel.y * data.size.x + pixel.x] = mult_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'DIV') data.array[pixel.y * data.size.x + pixel.x] /= fgColor;
+	else if (data.combineMode == 'DIV2') data.array[pixel.y * data.size.x + pixel.x] = fgColor / data.array[pixel.y * data.size.x + pixel.x];
+}
+
+function set_brush(value) {
+	x = value.x - Math.floor(data.brush.size.x/2);
+	y = value.y - Math.floor(data.brush.size.y/2);
+	for(j = 0; j < data.brush.size.y; j++) {
+		for(k = 0; k < data.brush.size.x; k++) {
+			i = j * data.brush.size.x + k;
+			fgColor = data.brush.array[i];
+			pixel = new SFVec2f(x + k, y + j);
+			set_pixel(pixel);
+		}
+	}
+}
+
+function set_hitTexCoord(value, time) {
+	pixel = new SFVec2f(Math.round(value.x * data.size.x), Math.round(value.y * data.size.y));
+	if (data.enabled) {
+		if (data.brush) set_brush(pixel);
+		else set_pixel(pixel);
+	}
+}
+
+function initialize () {
+	set_bgColor(data.bgColor, 1);
+	set_fgColor(data.fgColor, 1);
+	if (!set_size(data.size, 1)) {
+		if (data.clear) set_clear(1, 1);
+	}
+}
+	"
+    directOutput TRUE
+  }
+
+  ROUTE CanvasScript.image_changed TO _1.set_image
+  ROUTE _2.size_changed TO CanvasScript.set_size
+  ROUTE _2.array_changed TO CanvasScript.set_array
+  ROUTE _2.bgColor_changed TO CanvasScript.set_bgColor
+  ROUTE _2.fgColor_changed TO CanvasScript.set_fgColor
+  ROUTE _2.clear_changed TO CanvasScript.set_clear
+}
+
+WorldInfo {
+  info [ "Created in CosmoWorlds", "Packaged by CosmoPackage" ]
+}
+
+NavigationInfo {
+  type "NONE"
+}
+
+Viewpoint {
+  position -2.03376 -2.79428 6.874
+  fieldOfView 0.785398
+}
+
+DEF _3 TimeSensor {
+  loop TRUE
+  startTime 1
+}
+
+DEF DiscoScript Script {
+  outputOnly     SFFloat scaleF
+  outputOnly     SFFloat rotateF
+  inputOnly      SFTime  set_time
+  initializeOnly SFNode  brush DEF _4 Canvas {
+    size 1 1
+    array 8527156
+    bgColor 0.510025 0.115847 0.207168
+    clear 1546833576.51676
+    enabled TRUE
+  }
+  initializeOnly SFNode  canvas DEF _5 Canvas {
+    size 32 32
+    array [ 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 0, 0, 7094150, 10641407, 7094150, 0, 0, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 0, 7094150, 10641407, 0, 7094150, 0, 7094150, 10641407, 7810746, 0, 7094150, 0, 7094150, 0, 0, 10641407, 10641407, 4263476, 7094150, 13334527, 7810746, 10641407, 0, 0, 0, 0, 0, 9584383, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 0, 12414975, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 7094150, 0, 4263476, 4263476, 12414975, 10641407, 0, 7810746, 10641407, 7094150, 7094150, 10641407, 0, 4263476, 0, 0, 0, 10641407, 7094150, 7094150, 0, 0, 4263476, 0, 9584383, 0, 7094150, 0, 7094150, 0, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 7094150, 7094150, 4263476, 10641407, 0, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 4263476, 7094150, 13334527, 7094150, 0, 0, 7094150, 7810746, 0, 4263476, 10641407, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 0, 12414975, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7810746, 7094150, 10641407, 0, 13334527, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 7810746, 0, 0, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 7094150, 10641407, 10641407, 12414975, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 4263476, 0, 0, 0, 12414975, 7094150, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 9584383, 7094150, 10641407, 7094150, 12414975, 12414975, 0, 12414975, 7094150, 7094150, 0, 7094150, 0, 0, 7094150, 7810746, 0, 10641407, 0, 0, 0, 4263476, 0, 7810746, 0, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 0, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 11160831, 0, 4263476, 0, 10641407, 9584383, 7094150, 0, 0, 0, 7094150, 0, 0, 0, 0, 0, 10641407, 10641407, 7094150, 12414975, 0, 0, 7094150, 0, 7094150, 7094150, 12414975, 10641407, 7094150, 7094150, 0, 0, 7094150, 7094150, 4263476, 7094150, 0, 0, 0, 0, 0, 0, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 9584383, 0, 7094150, 10641407, 10641407, 0, 12414975, 7094150, 9584383, 7094150, 0, 0, 4263476, 0, 0, 0, 0, 4263476, 0, 12414975, 0, 10641407, 0, 10641407, 0, 4263476, 0, 7094150, 0, 0, 7094150, 0, 7094150, 7094150, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 7810746, 7094150, 7810746, 0, 10438399, 0, 7094150, 10641407, 0, 7094150, 0, 0, 0, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 7094150, 7094150, 4263476, 0, 13334527, 0, 10641407, 0, 0, 7810746, 12414975, 7094150, 0, 7094150, 7094150, 10641407, 7094150, 0, 6362472, 0, 7094150, 7094150, 10641407, 0, 12414975, 7094150, 0, 12414975, 0, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 0, 10641407, 0, 7094150, 0, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 7094150, 0, 7094150, 7094150, 12414975, 7094150, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 12414975, 10641407, 0, 7094150, 0, 7094150, 7094150, 7094150, 0, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 0, 7094150, 0, 0, 7094150, 0, 10641407, 10641407, 0, 10641407, 12414975, 7094150, 0, 0, 9584383, 7094150, 7810746, 7094150, 7094150, 10641407, 0, 10641407, 7810746, 7094150, 7094150, 0, 7094150, 0, 10641407, 10641407, 9584383, 12414975, 10641407, 10641407, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 7094150, 0, 12414975, 0, 0, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 7094150, 7094150, 12414975, 4263476, 7094150, 0, 7094150, 7094150, 11160831, 4263476, 7094150, 10641407, 4263476, 7094150, 0, 7094150, 0, 7810746, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 0, 0, 7094150, 10641407, 10641407, 0, 0, 0, 10641407, 0, 0, 7094150, 10641407, 12414975, 4263476, 8136174, 7094150, 10641407, 7094150, 10641407, 0, 0, 7094150, 0, 10641407, 0, 10641407, 0, 10641407, 7810746, 10641407, 0, 10641407, 9584383, 7094150, 12414975, 10641407, 7094150, 0, 0, 0, 0, 0, 0, 0, 7094150, 0, 0, 7810746, 10438399, 0, 0, 0, 7094150, 0, 4263476, 7094150, 0, 10641407, 12414975, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 7094150, 10438399, 0, 0, 0, 10641407, 0, 0, 7094150, 9055743, 10641407, 0, 0, 0, 10641407, 0, 7094150, 7094150, 12414975, 0, 7094150, 10641407, 0, 7094150, 0, 0, 10641407, 0, 12414975, 0, 0, 7810746, 7810746, 0, 7094150, 0, 0, 0, 7094150, 7094150, 0, 9584383, 12414975, 7094150, 0, 7094150, 12414975, 10641407, 12414975, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7810746, 0, 7094150, 0, 0, 0, 0, 7094150, 7094150, 9584383, 7094150, 7094150, 0, 4263476, 10641407, 7094150, 10641407, 4263476, 0, 0, 7810746, 0, 10641407, 4263476, 10641407, 7094150, 0, 10641407, 7094150, 0, 7810746, 10641407, 12414975, 7094150, 4263476, 0, 4263476, 7094150, 0, 0, 4263476, 7094150, 0, 0, 10641407, 10641407, 0, 0, 0, 7094150, 0, 0, 12414975, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 0, 0, 12414975, 7094150, 0, 7094150, 0, 7094150, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 7810746, 0, 7094150, 13334527, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 7094150, 7094150, 0, 7810746, 0, 0, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 0, 10641407, 0, 0, 10641407, 0, 0, 0, 7094150, 13334527, 0, 7094150, 0, 0, 0, 0, 10641407, 10641407, 10641407, 7094150, 7094150, 10641407, 10641407, 7094150, 7094150, 10641407, 7094150, 0, 0, 10641407, 4263476, 0, 0, 4263476, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 0, 7094150, 7094150, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 10641407, 0, 0, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 10438399, 4263476, 0, 0, 0, 0, 0, 0, 0, 0, 10898175, 0, 0, 10641407, 0, 10641407, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 0, 7094150, 12414975, 7094150, 0, 0, 0, 10641407, 0, 7094150, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 0, 10641407, 7094150, 12414975, 7094150, 7094150, 7094150, 7094150, 12414975, 9584383, 0, 0, 0, 0, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 0, 7094150, 7094150, 7094150, 7094150, 0, 7810746, 10641407, 10641407, 7810746, 7094150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6362472, 0, 7094150, 0, 7810746, 7810746, 0, 10438399, 0, 7094150, 10641407, 4263476, 7094150, 7094150, 7094150, 10641407, 7094150, 0, 0, 4263476, 7094150, 7094150, 7094150, 4263476, 0, 10641407, 12414975, 10641407, 0, 0, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7094150, 0, 4263476, 7094150, 0, 0, 0, 0, 7094150, 0, 13794303, 7094150, 0, 0, 0, 7094150 ]
+    repeatS TRUE
+    repeatT TRUE
+    fgColor 1 0 0
+    opacity 1
+    clear 1
+    enabled TRUE
+    horizontallyWrap TRUE
+    verticallyWrap TRUE
+    combineMode "AVRG"
+    brush USE _4
+  }
+  initializeOnly SFTime  cycleInterval 0.01
+  initializeOnly SFTime  cycleTime 1546833578.26627
+  initializeOnly SFTime  colorInterval 30
+  initializeOnly SFTime  colorTime 1546833576.51676
+  initializeOnly SFFloat blackLevel 0.2
+  initializeOnly SFTime  scaleTime 1546833565.51583
+  initializeOnly SFTime  rotateTime 1546833563.52952
+
+  url "ecmascript:
+
+function set_time (value, time)
+{
+	if (time - cycleTime > cycleInterval)
+	{
+		cycleTime = time;
+
+		if (time - colorTime > colorInterval)
+		{
+			colorTime = time;
+			
+			bgColor = Math .random () > blackLevel
+				? new SFColor (Math .random (), Math.random (), Math.random ())
+				: new SFColor (0, 0, 0);
+			
+			brush.bgColor = bgColor;
+			brush.clear   = time;
+		}
+	
+		canvas.set_hitTexCoord = new SFVec2f (Math.random (), Math.random ());
+
+		if (time - scaleTime > 19)
+		{
+			scaleTime = time;
+			scaleF    = Math .random ();
+		}
+		
+		if (time - rotateTime > 17)
+		{
+			rotateTime = time;
+			rotateF    = Math .random ();
+		}
+	}
+}
+"
+  directOutput TRUE
+}
+
+Transform {
+  scale 1.65374 1.65369 1.65377
+  children [
+    Group {
+      children [
+        DEF UnnamedAnimation3 Group {
+          children DEF Time_6 TimeSensor {
+            cycleInterval 20
+            loop TRUE
+            startTime 1
+          }
+        }
+        Group {
+          children [
+            DEF _7 ScalarInterpolator {
+              key [ 0, 1 ]
+              keyValue [ 1, -1 ]
+            }
+            DEF _8 ScalarInterpolator {
+              key [ 0, 1 ]
+              keyValue [ 0.74, 0.74 ]
+            }
+            DEF _9 Script {
+              outputOnly     SFVec2f vec
+              inputOnly      SFFloat xIn
+              inputOnly      SFFloat yIn
+              initializeOnly SFFloat xBuf -0.175203
+              initializeOnly SFFloat yBuf 0.74
+
+              url "ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } "
+            }
+          ]
+        }
+      ]
+    }
+    Group {
+      children [
+        DEF scale Group {
+          children DEF Time_10 TimeSensor {
+            cycleInterval 10
+            stopTime 1
+          }
+        }
+        Group {
+          children [
+            DEF _11 ScalarInterpolator {
+              key [ 0, 1 ]
+              keyValue [ 0.1, 5 ]
+            }
+            DEF _12 ScalarInterpolator {
+              key [ 0, 1 ]
+              keyValue [ 0.2, 5 ]
+            }
+            DEF _13 Script {
+              outputOnly     SFVec2f vec
+              inputOnly      SFFloat xIn
+              inputOnly      SFFloat yIn
+              initializeOnly SFFloat xBuf 1.40365
+              initializeOnly SFFloat yBuf 1.47705
+
+              url "ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } "
+            }
+          ]
+        }
+      ]
+    }
+    Group {
+      children [
+        DEF rotate Group {
+          children DEF Time TimeSensor {
+            cycleInterval 10
+            stopTime 1
+          }
+        }
+        DEF UnnamedShapeRotationInterp ScalarInterpolator {
+          key [ 0, 1 ]
+          keyValue [ 0, 0.785398 ]
+        }
+      ]
+    }
+    Shape {
+      appearance Appearance {
+        texture USE _5
+        textureTransform DEF _14 TextureTransform {
+          translation -0.175203 0.74
+          rotation 0.636027
+          scale 1.40365 1.47705
+          center -0.5 -0.5
+        }
+      }
+      geometry IndexedFaceSet {
+        creaseAngle 0.5
+        coordIndex [ 0, 1, 2, 3, -1, 4, 5, 1, 0, -1, 6, 7, 3, 2, -1 ]
+        texCoord TextureCoordinate {
+          point [ 0 1, 0 0, 0.00132632 -0.000351131, 0.00132632 0.999649, 0 1, 0 0, 0.00132632 -0.000351131, 0.00132632 0.999649 ]
+        }
+        coord Coordinate {
+          point [ -3.45959 2.01432 1, -3.45959 -5.345 1, 1 -5.345 1, 1 2.01432 1, -3.45959 2.01432 5.00948, -3.45959 -5.345 5.00948, 1 -5.345 5.16322, 1 2.01432 5.16322 ]
+        }
+      }
+    }
+  ]
+}
+
+ROUTE _3.time TO DiscoScript.set_time
+ROUTE Time_6.fraction_changed TO _7.set_fraction
+ROUTE Time_6.fraction_changed TO _8.set_fraction
+ROUTE _7.value_changed TO _9.xIn
+ROUTE _8.value_changed TO _9.yIn
+ROUTE DiscoScript.scaleF TO _11.set_fraction
+ROUTE DiscoScript.scaleF TO _12.set_fraction
+ROUTE _11.value_changed TO _13.xIn
+ROUTE _12.value_changed TO _13.yIn
+ROUTE DiscoScript.rotateF TO UnnamedShapeRotationInterp.set_fraction
+ROUTE _9.vec TO _14.set_translation
+ROUTE UnnamedShapeRotationInterp.value_changed TO _14.set_rotation
+ROUTE _13.vec TO _14.set_scale

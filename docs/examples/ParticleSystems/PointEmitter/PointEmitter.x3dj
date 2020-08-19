@@ -1,0 +1,294 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 17 Dec 2017 11:21:49 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.5.0, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/PointEmitter/PointEmitter.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Thu, 11 Apr 2019 08:18:49 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        },
+        {
+          "@name": "Shaders",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"ComposeSFVec3f",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "x"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "y"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "z"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFVec3f",
+                "@name": "value_changed"
+              }
+            ],
+            "@url": [ "ComposeSFVec3f.x3d#ComposeSFVec3f", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/ComposeSFVec3f.x3d#ComposeSFVec3f" ]
+          }
+        },
+        { "ExternProtoDeclare":
+          {
+            "@name":"Noise",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFBool",
+                "@name": "enabled"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "frequency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "amplitude"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "phase"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFFloat",
+                "@name": "value_changed"
+              }
+            ],
+            "@url": [ "Noise.x3d#Noise", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/Noise.x3d#Noise" ]
+          }
+        },
+        { "WorldInfo":
+          {
+            "@title": "scene"
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@headlight": false
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View"
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@DEF": "X",
+            "@name": "Noise",
+            "fieldValue": [
+              {
+                "@name": "enabled",
+                "@value": true
+              },
+              {
+                "@name": "frequency",
+                "@value": 0.5
+              },
+              {
+                "@name": "amplitude",
+                "@value": 5
+              }
+            ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@DEF": "Y",
+            "@name": "Noise",
+            "fieldValue": [
+              {
+                "@name": "enabled",
+                "@value": true
+              },
+              {
+                "@name": "frequency",
+                "@value": 0.5
+              },
+              {
+                "@name": "amplitude",
+                "@value": 4
+              }
+            ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@DEF": "Z",
+            "@name": "Noise",
+            "fieldValue": [
+              {
+                "@name": "enabled",
+                "@value": true
+              },
+              {
+                "@name": "frequency",
+                "@value": 0.5
+              },
+              {
+                "@name": "amplitude",
+                "@value": 5
+              }
+            ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@DEF": "_1",
+            "@name": "ComposeSFVec3f",
+            "fieldValue": [
+              {
+                "@name": "x",
+                "@value": 5.6248
+              },
+              {
+                "@name": "y",
+                "@value": 4.54379
+              },
+              {
+                "@name": "z",
+                "@value": 3.6676
+              }
+            ]
+          }
+        },
+        { "ParticleSystem":
+          {
+            "@maxParticles": 500,
+            "@particleLifetime": 4.5,
+            "@particleSize": [ 0.16, 0.16 ],
+            "-emitter": { "PointEmitter":
+              {
+                "@DEF": "_2",
+                "@position": [ 5.6248, 4.54379, 3.6676 ],
+                "@direction": [ 0, 0, 0 ],
+                "@speed": 1.49
+              }
+            },
+            "@bboxSize": [ 11, 11, 11 ],
+            "-appearance": { "Appearance":
+              {
+                "-texture": { "ImageTexture":
+                  {
+                    "@url": [ "star.png" ]
+                  }
+                },
+                "-shaders": [
+                  { "ComposedShader":
+                    {
+                      "@DEF": "ComposedShader",
+                      "@language": "GLSL",
+                      "-parts": [
+                        { "ShaderPart":
+                          {
+                            "@DEF": "VertexShader",
+                            "@url": [ "data:x-shader/x-vertex,\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute float x3d_ParticleId;\nattribute vec4  x3d_ParticlePosition;\nattribute float x3d_ParticleElapsedTime;\nattribute float x3d_ParticleLife;\nattribute vec4  x3d_Vertex;\nattribute vec4  x3d_TexCoord0;\nattribute vec4  x3d_Color;\n\nvarying vec3 color;\nvarying vec4 texCoord;\n\n/* Random number generation */\n\nconst int RAND_MAX = int (0x7fffffff);\nconst int RAND_MIN = int (0x80000000);\n\nint seed = 1;\n\nvoid\nsrand (in int value)\n{\n\tseed = value;\n}\n\n// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].\nint\nrand ()\n{\n\treturn seed = seed * 1103515245 + 12345;\n}\n\n// Return a uniform distributed random floating point number in the interval [0, 1].\nfloat\nrandom ()\n{\n\treturn float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;\n}\n\n#define PI 3.1415\n\nmat4\ngetRotation (in float a)\n{\n\tfloat s = sin (a);\n\tfloat c = cos (a);\n\t\n\treturn mat4 ( c,    s, 0.0, 0.0,\n\t             -s,    c, 0.0, 0.0,\n\t             0.0, 0.0, 1.0, 0.0,\n\t             0.0, 0.0, 0.0, 1.0);\n}\n\nvoid\nmain ()\n{\n\tmat4 r = getRotation (-2.0 * x3d_ParticleElapsedTime * 2.0 * PI);\n\tvec4 v = x3d_ParticlePosition + r * (x3d_Vertex - x3d_ParticlePosition);\n\n\tsrand (int (x3d_ParticleLife * 107.0));\n\n\tcolor    = vec3 (random (), random (), random ());\n\ttexCoord = x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;\n}" ]
+                          }
+                        },
+                        { "ShaderPart":
+                          {
+                            "@DEF": "FragmentShader",
+                            "@type": "FRAGMENT",
+                            "@url": [ "data:x-shader/x-fragment,\n\nprecision mediump float;\n\nuniform sampler2D x3d_Texture2D [1];\n\nvarying vec3 color;\nvarying vec4 texCoord;\n\nvoid\nmain ()\n{\n\tfloat a = texture2D (x3d_Texture2D [0], texCoord .st) .a;\n\n\tgl_FragColor = vec4 (color, a);\n}" ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "X",
+            "@fromField": "value_changed",
+            "@toNode": "_1",
+            "@toField": "x"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Y",
+            "@fromField": "value_changed",
+            "@toNode": "_1",
+            "@toField": "y"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Z",
+            "@fromField": "value_changed",
+            "@toNode": "_1",
+            "@toField": "z"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "value_changed",
+            "@toNode": "_2",
+            "@toField": "position"
+          }
+        }
+      ]
+    }
+  }
+}

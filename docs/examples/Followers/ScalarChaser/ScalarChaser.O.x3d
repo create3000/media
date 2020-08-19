@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Followers' level='1'/>
+    <component name='Grouping' level='3'/>
+    <component name='Interpolation' level='4'/>
+    <component name='Layering' level='1'/>
+    <component name='Layout' level='2'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 08 Jul 2018 09:58:21 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.5.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ScalarChaser/ScalarChaser.O.x3d'/>
+    <meta name='modified' content='Sun, 23 Jun 2019 13:23:54 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='SFFloat' url='"assets/SFFloat.x3d#SFFloat"'>
+      <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+      <field accessType='inputOutput' type='SFFloat' name='keyValue'/>
+      <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+    </ExternProtoDeclare>
+    <ProtoDeclare name='Year'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFBool' name='enabled'/>
+        <field accessType='inputOutput' type='MFString' name='string' value='"2000"'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <ProtoDeclare name='Fields'>
+          <ProtoInterface>
+            <field accessType='inputOutput' type='SFBool' name='enabled'/>
+          </ProtoInterface>
+          <ProtoBody>
+          </ProtoBody>
+        </ProtoDeclare>
+        <Shape>
+          <Appearance>
+            <Material DEF='_1'
+                diffuseColor='0 0 0'
+                emissiveColor='1 1 1'
+                transparency='0.6'/>
+          </Appearance>
+          <Text
+              solid='true'>
+            <IS>
+              <connect nodeField='string' protoField='string'/>
+            </IS>
+            <ScreenFontStyle DEF='_2'
+                family='"assets/georgia.ttf", "SERIF"'
+                justify='"MIDDLE", "MIDDLE"'/>
+          </Text>
+        </Shape>
+        <ProtoInstance name='Fields' DEF='_3'>
+          <IS>
+            <connect nodeField='enabled' protoField='enabled'/>
+          </IS>
+        </ProtoInstance>
+        <Group DEF='Animation'>
+          <MetadataSet DEF='Animation_4'
+              name='Animation'
+              reference='http://titania.create3000.de'>
+            <MetadataInteger DEF='duration_5' containerField='value'
+                name='duration'
+                reference='http://titania.create3000.de'
+                value='5'/>
+            <MetadataInteger DEF='frameRate_6' containerField='value'
+                name='frameRate'
+                reference='http://titania.create3000.de'
+                value='10'/>
+          </MetadataSet>
+          <TimeSensor DEF='AnimationTimer'
+              cycleInterval='0.5'
+              stopTime='1'/>
+          <ScalarInterpolator DEF='TransparencyInterpolator'
+              key='0, 0.2, 0.4, 0.6, 0.8, 1'
+              keyValue='0.6, 0.5376, 0.3888, 0.2112, 0.0624, 0'>
+            <MetadataSet DEF='Interpolator_7'
+                name='Interpolator'
+                reference='http://titania.create3000.de'>
+              <MetadataInteger DEF='key_8' containerField='value'
+                  name='key'
+                  reference='http://titania.create3000.de'
+                  value='0, 5'/>
+              <MetadataDouble DEF='keyValue_9' containerField='value'
+                  name='keyValue'
+                  reference='http://titania.create3000.de'
+                  value='0.600000023841858, 0'/>
+              <MetadataString DEF='keyType_10' containerField='value'
+                  name='keyType'
+                  reference='http://titania.create3000.de'
+                  value='"SPLINE", "SPLINE"'/>
+              <MetadataInteger DEF='keySize_11' containerField='value'
+                  name='keySize'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+          </ScalarInterpolator>
+          <ScalarInterpolator DEF='PointSizeInterpolator'
+              key='0, 0.2, 0.4, 0.6, 0.8, 1'
+              keyValue='12, 12.728, 14.464, 16.536, 18.272, 19'>
+            <MetadataSet DEF='Interpolator'
+                name='Interpolator'
+                reference='http://titania.create3000.de'>
+              <MetadataInteger DEF='key' containerField='value'
+                  name='key'
+                  reference='http://titania.create3000.de'
+                  value='0, 5'/>
+              <MetadataDouble DEF='keyValue' containerField='value'
+                  name='keyValue'
+                  reference='http://titania.create3000.de'
+                  value='12, 19'/>
+              <MetadataString DEF='keyType' containerField='value'
+                  name='keyType'
+                  reference='http://titania.create3000.de'
+                  value='"SPLINE", "SPLINE"'/>
+              <MetadataInteger DEF='keySize' containerField='value'
+                  name='keySize'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+          </ScalarInterpolator>
+        </Group>
+        <BooleanFilter DEF='_12'/>
+        <TimeTrigger DEF='_13'/>
+        <ProtoInstance name='SFFloat' DEF='To0'/>
+        <TimeTrigger DEF='_14'/>
+        <ProtoInstance name='SFFloat' DEF='To1'>
+          <fieldValue name='keyValue' value='1'/>
+        </ProtoInstance>
+        <ScalarChaser DEF='_15'
+            duration='0.4'/>
+        <Script DEF='PointSizeScript'>
+          <field accessType='inputOnly' type='SFFloat' name='set_pointSize'/>
+          <field accessType='initializeOnly' type='SFNode' name='fontStyle'>
+            <ScreenFontStyle USE='_2'/>
+          </field>
+<![CDATA[ecmascript:
+
+function set_pointSize (value, time)
+{
+	fontStyle .pointSize = value;
+}]]>
+        </Script>
+        <ROUTE fromNode='To0' fromField='value_changed' toNode='_15' toField='set_destination'/>
+        <ROUTE fromNode='To1' fromField='value_changed' toNode='_15' toField='set_destination'/>
+        <ROUTE fromNode='_14' fromField='triggerTime' toNode='To1' toField='set_triggerTime'/>
+        <ROUTE fromNode='_13' fromField='triggerTime' toNode='To0' toField='set_triggerTime'/>
+        <ROUTE fromNode='_12' fromField='inputTrue' toNode='_14' toField='set_boolean'/>
+        <ROUTE fromNode='_12' fromField='inputFalse' toNode='_13' toField='set_boolean'/>
+        <ROUTE fromNode='_15' fromField='value_changed' toNode='PointSizeInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='TransparencyInterpolator' fromField='value_changed' toNode='_1' toField='set_transparency'/>
+        <ROUTE fromNode='_15' fromField='value_changed' toNode='TransparencyInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='PointSizeInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='TransparencyInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='_3' fromField='enabled_changed' toNode='_12' toField='set_boolean'/>
+        <ROUTE fromNode='PointSizeInterpolator' fromField='value_changed' toNode='PointSizeScript' toField='set_pointSize'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_16' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <!-- NULL -->
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='BrowserPanel' containerField='value'
+            name='BrowserPanel'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='type_17' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
+          <MetadataSet DEF='viewpoints' containerField='value'
+              name='viewpoints'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
+                name='PerspectiveViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_18' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='8.48219013214111, 12, 8.48219013214111'/>
+              <MetadataDouble DEF='orientation_19' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='0.678598156250032, -0.678598556661039, -0.281084580209608, 5.18712872208587'/>
+              <MetadataDouble DEF='centerOfRotation_20' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+            <MetadataSet DEF='TopViewpoint' containerField='value'
+                name='TopViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_21' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 10000, 0'/>
+              <MetadataDouble DEF='orientation_22' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='1, 0, 0, 4.71238898038469'/>
+              <MetadataDouble DEF='centerOfRotation_23' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale_24' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+            <MetadataSet DEF='FrontViewpoint' containerField='value'
+                name='FrontViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_25' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 10000'/>
+              <MetadataDouble DEF='orientation_26' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 1, 0'/>
+              <MetadataDouble DEF='centerOfRotation_27' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale_28' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+          <MetadataDouble DEF='browserRatio' containerField='value'
+              name='browserRatio'
+              reference='http://titania.create3000.de'
+              value='1.777777'/>
+        </MetadataSet>
+        <MetadataSet DEF='Prototype' containerField='value'
+            name='Prototype'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='path' containerField='value'
+              name='path'
+              reference='http://titania.create3000.de'
+              value='"Year"'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Script DEF='EnterWorldScript'>
+      <field accessType='outputOnly' type='SFBool' name='initialized'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	try
+	{
+		Browser .setBrowserOption ("PrimitiveQuality", "HIGH");
+		Browser .setBrowserOption ("StraightenHorizon", true);
+	}
+	catch (error)
+	{ }
+	
+	initialized = true;
+}
+]]>
+    </Script>
+    <LayerSet
+        activeLayer='1'
+        order='0, 1, 2'>
+      <Layer DEF='Earth'>
+        <Viewpoint
+            position='0 0 3.35629'/>
+        <Transform DEF='Earth_29'>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='1 1 1'/>
+              <ImageTexture
+                  url='"assets/world.jpg"'/>
+            </Appearance>
+            <Sphere/>
+          </Shape>
+        </Transform>
+        <Billboard DEF='Atmosphere'
+            axisOfRotation='0 0 0'>
+          <Transform
+              scale='1.128 1.1284 1.1284'>
+            <Shape>
+              <Appearance>
+                <ImageTexture
+                    url='"assets/athmosphere.png"'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+        </Billboard>
+        <Inline DEF='Cities'
+            url='"assets/cities.x3dz"'/>
+      </Layer>
+      <LayoutLayer DEF='HUD_30'>
+        <MetadataSet DEF='Titania_31'
+            name='Titania'
+            reference='http://titania.create3000.de'>
+          <MetadataSet DEF='Grid_32' containerField='value'
+              name='Grid'
+              reference='http://titania.create3000.de'>
+            <MetadataBoolean DEF='enabled_33' containerField='value'
+                name='enabled'
+                reference='http://titania.create3000.de'
+                value='false'/>
+            <MetadataDouble DEF='rotation' containerField='value'
+                name='rotation'
+                reference='http://titania.create3000.de'
+                value='1, 0, 0, 1.5707963267949'/>
+            <MetadataInteger DEF='dimension' containerField='value'
+                name='dimension'
+                reference='http://titania.create3000.de'
+                value='96, 10, 54'/>
+            <MetadataFloat DEF='scale' containerField='value'
+                name='scale'
+                reference='http://titania.create3000.de'
+                value='10, 10, 10'/>
+          </MetadataSet>
+        </MetadataSet>
+        <Layout/>
+        <LayoutGroup DEF='Years'>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='200, 100'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='WorldPopulation'
+              translation='-50 0 0'>
+            <Shape>
+              <Text
+                  string='"World Population "'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/georgia.ttf", "SERIF"'
+                    pointSize='15'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='Line'
+              translation='70 -12.5 0'
+              scale='130.05 1 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='0 0 0'
+                    emissiveColor='1 1 1'
+                    transparency='0.6'/>
+              </Appearance>
+              <LineSet
+                  vertexCount='2'>
+                <Coordinate
+                    point='-1 0 0, 1 0 0'/>
+              </LineSet>
+            </Shape>
+          </Transform>
+          <Transform DEF='Year1995'
+              translation='-9 -36 0'>
+            <ProtoInstance name='Year' DEF='_34'>
+              <fieldValue name='enabled' value='true'/>
+              <fieldValue name='string' value='"1995"'/>
+            </ProtoInstance>
+            <TouchSensor DEF='_35'/>
+            <BooleanFilter DEF='EnableYear'/>
+            <BooleanFilter DEF='DisableOthers'/>
+            <TimeTrigger DEF='_36'/>
+            <ProtoInstance name='SFFloat' DEF='Cities1995'/>
+          </Transform>
+          <Transform DEF='Year2000'
+              translation='84 -36 0'>
+            <ProtoInstance name='Year' DEF='_37'/>
+            <TouchSensor DEF='_38'/>
+            <BooleanFilter DEF='_39'/>
+            <BooleanFilter DEF='_40'/>
+            <TimeTrigger DEF='_41'/>
+            <ProtoInstance name='SFFloat' DEF='Cities2000'>
+              <fieldValue name='keyValue' value='0.5'/>
+            </ProtoInstance>
+          </Transform>
+          <Transform DEF='Year2005'
+              translation='159 -36 0'>
+            <ProtoInstance name='Year' DEF='_42'>
+              <fieldValue name='string' value='"2005"'/>
+            </ProtoInstance>
+            <TouchSensor DEF='_43'/>
+            <BooleanFilter DEF='_44'/>
+            <BooleanFilter DEF='_45'/>
+            <TimeTrigger DEF='_46'/>
+            <ProtoInstance name='SFFloat' DEF='Cities2005'>
+              <fieldValue name='keyValue' value='1'/>
+            </ProtoInstance>
+          </Transform>
+          <ScalarChaser DEF='AnimateCities'
+              duration='0.6'/>
+        </LayoutGroup>
+        <LayoutGroup DEF='X3D-Experiment'>
+          <Layout
+              align='"LEFT", "BOTTOM"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='100, 100'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='This-is-a'
+              translation='-15.8876 11.7974 0'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Text
+                  string='"This is a"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    pointSize='8'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='X3D-Experiment_47'
+              translation='-15.8876 -9.44926 0'
+              scale='1 0.999998 1'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Text
+                  string='"X3D", "Experiment"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    pointSize='15'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </LayoutGroup>
+        <LayoutGroup DEF='Inspired_48'>
+          <Layout
+              align='"RIGHT", "BOTTOM"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='200, 100'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='X3D-Globe'
+              translation='-258.396 -26.8189 0'>
+            <Shape>
+              <Appearance>
+                <Material
+                    transparency='0.4'/>
+              </Appearance>
+              <Text
+                  string='"X3D Globe"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    style='BOLD'
+                    pointSize='10'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Anchor DEF='Inspired'
+              url='"http://globe.chromeexperiments.com/"'
+              parameter='"target=_blank"'>
+            <Transform
+                translation='-173.397 -26.8189 0'>
+              <Shape>
+                <Appearance>
+                  <Material/>
+                </Appearance>
+                <Text
+                    string='" •     Inspired by Chrome WebGL Gobe"'
+                    solid='true'>
+                  <ScreenFontStyle
+                      family='"assets/DejaVuSans.ttf", "SANS"'
+                      pointSize='10'/>
+                </Text>
+              </Shape>
+            </Transform>
+          </Anchor>
+        </LayoutGroup>
+      </LayoutLayer>
+    </LayerSet>
+    <IMPORT inlineDEF='Cities' importedDEF='PointInterpolator'/>
+    <ROUTE fromNode='_38' fromField='isOver' toNode='_39' toField='set_boolean'/>
+    <ROUTE fromNode='_43' fromField='isOver' toNode='_44' toField='set_boolean'/>
+    <ROUTE fromNode='_35' fromField='isOver' toNode='EnableYear' toField='set_boolean'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='DisableOthers' toField='set_boolean'/>
+    <ROUTE fromNode='_39' fromField='inputTrue' toNode='_40' toField='set_boolean'/>
+    <ROUTE fromNode='_44' fromField='inputTrue' toNode='_45' toField='set_boolean'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_36' toField='set_boolean'/>
+    <ROUTE fromNode='_41' fromField='triggerTime' toNode='Cities2000' toField='set_triggerTime'/>
+    <ROUTE fromNode='_36' fromField='triggerTime' toNode='Cities1995' toField='set_triggerTime'/>
+    <ROUTE fromNode='_39' fromField='inputTrue' toNode='_41' toField='set_boolean'/>
+    <ROUTE fromNode='_46' fromField='triggerTime' toNode='Cities2005' toField='set_triggerTime'/>
+    <ROUTE fromNode='_44' fromField='inputTrue' toNode='_46' toField='set_boolean'/>
+    <ROUTE fromNode='Cities2005' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
+    <ROUTE fromNode='Cities2000' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
+    <ROUTE fromNode='Cities1995' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
+    <ROUTE fromNode='EnterWorldScript' fromField='initialized' toNode='EnableYear' toField='set_boolean'/>
+    <ROUTE fromNode='_44' fromField='inputTrue' toNode='_42' toField='set_enabled'/>
+    <ROUTE fromNode='_40' fromField='inputNegate' toNode='_42' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_42' toField='set_enabled'/>
+    <ROUTE fromNode='_45' fromField='inputNegate' toNode='_34' toField='set_enabled'/>
+    <ROUTE fromNode='_40' fromField='inputNegate' toNode='_34' toField='set_enabled'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_34' toField='set_enabled'/>
+    <ROUTE fromNode='_45' fromField='inputNegate' toNode='_37' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_37' toField='set_enabled'/>
+    <ROUTE fromNode='_39' fromField='inputTrue' toNode='_37' toField='set_enabled'/>
+    <ROUTE fromNode='AnimateCities' fromField='value_changed' toNode='PointInterpolator' toField='set_fraction'/>
+  </Scene>
+</X3D>

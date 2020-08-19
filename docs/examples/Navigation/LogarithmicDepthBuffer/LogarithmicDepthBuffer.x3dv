@@ -1,0 +1,319 @@
+#X3D V3.3 utf8 Titania V4.6.7
+
+PROFILE Immersive
+
+COMPONENT Interpolation : 4
+COMPONENT Layering : 1
+COMPONENT NURBS : 1
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Navigation/LogarithmicDepthBuffer/LogarithmicDepthBuffer.O.x3d"
+META "modified" "Sun, 17 Nov 2019 07:54:42 GMT"
+
+PROTO SizeText [
+  inputOutput SFVec3f  translation 0 0 0
+  inputOutput SFFloat  xOffset 1
+  inputOutput SFFloat  displaySize 0.1
+  inputOutput SFFloat  fieldOfView 0.7854
+  inputOutput MFString string "child sized (1 m)"
+  inputOutput SFDouble size 1
+  inputOutput SFColor  color 0.8 0.8 0.8
+  outputOnly  SFVec3f  viewpointPosition_changed
+]
+{
+  DEF Group Transform {
+    translation IS translation
+    children [
+      DEF Text_1 Transform {
+        translation 1 0 0
+        children Shape {
+          appearance DEF _2 Appearance {
+            material Material {
+              diffuseColor IS color
+            }
+          }
+          geometry DEF _3 Text {
+            string IS string
+            fontStyle DEF _4 FontStyle {
+              family "TYPEWRITER"
+              justify [ "BEGIN", "MIDDLE" ]
+            }
+          }
+        }
+      }
+      DEF Sphere Transform {
+        children Shape {
+          appearance USE _2
+          geometry DEF _5 Sphere {
+            radius 0.5
+          }
+        }
+      }
+    ]
+  }
+
+  DEF SizeTextScript Script {
+    inputOutput    SFFloat  xOffset IS xOffset
+    inputOutput    SFFloat  displaySize IS displaySize
+    inputOutput    SFFloat  fieldOfView IS fieldOfView
+    inputOnly      SFVec2f  set_textBounds
+    inputOutput    SFDouble size IS size
+    outputOnly     SFVec3f  viewpointPosition_changed IS viewpointPosition_changed
+    initializeOnly SFNode   sphere USE _5
+    initializeOnly SFNode   text USE Text_1
+    initializeOnly SFNode   fontStyle USE _4
+
+    url "ecmascript:
+
+function initialize ()
+{
+	set_size (size, 0);
+	eventsProcessed ();
+}
+
+function set_size (value, time)
+{
+	sphere .radius       = value / 2;
+	text .translation .x = value * 1;
+	fontStyle .size      = value;
+}
+
+function eventsProcessed ()
+{
+	var
+		z = (size / displaySize) / (Math .tan (fieldOfView / 2) * 2),
+		s = z * Math .tan (fieldOfView / 2) * 2,
+		x = s / 2 * xOffset;
+
+	viewpointPosition_changed = new SFVec3f (x, 0, z);
+}
+"
+    directOutput TRUE
+  }
+
+  ROUTE _3.textBounds TO SizeTextScript.set_textBounds
+}
+
+PROTO Sizes [
+  inputOutput SFTime   textInterval 1
+  inputOutput SFFloat  xOffset 1
+  inputOutput SFFloat  displaySize 0.1
+  inputOutput SFFloat  fieldOfView 0.7854
+  inputOutput MFString string [ ]
+  inputOutput MFDouble size [ ]
+]
+{
+  Group {
+    children [
+      DEF _6 Viewpoint {
+        description "Animation"
+        fieldOfView IS fieldOfView
+      }
+      DEF _7 Group { }
+      Switch {
+        children DEF Line Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0 0 0
+              emissiveColor 1 1 1
+            }
+          }
+          geometry LineSet {
+            vertexCount 2
+            coord DEF _8 CoordinateDouble {
+              point [ 0 -nan 0, 0 nan 0 ]
+            }
+          }
+        }
+      }
+    ]
+  }
+
+  DEF _9 TimeSensor {
+    cycleInterval 0
+    loop TRUE
+  }
+
+  DEF _10 SplinePositionInterpolator { }
+
+  DEF SizesScript Script {
+    inputOutput    SFTime   textInterval IS textInterval
+    inputOutput    SFFloat  xOffset IS xOffset
+    inputOutput    SFFloat  displaySize IS displaySize
+    inputOutput    SFFloat  fieldOfView IS fieldOfView
+    inputOutput    MFString string IS string
+    inputOutput    MFDouble size IS size
+    initializeOnly SFNode   timeSensor USE _9
+    initializeOnly SFNode   viewpoint USE _6
+    initializeOnly SFNode   group USE _7
+    initializeOnly SFNode   lineCoord USE _8
+    initializeOnly SFNode   script DEF ViewpointScript Script {
+      inputOnly      SFVec3f set_viewpointPosition
+      initializeOnly SFNode  interpolator USE _10
+      initializeOnly SFNode  group USE _7
+
+      url "ecmascript:
+
+function set_viewpointPosition (value, time)
+{
+	interpolator .key         .length = 0;
+	interpolator .keyValue    .length = 0;
+	interpolator .keyVelocity .length = 0;
+	
+	for (var i = 0, length = group .children .length; i < length; ++ i)
+	{
+		interpolator .key .push ((i + 1) / (length + 1));
+		interpolator .keyValue .push (group .children [i] .viewpointPosition_changed .add (group .children [i] .translation));
+		interpolator .keyVelocity .push (new SFVec3f ());
+	}
+	
+	interpolator .key .unshift (0);
+	interpolator .keyValue .unshift (interpolator .keyValue [0]);
+	interpolator .keyVelocity .unshift (new SFVec3f ());
+	
+	interpolator .key .push (1);
+	interpolator .keyValue .push (interpolator .keyValue [interpolator .keyValue .length - 1]);
+	interpolator .keyVelocity .push (new SFVec3f ());
+}
+"
+      directOutput TRUE
+    }
+
+    url "ecmascript:
+
+function initialize ()
+{
+	viewpoint .set_bind = true;
+
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	var color = new SFColor ();
+
+	for (var i = 0, length = group .children .length; i < length; ++ i)
+	{
+		Browser .deleteRoute (group .children [i], \"viewpointPosition_changed\", script, \"set_viewpointPosition\");
+	}
+
+	group .children .length = 0;
+	
+	for (var i = 0, length = string .length; i < length; ++ i)
+	{
+		var
+			text = Browser .currentScene .createProto (\"SizeText\"),
+			hue  = Math .PI * 2 * (i / length); 
+
+		color .setHSV (hue, 1, 1);
+
+		text .xOffset     = xOffset;
+		text .displaySize = displaySize;
+		text .fieldOfView = fieldOfView;
+		text .string [0]  = string [i];
+		text .size        = size [i];
+		text .color       = color;
+		
+		group .children .push (text);
+		
+		Browser .addRoute (group .children [i], \"viewpointPosition_changed\", script, \"set_viewpointPosition\");
+	}
+
+	var s = 0;
+
+	for (var i = 1, length = group .children .length; i < length; ++ i)
+	{
+		var p = i - 1;
+
+		s += group .children [i] .size;
+		
+		group .children [i] .translation .y = s;
+	}
+
+	timeSensor .cycleInterval = group .children .length * textInterval;
+
+	// Test line
+
+	var y = 10 * size [size .length - 1];
+
+	lineCoord .point [0] = new SFVec3d (0, -y, 0);
+	lineCoord .point [1] = new SFVec3d (0,  y, 0);
+}
+"
+    directOutput TRUE
+  }
+
+  ROUTE _9.fraction_changed TO _10.set_fraction
+  ROUTE _10.value_changed TO _6.set_position
+}
+
+WorldInfo {
+}
+
+DEF LogarithmicDepthBufferScript Script {
+  inputOutput SFTime   startTime 0
+  outputOnly  MFString string_changed
+
+  url "ecmascript:
+
+function initialize ()
+{
+	Browser .setBrowserOption (\"LogarithmicDepthBuffer\", true);
+	
+	startTime = 0;
+}
+
+function set_startTime (value, time)
+{
+	string_changed [0] = \"Logarithmic Depth Buffer: \" + Browser .getRenderingProperty (\"LogarithmicDepthBuffer\");
+}
+"
+}
+
+LayerSet {
+  activeLayer -1
+  order [ 0, 1, 2 ]
+  layers [
+    DEF Sizes Layer {
+      children [
+        NavigationInfo {
+          type "EXAMINE"
+          avatarSize [ 1e-05, 1.6, 0.75 ]
+          visibilityLimit 1e+24
+        }
+        Sizes {
+          textInterval 4
+          xOffset 1.35
+          displaySize 0.111111
+          string [ "microscopic (1 μm)", "minuscule (1 mm)", "tiny (1 cm)", "small (1 dm)", "child-sized (1 m)", "tree-sized (10 m)", "building-sized (100 m)", "medium (1 km)", "city-sized (10 km)", "moon-sized (3,400 km)", "planet-sized (12,000 km)", "sun-sized (1,400,000 km)", "solar system (50 Au)", "gargantuan (1 ly)", "ludicrous (1 pc)", "mind boggling (1,000 ly)", "galaxy-sized (120,000 ly)", "ooops (100,000,000 ly)" ]
+          size [ 1e-06, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23 ]
+        }
+      ]
+    }
+    DEF HUD Layer {
+      children DEF LDB Transform {
+        translation 6.84654 -3.7207 0
+        scale 0.233881 0.233881 0.233881
+        children Shape {
+          appearance Appearance {
+            material Material { }
+          }
+          geometry DEF _11 Text {
+            string "Logarithmic Depth Buffer: false"
+            solid TRUE
+            fontStyle FontStyle {
+              family "TYPEWRITER"
+              justify "END"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+
+ROUTE LogarithmicDepthBufferScript.string_changed TO _11.set_string

@@ -1,0 +1,370 @@
+#X3D V3.3 utf8 Titania V4.6.7
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Geospatial : 1
+COMPONENT Layout : 2
+
+META "comment" "World of Titania"
+META "created" "Tue, 12 Aug 2014 04:27:36 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Geospatial/GeoViewpoint/GeoViewpoint.O.x3d"
+META "modified" "Thu, 07 Nov 2019 12:46:32 GMT"
+META "titania-add-metadata" "true"
+
+WorldInfo {
+}
+
+NavigationInfo {
+  avatarSize [ 10000, 1.6, 0.75 ]
+  visibilityLimit 1e+08
+}
+
+DEF Gray Background {
+  skyColor 0.2 0.2 0.2
+}
+
+DEF GeoViewpoints Transform {
+  children [
+    DEF Zero GeoViewpoint {
+      geoSystem [ "GD", "WE", "longitude_first" ]
+      description "Zero"
+      position 0 0 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF NorthPole GeoViewpoint {
+      description "North Pole"
+      position 90 0 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF SouthPole GeoViewpoint {
+      description "South Pole"
+      position -90 0 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF London GeoViewpoint {
+      description "London"
+      position 51 0 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF Leipzig GeoViewpoint {
+      description "Leipzig"
+      position 51.31 12.37 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF Nairobi GeoViewpoint {
+      description "Nairobi"
+      position -1.33 36.84 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF NewYork GeoViewpoint {
+      description "New York"
+      position 39.99 -72.99 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF RioDeJaneiro GeoViewpoint {
+      description "Rio de Janeiro"
+      position -22 -42.97 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF Sydney GeoViewpoint {
+      description "Sydney"
+      position -37.01 143.98 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF Tokyo GeoViewpoint {
+      description "Tokyo"
+      position 35 138.99 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF MenloPark GeoViewpoint {
+      description "Menlo Park"
+      position 37.45 -122.1834 13621864
+      orientation -1 0 0 1.5708
+      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+    }
+    DEF UTMMenloPark GeoViewpoint {
+      geoSystem [ "UTM", "WE", "Z10" ]
+      description "UTM Menlo Park "
+      position 4153603.92759802 594759.412887271 13621864
+      orientation -0.999995010546454 -0.00313182293937362 0.000412997910010724 1.56951439079855
+      centerOfRotation 1039686.95787579 26999691.3079166 -6277396.31330616
+      fieldOfView 0.785
+    }
+    DEF UTMNewSeeland GeoViewpoint {
+      geoSystem [ "UTM", "WE", "Z60", "S" ]
+      description "UTM New Seeland"
+      position 5340947.73344923 319266.304201755 13621864
+      orientation 1 0 0 4.708782
+      centerOfRotation -134687642.22724 -152229936.343916 -6277396.31330616
+    }
+  ]
+}
+
+DEF Earth Transform {
+  scale 6.37814e+06 6.37814e+06 6.35675e+06
+  children [
+    DEF Axes Shape {
+      geometry IndexedLineSet {
+        colorPerVertex FALSE
+        colorIndex [ 0, 1, 2 ]
+        coordIndex [ 0, 1, -1, 0, 2, -1, 0, 3, -1 ]
+        color Color {
+          color [ 1 0 0, 0 1 0, 0 0 1 ]
+        }
+        coord Coordinate {
+          point [ 0 0 0, 1 0 0, 0 1 0, 0 0 1 ]
+        }
+      }
+    }
+    DEF Sphere Transform {
+      rotation 1 0 0 1.57079
+      children Shape {
+        appearance Appearance {
+          material Material {
+            transparency 0.2
+          }
+        }
+        geometry Sphere { }
+      }
+    }
+    DEF Coasts Inline {
+      url "assets/coasts.x3d"
+    }
+  ]
+}
+
+DEF Points Transform {
+  children Shape {
+    appearance DEF _1 Appearance {
+      pointProperties PointProperties {
+        pointSizeScaleFactor 10
+        pointSizeMaxValue 10
+      }
+      material Material {
+        emissiveColor 1 0.502179 0
+      }
+    }
+    geometry PointSet {
+      coord GeoCoordinate {
+        geoOrigin GeoOrigin {
+          geoSystem "GC"
+        }
+        point [ 0 0 0, 90 0 0, -90 0 0, 51 0 0, 51.31 12.37 0, -1.33 36.84 0, 39.992 -72.994 0, -22 -42.97 0, -37.01 143.98 0, 35.007 138.999 0, 37.45 -122.1834 0 ]
+      }
+    }
+  }
+}
+
+DEF Texts Transform {
+  children [
+    DEF Zero_2 GeoLocation {
+      geoCoords 0 0 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance DEF _3 Appearance {
+            material Material {
+              diffuseColor 0 0 0
+            }
+          }
+          geometry Text {
+            string "Zero"
+            fontStyle DEF _4 ScreenFontStyle {
+              family [ "Ubuntu Condensed", "Ubuntu", "SANS" ]
+            }
+          }
+        }
+      }
+    }
+    DEF NorthPoleText GeoLocation {
+      geoCoords 90 0 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "North Pole"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF SouthPoleText GeoLocation {
+      geoCoords -90 0 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "South Pole"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF LondonText GeoLocation {
+      geoCoords 50.99 0 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "London"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF LeipzigText GeoLocation {
+      geoCoords 51.31 12.37 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "Leipzig"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF NairobiText GeoLocation {
+      geoCoords -1.33 36.84 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "Nairobi"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF NewYorkText GeoLocation {
+      geoCoords 39.99 -72.99 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "New York"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF RioDeJaneiroText GeoLocation {
+      geoCoords -22 -42.97 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "Rio de Janeiro"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF SydneyText GeoLocation {
+      geoCoords -37.01 143.98 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "Sydney"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF TokyoText GeoLocation {
+      geoCoords 35 138.99 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "Tokyo"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+    DEF MenloParkText GeoLocation {
+      geoCoords 37.45 -122.1834 1000000
+      children Billboard {
+        axisOfRotation 0 0 0
+        children Shape {
+          appearance USE _3
+          geometry Text {
+            string "Menlo Park"
+            fontStyle USE _4
+          }
+        }
+      }
+    }
+  ]
+}
+
+DEF UTM Transform {
+  children [
+    Shape {
+      appearance Appearance {
+        pointProperties PointProperties {
+          pointSizeScaleFactor 10
+          pointSizeMaxValue 10
+        }
+        material DEF _5 Material {
+          emissiveColor 1 0.996398 0
+        }
+      }
+      geometry PointSet {
+        coord GeoCoordinate {
+          geoSystem [ "UTM", "WE", "Z10" ]
+          point 4145173 572227 0
+        }
+      }
+    }
+    Shape {
+      appearance Appearance {
+        pointProperties PointProperties {
+          pointSizeScaleFactor 10
+          pointSizeMaxValue 10
+        }
+        material USE _5
+      }
+      geometry PointSet {
+        coord GeoCoordinate {
+          geoSystem [ "UTM", "WE", "Z60", "S" ]
+          point 5427419.7 314369.5 0
+        }
+      }
+    }
+  ]
+}
+
+DEF EnterWorldScript Script {
+  url "ecmascript:
+
+function initialize ()
+{
+	Browser .setBrowserOption (\"LogarithmicDepthBuffer\", true);
+}
+"
+}

@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Grouping' level='3'/>
+    <component name='Interpolation' level='4'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Mon, 27 Nov 2017 03:13:31 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d'/>
+    <meta name='modified' content='Mon, 07 Jan 2019 03:59:38 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Canvas'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFVec2f' name='size' value='8 8'/>
+        <field accessType='inputOutput' type='SFInt32' name='components' value='3'/>
+        <field accessType='inputOutput' type='MFInt32' name='array' value='0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0'/>
+        <field accessType='initializeOnly' type='SFBool' name='repeatS'/>
+        <field accessType='initializeOnly' type='SFBool' name='repeatT'/>
+        <field accessType='inputOutput' type='SFColor' name='bgColor'/>
+        <field accessType='inputOutput' type='SFColor' name='fgColor'/>
+        <field accessType='inputOutput' type='SFFloat' name='opacity'/>
+        <field accessType='inputOutput' type='SFTime' name='clear'/>
+        <field accessType='inputOutput' type='SFBool' name='enabled'/>
+        <field accessType='inputOnly' type='SFVec2f' name='set_hitTexCoord'/>
+        <field accessType='inputOutput' type='SFBool' name='horizontallyWrap'/>
+        <field accessType='inputOutput' type='SFBool' name='verticallyWrap'/>
+        <field accessType='inputOutput' type='SFString' name='combineMode' value='STAMP'/>
+        <field accessType='inputOutput' type='SFNode' name='brush'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <ProtoDeclare name='Data'>
+          <ProtoInterface>
+            <field accessType='inputOutput' type='SFVec2f' name='size' value='8 8'/>
+            <field accessType='inputOutput' type='SFInt32' name='components' value='3'/>
+            <field accessType='inputOutput' type='MFInt32' name='array'/>
+            <field accessType='inputOutput' type='SFColor' name='bgColor'/>
+            <field accessType='inputOutput' type='SFColor' name='fgColor'/>
+            <field accessType='inputOutput' type='SFFloat' name='opacity'/>
+            <field accessType='inputOutput' type='SFTime' name='clear'/>
+            <field accessType='inputOutput' type='SFBool' name='enabled'/>
+            <field accessType='inputOutput' type='SFBool' name='horizontallyWrap'/>
+            <field accessType='inputOutput' type='SFBool' name='verticallyWrap'/>
+            <field accessType='inputOutput' type='SFString' name='combineMode' value='STAMP'/>
+            <field accessType='inputOutput' type='SFNode' name='brush'/>
+          </ProtoInterface>
+          <ProtoBody>
+            <Group/>
+          </ProtoBody>
+        </ProtoDeclare>
+        <PixelTexture DEF='_1'
+            image='8 8 3
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0
+              0 0 0 0 0 0 0 0'>
+          <IS>
+            <connect nodeField='repeatS' protoField='repeatS'/>
+            <connect nodeField='repeatT' protoField='repeatT'/>
+          </IS>
+        </PixelTexture>
+        <Script DEF='CanvasScript'
+            directOutput='true'>
+          <field accessType='outputOnly' type='SFImage' name='image_changed'/>
+          <field accessType='inputOnly' type='SFVec2f' name='set_size'/>
+          <field accessType='inputOnly' type='MFInt32' name='set_array'/>
+          <field accessType='inputOnly' type='SFColor' name='set_bgColor'/>
+          <field accessType='inputOnly' type='SFColor' name='set_fgColor'/>
+          <field accessType='inputOnly' type='SFTime' name='set_clear'/>
+          <field accessType='inputOnly' type='SFVec2f' name='set_hitTexCoord'/>
+          <field accessType='initializeOnly' type='SFInt32' name='bgColor'/>
+          <field accessType='initializeOnly' type='SFInt32' name='fgColor'/>
+          <field accessType='initializeOnly' type='SFNode' name='data'>
+            <ProtoInstance name='Data' DEF='_2' containerField='data'>
+              <IS>
+                <connect nodeField='size' protoField='size'/>
+                <connect nodeField='components' protoField='components'/>
+                <connect nodeField='array' protoField='array'/>
+                <connect nodeField='bgColor' protoField='bgColor'/>
+                <connect nodeField='fgColor' protoField='fgColor'/>
+                <connect nodeField='opacity' protoField='opacity'/>
+                <connect nodeField='clear' protoField='clear'/>
+                <connect nodeField='enabled' protoField='enabled'/>
+                <connect nodeField='horizontallyWrap' protoField='horizontallyWrap'/>
+                <connect nodeField='verticallyWrap' protoField='verticallyWrap'/>
+                <connect nodeField='combineMode' protoField='combineMode'/>
+                <connect nodeField='brush' protoField='brush'/>
+              </IS>
+            </ProtoInstance>
+          </field>
+          <IS>
+            <connect nodeField='set_hitTexCoord' protoField='set_hitTexCoord'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function set_array(value, time) {
+	// send out new picture 
+	image_changed = new SFImage(data.size.x, data.size.y, data.components, value);
+}
+
+function color2int (value, alpha) {
+	color = (Math.floor(value.r * 0xFF) << 16) | (Math.floor(value.g * 0xFF) << 8) | Math.floor(value.b * 0xFF);
+	if (data.components == 4) color = (color << 8) | Math.floor(alpha * 0xFF);
+	return color;
+}
+
+function set_bgColor (value, time) { bgColor = color2int(value, data.opacity); }
+function set_fgColor (value, time) { fgColor = color2int(value, data.opacity); }
+
+function set_clear (value, time) {
+	// create new clean picture
+	array = new MFInt32();
+	for(j = 0; j < data.size.y; j++) {
+		for(k = 0; k < data.size.x; k++) {
+			i = j * data.size.x + k;
+			array[i] = bgColor;
+		}
+	}
+	data.array = array;
+}
+
+function set_size(value, time) {
+	if (data.array.length < value.x * value.y) {
+		array = new MFInt32();
+		for(j = 0; j < data.size.y; j++) {
+			for(k = 0; k < data.size.x; k++) {
+				i = j * data.size.x + k;
+				if (i < data.array.length) array[i] = data.array[i];
+				else array[i] = bgColor;
+			}
+		}
+		data.array = array;
+		return TRUE;
+	} else {
+		set_array(data.array, 1);
+		return FALSE;
+	}
+}
+
+function add_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = c1 + c2; if (c > 255) c = 255;
+		color |= (c << s);
+	}
+	return color;
+}
+
+function sub_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = c1 - c2; if (c < 0) c = 0;
+		color |= (c << s);
+	}
+	return color;
+}
+
+function mult_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor((c1 * c2) / 65024);
+		color |= (c << s);
+	}
+	return color;
+}
+
+function div_pixel (pixel1, pixel2) {
+	color = 0;
+	for (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor(c1 / c2);
+		color |= (c << s);
+	}
+	return color;
+}
+
+function avrg_pixel (pixel1, pixel2) {
+	o1 = pixel1 & 0xFF;
+	o2 = pixel2 & 0xFF;
+	o = o1 + o2; if (o > 255) o = 255;
+
+	color = o; o2 /= 255;
+	for (i = 1, s = 8 * i; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor((c1 + c2) / 2);
+		color |= (c << s);
+	}
+
+	return color;
+}
+
+function brush_pixel (pixel1, pixel2) {
+	o1 = pixel1 & 0xFF;
+	o2 = pixel2 & 0xFF;
+	o = o1 + o2; if (o > 255) o = 255;
+
+	color = o; o2 /= 255;
+	for (i = 1, s = 8 * i; i < data.components; ++i, s = 8 * i) {
+		c1 = (pixel1 >>> s) & 0xff;
+		c2 = (pixel2 >>> s) & 0xff;
+		c = Math.floor(c1 + ((c2 - c1) * o2));
+		color |= (c << s);
+	}
+
+	return color;
+}
+
+function set_pixel(value) {
+	// color pixel using current foreground color
+	out = 0;
+	pixel = new SFVec2f(
+		               value.x < 0 ? (data.horizontallyWrap ? value.x + data.size.x : out = 1 ) :
+		(value.x > data.size.x - 1 ? (data.horizontallyWrap ? value.x % data.size.x : out = 1 ) : value.x),
+		               value.y < 0 ? (data.verticallyWrap ? value.y + data.size.y : out = 1 ) :
+		(value.y > data.size.y - 1 ? (data.verticallyWrap ? value.y % data.size.y : out = 1 ) : value.y)
+	);
+	if (out) return ;
+	if (data.combineMode == 'STAMP') data.array[pixel.y * data.size.x + pixel.x] = fgColor;
+	else if (data.combineMode == 'BRUSH') data.array[pixel.y * data.size.x + pixel.x] = brush_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'OR')   data.array[pixel.y * data.size.x + pixel.x] |= fgColor;
+	else if (data.combineMode == 'XOR')  data.array[pixel.y * data.size.x + pixel.x] ^= fgColor;
+	else if (data.combineMode == 'AND')  data.array[pixel.y * data.size.x + pixel.x] &= fgColor;
+	else if (data.combineMode == 'ADD')  data.array[pixel.y * data.size.x + pixel.x] = add_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'SUB')  data.array[pixel.y * data.size.x + pixel.x] = sub_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'AVRG') data.array[pixel.y * data.size.x + pixel.x] = avrg_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'MULT') data.array[pixel.y * data.size.x + pixel.x] = mult_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);
+	else if (data.combineMode == 'DIV') data.array[pixel.y * data.size.x + pixel.x] /= fgColor;
+	else if (data.combineMode == 'DIV2') data.array[pixel.y * data.size.x + pixel.x] = fgColor / data.array[pixel.y * data.size.x + pixel.x];
+}
+
+function set_brush(value) {
+	x = value.x - Math.floor(data.brush.size.x/2);
+	y = value.y - Math.floor(data.brush.size.y/2);
+	for(j = 0; j < data.brush.size.y; j++) {
+		for(k = 0; k < data.brush.size.x; k++) {
+			i = j * data.brush.size.x + k;
+			fgColor = data.brush.array[i];
+			pixel = new SFVec2f(x + k, y + j);
+			set_pixel(pixel);
+		}
+	}
+}
+
+function set_hitTexCoord(value, time) {
+	pixel = new SFVec2f(Math.round(value.x * data.size.x), Math.round(value.y * data.size.y));
+	if (data.enabled) {
+		if (data.brush) set_brush(pixel);
+		else set_pixel(pixel);
+	}
+}
+
+function initialize () {
+	set_bgColor(data.bgColor, 1);
+	set_fgColor(data.fgColor, 1);
+	if (!set_size(data.size, 1)) {
+		if (data.clear) set_clear(1, 1);
+	}
+}
+	]]>
+        </Script>
+        <ROUTE fromNode='CanvasScript' fromField='image_changed' toNode='_1' toField='set_image'/>
+        <ROUTE fromNode='_2' fromField='size_changed' toNode='CanvasScript' toField='set_size'/>
+        <ROUTE fromNode='_2' fromField='array_changed' toNode='CanvasScript' toField='set_array'/>
+        <ROUTE fromNode='_2' fromField='bgColor_changed' toNode='CanvasScript' toField='set_bgColor'/>
+        <ROUTE fromNode='_2' fromField='fgColor_changed' toNode='CanvasScript' toField='set_fgColor'/>
+        <ROUTE fromNode='_2' fromField='clear_changed' toNode='CanvasScript' toField='set_clear'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo
+        info='"Created in CosmoWorlds", "Packaged by CosmoPackage"'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <Script DEF='_3' containerField='value'>
+              <field accessType='outputOnly' type='SFVec2f' name='vec'/>
+              <field accessType='inputOnly' type='SFFloat' name='xIn'/>
+              <field accessType='inputOnly' type='SFFloat' name='yIn'/>
+              <field accessType='initializeOnly' type='SFFloat' name='xBuf' value='1.40365'/>
+              <field accessType='initializeOnly' type='SFFloat' name='yBuf' value='1.47705'/>
+<![CDATA[ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } ]]>
+            </Script>
+          </MetadataSet>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <NavigationInfo
+        type='"NONE"'/>
+    <Viewpoint
+        position='-2.03376 -2.79428 6.874'
+        fieldOfView='0.785398'/>
+    <TimeSensor DEF='_4'
+        loop='true'
+        startTime='1'/>
+    <Script DEF='DiscoScript'
+        directOutput='true'>
+      <field accessType='outputOnly' type='SFFloat' name='scaleF'/>
+      <field accessType='outputOnly' type='SFFloat' name='rotateF'/>
+      <field accessType='inputOnly' type='SFTime' name='set_time'/>
+      <field accessType='initializeOnly' type='SFNode' name='brush'>
+        <ProtoInstance name='Canvas' DEF='_5' containerField='brush'>
+          <fieldValue name='size' value='1 1'/>
+          <fieldValue name='array' value='8527156'/>
+          <fieldValue name='bgColor' value='0.510025 0.115847 0.207168'/>
+          <fieldValue name='clear' value='1546833576.51676'/>
+          <fieldValue name='enabled' value='true'/>
+        </ProtoInstance>
+      </field>
+      <field accessType='initializeOnly' type='SFNode' name='canvas'>
+        <ProtoInstance name='Canvas' DEF='_6' containerField='canvas'>
+          <fieldValue name='size' value='32 32'/>
+          <fieldValue name='array' value='0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 0, 0, 7094150, 10641407, 7094150, 0, 0, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 0, 7094150, 10641407, 0, 7094150, 0, 7094150, 10641407, 7810746, 0, 7094150, 0, 7094150, 0, 0, 10641407, 10641407, 4263476, 7094150, 13334527, 7810746, 10641407, 0, 0, 0, 0, 0, 9584383, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 0, 12414975, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 7094150, 0, 4263476, 4263476, 12414975, 10641407, 0, 7810746, 10641407, 7094150, 7094150, 10641407, 0, 4263476, 0, 0, 0, 10641407, 7094150, 7094150, 0, 0, 4263476, 0, 9584383, 0, 7094150, 0, 7094150, 0, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 7094150, 7094150, 4263476, 10641407, 0, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 4263476, 7094150, 13334527, 7094150, 0, 0, 7094150, 7810746, 0, 4263476, 10641407, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 0, 12414975, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7810746, 7094150, 10641407, 0, 13334527, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 7810746, 0, 0, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 7094150, 10641407, 10641407, 12414975, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 4263476, 0, 0, 0, 12414975, 7094150, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 9584383, 7094150, 10641407, 7094150, 12414975, 12414975, 0, 12414975, 7094150, 7094150, 0, 7094150, 0, 0, 7094150, 7810746, 0, 10641407, 0, 0, 0, 4263476, 0, 7810746, 0, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 0, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 11160831, 0, 4263476, 0, 10641407, 9584383, 7094150, 0, 0, 0, 7094150, 0, 0, 0, 0, 0, 10641407, 10641407, 7094150, 12414975, 0, 0, 7094150, 0, 7094150, 7094150, 12414975, 10641407, 7094150, 7094150, 0, 0, 7094150, 7094150, 4263476, 7094150, 0, 0, 0, 0, 0, 0, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 9584383, 0, 7094150, 10641407, 10641407, 0, 12414975, 7094150, 9584383, 7094150, 0, 0, 4263476, 0, 0, 0, 0, 4263476, 0, 12414975, 0, 10641407, 0, 10641407, 0, 4263476, 0, 7094150, 0, 0, 7094150, 0, 7094150, 7094150, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 7810746, 7094150, 7810746, 0, 10438399, 0, 7094150, 10641407, 0, 7094150, 0, 0, 0, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 7094150, 7094150, 4263476, 0, 13334527, 0, 10641407, 0, 0, 7810746, 12414975, 7094150, 0, 7094150, 7094150, 10641407, 7094150, 0, 6362472, 0, 7094150, 7094150, 10641407, 0, 12414975, 7094150, 0, 12414975, 0, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 0, 10641407, 0, 7094150, 0, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 7094150, 0, 7094150, 7094150, 12414975, 7094150, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 12414975, 10641407, 0, 7094150, 0, 7094150, 7094150, 7094150, 0, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 0, 7094150, 0, 0, 7094150, 0, 10641407, 10641407, 0, 10641407, 12414975, 7094150, 0, 0, 9584383, 7094150, 7810746, 7094150, 7094150, 10641407, 0, 10641407, 7810746, 7094150, 7094150, 0, 7094150, 0, 10641407, 10641407, 9584383, 12414975, 10641407, 10641407, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 7094150, 0, 12414975, 0, 0, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 7094150, 7094150, 12414975, 4263476, 7094150, 0, 7094150, 7094150, 11160831, 4263476, 7094150, 10641407, 4263476, 7094150, 0, 7094150, 0, 7810746, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 0, 0, 7094150, 10641407, 10641407, 0, 0, 0, 10641407, 0, 0, 7094150, 10641407, 12414975, 4263476, 8136174, 7094150, 10641407, 7094150, 10641407, 0, 0, 7094150, 0, 10641407, 0, 10641407, 0, 10641407, 7810746, 10641407, 0, 10641407, 9584383, 7094150, 12414975, 10641407, 7094150, 0, 0, 0, 0, 0, 0, 0, 7094150, 0, 0, 7810746, 10438399, 0, 0, 0, 7094150, 0, 4263476, 7094150, 0, 10641407, 12414975, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 7094150, 10438399, 0, 0, 0, 10641407, 0, 0, 7094150, 9055743, 10641407, 0, 0, 0, 10641407, 0, 7094150, 7094150, 12414975, 0, 7094150, 10641407, 0, 7094150, 0, 0, 10641407, 0, 12414975, 0, 0, 7810746, 7810746, 0, 7094150, 0, 0, 0, 7094150, 7094150, 0, 9584383, 12414975, 7094150, 0, 7094150, 12414975, 10641407, 12414975, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7810746, 0, 7094150, 0, 0, 0, 0, 7094150, 7094150, 9584383, 7094150, 7094150, 0, 4263476, 10641407, 7094150, 10641407, 4263476, 0, 0, 7810746, 0, 10641407, 4263476, 10641407, 7094150, 0, 10641407, 7094150, 0, 7810746, 10641407, 12414975, 7094150, 4263476, 0, 4263476, 7094150, 0, 0, 4263476, 7094150, 0, 0, 10641407, 10641407, 0, 0, 0, 7094150, 0, 0, 12414975, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 0, 0, 12414975, 7094150, 0, 7094150, 0, 7094150, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 7810746, 0, 7094150, 13334527, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 7094150, 7094150, 0, 7810746, 0, 0, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 0, 10641407, 0, 0, 10641407, 0, 0, 0, 7094150, 13334527, 0, 7094150, 0, 0, 0, 0, 10641407, 10641407, 10641407, 7094150, 7094150, 10641407, 10641407, 7094150, 7094150, 10641407, 7094150, 0, 0, 10641407, 4263476, 0, 0, 4263476, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 0, 7094150, 7094150, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 10641407, 0, 0, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 10438399, 4263476, 0, 0, 0, 0, 0, 0, 0, 0, 10898175, 0, 0, 10641407, 0, 10641407, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 0, 7094150, 12414975, 7094150, 0, 0, 0, 10641407, 0, 7094150, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 0, 10641407, 7094150, 12414975, 7094150, 7094150, 7094150, 7094150, 12414975, 9584383, 0, 0, 0, 0, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 0, 7094150, 7094150, 7094150, 7094150, 0, 7810746, 10641407, 10641407, 7810746, 7094150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6362472, 0, 7094150, 0, 7810746, 7810746, 0, 10438399, 0, 7094150, 10641407, 4263476, 7094150, 7094150, 7094150, 10641407, 7094150, 0, 0, 4263476, 7094150, 7094150, 7094150, 4263476, 0, 10641407, 12414975, 10641407, 0, 0, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7094150, 0, 4263476, 7094150, 0, 0, 0, 0, 7094150, 0, 13794303, 7094150, 0, 0, 0, 7094150'/>
+          <fieldValue name='repeatS' value='true'/>
+          <fieldValue name='repeatT' value='true'/>
+          <fieldValue name='fgColor' value='1 0 0'/>
+          <fieldValue name='opacity' value='1'/>
+          <fieldValue name='clear' value='1'/>
+          <fieldValue name='enabled' value='true'/>
+          <fieldValue name='horizontallyWrap' value='true'/>
+          <fieldValue name='verticallyWrap' value='true'/>
+          <fieldValue name='combineMode' value='AVRG'/>
+          <fieldValue name='brush'>
+            <ProtoInstance name='Canvas' USE='_5' containerField='brush'/>
+          </fieldValue>
+        </ProtoInstance>
+      </field>
+      <field accessType='initializeOnly' type='SFTime' name='cycleInterval' value='0.01'/>
+      <field accessType='initializeOnly' type='SFTime' name='cycleTime' value='1546833578.26627'/>
+      <field accessType='initializeOnly' type='SFTime' name='colorInterval' value='30'/>
+      <field accessType='initializeOnly' type='SFTime' name='colorTime' value='1546833576.51676'/>
+      <field accessType='initializeOnly' type='SFFloat' name='blackLevel' value='0.2'/>
+      <field accessType='initializeOnly' type='SFTime' name='scaleTime' value='1546833565.51583'/>
+      <field accessType='initializeOnly' type='SFTime' name='rotateTime' value='1546833563.52952'/>
+<![CDATA[ecmascript:
+
+function set_time (value, time)
+{
+	if (time - cycleTime > cycleInterval)
+	{
+		cycleTime = time;
+
+		if (time - colorTime > colorInterval)
+		{
+			colorTime = time;
+			
+			bgColor = Math .random () > blackLevel
+				? new SFColor (Math .random (), Math.random (), Math.random ())
+				: new SFColor (0, 0, 0);
+			
+			brush.bgColor = bgColor;
+			brush.clear   = time;
+		}
+	
+		canvas.set_hitTexCoord = new SFVec2f (Math.random (), Math.random ());
+
+		if (time - scaleTime > 19)
+		{
+			scaleTime = time;
+			scaleF    = Math .random ();
+		}
+		
+		if (time - rotateTime > 17)
+		{
+			rotateTime = time;
+			rotateF    = Math .random ();
+		}
+	}
+}
+]]>
+    </Script>
+    <Transform
+        scale='1.65374 1.65369 1.65377'>
+      <Group>
+        <Group DEF='UnnamedAnimation3'>
+          <TimeSensor DEF='Time_7'
+              cycleInterval='20'
+              loop='true'
+              startTime='1'/>
+        </Group>
+        <Group>
+          <ScalarInterpolator DEF='_8'
+              key='0, 1'
+              keyValue='1, -1'/>
+          <ScalarInterpolator DEF='_9'
+              key='0, 1'
+              keyValue='0.74, 0.74'/>
+          <Script DEF='_10'>
+            <field accessType='outputOnly' type='SFVec2f' name='vec'/>
+            <field accessType='inputOnly' type='SFFloat' name='xIn'/>
+            <field accessType='inputOnly' type='SFFloat' name='yIn'/>
+            <field accessType='initializeOnly' type='SFFloat' name='xBuf' value='-0.175203'/>
+            <field accessType='initializeOnly' type='SFFloat' name='yBuf' value='0.74'/>
+<![CDATA[ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } ]]>
+          </Script>
+        </Group>
+      </Group>
+      <Group>
+        <Group DEF='scale'>
+          <TimeSensor DEF='Time_11'
+              cycleInterval='10'
+              stopTime='1'/>
+        </Group>
+        <Group>
+          <ScalarInterpolator DEF='_12'
+              key='0, 1'
+              keyValue='0.1, 5'/>
+          <ScalarInterpolator DEF='_13'
+              key='0, 1'
+              keyValue='0.2, 5'/>
+          <Script USE='_3'/>
+        </Group>
+      </Group>
+      <Group>
+        <Group DEF='rotate'>
+          <TimeSensor DEF='Time'
+              cycleInterval='10'
+              stopTime='1'/>
+        </Group>
+        <ScalarInterpolator DEF='UnnamedShapeRotationInterp'
+            key='0, 1'
+            keyValue='0, 0.785398'/>
+      </Group>
+      <Shape>
+        <Appearance>
+          <ProtoInstance name='Canvas' USE='_6' containerField='texture'/>
+          <TextureTransform DEF='_14'
+              translation='-0.175203 0.74'
+              rotation='0.636027'
+              scale='1.40365 1.47705'
+              center='-0.5 -0.5'/>
+        </Appearance>
+        <IndexedFaceSet
+            creaseAngle='0.5'
+            coordIndex='0, 1, 2, 3, -1, 4, 5, 1, 0, -1, 6, 7, 3, 2, -1'>
+          <TextureCoordinate
+              point='0 1, 0 0, 0.00132632 -0.000351131, 0.00132632 0.999649, 0 1, 0 0, 0.00132632 -0.000351131, 0.00132632 0.999649'/>
+          <Coordinate
+              point='-3.45959 2.01432 1, -3.45959 -5.345 1, 1 -5.345 1, 1 2.01432 1, -3.45959 2.01432 5.00948, -3.45959 -5.345 5.00948, 1 -5.345 5.16322, 1 2.01432 5.16322'/>
+        </IndexedFaceSet>
+      </Shape>
+    </Transform>
+    <ROUTE fromNode='_4' fromField='time' toNode='DiscoScript' toField='set_time'/>
+    <ROUTE fromNode='Time_7' fromField='fraction_changed' toNode='_8' toField='set_fraction'/>
+    <ROUTE fromNode='Time_7' fromField='fraction_changed' toNode='_9' toField='set_fraction'/>
+    <ROUTE fromNode='_8' fromField='value_changed' toNode='_10' toField='xIn'/>
+    <ROUTE fromNode='_9' fromField='value_changed' toNode='_10' toField='yIn'/>
+    <ROUTE fromNode='DiscoScript' fromField='scaleF' toNode='_12' toField='set_fraction'/>
+    <ROUTE fromNode='DiscoScript' fromField='scaleF' toNode='_13' toField='set_fraction'/>
+    <ROUTE fromNode='_12' fromField='value_changed' toNode='_3' toField='xIn'/>
+    <ROUTE fromNode='_13' fromField='value_changed' toNode='_3' toField='yIn'/>
+    <ROUTE fromNode='DiscoScript' fromField='rotateF' toNode='UnnamedShapeRotationInterp' toField='set_fraction'/>
+    <ROUTE fromNode='_10' fromField='vec' toNode='_14' toField='set_translation'/>
+    <ROUTE fromNode='UnnamedShapeRotationInterp' fromField='value_changed' toNode='_14' toField='set_rotation'/>
+    <ROUTE fromNode='_3' fromField='vec' toNode='_14' toField='set_scale'/>
+  </Scene>
+</X3D>

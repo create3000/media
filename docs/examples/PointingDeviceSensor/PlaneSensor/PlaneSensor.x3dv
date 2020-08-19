@@ -1,0 +1,98 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Shape : 4
+
+UNIT angle degree 0.0174532925199432958
+
+META "comment" "World of Titania"
+META "created" "Thu, 06 Oct 2016 10:49:59 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.10, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/PointingDeviceSensor/PlaneSensor/PlaneSensor.O.x3d"
+META "modified" "Mon, 21 Jan 2019 09:17:37 GMT"
+
+EXTERNPROTO Grid [
+  inputOutput    SFVec3f    translation
+  inputOutput    SFRotation rotation
+  inputOutput    SFVec3f    scale
+  inputOutput    MFInt32    dimension
+  inputOutput    MFInt32    majorLineEvery
+  inputOutput    MFInt32    majorLineOffset
+  inputOutput    SFColor    color
+  inputOutput    SFFloat    transparency
+  inputOutput    SFColor    lineColor
+  inputOutput    SFFloat    lineTransparency
+  inputOutput    SFColor    majorLineColor
+  inputOutput    SFFloat    majorLineTransparency
+  initializeOnly SFBool     solid
+]
+"Grid.x3d#Grid"
+
+WorldInfo {
+}
+
+Background {
+  skyAngle [ 62.5802, 90.0002 ]
+  skyColor [ 0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3 ]
+  groundAngle [ 64.4463, 90.0002 ]
+  groundColor [ 0.4 0.4 0.4, 0.4 0.4 0.4, 0.3 0.3 0.3 ]
+}
+
+NavigationInfo {
+  type "NONE"
+}
+
+DEF _1 Viewpoint {
+  position 0 0 12.9309
+}
+
+Grid {
+  rotation 1 0 0 90.0000000000002
+  transparency 0.8
+  lineColor 0 0 0
+  majorLineColor 0 0 0
+}
+
+DEF Clone1 Transform {
+  translation -2 0 0
+  children DEF SimpleSlider Transform {
+    children [
+      DEF Cone Transform {
+        scale 0.374845 0.374845 0.374845
+        children Shape {
+          appearance Appearance {
+            material DEF Rococo23 Material {
+              ambientIntensity 0.187004
+              diffuseColor 0.25829 0.534482 0.748016
+              specularColor 0.251984 0.251984 0.251984
+              shininess 0.25
+            }
+          }
+          geometry Cone { }
+        }
+      }
+      DEF _2 PlaneSensor {
+        maxPosition 0 2
+      }
+    ]
+  }
+}
+
+DEF Clone2 Transform {
+  translation 2 0 0
+  rotation -3.57398802300153e-17 1.10915152794688e-16 1 180
+  scaleOrientation -0.357406744336593 0.862856209461017 -0.357406744336593 258.947302582207
+  children USE SimpleSlider
+}
+
+DEF Clone3 Transform {
+  translation 0 -3 6.66134e-16
+  rotation 1.72022019207585e-06 1.72022019207586e-06 -0.999999999997041 90.0000000001698
+  scaleOrientation 0.543313393239255 -0.839529958577022 -7.33383290662978e-05 0.000130177385127595
+  children USE SimpleSlider
+}
+
+ROUTE _2.translation_changed TO Cone.set_translation

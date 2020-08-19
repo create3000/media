@@ -1,0 +1,264 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Thu, 06 Oct 2016 10:49:59 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.10, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/PointingDeviceSensor/PlaneSensor/PlaneSensor.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 21 Jan 2019 09:17:37 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"Grid",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "translation"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFRotation",
+                "@name": "rotation"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "scale"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "dimension"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "majorLineEvery"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "majorLineOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "color"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "transparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "lineColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "lineTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "majorLineColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "majorLineTransparency"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFBool",
+                "@name": "solid"
+              }
+            ],
+            "@url": [ "Grid.x3d#Grid" ]
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Background":
+          {
+            "@skyAngle": [ 62.5802, 90.0002 ],
+            "@skyColor": [ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3 ],
+            "@groundAngle": [ 64.4463, 90.0002 ],
+            "@groundColor": [ 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3 ]
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "NONE" ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@DEF": "_1",
+            "@position": [ 0, 0, 12.9309 ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@name": "Grid",
+            "fieldValue": [
+              {
+                "@name": "rotation",
+                "@value": [ 1, 0, 0, 90.0000000000002 ]
+              },
+              {
+                "@name": "transparency",
+                "@value": 0.8
+              },
+              {
+                "@name": "lineColor",
+                "@value": [ 0, 0, 0 ]
+              },
+              {
+                "@name": "majorLineColor",
+                "@value": [ 0, 0, 0 ]
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Clone1",
+            "@translation": [ -2, 0, 0 ],
+            "-children": [
+              { "Transform":
+                {
+                  "@DEF": "SimpleSlider",
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Cone",
+                        "@scale": [ 0.374845, 0.374845, 0.374845 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@DEF": "Rococo23",
+                                      "@ambientIntensity": 0.187004,
+                                      "@diffuseColor": [ 0.25829, 0.534482, 0.748016 ],
+                                      "@specularColor": [ 0.251984, 0.251984, 0.251984 ],
+                                      "@shininess": 0.25
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Cone":
+                                {
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "PlaneSensor":
+                      {
+                        "@DEF": "_2",
+                        "@maxPosition": [ 0, 2 ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Clone2",
+            "@translation": [ 2, 0, 0 ],
+            "@rotation": [ -3.57398802300153e-17, 1.10915152794688e-16, 1, 180 ],
+            "@scaleOrientation": [ -0.357406744336593, 0.862856209461017, -0.357406744336593, 258.947302582207 ],
+            "-children": [
+              { "Transform":
+                {
+                  "@USE": "SimpleSlider"
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Clone3",
+            "@translation": [ 0, -3, 6.66134e-16 ],
+            "@rotation": [ 1.72022019207585e-06, 1.72022019207586e-06, -0.999999999997041, 90.0000000001698 ],
+            "@scaleOrientation": [ 0.543313393239255, -0.839529958577022, -7.33383290662978e-05, 0.000130177385127595 ],
+            "-children": [
+              { "Transform":
+                {
+                  "@USE": "SimpleSlider"
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_2",
+            "@fromField": "translation_changed",
+            "@toNode": "Cone",
+            "@toField": "translation"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Layering' level='1'/>
+    <component name='Layout' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sat, 30 Jun 2018 14:23:48 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.0, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Switch/Switch.O.x3d'/>
+    <meta name='modified' content='Sat, 30 Jun 2018 15:43:38 GMT'/>
+  </head>
+  <Scene>
+    <WorldInfo/>
+    <LayerSet
+        activeLayer='-1'
+        order='1, 2'>
+      <LayoutLayer DEF='Clouds'>
+        <Layout
+            scaleMode='"STRETCH", "STRETCH"'/>
+        <Transform DEF='Rectangle2D'
+            scale='1.6 1 1'>
+          <Shape>
+            <Appearance>
+              <Material/>
+              <ImageTexture
+                  url='"assets/clouds.jpg"'/>
+            </Appearance>
+            <Rectangle2D
+                size='1 1'/>
+          </Shape>
+        </Transform>
+      </LayoutLayer>
+      <Layer DEF='LegoMens'>
+        <Viewpoint
+            position='8.55853 14.0994 17.5892'
+            orientation='-0.702493566218813 0.693784242009822 0.15863863010008 0.629356170493366'
+            centerOfRotation='0.453916 4.9987 0.559686'/>
+        <Transform DEF='Platform'
+            rotation='0 -1 0 0.57171960394431'>
+          <Group DEF='SwitchAnimation'>
+            <TimeSensor DEF='SwitchAnimationTimer'
+                cycleInterval='15'
+                loop='true'/>
+            <IntegerSequencer DEF='MensWhichChoiceInterpolator'
+                key='0, 0.333333, 0.666667, 1'
+                keyValue='0, 1, 2, 0'/>
+          </Group>
+          <Group DEF='PlatformRotationAnimation'>
+            <TimeSensor DEF='AnimationTimer'
+                cycleInterval='20'
+                loop='true'/>
+            <OrientationInterpolator DEF='PlatformRotationInterpolator'
+                key='0, 0.25, 0.5, 0.75, 1'
+                keyValue='0 1 0 1.16099466823039, 0 -1 0 0.379149921334659, 0 1 0 4.35789393518189, 0 1 0 2.80748864666412, 0 1 0 1.16099466823039'/>
+          </Group>
+          <Switch DEF='Mens'
+              whichChoice='0'>
+            <Transform DEF='GordonFreeman'
+                translation='415.087 -3.0715 -276.76'
+                scale='0.0128517 0.0128517 0.0128517'
+                center='-415.087 8.0715 276.76'>
+              <Inline
+                  url='"assets/lego_gordon_freeman_half-life/scene.x3d"'/>
+            </Transform>
+            <Transform DEF='JonSnow'
+                translation='0 5 0'
+                scale='5 5 5'>
+              <Inline
+                  url='"assets/lego_jon_snow/scene.x3d"'/>
+            </Transform>
+            <Transform DEF='StreetFighter'
+                translation='0 5 0'
+                scale='5 5 5'>
+              <Inline
+                  url='"assets/lego_mad_hatter_street_fighter_twist./scene.x3d"'/>
+            </Transform>
+          </Switch>
+          <Transform DEF='Platform_1'
+              translation='0.291846 -1.25397 -0.614791'
+              scale='0.19916 0.19916 0.19916'>
+            <Inline
+                url='"assets/60_years_lego_bricks_-_mini_space_ship/scene.x3d"'/>
+          </Transform>
+        </Transform>
+      </Layer>
+    </LayerSet>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='PlatformRotationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='PlatformRotationInterpolator' fromField='value_changed' toNode='Platform' toField='set_rotation'/>
+    <ROUTE fromNode='SwitchAnimationTimer' fromField='fraction_changed' toNode='MensWhichChoiceInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='MensWhichChoiceInterpolator' fromField='value_changed' toNode='Mens' toField='set_whichChoice'/>
+  </Scene>
+</X3D>

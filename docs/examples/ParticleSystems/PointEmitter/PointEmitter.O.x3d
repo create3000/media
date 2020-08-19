@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='ParticleSystems' level='1'/>
+    <component name='Shaders' level='1'/>
+    <component name='Shape' level='4'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 17 Dec 2017 11:21:49 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.5.0, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/PointEmitter/PointEmitter.O.x3d'/>
+    <meta name='modified' content='Thu, 11 Apr 2019 08:18:49 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='ComposeSFVec3f' url='"ComposeSFVec3f.x3d#ComposeSFVec3f", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/ComposeSFVec3f.x3d#ComposeSFVec3f"'>
+      <field accessType='inputOutput' type='SFFloat' name='x'/>
+      <field accessType='inputOutput' type='SFFloat' name='y'/>
+      <field accessType='inputOutput' type='SFFloat' name='z'/>
+      <field accessType='outputOnly' type='SFVec3f' name='value_changed'/>
+    </ExternProtoDeclare>
+    <ExternProtoDeclare name='Noise' url='"Noise.x3d#Noise", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/Noise.x3d#Noise"'>
+      <field accessType='inputOutput' type='SFBool' name='enabled'/>
+      <field accessType='inputOutput' type='SFFloat' name='frequency'/>
+      <field accessType='inputOutput' type='SFFloat' name='amplitude'/>
+      <field accessType='inputOutput' type='SFFloat' name='phase'/>
+      <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+    </ExternProtoDeclare>
+    <WorldInfo
+        title='scene'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <ShaderPart DEF='VertexShader' containerField='value'>
+<![CDATA[data:x-shader/x-vertex,
+
+precision mediump float;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+
+attribute float x3d_ParticleId;
+attribute vec4  x3d_ParticlePosition;
+attribute float x3d_ParticleElapsedTime;
+attribute float x3d_ParticleLife;
+attribute vec4  x3d_Vertex;
+attribute vec4  x3d_TexCoord0;
+attribute vec4  x3d_Color;
+
+varying vec3 color;
+varying vec4 texCoord;
+
+/* Random number generation */
+
+const int RAND_MAX = int (0x7fffffff);
+const int RAND_MIN = int (0x80000000);
+
+int seed = 1;
+
+void
+srand (in int value)
+{
+	seed = value;
+}
+
+// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].
+int
+rand ()
+{
+	return seed = seed * 1103515245 + 12345;
+}
+
+// Return a uniform distributed random floating point number in the interval [0, 1].
+float
+random ()
+{
+	return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;
+}
+
+#define PI 3.1415
+
+mat4
+getRotation (in float a)
+{
+	float s = sin (a);
+	float c = cos (a);
+	
+	return mat4 ( c,    s, 0.0, 0.0,
+	             -s,    c, 0.0, 0.0,
+	             0.0, 0.0, 1.0, 0.0,
+	             0.0, 0.0, 0.0, 1.0);
+}
+
+void
+main ()
+{
+	mat4 r = getRotation (-2.0 * x3d_ParticleElapsedTime * 2.0 * PI);
+	vec4 v = x3d_ParticlePosition + r * (x3d_Vertex - x3d_ParticlePosition);
+
+	srand (int (x3d_ParticleLife * 107.0));
+
+	color    = vec3 (random (), random (), random ());
+	texCoord = x3d_TexCoord0;
+
+	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
+}]]>
+            </ShaderPart>
+          </MetadataSet>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+          <MetadataDouble DEF='browserRatio' containerField='value'
+              name='browserRatio'
+              reference='http://titania.create3000.de'
+              value='1.777777'/>
+        </MetadataSet>
+        <MetadataSet DEF='Prototype' containerField='value'
+            name='Prototype'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='path' containerField='value'
+              name='path'
+              reference='http://titania.create3000.de'
+              value='"Noise"'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <NavigationInfo
+        headlight='false'/>
+    <Viewpoint
+        description='Initial View'/>
+    <ProtoInstance name='Noise' DEF='X'>
+      <fieldValue name='enabled' value='true'/>
+      <fieldValue name='frequency' value='0.5'/>
+      <fieldValue name='amplitude' value='5'/>
+    </ProtoInstance>
+    <ProtoInstance name='Noise' DEF='Y'>
+      <fieldValue name='enabled' value='true'/>
+      <fieldValue name='frequency' value='0.5'/>
+      <fieldValue name='amplitude' value='4'/>
+    </ProtoInstance>
+    <ProtoInstance name='Noise' DEF='Z'>
+      <fieldValue name='enabled' value='true'/>
+      <fieldValue name='frequency' value='0.5'/>
+      <fieldValue name='amplitude' value='5'/>
+    </ProtoInstance>
+    <ProtoInstance name='ComposeSFVec3f' DEF='_1'>
+      <fieldValue name='x' value='5.6248'/>
+      <fieldValue name='y' value='4.54379'/>
+      <fieldValue name='z' value='3.6676'/>
+    </ProtoInstance>
+    <ParticleSystem
+        maxParticles='500'
+        particleLifetime='4.5'
+        particleSize='0.16 0.16'
+        bboxSize='11 11 11'>
+      <PointEmitter DEF='_2'
+          position='5.6248 4.54379 3.6676'
+          direction='0 0 0'
+          speed='1.49'/>
+      <Appearance>
+        <ImageTexture
+            url='"star.png"'/>
+        <ComposedShader DEF='ComposedShader'
+            language='GLSL'>
+          <ShaderPart USE='VertexShader'/>
+          <ShaderPart DEF='FragmentShader'
+              type='FRAGMENT'>
+<![CDATA[data:x-shader/x-fragment,
+
+precision mediump float;
+
+uniform sampler2D x3d_Texture2D [1];
+
+varying vec3 color;
+varying vec4 texCoord;
+
+void
+main ()
+{
+	float a = texture2D (x3d_Texture2D [0], texCoord .st) .a;
+
+	gl_FragColor = vec4 (color, a);
+}]]>
+          </ShaderPart>
+        </ComposedShader>
+      </Appearance>
+    </ParticleSystem>
+    <ROUTE fromNode='X' fromField='value_changed' toNode='_1' toField='set_x'/>
+    <ROUTE fromNode='Y' fromField='value_changed' toNode='_1' toField='set_y'/>
+    <ROUTE fromNode='Z' fromField='value_changed' toNode='_1' toField='set_z'/>
+    <ROUTE fromNode='_1' fromField='value_changed' toNode='_2' toField='set_position'/>
+  </Scene>
+</X3D>

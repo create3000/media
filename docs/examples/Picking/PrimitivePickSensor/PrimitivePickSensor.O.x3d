@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Grouping' level='3'/>
+    <component name='ParticleSystems' level='1'/>
+    <component name='Picking' level='3'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PrimitivePickSensor/PrimitivePickSensor.O.x3d'/>
+    <meta name='modified' content='Thu, 07 Nov 2019 12:34:43 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Bullet'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='MFNode' name='target'/>
+        <field accessType='outputOnly' type='SFTime' name='hitTime'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='Sphere'
+            translation='0 0 5'
+            scale='0.1 0.1 0.1'>
+          <Group DEF='Animation'>
+            <MetadataSet DEF='Animation_1'
+                name='Animation'
+                reference='http://titania.create3000.de'>
+              <MetadataInteger DEF='duration' containerField='value'
+                  name='duration'
+                  reference='http://titania.create3000.de'
+                  value='10'/>
+              <MetadataInteger DEF='frameRate' containerField='value'
+                  name='frameRate'
+                  reference='http://titania.create3000.de'
+                  value='10'/>
+            </MetadataSet>
+            <TimeSensor DEF='AnimationTimer'
+                loop='true'
+                startTime='1553259874.45089'
+                stopTime='1553259874.45089'/>
+            <PositionInterpolator DEF='SphereTranslationInterpolator'
+                key='0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1'
+                keyValue='0 0 5, 0 0 5.7, 0 0 7.6, 0 0 10.4, 0 0 13.8, 0 0 17.5, 0 0 21.2, 0 0 24.6, 0 0 27.4, 0 0 29.3, 0 0 30'>
+              <MetadataSet DEF='Interpolator'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 10'/>
+                <MetadataDouble DEF='keyValue' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='0, 0, 5, 0, 0, 30'/>
+                <MetadataString DEF='keyType' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"SPLINE", "SPLINE"'/>
+                <MetadataInteger DEF='keySize' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+          </Group>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='1 0 0'/>
+            </Appearance>
+            <Sphere DEF='_2'/>
+          </Shape>
+          <PrimitivePickSensor DEF='_3'
+              objectType='"TARGET"'>
+            <IS>
+              <connect nodeField='pickTarget' protoField='target'/>
+            </IS>
+            <Sphere USE='_2' containerField='pickingGeometry'/>
+          </PrimitivePickSensor>
+        </Transform>
+        <Script DEF='BulletScript'>
+          <field accessType='inputOnly' type='SFBool' name='set_active'/>
+          <field accessType='outputOnly' type='SFTime' name='hitTime'/>
+          <IS>
+            <connect nodeField='hitTime' protoField='hitTime'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function set_active (value, time)
+{
+	if (value)
+		hitTime = time;
+}
+]]>
+        </Script>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='SphereTranslationInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='SphereTranslationInterpolator' fromField='value_changed' toNode='Sphere' toField='set_translation'/>
+        <ROUTE fromNode='_3' fromField='isActive' toNode='BulletScript' toField='set_active'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_4' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <Appearance DEF='_5' containerField='value'>
+              <PointProperties
+                  pointSizeScaleFactor='4.94'
+                  pointSizeMaxValue='4.94'/>
+              <Material
+                  emissiveColor='0.403 0.403 0.403'/>
+            </Appearance>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='BrowserPanel' containerField='value'
+            name='BrowserPanel'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='type_6' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
+          <MetadataSet DEF='viewpoints' containerField='value'
+              name='viewpoints'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
+                name='PerspectiveViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_7' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='5.87788534164429, 6.46984958648682, 13.8524446487427'/>
+              <MetadataDouble DEF='orientation_8' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='-0.704047462871213, 0.695566762376518, 0.143192350010952, 0.568941727555854'/>
+              <MetadataDouble DEF='centerOfRotation_9' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+            <MetadataSet DEF='TopViewpoint' containerField='value'
+                name='TopViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_10' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 10000, 0'/>
+              <MetadataDouble DEF='orientation_11' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='1, 0, 0, 4.71238898038469'/>
+              <MetadataDouble DEF='centerOfRotation_12' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.0320612526145463, 0, 0.0937320149966475'/>
+              <MetadataDouble DEF='fieldOfViewScale_13' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.21023944190259'/>
+            </MetadataSet>
+            <MetadataSet DEF='FrontViewpoint' containerField='value'
+                name='FrontViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_14' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 10000'/>
+              <MetadataDouble DEF='orientation_15' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 1, 0'/>
+              <MetadataDouble DEF='centerOfRotation_16' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.00884759203065143, 0.0177734813359099, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale_17' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.212467484375'/>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+          <MetadataDouble DEF='browserRatio' containerField='value'
+              name='browserRatio'
+              reference='http://titania.create3000.de'
+              value='1.777777'/>
+        </MetadataSet>
+        <MetadataSet DEF='Prototype' containerField='value'
+            name='Prototype'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='path' containerField='value'
+              name='path'
+              reference='http://titania.create3000.de'
+              value='"Bullet"'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Viewpoint
+        description='Initial view'
+        position='-11.1888 7.48501 -6.36741'
+        orientation='0.149654479144934 0.954657302760335 0.25735767165216 4.15514972474677'/>
+    <Group>
+      <Group DEF='SkyAnimation'>
+        <MetadataSet DEF='Animation'
+            name='Animation'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='duration' containerField='value'
+              name='duration'
+              reference='http://titania.create3000.de'
+              value='3'/>
+          <MetadataInteger DEF='frameRate' containerField='value'
+              name='frameRate'
+              reference='http://titania.create3000.de'
+              value='10'/>
+        </MetadataSet>
+        <TimeSensor DEF='SkyAnimationTimer'
+            cycleInterval='0.3'
+            startTime='1573130083.14116'
+            stopTime='1553262000.52021'/>
+        <ColorInterpolator DEF='HitColorScriptColorInterpolator'
+            key='0, 0.333333, 0.666667, 1'
+            keyValue='1 1 1, 0.740741 0.740741 0.740741, 0.259259 0.259259 0.259259, 0 0 0'>
+          <MetadataSet DEF='Interpolator'
+              name='Interpolator'
+              reference='http://titania.create3000.de'>
+            <MetadataInteger DEF='key' containerField='value'
+                name='key'
+                reference='http://titania.create3000.de'
+                value='0, 3'/>
+            <MetadataDouble DEF='keyValue' containerField='value'
+                name='keyValue'
+                reference='http://titania.create3000.de'
+                value='1, 1, 1, 0, 0, 0'/>
+            <MetadataString DEF='keyType' containerField='value'
+                name='keyType'
+                reference='http://titania.create3000.de'
+                value='"SPLINE", "SPLINE"'/>
+            <MetadataInteger DEF='keySize' containerField='value'
+                name='keySize'
+                reference='http://titania.create3000.de'
+                value='1'/>
+          </MetadataSet>
+        </ColorInterpolator>
+      </Group>
+      <Background DEF='_18'/>
+      <Script DEF='HitColorScript'>
+        <field accessType='inputOutput' type='SFColor' name='color'/>
+        <field accessType='outputOnly' type='MFColor' name='skyColor_changed'/>
+<![CDATA[ecmascript:
+
+function set_color (value, time)
+{
+	skyColor_changed [0] = value;
+}
+]]>
+      </Script>
+    </Group>
+    <Transform DEF='RocketShip'>
+      <Inline
+          url='"assets/rocket-ship.x3dz"'/>
+    </Transform>
+    <PickableGroup DEF='Target'
+        objectType='"TARGET"'>
+      <Transform DEF='_19'
+          translation='0 0 25'>
+        <Shape>
+          <Appearance>
+            <Material
+                transparency='1'/>
+          </Appearance>
+          <Box/>
+        </Shape>
+      </Transform>
+    </PickableGroup>
+    <ProtoInstance name='Bullet' DEF='Bullet'>
+      <fieldValue name='target'>
+        <Transform USE='_19' containerField='target'/>
+      </fieldValue>
+    </ProtoInstance>
+    <Transform
+        translation='0 0 -4.04154'>
+      <ParticleSystem
+          geometryType='POINT'
+          particleLifetime='0.53'
+          colorKey='0, 1'>
+        <PointEmitter
+            direction='0 0 -1'
+            speed='3.02'
+            mass='0.01'
+            surfaceArea='0.06'/>
+        <WindPhysicsModel
+            speed='0.88'
+            gustiness='0.07'/>
+        <Color containerField='colorRamp'
+            color='1 1 0, 1 0 0'/>
+        <Appearance USE='_5'/>
+      </ParticleSystem>
+    </Transform>
+    <ROUTE fromNode='HitColorScript' fromField='skyColor_changed' toNode='_18' toField='set_skyColor'/>
+    <ROUTE fromNode='SkyAnimationTimer' fromField='fraction_changed' toNode='HitColorScriptColorInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='HitColorScriptColorInterpolator' fromField='value_changed' toNode='HitColorScript' toField='set_color'/>
+    <ROUTE fromNode='Bullet' fromField='hitTime' toNode='SkyAnimationTimer' toField='set_startTime'/>
+  </Scene>
+</X3D>

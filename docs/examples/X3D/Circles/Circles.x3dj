@@ -1,0 +1,3274 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Mon, 21 Dec 2015 03:16:01 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.11, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/Circles/Circles.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 27 Jan 2019 16:10:20 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"MFNode",
+            "field": [
+              {
+                "@accessType": "inputOnly",
+                "@type": "SFTime",
+                "@name": "set_triggerTime"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFNode",
+                "@name": "keyValue"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFNode",
+                "@name": "value_changed"
+              }
+            ],
+            "@url": [ "MFNode.x3d#MFNode" ]
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@order": [ 0, 1, 2, 3 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "-children": [
+                    { "Script":
+                      {
+                        "@DEF": "EnterWorldScript",
+                        "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
+"}"
+                        ]
+                      }
+                    },
+                    { "NavigationInfo":
+                      {
+                        "@type": [ "NONE" ],
+                        "@headlight": false
+                      }
+                    },
+                    { "OrthoViewpoint":
+                      {
+                      }
+                    },
+                    { "Group":
+                      {
+                        "@DEF": "Circles",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@translation": [ 0.0021367, 0.868482, 0 ],
+                              "@rotation": [ 0, 0, 1, 16.8550678094118 ],
+                              "@scale": [ 0.193305, 0.193305, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.335321
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@DEF": "_1",
+                                            "@url": [ "red.png" ],
+                                            "@repeatS": false,
+                                            "@repeatT": false
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.43659, 0.437376, 0 ],
+                              "@rotation": [ 0, 0, 1, 17.5151709014237 ],
+                              "@scale": [ 0.112744, 0.112744, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.348453
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@DEF": "_2",
+                                            "@url": [ "blue.png" ],
+                                            "@repeatS": false,
+                                            "@repeatT": false
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.953964, -0.531318, 0 ],
+                              "@rotation": [ 0, 0, 1, 18.1525039661155 ],
+                              "@scale": [ 0.153081, 0.153081, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.361133
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.9782, 0.229505, 0 ],
+                              "@rotation": [ 0, 0, 1, 18.8604301076123 ],
+                              "@scale": [ 0.177319, 0.177319, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.375216
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.42167, 0.876436, 0 ],
+                              "@rotation": [ 0, 0, 1, 19.5389948980909 ],
+                              "@scale": [ 0.104223, 0.104223, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.388716
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@DEF": "_3",
+                                            "@url": [ "green.png" ],
+                                            "@repeatS": false,
+                                            "@repeatT": false
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.210351, 0.673194, 0 ],
+                              "@rotation": [ 0, 0, 1, 20.2527348866949 ],
+                              "@scale": [ 0.151621, 0.151621, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.402915
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.87106, -0.461401, 0 ],
+                              "@rotation": [ 0, 0, 1, 20.9266093511512 ],
+                              "@scale": [ 0.0736251, 0.0736251, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.416322
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.716041, 0.535805, 0 ],
+                              "@rotation": [ 0, 0, 1, 21.5891781974374 ],
+                              "@scale": [ 0.0891799, 0.0891799, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.429503
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.940245, -0.294983, 0 ],
+                              "@rotation": [ 0, 0, 1, 22.294560687198 ],
+                              "@scale": [ 0.105681, 0.105681, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.443536
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.967022, -0.521123, 0 ],
+                              "@rotation": [ 0, 0, 1, 22.9329034228381 ],
+                              "@scale": [ 0.0759727, 0.0759727, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.456236
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.230275, 0.653631, 0 ],
+                              "@rotation": [ 0, 0, 1, 23.5950273547747 ],
+                              "@scale": [ 0.101107, 0.101107, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.469408
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.80478, -0.714001, 0 ],
+                              "@rotation": [ 0, 0, 1, 24.3036216168099 ],
+                              "@scale": [ 0.194608, 0.194608, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.483505
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.159935, 0.203037, 0 ],
+                              "@rotation": [ 0, 0, 1, 24.9385788089142 ],
+                              "@scale": [ 0.119398, 0.119398, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.496137
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.1875, -0.00263514, 0 ],
+                              "@rotation": [ 0, 0, 1, 25.6833864025572 ],
+                              "@scale": [ 0.0828581, 0.0828581, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.510955
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.855016, 0.212251, 0 ],
+                              "@rotation": [ 0, 0, 1, 26.3609714826499 ],
+                              "@scale": [ 0.106579, 0.106579, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.524435
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.64306, -0.926531, 0 ],
+                              "@rotation": [ 0, 0, 1, 27.0329719139366 ],
+                              "@scale": [ 0.0517324, 0.0517324, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.537804
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.275267, 0.682073, 0 ],
+                              "@rotation": [ 0, 0, 1, 27.6933536391776 ],
+                              "@scale": [ 0.105261, 0.105261, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.550942
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.86333, -0.68953, 0 ],
+                              "@rotation": [ 0, 0, 1, 28.3838726939993 ],
+                              "@scale": [ 0.125889, 0.125889, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.564679
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.53676, 0.272303, 0 ],
+                              "@rotation": [ 0, 0, 1, 29.0496623007289 ],
+                              "@scale": [ 0.170064, 0.170064, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.577925
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.581836, -0.502939, 0 ],
+                              "@rotation": [ 0, 0, 1, 29.7553533842808 ],
+                              "@scale": [ 0.132335, 0.132335, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.591964
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.70939, -0.396834, 0 ],
+                              "@rotation": [ 0, 0, 1, 30.4405993801442 ],
+                              "@scale": [ 0.0975917, 0.0975917, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.605596
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.08786, -0.607412, 0 ],
+                              "@rotation": [ 0, 0, 1, 31.1099333213895 ],
+                              "@scale": [ 0.117465, 0.117465, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.618912
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.119468, -0.930911, 0 ],
+                              "@rotation": [ 0, 0, 1, 31.7586064588979 ],
+                              "@scale": [ 0.197153, 0.197153, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.631817
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.88129, -0.049589, 0 ],
+                              "@rotation": [ 0, 0, 1, 32.4384415772165 ],
+                              "@scale": [ 0.132341, 0.132341, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.645342
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.25465, 0.515891, 0 ],
+                              "@rotation": [ 0, 0, 1, 33.1004351807073 ],
+                              "@scale": [ 0.0980217, 0.0980217, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.658512
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.803696, -0.623686, 0 ],
+                              "@rotation": [ 0, 0, 1, 33.5178397420484 ],
+                              "@scale": [ 0.198358, 0.198358, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.666816
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.21002, 0.519858, 0 ],
+                              "@rotation": [ 0, 0, 1, 34.5157961104797 ],
+                              "@scale": [ 0.097319, 0.097319, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.68667
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.653775, -0.703161, 0 ],
+                              "@rotation": [ 0, 0, 1, 35.1751741568849 ],
+                              "@scale": [ 0.072045, 0.072045, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.699788
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.06711, -0.115853, 0 ],
+                              "@rotation": [ 0, 0, 1, 35.8480853892644 ],
+                              "@scale": [ 0.198051, 0.198051, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.713175
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.646369, 0.890438, 0 ],
+                              "@rotation": [ 0, 0, 1, 36.5249843724812 ],
+                              "@scale": [ 0.0601224, 0.0601224, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.726641
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.98924, -0.674032, 0 ],
+                              "@rotation": [ 0, 0, 1, 37.2213337527194 ],
+                              "@scale": [ 0.112705, 0.112705, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.740495
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.880952, 0.532912, 0 ],
+                              "@rotation": [ 0, 0, 1, 37.8757563221263 ],
+                              "@scale": [ 0.154722, 0.154722, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.753514
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.877436, 0.609175, 0 ],
+                              "@rotation": [ 0, 0, 1, 38.5620599258375 ],
+                              "@scale": [ 0.198394, 0.198394, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.767168
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.88145, -0.977188, 0 ],
+                              "@rotation": [ 0, 0, 1, 39.2548320149415 ],
+                              "@scale": [ 0.14418, 0.14418, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.78095
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.247323, -0.744945, 0 ],
+                              "@rotation": [ 0, 0, 1, 39.9429572208384 ],
+                              "@scale": [ 0.121684, 0.121684, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.79464
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.835275, -0.905427, 0 ],
+                              "@rotation": [ 0, 0, 1, 40.616464668407 ],
+                              "@scale": [ 0.0917558, 0.0917558, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.808039
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.103315, 0.29984, 0 ],
+                              "@rotation": [ 0, 0, 1, 41.3072114235019 ],
+                              "@scale": [ 0.114748, 0.114748, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.821781
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.381255, -0.281862, 0 ],
+                              "@rotation": [ 0, 0, 1, 41.9931195477913 ],
+                              "@scale": [ 0.105391, 0.105391, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.835427
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.808293, 0.753151, 0 ],
+                              "@rotation": [ 0, 0, 1, 42.6207693587595 ],
+                              "@scale": [ 0.155342, 0.155342, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.847913
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.845331, -0.659297, 0 ],
+                              "@rotation": [ 0, 0, 1, 43.3492604301939 ],
+                              "@scale": [ 0.11354, 0.11354, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.862406
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.884979, -0.750939, 0 ],
+                              "@rotation": [ 0, 0, 1, 43.9975111237745 ],
+                              "@scale": [ 0.118845, 0.118845, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.875303
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.74317, 0.431525, 0 ],
+                              "@rotation": [ 0, 0, 1, 44.5851246353901 ],
+                              "@scale": [ 0.183052, 0.183052, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.886993
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.85308, 0.981952, 0 ],
+                              "@rotation": [ 0, 0, 1, 45.3540594698238 ],
+                              "@scale": [ 0.191512, 0.191512, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.90229
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.392676, -0.854159, 0 ],
+                              "@rotation": [ 0, 0, 1, 46.066054255676 ],
+                              "@scale": [ 0.0880996, 0.0880996, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.916455
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.673604, -0.833568, 0 ],
+                              "@rotation": [ 0, 0, 1, 46.7199644994681 ],
+                              "@scale": [ 0.0661387, 0.0661387, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.929464
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.79974, 0.782967, 0 ],
+                              "@rotation": [ 0, 0, 1, 47.3903380722239 ],
+                              "@scale": [ 0.0920478, 0.0920478, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.942801
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.478323, 0.904068, 0 ],
+                              "@rotation": [ 0, 0, 1, 48.0846381500033 ],
+                              "@scale": [ 0.0760141, 0.0760141, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.956613
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.11042, -0.449237, 0 ],
+                              "@rotation": [ 0, 0, 1, 48.7807568339121 ],
+                              "@scale": [ 0.108097, 0.108097, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.970462
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.4105, 0.654938, 0 ],
+                              "@rotation": [ 0, 0, 1, 49.4533115356007 ],
+                              "@scale": [ 0.186568, 0.186568, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.983842
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.35601, 0.671278, 0 ],
+                              "@rotation": [ 0, 0, 1, 50.0943627060693 ],
+                              "@scale": [ 0.197617, 0.197617, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.996596
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.334116, -0.553018, 0 ],
+                              "@rotation": [ 0, 0, 1, 0.468755794726106 ],
+                              "@scale": [ 0.152923, 0.152923, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.0093256
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.348515, -0.416748, 0 ],
+                              "@rotation": [ 0, 0, 1, 0.804153007240546 ],
+                              "@scale": [ 0.111821, 0.111821, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.0159981
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.587887, -0.563678, 0 ],
+                              "@rotation": [ 0, 0, 1, 1.41067874927795 ],
+                              "@scale": [ 0.0893308, 0.0893308, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.0280646
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.5007, 0.694339, 0 ],
+                              "@rotation": [ 0, 0, 1, 2.46940759033811 ],
+                              "@scale": [ 0.171418, 0.171418, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.0491273
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.21199, -0.614023, 0 ],
+                              "@rotation": [ 0, 0, 1, 3.23432433886527 ],
+                              "@scale": [ 0.0828753, 0.0828753, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.0643448
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.00980663, 0.0390468, 0 ],
+                              "@rotation": [ 0, 0, 1, 3.46816652733104 ],
+                              "@scale": [ 0.0891614, 0.0891614, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.068997
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.93969, 0.43525, 0 ],
+                              "@rotation": [ 0, 0, 1, 4.56200493415982 ],
+                              "@scale": [ 0.187283, 0.187283, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.0907582
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.765321, 0.316626, 0 ],
+                              "@rotation": [ 0, 0, 1, 5.22667513938179 ],
+                              "@scale": [ 0.0874743, 0.0874743, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.103981
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.710888, -0.468251, 0 ],
+                              "@rotation": [ 0, 0, 1, 5.96851027074124 ],
+                              "@scale": [ 0.16932, 0.16932, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.11874
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.0670114, -0.134991, 0 ],
+                              "@rotation": [ 0, 0, 1, 6.59957483679345 ],
+                              "@scale": [ 0.138492, 0.138492, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.131294
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.741923, 0.444886, 0 ],
+                              "@rotation": [ 0, 0, 1, 7.26573820153722 ],
+                              "@scale": [ 0.156986, 0.156986, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.144547
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.58065, 0.158837, 0 ],
+                              "@rotation": [ 0, 0, 1, 7.99072838127111 ],
+                              "@scale": [ 0.180108, 0.180108, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.15897
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.44261, 0.446642, 0 ],
+                              "@rotation": [ 0, 0, 1, 8.63036017010254 ],
+                              "@scale": [ 0.134744, 0.134744, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.171696
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.754593, -0.15642, 0 ],
+                              "@rotation": [ 0, 0, 1, 9.28276040155656 ],
+                              "@scale": [ 0.176475, 0.176475, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.184675
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.322853, -0.488739, 0 ],
+                              "@rotation": [ 0, 0, 1, 10.0077955221338 ],
+                              "@scale": [ 0.180121, 0.180121, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.199099
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.419918, -0.306167, 0 ],
+                              "@rotation": [ 0, 0, 1, 10.4734613061829 ],
+                              "@scale": [ 0.151464, 0.151464, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.208363
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.955352, -0.839065, 0 ],
+                              "@rotation": [ 0, 0, 1, 11.1161018844796 ],
+                              "@scale": [ 0.12454, 0.12454, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.221148
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.460802, 0.948065, 0 ],
+                              "@rotation": [ 0, 0, 1, 11.7886371118028 ],
+                              "@scale": [ 0.142178, 0.142178, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.234527
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -0.10129, -0.684659, 0 ],
+                              "@rotation": [ 0, 0, 1, 12.7229085600729 ],
+                              "@scale": [ 0.0990335, 0.0990335, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.253114
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.451301, 0.531687, 0 ],
+                              "@rotation": [ 0, 0, 1, 13.3986151129117 ],
+                              "@scale": [ 0.177163, 0.177163, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.266557
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 0.697975, 0.806123, 0 ],
+                              "@rotation": [ 0, 0, 1, 14.0238051617181 ],
+                              "@scale": [ 0.180911, 0.180911, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.278995
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.08922, 0.969725, 0 ],
+                              "@rotation": [ 0, 0, 1, 14.5428808911 ],
+                              "@scale": [ 0.122183, 0.122183, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.289321
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_3"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -1.57277, 0.772245, 0 ],
+                              "@rotation": [ 0, 0, 1, 14.9489948145522 ],
+                              "@scale": [ 0.178513, 0.178513, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.297401
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.70114, -0.656607, 0 ],
+                              "@rotation": [ 0, 0, 1, 15.4284282259753 ],
+                              "@scale": [ 0.0595185, 0.0595185, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.306939
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_1"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 1.46291, -0.242993, 0 ],
+                              "@rotation": [ 0, 0, 1, 15.4284282259753 ],
+                              "@scale": [ 0.079923, 0.079923, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@emissiveColor": [ 1, 1, 1 ],
+                                            "@transparency": 0.306939
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@USE": "_2"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Disk2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Rectangle2D",
+                        "@translation": [ 0, 0, 1 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@transparency": 1
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 20, 20 ]
+                                }
+                              }
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_4"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "TimeSensor":
+                      {
+                        "@DEF": "_5",
+                        "@loop": true
+                      }
+                    },
+                    { "Script":
+                      {
+                        "@DEF": "CirclesScript",
+                        "@directOutput": true,
+                        "field": [
+                          {
+                            "@accessType": "inputOnly",
+                            "@type": "SFVec3f",
+                            "@name": "set_hitPoint"
+                          },
+                          {
+                            "@accessType": "inputOnly",
+                            "@type": "SFTime",
+                            "@name": "set_time"
+                          },
+                          {
+                            "@accessType": "inputOutput",
+                            "@type": "MFNode",
+                            "@name": "textures",
+                            "-children": [
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_3"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_1"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_2"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "#sourceText": [
+"ecmascript:",
+"",
+"var numCircles = 75;",
+"var zAxis      = new SFVec3f (0, 0, 1);",
+"var materials  = [ ];",
+"",
+"",
+"function initialize ()",
+"{",
+"\tvar",
+"\t\tcurrentScene = Browser .currentScene,",
+"\t\tgroup        = currentScene .getNamedNode (\"Circles\");",
+"",
+"\tgroup .children .length = 0;",
+"",
+"\tfor (var i = 0; i < numCircles; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\ttransform  = currentScene .createNode (\"Transform\"),",
+"\t\t\tshape      = currentScene .createNode (\"Shape\"),",
+"\t\t\tappearance = currentScene .createNode (\"Appearance\"),",
+"\t\t\tmaterial   = currentScene .createNode (\"Material\"),",
+"\t\t\tdisk       = currentScene .createNode (\"Disk2D\");",
+"\t\t",
+"\t\tgroup .children [i]     = transform;",
+"\t\ttransform .children [0] = shape;",
+"\t\tshape .appearance       = appearance;",
+"\t\tshape .geometry         = disk;",
+"\t\tappearance .material    = material;",
+"\t\tmaterial .diffuseColor  = new SFColor ();",
+"\t\tmaterial .emissiveColor = new SFColor (1, 1, 1);",
+"\t\tmaterial .transparency  = i / (numCircles - 1);",
+"",
+"\t\tmaterials .push (material);",
+"",
+"\t\tplace (transform);",
+"\t}",
+"}",
+"",
+"function set_hitPoint (value)",
+"{",
+"\tvalue .z = 0;",
+"\t",
+"\tvar group = Browser .currentScene .getNamedNode (\"Circles\");",
+"",
+"\tfor (var i = 0; i < numCircles; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\ttransform = group .children [i],",
+"\t\t\tdirection = transform .translation .subtract (value),",
+"\t\t\tdistance  = direction .length ();",
+"\t\t\t",
+"\t\tdirection = direction .normalize () .multiply (1 / (Math .pow (distance * 50, 2)));",
+"\t\t",
+"\t\ttransform .translation = transform .translation .add (direction);",
+"\t}",
+"}",
+"",
+"function set_time ()",
+"{",
+"\tvar group = Browser .currentScene .getNamedNode (\"Circles\");",
+"\t",
+"\tfor (var i = 0; i < numCircles; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\tdt        = 1 / Browser .currentFrameRate,",
+"\t\t\ttransform = group .children [i],",
+"\t\t\tmaterial  = transform .children [0] .appearance .material;",
+"\t\t",
+"\t\tmaterial .transparency += dt / numCircles * 4;",
+"\t\ttransform .rotation     = new SFRotation (zAxis, material .transparency * Math .PI * 2 * 8);",
+"\t\t",
+"\t\tif (material .transparency > 1)",
+"\t\t{",
+"\t\t\tmaterial .transparency = dt > 1 ? Math .random (): 0;",
+"\t\t\tplace (group .children [Math .round (random (0, numCircles - 1))]);",
+"\t\t}",
+"\t}",
+"}",
+"\t",
+"function place (transform)",
+"{",
+"\tvar appearance = transform .children [0] .appearance;",
+"",
+"\ttransform .translation .x = random (-2, 2);",
+"\ttransform .translation .y = random (-1, 1);",
+"\ttransform .rotation       = new SFRotation (zAxis, Math .random () * 2 * Math .PI);",
+"\ttransform .scale .x       = random (0.05, 0.2);",
+"\ttransform .scale .y       = transform .scale .x;",
+"",
+"\tappearance .texture = textures [Math .round (Math .random () * 2)];",
+"}",
+"",
+"function random (min, max)",
+"{",
+"\treturn Math .random () * (max - min) + min;",
+"}"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "Text",
+                  "@isPickable": false,
+                  "-children": [
+                    { "NavigationInfo":
+                      {
+                        "@DEF": "_6",
+                        "@type": [ "NONE" ],
+                        "@headlight": false
+                      }
+                    },
+                    { "OrthoViewpoint":
+                      {
+                        "@DEF": "_7"
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "circles",
+                        "@translation": [ 0, 0.248408, 0 ],
+                        "@scale": [ 0.551883, 0.186872, 4.71371 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "circles.png" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_8",
+                        "@translation": [ 0, -0.0191083, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@emissiveColor": [ 1, 1, 1 ],
+                                      "@shininess": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "An Interactive X3D Experience" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@DEF": "_9",
+                                      "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
+                                      "@size": 0.08,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_10",
+                        "@translation": [ 0, -0.617834, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@emissiveColor": [ 1, 1, 1 ],
+                                      "@shininess": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "Move your mouse over the screen", "to push the circles." ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "CharlotteSansBookPlain.otf", "SERIF" ],
+                                      "@size": 0.08,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "-children": [
+                    { "NavigationInfo":
+                      {
+                        "@USE": "_6"
+                      }
+                    },
+                    { "OrthoViewpoint":
+                      {
+                        "@USE": "_7"
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Fresh",
+                        "@translation": [ -0.3, -0.259941, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@USE": "_3"
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Disk2D":
+                                {
+                                  "@DEF": "_11",
+                                  "@outerRadius": 0.14
+                                }
+                              }
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Text_12",
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "_13",
+                                            "@ambientIntensity": 0,
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@shininess": 0
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "FRESH" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@USE": "_9"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_14",
+                              "@name": "MFNode",
+                              "fieldValue": [
+                                {
+                                  "@name": "keyValue",
+                                  "-children": [
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_1"
+                                      }
+                                    },
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_3"
+                                      }
+                                    },
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_2"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_15"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Warm",
+                        "@translation": [ 0, -0.259941, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@USE": "_1"
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Disk2D":
+                                {
+                                  "@USE": "_11"
+                                }
+                              }
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Text_16",
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@ambientIntensity": 0,
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@shininess": 0
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "WARM" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
+                                            "@size": 0.08,
+                                            "@justify": [ "MIDDLE", "MIDDLE" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_17",
+                              "@name": "MFNode",
+                              "fieldValue": [
+                                {
+                                  "@name": "keyValue",
+                                  "-children": [
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_3"
+                                      }
+                                    },
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_1"
+                                      }
+                                    },
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_2"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_18"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Cool",
+                        "@translation": [ 0.3, -0.259941, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@USE": "_2"
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Disk2D":
+                                {
+                                  "@USE": "_11"
+                                }
+                              }
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Text_19",
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@USE": "_13"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "COOL" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@USE": "_9"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_2"
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_20",
+                              "@name": "MFNode",
+                              "fieldValue": [
+                                {
+                                  "@name": "keyValue",
+                                  "-children": [
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_3"
+                                      }
+                                    },
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_2"
+                                      }
+                                    },
+                                    { "ImageTexture":
+                                      {
+                                        "@USE": "_1"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_21"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_5",
+            "@fromField": "time",
+            "@toNode": "CirclesScript",
+            "@toField": "set_time"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_4",
+            "@fromField": "hitPoint_changed",
+            "@toNode": "CirclesScript",
+            "@toField": "set_hitPoint"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_15",
+            "@fromField": "touchTime",
+            "@toNode": "_14",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_14",
+            "@fromField": "value_changed",
+            "@toNode": "CirclesScript",
+            "@toField": "textures"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_18",
+            "@fromField": "touchTime",
+            "@toNode": "_17",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_17",
+            "@fromField": "value_changed",
+            "@toNode": "CirclesScript",
+            "@toField": "textures"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_21",
+            "@fromField": "touchTime",
+            "@toNode": "_20",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_20",
+            "@fromField": "value_changed",
+            "@toNode": "CirclesScript",
+            "@toField": "textures"
+          }
+        }
+      ]
+    }
+  }
+}

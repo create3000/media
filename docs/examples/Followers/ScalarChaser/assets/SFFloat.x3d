@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 08 Jul 2018 16:26:37 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ScalarChaser/assets/SFFloat.x3d'/>
+    <meta name='modified' content='Mon, 28 Jan 2019 02:39:45 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='SFFloat'>
+      <ProtoInterface>
+        <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+        <field accessType='inputOutput' type='SFFloat' name='keyValue'/>
+        <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Script DEF='SFFloat'>
+          <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+          <field accessType='inputOutput' type='SFFloat' name='keyValue'/>
+          <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+          <IS>
+            <connect nodeField='set_triggerTime' protoField='set_triggerTime'/>
+            <connect nodeField='keyValue' protoField='keyValue'/>
+            <connect nodeField='value_changed' protoField='value_changed'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function set_triggerTime (value, time)
+{
+	value_changed = keyValue;
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo
+        title='SFFloat'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+  </Scene>
+</X3D>

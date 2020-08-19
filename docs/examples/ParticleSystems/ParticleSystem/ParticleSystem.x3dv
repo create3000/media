@@ -1,0 +1,138 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT CubeMapTexturing : 1
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Grouping : 3
+COMPONENT ParticleSystems : 1
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 15 May 2016 00:16:04 GMT"
+META "creator" "holger"
+META "generator" "Titania V4.0.2, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ParticleSystem/ParticleSystem.O.x3d"
+META "modified" "Wed, 06 Dec 2017 16:23:00 GMT"
+
+EXTERNPROTO FresnelShader [
+  inputOutput SFFloat refraction
+  inputOutput SFFloat reflection
+  inputOutput SFNode  cubeMapTexture
+]
+"assets/FresnelShader.x3d#FresnelShader"
+
+WorldInfo {
+  title "Bubbles"
+}
+
+NavigationInfo {
+  headlight FALSE
+}
+
+DEF LostValley TextureBackground {
+  frontTexture DEF _1 ImageTexture {
+    url "assets/LostValley/LostValley-front.jpg"
+    textureProperties DEF _2 TextureProperties {
+      minificationFilter "DEFAULT"
+      magnificationFilter "DEFAULT"
+      boundaryModeS "CLAMP_TO_EDGE"
+      boundaryModeT "CLAMP_TO_EDGE"
+      boundaryModeR "CLAMP_TO_EDGE"
+      textureCompression "DEFAULT"
+    }
+  }
+  backTexture DEF _3 ImageTexture {
+    url "assets/LostValley/LostValley-back.jpg"
+    textureProperties USE _2
+  }
+  leftTexture DEF _4 ImageTexture {
+    url "assets/LostValley/LostValley-left.jpg"
+    textureProperties USE _2
+  }
+  rightTexture DEF _5 ImageTexture {
+    url "assets/LostValley/LostValley-right.jpg"
+    textureProperties USE _2
+  }
+  topTexture DEF _6 ImageTexture {
+    url "assets/LostValley/LostValley-top.jpg"
+    textureProperties USE _2
+  }
+  bottomTexture DEF _7 ImageTexture {
+    url "assets/LostValley/LostValley-bottom.jpg"
+    textureProperties USE _2
+  }
+}
+
+DirectionalLight {
+  direction -0.505161 -0.602832 -0.61758
+}
+
+DEF Viewpoint Transform {
+  rotation 0 -1 0 3.15695106761078
+  children [
+    DEF Animation Group {
+      children [
+        DEF AnimationTimer TimeSensor {
+          cycleInterval 24
+          loop TRUE
+        }
+        DEF RotationInterpolator OrientationInterpolator {
+          key [ 0, 0.25, 0.5, 0.75, 1 ]
+          keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.14159253438051, 0 1 0 1.57079644600419, 0 0 1 0 ]
+        }
+      ]
+    }
+    Viewpoint {
+      description "Initial View"
+      position 0 0 19.212
+    }
+  ]
+}
+
+DEF SoapBubbles ParticleSystem {
+  geometryType "GEOMETRY"
+  maxParticles 100
+  lifetimeVariation 0.8
+  particleSize 1 1
+  emitter PointEmitter {
+    direction 0 0 0
+    speed 2
+    variation 0.5
+    mass 0.1
+    surfaceArea 0.1
+  }
+  physics WindPhysicsModel {
+    speed 1
+    gustiness 1.5
+  }
+  bboxSize 30 30 30
+  appearance Appearance {
+    material TwoSidedMaterial {
+      separateBackColor TRUE
+      specularColor 0 0.192168 0.357
+      shininess 0.073718
+      transparency 0.291667
+      backSpecularColor 0.44 0.115049 0.334728
+      backShininess 0.0541516
+      backTransparency 0.270758
+    }
+    shaders FresnelShader {
+      cubeMapTexture ComposedCubeMapTexture {
+        front USE _1
+        back USE _3
+        left USE _4
+        right USE _5
+        top USE _6
+        bottom USE _7
+      }
+    }
+  }
+  geometry Sphere {
+    solid FALSE
+  }
+}
+
+ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
+ROUTE RotationInterpolator.value_changed TO Viewpoint.set_rotation

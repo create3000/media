@@ -1,0 +1,346 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT Layering : 1
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 20 Dec 2015 16:23:08 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d"
+META "modified" "Mon, 07 Jan 2019 04:18:13 GMT"
+
+WorldInfo {
+}
+
+LayerSet {
+  activeLayer -1
+  order [ 0, 1, 2 ]
+  layers [
+    DEF X3DLights Layer {
+      children [
+        DEF EnterWorldScript Script {
+          url "ecmascript:
+
+function initialize ()
+{
+	Browser .setBrowserOption (\"Shading\",          \"PHONG\");
+	Browser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");
+}
+"
+        }
+        NavigationInfo {
+          type "NONE"
+          headlight FALSE
+        }
+        OrthoViewpoint { }
+        DEF BlackRectangle2D Transform {
+          children Shape {
+            appearance Appearance {
+              material DEF Metal27 Material {
+                ambientIntensity 0
+                diffuseColor 0 0 0
+                specularColor 0.780612 0.774022 0.752349
+                shininess 0.102041
+              }
+            }
+            geometry DEF _1 Rectangle2D {
+              size 20 20
+            }
+          }
+        }
+        DEF TouchPlane Transform {
+          children [
+            DEF Rectangle2D Transform {
+              translation 0 0 0.15
+              children Shape {
+                appearance Appearance {
+                  material DEF Metal27_2 Material {
+                    ambientIntensity 0
+                    diffuseColor 0 0 0
+                    shininess 0
+                    transparency 1
+                  }
+                }
+                geometry USE _1
+              }
+            }
+            DEF LightsTouch TouchSensor { }
+          ]
+        }
+        DEF Lights Transform {
+          translation 0 0 0.15
+          children [
+            DEF ColorAnimation Group {
+              children [
+                DEF _3 TimeSensor {
+                  cycleInterval 30
+                  loop TRUE
+                }
+                DEF Light1ColorInterpolator ColorInterpolator {
+                  key [ 0, 0.25, 0.5, 0.75, 1 ]
+                  keyValue [ 1 0 0, 0.5 1 0, 0 1 1, 0.5 0 1, 1 0 0 ]
+                }
+              ]
+            }
+            DEF Light1 PointLight {
+              color 0 1 0.607978
+              intensity 0.645102
+              location -1 0 0
+            }
+            DEF Light2 PointLight {
+              color 0 1 0.607978
+              intensity 0.19518
+              location -0.714286 0 0
+            }
+            DEF Light3 PointLight {
+              color 0 1 0.607978
+              intensity 0.888487
+              location -0.428571 0 0
+            }
+            DEF Light4 PointLight {
+              color 0 1 0.607978
+              intensity 0.912746
+              location -0.142857 0 0
+            }
+            DEF Light5 PointLight {
+              color 0 1 0.607978
+              intensity 0.249688
+              location 0.142857 0 0
+            }
+            DEF Light6 PointLight {
+              color 0 1 0.607978
+              intensity 0.60139
+              location 0.428571 0 0
+            }
+            DEF Light7 PointLight {
+              color 0 1 0.607978
+              intensity 0.999609
+              location 0.714286 0 0
+            }
+            DEF Light8 PointLight {
+              color 0 1 0.607978
+              intensity 0.645102
+              location 1 0 0
+            }
+          ]
+        }
+        DEF LightsTimer TimeSensor {
+          loop TRUE
+        }
+        DEF LightsScript Script {
+          inputOnly   SFBool  set_active
+          inputOnly   SFVec3f set_hitPoint
+          inputOnly   SFTime  set_time
+          inputOutput SFTime  cycleInterval 2
+
+          url "ecmascript:
+
+var
+	light      = 0,
+	lights     = [ ],
+	timeSensor = null,
+	startTime  = 0;
+
+function initialize ()
+{
+	for (var i = 1; i <= 8; ++ i)
+		lights .push (Browser .currentScene .getNamedNode (\"Light\" + i));
+
+	for (var i = 0; i < 8; ++ i)
+		lights [i] .location = new SFVec3f (i / 3.5 - 1, 0, 0);
+}
+
+function set_active (value)
+{
+	var
+		touchSensor = Browser .currentScene .getNamedNode (\"LightsTouch\"),
+		self        = Browser .currentScene .getNamedNode (\"LightsScript\");
+	
+	if (touchSensor .isActive)
+		Browser .addRoute (touchSensor, \"hitPoint_changed\", self, \"set_hitPoint\");
+	else
+		Browser .deleteRoute (touchSensor, \"hitPoint_changed\", self, \"set_hitPoint\");
+}
+
+function set_hitPoint (value, time)
+{
+	if (time - startTime > 0.1)
+	{
+		lights [light] .location = value;
+	
+		startTime = time;
+
+		light = (light + 1) % 8;
+	}
+}
+
+function set_time (value)
+{
+	set_time2 (value);
+}
+
+function set_time1 (time)
+{
+	time /= cycleInterval;
+
+	for (var i = 0; i < 8; ++ i)
+		lights [i] .intensity = get_intensity (time);
+}
+
+function set_time2 (time)
+{
+	var factor = cycleInterval / 7;
+
+	time /= cycleInterval;
+
+	for (var i = 0; i < 8; ++ i)
+		lights [i] .intensity = get_intensity (time - factor * i);
+}
+
+function get_intensity (value)
+{
+	return Math .sin ((value - Math .floor (value)) * Math .PI);
+}"
+          directOutput TRUE
+        }
+      ]
+    }
+    DEF Text Layer {
+      children [
+        NavigationInfo {
+          type "NONE"
+          headlight FALSE
+        }
+        OrthoViewpoint { }
+        DEF lights Transform {
+          translation 0 0.248408 0
+          scale 0.449912 0.174422 4.39968
+          children Shape {
+            appearance Appearance {
+              texture ImageTexture {
+                url "lights.png"
+                repeatS FALSE
+                repeatT FALSE
+              }
+            }
+            geometry Rectangle2D { }
+          }
+        }
+        DEF Text_4 Transform {
+          translation 0 -0.0191083 0
+          children Shape {
+            appearance Appearance {
+              material Material {
+                ambientIntensity 0
+                diffuseColor 0 0 0
+                emissiveColor 1 1 1
+                shininess 0
+              }
+            }
+            geometry Text {
+              string "An Interactive X3D Experience"
+              solid TRUE
+              fontStyle DEF _5 FontStyle {
+                family [ "CharlotteSansBoldPlain.otf", "SERIF" ]
+                size 0.08
+                justify [ "MIDDLE", "MIDDLE" ]
+              }
+            }
+          }
+        }
+        DEF Disk2D Transform {
+          translation -0.15 -0.259941 0
+          children [
+            DEF _6 Shape {
+              appearance Appearance {
+                material Material {
+                  ambientIntensity 0
+                  diffuseColor 0 0 0
+                  emissiveColor 0.382 0.382 0.382
+                  shininess 0
+                }
+              }
+              geometry Disk2D {
+                outerRadius 0.14
+              }
+            }
+            DEF Text_7 Transform {
+              translation 0 -0.00799999 0
+              children Shape {
+                appearance Appearance {
+                  material DEF _8 Material {
+                    ambientIntensity 0
+                    diffuseColor 0 0 0
+                    shininess 0
+                  }
+                }
+                geometry Text {
+                  string "JOIN"
+                  solid TRUE
+                  fontStyle USE _5
+                }
+              }
+            }
+          ]
+        }
+        DEF Disk2D_9 Transform {
+          translation 0.15 -0.259941 0
+          children [
+            USE _6
+            DEF Text_10 Transform {
+              translation 0 0.00100001 0
+              children Shape {
+                appearance Appearance {
+                  material USE _8
+                }
+                geometry Text {
+                  string "US"
+                  solid TRUE
+                  fontStyle USE _5
+                }
+              }
+            }
+          ]
+        }
+        DEF Text_11 Transform {
+          translation 0 -0.617834 0
+          children Shape {
+            appearance Appearance {
+              material Material {
+                ambientIntensity 0
+                diffuseColor 0 0 0
+                emissiveColor 1 1 1
+                shininess 0
+              }
+            }
+            geometry Text {
+              string [ "Click and move your mouse to place", "the lights on the screen." ]
+              solid TRUE
+              fontStyle FontStyle {
+                family [ "CharlotteSansBookPlain.otf", "SERIF" ]
+                size 0.08
+                justify [ "MIDDLE", "MIDDLE" ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+ROUTE LightsTouch.isActive TO LightsScript.set_active
+ROUTE LightsTimer.time TO LightsScript.set_time
+ROUTE Light1.color_changed TO Light2.set_color
+ROUTE Light1.color_changed TO Light3.set_color
+ROUTE Light1.color_changed TO Light4.set_color
+ROUTE Light1.color_changed TO Light5.set_color
+ROUTE Light1.color_changed TO Light6.set_color
+ROUTE Light1.color_changed TO Light7.set_color
+ROUTE Light1.color_changed TO Light8.set_color
+ROUTE _3.fraction_changed TO Light1ColorInterpolator.set_fraction
+ROUTE Light1ColorInterpolator.value_changed TO Light1.set_color

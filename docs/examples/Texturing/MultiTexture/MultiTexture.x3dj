@@ -1,0 +1,168 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 12 Nov 2017 22:36:28 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.4.5, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/MultiTexture/MultiTexture.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 08 Apr 2019 07:16:10 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "Interpolation",
+          "@level": 4
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial view",
+            "@position": [ 0.49109, 1.41768, 2.71072 ],
+            "@orientation": [ -0.934257914612686, 0.346576766379408, 0.0839445888044477, 0.507339465295549 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Sphere",
+            "-children": [
+              { "Group":
+                {
+                  "@DEF": "Animation",
+                  "-children": [
+                    { "TimeSensor":
+                      {
+                        "@DEF": "AnimationTimer",
+                        "@cycleInterval": 120,
+                        "@loop": true
+                      }
+                    },
+                    { "PositionInterpolator2D":
+                      {
+                        "@DEF": "TranslationInterpolator",
+                        "@key": [ 0, 1 ],
+                        "@keyValue": [ 0, 0, 1, 0 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                        }
+                      },
+                      "-texture": { "MultiTexture":
+                        {
+                          "@mode": [ "MODULATE", "BLENDTEXTUREALPHA" ],
+                          "-texture": [
+                            { "ImageTexture":
+                              {
+                                "@url": [ "assets/earht-map-download-earht-map.jpg" ]
+                              }
+                            },
+                            { "ImageTexture":
+                              {
+                                "@url": [ "assets/cloud_combined_2048.png" ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "-textureTransform": { "MultiTextureTransform":
+                        {
+                          "-textureTransform": [
+                            { "TextureTransform":
+                              {
+                              }
+                            },
+                            { "TextureTransform":
+                              {
+                                "@DEF": "_1",
+                                "@translation": [ 0.148662, 0 ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Sphere":
+                    {
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Inline":
+          {
+            "@DEF": "Starfield",
+            "@url": [ "assets/starfield.x3d" ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "TranslationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "TranslationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "_1",
+            "@toField": "translation"
+          }
+        }
+      ]
+    }
+  }
+}

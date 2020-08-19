@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Followers' level='1'/>
+    <component name='NURBS' level='3'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Mon, 17 Jun 2019 10:51:39 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.5.6, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/CoordinateChaser/CoordinateChaser.O.x3d'/>
+    <meta name='modified' content='Tue, 18 Jun 2019 13:43:04 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Bumps'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFColor' name='color' value='1 1 1'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Shape>
+          <Appearance>
+            <LineProperties
+                linewidthScaleFactor='6'/>
+            <Material
+                diffuseColor='0 0 0'>
+              <IS>
+                <connect nodeField='emissiveColor' protoField='color'/>
+              </IS>
+            </Material>
+          </Appearance>
+          <NurbsCurve
+              tessellation='128'>
+            <Coordinate DEF='_1' containerField='controlPoint'
+                point='0 0 0'/>
+          </NurbsCurve>
+        </Shape>
+        <TimeSensor DEF='_2'
+            loop='true'/>
+        <Script DEF='BumpsScript'>
+          <field accessType='inputOnly' type='SFTime' name='set_time'/>
+          <field accessType='initializeOnly' type='SFNode' name='chaser'>
+            <CoordinateChaser DEF='_3' containerField='chaser'/>
+          </field>
+<![CDATA[ecmascript:
+
+var
+	numPoints = 16,
+	points    = [ ],
+	dest      = new MFVec3f ();
+
+function initialize ()
+{
+	for (var i = 0; i < numPoints; ++ i)
+		dest [i] .x = i * 2;
+	
+	set_time (0, 0);
+}
+
+function set_time (value, time)
+{
+	bumps (points, numPoints, 16);
+	
+	for (var i = 0; i < numPoints; ++ i)
+		dest [i] .y = points [i]; 
+	
+	chaser .set_destination = dest;
+}
+
+// Inspired by Lee Byron’s test data generator.
+function bump (a, n)
+{
+	const x = 1 / (0.1 + Math .random ());
+	const y = 2 * Math .random () - 0.5;
+	const z = 10 / (0.1 + Math .random ());
+	
+	for (let i = 0; i < n; ++ i)
+	{
+		const w = (i / n - y) * z;
+		a [i] += x * Math .exp (-w * w);
+	}
+}
+
+function bumps (a, n, m)
+{
+	a .length = n;
+
+	for (let i = 0; i < n; ++ i) a [i] = 0;
+	for (let i = 0; i < m; ++ i) bump (a, n);
+	
+	return a;
+};
+]]>
+        </Script>
+        <ROUTE fromNode='_3' fromField='value_changed' toNode='_1' toField='set_point'/>
+        <ROUTE fromNode='_2' fromField='cycleTime' toNode='BumpsScript' toField='set_time'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_4' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'/>
+        </MetadataSet>
+        <MetadataSet DEF='BrowserPanel' containerField='value'
+            name='BrowserPanel'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='type_5' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
+          <MetadataSet DEF='viewpoints' containerField='value'
+              name='viewpoints'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
+                name='PerspectiveViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_6' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='5.87788534164429, 6.46984958648682, 13.8524446487427'/>
+              <MetadataDouble DEF='orientation_7' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='-0.704047462871212, 0.695566762376517, 0.143192350010952, 0.568941727555854'/>
+              <MetadataDouble DEF='centerOfRotation_8' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+            <MetadataSet DEF='TopViewpoint' containerField='value'
+                name='TopViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_9' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 10000, 0'/>
+              <MetadataDouble DEF='orientation_10' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='1, 0, 0, 4.71238898038469'/>
+              <MetadataDouble DEF='centerOfRotation_11' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.0320612526145463, 0, 0.0937320149966475'/>
+              <MetadataDouble DEF='fieldOfViewScale_12' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.21023944190259'/>
+            </MetadataSet>
+            <MetadataSet DEF='FrontViewpoint' containerField='value'
+                name='FrontViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_13' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 10000'/>
+              <MetadataDouble DEF='orientation_14' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 1, 0'/>
+              <MetadataDouble DEF='centerOfRotation_15' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.00884759203065143, 0.0177734813359099, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale_16' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.212467484375'/>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+          <MetadataDouble DEF='browserRatio' containerField='value'
+              name='browserRatio'
+              reference='http://titania.create3000.de'
+              value='1.777777'/>
+        </MetadataSet>
+        <MetadataSet DEF='Prototype' containerField='value'
+            name='Prototype'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='path' containerField='value'
+              name='path'
+              reference='http://titania.create3000.de'
+              value='"Bumps"'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Viewpoint
+        position='15 7.708 18.954'
+        centerOfRotation='15 6.07793 0'/>
+    <Transform>
+      <ProtoInstance name='Bumps'>
+        <fieldValue name='color' value='1 0 0'/>
+      </ProtoInstance>
+    </Transform>
+    <Transform
+        translation='0 2 0'>
+      <ProtoInstance name='Bumps'>
+        <fieldValue name='color' value='1 1 0'/>
+      </ProtoInstance>
+    </Transform>
+    <Transform
+        translation='0 4 0'>
+      <ProtoInstance name='Bumps'>
+        <fieldValue name='color' value='0.00800333 1 0'/>
+      </ProtoInstance>
+    </Transform>
+    <Transform
+        translation='0 6 0'>
+      <ProtoInstance name='Bumps'>
+        <fieldValue name='color' value='0 0.997684 1'/>
+      </ProtoInstance>
+    </Transform>
+    <Transform
+        translation='0 8 0'>
+      <ProtoInstance name='Bumps'>
+        <fieldValue name='color' value='0 0 1'/>
+      </ProtoInstance>
+    </Transform>
+    <Transform
+        translation='0 10 0'>
+      <ProtoInstance name='Bumps'>
+        <fieldValue name='color' value='0.998073 0 1'/>
+      </ProtoInstance>
+    </Transform>
+    <Transform DEF='Box'
+        translation='8.21123 4.23988 0'/>
+  </Scene>
+</X3D>

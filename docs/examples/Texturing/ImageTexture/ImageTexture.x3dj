@@ -1,0 +1,367 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 02 Dec 2018 17:40:27 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.7, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/ImageTexture/ImageTexture.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 17 Nov 2019 09:11:03 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"Image",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "loop"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "startTime"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Transform":
+                  {
+                    "@DEF": "Rectangle2D",
+                    "@translation": [ 1044.12, -2617.58, -6880.61 ],
+                    "-children": [
+                      { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "-texture": { "ImageTexture":
+                                {
+                                  "@DEF": "_1",
+                                  "@url": [ "https://picsum.photos/364/325/?random&_stamp=0.8048866108647563" ]
+                                }
+                              }
+                            }
+                          },
+                          "-geometry": { "IndexedFaceSet":
+                            {
+                              "@DEF": "_2",
+                              "@solid": false,
+                              "@texCoordIndex": [ 0, 1, 2, 3, -1 ],
+                              "@coordIndex": [ 0, 1, 2, 3, -1 ],
+                              "-texCoord": { "TextureCoordinate":
+                                {
+                                  "@point": [ 0, 0, 1, 0, 1, 1, 0, 1 ]
+                                }
+                              },
+                              "-coord": { "Coordinate":
+                                {
+                                  "@point": [ -182, -162.5, 0, 182, -162.5, 0, 182, 162.5, 0, -182, 162.5, 0 ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "TimeSensor":
+                  {
+                    "@DEF": "_3",
+                    "@cycleInterval": 10,
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "loop",
+                          "@protoField": "loop"
+                        },
+                        {
+                          "@nodeField": "startTime",
+                          "@protoField": "startTime"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "PositionInterpolator":
+                  {
+                    "@DEF": "_4",
+                    "@key": [ 0, 1 ],
+                    "@keyValue": [ 1363, -3417, -10000, 340.75, -854.25, 0 ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "ImageScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_cycleTime"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "texture",
+                        "-children": [
+                          { "ImageTexture":
+                            {
+                              "@USE": "_1"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "geometry",
+                        "-children": [
+                          { "IndexedFaceSet":
+                            {
+                              "@USE": "_2"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "interpolator",
+                        "-children": [
+                          { "PositionInterpolator":
+                            {
+                              "@USE": "_4"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\tminWidth  = 200,",
+"\tminHeight = 200,",
+"\tmaxWidth  = 400,",
+"\tmaxHeidht = 400;",
+"",
+"function initialize ()",
+"{",
+"\tset_cycleTime (0, 0);",
+"}",
+"",
+"function set_cycleTime (value, time)",
+"{",
+"\tif (value === 0 || random (0, 100) < 20)",
+"\t{",
+"\t\tvar",
+"\t\t\twidth  = random (minWidth, maxWidth),",
+"\t\t\theight = random (minHeight, maxHeidht);",
+"",
+"\t\ttexture .url = new MFString (\"https://picsum.photos/\" + width + \"/\" + height + \"/?random&_stamp=\" + Math .random ());",
+"",
+"\t\tgeometry .coord .point = new MFVec3f (",
+"\t\t\tnew SFVec3f (-width/2, -height/2, 0),",
+"\t\t\tnew SFVec3f ( width/2, -height/2, 0),",
+"\t\t\tnew SFVec3f ( width/2,  height/2, 0),",
+"\t\t\tnew SFVec3f (-width/2,  height/2, 0)",
+"\t\t);",
+"\t}",
+"",
+"\tvar",
+"\t\tx = random (-6000, 6000),",
+"\t\ty = random (-4000, 4000);",
+"",
+"\tinterpolator .keyValue = new MFVec3f (",
+"\t\tnew SFVec3f (x, y, -10000),",
+"\t\tnew SFVec3f (x/4, y/4, 0)",
+"\t);",
+"}",
+"",
+"function random (min, max)",
+"{",
+"\treturn Math .floor (min + Math .random () * (max - min));",
+"}"
+                    ]
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_4",
+                    "@fromField": "value_changed",
+                    "@toNode": "Rectangle2D",
+                    "@toField": "translation"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_3",
+                    "@fromField": "fraction_changed",
+                    "@toNode": "_4",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_3",
+                    "@fromField": "cycleTime",
+                    "@toNode": "ImageScript",
+                    "@toField": "set_cycleTime"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"Images",
+            "ProtoInterface": {
+
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Group":
+                  {
+                    "@DEF": "_5"
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "ImagesScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_time"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "timeSensor",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@DEF": "_6",
+                              "@cycleInterval": 0.1
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "group",
+                        "-children": [
+                          { "Group":
+                            {
+                              "@USE": "_5"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\tnumImages = 100,",
+"\tn         = 0;",
+"",
+"function initialize ()",
+"{",
+"\tn = 0;",
+"\t",
+"\tgroup .children .length = 0;",
+"",
+"\ttimeSensor .startTime = 0;",
+"\ttimeSensor .loop      = true;",
+"}",
+"",
+"function set_time (value, time)",
+"{",
+"\tif (n === numImages)",
+"\t{",
+"\t\ttimeSensor .stopTime = time;",
+"\t\ttimeSensor .loop     = false;",
+"\t}",
+"\t",
+"\t++ n;",
+"\t",
+"\tvar image = Browser .currentScene .createProto (\"Image\");",
+"",
+"\timage .startTime = n * timeSensor .cycleInterval;",
+"\timage .loop      = true;",
+"\t",
+"\tgroup .children .push (image);",
+"}"
+                    ]
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_6",
+                    "@fromField": "cycleTime",
+                    "@toNode": "ImagesScript",
+                    "@toField": "set_time"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View",
+            "@position": [ 0, 0, 1000 ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@name": "Images"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Geometry2D' level='2'/>
+    <component name='Layering' level='1'/>
+    <component name='Shape' level='4'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/Inline/Inline.O.x3d'/>
+    <meta name='modified' content='Sun, 27 Jan 2019 15:39:28 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
+      <field accessType='inputOutput' type='SFBool' name='whichChoice'/>
+      <field accessType='initializeOnly' type='SFVec3f' name='bboxSize'/>
+      <field accessType='initializeOnly' type='SFVec3f' name='bboxCenter'/>
+      <field accessType='inputOnly' type='MFNode' name='addChildren'/>
+      <field accessType='inputOnly' type='MFNode' name='removeChildren'/>
+      <field accessType='inputOutput' type='MFNode' name='children'/>
+    </ExternProtoDeclare>
+    <ExternProtoDeclare name='RoundedRectangle2D' url='"assets/RoundedRectangle2D.x3d#RoundedRectangle2D"'>
+      <field accessType='inputOutput' type='SFFloat' name='cornerRadius'/>
+      <field accessType='inputOutput' type='SFVec2f' name='size'/>
+      <field accessType='initializeOnly' type='SFBool' name='solid'/>
+    </ExternProtoDeclare>
+    <WorldInfo/>
+    <LayerSet
+        activeLayer='2'
+        order='0, 1, 2, 3'>
+      <Layer DEF='Background'
+          isPickable='false'>
+        <Background
+            skyAngle='1.09223, 1.5708'
+            skyColor='0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3'
+            groundAngle='1.1248, 1.5708'
+            groundColor='0.4 0.4 0.4, 0.4 0.4 0.4, 0.3 0.3 0.3'/>
+      </Layer>
+      <Layer DEF='Model'
+          isPickable='false'>
+        <Viewpoint
+            description='Inital View'
+            position='0 0 12.1899'/>
+        <Transform>
+          <Inline DEF='Beethoven'
+              url='"assets/beethoven.x3d"'/>
+        </Transform>
+      </Layer>
+      <Layer DEF='HUD'>
+        <ProtoInstance name='BooleanSwitch' DEF='_1'>
+          <fieldValue name='whichChoice' value='true'/>
+          <fieldValue name='children'>
+            <Transform DEF='RoundedRectangle2D'
+                translation='0 -3.55158 0'>
+              <Shape DEF='_2'>
+                <Appearance>
+                  <Material
+                      diffuseColor='0 0 0'/>
+                </Appearance>
+                <ProtoInstance name='RoundedRectangle2D' containerField='geometry'>
+                  <fieldValue name='size' value='0.7 0.4'/>
+                </ProtoInstance>
+              </Shape>
+              <Transform
+                  translation='-0.13 0 0'>
+                <Shape DEF='_3'>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.667 0.667 0.667'/>
+                  </Appearance>
+                  <Disk2D
+                      outerRadius='0.15'/>
+                </Shape>
+              </Transform>
+            </Transform>
+            <Transform DEF='RoundedRectangle2D_4'
+                translation='0 -3.55158 0'>
+              <Shape USE='_2'/>
+              <Transform
+                  translation='0.13 0 0'>
+                <Shape USE='_3'/>
+              </Transform>
+            </Transform>
+          </fieldValue>
+        </ProtoInstance>
+        <TouchSensor DEF='_5'
+            description='Toggle Load'/>
+        <BooleanTrigger DEF='_6'/>
+        <BooleanToggle DEF='_7'
+            toggle='true'/>
+      </Layer>
+    </LayerSet>
+    <ROUTE fromNode='_6' fromField='triggerTrue' toNode='_7' toField='set_boolean'/>
+    <ROUTE fromNode='_5' fromField='touchTime' toNode='_6' toField='set_triggerTime'/>
+    <ROUTE fromNode='_7' fromField='toggle_changed' toNode='Beethoven' toField='set_load'/>
+    <ROUTE fromNode='_7' fromField='toggle_changed' toNode='_1' toField='set_whichChoice'/>
+  </Scene>
+</X3D>

@@ -1,0 +1,537 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 12 Nov 2017 22:36:28 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.11, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsCurve/NurbsCurve.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sat, 26 Jan 2019 01:49:04 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Layout",
+          "@level": 1
+        },
+        {
+          "@name": "NURBS",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"AnimatedCurve",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOnly",
+                  "@type": "SFTime",
+                  "@name": "set_time"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFDouble",
+                  "@name": "speed",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFRotation",
+                  "@name": "rotation"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "material"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Transform":
+                  {
+                    "@DEF": "NurbsCurve",
+                    "-children": [
+                      { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "IS": {
+                                "connect": [
+                                  {
+                                    "@nodeField": "material",
+                                    "@protoField": "material"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "-geometry": { "NurbsCurve":
+                            {
+                              "@DEF": "_1",
+                              "-controlPoint": { "CoordinateDouble":
+                                {
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "rotation",
+                          "@protoField": "rotation"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "AnimatedCurveScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_time"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFDouble",
+                        "@name": "speed"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "geometry",
+                        "-children": [
+                          { "NurbsCurve":
+                            {
+                              "@USE": "_1"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\tpoints = [ ],",
+"\tfirstY = Math .random () * Math .PI,",
+"\tfirstZ = Math .random () * Math .PI;",
+"",
+"function initialize ()",
+"{",
+"\tfor (var x = -10; x <= 10; ++ x)",
+"\t\tpoints .push (new SFVec3d (x, 0, 0));",
+"",
+"\tset_time (0, 0);",
+"}",
+"",
+"function set_time (value, time)",
+"{",
+"\tvar controlPoint = geometry .controlPoint;",
+"",
+"\tfor (var i = 0, length = points .length; i < length; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\tp = points [i],",
+"\t\t\tx = p .x;",
+"",
+"\t\tp .y = Math .sin (x * (Math .sin (firstY + time * speed) * 0.3));",
+"\t\tp .z = Math .sin (x * (Math .sin (firstZ + time * speed) * 0.3));",
+"",
+"\t\tcontrolPoint .point [i] = p;",
+"\t}",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "set_time",
+                          "@protoField": "set_time"
+                        },
+                        {
+                          "@nodeField": "speed",
+                          "@protoField": "speed"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"MachineLearning",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFDouble",
+                  "@name": "speed",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "curves",
+                  "@value": 10
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFNode",
+                  "@name": "material"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Transform":
+                  {
+                    "@DEF": "_2"
+                  }
+                },
+                { "TimeSensor":
+                  {
+                    "@DEF": "_3",
+                    "@cycleInterval": 120,
+                    "@loop": true
+                  }
+                },
+                { "OrientationInterpolator":
+                  {
+                    "@DEF": "BoxRotationInterpolator",
+                    "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                    "@keyValue": [ 0, 0, 1, 0, -3.06559318185163e-18, 3.67320512848233e-06, -0.999999999993254, 1.5707963267949, 4.21656770439807e-15, 3.67320512426576e-06, -0.999999999993254, 3.14159253438725, -1.20024808346484e-13, -3.67320524850646e-06, 0.999999999993254, 1.57079638639955, 0, 0, 1, 0 ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "MachineLearningScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "group",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@USE": "_2"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFDouble",
+                        "@name": "speed"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "curves"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFNode",
+                        "@name": "material"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "timer",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@USE": "_3"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\teventsProcessed ();",
+"}",
+"",
+"function eventsProcessed ()",
+"{",
+"\tgroup .children .length = 0;",
+"",
+"\tfor (var i = 0; i < curves; ++ i)",
+"\t{",
+"\t\tvar curve = Browser .currentScene .createProto (\"AnimatedCurve\");",
+"",
+"\t\tcurve .speed    = speed;",
+"\t\tcurve .rotation = new SFRotation (Math .random () - 0.5,",
+"\t\t                                  Math .random () - 0.5,",
+"\t\t                                  Math .random () - 0.5,",
+"\t\t                                  Math .random () * Math .PI);",
+"",
+"\t\tif (material .length)",
+"\t\t\tcurve .material = material [Math .floor (material .length * Math .random ())];",
+"",
+"\t\tgroup .children .push (curve);",
+"\t\t",
+"\t\tBrowser .addRoute (timer, \"time\", curve, \"set_time\");",
+"\t}",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "speed",
+                          "@protoField": "speed"
+                        },
+                        {
+                          "@nodeField": "curves",
+                          "@protoField": "curves"
+                        },
+                        {
+                          "@nodeField": "material",
+                          "@protoField": "material"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_3",
+                    "@fromField": "fraction_changed",
+                    "@toNode": "BoxRotationInterpolator",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "BoxRotationInterpolator",
+                    "@fromField": "value_changed",
+                    "@toNode": "_2",
+                    "@toField": "rotation"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": 1,
+            "@order": [ 1, 2 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Curves",
+                  "@isPickable": false,
+                  "-children": [
+                    { "Background":
+                      {
+                        "@skyColor": [ 0.0980392, 0.0980392, 0.0980392 ]
+                      }
+                    },
+                    { "Viewpoint":
+                      {
+                        "@description": "Machine Learning",
+                        "@position": [ 0, 0, 20.3168 ]
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@name": "MachineLearning",
+                        "fieldValue": [
+                          {
+                            "@name": "speed",
+                            "@value": 0.5
+                          },
+                          {
+                            "@name": "curves",
+                            "@value": 40
+                          },
+                          {
+                            "@name": "material",
+                            "-children": [
+                              { "Material":
+                                {
+                                  "@DEF": "_4",
+                                  "@diffuseColor": [ 0, 0, 0 ],
+                                  "@emissiveColor": [ 0.268985, 0.140202, 0.722821 ]
+                                }
+                              },
+                              { "Material":
+                                {
+                                  "@DEF": "_5",
+                                  "@emissiveColor": [ 0.277986, 0.277986, 0.277986 ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "LayoutLayer":
+                {
+                  "@DEF": "MachineLearning",
+                  "@isPickable": false,
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Text",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "Heuristics" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "assets/BaskervilleOldFacDCD.otf" ],
+                                      "@size": 0.49,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_6",
+                        "@translation": [ 0, -0.417991, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "MACHINE LEARNING" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "assets/Canaro-LightDEMO.otf" ],
+                                      "@size": 0.11,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Rectangle2D",
+                        "@translation": [ 0, -0.417991, -1 ],
+                        "@scale": [ 0.71, 0.09, 1 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@USE": "_4"
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

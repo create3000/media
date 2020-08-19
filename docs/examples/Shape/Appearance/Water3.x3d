@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Shaders' level='1'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Wed, 03 Jan 2018 23:56:56 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.5.17, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shape/Appearance/Water3.x3d'/>
+    <meta name='modified' content='Fri, 18 Oct 2019 14:25:24 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Water3'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFFloat' name='amplitude' value='0.25'/>
+        <field accessType='inputOutput' type='SFFloat' name='frequency' value='0.8'/>
+        <field accessType='inputOutput' type='SFVec2f' name='velocity' value='0 1'/>
+        <field accessType='inputOutput' type='SFFloat' name='turbulence' value='0.5'/>
+        <field accessType='inputOutput' type='SFFloat' name='contrast' value='0.8'/>
+        <field accessType='inputOutput' type='SFFloat' name='skyIntensity' value='0.4'/>
+        <field accessType='inputOutput' type='SFColor' name='skyColor' value='0.35 0.35 0.4'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <ComposedShader DEF='WaterShader'
+            language='GLSL'>
+          <field accessType='inputOnly' type='SFTime' name='set_time'/>
+          <field accessType='inputOutput' type='SFFloat' name='amplitude'/>
+          <field accessType='inputOutput' type='SFFloat' name='frequency'/>
+          <field accessType='inputOutput' type='SFVec2f' name='velocity'/>
+          <field accessType='inputOutput' type='SFFloat' name='turbulence'/>
+          <field accessType='inputOutput' type='SFFloat' name='contrast'/>
+          <field accessType='inputOutput' type='SFFloat' name='skyIntensity'/>
+          <field accessType='inputOutput' type='SFColor' name='skyColor'/>
+          <IS>
+            <connect nodeField='amplitude' protoField='amplitude'/>
+            <connect nodeField='frequency' protoField='frequency'/>
+            <connect nodeField='velocity' protoField='velocity'/>
+            <connect nodeField='turbulence' protoField='turbulence'/>
+            <connect nodeField='contrast' protoField='contrast'/>
+            <connect nodeField='skyIntensity' protoField='skyIntensity'/>
+            <connect nodeField='skyColor' protoField='skyColor'/>
+          </IS>
+          <ShaderPart DEF='WaterVertex'>
+<![CDATA[data:x-shader/x-vertex,
+
+precision mediump float;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+uniform mat3 x3d_NormalMatrix;
+uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
+
+#define WAVE_MAX 8
+
+uniform float set_time;
+uniform float amplitude;
+uniform float frequency;
+uniform vec2  velocity;
+uniform float turbulence;
+
+attribute vec4 x3d_Color;
+attribute vec4 x3d_TexCoord;
+attribute vec3 x3d_Normal;
+attribute vec4 x3d_Vertex;
+
+varying vec2 p;
+varying vec4 C;  // color
+varying vec4 t;  // texCoord
+varying vec3 vN; // normalized normal vector at this point on geometry
+varying vec3 v;  // point on geometry
+
+float hash (in float n)
+{
+	return fract (sin (n) * 43758.5453123);
+}
+
+float nnoise (in vec2 x)
+{
+	vec2 p = floor (x);
+	vec2 f = fract (x);
+
+	f = f * f * (3.0 - 2.0 * f);
+
+	float n   = p.x + p.y * 57.0;
+	float res = mix (mix (hash (n +  0.0), hash (n +  1.0), f.x),
+	                 mix (hash (n + 57.0), hash (n + 58.0), f.x), f.y);
+
+	return res * 2.0 - 1.0;
+}
+
+float
+getWaveHeight (in vec2 xy)
+{
+	// Octave transform matrix from Alexander Alekseev aka TDM 
+	const mat2 octave_m = mat2 (1.8, 1.2, -1.2, 1.8);
+
+	float m = amplitude;
+	float w = m * 0.5;
+	float h = 0.0;
+
+	xy -= velocity * set_time;
+	xy *= frequency;
+
+	for (int i = 0; i < 6; i++)
+	{
+		h  += nnoise (xy    + set_time * turbulence) * m;
+		h  += nnoise (xy.yx - set_time * turbulence * 0.666) * w;
+		w  *= 0.5;
+		m  *= 0.25;
+		xy *= octave_m;
+	}
+
+	return h;
+}
+
+void
+main ()
+{
+	vec4 vertex = x3d_Vertex;
+	p           = vertex .xz;
+	vertex.xyz += x3d_Normal * getWaveHeight (vertex .xz);
+
+	vec4 mv = x3d_ModelViewMatrix * vertex;
+
+	vN = normalize (x3d_NormalMatrix * x3d_Normal);
+
+	t = x3d_TextureMatrix [0] * x3d_TexCoord;
+	C = x3d_Color;
+	v = mv .xyz;
+
+	gl_Position = x3d_ProjectionMatrix * mv;
+}]]>
+          </ShaderPart>
+          <ShaderPart DEF='WaterFragment'
+              type='FRAGMENT'>
+<![CDATA[data:x-shader/x-fragment,
+
+precision mediump float;
+
+uniform int x3d_GeometryType;
+uniform int x3d_NumClipPlanes;
+uniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];
+uniform x3d_FogParameters x3d_Fog;
+
+uniform float x3d_LinewidthScaleFactor;
+uniform bool  x3d_Lighting;      // true if a X3DMaterialNode is attached, otherwise false
+uniform bool  x3d_ColorMaterial; // true if a X3DColorNode is attached, otherwise false
+
+uniform int x3d_NumLights;
+uniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];
+uniform bool x3d_SeparateBackColor;
+uniform x3d_MaterialParameters x3d_FrontMaterial;
+uniform x3d_MaterialParameters x3d_BackMaterial;
+
+uniform int         x3d_TextureType [x3d_MaxTextures];
+uniform sampler2D   x3d_Texture2D [x3d_MaxTextures];
+uniform samplerCube x3d_CubeMapTexture [x3d_MaxTextures];
+
+uniform mat3  x3d_NormalMatrix;
+
+uniform float set_time;
+uniform float amplitude;
+uniform float frequency;
+uniform vec2  velocity;
+uniform float turbulence;
+uniform float contrast; // range [0,1]
+uniform float skyIntensity;
+uniform vec3  skyColor;
+
+varying vec2 p;
+varying vec4 C;  // color
+varying vec4 t;  // texCoord
+varying vec3 vN; // normalized normal vector at this point on geometry
+varying vec3 v;  // point on geometry
+
+const int MAX_WAVES = 6;
+
+float hash (in float n)
+{
+	return fract (sin (n) * 43758.5453123);
+}
+
+float nnoise (in vec2 x)
+{
+	vec2 p = floor (x);
+	vec2 f = fract (x);
+
+	f = f * f * (3.0 - 2.0 * f);
+
+	float n   = p.x + p.y * 57.0;
+	float res = mix (mix (hash (n +  0.0), hash (n +  1.0), f.x),
+	                 mix (hash (n + 57.0), hash (n + 58.0), f.x), f.y);
+
+	return res * 2.0 - 1.0;
+}
+
+float
+getWaveHeight (in vec2 xy)
+{
+	// Octave transform matrix from Alexander Alekseev aka TDM 
+	const mat2 octave_m = mat2 (1.8, 1.2, -1.2, 1.8);
+
+	float m = amplitude;
+	float w = m * 0.5;
+	float h = 0.0;
+
+	xy -= velocity * set_time;
+	xy *= frequency;
+
+	for (int i = 0; i < MAX_WAVES; i++)
+	{
+		h  += nnoise (xy    + set_time * turbulence) * m;
+		h  += nnoise (xy.yx - set_time * turbulence * 0.666) * w;
+		w  *= 0.5;
+		m  *= 0.25;
+		xy *= octave_m;
+	}
+
+	return h;
+}
+
+vec3
+getWaveNormal (in vec2 pos)
+{
+	const float DISTANCE_MIN = 0.001;
+	const vec2  delta        = vec2 (DISTANCE_MIN, -DISTANCE_MIN);
+
+	vec2 p1 = pos + delta .xx;
+	vec2 p2 = pos + delta .yy;
+	vec2 p3 = pos + delta .yx;
+	vec2 p4 = pos + delta .xy;
+
+	vec3 n1 = vec3 (p1.x, getWaveHeight (p1), p1.y);
+	vec3 n2 = vec3 (p2.x, getWaveHeight (p2), p2.y);
+	vec3 n3 = vec3 (p3.x, getWaveHeight (p3), p3.y);
+	vec3 n4 = vec3 (p4.x, getWaveHeight (p4), p4.y);
+   
+   vec3 n = cross (n3 - n4, n1 - n2);
+   
+   return normalize (n);
+}
+
+void
+clip ()
+{
+	for (int i = 0; i < x3d_MaxClipPlanes; ++ i)
+	{
+		if (i == x3d_NumClipPlanes)
+			break;
+
+		if (dot (v, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)
+			discard;
+	}
+}
+
+float
+getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
+{
+	float spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));
+	
+	if (spotAngle >= cutOffAngle)
+		return 0.0;
+	else if (spotAngle <= beamWidth)
+		return 1.0;
+
+	return (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);
+}
+
+vec3
+getSkyColor (in vec3 rd, in vec3 lightDirection)
+{
+	float sunAmount = max (dot (rd, lightDirection), 0.0);
+	float v         = pow (1.0 - max (rd .y, 0.0), 6.0);
+	vec3  color     = mix (skyColor * skyIntensity, skyColor, v);
+
+	color += sunAmount * sunAmount * 0.25;
+	color += min (pow (sunAmount, 800.0) * 1.5, 0.3);
+
+	return clamp (color, 0.0, 1.0);
+}
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+
+vec4
+getMaterialColor (in x3d_MaterialParameters material)
+{
+	// If amplitude factors are 0.5 and 0.25 then AMPLITUDE_MAX is:
+	float AMPLITUDE_MAX = amplitude * 4.0 / 3.0;
+
+	float y  = getWaveHeight (p);
+	vec3  Nw = x3d_NormalMatrix * getWaveNormal (p);
+	
+	if (x3d_Lighting)
+	{
+		vec3  N  = normalize ((gl_FrontFacing ? vN : -vN) + Nw);
+		vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
+		float dV = length (v);
+
+		// Calculate diffuseFactor & alpha
+
+		vec3  diffuseColor = material .diffuseColor;
+		float alpha        = 1.0 - material .transparency;
+
+		if (x3d_ColorMaterial)
+		{
+			diffuseColor = C .rgb;
+			alpha       *= C .a;
+		}
+
+		float fresnel     = 0.0;
+		bool  reflections = true;
+
+		if (reflections)
+		{
+			fresnel  = pow (1.0 - dot (V, N), 5.0);
+			fresnel  = mix (0.0, 1.0, min (1.0, fresnel));
+			//fresnel *= max (0.0, dot (N, yUp));
+		}
+		
+		vec3 ambientTerm = diffuseColor * material .ambientIntensity;
+
+		// Apply light sources
+
+		vec3 finalColor = vec3 (0.0, 0.0, 0.0);
+
+		for (int i = 0; i < x3d_MaxLights; ++ i)
+		{
+			if (i == x3d_NumLights)
+				break;
+
+			x3d_LightSourceParameters light = x3d_LightSource [i];
+
+			vec3  vL = light .location - v;
+			float dL = length (vL);
+			bool  di = light .type == x3d_DirectionalLight;
+
+			if (di || dL <= light .radius)
+			{
+				vec3 d = light .direction;
+				vec3 c = light .attenuation;
+				vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
+				vec3 H = normalize (L + V);             // Specular term
+
+				float lightAngle     = max (0.0, dot (N, L));
+				float specularFactor = material .shininess > 0.0 ? pow (max (0.0, dot (H, N)), material .shininess * 4096.0) * 128.0 : 1.0;
+				vec3  ambientColor   = light .ambientIntensity * ambientTerm;
+
+				vec3 waterColor = clamp ((specularFactor * lightAngle * (1.0 - fresnel)) * material .specularColor, 0.0, 1.0);
+
+				if (fresnel > 0.0)
+				{
+					waterColor += getSkyColor (reflect (-V, N), L) * fresnel;
+				}
+
+				// Normalized height between (0,1)
+				float height = (y + AMPLITUDE_MAX) / (AMPLITUDE_MAX * 2.0);
+
+				waterColor += diffuseColor * (1.0 - (1.0 - height) * contrast);
+				waterColor *= light .color;
+				waterColor += ambientColor;
+ 				waterColor *= light .intensity;
+ 
+  				finalColor += waterColor;
+  			}
+		}
+
+		finalColor += material .emissiveColor;
+
+		return vec4 (finalColor, alpha);
+	}
+	else
+	{
+		vec4 finalColor = vec4 (1.0, 1.0, 1.0, 1.0);
+	
+		if (x3d_ColorMaterial)
+		{
+			finalColor = C;
+		}
+
+		return finalColor;
+	}
+}
+
+vec3
+getFogColor (in vec3 color)
+{
+	if (x3d_Fog .type == x3d_None)
+		return color;
+
+	float dV = length (v);
+
+	if (dV >= x3d_Fog .visibilityRange)
+		return x3d_Fog .color;
+
+	if (x3d_Fog .type == x3d_LinearFog)
+		return mix (x3d_Fog .color, color, (x3d_Fog .visibilityRange - dV) / x3d_Fog .visibilityRange);
+
+	if (x3d_Fog .type == x3d_ExponentialFog)
+		return mix (x3d_Fog .color, color, exp (-dV / (x3d_Fog .visibilityRange - dV)));
+
+	return color;
+}
+
+void
+main ()
+{
+	clip ();
+ 
+	bool frontColor = gl_FrontFacing || ! x3d_SeparateBackColor;
+
+	gl_FragColor = frontColor ? getMaterialColor (x3d_FrontMaterial) : getMaterialColor (x3d_BackMaterial);
+
+	gl_FragColor .rgb = getFogColor (gl_FragColor .rgb);
+}
+]]>
+          </ShaderPart>
+        </ComposedShader>
+        <TimeSensor DEF='Timer'
+            cycleInterval='31104000'
+            loop='true'/>
+        <ROUTE fromNode='Timer' fromField='elapsedTime' toNode='WaterShader' toField='set_time'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_1' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='true'/>
+        </MetadataSet>
+        <MetadataSet DEF='NavigationInfo' containerField='value'
+            name='NavigationInfo'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='type' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"EXAMINE"'/>
+        </MetadataSet>
+        <MetadataSet DEF='Viewpoint' containerField='value'
+            name='Viewpoint'
+            reference='http://titania.create3000.de'>
+          <MetadataDouble DEF='position' containerField='value'
+              name='position'
+              reference='http://titania.create3000.de'
+              value='5.87788544764696, 6.46984938591101, 13.8524443931466'/>
+          <MetadataDouble DEF='orientation' containerField='value'
+              name='orientation'
+              reference='http://titania.create3000.de'
+              value='-0.704047462871212, 0.695566762376517, 0.143192350010952, 0.568941727555854'/>
+          <MetadataDouble DEF='centerOfRotation' containerField='value'
+              name='centerOfRotation'
+              reference='http://titania.create3000.de'
+              value='-1.77635683940025e-15, -7.105427357601e-15, 3.5527136788005e-15'/>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <!-- NULL -->
+          </MetadataSet>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+  </Scene>
+</X3D>

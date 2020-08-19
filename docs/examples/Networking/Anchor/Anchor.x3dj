@@ -1,0 +1,896 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Wed, 29 Nov 2017 00:17:07 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.11, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/Anchor/Anchor.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 27 Jan 2019 14:58:01 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "NONE" ],
+            "@headlight": false
+          }
+        },
+        { "Viewpoint":
+          {
+            "@position": [ 6.40135, -5.22835, 10.7282 ],
+            "@orientation": [ 0.585763446404589, 0.769642002403876, -0.254032228254545, 0.683950257164812 ],
+            "@centerOfRotation": [ -0.439189, 1.02694, -1.19944 ]
+          }
+        },
+        { "Background":
+          {
+            "@DEF": "White",
+            "@skyColor": [ 1, 1, 1 ]
+          }
+        },
+        { "DirectionalLight":
+          {
+            "@ambientIntensity": 0.835991,
+            "@direction": [ -0.584419, 0.286636, -0.75914 ]
+          }
+        },
+        { "Anchor":
+          {
+            "@description": "http://create3000.de",
+            "@url": [ "http://create3000.de" ],
+            "-children": [
+              { "Transform":
+                {
+                  "-children": [
+                    { "Group":
+                      {
+                        "@DEF": "Animation",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@DEF": "AnimationTimer",
+                              "@cycleInterval": 12,
+                              "@loop": true
+                            }
+                          },
+                          { "OrientationInterpolator":
+                            {
+                              "@DEF": "BoxRotationInterpolator",
+                              "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                              "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.14159253438051, 0, 1, 0, 1.57079644600419, 0, 0, 1, 0 ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_1",
+                        "@translation": [ -2.99785, 2.99073, -2.72545 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@DEF": "_2",
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0.399038,
+                                      "@diffuseColor": [ 0.841, 0.841, 0.841 ]
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@DEF": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box",
+                        "@translation": [ 2, -1.44128, 2 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_4",
+                        "@translation": [ 2, 0.768636, 2 ],
+                        "@scale": [ 0.807819, 0.807819, 0.807819 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_5",
+                        "@translation": [ 2.34642, 3.12524, 2.68216 ],
+                        "@rotation": [ 0, -1, 0, 4.29460642224273 ],
+                        "@scale": [ 0.964652, 0.964652, 0.964652 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@DEF": "_6",
+                                  "-material": { "Material":
+                                    {
+                                      "@DEF": "Rococo24",
+                                      "@ambientIntensity": 0.226102,
+                                      "@diffuseColor": [ 0.28636, 0.554905, 0.904409 ],
+                                      "@specularColor": [ 0.0955906, 0.0955906, 0.0955906 ],
+                                      "@shininess": 0.078125
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_7",
+                        "@translation": [ -0.986631, -2.00014, 2 ],
+                        "@rotation": [ 0, -1, 0, 4.29460642224273 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_8",
+                        "@translation": [ -0.586669, 0.638275, 2 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_9",
+                        "@translation": [ -0.586669, 2.99471, 2 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_10",
+                        "@translation": [ -3.21626, 0.638275, 2 ],
+                        "@scale": [ 0.784474, 0.784474, 0.784474 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_11",
+                        "@translation": [ -3.71573, -2.57139, 2 ],
+                        "@scale": [ 1.10679, 1.10679, 1.10679 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_12",
+                        "@translation": [ -5.77882, 2.27115, 2 ],
+                        "@scale": [ 0.359812, 0.359812, 0.359812 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_13",
+                        "@translation": [ -3.19692, 4.00116, 2 ],
+                        "@rotation": [ 0, -1, 0, 4.29460642224273 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_14",
+                        "@translation": [ 2, 0.868302, -0.343802 ],
+                        "@scale": [ 0.807819, 0.807819, 0.807819 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_15",
+                        "@translation": [ 2, 3.04236, -0.061313 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_16",
+                        "@translation": [ 2, -1.41035, -0.602299 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_17",
+                        "@translation": [ 2, -2.09482, -3.84417 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_18",
+                        "@translation": [ 2.68853, 0.718106, -3.37328 ],
+                        "@rotation": [ 0, -1, 0, 4.29460642224273 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_19",
+                        "@translation": [ 3.90262, 3.48009, -3.06294 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_20",
+                        "@translation": [ 5.12978, 2.8284, -6.33901 ],
+                        "@scale": [ 0.617149, 0.617149, 0.617149 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_21",
+                        "@translation": [ -0.622955, -1.41035, -0.510004 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_22",
+                        "@translation": [ -3.13922, -1.41035, -0.339588 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_23",
+                        "@translation": [ -0.491561, -2.23364, -3.04673 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_24",
+                        "@translation": [ -3.4317, -3.15799, -2.92382 ],
+                        "@scale": [ 0.993173, 0.993173, 0.993173 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_25",
+                        "@translation": [ -0.586669, 0.638275, -0.363712 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_26",
+                        "@translation": [ -3.02648, 0.847233, -0.363712 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_27",
+                        "@translation": [ -3.07204, 3.2154, -0.363712 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_28",
+                        "@translation": [ -0.538259, 2.98689, -0.363712 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_29",
+                        "@translation": [ -0.387514, 0.758733, -2.72545 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_30",
+                        "@translation": [ -2.67964, 0.848522, -2.72545 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_31",
+                        "@translation": [ 1.7054, 3.25344, -2.72545 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Box_32",
+                        "@translation": [ -0.490449, 3.01681, -2.72545 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "-geometry": { "Box":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Shadow",
+            "@translation": [ -0.256602, -5.83826, -0.184634 ],
+            "@rotation": [ -0.996032255435311, 0.0874932528469986, -0.0162688917476778, 1.43117953405799 ],
+            "@scale": [ 4.20884, 4.20883, 4.20883 ],
+            "@scaleOrientation": [ 0.995956787652368, -0.0489210736244371, -0.075344579663095, 0.443933961013422 ],
+            "@center": [ 0, 0, -0.27296 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                        }
+                      },
+                      "-texture": { "ImageTexture":
+                        {
+                          "@url": [ "assets/glow.png" ],
+                          "@repeatS": false,
+                          "@repeatT": false
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Rectangle2D":
+                    {
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxRotationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxRotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Box_13",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxRotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Box_5",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxRotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Box_7",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxRotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Box_18",
+            "@toField": "rotation"
+          }
+        }
+      ]
+    }
+  }
+}

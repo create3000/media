@@ -1,0 +1,284 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 03 Dec 2017 04:29:28 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.0.2, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Layering/Viewport/Viewport.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 03 Dec 2017 05:32:31 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Layout",
+          "@level": 1
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 2
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@order": [ 1, 2, 3, 4 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Background",
+                  "@isPickable": false,
+                  "-children": [
+                    { "Background":
+                      {
+                        "@DEF": "White",
+                        "@skyColor": [ 1, 1, 1 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "LayoutLayer":
+                {
+                  "@DEF": "Stars",
+                  "@isPickable": false,
+                  "-layout": { "Layout":
+                    {
+                    }
+                  },
+                  "-viewport": { "Viewport":
+                    {
+                      "@DEF": "_1",
+                      "@clipBoundary": [ 0, 1, 0.177, 0.822 ]
+                    }
+                  },
+                  "-children": [
+                    { "Background":
+                      {
+                        "@DEF": "Gray_2",
+                        "@skyColor": [ 0.2, 0.2, 0.2 ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "stars",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "stars.png" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 1, 1 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "Particles",
+                  "@isPickable": false,
+                  "-viewport": { "Viewport":
+                    {
+                      "@USE": "_1"
+                    }
+                  },
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Surface",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@transparency": 1
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "IndexedFaceSet":
+                                {
+                                  "@DEF": "_3",
+                                  "@coordIndex": [ 3, 2, 1, 0, -1 ],
+                                  "-coord": { "Coordinate":
+                                    {
+                                      "@point": [ -13.4377, 2.82143, 5.06955, 13.4373, 2.82144, 5.06957, 13.4378, 2.82144, -20.9484, -13.4371, 2.82143, -20.9484 ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "ParticleSystem":
+                      {
+                        "@maxParticles": 50,
+                        "@particleLifetime": 10,
+                        "@particleSize": [ 0.2, 0.2 ],
+                        "-emitter": { "SurfaceEmitter":
+                          {
+                            "@speed": 0.5,
+                            "-surface": { "IndexedFaceSet":
+                              {
+                                "@USE": "_3"
+                              }
+                            }
+                          }
+                        },
+                        "-appearance": { "Appearance":
+                          {
+                            "-texture": { "ImageTexture":
+                              {
+                                "@url": [ "star.png" ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "LayoutLayer":
+                {
+                  "@isPickable": false,
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Text",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "CREATE MORE PARTICLES" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "Sari-Light.otf" ],
+                                      "@size": 0.2,
+                                      "@justify": [ "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_4",
+                        "@translation": [ 0, -0.269567, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "WITH X_ITE" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "Sari-Medium.otf" ],
+                                      "@size": 0.24,
+                                      "@justify": [ "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

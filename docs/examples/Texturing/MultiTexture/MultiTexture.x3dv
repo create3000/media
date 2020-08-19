@@ -1,0 +1,73 @@
+#X3D V3.3 utf8 Titania V4.5.0
+
+PROFILE Immersive
+
+COMPONENT Grouping : 3
+COMPONENT Interpolation : 4
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.4.5, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/MultiTexture/MultiTexture.O.x3d"
+META "modified" "Mon, 08 Apr 2019 07:16:10 GMT"
+
+WorldInfo {
+}
+
+Viewpoint {
+  description "Initial view"
+  position 0.49109 1.41768 2.71072
+  orientation -0.934257914612686 0.346576766379408 0.0839445888044477 0.507339465295549
+}
+
+DEF Sphere Transform {
+  children [
+    DEF Animation Group {
+      children [
+        DEF AnimationTimer TimeSensor {
+          cycleInterval 120
+          loop TRUE
+        }
+        DEF TranslationInterpolator PositionInterpolator2D {
+          key [ 0, 1 ]
+          keyValue [ 0 0, 1 0 ]
+        }
+      ]
+    }
+    Shape {
+      appearance Appearance {
+        material Material { }
+        texture MultiTexture {
+          mode [ "MODULATE", "BLENDTEXTUREALPHA" ]
+          texture [
+            ImageTexture {
+              url "assets/earht-map-download-earht-map.jpg"
+            }
+            ImageTexture {
+              url "assets/cloud_combined_2048.png"
+            }
+          ]
+        }
+        textureTransform MultiTextureTransform {
+          textureTransform [
+            TextureTransform { }
+            DEF _1 TextureTransform {
+              translation 0.148662 0
+            }
+          ]
+        }
+      }
+      geometry Sphere { }
+    }
+  ]
+}
+
+DEF Starfield Inline {
+  url "assets/starfield.x3d"
+}
+
+ROUTE AnimationTimer.fraction_changed TO TranslationInterpolator.set_fraction
+ROUTE TranslationInterpolator.value_changed TO _1.set_translation

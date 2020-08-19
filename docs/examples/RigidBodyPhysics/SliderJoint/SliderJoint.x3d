@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Grouping' level='3'/>
+    <component name='RigidBodyPhysics' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='1 January 2008'/>
+    <meta name='creator' content='Alan Hudson and Justin Couch'/>
+    <meta name='description' content='Example scene for RigidBodyPhysics component'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/SliderJoint/SliderJoint.O.x3d'/>
+    <meta name='license' content='../license.html'/>
+    <meta name='modified' content='Sun, 27 Jan 2019 15:45:23 GMT'/>
+    <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
+    <meta name='reference' content='originals/ball_bounce.x3dv'/>
+    <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
+    <meta name='titania-add-metadata' content='true'/>
+    <meta name='title' content='BallBounce.x3d'/>
+    <meta name='translated' content='26 December 2008'/>
+    <meta name='translator' content='Don Brutzman'/>
+    <meta name='warning' content='under development'/>
+  </head>
+  <Scene>
+    <WorldInfo
+        title='Ball'/>
+    <Background
+        skyAngle='90.0002'
+        skyColor='0.023 0.023 0.023, 0.123 0.123 0.123'
+        groundAngle='90.0002'
+        groundColor='0.644 0.644 0.644, 0.123 0.123 0.123'/>
+    <NavigationInfo
+        headlight='false'/>
+    <Viewpoint
+        position='2.46309 5.44813 9.72668'
+        orientation='-0.914618339329749 0.398729811394972 0.0669912745558828 35.4957658037145'
+        centerOfRotation='-0.0471507 -0.664379 0.433086'/>
+    <DirectionalLight
+        direction='-0.333952 -0.752192 -0.568052'/>
+    <Group DEF='Ground_1'>
+      <Group DEF='Animation'>
+        <TimeSensor DEF='AnimationTimer'
+            cycleInterval='30'
+            loop='true'/>
+        <OrientationInterpolator DEF='SliderRotationInterpolator'
+            key='0, 0.25, 0.75, 1'
+            keyValue='0 0 1 0, 0 0 1 18, 0 0 1 342, 0 0 1 0'/>
+      </Group>
+      <CollidableShape DEF='Ground'>
+        <Shape containerField='shape'>
+          <Appearance>
+            <Material DEF='Neon12'
+                ambientIntensity='0.341463'
+                diffuseColor='0.248138 0.248138 0.248138'
+                specularColor='0.661 0.661 0.661'
+                shininess='0.0284553'/>
+          </Appearance>
+          <IndexedFaceSet
+              colorPerVertex='false'
+              colorIndex='0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 2, 1, 4, 2, 0, 1, 0, 0, 4, 2, 4, 3, 4, 2, 4, 0, 1, 0, 0, 3, 4, 2, 2, 1, 1, 0, 0, 0, 4, 4, 2, 4, 4, 2, 3, 0, 1, 0, 3, 0, 2, 1, 5, 3, 4, 5, 3, 0, 2, 1, 5, 3, 4, 5, 3, 0, 1, 2, 5, 3, 4, 5, 3, 0, 2, 1, 5, 3, 4, 5, 3, 0, 3, 3, 6, 3, 3, 6, 6, 3, 3, 3, 3, 6, 3, 3, 6, 6, 3, 3, 3, 3'
+              coordIndex='4, 0, 7, -1, 7, 0, 3, -1, 0, 4, 5, -1, 1, 0, 5, -1, 4, 7, 5, -1, 5, 7, 6, -1, 13, 15, 6, -1, 12, 3, 2, -1, 7, 3, 12, -1, 14, 12, 2, -1, 7, 12, 13, -1, 7, 13, 6, -1, 6, 15, 2, -1, 15, 14, 2, -1, 3, 0, 1, -1, 2, 3, 1, -1, 1, 5, 6, -1, 2, 1, 6, -1, 13, 12, 8, -1, 14, 9, 12, -1, 14, 15, 9, -1, 11, 15, 13, -1, 37, 24, 36, 38, -1, 38, 35, 10, 37, -1, 38, 36, 32, 39, -1, 39, 31, 35, 38, -1, 41, 31, 39, 42, -1, 43, 25, 40, 42, -1, 47, 45, 44, 46, -1, 47, 40, 25, 48, -1, 45, 22, 49, -1, 50, 44, 45, 49, -1, 49, 11, 50, -1, 10, 35, 31, 41, 16, 46, 44, 50, 11, 13, -1, 49, 22, 52, -1, 49, 52, 51, 53, -1, 53, 11, 49, -1, 56, 54, 51, 52, -1, 56, 55, 27, 57, -1, 57, 27, 59, 60, -1, 61, 28, 58, 60, -1, 9, 15, 11, 53, 51, 54, 26, 58, 28, 62, -1, 61, 29, 63, 64, -1, 64, 62, 28, 61, -1, 64, 63, 21, 65, -1, 65, 9, 62, 64, -1, 67, 30, 66, 68, -1, 69, 21, 63, 68, -1, 72, 66, 30, 71, -1, 72, 70, 19, 73, -1, 70, 20, 74, -1, 74, 20, 75, -1, 74, 75, 34, 76, -1, 76, 8, 74, -1, 74, 8, 77, -1, 77, 19, 70, 74, -1, 12, 9, 65, 21, 69, 18, 73, 19, 77, 8, -1, 79, 34, 75, 80, -1, 81, 33, 78, 80, -1, 82, 36, 24, 83, -1, 10, 13, 8, 76, 34, 79, 23, 83, 24, 37, -1, 82, 78, 33, 84, -1, 23, 78, 82, -1, 82, 83, 23, -1, 82, 84, 32, -1, 32, 36, 82, -1, 32, 43, 42, -1, 42, 39, 32, -1, 42, 40, 16, -1, 16, 41, 42, -1, 16, 40, 47, -1, 47, 46, 16, -1, 47, 48, 22, -1, 22, 45, 47, -1, 22, 55, 56, -1, 56, 52, 22, -1, 56, 57, 26, -1, 26, 54, 56, -1, 60, 58, 26, -1, 26, 57, 60, -1, 60, 59, 29, -1, 29, 61, 60, -1, 29, 67, 68, -1, 68, 63, 29, -1, 68, 66, 18, -1, 18, 69, 68, -1, 18, 66, 72, -1, 72, 73, 18, -1, 72, 71, 20, -1, 20, 70, 72, -1, 20, 81, 80, -1, 80, 75, 20, -1, 80, 78, 23, -1, 23, 79, 80, -1, 84, 33, 85, 86, -1, 86, 43, 32, 84, -1, 86, 85, 17, 87, -1, 87, 25, 43, 86, -1, 88, 22, 48, -1, 88, 17, 89, -1, 87, 17, 88, -1, 88, 48, 25, 87, -1, 88, 89, 27, 55, -1, 55, 22, 88, -1, 90, 30, 67, 91, -1, 91, 89, 17, 90, -1, 91, 67, 29, 59, -1, 59, 27, 89, 91, -1, 90, 17, 92, -1, 92, 17, 85, -1, 92, 20, 71, -1, 71, 30, 90, 92, -1, 92, 85, 33, 81, -1, 81, 20, 92, -1'>
+            <Color
+                color='0 0.0459959 0.23655, 0.0511095 0.264606 0.0474285, 0.656431 0.0622891 0, 0.738038 0.719921 0.0767697, 0.322153 0.139703 0.306288, 0.0490115 0.226119 0.234974, 0 0 0'/>
+            <Coordinate
+                point='-5 -0.51 5, 5 -0.51 5, 5 0.51 5, -5 0.51 5, -5 -0.51 -5, 5 -0.51 -5, 5 0.51 -5, -5 0.51 -5, -4 0.0180644 4, 4 0.0180644 4, -4 0.0180644 -4, 4 0.0180644 -4, -4 0.51 4, -4 0.51 -4, 4 0.51 4, 4 0.51 -4, 0 0.0180644 -4, 0 0.0180644 0, 0 0.0180644 4, -2 0.0180644 4, -2 0.0180644 2, 2 0.0180644 4, 2 0.0180644 -2, -4 0.0180644 0, -4 0.0180644 -2, 0 0.0180644 -2, 4 0.0180644 0, 2 0.0180644 0, 4 0.0180644 2, 2 0.0180644 2, 0 0.0180644 2, -2 0.0180644 -4, -2 0.0180644 -2, -2 0.0180644 0, -4 0.0180644 2, -3 0.0180644 -4, -3 0.0180644 -2, -4 0.0180644 -3, -3 0.0180644 -3, -2 0.0180644 -3, 0 0.0180644 -3, -1 0.0180644 -4, -1 0.0180644 -3, -1 0.0180644 -2, 2 0.0180644 -4, 2 0.0180644 -3, 1 0.0180644 -4, 1 0.0180644 -3, 1 0.0180644 -2, 3 0.0180644 -3, 3 0.0180644 -4, 4 0.0180644 -2, 3 0.0180644 -2, 4 0.0180644 -3, 4 0.0180644 -1, 2 0.0180644 -1, 3 0.0180644 -1, 3 0.0180644 0, 4 0.0180644 1, 2 0.0180644 1, 3 0.0180644 1, 3 0.0180644 2, 4 0.0180644 3, 2 0.0180644 3, 3 0.0180644 3, 3 0.0180644 4, 0 0.0180644 3, 1 0.0180644 2, 1 0.0180644 3, 1 0.0180644 4, -2 0.0180644 3, -1 0.0180644 2, -1 0.0180644 3, -1 0.0180644 4, -3 0.0180644 3, -3 0.0180644 2, -4 0.0180644 3, -3 0.0180644 4, -3 0.0180644 0, -4 0.0180644 1, -3 0.0180644 1, -2 0.0180644 1, -3 0.0180644 -1, -4 0.0180644 -1, -2 0.0180644 -1, -1 0.0180644 0, -1 0.0180644 -1, 0 0.0180644 -1, 1 0.0180644 -1, 1 0.0180644 0, 0 0.0180644 1, 1 0.0180644 1, -1 0.0180644 1'/>
+          </IndexedFaceSet>
+        </Shape>
+      </CollidableShape>
+      <CollidableShape DEF='Slider'
+          translation='0 1 0'>
+        <Shape containerField='shape'>
+          <Appearance>
+            <Material
+                diffuseColor='0.129412 0.129412 0.129412'/>
+          </Appearance>
+          <Box
+              size='6 0.5 0.5'/>
+        </Shape>
+      </CollidableShape>
+      <CollidableShape DEF='Box_2'
+          translation='0 1 0'>
+        <Shape containerField='shape'>
+          <Appearance>
+            <Material/>
+          </Appearance>
+          <IndexedFaceSet
+              colorPerVertex='false'
+              colorIndex='0, 0, 2, 2, 1, 1'
+              texCoordIndex='0, 1, 2, 3, -1, 0, 1, 2, 3, -1, 0, 1, 2, 3, -1, 0, 1, 2, 3, -1, 0, 1, 2, 3, -1, 0, 1, 2, 3, -1'
+              coordIndex='0, 1, 2, 3, -1, 5, 4, 7, 6, -1, 3, 2, 6, 7, -1, 4, 5, 1, 0, -1, 4, 0, 3, 7, -1, 1, 5, 6, 2, -1'>
+            <Color
+                color='0.188235 0.223529 0.368627, 0.662745 0.215686 0.168627, 0.172549 0.333333 0.168627'/>
+            <TextureCoordinate
+                point='0 0, 1 0, 1 1, 0 1'/>
+            <Coordinate
+                point='-0.5 -0.5 0.5, 0.5 -0.5 0.5, 0.5 0.5 0.5, -0.5 0.5 0.5, -0.5 -0.5 -0.5, 0.5 -0.5 -0.5, 0.5 0.5 -0.5, -0.5 0.5 -0.5'/>
+          </IndexedFaceSet>
+        </Shape>
+      </CollidableShape>
+    </Group>
+    <RigidBodyCollection DEF='_3'>
+      <RigidBody DEF='Ground_4'
+          fixed='true'>
+        <CollidableShape USE='Ground' containerField='geometry'/>
+      </RigidBody>
+      <RigidBody DEF='Slider_5'
+          fixed='true'
+          position='0 1 0'>
+        <CollidableShape USE='Slider' containerField='geometry'/>
+      </RigidBody>
+      <RigidBody DEF='Box_6'
+          position='0 1 0'>
+        <CollidableShape USE='Box_2' containerField='geometry'/>
+      </RigidBody>
+      <SliderJoint
+          axis='1 0 0'
+          minSeparation='-1.5'
+          maxSeparation='1.5'>
+        <RigidBody USE='Slider_5' containerField='body1'/>
+        <RigidBody USE='Box_6' containerField='body2'/>
+      </SliderJoint>
+    </RigidBodyCollection>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='SliderRotationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='SliderRotationInterpolator' fromField='value_changed' toNode='Slider' toField='set_rotation'/>
+  </Scene>
+</X3D>

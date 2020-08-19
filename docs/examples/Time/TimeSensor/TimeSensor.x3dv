@@ -1,0 +1,214 @@
+#X3D V3.3 utf8 Titania V4.5.7
+
+PROFILE Immersive
+
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Fri, 21 Dec 2018 04:34:14 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d"
+META "modified" "Mon, 07 Jan 2019 04:02:09 GMT"
+
+EXTERNPROTO ArcOpen2D [
+  inputOutput    SFInt32 dimension
+  inputOutput    SFFloat startAngle
+  inputOutput    SFFloat endAngle
+  inputOutput    SFFloat innerRadius
+  inputOutput    SFFloat outerRadius
+  initializeOnly SFBool  solid
+]
+[ "assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D" ]
+
+WorldInfo {
+}
+
+NavigationInfo {
+  type "NONE"
+}
+
+Viewpoint {
+  position 0 0 34.142
+}
+
+DEF _1 TimeSensor {
+  loop TRUE
+}
+
+DEF ClockScript Script {
+  inputOnly  SFTime   set_time
+  outputOnly SFFloat  seconds_changed
+  outputOnly SFFloat  minutes_changed
+  outputOnly SFFloat  hours_changed
+  outputOnly MFString string_changed
+
+  url "ecmascript:
+
+var
+	zero   = Math .PI / 2,
+	offset = new Date () .getTimezoneOffset () * 60;
+
+function set_time (value, time)
+{
+	value = Math .floor (value) - offset;
+
+	var
+		seconds = (value % 60)    / 60,
+		minutes = (value % 3600)  / 3600,
+		hours12 = (value % 43200) / 43200,
+		hours24 = (value % 86400) / 86400;
+
+	seconds_changed = zero - seconds * Math .PI * 2;
+	minutes_changed = zero - minutes * Math .PI * 2;
+	hours_changed   = zero - hours12 * Math .PI * 2;
+	
+	string_changed [0] = fill (hours24 * 24) + \":\" + fill (minutes * 60) + \":\" + fill (seconds * 60);
+}
+
+function fill (value)
+{
+	value = Math .floor (value);
+
+	if (value < 10)
+		return \"0\" + value;
+		
+	return value .toString ();
+}
+"
+}
+
+DEF Clock Group {
+  children [
+    DEF Seconds_2 Shape {
+      appearance DEF _3 Appearance {
+        material Material {
+          diffuseColor 0 0 0
+          emissiveColor 0 1 0.995191
+        }
+      }
+      geometry DEF _4 ArcOpen2D {
+        dimension 64
+        startAngle 0.733038
+        innerRadius 9
+        outerRadius 10
+        solid TRUE
+      }
+    }
+    DEF Minutes_5 Shape {
+      appearance USE _3
+      geometry DEF _6 ArcOpen2D {
+        dimension 64
+        startAngle 1.34739
+        innerRadius 10.3
+        outerRadius 11.3
+      }
+    }
+    DEF Hours_7 Shape {
+      appearance USE _3
+      geometry DEF _8 ArcOpen2D {
+        dimension 64
+        startAngle -1.06581
+        innerRadius 11.6
+        outerRadius 12.6
+        solid TRUE
+      }
+    }
+    DEF Text_9 Shape {
+      appearance USE _3
+      geometry DEF _10 Text {
+        string "05:02:08"
+        solid TRUE
+        fontStyle FontStyle {
+          family "assets/Papertape-Letters.otf"
+          size 2.63
+          justify [ "MIDDLE", "MIDDLE" ]
+        }
+      }
+    }
+    DEF LocalTime Transform {
+      translation 0 -2.67569 0
+      children Shape {
+        appearance USE _3
+        geometry Text {
+          string "Local Time"
+          solid TRUE
+          fontStyle FontStyle {
+            family "assets/Papertape-Letters.otf"
+            size 1.01
+            justify [ "MIDDLE", "MIDDLE" ]
+          }
+        }
+      }
+    }
+    DEF Minutes5_11 Group {
+      children [
+        Shape {
+          appearance USE _3
+          geometry ArcOpen2D {
+            dimension 64
+            startAngle 1.0472
+            innerRadius 12.9
+            outerRadius 13.4
+          }
+        }
+        Shape {
+          appearance USE _3
+          geometry ArcOpen2D {
+            dimension 64
+            endAngle 0.523599
+            innerRadius 12.9
+            outerRadius 13.4
+          }
+        }
+        Shape {
+          appearance USE _3
+          geometry ArcOpen2D {
+            dimension 64
+            startAngle -1.0472
+            endAngle -0.523599
+            innerRadius 12.9
+            outerRadius 13.4
+          }
+        }
+        Shape {
+          appearance USE _3
+          geometry ArcOpen2D {
+            dimension 64
+            startAngle -2.0944
+            endAngle -1.5708
+            innerRadius 12.9
+            outerRadius 13.4
+          }
+        }
+        Shape {
+          appearance USE _3
+          geometry ArcOpen2D {
+            dimension 64
+            startAngle -3.14159
+            endAngle -2.61799
+            innerRadius 12.9
+            outerRadius 13.4
+          }
+        }
+        Shape {
+          appearance USE _3
+          geometry ArcOpen2D {
+            dimension 64
+            startAngle -4.18879
+            endAngle -3.66519
+            innerRadius 12.9
+            outerRadius 13.4
+          }
+        }
+      ]
+    }
+  ]
+}
+
+ROUTE ClockScript.string_changed TO _10.set_string
+ROUTE _1.cycleTime TO ClockScript.set_time
+ROUTE ClockScript.seconds_changed TO _4.set_startAngle
+ROUTE ClockScript.minutes_changed TO _6.set_startAngle
+ROUTE ClockScript.hours_changed TO _8.set_startAngle

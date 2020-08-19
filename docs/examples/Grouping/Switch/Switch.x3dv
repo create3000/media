@@ -1,0 +1,121 @@
+#X3D V3.3 utf8 Titania V4.5.17
+
+PROFILE Immersive
+
+COMPONENT Layering : 1
+COMPONENT Layout : 1
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sat, 30 Jun 2018 14:23:48 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Switch/Switch.O.x3d"
+META "modified" "Sat, 30 Jun 2018 15:43:38 GMT"
+
+WorldInfo {
+}
+
+LayerSet {
+  activeLayer -1
+  order [ 1, 2 ]
+  layers [
+    DEF Clouds LayoutLayer {
+      layout Layout {
+        scaleMode [ "STRETCH", "STRETCH" ]
+      }
+      children DEF Rectangle2D Transform {
+        scale 1.6 1 1
+        children Shape {
+          appearance Appearance {
+            material Material { }
+            texture ImageTexture {
+              url "assets/clouds.jpg"
+            }
+          }
+          geometry Rectangle2D {
+            size 1 1
+          }
+        }
+      }
+    }
+    DEF LegoMens Layer {
+      children [
+        Viewpoint {
+          position 8.55853 14.0994 17.5892
+          orientation -0.702493566218813 0.693784242009822 0.15863863010008 0.629356170493366
+          centerOfRotation 0.453916 4.9987 0.559686
+        }
+        DEF Platform Transform {
+          rotation 0 -1 0 0.57171960394431
+          children [
+            DEF SwitchAnimation Group {
+              children [
+                DEF SwitchAnimationTimer TimeSensor {
+                  cycleInterval 15
+                  loop TRUE
+                }
+                DEF MensWhichChoiceInterpolator IntegerSequencer {
+                  key [ 0, 0.333333, 0.666667, 1 ]
+                  keyValue [ 0, 1, 2, 0 ]
+                }
+              ]
+            }
+            DEF PlatformRotationAnimation Group {
+              children [
+                DEF AnimationTimer TimeSensor {
+                  cycleInterval 20
+                  loop TRUE
+                }
+                DEF PlatformRotationInterpolator OrientationInterpolator {
+                  key [ 0, 0.25, 0.5, 0.75, 1 ]
+                  keyValue [ 0 1 0 1.16099466823039, 0 -1 0 0.379149921334659, 0 1 0 4.35789393518189, 0 1 0 2.80748864666412, 0 1 0 1.16099466823039 ]
+                }
+              ]
+            }
+            DEF Mens Switch {
+              whichChoice 0
+              children [
+                DEF GordonFreeman Transform {
+                  translation 415.087 -3.0715 -276.76
+                  scale 0.0128517 0.0128517 0.0128517
+                  center -415.087 8.0715 276.76
+                  children Inline {
+                    url "assets/lego_gordon_freeman_half-life/scene.x3d"
+                  }
+                }
+                DEF JonSnow Transform {
+                  translation 0 5 0
+                  scale 5 5 5
+                  children Inline {
+                    url "assets/lego_jon_snow/scene.x3d"
+                  }
+                }
+                DEF StreetFighter Transform {
+                  translation 0 5 0
+                  scale 5 5 5
+                  children Inline {
+                    url "assets/lego_mad_hatter_street_fighter_twist./scene.x3d"
+                  }
+                }
+              ]
+            }
+            DEF Platform_1 Transform {
+              translation 0.291846 -1.25397 -0.614791
+              scale 0.19916 0.19916 0.19916
+              children Inline {
+                url "assets/60_years_lego_bricks_-_mini_space_ship/scene.x3d"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+ROUTE AnimationTimer.fraction_changed TO PlatformRotationInterpolator.set_fraction
+ROUTE PlatformRotationInterpolator.value_changed TO Platform.set_rotation
+ROUTE SwitchAnimationTimer.fraction_changed TO MensWhichChoiceInterpolator.set_fraction
+ROUTE MensWhichChoiceInterpolator.value_changed TO Mens.set_whichChoice

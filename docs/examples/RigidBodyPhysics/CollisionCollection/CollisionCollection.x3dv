@@ -1,0 +1,121 @@
+#X3D V3.3 utf8 Titania V4.4.5
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Grouping : 3
+COMPONENT RigidBodyPhysics : 1
+COMPONENT Shape : 4
+
+UNIT angle degree 0.0174532925199432958
+
+META "comment" "World of Titania"
+META "created" "Fri, 18 May 2018 03:17:41 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollisionCollection/CollisionCollection.O.x3d"
+META "modified" "Mon, 07 Jan 2019 03:46:10 GMT"
+
+WorldInfo {
+}
+
+Background {
+  skyAngle 90.0002
+  skyColor [ 0.023 0.023 0.023, 0.123 0.123 0.123 ]
+  groundAngle 90.0002
+  groundColor [ 0.644 0.644 0.644, 0.123 0.123 0.123 ]
+}
+
+Viewpoint {
+  description "Inital View"
+  position 1.82925 2.34474 3.19911
+  orientation -0.724820835730136 0.661469489615511 0.192595094431979 43.7709213262184
+  centerOfRotation 6.66134e-16 -3.55271e-15 1.77636e-15
+}
+
+DEF Collidables Group {
+  children [
+    DEF Ball CollidableShape {
+      translation -1.92031e-06 -0.251985 -2.34233e-06
+      shape Shape {
+        appearance Appearance {
+          material DEF Tropical22 Material {
+            ambientIntensity 0.187004
+            diffuseColor 0.0207323 0.339645 0.748016
+            specularColor 0.90303 0.90303 0.90303
+            shininess 0.927273
+          }
+        }
+        geometry Sphere {
+          radius 0.2
+        }
+      }
+    }
+    DEF Floor CollidableOffset {
+      collidable CollidableShape {
+        translation 0 -1 0
+        shape DEF _1 Shape {
+          appearance Appearance {
+            material DEF Glass33 Material {
+              ambientIntensity 0.0346667
+              diffuseColor 0.23 0.23 0.23
+              specularColor 0.407 0.407 0.407
+              shininess 0.0458015
+              transparency 0.351351
+            }
+          }
+          geometry Box {
+            size 2 0.2 2
+          }
+        }
+      }
+    }
+    DEF Ceiling CollidableOffset {
+      collidable CollidableShape {
+        translation 0 1 0
+        shape USE _1
+      }
+    }
+  ]
+}
+
+RigidBodyCollection {
+  collider CollisionCollection {
+    bounce 0.95
+    minBounceSpeed 0
+    collidables USE Ball
+  }
+  bodies [
+    DEF Ball_2 RigidBody {
+      position -1.92031e-06 -0.251985 -2.34233e-06
+      linearVelocity -4.04398e-06 -1.46553 -4.93573e-06
+      angularVelocity -1.98016e-10 2.95806e-10 0.000388671
+      geometry USE Ball
+    }
+    DEF Floor_3 RigidBody {
+      fixed TRUE
+      linearVelocity 0 0.1 0
+      geometry USE Floor
+    }
+    DEF Ceiling_4 RigidBody {
+      fixed TRUE
+      geometry USE Ceiling
+    }
+  ]
+}
+
+DEF EnterWorldScript Script {
+  initializeOnly SFNode ball USE Ball_2
+
+  url "ecmascript:
+
+function initialize ()
+{
+	ball .position        = new SFVec3f (0, 0, 0);
+	ball .orientation     = new SFRotation (0, 0, 1, 0);
+	ball .linearVelocity  = new SFVec3f (0, 0, 0);
+	ball .angularVelocity = new SFVec3f (0, 0, 0);
+}
+"
+  directOutput TRUE
+}

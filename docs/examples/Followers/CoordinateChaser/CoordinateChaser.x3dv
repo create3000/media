@@ -1,0 +1,152 @@
+#X3D V3.3 utf8 Titania V4.5.6
+
+PROFILE Immersive
+
+COMPONENT Followers : 1
+COMPONENT NURBS : 3
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Mon, 17 Jun 2019 10:51:39 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.5.6, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/CoordinateChaser/CoordinateChaser.O.x3d"
+META "modified" "Tue, 18 Jun 2019 13:43:04 GMT"
+
+PROTO Bumps [
+  inputOutput SFColor color 1 1 1
+]
+{
+  Shape {
+    appearance Appearance {
+      lineProperties LineProperties {
+        linewidthScaleFactor 6
+      }
+      material Material {
+        diffuseColor 0 0 0
+        emissiveColor IS color
+      }
+    }
+    geometry NurbsCurve {
+      tessellation 128
+      controlPoint DEF _1 Coordinate {
+        point 0 0 0
+      }
+    }
+  }
+
+  DEF _2 TimeSensor {
+    loop TRUE
+  }
+
+  DEF BumpsScript Script {
+    inputOnly      SFTime set_time
+    initializeOnly SFNode chaser DEF _3 CoordinateChaser { }
+
+    url "ecmascript:
+
+var
+	numPoints = 16,
+	points    = [ ],
+	dest      = new MFVec3f ();
+
+function initialize ()
+{
+	for (var i = 0; i < numPoints; ++ i)
+		dest [i] .x = i * 2;
+	
+	set_time (0, 0);
+}
+
+function set_time (value, time)
+{
+	bumps (points, numPoints, 16);
+	
+	for (var i = 0; i < numPoints; ++ i)
+		dest [i] .y = points [i]; 
+	
+	chaser .set_destination = dest;
+}
+
+// Inspired by Lee Byron’s test data generator.
+function bump (a, n)
+{
+	const x = 1 / (0.1 + Math .random ());
+	const y = 2 * Math .random () - 0.5;
+	const z = 10 / (0.1 + Math .random ());
+	
+	for (let i = 0; i < n; ++ i)
+	{
+		const w = (i / n - y) * z;
+		a [i] += x * Math .exp (-w * w);
+	}
+}
+
+function bumps (a, n, m)
+{
+	a .length = n;
+
+	for (let i = 0; i < n; ++ i) a [i] = 0;
+	for (let i = 0; i < m; ++ i) bump (a, n);
+	
+	return a;
+};
+"
+  }
+
+  ROUTE _3.value_changed TO _1.set_point
+  ROUTE _2.cycleTime TO BumpsScript.set_time
+}
+
+WorldInfo {
+}
+
+Viewpoint {
+  position 15 7.708 18.954
+  centerOfRotation 15 6.07793 0
+}
+
+Transform {
+  children Bumps {
+    color 1 0 0
+  }
+}
+
+Transform {
+  translation 0 2 0
+  children Bumps {
+    color 1 1 0
+  }
+}
+
+Transform {
+  translation 0 4 0
+  children Bumps {
+    color 0.00800333 1 0
+  }
+}
+
+Transform {
+  translation 0 6 0
+  children Bumps {
+    color 0 0.997684 1
+  }
+}
+
+Transform {
+  translation 0 8 0
+  children Bumps {
+    color 0 0 1
+  }
+}
+
+Transform {
+  translation 0 10 0
+  children Bumps {
+    color 0.998073 0 1
+  }
+}
+
+DEF Box Transform {
+  translation 8.21123 4.23988 0
+}

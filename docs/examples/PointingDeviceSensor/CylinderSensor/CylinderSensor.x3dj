@@ -1,0 +1,653 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Mon, 27 Nov 2017 02:44:02 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.0.2, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/PointingDeviceSensor/CylinderSensor/CylinderSensor.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 27 Nov 2017 02:53:33 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"DiskSensor",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "enabled",
+                  "@value": true
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFString",
+                  "@name": "description"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFRotation",
+                  "@name": "axisRotation"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "factor",
+                  "@value": 0.159155
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "minValue"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "maxValue",
+                  "@value": -1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "offset"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "autoOffset",
+                  "@value": true
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFBool",
+                  "@name": "isActive"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFBool",
+                  "@name": "isOver"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFVec3f",
+                  "@name": "trackPoint_changed"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFRotation",
+                  "@name": "rotation_changed"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFFloat",
+                  "@name": "value_changed"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "CylinderSensor":
+                  {
+                    "@DEF": "CylinderTouch",
+                    "@diskAngle": 9.69914e+08,
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "enabled",
+                          "@protoField": "enabled"
+                        },
+                        {
+                          "@nodeField": "description",
+                          "@protoField": "description"
+                        },
+                        {
+                          "@nodeField": "axisRotation",
+                          "@protoField": "axisRotation"
+                        },
+                        {
+                          "@nodeField": "autoOffset",
+                          "@protoField": "autoOffset"
+                        },
+                        {
+                          "@nodeField": "trackPoint_changed",
+                          "@protoField": "trackPoint_changed"
+                        },
+                        {
+                          "@nodeField": "isOver",
+                          "@protoField": "isOver"
+                        },
+                        {
+                          "@nodeField": "isActive",
+                          "@protoField": "isActive"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "DiskSensorScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFRotation",
+                        "@name": "set_rotation"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFBool",
+                        "@name": "set_active"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "factor"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "minValue"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "maxValue"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "offset"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFRotation",
+                        "@name": "rotation_changed"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFFloat",
+                        "@name": "value_changed"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFVec3f",
+                        "@name": "startVector",
+                        "@value": [ 0, 0, 1 ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFFloat",
+                        "@name": "value"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "sensor",
+                        "-children": [
+                          { "CylinderSensor":
+                            {
+                              "@USE": "CylinderTouch"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tset_offset ();",
+"}",
+"",
+"function set_factor ()",
+"{",
+"\tset_offset ();",
+"}",
+"",
+"function set_offset ()",
+"{",
+"\tvalue          = offset;",
+"\tsensor .offset = offset / factor;",
+"}",
+"",
+"function set_rotation (rotation)",
+"{",
+"\tvar endVector     = rotation .multVec (sensor .axisRotation .multVec (new SFVec3f (0, 0, 1)));",
+"\tvar deltaRotation = new SFRotation (startVector, endVector);",
+"",
+"\tstartVector = endVector;",
+"",
+"\tvar axis  = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));",
+"\tvar angle = axis .dot (deltaRotation .getAxis ());",
+"\tvar sign  = angle > 0 ? 1 : -1;",
+"",
+"\tvalue += sign * deltaRotation .angle * factor;",
+"",
+"\tif (minValue > maxValue || (value > minValue && value < maxValue))",
+"\t{",
+"\t\trotation_changed = rotation_changed .multiply (deltaRotation);",
+"\t\tvalue_changed    = value;",
+"\t}",
+"\telse",
+"\t{",
+"\t\tvalue = Math .max (minValue, Math .min (maxValue, value));",
+"",
+"\t\tif (value != value_changed)",
+"\t\t{",
+"\t\t\tvar axis = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));",
+"\t\t\t",
+"\t\t\trotation_changed = new SFRotation (axis, -value / factor);",
+"\t\t\tvalue_changed    = value;",
+"\t\t}",
+"\t}",
+"}",
+"",
+"function set_active (active)",
+"{",
+"\tif (active)",
+"\t{",
+"\t\tvar axis = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));",
+"",
+"\t\trotation_changed = new SFRotation (axis, sensor .offset);",
+"\t\tstartVector      = rotation_changed .multVec (sensor .axisRotation .multVec (new SFVec3f (0, 0, 1)));",
+"\t\tvalue            = offset;",
+"\t}",
+"\telse",
+"\t{",
+"\t\tif (sensor .autoOffset)",
+"\t\t\toffset = value;",
+"\t}",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "factor",
+                          "@protoField": "factor"
+                        },
+                        {
+                          "@nodeField": "minValue",
+                          "@protoField": "minValue"
+                        },
+                        {
+                          "@nodeField": "maxValue",
+                          "@protoField": "maxValue"
+                        },
+                        {
+                          "@nodeField": "offset",
+                          "@protoField": "offset"
+                        },
+                        {
+                          "@nodeField": "rotation_changed",
+                          "@protoField": "rotation_changed"
+                        },
+                        {
+                          "@nodeField": "value_changed",
+                          "@protoField": "value_changed"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "CylinderTouch",
+                    "@fromField": "rotation_changed",
+                    "@toNode": "DiskSensorScript",
+                    "@toField": "set_rotation"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "CylinderTouch",
+                    "@fromField": "isActive",
+                    "@toNode": "DiskSensorScript",
+                    "@toField": "set_active"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"Number",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "value"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "precision"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "length"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "maxExtent"
+                },
+                {
+                  "@accessType": "initializeOnly",
+                  "@type": "SFBool",
+                  "@name": "solid",
+                  "@value": true
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFVec3f",
+                  "@name": "origin"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFVec2f",
+                  "@name": "textBounds"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "fontStyle"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Text":
+                  {
+                    "@DEF": "Number",
+                    "@string": [ "0" ],
+                    "@length": [ 0 ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "maxExtent",
+                          "@protoField": "maxExtent"
+                        },
+                        {
+                          "@nodeField": "solid",
+                          "@protoField": "solid"
+                        },
+                        {
+                          "@nodeField": "origin",
+                          "@protoField": "origin"
+                        },
+                        {
+                          "@nodeField": "textBounds",
+                          "@protoField": "textBounds"
+                        },
+                        {
+                          "@nodeField": "fontStyle",
+                          "@protoField": "fontStyle"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "NumberScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "value"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "precision"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "length"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "text",
+                        "-children": [
+                          { "Text":
+                            {
+                              "@USE": "Number"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tset_value (value);",
+"\tset_length (length);",
+"}",
+"",
+"function set_value (value)",
+"{",
+"\ttext .string = new MFString (value .toFixed (precision));",
+"}",
+"",
+"function set_precision ()",
+"{",
+"\tset_value (value);",
+"}",
+"",
+"function set_length (length)",
+"{",
+"\ttext .length = new MFFloat (length);",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "value",
+                          "@protoField": "value"
+                        },
+                        {
+                          "@nodeField": "precision",
+                          "@protoField": "precision"
+                        },
+                        {
+                          "@nodeField": "length",
+                          "@protoField": "length"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "NONE" ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@position": [ 0, 0, 3.86769 ]
+          }
+        },
+        { "Background":
+          {
+            "@skyAngle": [ 62.5802, 90.0002 ],
+            "@skyColor": [ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3 ],
+            "@groundAngle": [ 64.4463, 90.0002 ],
+            "@groundColor": [ 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3 ]
+          }
+        },
+        { "Transform":
+          {
+            "-children": [
+              { "ProtoInstance":
+                {
+                  "@DEF": "DiskSensor",
+                  "@name": "DiskSensor",
+                  "fieldValue": [
+                    {
+                      "@name": "description",
+                      "@value": "DiskSensor"
+                    },
+                    {
+                      "@name": "axisRotation",
+                      "@value": [ -1, 0, 0, 90 ]
+                    }
+                  ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "Cylinder",
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-material": { "Material":
+                              {
+                                "@DEF": "_1",
+                                "@diffuseColor": [ 0.13, 0.13, 0.13 ]
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "ArcClose2D":
+                          {
+                            "@startAngle": 15,
+                            "@endAngle": 345
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "Number_2",
+                  "@translation": [ 2, 0, 0 ],
+                  "@scale": [ 0.5, 0.5, 0.5 ],
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-material": { "Material":
+                              {
+                                "@USE": "_1"
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@DEF": "_3",
+                            "@name": "Number",
+                            "fieldValue": [
+                              {
+                                "@name": "precision",
+                                "@value": 3
+                              },
+                              {
+                                "@name": "fontStyle",
+                                "-children": [
+                                  { "FontStyle":
+                                    {
+                                      "@DEF": "_4",
+                                      "@family": [ "TYPEWRITER" ],
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DiskSensor",
+            "@fromField": "rotation_changed",
+            "@toNode": "Cylinder",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DiskSensor",
+            "@fromField": "value_changed",
+            "@toNode": "_3",
+            "@toField": "value"
+          }
+        }
+      ]
+    }
+  }
+}

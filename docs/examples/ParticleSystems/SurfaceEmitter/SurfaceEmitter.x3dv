@@ -1,0 +1,131 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Layering : 1
+COMPONENT Layout : 1
+COMPONENT ParticleSystems : 2
+COMPONENT Shape : 4
+
+META "comment" "World of Titania"
+META "created" "Sun, 03 Dec 2017 04:29:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.0.2, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Layering/Viewport/Viewport.O.x3d"
+META "modified" "Sun, 03 Dec 2017 05:32:31 GMT"
+META "titania-add-metadata" "true"
+
+WorldInfo {
+}
+
+LayerSet {
+  order [ 1, 2, 3, 4 ]
+  layers [
+    DEF Background Layer {
+      isPickable FALSE
+      children DEF White Background {
+        skyColor 1 1 1
+      }
+    }
+    DEF Stars LayoutLayer {
+      isPickable FALSE
+      layout Layout { }
+      viewport DEF _1 Viewport {
+        clipBoundary [ 0, 1, 0.177, 0.822 ]
+      }
+      children [
+        DEF Gray_2 Background {
+          skyColor 0.2 0.2 0.2
+        }
+        DEF stars Transform {
+          children Shape {
+            appearance Appearance {
+              texture ImageTexture {
+                url "stars.png"
+                repeatS FALSE
+                repeatT FALSE
+              }
+            }
+            geometry Rectangle2D {
+              size 1 1
+            }
+          }
+        }
+      ]
+    }
+    DEF Particles Layer {
+      isPickable FALSE
+      viewport USE _1
+      children [
+        DEF Surface Transform {
+          children Shape {
+            appearance Appearance {
+              material Material {
+                transparency 1
+              }
+            }
+            geometry DEF _3 IndexedFaceSet {
+              coordIndex [ 3, 2, 1, 0, -1 ]
+              coord Coordinate {
+                point [ -13.4377 2.82143 5.06955, 13.4373 2.82144 5.06957, 13.4378 2.82144 -20.9484, -13.4371 2.82143 -20.9484 ]
+              }
+            }
+          }
+        }
+        ParticleSystem {
+          maxParticles 50
+          particleLifetime 10
+          particleSize 0.2 0.2
+          emitter SurfaceEmitter {
+            speed 0.5
+            surface USE _3
+          }
+          appearance Appearance {
+            texture ImageTexture {
+              url "star.png"
+            }
+          }
+        }
+      ]
+    }
+    LayoutLayer {
+      isPickable FALSE
+      children [
+        DEF Text Transform {
+          children Shape {
+            appearance Appearance {
+              material Material { }
+            }
+            geometry Text {
+              string "CREATE MORE PARTICLES"
+              solid TRUE
+              fontStyle FontStyle {
+                family "Sari-Light.otf"
+                size 0.2
+                justify "MIDDLE"
+              }
+            }
+          }
+        }
+        DEF Text_4 Transform {
+          translation 0 -0.269567 0
+          children Shape {
+            appearance Appearance {
+              material Material { }
+            }
+            geometry Text {
+              string "WITH X_ITE"
+              solid TRUE
+              fontStyle FontStyle {
+                family "Sari-Medium.otf"
+                size 0.24
+                justify "MIDDLE"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

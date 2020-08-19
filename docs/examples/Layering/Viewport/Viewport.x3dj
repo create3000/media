@@ -1,0 +1,220 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 03 Dec 2017 04:29:28 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.3, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Layering/Viewport/Viewport.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sat, 20 Oct 2018 19:22:12 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Layout",
+          "@level": 1
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@order": [ 1, 2, 3 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Background",
+                  "@isPickable": false,
+                  "-children": [
+                    { "Background":
+                      {
+                        "@DEF": "White",
+                        "@skyColor": [ 1, 1, 1 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "LayoutLayer":
+                {
+                  "@DEF": "UnderTheSea_1",
+                  "-layout": { "Layout":
+                    {
+                      "@scaleMode": [ "STRETCH", "NONE" ]
+                    }
+                  },
+                  "-viewport": { "Viewport":
+                    {
+                      "@DEF": "_2",
+                      "@clipBoundary": [ 0, 1, 0.177, 0.822 ]
+                    }
+                  },
+                  "-children": [
+                    { "Background":
+                      {
+                        "@DEF": "Gray_3",
+                        "@skyColor": [ 0.2, 0.2, 0.2 ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "UnderTheSea",
+                        "@scale": [ 2.48, 1.16, 1 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "under-the-sea.png" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 1, 1 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "Particles",
+                  "@isPickable": false,
+                  "-viewport": { "Viewport":
+                    {
+                      "@USE": "_2"
+                    }
+                  },
+                  "-children": [
+                    { "ParticleSystem":
+                      {
+                        "@DEF": "Bubbles1",
+                        "@maxParticles": 3,
+                        "@particleLifetime": 15,
+                        "@lifetimeVariation": 0.2,
+                        "@particleSize": [ 2, 2 ],
+                        "-emitter": { "PolylineEmitter":
+                          {
+                            "@speed": 0.5,
+                            "@variation": 0.5,
+                            "@coordIndex": [ 0, 1, -1 ],
+                            "-coord": { "Coordinate":
+                              {
+                                "@point": [ -10, -5, 0, 10, -5, 0 ]
+                              }
+                            }
+                          }
+                        },
+                        "-appearance": { "Appearance":
+                          {
+                            "-texture": { "ImageTexture":
+                              {
+                                "@url": [ "bubble1.png" ],
+                                "@repeatS": false,
+                                "@repeatT": false
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    { "ParticleSystem":
+                      {
+                        "@DEF": "Bubbles2",
+                        "@maxParticles": 5,
+                        "@particleLifetime": 15,
+                        "@lifetimeVariation": 0.2,
+                        "@particleSize": [ 1.5, 1.5 ],
+                        "-emitter": { "PolylineEmitter":
+                          {
+                            "@speed": 0.5,
+                            "@variation": 0.5,
+                            "@coordIndex": [ 0, 1, -1 ],
+                            "-coord": { "Coordinate":
+                              {
+                                "@point": [ -10, -5, 0, 10, -5, 0 ]
+                              }
+                            }
+                          }
+                        },
+                        "-appearance": { "Appearance":
+                          {
+                            "-texture": { "ImageTexture":
+                              {
+                                "@url": [ "bubble2.png" ],
+                                "@repeatS": false,
+                                "@repeatT": false
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,606 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Fri, 21 Dec 2018 04:34:14 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.9, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 07 Jan 2019 04:02:09 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"ArcOpen2D",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFInt32",
+                "@name": "dimension"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "startAngle"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "endAngle"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "innerRadius"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "outerRadius"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFBool",
+                "@name": "solid"
+              }
+            ],
+            "@url": [ "assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D" ]
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "NONE" ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@position": [ 0, 0, 34.142 ]
+          }
+        },
+        { "TimeSensor":
+          {
+            "@DEF": "_1",
+            "@loop": true
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "ClockScript",
+            "field": [
+              {
+                "@accessType": "inputOnly",
+                "@type": "SFTime",
+                "@name": "set_time"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFFloat",
+                "@name": "seconds_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFFloat",
+                "@name": "minutes_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFFloat",
+                "@name": "hours_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "string_changed"
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\tzero   = Math .PI / 2,",
+"\toffset = new Date () .getTimezoneOffset () * 60;",
+"",
+"function set_time (value, time)",
+"{",
+"\tvalue = Math .floor (value) - offset;",
+"",
+"\tvar",
+"\t\tseconds = (value % 60)    / 60,",
+"\t\tminutes = (value % 3600)  / 3600,",
+"\t\thours12 = (value % 43200) / 43200,",
+"\t\thours24 = (value % 86400) / 86400;",
+"",
+"\tseconds_changed = zero - seconds * Math .PI * 2;",
+"\tminutes_changed = zero - minutes * Math .PI * 2;",
+"\thours_changed   = zero - hours12 * Math .PI * 2;",
+"\t",
+"\tstring_changed [0] = fill (hours24 * 24) + \":\" + fill (minutes * 60) + \":\" + fill (seconds * 60);",
+"}",
+"",
+"function fill (value)",
+"{",
+"\tvalue = Math .floor (value);",
+"",
+"\tif (value < 10)",
+"\t\treturn \"0\" + value;",
+"\t\t",
+"\treturn value .toString ();",
+"}"
+            ]
+          }
+        },
+        { "Group":
+          {
+            "@DEF": "Clock",
+            "-children": [
+              { "Shape":
+                {
+                  "@DEF": "Seconds_2",
+                  "-appearance": { "Appearance":
+                    {
+                      "@DEF": "_3",
+                      "-material": { "Material":
+                        {
+                          "@diffuseColor": [ 0, 0, 0 ],
+                          "@emissiveColor": [ 0, 1, 0.995191 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "ProtoInstance":
+                    {
+                      "@DEF": "_4",
+                      "@name": "ArcOpen2D",
+                      "fieldValue": [
+                        {
+                          "@name": "dimension",
+                          "@value": 64
+                        },
+                        {
+                          "@name": "startAngle",
+                          "@value": 0.733038
+                        },
+                        {
+                          "@name": "innerRadius",
+                          "@value": 9
+                        },
+                        {
+                          "@name": "outerRadius",
+                          "@value": 10
+                        },
+                        {
+                          "@name": "solid",
+                          "@value": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              { "Shape":
+                {
+                  "@DEF": "Minutes_5",
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_3"
+                    }
+                  },
+                  "-geometry": { "ProtoInstance":
+                    {
+                      "@DEF": "_6",
+                      "@name": "ArcOpen2D",
+                      "fieldValue": [
+                        {
+                          "@name": "dimension",
+                          "@value": 64
+                        },
+                        {
+                          "@name": "startAngle",
+                          "@value": 1.34739
+                        },
+                        {
+                          "@name": "innerRadius",
+                          "@value": 10.3
+                        },
+                        {
+                          "@name": "outerRadius",
+                          "@value": 11.3
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              { "Shape":
+                {
+                  "@DEF": "Hours_7",
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_3"
+                    }
+                  },
+                  "-geometry": { "ProtoInstance":
+                    {
+                      "@DEF": "_8",
+                      "@name": "ArcOpen2D",
+                      "fieldValue": [
+                        {
+                          "@name": "dimension",
+                          "@value": 64
+                        },
+                        {
+                          "@name": "startAngle",
+                          "@value": -1.06581
+                        },
+                        {
+                          "@name": "innerRadius",
+                          "@value": 11.6
+                        },
+                        {
+                          "@name": "outerRadius",
+                          "@value": 12.6
+                        },
+                        {
+                          "@name": "solid",
+                          "@value": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              { "Shape":
+                {
+                  "@DEF": "Text_9",
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_3"
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@DEF": "_10",
+                      "@string": [ "05:02:08" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/Papertape-Letters.otf" ],
+                          "@size": 2.63,
+                          "@justify": [ "MIDDLE", "MIDDLE" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "LocalTime",
+                  "@translation": [ 0, -2.67569, 0 ],
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "Text":
+                          {
+                            "@string": [ "Local Time" ],
+                            "@solid": true,
+                            "-fontStyle": { "FontStyle":
+                              {
+                                "@family": [ "assets/Papertape-Letters.otf" ],
+                                "@size": 1.01,
+                                "@justify": [ "MIDDLE", "MIDDLE" ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Group":
+                {
+                  "@DEF": "Minutes5_11",
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@name": "ArcOpen2D",
+                            "fieldValue": [
+                              {
+                                "@name": "dimension",
+                                "@value": 64
+                              },
+                              {
+                                "@name": "startAngle",
+                                "@value": 1.0472
+                              },
+                              {
+                                "@name": "innerRadius",
+                                "@value": 12.9
+                              },
+                              {
+                                "@name": "outerRadius",
+                                "@value": 13.4
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@name": "ArcOpen2D",
+                            "fieldValue": [
+                              {
+                                "@name": "dimension",
+                                "@value": 64
+                              },
+                              {
+                                "@name": "endAngle",
+                                "@value": 0.523599
+                              },
+                              {
+                                "@name": "innerRadius",
+                                "@value": 12.9
+                              },
+                              {
+                                "@name": "outerRadius",
+                                "@value": 13.4
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@name": "ArcOpen2D",
+                            "fieldValue": [
+                              {
+                                "@name": "dimension",
+                                "@value": 64
+                              },
+                              {
+                                "@name": "startAngle",
+                                "@value": -1.0472
+                              },
+                              {
+                                "@name": "endAngle",
+                                "@value": -0.523599
+                              },
+                              {
+                                "@name": "innerRadius",
+                                "@value": 12.9
+                              },
+                              {
+                                "@name": "outerRadius",
+                                "@value": 13.4
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@name": "ArcOpen2D",
+                            "fieldValue": [
+                              {
+                                "@name": "dimension",
+                                "@value": 64
+                              },
+                              {
+                                "@name": "startAngle",
+                                "@value": -2.0944
+                              },
+                              {
+                                "@name": "endAngle",
+                                "@value": -1.5708
+                              },
+                              {
+                                "@name": "innerRadius",
+                                "@value": 12.9
+                              },
+                              {
+                                "@name": "outerRadius",
+                                "@value": 13.4
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@name": "ArcOpen2D",
+                            "fieldValue": [
+                              {
+                                "@name": "dimension",
+                                "@value": 64
+                              },
+                              {
+                                "@name": "startAngle",
+                                "@value": -3.14159
+                              },
+                              {
+                                "@name": "endAngle",
+                                "@value": -2.61799
+                              },
+                              {
+                                "@name": "innerRadius",
+                                "@value": 12.9
+                              },
+                              {
+                                "@name": "outerRadius",
+                                "@value": 13.4
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "@USE": "_3"
+                          }
+                        },
+                        "-geometry": { "ProtoInstance":
+                          {
+                            "@name": "ArcOpen2D",
+                            "fieldValue": [
+                              {
+                                "@name": "dimension",
+                                "@value": 64
+                              },
+                              {
+                                "@name": "startAngle",
+                                "@value": -4.18879
+                              },
+                              {
+                                "@name": "endAngle",
+                                "@value": -3.66519
+                              },
+                              {
+                                "@name": "innerRadius",
+                                "@value": 12.9
+                              },
+                              {
+                                "@name": "outerRadius",
+                                "@value": 13.4
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ClockScript",
+            "@fromField": "string_changed",
+            "@toNode": "_10",
+            "@toField": "string"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "cycleTime",
+            "@toNode": "ClockScript",
+            "@toField": "set_time"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ClockScript",
+            "@fromField": "seconds_changed",
+            "@toNode": "_4",
+            "@toField": "startAngle"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ClockScript",
+            "@fromField": "minutes_changed",
+            "@toNode": "_6",
+            "@toField": "startAngle"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ClockScript",
+            "@fromField": "hours_changed",
+            "@toNode": "_8",
+            "@toField": "startAngle"
+          }
+        }
+      ]
+    }
+  }
+}

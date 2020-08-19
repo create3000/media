@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Fri, 25 Sep 2015 17:42:41 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.3, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Basic/LustForLife/LustForLife.O.x3d'/>
+    <meta name='modified' content='Thu, 11 Oct 2018 12:55:12 GMT'/>
+    <meta name='title' content='Mushrooms Entry'/>
+  </head>
+  <Scene>
+    <WorldInfo
+        title='LustForLife.O'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <Script DEF='EnterWorldScript' containerField='value'>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+  Browser .loadURL (new MFString ("stage/index.wrl"), new MFString ());
+}
+]]>
+            </Script>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Script USE='EnterWorldScript'/>
+  </Scene>
+</X3D>

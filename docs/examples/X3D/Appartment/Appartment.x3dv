@@ -1,0 +1,25 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+META "comment" "World of Titania"
+META "created" "Wed, 26 Aug 2015 12:17:22 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.3, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Basic/Appartment/Appartment.O.x3d"
+META "modified" "Thu, 11 Oct 2018 11:57:17 GMT"
+META "title" "Appartment Entry"
+
+WorldInfo {
+  title "Appartment.O"
+}
+
+DEF EnterWorldScript Script {
+  url "ecmascript:
+
+function initialize ()
+{
+	Browser .loadURL (new MFString (\"stage/index.wrl\"), new MFString ());
+}
+"
+}

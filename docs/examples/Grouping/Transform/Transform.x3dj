@@ -1,0 +1,851 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Fri, 22 Sep 2017 14:23:20 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.8, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Grouping/Transform/Transform.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 07 Jan 2019 02:28:19 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"Rotor",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFBool",
+                "@name": "enabled"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "cycleInterval"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "axis"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "angle"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFBool",
+                "@name": "loop"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "startTime"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "pauseTime"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "resumeTime"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "stopTime"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFBool",
+                "@name": "isActive"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFTime",
+                "@name": "cycleTime"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFRotation",
+                "@name": "rotation_changed"
+              }
+            ],
+            "@url": [ "Rotor.x3d#Rotor", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/Rotor.x3d#Rotor" ]
+          }
+        },
+        { "ExternProtoDeclare":
+          {
+            "@name":"Grid",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "translation"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFRotation",
+                "@name": "rotation"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "scale"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "dimension"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "majorLineEvery"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "majorLineOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "planeOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "planeColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "planeTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "lineColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "lineTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "majorLineColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "majorLineTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFBool",
+                "@name": "numbers"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "numberOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFNode",
+                "@name": "numberAppearance"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFNode",
+                "@name": "numberFontStyle"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFBool",
+                "@name": "solid"
+              }
+            ],
+            "@url": [ "Grid.x3d#Grid", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/Grid.x3d#Grid" ]
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"Gear",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "teeth",
+                  "@value": 10
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "toothDepth",
+                  "@value": 2
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "innerRadius",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "outerRadius",
+                  "@value": 4
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "width",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "initializeOnly",
+                  "@type": "SFFloat",
+                  "@name": "creaseAngle"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "IndexedFaceSet":
+                  {
+                    "@DEF": "Gear",
+                    "@coordIndex": [ 0, 1, 2, 4, 3, -1, 3, 4, 5, 7, 6, -1, 6, 7, 8, 10, 9, -1, 9, 10, 11, 13, 12, -1, 12, 13, 14, 16, 15, -1, 15, 16, 17, 19, 18, -1, 18, 19, 20, 22, 21, -1, 21, 22, 23, 25, 24, -1, 24, 25, 26, 28, 27, -1, 27, 28, 29, 31, 30, -1, 35, 36, 37, 38, -1, 39, 40, 41, 42, -1, 43, 44, 45, 46, -1, 47, 48, 49, 50, -1, 51, 52, 53, 54, -1, 55, 56, 57, 58, -1, 59, 60, 61, 62, -1, 63, 64, 65, 66, -1, 67, 68, 69, 70, -1, 71, 72, 73, 74, -1, 75, 78, 79, 77, 76, -1, 78, 81, 82, 80, 79, -1, 81, 84, 85, 83, 82, -1, 84, 87, 88, 86, 85, -1, 87, 90, 91, 89, 88, -1, 90, 93, 94, 92, 91, -1, 93, 96, 97, 95, 94, -1, 96, 99, 100, 98, 97, -1, 99, 102, 103, 101, 100, -1, 102, 105, 106, 104, 103, -1, 107, 108, 109, 110, -1, 111, 112, 113, 114, -1, 115, 116, 117, 118, -1, 119, 120, 121, 122, -1, 123, 124, 125, 126, -1, 127, 128, 129, 130, -1, 131, 132, 133, 134, -1, 135, 136, 137, 138, -1, 139, 140, 141, 142, -1, 143, 144, 145, 146, -1, 147, 148, 150, 149, -1, 149, 150, 152, 151, -1, 151, 152, 154, 153, -1, 153, 154, 156, 155, -1, 155, 156, 158, 157, -1, 157, 158, 160, 159, -1, 159, 160, 162, 161, -1, 161, 162, 164, 163, -1, 163, 164, 166, 165, -1, 165, 166, 168, 167, -1, 167, 168, 170, 169, -1, 169, 170, 172, 171, -1, 171, 172, 174, 173, -1, 173, 174, 176, 175, -1, 175, 176, 178, 177, -1, 177, 178, 180, 179, -1, 179, 180, 182, 181, -1, 181, 182, 184, 183, -1, 183, 184, 186, 185, -1, 185, 186, 188, 187, -1, 187, 188, 190, 189, -1, 189, 190, 192, 191, -1, 191, 192, 194, 193, -1, 193, 194, 196, 195, -1, 195, 196, 198, 197, -1, 197, 198, 200, 199, -1, 199, 200, 202, 201, -1, 201, 202, 204, 203, -1, 203, 204, 206, 205, -1, 205, 206, 208, 207, -1, 207, 208, 210, 209, -1, 209, 210, 212, 211, -1, 211, 212, 214, 213, -1, 213, 214, 216, 215, -1, 215, 216, 218, 217, -1, 217, 218, 220, 219, -1, 219, 220, 222, 221, -1, 221, 222, 224, 223, -1, 223, 224, 226, 225, -1, 225, 226, 148, 147, -1, 227, 228, 230, 229, -1, 229, 230, 232, 231, -1, 231, 232, 234, 233, -1, 233, 234, 236, 235, -1, 235, 236, 238, 237, -1, 237, 238, 240, 239, -1, 239, 240, 242, 241, -1, 241, 242, 244, 243, -1, 243, 244, 246, 245, -1, 245, 246, 228, 227, -1 ],
+                    "-coord": { "Coordinate":
+                      {
+                        "@point": [ 1, 0, 0.5, 3, 0, 0.5, 2.67302, 1.36197, 0.5, 0.809017, 0.587785, 0.5, 2.42705, 1.76336, 0.5, 1.36197, 2.67302, 0.5, 0.309017, 0.951057, 0.5, 0.927051, 2.85317, 0.5, -0.469303, 2.96306, 0.5, -0.309017, 0.951057, 0.5, -0.927051, 2.85317, 0.5, -2.12132, 2.12132, 0.5, -0.809017, 0.587785, 0.5, -2.42705, 1.76336, 0.5, -2.96306, 0.469303, 0.5, -1, 1.22465e-16, 0.5, -3, 3.67394e-16, 0.5, -2.67302, -1.36197, 0.5, -0.809017, -0.587785, 0.5, -2.42705, -1.76336, 0.5, -1.36197, -2.67302, 0.5, -0.309017, -0.951057, 0.5, -0.927051, -2.85317, 0.5, 0.469303, -2.96306, 0.5, 0.309017, -0.951057, 0.5, 0.927051, -2.85317, 0.5, 2.12132, -2.12132, 0.5, 0.809017, -0.587785, 0.5, 2.42705, -1.76336, 0.5, 2.96306, -0.469303, 0.5, 1, 0, 0.5, 3, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0.5, 4.93844, 0.782172, 0.5, 4.75528, 1.54508, 0.5, 2.67302, 1.36197, 0.5, 2.42705, 1.76336, 0.5, 3.53553, 3.53553, 0.5, 2.93893, 4.04508, 0.5, 1.36197, 2.67302, 0.5, 0.927051, 2.85317, 0.5, 0.782172, 4.93844, 0.5, 1.11022e-15, 5, 0.5, -0.469303, 2.96306, 0.5, -0.927051, 2.85317, 0.5, -2.26995, 4.45503, 0.5, -2.93893, 4.04508, 0.5, -2.12132, 2.12132, 0.5, -2.42705, 1.76336, 0.5, -4.45503, 2.26995, 0.5, -4.75528, 1.54508, 0.5, -2.96306, 0.469303, 0.5, -3, 3.67394e-16, 0.5, -4.93844, -0.782172, 0.5, -4.75528, -1.54508, 0.5, -2.67302, -1.36197, 0.5, -2.42705, -1.76336, 0.5, -3.53553, -3.53553, 0.5, -2.93893, -4.04508, 0.5, -1.36197, -2.67302, 0.5, -0.927051, -2.85317, 0.5, -0.782172, -4.93844, 0.5, -1.11022e-15, -5, 0.5, 0.469303, -2.96306, 0.5, 0.927051, -2.85317, 0.5, 2.26995, -4.45503, 0.5, 2.93893, -4.04508, 0.5, 2.12132, -2.12132, 0.5, 2.42705, -1.76336, 0.5, 4.45503, -2.26995, 0.5, 4.75528, -1.54508, 0.5, 2.96306, -0.469303, 0.5, 1, 0, -0.5, 3, 0, -0.5, 2.67302, 1.36197, -0.5, 0.809017, 0.587785, -0.5, 2.42705, 1.76336, -0.5, 1.36197, 2.67302, -0.5, 0.309017, 0.951057, -0.5, 0.927051, 2.85317, -0.5, -0.469303, 2.96306, -0.5, -0.309017, 0.951057, -0.5, -0.927051, 2.85317, -0.5, -2.12132, 2.12132, -0.5, -0.809017, 0.587785, -0.5, -2.42705, 1.76336, -0.5, -2.96306, 0.469303, -0.5, -1, 1.22465e-16, -0.5, -3, 3.67394e-16, -0.5, -2.67302, -1.36197, -0.5, -0.809017, -0.587785, -0.5, -2.42705, -1.76336, -0.5, -1.36197, -2.67302, -0.5, -0.309017, -0.951057, -0.5, -0.927051, -2.85317, -0.5, 0.469303, -2.96306, -0.5, 0.309017, -0.951057, -0.5, 0.927051, -2.85317, -0.5, 2.12132, -2.12132, -0.5, 0.809017, -0.587785, -0.5, 2.42705, -1.76336, -0.5, 2.96306, -0.469303, -0.5, 1, 0, -0.5, 3, 0, -0.5, 2.67302, 1.36197, -0.5, 4.75528, 1.54508, -0.5, 4.93844, 0.782172, -0.5, 3, 0, -0.5, 1.36197, 2.67302, -0.5, 2.93893, 4.04508, -0.5, 3.53553, 3.53553, -0.5, 2.42705, 1.76336, -0.5, -0.469303, 2.96306, -0.5, 1.11022e-15, 5, -0.5, 0.782172, 4.93844, -0.5, 0.927051, 2.85317, -0.5, -2.12132, 2.12132, -0.5, -2.93893, 4.04508, -0.5, -2.26995, 4.45503, -0.5, -0.927051, 2.85317, -0.5, -2.96306, 0.469303, -0.5, -4.75528, 1.54508, -0.5, -4.45503, 2.26995, -0.5, -2.42705, 1.76336, -0.5, -2.67302, -1.36197, -0.5, -4.75528, -1.54508, -0.5, -4.93844, -0.782172, -0.5, -3, 3.67394e-16, -0.5, -1.36197, -2.67302, -0.5, -2.93893, -4.04508, -0.5, -3.53553, -3.53553, -0.5, -2.42705, -1.76336, -0.5, 0.469303, -2.96306, -0.5, -1.11022e-15, -5, -0.5, -0.782172, -4.93844, -0.5, -0.927051, -2.85317, -0.5, 2.12132, -2.12132, -0.5, 2.93893, -4.04508, -0.5, 2.26995, -4.45503, -0.5, 0.927051, -2.85317, -0.5, 2.96306, -0.469303, -0.5, 4.75528, -1.54508, -0.5, 4.45503, -2.26995, -0.5, 2.42705, -1.76336, -0.5, 3, 0, 0.5, 3, 0, -0.5, 4.93844, 0.782172, 0.5, 4.93844, 0.782172, -0.5, 4.75528, 1.54508, 0.5, 4.75528, 1.54508, -0.5, 2.67302, 1.36197, 0.5, 2.67302, 1.36197, -0.5, 2.42705, 1.76336, 0.5, 2.42705, 1.76336, -0.5, 3.53553, 3.53553, 0.5, 3.53553, 3.53553, -0.5, 2.93893, 4.04508, 0.5, 2.93893, 4.04508, -0.5, 1.36197, 2.67302, 0.5, 1.36197, 2.67302, -0.5, 0.927051, 2.85317, 0.5, 0.927051, 2.85317, -0.5, 0.782172, 4.93844, 0.5, 0.782172, 4.93844, -0.5, 1.11022e-15, 5, 0.5, 1.11022e-15, 5, -0.5, -0.469303, 2.96306, 0.5, -0.469303, 2.96306, -0.5, -0.927051, 2.85317, 0.5, -0.927051, 2.85317, -0.5, -2.26995, 4.45503, 0.5, -2.26995, 4.45503, -0.5, -2.93893, 4.04508, 0.5, -2.93893, 4.04508, -0.5, -2.12132, 2.12132, 0.5, -2.12132, 2.12132, -0.5, -2.42705, 1.76336, 0.5, -2.42705, 1.76336, -0.5, -4.45503, 2.26995, 0.5, -4.45503, 2.26995, -0.5, -4.75528, 1.54508, 0.5, -4.75528, 1.54508, -0.5, -2.96306, 0.469303, 0.5, -2.96306, 0.469303, -0.5, -3, 3.67394e-16, 0.5, -3, 3.67394e-16, -0.5, -4.93844, -0.782172, 0.5, -4.93844, -0.782172, -0.5, -4.75528, -1.54508, 0.5, -4.75528, -1.54508, -0.5, -2.67302, -1.36197, 0.5, -2.67302, -1.36197, -0.5, -2.42705, -1.76336, 0.5, -2.42705, -1.76336, -0.5, -3.53553, -3.53553, 0.5, -3.53553, -3.53553, -0.5, -2.93893, -4.04508, 0.5, -2.93893, -4.04508, -0.5, -1.36197, -2.67302, 0.5, -1.36197, -2.67302, -0.5, -0.927051, -2.85317, 0.5, -0.927051, -2.85317, -0.5, -0.782172, -4.93844, 0.5, -0.782172, -4.93844, -0.5, -1.11022e-15, -5, 0.5, -1.11022e-15, -5, -0.5, 0.469303, -2.96306, 0.5, 0.469303, -2.96306, -0.5, 0.927051, -2.85317, 0.5, 0.927051, -2.85317, -0.5, 2.26995, -4.45503, 0.5, 2.26995, -4.45503, -0.5, 2.93893, -4.04508, 0.5, 2.93893, -4.04508, -0.5, 2.12132, -2.12132, 0.5, 2.12132, -2.12132, -0.5, 2.42705, -1.76336, 0.5, 2.42705, -1.76336, -0.5, 4.45503, -2.26995, 0.5, 4.45503, -2.26995, -0.5, 4.75528, -1.54508, 0.5, 4.75528, -1.54508, -0.5, 2.96306, -0.469303, 0.5, 2.96306, -0.469303, -0.5, 1, 0, -0.5, 1, 0, 0.5, 0.809017, 0.587785, -0.5, 0.809017, 0.587785, 0.5, 0.309017, 0.951057, -0.5, 0.309017, 0.951057, 0.5, -0.309017, 0.951057, -0.5, -0.309017, 0.951057, 0.5, -0.809017, 0.587785, -0.5, -0.809017, 0.587785, 0.5, -1, 1.22465e-16, -0.5, -1, 1.22465e-16, 0.5, -0.809017, -0.587785, -0.5, -0.809017, -0.587785, 0.5, -0.309017, -0.951057, -0.5, -0.309017, -0.951057, 0.5, 0.309017, -0.951057, -0.5, 0.309017, -0.951057, 0.5, 0.809017, -0.587785, -0.5, 0.809017, -0.587785, 0.5, 1, 0, -0.5, 1, 0, 0.5 ]
+                      }
+                    },
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "creaseAngle",
+                          "@protoField": "creaseAngle"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Script":
+                  {
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "teeth"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "toothDepth"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "innerRadius"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "outerRadius"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "width"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "gear",
+                        "-children": [
+                          { "IndexedFaceSet":
+                            {
+                              "@USE": "Gear"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\teventsProcessed ();",
+"}",
+"",
+"function eventsProcessed ()",
+"{",
+"\tprint ('### Generating gear ...');",
+"",
+"\tvar indices = new MFInt32 ();",
+"\tvar points  = new MFVec3f ();",
+"",
+"\tvar cos = Math .cos;",
+"\tvar sin = Math .sin;",
+"",
+"\t// Radien and tooth angle",
+"",
+"\tvar radius0 = innerRadius;",
+"\tvar radius1 = outerRadius - toothDepth / 2;",
+"\tvar radius2 = outerRadius + toothDepth / 2;",
+"\tvar da = 2 * Math .PI / teeth / 4;",
+"",
+"\t// Front vectors",
+"",
+"\tvar vectorf0 = new SFVec3f (radius0, 0, width * 0.5);",
+"\tvar vectorf1 = new SFVec3f (radius1, 0, width * 0.5);",
+"\tvar vectorf2 = new SFVec3f (radius2, 0, width * 0.5);",
+"",
+"\t// Back vectors",
+"",
+"\tvar vectorb0 = new SFVec3f (radius0, 0, -width * 0.5);",
+"\tvar vectorb1 = new SFVec3f (radius1, 0, -width * 0.5);",
+"\tvar vectorb2 = new SFVec3f (radius2, 0, -width * 0.5);",
+"",
+"\t// Generate front face indices",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar index = i * 3;",
+"",
+"\t\tindices [indices .length] = index;",
+"\t\tindices [indices .length] = index + 1;",
+"\t\tindices [indices .length] = index + 2;",
+"\t\tindices [indices .length] = index + 4;",
+"\t\tindices [indices .length] = index + 3;",
+"\t\tindices [indices .length] = -1;",
+"\t}",
+"",
+"\t// Generate front face points",
+"",
+"\tfor (var i = 0; i < teeth + 1; ++ i)",
+"\t{",
+"\t\tvar angle = i * 2 * Math .PI / teeth;",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf0);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf1);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);",
+"\t}",
+"",
+"\tpoints .length = points .length - 1;",
+"",
+"\tpoints [points .length] = new SFVec3f ();",
+"\tpoints [points .length] = new SFVec3f ();",
+"\tpoints [points .length] = new SFVec3f ();",
+"",
+"",
+"\t// Generate front sides of teeth indices",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar index = i * 4;",
+"",
+"\t\tindices [indices .length] = points .length + index;",
+"\t\tindices [indices .length] = points .length + index + 1;",
+"\t\tindices [indices .length] = points .length + index + 2;",
+"\t\tindices [indices .length] = points .length + index + 3;",
+"\t\tindices [indices .length] = -1;",
+"\t}",
+"",
+"\t// Generate front sides of teeth points",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar angle = i * 2 * Math .PI / teeth;",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf1);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + da)     .multVec (vectorf2);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorf2);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);",
+"\t}",
+"",
+"",
+"\t// Generate back face indices",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar index = i * 3;",
+"",
+"\t\tindices [indices .length] = points .length + index;",
+"\t\tindices [indices .length] = points .length + index + 3;",
+"\t\tindices [indices .length] = points .length + index + 4;",
+"\t\tindices [indices .length] = points .length + index + 2;",
+"\t\tindices [indices .length] = points .length + index + 1;",
+"\t\tindices [indices .length] = -1;",
+"\t}",
+"",
+"\t// Generate back face points",
+"",
+"\tfor (var i = 0; i < teeth + 1; ++ i)",
+"\t{",
+"\t\tvar angle = i * 2 * Math .PI / teeth;",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb0);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb1);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);",
+"\t}",
+"",
+"\tpoints .length = points .length - 1;",
+"",
+"",
+"\t// Generate back sides of teeth indices",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar index = i * 4;",
+"",
+"\t\tindices [indices .length] = points .length + index;",
+"\t\tindices [indices .length] = points .length + index + 1;",
+"\t\tindices [indices .length] = points .length + index + 2;",
+"\t\tindices [indices .length] = points .length + index + 3;",
+"\t\tindices [indices .length] = -1;",
+"\t}",
+"",
+"\t// Generate front sides of teeth points",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar angle = i * 2 * Math .PI / teeth;",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorb2);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + da)     .multVec (vectorb2);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb1);",
+"\t}",
+"",
+"",
+"\t// Generate outward faces of teeth indices",
+"",
+"\tfor (var i = 0; i < teeth * 4; ++ i)",
+"\t{",
+"\t\tvar index = i * 2;",
+"",
+"\t\tindices [indices .length] = points .length + index;",
+"\t\tindices [indices .length] = points .length + index + 1;",
+"\t\tindices [indices .length] = points .length + index + 3;",
+"\t\tindices [indices .length] = points .length + index + 2;",
+"\t\tindices [indices .length] = -1;",
+"\t}",
+"",
+"\tindices [indices .length - 3] = points .length + 1;",
+"\tindices [indices .length - 2] = points .length;",
+"",
+"\t// Generate outward faces of teeth points",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t   var angle = i * 2 * Math .PI / teeth;",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorf1);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorb1);",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + da) .multVec (vectorf2);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + da) .multVec (vectorb2);",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorf2);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorb2);",
+"",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);",
+"\t}",
+"",
+"",
+"\t// Generate inside radius cylinder points",
+"",
+"\tfor (var i = 0; i < teeth; ++ i)",
+"\t{",
+"\t\tvar index = i * 2;",
+"",
+"\t\tindices [indices .length] = points .length + index;",
+"\t\tindices [indices .length] = points .length + index + 1;",
+"\t\tindices [indices .length] = points .length + index + 3;",
+"\t\tindices [indices .length] = points .length + index + 2;",
+"\t\tindices [indices .length] = -1;",
+"\t}",
+"",
+"\tindices [indices .length - 3] = points .length + 1;",
+"\tindices [indices .length - 2] = points .length;",
+"",
+"\t// Generate inside radius cylinder indices",
+"",
+"\tfor (var i = 0; i < teeth + 1; ++ i)",
+"\t{",
+"\t\tvar angle = i * 2 * Math .PI / teeth;",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorb0);",
+"\t\tpoints [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorf0);",
+"\t}",
+"",
+"\tprint ('### Generating gear done.');",
+"",
+"\tgear .coord .point   = points;",
+"\tgear .set_coordIndex = indices;",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "teeth",
+                          "@protoField": "teeth"
+                        },
+                        {
+                          "@nodeField": "toothDepth",
+                          "@protoField": "toothDepth"
+                        },
+                        {
+                          "@nodeField": "innerRadius",
+                          "@protoField": "innerRadius"
+                        },
+                        {
+                          "@nodeField": "outerRadius",
+                          "@protoField": "outerRadius"
+                        },
+                        {
+                          "@nodeField": "width",
+                          "@protoField": "width"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@DEF": "None",
+            "@type": [ "NONE" ],
+            "@headlight": false
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@DEF": "Examine",
+            "@type": [ "EXAMINE" ],
+            "@headlight": false
+          }
+        },
+        { "Background":
+          {
+            "@DEF": "White",
+            "@skyColor": [ 1, 1, 1 ]
+          }
+        },
+        { "OrthoViewpoint":
+          {
+            "@DEF": "_1",
+            "@description": "Initial View",
+            "@position": [ -31.9206, 26.1946, 31.6035 ],
+            "@orientation": [ 0.5199480077987, 0.825917412387935, 0.217978203269455, 306.1170626402 ],
+            "@centerOfRotation": [ 3.92971, -2.324, -3.5675 ],
+            "@fieldOfView": [ -22.13, -15.83, 5.99, 38.28 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@DEF": "_2",
+            "@description": "Perspective",
+            "@position": [ -41.2725, 42.6755, 38.89 ],
+            "@orientation": [ -0.56019187756473, -0.797236169473889, -0.224943438208595, 53.6521853850443 ],
+            "@centerOfRotation": [ 3.75422, 2.73351, -7.84869 ]
+          }
+        },
+        { "Group":
+          {
+            "-children": [
+              { "DirectionalLight":
+                {
+                  "@intensity": 0.48,
+                  "@direction": [ 0, -1, 0 ]
+                }
+              },
+              { "DirectionalLight":
+                {
+                  "@ambientIntensity": 0.48,
+                  "@direction": [ 0.747624, -0.456296, -0.482548 ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "TransformText",
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Text",
+                        "@translation": [ -26.0162, 0.522795, -41.3646 ],
+                        "@rotation": [ -0.999999999993254, -3.67320512848233e-06, -1.72095619204259e-18, 90.0000000000002 ],
+                        "@scale": [ 4.70841, 4.70841, 4.70841 ],
+                        "@scaleOrientation": [ 0.998514277199544, -0.0537817447270235, -0.00876140187346953, 4.64170084948354 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@diffuseColor": [ 0, 0, 0 ]
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "Transform" ],
+                                  "@solid": true
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_3",
+                        "@translation": [ -25.6365, 0.729452, -35.4932 ],
+                        "@rotation": [ -0.999999999993254, -3.67320512848233e-06, -1.72095619204259e-18, 90.0000000000002 ],
+                        "@scale": [ 4.70841, 4.70841, 4.70841 ],
+                        "@scaleOrientation": [ 0.999999999998594, 2.04310939291156e-07, -1.66466840314536e-06, 224.999999999872 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@diffuseColor": [ 0, 0, 0 ]
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "A Transform node is a", "grouping node that", "defines a coordinate", "system." ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@size": 0.6,
+                                      "@spacing": 1.2
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "Earth",
+                  "@translation": [ -20, 0.865071, -5 ],
+                  "@rotation": [ -1, 0, 0, 89.9999863396235 ],
+                  "@scale": [ 10.0527, 10.0527, 0.100527 ],
+                  "-children": [
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "_4",
+                        "@name": "Rotor",
+                        "fieldValue": [
+                          {
+                            "@name": "cycleInterval",
+                            "@value": 20
+                          },
+                          {
+                            "@name": "axis",
+                            "@value": [ 0, -1, 0 ]
+                          },
+                          {
+                            "@name": "loop",
+                            "@value": true
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "earth",
+                        "@rotation": [ 0, -1, 0, 322.251577377319 ],
+                        "-children": [
+                          { "Inline":
+                            {
+                              "@url": [ "earth.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/earth.x3d" ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Inline":
+                {
+                  "@DEF": "gears",
+                  "@url": [ "gears.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/gears.x3d" ]
+                }
+              },
+              { "Inline":
+                {
+                  "@DEF": "horizontal-bars",
+                  "@url": [ "horizontal-bars.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/horizontal-bars.x3d" ]
+                }
+              },
+              { "Inline":
+                {
+                  "@DEF": "vertical-bars",
+                  "@url": [ "vertical-bars.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/vertical-bars.x3d" ]
+                }
+              },
+              { "Inline":
+                {
+                  "@DEF": "graph-with-bars",
+                  "@url": [ "graph-with-bars.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/graph-with-bars.x3d" ]
+                }
+              }
+            ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@name": "Grid",
+            "fieldValue": [
+              {
+                "@name": "scale",
+                "@value": [ 1.5, 1.5, 1.5 ]
+              },
+              {
+                "@name": "dimension",
+                "@value": [ 190, 10, 190 ]
+              },
+              {
+                "@name": "planeTransparency",
+                "@value": 1
+              },
+              {
+                "@name": "lineColor",
+                "@value": [ 0, 0, 0 ]
+              },
+              {
+                "@name": "lineTransparency",
+                "@value": 0.952941
+              },
+              {
+                "@name": "majorLineColor",
+                "@value": [ 0, 0, 0 ]
+              },
+              {
+                "@name": "majorLineTransparency",
+                "@value": 0.905882
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "EarthShadow",
+            "@translation": [ 0, -0.593197, 0 ],
+            "-children": [
+              { "Transform":
+                {
+                  "@USE": "Earth"
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_4",
+            "@fromField": "rotation_changed",
+            "@toNode": "earth",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_2",
+            "@fromField": "isBound",
+            "@toNode": "Examine",
+            "@toField": "set_bind"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "isBound",
+            "@toNode": "None",
+            "@toField": "set_bind"
+          }
+        }
+      ]
+    }
+  }
+}

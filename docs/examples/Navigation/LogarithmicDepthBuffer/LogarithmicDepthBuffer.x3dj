@@ -1,0 +1,846 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 12 Nov 2017 22:36:28 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.7, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Navigation/LogarithmicDepthBuffer/LogarithmicDepthBuffer.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 17 Nov 2019 07:54:42 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Interpolation",
+          "@level": 4
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "NURBS",
+          "@level": 1
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"SizeText",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFVec3f",
+                  "@name": "translation"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "xOffset",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "displaySize",
+                  "@value": 0.1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "fieldOfView",
+                  "@value": 0.7854
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFString",
+                  "@name": "string",
+                  "@value": [ "child sized (1 m)" ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFDouble",
+                  "@name": "size",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFColor",
+                  "@name": "color",
+                  "@value": [ 0.8, 0.8, 0.8 ]
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFVec3f",
+                  "@name": "viewpointPosition_changed"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Transform":
+                  {
+                    "@DEF": "Group",
+                    "-children": [
+                      { "Transform":
+                        {
+                          "@DEF": "Text_1",
+                          "@translation": [ 1, 0, 0 ],
+                          "-children": [
+                            { "Shape":
+                              {
+                                "-appearance": { "Appearance":
+                                  {
+                                    "@DEF": "_2",
+                                    "-material": { "Material":
+                                      {
+                                        "IS": {
+                                          "connect": [
+                                            {
+                                              "@nodeField": "diffuseColor",
+                                              "@protoField": "color"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                },
+                                "-geometry": { "Text":
+                                  {
+                                    "@DEF": "_3",
+                                    "-fontStyle": { "FontStyle":
+                                      {
+                                        "@DEF": "_4",
+                                        "@family": [ "TYPEWRITER" ],
+                                        "@justify": [ "BEGIN", "MIDDLE" ]
+                                      }
+                                    },
+                                    "IS": {
+                                      "connect": [
+                                        {
+                                          "@nodeField": "string",
+                                          "@protoField": "string"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      { "Transform":
+                        {
+                          "@DEF": "Sphere",
+                          "-children": [
+                            { "Shape":
+                              {
+                                "-appearance": { "Appearance":
+                                  {
+                                    "@USE": "_2"
+                                  }
+                                },
+                                "-geometry": { "Sphere":
+                                  {
+                                    "@DEF": "_5",
+                                    "@radius": 0.5
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "translation",
+                          "@protoField": "translation"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "SizeTextScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "xOffset"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "displaySize"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "fieldOfView"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFVec2f",
+                        "@name": "set_textBounds"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFDouble",
+                        "@name": "size"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFVec3f",
+                        "@name": "viewpointPosition_changed"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "sphere",
+                        "-children": [
+                          { "Sphere":
+                            {
+                              "@USE": "_5"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "text",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@USE": "Text_1"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "fontStyle",
+                        "-children": [
+                          { "FontStyle":
+                            {
+                              "@USE": "_4"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tset_size (size, 0);",
+"\teventsProcessed ();",
+"}",
+"",
+"function set_size (value, time)",
+"{",
+"\tsphere .radius       = value / 2;",
+"\ttext .translation .x = value * 1;",
+"\tfontStyle .size      = value;",
+"}",
+"",
+"function eventsProcessed ()",
+"{",
+"\tvar",
+"\t\tz = (size / displaySize) / (Math .tan (fieldOfView / 2) * 2),",
+"\t\ts = z * Math .tan (fieldOfView / 2) * 2,",
+"\t\tx = s / 2 * xOffset;",
+"",
+"\tviewpointPosition_changed = new SFVec3f (x, 0, z);",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "xOffset",
+                          "@protoField": "xOffset"
+                        },
+                        {
+                          "@nodeField": "displaySize",
+                          "@protoField": "displaySize"
+                        },
+                        {
+                          "@nodeField": "fieldOfView",
+                          "@protoField": "fieldOfView"
+                        },
+                        {
+                          "@nodeField": "size",
+                          "@protoField": "size"
+                        },
+                        {
+                          "@nodeField": "viewpointPosition_changed",
+                          "@protoField": "viewpointPosition_changed"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_3",
+                    "@fromField": "textBounds",
+                    "@toNode": "SizeTextScript",
+                    "@toField": "set_textBounds"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"Sizes",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "textInterval",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "xOffset",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "displaySize",
+                  "@value": 0.1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "fieldOfView",
+                  "@value": 0.7854
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFString",
+                  "@name": "string"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFDouble",
+                  "@name": "size"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Group":
+                  {
+                    "-children": [
+                      { "Viewpoint":
+                        {
+                          "@DEF": "_6",
+                          "@description": "Animation",
+                          "IS": {
+                            "connect": [
+                              {
+                                "@nodeField": "fieldOfView",
+                                "@protoField": "fieldOfView"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      { "Group":
+                        {
+                          "@DEF": "_7"
+                        }
+                      },
+                      { "Switch":
+                        {
+                          "-children": [
+                            { "Shape":
+                              {
+                                "@DEF": "Line",
+                                "-appearance": { "Appearance":
+                                  {
+                                    "-material": { "Material":
+                                      {
+                                        "@diffuseColor": [ 0, 0, 0 ],
+                                        "@emissiveColor": [ 1, 1, 1 ]
+                                      }
+                                    }
+                                  }
+                                },
+                                "-geometry": { "LineSet":
+                                  {
+                                    "@vertexCount": [ 2 ],
+                                    "-coord": { "CoordinateDouble":
+                                      {
+                                        "@DEF": "_8",
+                                        "@point": [ 0, -nan, 0, 0, nan, 0 ]
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "TimeSensor":
+                  {
+                    "@DEF": "_9",
+                    "@cycleInterval": 0,
+                    "@loop": true
+                  }
+                },
+                { "SplinePositionInterpolator":
+                  {
+                    "@DEF": "_10"
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "SizesScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFTime",
+                        "@name": "textInterval"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "xOffset"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "displaySize"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "fieldOfView"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFString",
+                        "@name": "string"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFDouble",
+                        "@name": "size"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "timeSensor",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@USE": "_9"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "viewpoint",
+                        "-children": [
+                          { "Viewpoint":
+                            {
+                              "@USE": "_6"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "group",
+                        "-children": [
+                          { "Group":
+                            {
+                              "@USE": "_7"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "lineCoord",
+                        "-children": [
+                          { "CoordinateDouble":
+                            {
+                              "@USE": "_8"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "script",
+                        "-children": [
+                          { "Script":
+                            {
+                              "@DEF": "ViewpointScript",
+                              "@directOutput": true,
+                              "field": [
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFVec3f",
+                                  "@name": "set_viewpointPosition"
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFNode",
+                                  "@name": "interpolator",
+                                  "-children": [
+                                    { "SplinePositionInterpolator":
+                                      {
+                                        "@USE": "_10"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFNode",
+                                  "@name": "group",
+                                  "-children": [
+                                    { "Group":
+                                      {
+                                        "@USE": "_7"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "#sourceText": [
+"ecmascript:",
+"",
+"function set_viewpointPosition (value, time)",
+"{",
+"\tinterpolator .key         .length = 0;",
+"\tinterpolator .keyValue    .length = 0;",
+"\tinterpolator .keyVelocity .length = 0;",
+"\t",
+"\tfor (var i = 0, length = group .children .length; i < length; ++ i)",
+"\t{",
+"\t\tinterpolator .key .push ((i + 1) / (length + 1));",
+"\t\tinterpolator .keyValue .push (group .children [i] .viewpointPosition_changed .add (group .children [i] .translation));",
+"\t\tinterpolator .keyVelocity .push (new SFVec3f ());",
+"\t}",
+"\t",
+"\tinterpolator .key .unshift (0);",
+"\tinterpolator .keyValue .unshift (interpolator .keyValue [0]);",
+"\tinterpolator .keyVelocity .unshift (new SFVec3f ());",
+"\t",
+"\tinterpolator .key .push (1);",
+"\tinterpolator .keyValue .push (interpolator .keyValue [interpolator .keyValue .length - 1]);",
+"\tinterpolator .keyVelocity .push (new SFVec3f ());",
+"}"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tviewpoint .set_bind = true;",
+"",
+"\teventsProcessed ();",
+"}",
+"",
+"function eventsProcessed ()",
+"{",
+"\tvar color = new SFColor ();",
+"",
+"\tfor (var i = 0, length = group .children .length; i < length; ++ i)",
+"\t{",
+"\t\tBrowser .deleteRoute (group .children [i], \"viewpointPosition_changed\", script, \"set_viewpointPosition\");",
+"\t}",
+"",
+"\tgroup .children .length = 0;",
+"\t",
+"\tfor (var i = 0, length = string .length; i < length; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\ttext = Browser .currentScene .createProto (\"SizeText\"),",
+"\t\t\thue  = Math .PI * 2 * (i / length); ",
+"",
+"\t\tcolor .setHSV (hue, 1, 1);",
+"",
+"\t\ttext .xOffset     = xOffset;",
+"\t\ttext .displaySize = displaySize;",
+"\t\ttext .fieldOfView = fieldOfView;",
+"\t\ttext .string [0]  = string [i];",
+"\t\ttext .size        = size [i];",
+"\t\ttext .color       = color;",
+"\t\t",
+"\t\tgroup .children .push (text);",
+"\t\t",
+"\t\tBrowser .addRoute (group .children [i], \"viewpointPosition_changed\", script, \"set_viewpointPosition\");",
+"\t}",
+"",
+"\tvar s = 0;",
+"",
+"\tfor (var i = 1, length = group .children .length; i < length; ++ i)",
+"\t{",
+"\t\tvar p = i - 1;",
+"",
+"\t\ts += group .children [i] .size;",
+"\t\t",
+"\t\tgroup .children [i] .translation .y = s;",
+"\t}",
+"",
+"\ttimeSensor .cycleInterval = group .children .length * textInterval;",
+"",
+"\t// Test line",
+"",
+"\tvar y = 10 * size [size .length - 1];",
+"",
+"\tlineCoord .point [0] = new SFVec3d (0, -y, 0);",
+"\tlineCoord .point [1] = new SFVec3d (0,  y, 0);",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "textInterval",
+                          "@protoField": "textInterval"
+                        },
+                        {
+                          "@nodeField": "xOffset",
+                          "@protoField": "xOffset"
+                        },
+                        {
+                          "@nodeField": "displaySize",
+                          "@protoField": "displaySize"
+                        },
+                        {
+                          "@nodeField": "fieldOfView",
+                          "@protoField": "fieldOfView"
+                        },
+                        {
+                          "@nodeField": "string",
+                          "@protoField": "string"
+                        },
+                        {
+                          "@nodeField": "size",
+                          "@protoField": "size"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_9",
+                    "@fromField": "fraction_changed",
+                    "@toNode": "_10",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_10",
+                    "@fromField": "value_changed",
+                    "@toNode": "_6",
+                    "@toField": "position"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "LogarithmicDepthBufferScript",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "startTime"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "string_changed"
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tBrowser .setBrowserOption (\"LogarithmicDepthBuffer\", true);",
+"\t",
+"\tstartTime = 0;",
+"}",
+"",
+"function set_startTime (value, time)",
+"{",
+"\tstring_changed [0] = \"Logarithmic Depth Buffer: \" + Browser .getRenderingProperty (\"LogarithmicDepthBuffer\");",
+"}"
+            ]
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": -1,
+            "@order": [ 0, 1, 2 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Sizes",
+                  "-children": [
+                    { "NavigationInfo":
+                      {
+                        "@type": [ "EXAMINE" ],
+                        "@avatarSize": [ 1e-05, 1.6, 0.75 ],
+                        "@visibilityLimit": 1e+24
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@name": "Sizes",
+                        "fieldValue": [
+                          {
+                            "@name": "textInterval",
+                            "@value": 4
+                          },
+                          {
+                            "@name": "xOffset",
+                            "@value": 1.35
+                          },
+                          {
+                            "@name": "displaySize",
+                            "@value": 0.111111
+                          },
+                          {
+                            "@name": "string",
+                            "@value": [ "microscopic (1 μm)", "minuscule (1 mm)", "tiny (1 cm)", "small (1 dm)", "child-sized (1 m)", "tree-sized (10 m)", "building-sized (100 m)", "medium (1 km)", "city-sized (10 km)", "moon-sized (3,400 km)", "planet-sized (12,000 km)", "sun-sized (1,400,000 km)", "solar system (50 Au)", "gargantuan (1 ly)", "ludicrous (1 pc)", "mind boggling (1,000 ly)", "galaxy-sized (120,000 ly)", "ooops (100,000,000 ly)" ]
+                          },
+                          {
+                            "@name": "size",
+                            "@value": [ 1e-06, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23 ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "HUD",
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "LDB",
+                        "@translation": [ 6.84654, -3.7207, 0 ],
+                        "@scale": [ 0.233881, 0.233881, 0.233881 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@DEF": "_11",
+                                  "@string": [ "Logarithmic Depth Buffer: false" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "TYPEWRITER" ],
+                                      "@justify": [ "END" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "LogarithmicDepthBufferScript",
+            "@fromField": "string_changed",
+            "@toNode": "_11",
+            "@toField": "string"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Grouping' level='3'/>
+    <component name='Interpolation' level='4'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 24 Sep 2017 10:08:54 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.0, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Interpolation/PositionInterpolator2D/PositionInterpolator2D.O.x3d'/>
+    <meta name='modified' content='Sat, 16 Jun 2018 17:01:27 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='Torus' url='"Torus.x3d#Torus"'>
+      <field accessType='inputOutput' type='SFFloat' name='minorRadius'/>
+      <field accessType='inputOutput' type='SFFloat' name='majorRadius'/>
+      <field accessType='inputOutput' type='SFInt32' name='minorDimension'/>
+      <field accessType='inputOutput' type='SFInt32' name='majorDimension'/>
+      <field accessType='initializeOnly' type='SFBool' name='solid'/>
+    </ExternProtoDeclare>
+    <WorldInfo/>
+    <NavigationInfo
+        type='"EXAMINE"'/>
+    <Viewpoint
+        description='Initial View'/>
+    <Transform DEF='Torus'
+        rotation='-0.119054280875312 0.702080394499344 -0.702074923255993 2.90460301492766'
+        scale='0.51084 0.51084 0.199605'
+        scaleOrientation='-8.08179853906393e-07 -5.49994432803296e-07 -0.999999999999522 0.099290624614057'>
+      <Group DEF='GlowAnimation'>
+        <TimeSensor DEF='GlowAnimationTimer'
+            cycleInterval='6'
+            loop='true'/>
+        <PositionInterpolator2D DEF='TranslationInterpolator'
+            key='0, 1'
+            keyValue='0 0.4, 0 1.4'/>
+      </Group>
+      <Shape>
+        <Appearance>
+          <Material DEF='Neon28'
+              ambientIntensity='0'
+              diffuseColor='0 0 0'
+              specularColor='0.951039 0.314318 1'
+              emissiveColor='0 0.277276 1'
+              shininess='0.536'/>
+          <ImageTexture
+              url='"glow.png"'/>
+          <TextureTransform DEF='_1'
+              translation='0 0.4'
+              scale='1 2'/>
+        </Appearance>
+        <ProtoInstance name='Torus' containerField='geometry'>
+          <fieldValue name='minorRadius' value='1.4'/>
+          <fieldValue name='majorRadius' value='10'/>
+          <fieldValue name='majorDimension' value='60'/>
+        </ProtoInstance>
+      </Shape>
+    </Transform>
+    <Transform DEF='Text'>
+      <Shape>
+        <Appearance>
+          <Material
+              diffuseColor='1 1 1'/>
+        </Appearance>
+        <Text DEF='_2'
+            string='"Titania"'
+            solid='true'>
+          <FontStyle
+              family='"Nanami Outline/NanamiOutline-Oblq.otf"'
+              size='1.92'
+              justify='"MIDDLE", "MIDDLE"'/>
+        </Text>
+      </Shape>
+      <Script DEF='BrowserScript'>
+        <field accessType='outputOnly' type='MFString' name='string_changed'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	string_changed [0] = Browser .name;
+}
+]]>
+      </Script>
+    </Transform>
+    <ROUTE fromNode='GlowAnimationTimer' fromField='fraction_changed' toNode='TranslationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='TranslationInterpolator' fromField='value_changed' toNode='_1' toField='set_translation'/>
+    <ROUTE fromNode='BrowserScript' fromField='string_changed' toNode='_2' toField='set_string'/>
+  </Scene>
+</X3D>

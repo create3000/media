@@ -1,0 +1,115 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT Grouping : 3
+COMPONENT Interpolation : 4
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 24 Sep 2017 10:08:54 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Interpolation/PositionInterpolator2D/PositionInterpolator2D.O.x3d"
+META "modified" "Sat, 16 Jun 2018 17:01:27 GMT"
+META "titania-add-metadata" "true"
+
+EXTERNPROTO Torus [
+  inputOutput    SFFloat minorRadius
+  inputOutput    SFFloat majorRadius
+  inputOutput    SFInt32 minorDimension
+  inputOutput    SFInt32 majorDimension
+  initializeOnly SFBool  solid
+]
+"Torus.x3d#Torus"
+
+WorldInfo {
+}
+
+NavigationInfo {
+  type "EXAMINE"
+}
+
+Viewpoint {
+  description "Initial View"
+}
+
+DEF Torus Transform {
+  rotation -0.119054280875312 0.702080394499344 -0.702074923255993 2.90460301492766
+  scale 0.51084 0.51084 0.199605
+  scaleOrientation -8.08179853906393e-07 -5.49994432803296e-07 -0.999999999999522 0.099290624614057
+  children [
+    DEF GlowAnimation Group {
+      children [
+        DEF GlowAnimationTimer TimeSensor {
+          cycleInterval 6
+          loop TRUE
+        }
+        DEF TranslationInterpolator PositionInterpolator2D {
+          key [ 0, 1 ]
+          keyValue [ 0 0.4, 0 1.4 ]
+        }
+      ]
+    }
+    Shape {
+      appearance Appearance {
+        material DEF Neon28 Material {
+          ambientIntensity 0
+          diffuseColor 0 0 0
+          specularColor 0.951039 0.314318 1
+          emissiveColor 0 0.277276 1
+          shininess 0.536
+        }
+        texture ImageTexture {
+          url "glow.png"
+        }
+        textureTransform DEF _1 TextureTransform {
+          translation 0 0.4
+          scale 1 2
+        }
+      }
+      geometry Torus {
+        minorRadius 1.4
+        majorRadius 10
+        majorDimension 60
+      }
+    }
+  ]
+}
+
+DEF Text Transform {
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 1
+        }
+      }
+      geometry DEF _2 Text {
+        string "Titania"
+        solid TRUE
+        fontStyle FontStyle {
+          family "Nanami Outline/NanamiOutline-Oblq.otf"
+          size 1.92
+          justify [ "MIDDLE", "MIDDLE" ]
+        }
+      }
+    }
+    DEF BrowserScript Script {
+      outputOnly MFString string_changed
+
+      url "ecmascript:
+
+function initialize ()
+{
+	string_changed [0] = Browser .name;
+}
+"
+    }
+  ]
+}
+
+ROUTE GlowAnimationTimer.fraction_changed TO TranslationInterpolator.set_fraction
+ROUTE TranslationInterpolator.value_changed TO _1.set_translation
+ROUTE BrowserScript.string_changed TO _2.set_string

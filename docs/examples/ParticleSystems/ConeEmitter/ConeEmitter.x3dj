@@ -1,0 +1,260 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 10 Dec 2017 17:30:12 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.7, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/ConeEmitter/ConeEmitter.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Thu, 07 Nov 2019 12:54:51 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": -1,
+            "@order": [ 0, 1, 2 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Rocks",
+                  "-children": [
+                    { "Viewpoint":
+                      {
+                        "@DEF": "_1",
+                        "@position": [ 0, 0, 2.23085 ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@translation": [ 5, 2, 0 ],
+                        "@rotation": [ 7.65439307679969e-08, -3.95215014160716e-06, 0.999999999992187, 20.941018239943 ],
+                        "-children": [
+                          { "ParticleSystem":
+                            {
+                              "@DEF": "Rock1",
+                              "@maxParticles": 15,
+                              "@particleSize": [ 0.5, 0.5 ],
+                              "-emitter": { "PolylineEmitter":
+                                {
+                                  "@DEF": "_2",
+                                  "@direction": [ -1, 0, 0 ],
+                                  "@speed": 2,
+                                  "@coordIndex": [ 0, 1, -1 ],
+                                  "-coord": { "Coordinate":
+                                    {
+                                      "@point": [ 0, 2, 0, 0, -2, 0 ]
+                                    }
+                                  }
+                                }
+                              },
+                              "@bboxSize": [ 16.29, 6.52, 6.52 ],
+                              "@bboxCenter": [ -5.89, 0, 0 ],
+                              "-appearance": { "Appearance":
+                                {
+                                  "@DEF": "_3",
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "rock.png" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "ParticleSystem":
+                            {
+                              "@DEF": "Roxk2",
+                              "@maxParticles": 15,
+                              "@particleSize": [ 0.3, 0.3 ],
+                              "-emitter": { "PolylineEmitter":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "@bboxSize": [ 16.29, 6.52, 6.52 ],
+                              "@bboxCenter": [ -5.89, 0, 0 ],
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_3"
+                                }
+                              }
+                            }
+                          },
+                          { "ParticleSystem":
+                            {
+                              "@DEF": "Stars",
+                              "@geometryType": "POINT",
+                              "@maxParticles": 35,
+                              "@particleSize": [ 0.3, 0.3 ],
+                              "-emitter": { "PolylineEmitter":
+                                {
+                                  "@USE": "_2"
+                                }
+                              },
+                              "@bboxSize": [ 16.29, 6.52, 6.52 ],
+                              "@bboxCenter": [ -5.89, 0, 0 ],
+                              "-appearance": { "Appearance":
+                                {
+                                  "@DEF": "_4",
+                                  "-pointProperties": { "PointProperties":
+                                    {
+                                      "@pointSizeScaleFactor": 2,
+                                      "@pointSizeMaxValue": 2
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "SpaceShip",
+                  "-children": [
+                    { "Viewpoint":
+                      {
+                        "@USE": "_1"
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "spaceship23",
+                        "@rotation": [ 5.36450974666047e-08, -3.94289724537112e-06, 0.999999999992225, 20.9410204722861 ],
+                        "@scale": [ 4.43, 4.43, 4.43 ],
+                        "@scaleOrientation": [ 0.0113057075592245, -0.0631929853746116, 0.997937286394305, 11.5811085059366 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "spaceship23.png" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 0.282222, 0.211667 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@translation": [ -0.355365, -0.202942, 0 ],
+                        "-children": [
+                          { "ParticleSystem":
+                            {
+                              "@geometryType": "POINT",
+                              "@maxParticles": 5000,
+                              "@particleLifetime": 1,
+                              "-emitter": { "ConeEmitter":
+                                {
+                                  "@direction": [ -1, -0.5, 0 ],
+                                  "@angle": 10,
+                                  "@speed": 1,
+                                  "@mass": 0.1,
+                                  "@surfaceArea": 0.1
+                                }
+                              },
+                              "-physics": [
+                                { "WindPhysicsModel":
+                                  {
+                                    "@speed": 1,
+                                    "@gustiness": 0.5
+                                  }
+                                }
+                              ],
+                              "@colorKey": [ 0, 0.2, 0.5, 1 ],
+                              "-colorRamp": { "Color":
+                                {
+                                  "@color": [ 1, 1, 1, 1, 1, 0, 1, 0, 0, 0.5, 0, 0 ]
+                                }
+                              },
+                              "-appearance": { "Appearance":
+                                {
+                                  "-pointProperties": { "PointProperties":
+                                    {
+                                      "@pointSizeScaleFactor": 2,
+                                      "@pointSizeMaxValue": 2
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

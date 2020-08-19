@@ -1,0 +1,261 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Fri, 18 May 2018 03:17:41 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.9, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollisionCollection/CollisionCollection.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 07 Jan 2019 03:46:10 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "RigidBodyPhysics",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Background":
+          {
+            "@skyAngle": [ 90.0002 ],
+            "@skyColor": [ 0.023, 0.023, 0.023, 0.123, 0.123, 0.123 ],
+            "@groundAngle": [ 90.0002 ],
+            "@groundColor": [ 0.644, 0.644, 0.644, 0.123, 0.123, 0.123 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Inital View",
+            "@position": [ 1.82925, 2.34474, 3.19911 ],
+            "@orientation": [ -0.724820835730136, 0.661469489615511, 0.192595094431979, 43.7709213262184 ],
+            "@centerOfRotation": [ 6.66134e-16, -3.55271e-15, 1.77636e-15 ]
+          }
+        },
+        { "Group":
+          {
+            "@DEF": "Collidables",
+            "-children": [
+              { "CollidableShape":
+                {
+                  "@DEF": "Ball",
+                  "@translation": [ -1.92031e-06, -0.251985, -2.34233e-06 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "-material": { "Material":
+                            {
+                              "@DEF": "Tropical22",
+                              "@ambientIntensity": 0.187004,
+                              "@diffuseColor": [ 0.0207323, 0.339645, 0.748016 ],
+                              "@specularColor": [ 0.90303, 0.90303, 0.90303 ],
+                              "@shininess": 0.927273
+                            }
+                          }
+                        }
+                      },
+                      "-geometry": { "Sphere":
+                        {
+                          "@radius": 0.2
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "Floor",
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, -1, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "@DEF": "_1",
+                          "-appearance": { "Appearance":
+                            {
+                              "-material": { "Material":
+                                {
+                                  "@DEF": "Glass33",
+                                  "@ambientIntensity": 0.0346667,
+                                  "@diffuseColor": [ 0.23, 0.23, 0.23 ],
+                                  "@specularColor": [ 0.407, 0.407, 0.407 ],
+                                  "@shininess": 0.0458015,
+                                  "@transparency": 0.351351
+                                }
+                              }
+                            }
+                          },
+                          "-geometry": { "Box":
+                            {
+                              "@size": [ 2, 0.2, 2 ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "Ceiling",
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, 1, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "@USE": "_1"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "RigidBodyCollection":
+          {
+            "-collider": { "CollisionCollection":
+              {
+                "@bounce": 0.95,
+                "@minBounceSpeed": 0,
+                "-collidables": [
+                  { "CollidableShape":
+                    {
+                      "@USE": "Ball"
+                    }
+                  }
+                ]
+              }
+            },
+            "-bodies": [
+              { "RigidBody":
+                {
+                  "@DEF": "Ball_2",
+                  "@position": [ -1.92031e-06, -0.251985, -2.34233e-06 ],
+                  "@linearVelocity": [ -4.04398e-06, -1.46553, -4.93573e-06 ],
+                  "@angularVelocity": [ -1.98016e-10, 2.95806e-10, 0.000388671 ],
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "Ball"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "Floor_3",
+                  "@fixed": true,
+                  "@linearVelocity": [ 0, 0.1, 0 ],
+                  "-geometry": [
+                    { "CollidableOffset":
+                      {
+                        "@USE": "Floor"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "Ceiling_4",
+                  "@fixed": true,
+                  "-geometry": [
+                    { "CollidableOffset":
+                      {
+                        "@USE": "Ceiling"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "EnterWorldScript",
+            "@directOutput": true,
+            "field": [
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFNode",
+                "@name": "ball",
+                "-children": [
+                  { "RigidBody":
+                    {
+                      "@USE": "Ball_2"
+                    }
+                  }
+                ]
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tball .position        = new SFVec3f (0, 0, 0);",
+"\tball .orientation     = new SFRotation (0, 0, 1, 0);",
+"\tball .linearVelocity  = new SFVec3f (0, 0, 0);",
+"\tball .angularVelocity = new SFVec3f (0, 0, 0);",
+"}"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

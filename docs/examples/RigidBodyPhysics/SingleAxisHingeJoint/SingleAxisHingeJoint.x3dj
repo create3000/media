@@ -1,0 +1,799 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Tue, 15 May 2018 02:42:31 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.1.1, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/RigidBodyPhysics/SingleAxisHingeJoint/SingleAxisHingeJoint.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Wed, 16 May 2018 09:25:29 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "RigidBodyPhysics",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Background":
+          {
+            "@skyAngle": [ 1.5708 ],
+            "@skyColor": [ 0.023, 0.023, 0.023, 0.123, 0.123, 0.123 ],
+            "@groundAngle": [ 1.5708 ],
+            "@groundColor": [ 0.644, 0.644, 0.644, 0.123, 0.123, 0.123 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View"
+          }
+        },
+        { "Group":
+          {
+            "@DEF": "Collidables",
+            "-children": [
+              { "CollidableShape":
+                {
+                  "@DEF": "_1",
+                  "@translation": [ 0, 2, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@DEF": "_2",
+                          "-material": { "Material":
+                            {
+                              "@DEF": "Rococo1",
+                              "@ambientIntensity": 0.187004,
+                              "@diffuseColor": [ 0.636212, 0.748016, 0.300948 ],
+                              "@specularColor": [ 0.412121, 0.412121, 0.412121 ],
+                              "@shininess": 0.8
+                            }
+                          }
+                        }
+                      },
+                      "-geometry": { "Sphere":
+                        {
+                          "@DEF": "_3",
+                          "@radius": 0.15
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_4",
+                  "@translation": [ -2, 2, 0 ],
+                  "@rotation": [ 2.26008637581007e-07, 3.87429872713976e-06, -0.999999999992469, 1.57079626719778 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@USE": "_2"
+                        }
+                      },
+                      "-geometry": { "Cylinder":
+                        {
+                          "@DEF": "_5",
+                          "@height": 4,
+                          "@radius": 0.03
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "_6",
+                  "@translation": [ -2, 2, 0 ],
+                  "@rotation": [ 2.26008637581007e-07, 3.87429872713976e-06, -0.999999999992469, 1.57079626719778 ],
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, -2, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "@USE": "_2"
+                            }
+                          },
+                          "-geometry": { "Sphere":
+                            {
+                              "@DEF": "_7",
+                              "@radius": 0.5
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_8",
+                  "@translation": [ 1, 2, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@DEF": "_9",
+                          "-material": { "Material":
+                            {
+                              "@DEF": "Rococo7",
+                              "@ambientIntensity": 0.187004,
+                              "@diffuseColor": [ 0.748016, 0.467103, 0.261641 ],
+                              "@specularColor": [ 0.251984, 0.251984, 0.251984 ],
+                              "@shininess": 0.872727
+                            }
+                          }
+                        }
+                      },
+                      "-geometry": { "Sphere":
+                        {
+                          "@USE": "_3"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_10",
+                  "@translation": [ 1, 0, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@USE": "_9"
+                        }
+                      },
+                      "-geometry": { "Cylinder":
+                        {
+                          "@USE": "_5"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "_11",
+                  "@translation": [ 1, 0, 0 ],
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, -2, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "@USE": "_9"
+                            }
+                          },
+                          "-geometry": { "Sphere":
+                            {
+                              "@USE": "_7"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_12",
+                  "@translation": [ 2, 2, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@DEF": "_13",
+                          "-material": { "Material":
+                            {
+                              "@DEF": "Rococo13",
+                              "@ambientIntensity": 0.187004,
+                              "@diffuseColor": [ 0.748016, 0.272334, 0.406842 ],
+                              "@specularColor": [ 0.251984, 0.251984, 0.251984 ],
+                              "@shininess": 0.6
+                            }
+                          }
+                        }
+                      },
+                      "-geometry": { "Sphere":
+                        {
+                          "@USE": "_3"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_14",
+                  "@translation": [ 2, 0, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@USE": "_13"
+                        }
+                      },
+                      "-geometry": { "Cylinder":
+                        {
+                          "@USE": "_5"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "_15",
+                  "@translation": [ 2, 0, 0 ],
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, -2, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "@USE": "_13"
+                            }
+                          },
+                          "-geometry": { "Sphere":
+                            {
+                              "@USE": "_7"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_16",
+                  "@translation": [ 3, 2, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@DEF": "_17",
+                          "-material": { "Material":
+                            {
+                              "@DEF": "Rococo19",
+                              "@ambientIntensity": 0.187004,
+                              "@diffuseColor": [ 0.412056, 0.422504, 0.748016 ],
+                              "@specularColor": [ 0.290909, 0.290909, 0.290909 ],
+                              "@shininess": 0.787879
+                            }
+                          }
+                        }
+                      },
+                      "-geometry": { "Sphere":
+                        {
+                          "@USE": "_3"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_18",
+                  "@translation": [ 3, 0, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@USE": "_17"
+                        }
+                      },
+                      "-geometry": { "Cylinder":
+                        {
+                          "@USE": "_5"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "_19",
+                  "@translation": [ 3, 0, 0 ],
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, -2, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "@USE": "_17"
+                            }
+                          },
+                          "-geometry": { "Sphere":
+                            {
+                              "@USE": "_7"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_20",
+                  "@translation": [ 4, 2, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@DEF": "_21",
+                          "-material": { "Material":
+                            {
+                              "@DEF": "Rococo25",
+                              "@ambientIntensity": 0.187004,
+                              "@diffuseColor": [ 0.261641, 0.748016, 0.725916 ],
+                              "@specularColor": [ 0.490909, 0.490909, 0.490909 ],
+                              "@shininess": 0.593939
+                            }
+                          }
+                        }
+                      },
+                      "-geometry": { "Sphere":
+                        {
+                          "@USE": "_3"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableShape":
+                {
+                  "@DEF": "_22",
+                  "@translation": [ 4, 0, 0 ],
+                  "-shape": { "Shape":
+                    {
+                      "-appearance": { "Appearance":
+                        {
+                          "@USE": "_21"
+                        }
+                      },
+                      "-geometry": { "Cylinder":
+                        {
+                          "@USE": "_5"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "CollidableOffset":
+                {
+                  "@DEF": "_23",
+                  "@translation": [ 4, 0, 0 ],
+                  "-collidable": { "CollidableShape":
+                    {
+                      "@translation": [ 0, -2, 0 ],
+                      "-shape": { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "@USE": "_21"
+                            }
+                          },
+                          "-geometry": { "Sphere":
+                            {
+                              "@USE": "_7"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "RigidBodyCollection":
+          {
+            "-collider": { "CollisionCollection":
+              {
+                "@minBounceSpeed": 0,
+                "-collidables": [
+                  { "CollidableShape":
+                    {
+                      "@USE": "_1"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_4"
+                    }
+                  },
+                  { "CollidableOffset":
+                    {
+                      "@USE": "_6"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_8"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_10"
+                    }
+                  },
+                  { "CollidableOffset":
+                    {
+                      "@USE": "_11"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_12"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_14"
+                    }
+                  },
+                  { "CollidableOffset":
+                    {
+                      "@USE": "_15"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_16"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_18"
+                    }
+                  },
+                  { "CollidableOffset":
+                    {
+                      "@USE": "_19"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_20"
+                    }
+                  },
+                  { "CollidableShape":
+                    {
+                      "@USE": "_22"
+                    }
+                  },
+                  { "CollidableOffset":
+                    {
+                      "@USE": "_23"
+                    }
+                  }
+                ]
+              }
+            },
+            "-bodies": [
+              { "RigidBody":
+                {
+                  "@DEF": "_24",
+                  "@fixed": true,
+                  "@position": [ 0, 2, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_1"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_25",
+                  "@position": [ -2, 2, 0 ],
+                  "@orientation": [ 2.26008637581007e-07, 3.87429872713976e-06, -0.999999999992469, 1.57079626719778 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_4"
+                      }
+                    },
+                    { "CollidableOffset":
+                      {
+                        "@USE": "_6"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_26",
+                  "@fixed": true,
+                  "@position": [ 1, 2, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_8"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_27",
+                  "@position": [ 1, 0, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_10"
+                      }
+                    },
+                    { "CollidableOffset":
+                      {
+                        "@USE": "_11"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_28",
+                  "@fixed": true,
+                  "@position": [ 2, 2, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_12"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_29",
+                  "@position": [ 2, 0, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_14"
+                      }
+                    },
+                    { "CollidableOffset":
+                      {
+                        "@USE": "_15"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_30",
+                  "@fixed": true,
+                  "@position": [ 3, 2, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_16"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_31",
+                  "@position": [ 3, 0, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_18"
+                      }
+                    },
+                    { "CollidableOffset":
+                      {
+                        "@USE": "_19"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_32",
+                  "@fixed": true,
+                  "@position": [ 4, 2, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_20"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "RigidBody":
+                {
+                  "@DEF": "_33",
+                  "@position": [ 4, 0, 0 ],
+                  "@mass": 0.01,
+                  "-geometry": [
+                    { "CollidableShape":
+                      {
+                        "@USE": "_22"
+                      }
+                    },
+                    { "CollidableOffset":
+                      {
+                        "@USE": "_23"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "-joints": [
+              { "SingleAxisHingeJoint":
+                {
+                  "@anchorPoint": [ 0, 2, 0 ],
+                  "@axis": [ 0, 0, 1 ],
+                  "-body1": { "RigidBody":
+                    {
+                      "@USE": "_24"
+                    }
+                  },
+                  "-body2": { "RigidBody":
+                    {
+                      "@USE": "_25"
+                    }
+                  }
+                }
+              },
+              { "SingleAxisHingeJoint":
+                {
+                  "@anchorPoint": [ 1, 2, 0 ],
+                  "@axis": [ 0, 0, 1 ],
+                  "-body1": { "RigidBody":
+                    {
+                      "@USE": "_26"
+                    }
+                  },
+                  "-body2": { "RigidBody":
+                    {
+                      "@USE": "_27"
+                    }
+                  }
+                }
+              },
+              { "SingleAxisHingeJoint":
+                {
+                  "@anchorPoint": [ 2, 2, 0 ],
+                  "@axis": [ 0, 0, 1 ],
+                  "-body1": { "RigidBody":
+                    {
+                      "@USE": "_28"
+                    }
+                  },
+                  "-body2": { "RigidBody":
+                    {
+                      "@USE": "_29"
+                    }
+                  }
+                }
+              },
+              { "SingleAxisHingeJoint":
+                {
+                  "@anchorPoint": [ 3, 2, 0 ],
+                  "@axis": [ 0, 0, 1 ],
+                  "-body1": { "RigidBody":
+                    {
+                      "@USE": "_30"
+                    }
+                  },
+                  "-body2": { "RigidBody":
+                    {
+                      "@USE": "_31"
+                    }
+                  }
+                }
+              },
+              { "SingleAxisHingeJoint":
+                {
+                  "@anchorPoint": [ 4, 2, 0 ],
+                  "@axis": [ 0, 0, 1 ],
+                  "-body1": { "RigidBody":
+                    {
+                      "@USE": "_32"
+                    }
+                  },
+                  "-body2": { "RigidBody":
+                    {
+                      "@USE": "_33"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

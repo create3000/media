@@ -1,0 +1,240 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Geometry2D : 2
+COMPONENT Shape : 4
+
+UNIT angle degree 0.0174532925199432958
+
+META "comment" "World of Titania"
+META "created" "Mon, 27 Nov 2017 02:44:02 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.0.2, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/PointingDeviceSensor/CylinderSensor/CylinderSensor.x3d"
+META "modified" "Mon, 27 Nov 2017 02:53:33 GMT"
+
+PROTO DiskSensor [
+  inputOutput SFBool     enabled TRUE
+  inputOutput SFString   description ""
+  inputOutput SFRotation axisRotation 0 0 1 0
+  inputOutput SFFloat    factor 0.159155
+  inputOutput SFFloat    minValue 0
+  inputOutput SFFloat    maxValue -1
+  inputOutput SFFloat    offset 0
+  inputOutput SFBool     autoOffset TRUE
+  outputOnly  SFBool     isActive
+  outputOnly  SFBool     isOver
+  outputOnly  SFVec3f    trackPoint_changed
+  outputOnly  SFRotation rotation_changed
+  outputOnly  SFFloat    value_changed
+]
+{
+  DEF CylinderTouch CylinderSensor {
+    enabled IS enabled
+    description IS description
+    axisRotation IS axisRotation
+    diskAngle 9.69914e+08
+    autoOffset IS autoOffset
+    trackPoint_changed IS trackPoint_changed
+    isOver IS isOver
+    isActive IS isActive
+  }
+
+  DEF DiskSensorScript Script {
+    inputOnly      SFRotation set_rotation
+    inputOnly      SFBool     set_active
+    inputOutput    SFFloat    factor IS factor
+    inputOutput    SFFloat    minValue IS minValue
+    inputOutput    SFFloat    maxValue IS maxValue
+    inputOutput    SFFloat    offset IS offset
+    outputOnly     SFRotation rotation_changed IS rotation_changed
+    outputOnly     SFFloat    value_changed IS value_changed
+    initializeOnly SFVec3f    startVector 0 0 1
+    initializeOnly SFFloat    value 0
+    initializeOnly SFNode     sensor USE CylinderTouch
+
+    url "ecmascript:
+
+function initialize ()
+{
+	set_offset ();
+}
+
+function set_factor ()
+{
+	set_offset ();
+}
+
+function set_offset ()
+{
+	value          = offset;
+	sensor .offset = offset / factor;
+}
+
+function set_rotation (rotation)
+{
+	var endVector     = rotation .multVec (sensor .axisRotation .multVec (new SFVec3f (0, 0, 1)));
+	var deltaRotation = new SFRotation (startVector, endVector);
+
+	startVector = endVector;
+
+	var axis  = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));
+	var angle = axis .dot (deltaRotation .getAxis ());
+	var sign  = angle > 0 ? 1 : -1;
+
+	value += sign * deltaRotation .angle * factor;
+
+	if (minValue > maxValue || (value > minValue && value < maxValue))
+	{
+		rotation_changed = rotation_changed .multiply (deltaRotation);
+		value_changed    = value;
+	}
+	else
+	{
+		value = Math .max (minValue, Math .min (maxValue, value));
+
+		if (value != value_changed)
+		{
+			var axis = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));
+			
+			rotation_changed = new SFRotation (axis, -value / factor);
+			value_changed    = value;
+		}
+	}
+}
+
+function set_active (active)
+{
+	if (active)
+	{
+		var axis = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));
+
+		rotation_changed = new SFRotation (axis, sensor .offset);
+		startVector      = rotation_changed .multVec (sensor .axisRotation .multVec (new SFVec3f (0, 0, 1)));
+		value            = offset;
+	}
+	else
+	{
+		if (sensor .autoOffset)
+			offset = value;
+	}
+}
+"
+    directOutput TRUE
+  }
+
+  ROUTE CylinderTouch.rotation_changed TO DiskSensorScript.set_rotation
+  ROUTE CylinderTouch.isActive TO DiskSensorScript.set_active
+}
+
+PROTO Number [
+  inputOutput    SFFloat value 0
+  inputOutput    SFInt32 precision 0
+  inputOutput    SFFloat length 0
+  inputOutput    SFFloat maxExtent 0
+  initializeOnly SFBool  solid TRUE
+  outputOnly     SFVec3f origin
+  outputOnly     SFVec2f textBounds
+  inputOutput    SFNode  fontStyle NULL
+]
+{
+  DEF Number Text {
+    string "0"
+    length 0
+    maxExtent IS maxExtent
+    solid IS solid
+    origin IS origin
+    textBounds IS textBounds
+    fontStyle IS fontStyle
+  }
+
+  DEF NumberScript Script {
+    inputOutput    SFFloat value IS value
+    inputOutput    SFInt32 precision IS precision
+    inputOutput    SFFloat length IS length
+    initializeOnly SFNode  text USE Number
+
+    url "ecmascript:
+
+function initialize ()
+{
+	set_value (value);
+	set_length (length);
+}
+
+function set_value (value)
+{
+	text .string = new MFString (value .toFixed (precision));
+}
+
+function set_precision ()
+{
+	set_value (value);
+}
+
+function set_length (length)
+{
+	text .length = new MFFloat (length);
+}
+"
+    directOutput TRUE
+  }
+}
+
+NavigationInfo {
+  type "NONE"
+}
+
+Viewpoint {
+  position 0 0 3.86769
+}
+
+Background {
+  skyAngle [ 62.5802, 90.0002 ]
+  skyColor [ 0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3 ]
+  groundAngle [ 64.4463, 90.0002 ]
+  groundColor [ 0.4 0.4 0.4, 0.4 0.4 0.4, 0.3 0.3 0.3 ]
+}
+
+Transform {
+  children [
+    DEF DiskSensor DiskSensor {
+      description "DiskSensor"
+      axisRotation -1 0 0 90
+    }
+    DEF Cylinder Transform {
+      children Shape {
+        appearance Appearance {
+          material DEF _1 Material {
+            diffuseColor 0.13 0.13 0.13
+          }
+        }
+        geometry ArcClose2D {
+          startAngle 15
+          endAngle 345
+        }
+      }
+    }
+    DEF Number_2 Transform {
+      translation 2 0 0
+      scale 0.5 0.5 0.5
+      children Shape {
+        appearance Appearance {
+          material USE _1
+        }
+        geometry DEF _3 Number {
+          precision 3
+          fontStyle DEF _4 FontStyle {
+            family "TYPEWRITER"
+            justify [ "MIDDLE", "MIDDLE" ]
+          }
+        }
+      }
+    }
+  ]
+}
+
+ROUTE DiskSensor.rotation_changed TO Cylinder.set_rotation
+ROUTE DiskSensor.value_changed TO _3.set_value

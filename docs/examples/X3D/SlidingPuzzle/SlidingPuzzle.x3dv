@@ -1,0 +1,1423 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT Layering : 1
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Mon, 21 Dec 2015 20:19:56 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SlidingPuzzle/SlidingPuzzle.O.x3d"
+META "modified" "Sun, 27 Jan 2019 16:22:51 GMT"
+
+EXTERNPROTO SFNode [
+  inputOnly   SFTime set_triggerTime
+  inputOutput SFNode keyValue
+  outputOnly  SFNode value_changed
+]
+"SFNode.x3d#SFNode"
+
+WorldInfo {
+}
+
+LayerSet {
+  order [ 0, 1, 2, 3 ]
+  layers [
+    DEF Background Layer {
+      isPickable FALSE
+      children [
+        DEF Rectangle2D Transform {
+          scale 2.5 1.20541 1.20541
+          children Shape {
+            appearance Appearance { }
+            geometry IndexedFaceSet {
+              colorIndex [ 0, 0, 1, 1, -1 ]
+              texCoordIndex [ 0, 1, 2, 3, -1 ]
+              coordIndex [ 0, 1, 2, 3, -1 ]
+              color Color {
+                color [ 0 0 0, 0.290636 0.290636 0.290636 ]
+              }
+              texCoord TextureCoordinate {
+                point [ 0 0, 1 0, 1 1, 0 1 ]
+              }
+              coord Coordinate {
+                point [ -1 -1 0, 1 -1 0, 1 1 0, -1 1 0 ]
+              }
+            }
+          }
+        }
+        OrthoViewpoint {
+          fieldOfView [ -1.2, -1.2, 1.2, 1.2 ]
+        }
+      ]
+    }
+    DEF Puzzle Layer {
+      viewport Viewport {
+        clipBoundary [ 0.4, 1, 0, 1 ]
+      }
+      children [
+        DEF _1 OrthoViewpoint {
+          fieldOfView [ -1.2, -1.2, 1.2, 1.2 ]
+        }
+        DEF Rectangle2D_2 Transform {
+          scale 1.04 1.04 1.04
+          children Shape {
+            appearance Appearance {
+              material Material {
+                emissiveColor 1 1 1
+              }
+            }
+            geometry IndexedFaceSet {
+              coordIndex [ 0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1, 12, 13, 14, 15, -1 ]
+              coord Coordinate {
+                point [ -1 0.99 -3.42286e-08, 1 0.99 -3.42291e-08, 1 1.01 -3.42295e-08, -1 1.01 -3.42286e-08, 0.99 1.01 3.69609e-06, 0.99 -1.01 -3.62355e-06, 1.01 -1.01 -3.69609e-06, 1.01 1.01 3.62355e-06, -1 -1.01 3.42286e-08, 1 -1.01 3.42279e-08, 1 -0.99 3.42279e-08, -1 -0.99 3.42286e-08, -1.01 1.01 3.69609e-06, -1.01 -1.01 -3.62356e-06, -0.989999 -1.01 -3.69609e-06, -0.990001 1.01 3.62356e-06 ]
+              }
+            }
+          }
+        }
+        DEF Pieces Transform {
+          children [
+            DEF Polyline2D Transform {
+              translation -0.8 0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _3 Appearance {
+                    texture DEF _4 ImageTexture {
+                      url "city.jpg"
+                      repeatS FALSE
+                      repeatT FALSE
+                    }
+                    textureTransform TextureTransform {
+                      translation 0 4
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry DEF _5 Rectangle2D { }
+                }
+                DEF _6 Shape {
+                  appearance Appearance {
+                    lineProperties LineProperties {
+                      linewidthScaleFactor 2
+                    }
+                    material Material {
+                      emissiveColor 1 1 1
+                    }
+                  }
+                  geometry Polyline2D {
+                    lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+                  }
+                }
+                DEF _7 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_8 Transform {
+              translation -0.4 0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _9 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 1 4
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _10 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_11 Transform {
+              translation 0 0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _12 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 2 4
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _13 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_14 Transform {
+              translation 0.4 0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _15 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 3 4
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _16 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_17 Transform {
+              translation 0.8 0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _18 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 4 4
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _19 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_20 Transform {
+              translation -0.8 0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _21 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 0 3
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _22 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_23 Transform {
+              translation -0.4 0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _24 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 1 3
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _25 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_26 Transform {
+              translation 0 0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _27 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 2 3
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _28 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_29 Transform {
+              translation 0.4 0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _30 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 3 3
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _31 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_32 Transform {
+              translation 0.8 0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _33 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 4 3
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _34 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_35 Transform {
+              translation -0.8 0 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _36 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 0 2
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _37 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_38 Transform {
+              translation -0.4 0 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _39 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 1 2
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _40 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_41 Transform {
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _42 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 2 2
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _43 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_44 Transform {
+              translation 0.4 0 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _45 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 3 2
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _46 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_47 Transform {
+              translation 0.8 0 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _48 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 4 2
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _49 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_50 Transform {
+              translation -0.8 -0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _51 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 0 1
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _52 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_53 Transform {
+              translation -0.4 -0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _54 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 1 1
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _55 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_56 Transform {
+              translation 0 -0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _57 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 2 1
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _58 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_59 Transform {
+              translation 0.4 -0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _60 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 3 1
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _61 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_62 Transform {
+              translation 0.8 -0.4 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _63 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 4 1
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _64 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_65 Transform {
+              translation -0.8 -0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _66 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _67 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_68 Transform {
+              translation -0.4 -0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _69 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 1 0
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _70 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_71 Transform {
+              translation 0 -0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _72 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 2 0
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _73 TouchSensor { }
+              ]
+            }
+            DEF Polyline2D_74 Transform {
+              translation 0.4 -0.8 0
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance DEF _75 Appearance {
+                    texture USE _4
+                    textureTransform TextureTransform {
+                      translation 3 0
+                      scale 0.2 0.2
+                    }
+                  }
+                  geometry USE _5
+                }
+                USE _6
+                DEF _76 TouchSensor { }
+              ]
+            }
+          ]
+        }
+        DEF MixScript Script {
+          inputOnly      SFTime  set_touchTime0
+          inputOnly      SFTime  set_touchTime1
+          inputOnly      SFTime  set_touchTime2
+          inputOnly      SFTime  set_touchTime3
+          inputOnly      SFTime  set_touchTime4
+          inputOnly      SFTime  set_touchTime5
+          inputOnly      SFTime  set_touchTime6
+          inputOnly      SFTime  set_touchTime7
+          inputOnly      SFTime  set_touchTime8
+          inputOnly      SFTime  set_touchTime9
+          inputOnly      SFTime  set_touchTime10
+          inputOnly      SFTime  set_touchTime11
+          inputOnly      SFTime  set_touchTime12
+          inputOnly      SFTime  set_touchTime13
+          inputOnly      SFTime  set_touchTime14
+          inputOnly      SFTime  set_touchTime15
+          inputOnly      SFTime  set_touchTime16
+          inputOnly      SFTime  set_touchTime17
+          inputOnly      SFTime  set_touchTime18
+          inputOnly      SFTime  set_touchTime19
+          inputOnly      SFTime  set_touchTime20
+          inputOnly      SFTime  set_touchTime21
+          inputOnly      SFTime  set_touchTime22
+          inputOnly      SFTime  set_touchTime23
+          inputOutput    SFTime  cycleInterval 10
+          inputOutput    SFTime  duration 17
+          inputOutput    SFInt32 xDimension 5
+          inputOutput    SFInt32 yDimension 5
+          inputOutput    SFVec2f size 0.2 0.2
+          inputOutput    SFTime  velocity 3
+          inputOutput    SFTime  solveTime 1450776485.91701
+          inputOutput    SFTime  startTime 1450776465.57346
+          inputOnly      SFTime  set_time
+          initializeOnly MFInt32 matrix [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, -1 ]
+          initializeOnly SFNode  timer DEF _77 TimeSensor {
+            enabled FALSE
+            loop TRUE
+          }
+          initializeOnly SFNode  pieces USE Pieces
+
+          url "ecmascript:
+
+var
+	emptyPiece = { x: 4, y: 4 },
+	move       = { },
+	moving     = false,
+	touched    = false;
+
+function initialize ()
+{
+	set_solveTime ();
+}
+
+function set_touchTime0 ()
+{
+	set_touchTime (0);
+}
+
+function set_touchTime1 ()
+{
+	set_touchTime (1);
+}
+
+function set_touchTime2 ()
+{
+	set_touchTime (2);
+}
+
+function set_touchTime3 ()
+{
+	set_touchTime (3);
+}
+
+function set_touchTime4 ()
+{
+	set_touchTime (4);
+}
+
+function set_touchTime5 ()
+{
+	set_touchTime (5);
+}
+
+function set_touchTime6 ()
+{
+	set_touchTime (6);
+}
+
+function set_touchTime7 ()
+{
+	set_touchTime (7);
+}
+
+function set_touchTime8 ()
+{
+	set_touchTime (8);
+}
+
+function set_touchTime9 ()
+{
+	set_touchTime (9);
+}
+
+function set_touchTime10 ()
+{
+	set_touchTime (10);
+}
+
+function set_touchTime11 ()
+{
+	set_touchTime (11);
+}
+
+function set_touchTime12 ()
+{
+	set_touchTime (12);
+}
+
+function set_touchTime13 ()
+{
+	set_touchTime (13);
+}
+
+function set_touchTime14 ()
+{
+	set_touchTime (14);
+}
+
+function set_touchTime15 ()
+{
+	set_touchTime (15);
+}
+
+function set_touchTime16 ()
+{
+	set_touchTime (16);
+}
+
+function set_touchTime17 ()
+{
+	set_touchTime (17);
+}
+
+function set_touchTime18 ()
+{
+	set_touchTime (18);
+}
+
+function set_touchTime19 ()
+{
+	set_touchTime (19);
+}
+
+function set_touchTime20 ()
+{
+	set_touchTime (20);
+}
+
+function set_touchTime21 ()
+{
+	set_touchTime (21);
+}
+
+function set_touchTime22 ()
+{
+	set_touchTime (22);
+}
+
+function set_touchTime23 ()
+{
+	set_touchTime (23);
+}
+
+function set_touchTime (index)
+{
+	if (timer .enabled)
+		return;
+
+	var coords = { };
+
+	for (var y = 0; y < yDimension; ++ y)
+	{
+		for (var x = 0; x < xDimension; ++ x)
+		{
+			var i = matrix [x + y * xDimension];
+
+			if (i === index)
+			{
+				coords .x = x;
+				coords .y = y;
+			}
+		}
+	}
+	
+	if (coords .x !== emptyPiece .x && coords .y !== emptyPiece .y)
+		return;
+		
+	if (coords .y === emptyPiece .y)
+	{
+		if (coords .x < emptyPiece .x)
+			move = { x: coords .x, l: emptyPiece .x, d: 1, t: 0 }
+		else
+			move = { x: emptyPiece .x + 1, l: coords .x + 1, d: -1, t: 0 };	
+	}
+	else
+	{
+		if (coords .y < emptyPiece .y)
+			move = { y: coords .y, l: emptyPiece .y, d: -1, t: 0 }
+		else
+			move = { y: emptyPiece .y + 1, l: coords .y + 1, d: 1, t: 0 };
+	}
+	
+	touched        = true;
+	moving         = true;
+	timer .enabled = true;
+}
+
+function set_solveTime ()
+{
+	timer .enabled = false;
+	
+	emptyPiece = { x: 4, y: 4 };
+	
+	var dimension = xDimension * yDimension;
+
+	matrix .length = dimension;
+	
+	for (var i = 0, length = dimension - 1; i < length; ++ i)
+		matrix [i] = i;
+		
+	matrix [length] = -1;
+
+	set_translation ();
+}
+
+function set_startTime ()
+{
+	if (timer .enabled)
+		return;
+
+	timer .enabled = true;
+	
+	var dimension = xDimension * yDimension;
+	
+	for (var y = 0; y < yDimension; ++ y)
+	{
+		for (var x = 0; x < xDimension; ++ x)
+		{
+			var i = x + y * xDimension;
+		
+			if (matrix [i] !== -1)
+				continue;
+
+			emptyPiece .x = x;
+			emptyPiece .y = y;
+			break;
+		}
+	}
+
+	moving = false;
+}
+
+function set_time (value)
+{
+	if (moving)
+	{
+		var
+			dt = 1 / Browser .currentFrameRate,
+			dv = velocity * dt / (touched ? 4 : 1);
+			
+		if (move .x !== undefined)
+		{
+			for (var x = move .x; x < move .l; ++ x)
+			{
+				var
+					i     = x + emptyPiece .y * xDimension,
+					piece = pieces .children [matrix [i]];
+				
+				piece .translation .x += dv * move .d;
+			}
+		}
+		else
+		{
+			for (var y = move .y; y < move .l; ++ y)
+			{
+				var
+					i     = emptyPiece .x + y * yDimension,
+					piece = pieces .children [matrix [i]];
+				
+				piece .translation .y += dv * move .d;
+			}
+		}
+
+		move .t += dv;
+	
+		if (move .t > size .x * 2)
+		{
+			if (timer .elapsedTime > duration)
+				timer .enabled = false;
+
+			moving = false;
+			
+			if (touched)
+				touched = timer .enabled = false;
+
+			if (move .x !== undefined)
+			{
+				var
+					step  = -move .d,
+					first = step == 1 ? move .x : move .l - 1,
+					last  = step == 1 ? move .l : move .x - 1;
+
+				for (var x = first; x !== last; x += step)
+				{
+					var
+						f = x + emptyPiece .y * xDimension,
+						t = x - step + emptyPiece .y * xDimension;
+					
+					matrix [t] = matrix [f];
+				}
+				
+				emptyPiece .x = x - step;
+				matrix [emptyPiece .x + emptyPiece .y * xDimension] = -1;
+			}
+			else
+			{
+				var
+					step  = move .d,
+					first = step == 1 ? move .y : move .l - 1,
+					last  = step == 1 ? move .l : move .y - 1;
+
+				for (var y = first; y !== last; y += step)
+				{
+					var
+						f = emptyPiece .x + y * xDimension,
+						t = emptyPiece .x + (y - step) * xDimension;
+					
+					matrix [t] = matrix [f];
+				}
+				
+				emptyPiece .y = y - step;
+				matrix [emptyPiece .x + emptyPiece .y * yDimension] = -1;
+			}
+
+			set_translation ();
+		}
+	}
+	else
+	{	
+		if (move .x === undefined)
+		{
+			if (Math .random () < 0.5 && emptyPiece .x > 0 || emptyPiece .x === xDimension - 1)
+				move = { x: random (0, emptyPiece .x - 1), l: emptyPiece .x, d: 1, t: 0 }
+			else
+				move = { x: emptyPiece .x + 1, l: random (emptyPiece .x + 2, xDimension), d: -1, t: 0 };	
+		}
+		else
+		{
+			if (Math .random () < 0.5 && emptyPiece .y > 0 || emptyPiece .y === yDimension - 1)
+				move = { y: random (0, emptyPiece .y - 1), l: emptyPiece .y, d: -1, t: 0 }
+			else
+				move = { y: emptyPiece .y + 1, l: random (emptyPiece .y + 2, yDimension), d: 1, t: 0 };
+		}
+	
+		moving = true;	
+	}
+}
+
+function set_translation ()
+{
+	var dimension = xDimension * yDimension;
+	
+	for (var y = 0; y < yDimension; ++ y)
+	{
+		for (var x = 0; x < xDimension; ++ x)
+		{
+			var index = matrix [x + y * xDimension];
+			
+			if (index === -1)
+				continue;
+
+			var piece= pieces .children [index];
+			
+			
+			piece .translation = new SFVec3f ( x * size .x * 2 - size .x * xDimension + size .x,
+			                                  -y * size .y * 2 + size .y * yDimension - size .y,
+			                                   0);
+		}
+	}
+}
+
+function random (min, max)
+{
+	return Math .floor (Math .random () * (max - min)) + min;
+}"
+          directOutput TRUE
+        }
+        DEF Image SFNode {
+          keyValue USE _4
+        }
+      ]
+    }
+    Layer {
+      children [
+        USE _1
+        DEF HeaderText Transform {
+          translation -1.75 1 3.6747e-06
+          children [
+            DEF _78 TouchSensor { }
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0 0 0
+                }
+              }
+              geometry Text {
+                string [ "Sliding", "Puzzle" ]
+                solid TRUE
+                fontStyle FontStyle {
+                  family [ "AlienEncountersItalic.otf", "SANS" ]
+                  size 0.2
+                  justify [ "BEGIN", "BEGIN" ]
+                }
+              }
+            }
+            DEF Rectangle2D_79 Transform {
+              translation 0.426688 -0.176446 -1
+              scale 0.425699 0.178837 0.215347
+              children Shape {
+                appearance Appearance {
+                  material Material {
+                    transparency 1
+                  }
+                }
+                geometry Rectangle2D { }
+              }
+            }
+          ]
+        }
+        DEF MixPuzzleText Transform {
+          translation -1.75 0.5 1.83735e-06
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0 0 0
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry DEF _80 Text {
+                string "Mix Puzzle"
+                solid TRUE
+                fontStyle FontStyle {
+                  family [ "AlienEncountersSolid.otf", "SANS" ]
+                  size 0.12
+                }
+              }
+            }
+            DEF _81 TouchSensor { }
+            DEF Rectangle2D_82 Transform {
+              translation 0.325 0.0500037 -1
+              scale 0.325 0.05 0.161657
+              children Shape {
+                appearance Appearance {
+                  material Material {
+                    transparency 1
+                  }
+                }
+                geometry Rectangle2D { }
+              }
+            }
+            DEF MixTextScript Script {
+              inputOnly      SFBool   set_active
+              outputOnly     MFString string_changed
+              initializeOnly SFNode   touchSensor USE _81
+              inputOutput    SFTime   solveTime 0
+
+              url "ecmascript:
+
+function initialize ()
+{
+	touchSensor .enabled = true;
+}
+
+function set_active (value)
+{
+	touchSensor .enabled = ! value;
+
+	string_changed [0] = value ? \"In the Mix\" : \"Mix Puzzle\";
+}"
+              directOutput TRUE
+            }
+          ]
+        }
+        DEF ImagesText Transform {
+          translation -1.75 0.25 9.18674e-07
+          children Shape {
+            appearance Appearance {
+              material Material {
+                emissiveColor 1 1 1
+              }
+            }
+            geometry Text {
+              string "Images"
+              solid TRUE
+              fontStyle FontStyle {
+                family [ "AlienEncountersSolid.otf", "SANS" ]
+                size 0.12
+              }
+            }
+          }
+        }
+        DEF City Transform {
+          translation -1.55 0 0
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture ImageTexture {
+                  url "city.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _83 TouchSensor { }
+            DEF _84 SFNode {
+              keyValue USE _4
+            }
+          ]
+        }
+        DEF Mountain Transform {
+          translation -1.15 0 0
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _85 ImageTexture {
+                  url "montain.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _86 TouchSensor { }
+            DEF _87 SFNode {
+              keyValue USE _85
+            }
+          ]
+        }
+        DEF Plants Transform {
+          translation -0.75 0 0
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _88 ImageTexture {
+                  url "plants.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _89 TouchSensor { }
+            DEF _90 SFNode {
+              keyValue USE _88
+            }
+          ]
+        }
+        DEF Flowers Transform {
+          translation -1.55 -0.4 -1.46988e-06
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _91 ImageTexture {
+                  url "flowers.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _92 TouchSensor { }
+            DEF _93 SFNode {
+              keyValue USE _91
+            }
+          ]
+        }
+        DEF Abstract Transform {
+          translation -1.15 -0.4 -1.46988e-06
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _94 ImageTexture {
+                  url "abstract.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _95 TouchSensor { }
+            DEF _96 SFNode {
+              keyValue USE _94
+            }
+          ]
+        }
+        DEF LineArt Transform {
+          translation -0.75 -0.4 -1.46988e-06
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _97 ImageTexture {
+                  url "lines-art.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _98 TouchSensor { }
+            DEF _99 SFNode {
+              keyValue USE _97
+            }
+          ]
+        }
+        DEF Ball Transform {
+          translation -1.55 -0.8 -2.93976e-06
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _100 ImageTexture {
+                  url "ball.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _101 TouchSensor { }
+            DEF _102 SFNode {
+              keyValue USE _100
+            }
+          ]
+        }
+        DEF Book Transform {
+          translation -1.15 -0.8 -2.93976e-06
+          scale 0.18 0.18 1
+          children [
+            Shape {
+              appearance Appearance {
+                texture DEF _103 ImageTexture {
+                  url "book.jpg"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            Shape {
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 2
+                }
+                material Material {
+                  emissiveColor 1 1 1
+                }
+              }
+              geometry Polyline2D {
+                lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+              }
+            }
+            DEF _104 TouchSensor { }
+            DEF _105 SFNode {
+              keyValue USE _103
+            }
+          ]
+        }
+        DEF CampFire Group {
+          children [
+            DEF CampFire_106 Transform {
+              translation -0.75 -0.8 -2.93976e-06
+              scale 0.18 0.18 1
+              children [
+                Shape {
+                  appearance Appearance {
+                    texture DEF _107 MovieTexture {
+                      url [ "campfire.512.avi", "http://titania.create3000.de/fileadmin/cobweb/videos/campfire.512.mp4", "campfire.512.mp4" ]
+                      loop TRUE
+                    }
+                  }
+                  geometry Rectangle2D { }
+                }
+                Shape {
+                  appearance Appearance {
+                    lineProperties LineProperties {
+                      linewidthScaleFactor 2
+                    }
+                    material Material {
+                      emissiveColor 1 1 1
+                    }
+                  }
+                  geometry Polyline2D {
+                    lineSegments [ 1 1, -1 1, -1 -1, 1 -1, 1 1 ]
+                  }
+                }
+                DEF _108 TouchSensor { }
+                DEF _109 SFNode {
+                  keyValue USE _107
+                }
+              ]
+            }
+            Sound {
+              location 0 0 10
+              source USE _107
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+ROUTE _77.time TO MixScript.set_time
+ROUTE _81.touchTime TO MixScript.set_startTime
+ROUTE MixTextScript.string_changed TO _80.set_string
+ROUTE _77.isActive TO MixTextScript.set_active
+ROUTE _78.touchTime TO MixScript.set_solveTime
+ROUTE _76.touchTime TO MixScript.set_touchTime23
+ROUTE _73.touchTime TO MixScript.set_touchTime22
+ROUTE _70.touchTime TO MixScript.set_touchTime21
+ROUTE _67.touchTime TO MixScript.set_touchTime20
+ROUTE _64.touchTime TO MixScript.set_touchTime19
+ROUTE _61.touchTime TO MixScript.set_touchTime18
+ROUTE _58.touchTime TO MixScript.set_touchTime17
+ROUTE _55.touchTime TO MixScript.set_touchTime16
+ROUTE _52.touchTime TO MixScript.set_touchTime15
+ROUTE _49.touchTime TO MixScript.set_touchTime14
+ROUTE _46.touchTime TO MixScript.set_touchTime13
+ROUTE _43.touchTime TO MixScript.set_touchTime12
+ROUTE _40.touchTime TO MixScript.set_touchTime11
+ROUTE _37.touchTime TO MixScript.set_touchTime10
+ROUTE _34.touchTime TO MixScript.set_touchTime9
+ROUTE _31.touchTime TO MixScript.set_touchTime8
+ROUTE _28.touchTime TO MixScript.set_touchTime7
+ROUTE _25.touchTime TO MixScript.set_touchTime6
+ROUTE _22.touchTime TO MixScript.set_touchTime5
+ROUTE _19.touchTime TO MixScript.set_touchTime4
+ROUTE _16.touchTime TO MixScript.set_touchTime3
+ROUTE _13.touchTime TO MixScript.set_touchTime2
+ROUTE _10.touchTime TO MixScript.set_touchTime1
+ROUTE _7.touchTime TO MixScript.set_touchTime0
+ROUTE _108.touchTime TO _109.set_triggerTime
+ROUTE _109.value_changed TO Image.set_keyValue
+ROUTE Image.keyValue_changed TO _15.set_texture
+ROUTE Image.keyValue_changed TO _21.set_texture
+ROUTE Image.keyValue_changed TO _24.set_texture
+ROUTE Image.keyValue_changed TO _75.set_texture
+ROUTE Image.keyValue_changed TO _72.set_texture
+ROUTE Image.keyValue_changed TO _69.set_texture
+ROUTE Image.keyValue_changed TO _3.set_texture
+ROUTE Image.keyValue_changed TO _9.set_texture
+ROUTE Image.keyValue_changed TO _12.set_texture
+ROUTE Image.keyValue_changed TO _66.set_texture
+ROUTE Image.keyValue_changed TO _63.set_texture
+ROUTE Image.keyValue_changed TO _60.set_texture
+ROUTE Image.keyValue_changed TO _57.set_texture
+ROUTE Image.keyValue_changed TO _54.set_texture
+ROUTE Image.keyValue_changed TO _51.set_texture
+ROUTE Image.keyValue_changed TO _48.set_texture
+ROUTE Image.keyValue_changed TO _45.set_texture
+ROUTE Image.keyValue_changed TO _42.set_texture
+ROUTE Image.keyValue_changed TO _39.set_texture
+ROUTE Image.keyValue_changed TO _36.set_texture
+ROUTE Image.keyValue_changed TO _33.set_texture
+ROUTE Image.keyValue_changed TO _30.set_texture
+ROUTE Image.keyValue_changed TO _18.set_texture
+ROUTE Image.keyValue_changed TO _27.set_texture
+ROUTE _105.value_changed TO Image.set_keyValue
+ROUTE _104.touchTime TO _105.set_triggerTime
+ROUTE _99.value_changed TO Image.set_keyValue
+ROUTE _98.touchTime TO _99.set_triggerTime
+ROUTE _84.value_changed TO Image.set_keyValue
+ROUTE _83.touchTime TO _84.set_triggerTime
+ROUTE _87.value_changed TO Image.set_keyValue
+ROUTE _86.touchTime TO _87.set_triggerTime
+ROUTE _90.value_changed TO Image.set_keyValue
+ROUTE _89.touchTime TO _90.set_triggerTime
+ROUTE _102.value_changed TO Image.set_keyValue
+ROUTE _101.touchTime TO _102.set_triggerTime
+ROUTE _93.value_changed TO Image.set_keyValue
+ROUTE _92.touchTime TO _93.set_triggerTime
+ROUTE _96.value_changed TO Image.set_keyValue
+ROUTE _95.touchTime TO _96.set_triggerTime

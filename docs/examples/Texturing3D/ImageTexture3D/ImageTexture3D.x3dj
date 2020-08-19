@@ -1,0 +1,430 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 27 Oct 2019 05:58:52 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.4, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Tue, 29 Oct 2019 09:52:02 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "CADGeometry",
+          "@level": 1
+        },
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Shaders",
+          "@level": 1
+        },
+        {
+          "@name": "Texturing3D",
+          "@level": 1
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"Volume",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFVec3f",
+                  "@name": "dimensions",
+                  "@value": [ 1, 1, 1 ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "voxels"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Group":
+                  {
+                    "-children": [
+                      { "ProximitySensor":
+                        {
+                          "@DEF": "_1",
+                          "@size": [ -1, -1, -1 ]
+                        }
+                      },
+                      { "Transform":
+                        {
+                          "@DEF": "_2",
+                          "-children": [
+                            { "Shape":
+                              {
+                                "-appearance": { "Appearance":
+                                  {
+                                    "-textureTransform": { "TextureTransform3D":
+                                      {
+                                        "@DEF": "_3",
+                                        "@translation": [ 0.5, 0.5, 0.5 ],
+                                        "@center": [ -0.5, -0.5, -0.5 ]
+                                      }
+                                    },
+                                    "-shaders": [
+                                      { "ComposedShader":
+                                        {
+                                          "@DEF": "ComposedShader",
+                                          "@language": "GLSL",
+                                          "-parts": [
+                                            { "ShaderPart":
+                                              {
+                                                "@DEF": "VertexShader",
+                                                "@url": [ "data:x-shader/x-vertex,#version 300 es\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\nuniform mat4 x3d_TextureMatrix [1];\n\nin vec4 x3d_Vertex;\nin vec4 x3d_TexCoord0;\n\nout vec3 vertex;\nout vec4 texCoord;\n\nvoid\nmain ()\n{\n\tvec4 position = x3d_ModelViewMatrix * x3d_Vertex;\n\n\tvertex   = position .xyz;\n\ttexCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * position;\n}" ]
+                                              }
+                                            },
+                                            { "ShaderPart":
+                                              {
+                                                "@DEF": "FragmentShader",
+                                                "@type": "FRAGMENT",
+                                                "@url": [ "data:x-shader/x-fragment,#version 300 es\n\nprecision mediump float;\nprecision mediump sampler3D;\n\nuniform int       x3d_NumTextures;\nuniform sampler3D x3d_Texture3D [1];\n\nuniform int  x3d_NumClipPlanes;\nuniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];\n\nin vec3 vertex;\nin vec4 texCoord;\n\nout vec4 x3d_FragColor;\n\nvoid\nclip ()\n{\n\tfor (int i = 0; i < x3d_MaxClipPlanes; ++ i)\n\t{\n\t\tif (i == x3d_NumClipPlanes)\n\t\t\tbreak;\n\n\t\tif (dot (vertex, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)\n\t\t\tdiscard;\n\t}\n}\n\nvec4\ngetTextureColor (in vec3 texCoord)\n{\n\tif (x3d_NumTextures == 0)\n\t\tvec4 (1.0, 1.0, 1.0, 1.0);\n\n\tif (texCoord .s < 0.0 || texCoord .s > 1.0)\n\t\tdiscard;\n\n\tif (texCoord .t < 0.0 || texCoord .t > 1.0)\n\t\tdiscard;\n\n\tif (texCoord .p < 0.0 || texCoord .p > 1.0)\n\t\tdiscard;\n\n\tvec4 voxelColor   = texture (x3d_Texture3D [0], texCoord);\n\t\n\treturn voxelColor;\n}\n\nvoid\nmain ()\n{\n\tclip ();\n\n\tx3d_FragColor = getTextureColor (texCoord .stp / texCoord .q);\n}" ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ],
+                                    "IS": {
+                                      "connect": [
+                                        {
+                                          "@nodeField": "texture",
+                                          "@protoField": "voxels"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "-geometry": { "QuadSet":
+                                  {
+                                    "@DEF": "_4",
+                                    "-texCoord": { "TextureCoordinate3D":
+                                      {
+                                      }
+                                    },
+                                    "-coord": { "Coordinate":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "VolumeScript",
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFVec3f",
+                        "@name": "dimensions"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "textureTransform",
+                        "-children": [
+                          { "TextureTransform3D":
+                            {
+                              "@USE": "_3"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "geometry",
+                        "-children": [
+                          { "QuadSet":
+                            {
+                              "@USE": "_4"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"vrmlscript:",
+"",
+"var NUM_PLANES = 200;",
+"",
+"function initialize ()",
+"{",
+"\tset_dimension ();",
+"}",
+"",
+"function set_dimension ()",
+"{",
+"\tvar",
+"\t\tsize     = dimensions .length (),",
+"\t\tsize1_2  = size / 2,",
+"\t\tcoord    = geometry .coord,",
+"\t\ttexCoord = geometry .texCoord;",
+"\t",
+"\tcoord .point .length = 0;",
+"",
+"\tfor (var i = 0; i < NUM_PLANES; ++ i)",
+"\t{",
+"\t\tvar z = i / (NUM_PLANES - 1) - 0.5;",
+"",
+"\t\tcoord .point .push (new SFVec3f ( size1_2,  size1_2, size * z),",
+"\t\t                    new SFVec3f (-size1_2,  size1_2, size * z),",
+"\t\t                    new SFVec3f (-size1_2, -size1_2, size * z),",
+"\t\t                    new SFVec3f ( size1_2, -size1_2, size * z));",
+"\t}",
+"",
+"\ttexCoord .point = coord .point;",
+"\t",
+"\ttextureTransform .scale = new SFVec3f (1 / dimensions .x, 1 / dimensions .y, 1 / dimensions .z);",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "dimensions",
+                          "@protoField": "dimensions"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_1",
+                    "@fromField": "orientation_changed",
+                    "@toNode": "_2",
+                    "@toField": "rotation"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_1",
+                    "@fromField": "orientation_changed",
+                    "@toNode": "_3",
+                    "@toField": "rotation"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+            "@title": "DCM1"
+          }
+        },
+        { "Background":
+          {
+            "@DEF": "Gray",
+            "@skyColor": [ 0.2, 0.2, 0.2 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Scan",
+            "@position": [ 0.83541, 0.877791, 1.8987 ],
+            "@orientation": [ -0.649757706629822, 0.743135472136551, 0.15988931398796, 0.639534522901374 ],
+            "@centerOfRotation": [ 0.158101, 0.219243, 0.605812 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Volume_5",
+            "-children": [
+              { "ProtoInstance":
+                {
+                  "@DEF": "Volume",
+                  "@name": "Volume",
+                  "fieldValue": [
+                    {
+                      "@name": "voxels",
+                      "-children": [
+                        { "ImageTexture3D":
+                          {
+                            "@DEF": "_6",
+                            "@url": [ "datasets/dicom/IM00001.implicit_little_endian.dcm" ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              { "ClipPlane":
+                {
+                  "@DEF": "_7",
+                  "@plane": [ 0, 0, -1, 0.799866 ]
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "VisibleClipPlane",
+            "-children": [
+              { "PlaneSensor":
+                {
+                  "@DEF": "PlaneSensor",
+                  "@axisRotation": [ 0, 1, 0, 1.5708 ],
+                  "@offset": [ 2.91112e-06, 0, 0.799866 ],
+                  "@maxPosition": [ -1, 0 ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "Rectangle2D",
+                  "@translation": [ 2.91112e-06, 0, 0.799866 ],
+                  "@scale": [ 0.5, 0.5, 1 ],
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-lineProperties": { "LineProperties":
+                              {
+                                "@DEF": "_8",
+                                "@linewidthScaleFactor": 2
+                              }
+                            },
+                            "-material": { "Material":
+                              {
+                                "@transparency": 1
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "Rectangle2D":
+                          {
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-lineProperties": { "LineProperties":
+                              {
+                                "@USE": "_8"
+                              }
+                            },
+                            "-material": { "Material":
+                              {
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "IndexedLineSet":
+                          {
+                            "@coordIndex": [ 0, 1, 2, 3, 0 ],
+                            "-coord": { "Coordinate":
+                              {
+                                "@point": [ -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Script":
+                {
+                  "@DEF": "ClipPlaneScript",
+                  "field": [
+                    {
+                      "@accessType": "inputOnly",
+                      "@type": "SFVec3f",
+                      "@name": "set_translation"
+                    },
+                    {
+                      "@accessType": "outputOnly",
+                      "@type": "SFVec4f",
+                      "@name": "plane_changed"
+                    }
+                  ],
+                  "#sourceText": [
+"vrmlscript:",
+"function set_translation (value)",
+"{",
+"\tvar distanceFromOrigin = new SFVec3f (0, 0, -1) .dot (value);",
+"",
+"\tplane_changed = new SFVec4f (0,0,-1, -distanceFromOrigin);",
+"}"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "PlaneSensor",
+            "@fromField": "translation_changed",
+            "@toNode": "Rectangle2D",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "PlaneSensor",
+            "@fromField": "translation_changed",
+            "@toNode": "ClipPlaneScript",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ClipPlaneScript",
+            "@fromField": "plane_changed",
+            "@toNode": "_7",
+            "@toField": "plane"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Interchange",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Thu, 21 Dec 2017 01:06:44 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.0.3, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/EnvironmentalEffects/Background/Background.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Fri, 22 Dec 2017 01:07:53 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 2
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Background":
+          {
+            "@DEF": "CityNight",
+            "@skyAngle": [ 0.8, 1.3, 1.4, 1.5708 ],
+            "@skyColor": [ 0.0392, 0.0392, 0.0471, 0.0588, 0.0745, 0.1098, 0.051, 0.0667, 0.0588, 0.0471, 0.0627, 0.0275, 0.12, 0.0902, 0.05098 ],
+            "@groundAngle": [ 0.6, 1.2, 1.3, 1.5708 ],
+            "@groundColor": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Rain",
+            "@translation": [ 0, 5.01402, 0 ],
+            "-children": [
+              { "ParticleSystem":
+                {
+                  "@DEF": "_1",
+                  "@geometryType": "LINE",
+                  "@maxParticles": 2000,
+                  "@particleLifetime": 3,
+                  "@lifetimeVariation": 0.1,
+                  "@particleSize": [ 0.1, 0.1 ],
+                  "-emitter": { "SurfaceEmitter":
+                    {
+                      "@speed": 0.2,
+                      "@mass": 0.01,
+                      "@surfaceArea": 0.01,
+                      "-surface": { "IndexedFaceSet":
+                        {
+                          "@ccw": false,
+                          "@coordIndex": [ 0, 1, 2, 3, -1 ],
+                          "-coord": { "Coordinate":
+                            {
+                              "@point": [ -10, 0, 10, 10, 0, 10, 10, 0, -10, -10, 0, -10 ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "-physics": [
+                    { "WindPhysicsModel":
+                      {
+                        "@direction": [ 0, -1, 0 ],
+                        "@speed": 1.5,
+                        "@turbulence": 0.5
+                      }
+                    }
+                  ],
+                  "@bboxSize": [ 30, 30, 30 ],
+                  "@bboxCenter": [ 0, -5, 0 ],
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@emissiveColor": [ 0, 0.498039, 1 ],
+                          "@transparency": 0.696809
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

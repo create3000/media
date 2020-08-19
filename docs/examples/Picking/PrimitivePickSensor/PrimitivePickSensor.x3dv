@@ -1,0 +1,174 @@
+#X3D V3.3 utf8 Titania V4.6.7
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Grouping : 3
+COMPONENT ParticleSystems : 1
+COMPONENT Picking : 3
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PrimitivePickSensor/PrimitivePickSensor.O.x3d"
+META "modified" "Thu, 07 Nov 2019 12:34:43 GMT"
+
+PROTO Bullet [
+  inputOutput MFNode target [ ]
+  outputOnly  SFTime hitTime
+]
+{
+  DEF Sphere Transform {
+    translation 0 0 5
+    scale 0.1 0.1 0.1
+    children [
+      DEF Animation Group {
+        children [
+          DEF AnimationTimer TimeSensor {
+            loop TRUE
+            startTime 1553259874.45089
+            stopTime 1553259874.45089
+          }
+          DEF SphereTranslationInterpolator PositionInterpolator {
+            key [ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ]
+            keyValue [ 0 0 5, 0 0 5.7, 0 0 7.6, 0 0 10.4, 0 0 13.8, 0 0 17.5, 0 0 21.2, 0 0 24.6, 0 0 27.4, 0 0 29.3, 0 0 30 ]
+          }
+        ]
+      }
+      Shape {
+        appearance Appearance {
+          material Material {
+            diffuseColor 1 0 0
+          }
+        }
+        geometry DEF _1 Sphere { }
+      }
+      DEF _2 PrimitivePickSensor {
+        objectType "TARGET"
+        pickingGeometry USE _1
+        pickTarget IS target
+      }
+    ]
+  }
+
+  DEF BulletScript Script {
+    inputOnly  SFBool set_active
+    outputOnly SFTime hitTime IS hitTime
+
+    url "ecmascript:
+
+function set_active (value, time)
+{
+	if (value)
+		hitTime = time;
+}
+"
+  }
+
+  ROUTE AnimationTimer.fraction_changed TO SphereTranslationInterpolator.set_fraction
+  ROUTE SphereTranslationInterpolator.value_changed TO Sphere.set_translation
+  ROUTE _2.isActive TO BulletScript.set_active
+}
+
+WorldInfo {
+}
+
+Viewpoint {
+  description "Initial view"
+  position -11.1888 7.48501 -6.36741
+  orientation 0.149654479144934 0.954657302760335 0.25735767165216 4.15514972474677
+}
+
+Group {
+  children [
+    DEF SkyAnimation Group {
+      children [
+        DEF SkyAnimationTimer TimeSensor {
+          cycleInterval 0.3
+          startTime 1573130083.14116
+          stopTime 1553262000.52021
+        }
+        DEF HitColorScriptColorInterpolator ColorInterpolator {
+          key [ 0, 0.333333, 0.666667, 1 ]
+          keyValue [ 1 1 1, 0.740741 0.740741 0.740741, 0.259259 0.259259 0.259259, 0 0 0 ]
+        }
+      ]
+    }
+    DEF _3 Background { }
+    DEF HitColorScript Script {
+      inputOutput SFColor color 0 0 0
+      outputOnly  MFColor skyColor_changed
+
+      url "ecmascript:
+
+function set_color (value, time)
+{
+	skyColor_changed [0] = value;
+}
+"
+    }
+  ]
+}
+
+DEF RocketShip Transform {
+  children Inline {
+    url "assets/rocket-ship.x3dz"
+  }
+}
+
+DEF Target PickableGroup {
+  objectType "TARGET"
+  children DEF _4 Transform {
+    translation 0 0 25
+    children Shape {
+      appearance Appearance {
+        material Material {
+          transparency 1
+        }
+      }
+      geometry Box { }
+    }
+  }
+}
+
+DEF Bullet Bullet {
+  target USE _4
+}
+
+Transform {
+  translation 0 0 -4.04154
+  children ParticleSystem {
+    geometryType "POINT"
+    particleLifetime 0.53
+    emitter PointEmitter {
+      direction 0 0 -1
+      speed 3.02
+      mass 0.01
+      surfaceArea 0.06
+    }
+    physics WindPhysicsModel {
+      speed 0.88
+      gustiness 0.07
+    }
+    colorKey [ 0, 1 ]
+    colorRamp Color {
+      color [ 1 1 0, 1 0 0 ]
+    }
+    appearance DEF _5 Appearance {
+      pointProperties PointProperties {
+        pointSizeScaleFactor 4.94
+        pointSizeMaxValue 4.94
+      }
+      material Material {
+        emissiveColor 0.403 0.403 0.403
+      }
+    }
+  }
+}
+
+ROUTE HitColorScript.skyColor_changed TO _3.set_skyColor
+ROUTE SkyAnimationTimer.fraction_changed TO HitColorScriptColorInterpolator.set_fraction
+ROUTE HitColorScriptColorInterpolator.value_changed TO HitColorScript.set_color
+ROUTE Bullet.hitTime TO SkyAnimationTimer.set_startTime

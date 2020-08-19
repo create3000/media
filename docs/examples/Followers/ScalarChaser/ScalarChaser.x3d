@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Followers' level='1'/>
+    <component name='Grouping' level='3'/>
+    <component name='Interpolation' level='4'/>
+    <component name='Layering' level='1'/>
+    <component name='Layout' level='2'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 08 Jul 2018 09:58:21 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.5.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ScalarChaser/ScalarChaser.O.x3d'/>
+    <meta name='modified' content='Sun, 23 Jun 2019 13:23:54 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='SFFloat' url='"assets/SFFloat.x3d#SFFloat"'>
+      <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+      <field accessType='inputOutput' type='SFFloat' name='keyValue'/>
+      <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+    </ExternProtoDeclare>
+    <ProtoDeclare name='Year'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFBool' name='enabled'/>
+        <field accessType='inputOutput' type='MFString' name='string' value='"2000"'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <ProtoDeclare name='Fields'>
+          <ProtoInterface>
+            <field accessType='inputOutput' type='SFBool' name='enabled'/>
+          </ProtoInterface>
+          <ProtoBody>
+          </ProtoBody>
+        </ProtoDeclare>
+        <Shape>
+          <Appearance>
+            <Material DEF='_1'
+                diffuseColor='0 0 0'
+                emissiveColor='1 1 1'
+                transparency='0.6'/>
+          </Appearance>
+          <Text
+              solid='true'>
+            <IS>
+              <connect nodeField='string' protoField='string'/>
+            </IS>
+            <ScreenFontStyle DEF='_2'
+                family='"assets/georgia.ttf", "SERIF"'
+                justify='"MIDDLE", "MIDDLE"'/>
+          </Text>
+        </Shape>
+        <ProtoInstance name='Fields' DEF='_3'>
+          <IS>
+            <connect nodeField='enabled' protoField='enabled'/>
+          </IS>
+        </ProtoInstance>
+        <Group DEF='Animation'>
+          <TimeSensor DEF='AnimationTimer'
+              cycleInterval='0.5'
+              stopTime='1'/>
+          <ScalarInterpolator DEF='TransparencyInterpolator'
+              key='0, 0.2, 0.4, 0.6, 0.8, 1'
+              keyValue='0.6, 0.5376, 0.3888, 0.2112, 0.0624, 0'/>
+          <ScalarInterpolator DEF='PointSizeInterpolator'
+              key='0, 0.2, 0.4, 0.6, 0.8, 1'
+              keyValue='12, 12.728, 14.464, 16.536, 18.272, 19'/>
+        </Group>
+        <BooleanFilter DEF='_4'/>
+        <TimeTrigger DEF='_5'/>
+        <ProtoInstance name='SFFloat' DEF='To0'/>
+        <TimeTrigger DEF='_6'/>
+        <ProtoInstance name='SFFloat' DEF='To1'>
+          <fieldValue name='keyValue' value='1'/>
+        </ProtoInstance>
+        <ScalarChaser DEF='_7'
+            duration='0.4'/>
+        <Script DEF='PointSizeScript'>
+          <field accessType='inputOnly' type='SFFloat' name='set_pointSize'/>
+          <field accessType='initializeOnly' type='SFNode' name='fontStyle'>
+            <ScreenFontStyle USE='_2'/>
+          </field>
+<![CDATA[ecmascript:
+
+function set_pointSize (value, time)
+{
+	fontStyle .pointSize = value;
+}]]>
+        </Script>
+        <ROUTE fromNode='To0' fromField='value_changed' toNode='_7' toField='set_destination'/>
+        <ROUTE fromNode='To1' fromField='value_changed' toNode='_7' toField='set_destination'/>
+        <ROUTE fromNode='_6' fromField='triggerTime' toNode='To1' toField='set_triggerTime'/>
+        <ROUTE fromNode='_5' fromField='triggerTime' toNode='To0' toField='set_triggerTime'/>
+        <ROUTE fromNode='_4' fromField='inputTrue' toNode='_6' toField='set_boolean'/>
+        <ROUTE fromNode='_4' fromField='inputFalse' toNode='_5' toField='set_boolean'/>
+        <ROUTE fromNode='_7' fromField='value_changed' toNode='PointSizeInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='TransparencyInterpolator' fromField='value_changed' toNode='_1' toField='set_transparency'/>
+        <ROUTE fromNode='_7' fromField='value_changed' toNode='TransparencyInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='PointSizeInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='TransparencyInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='_3' fromField='enabled_changed' toNode='_4' toField='set_boolean'/>
+        <ROUTE fromNode='PointSizeInterpolator' fromField='value_changed' toNode='PointSizeScript' toField='set_pointSize'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo/>
+    <Script DEF='EnterWorldScript'>
+      <field accessType='outputOnly' type='SFBool' name='initialized'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	try
+	{
+		Browser .setBrowserOption ("PrimitiveQuality", "HIGH");
+		Browser .setBrowserOption ("StraightenHorizon", true);
+	}
+	catch (error)
+	{ }
+	
+	initialized = true;
+}
+]]>
+    </Script>
+    <LayerSet
+        activeLayer='1'
+        order='0, 1, 2'>
+      <Layer DEF='Earth'>
+        <Viewpoint
+            position='0 0 3.35629'/>
+        <Transform DEF='Earth_8'>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='1 1 1'/>
+              <ImageTexture
+                  url='"assets/world.jpg"'/>
+            </Appearance>
+            <Sphere/>
+          </Shape>
+        </Transform>
+        <Billboard DEF='Atmosphere'
+            axisOfRotation='0 0 0'>
+          <Transform
+              scale='1.128 1.1284 1.1284'>
+            <Shape>
+              <Appearance>
+                <ImageTexture
+                    url='"assets/athmosphere.png"'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+        </Billboard>
+        <Inline DEF='Cities'
+            url='"assets/cities.x3dz"'/>
+      </Layer>
+      <LayoutLayer DEF='HUD_9'>
+        <Layout/>
+        <LayoutGroup DEF='Years'>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='200, 100'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='WorldPopulation'
+              translation='-50 0 0'>
+            <Shape>
+              <Text
+                  string='"World Population "'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/georgia.ttf", "SERIF"'
+                    pointSize='15'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='Line'
+              translation='70 -12.5 0'
+              scale='130.05 1 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='0 0 0'
+                    emissiveColor='1 1 1'
+                    transparency='0.6'/>
+              </Appearance>
+              <LineSet
+                  vertexCount='2'>
+                <Coordinate
+                    point='-1 0 0, 1 0 0'/>
+              </LineSet>
+            </Shape>
+          </Transform>
+          <Transform DEF='Year1995'
+              translation='-9 -36 0'>
+            <ProtoInstance name='Year' DEF='_10'>
+              <fieldValue name='enabled' value='true'/>
+              <fieldValue name='string' value='"1995"'/>
+            </ProtoInstance>
+            <TouchSensor DEF='_11'/>
+            <BooleanFilter DEF='EnableYear'/>
+            <BooleanFilter DEF='DisableOthers'/>
+            <TimeTrigger DEF='_12'/>
+            <ProtoInstance name='SFFloat' DEF='Cities1995'/>
+          </Transform>
+          <Transform DEF='Year2000'
+              translation='84 -36 0'>
+            <ProtoInstance name='Year' DEF='_13'/>
+            <TouchSensor DEF='_14'/>
+            <BooleanFilter DEF='_15'/>
+            <BooleanFilter DEF='_16'/>
+            <TimeTrigger DEF='_17'/>
+            <ProtoInstance name='SFFloat' DEF='Cities2000'>
+              <fieldValue name='keyValue' value='0.5'/>
+            </ProtoInstance>
+          </Transform>
+          <Transform DEF='Year2005'
+              translation='159 -36 0'>
+            <ProtoInstance name='Year' DEF='_18'>
+              <fieldValue name='string' value='"2005"'/>
+            </ProtoInstance>
+            <TouchSensor DEF='_19'/>
+            <BooleanFilter DEF='_20'/>
+            <BooleanFilter DEF='_21'/>
+            <TimeTrigger DEF='_22'/>
+            <ProtoInstance name='SFFloat' DEF='Cities2005'>
+              <fieldValue name='keyValue' value='1'/>
+            </ProtoInstance>
+          </Transform>
+          <ScalarChaser DEF='AnimateCities'
+              duration='0.6'/>
+        </LayoutGroup>
+        <LayoutGroup DEF='X3D-Experiment'>
+          <Layout
+              align='"LEFT", "BOTTOM"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='100, 100'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='This-is-a'
+              translation='-15.8876 11.7974 0'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Text
+                  string='"This is a"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    pointSize='8'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='X3D-Experiment_23'
+              translation='-15.8876 -9.44926 0'
+              scale='1 0.999998 1'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Text
+                  string='"X3D", "Experiment"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    pointSize='15'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </LayoutGroup>
+        <LayoutGroup DEF='Inspired_24'>
+          <Layout
+              align='"RIGHT", "BOTTOM"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='200, 100'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='X3D-Globe'
+              translation='-258.396 -26.8189 0'>
+            <Shape>
+              <Appearance>
+                <Material
+                    transparency='0.4'/>
+              </Appearance>
+              <Text
+                  string='"X3D Globe"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    style='BOLD'
+                    pointSize='10'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Anchor DEF='Inspired'
+              url='"http://globe.chromeexperiments.com/"'
+              parameter='"target=_blank"'>
+            <Transform
+                translation='-173.397 -26.8189 0'>
+              <Shape>
+                <Appearance>
+                  <Material/>
+                </Appearance>
+                <Text
+                    string='" •     Inspired by Chrome WebGL Gobe"'
+                    solid='true'>
+                  <ScreenFontStyle
+                      family='"assets/DejaVuSans.ttf", "SANS"'
+                      pointSize='10'/>
+                </Text>
+              </Shape>
+            </Transform>
+          </Anchor>
+        </LayoutGroup>
+      </LayoutLayer>
+    </LayerSet>
+    <IMPORT inlineDEF='Cities' importedDEF='PointInterpolator'/>
+
+    <ROUTE fromNode='AnimateCities' fromField='value_changed' toNode='PointInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='_14' fromField='isOver' toNode='_15' toField='set_boolean'/>
+    <ROUTE fromNode='_19' fromField='isOver' toNode='_20' toField='set_boolean'/>
+    <ROUTE fromNode='_11' fromField='isOver' toNode='EnableYear' toField='set_boolean'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='DisableOthers' toField='set_boolean'/>
+    <ROUTE fromNode='_15' fromField='inputTrue' toNode='_16' toField='set_boolean'/>
+    <ROUTE fromNode='_20' fromField='inputTrue' toNode='_21' toField='set_boolean'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_12' toField='set_boolean'/>
+    <ROUTE fromNode='_17' fromField='triggerTime' toNode='Cities2000' toField='set_triggerTime'/>
+    <ROUTE fromNode='_12' fromField='triggerTime' toNode='Cities1995' toField='set_triggerTime'/>
+    <ROUTE fromNode='_15' fromField='inputTrue' toNode='_17' toField='set_boolean'/>
+    <ROUTE fromNode='_22' fromField='triggerTime' toNode='Cities2005' toField='set_triggerTime'/>
+    <ROUTE fromNode='_20' fromField='inputTrue' toNode='_22' toField='set_boolean'/>
+    <ROUTE fromNode='Cities2005' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
+    <ROUTE fromNode='Cities2000' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
+    <ROUTE fromNode='Cities1995' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
+    <ROUTE fromNode='EnterWorldScript' fromField='initialized' toNode='EnableYear' toField='set_boolean'/>
+    <ROUTE fromNode='_20' fromField='inputTrue' toNode='_18' toField='set_enabled'/>
+    <ROUTE fromNode='_16' fromField='inputNegate' toNode='_18' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_18' toField='set_enabled'/>
+    <ROUTE fromNode='_21' fromField='inputNegate' toNode='_10' toField='set_enabled'/>
+    <ROUTE fromNode='_16' fromField='inputNegate' toNode='_10' toField='set_enabled'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_10' toField='set_enabled'/>
+    <ROUTE fromNode='_21' fromField='inputNegate' toNode='_13' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_13' toField='set_enabled'/>
+    <ROUTE fromNode='_15' fromField='inputTrue' toNode='_13' toField='set_enabled'/>
+  </Scene>
+</X3D>

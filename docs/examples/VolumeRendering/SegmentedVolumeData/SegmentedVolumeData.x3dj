@@ -1,0 +1,153 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "29 February 2011"
+        },
+        {
+          "@name": "creator",
+          "@content": "Andrew Wood, Nicholas Polys: Virginia Tech"
+        },
+        {
+          "@name": "description",
+          "@content": "Volume rendering of a segmented brain dataset, rendered with opacity map and tone map render styles"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.3, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/SegmentedVolumeData/SegmentedVolumeData.O.x3d"
+        },
+        {
+          "@name": "license",
+          "@content": "../license.html"
+        },
+        {
+          "@name": "modified",
+          "@content": "Tue, 22 Oct 2019 09:43:00 GMT"
+        },
+        {
+          "@name": "reference",
+          "@content": "SegmentedVentricles.x3d"
+        },
+        {
+          "@name": "reference",
+          "@content": "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles.nrrd"
+        },
+        {
+          "@name": "reference",
+          "@content": "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
+        },
+        {
+          "@name": "reference",
+          "@content": "Run the download target in the Ant build.xml file to install reference nrrd files locally."
+        },
+        {
+          "@name": "reference",
+          "@content": "build.xml"
+        },
+        {
+          "@name": "reference",
+          "@content": "Volume Data obtained from http://www.volvis.org"
+        },
+        {
+          "@name": "title",
+          "@content": "SegmentedVentricles.x3d"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Texturing3D",
+          "@level": 2
+        },
+        {
+          "@name": "VolumeRendering",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+            "@title": "SegmentedVentricles"
+          }
+        },
+        { "Group":
+          {
+            "-children": [
+              { "Viewpoint":
+                {
+                  "@DEF": "VP",
+                  "@description": "Segmented Ventricles",
+                  "@position": [ 0, 0, 0.21 ]
+                }
+              },
+              { "Background":
+                {
+                  "@DEF": "BG",
+                  "@skyColor": [ 0.5, 0.5, 0.5 ]
+                }
+              },
+              { "PointLight":
+                {
+                  "@intensity": 0.4,
+                  "@location": [ 1, 0, 1 ]
+                }
+              },
+              { "Transform":
+                {
+                  "@scale": [ 0.0651042, 0.0651042, 0.0651042 ],
+                  "-children": [
+                    { "SegmentedVolumeData":
+                      {
+                        "@dimensions": [ 2.304, 2.304, 1.116 ],
+                        "-segmentIdentifiers": { "ImageTexture3D":
+                          {
+                            "@DEF": "_1",
+                            "@url": [ "datasets/nrrd/mri_ventricles_segment.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles_segment.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/.nrrd" ]
+                          }
+                        },
+                        "-renderStyle": [
+                          { "OpacityMapVolumeStyle":
+                            {
+                            }
+                          },
+                          { "ToneMappedVolumeStyle":
+                            {
+                            }
+                          }
+                        ],
+                        "-voxels": { "ImageTexture3D":
+                          {
+                            "@url": [ "datasets/nrrd/mri_ventricles.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/mri_ventricles.nrrd" ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

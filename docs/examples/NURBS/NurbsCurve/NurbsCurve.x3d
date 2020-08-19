@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Layering' level='1'/>
+    <component name='Layout' level='1'/>
+    <component name='NURBS' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsCurve/NurbsCurve.O.x3d'/>
+    <meta name='modified' content='Sat, 26 Jan 2019 01:49:04 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='AnimatedCurve'>
+      <ProtoInterface>
+        <field accessType='inputOnly' type='SFTime' name='set_time'/>
+        <field accessType='inputOutput' type='SFDouble' name='speed' value='1'/>
+        <field accessType='inputOutput' type='SFRotation' name='rotation'/>
+        <field accessType='inputOutput' type='SFNode' name='material'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='NurbsCurve'>
+          <IS>
+            <connect nodeField='rotation' protoField='rotation'/>
+          </IS>
+          <Shape>
+            <Appearance>
+              <IS>
+                <connect nodeField='material' protoField='material'/>
+              </IS>
+            </Appearance>
+            <NurbsCurve DEF='_1'>
+              <CoordinateDouble containerField='controlPoint'/>
+            </NurbsCurve>
+          </Shape>
+        </Transform>
+        <Script DEF='AnimatedCurveScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='SFTime' name='set_time'/>
+          <field accessType='inputOutput' type='SFDouble' name='speed'/>
+          <field accessType='initializeOnly' type='SFNode' name='geometry'>
+            <NurbsCurve USE='_1'/>
+          </field>
+          <IS>
+            <connect nodeField='set_time' protoField='set_time'/>
+            <connect nodeField='speed' protoField='speed'/>
+          </IS>
+<![CDATA[ecmascript:
+
+var
+	points = [ ],
+	firstY = Math .random () * Math .PI,
+	firstZ = Math .random () * Math .PI;
+
+function initialize ()
+{
+	for (var x = -10; x <= 10; ++ x)
+		points .push (new SFVec3d (x, 0, 0));
+
+	set_time (0, 0);
+}
+
+function set_time (value, time)
+{
+	var controlPoint = geometry .controlPoint;
+
+	for (var i = 0, length = points .length; i < length; ++ i)
+	{
+		var
+			p = points [i],
+			x = p .x;
+
+		p .y = Math .sin (x * (Math .sin (firstY + time * speed) * 0.3));
+		p .z = Math .sin (x * (Math .sin (firstZ + time * speed) * 0.3));
+
+		controlPoint .point [i] = p;
+	}
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='MachineLearning'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFDouble' name='speed' value='1'/>
+        <field accessType='inputOutput' type='SFInt32' name='curves' value='10'/>
+        <field accessType='inputOutput' type='MFNode' name='material'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='_2'/>
+        <TimeSensor DEF='_3'
+            cycleInterval='120'
+            loop='true'/>
+        <OrientationInterpolator DEF='BoxRotationInterpolator'
+            key='0, 0.25, 0.5, 0.75, 1'
+            keyValue='0 0 1 0, -3.06559318185163e-18 3.67320512848233e-06 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 3.67320512426576e-06 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -3.67320524850646e-06 0.999999999993254 1.57079638639955, 0 0 1 0'/>
+        <Script DEF='MachineLearningScript'
+            directOutput='true'>
+          <field accessType='initializeOnly' type='SFNode' name='group'>
+            <Transform USE='_2' containerField='group'/>
+          </field>
+          <field accessType='inputOutput' type='SFDouble' name='speed'/>
+          <field accessType='inputOutput' type='SFInt32' name='curves'/>
+          <field accessType='inputOutput' type='MFNode' name='material'/>
+          <field accessType='initializeOnly' type='SFNode' name='timer'>
+            <TimeSensor USE='_3' containerField='timer'/>
+          </field>
+          <IS>
+            <connect nodeField='speed' protoField='speed'/>
+            <connect nodeField='curves' protoField='curves'/>
+            <connect nodeField='material' protoField='material'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	group .children .length = 0;
+
+	for (var i = 0; i < curves; ++ i)
+	{
+		var curve = Browser .currentScene .createProto ("AnimatedCurve");
+
+		curve .speed    = speed;
+		curve .rotation = new SFRotation (Math .random () - 0.5,
+		                                  Math .random () - 0.5,
+		                                  Math .random () - 0.5,
+		                                  Math .random () * Math .PI);
+
+		if (material .length)
+			curve .material = material [Math .floor (material .length * Math .random ())];
+
+		group .children .push (curve);
+		
+		Browser .addRoute (timer, "time", curve, "set_time");
+	}
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_3' fromField='fraction_changed' toNode='BoxRotationInterpolator' toField='set_fraction'/>
+        <ROUTE fromNode='BoxRotationInterpolator' fromField='value_changed' toNode='_2' toField='set_rotation'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo/>
+    <LayerSet
+        activeLayer='1'
+        order='1, 2'>
+      <Layer DEF='Curves'
+          isPickable='false'>
+        <Background
+            skyColor='0.0980392 0.0980392 0.0980392'/>
+        <Viewpoint
+            description='Machine Learning'
+            position='0 0 20.3168'/>
+        <ProtoInstance name='MachineLearning'>
+          <fieldValue name='speed' value='0.5'/>
+          <fieldValue name='curves' value='40'/>
+          <fieldValue name='material'>
+            <Material DEF='_4'
+                diffuseColor='0 0 0'
+                emissiveColor='0.268985 0.140202 0.722821'/>
+            <Material DEF='_5'
+                emissiveColor='0.277986 0.277986 0.277986'/>
+          </fieldValue>
+        </ProtoInstance>
+      </Layer>
+      <LayoutLayer DEF='MachineLearning'
+          isPickable='false'>
+        <Transform DEF='Text'>
+          <Shape>
+            <Appearance>
+              <Material/>
+            </Appearance>
+            <Text
+                string='"Heuristics"'
+                solid='true'>
+              <FontStyle
+                  family='"assets/BaskervilleOldFacDCD.otf"'
+                  size='0.49'
+                  justify='"MIDDLE", "MIDDLE"'/>
+            </Text>
+          </Shape>
+        </Transform>
+        <Transform DEF='Text_6'
+            translation='0 -0.417991 0'>
+          <Shape>
+            <Appearance>
+              <Material/>
+            </Appearance>
+            <Text
+                string='"MACHINE LEARNING"'
+                solid='true'>
+              <FontStyle
+                  family='"assets/Canaro-LightDEMO.otf"'
+                  size='0.11'
+                  justify='"MIDDLE", "MIDDLE"'/>
+            </Text>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D'
+            translation='0 -0.417991 -1'
+            scale='0.71 0.09 1'>
+          <Shape>
+            <Appearance>
+              <Material USE='_4'/>
+            </Appearance>
+            <Rectangle2D/>
+          </Shape>
+        </Transform>
+      </LayoutLayer>
+    </LayerSet>
+  </Scene>
+</X3D>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Grouping' level='3'/>
+    <component name='Interpolation' level='4'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.4.5, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/MultiTexture/MultiTexture.O.x3d'/>
+    <meta name='modified' content='Mon, 08 Apr 2019 07:16:10 GMT'/>
+  </head>
+  <Scene>
+    <WorldInfo/>
+    <Viewpoint
+        description='Initial view'
+        position='0.49109 1.41768 2.71072'
+        orientation='-0.934257914612686 0.346576766379408 0.0839445888044477 0.507339465295549'/>
+    <Transform DEF='Sphere'>
+      <Group DEF='Animation'>
+        <TimeSensor DEF='AnimationTimer'
+            cycleInterval='120'
+            loop='true'/>
+        <PositionInterpolator2D DEF='TranslationInterpolator'
+            key='0, 1'
+            keyValue='0 0, 1 0'/>
+      </Group>
+      <Shape>
+        <Appearance>
+          <Material/>
+          <MultiTexture
+              mode='"MODULATE", "BLENDTEXTUREALPHA"'>
+            <ImageTexture
+                url='"assets/earht-map-download-earht-map.jpg"'/>
+            <ImageTexture
+                url='"assets/cloud_combined_2048.png"'/>
+          </MultiTexture>
+          <MultiTextureTransform>
+            <TextureTransform/>
+            <TextureTransform DEF='_1'
+                translation='0.148662 0'/>
+          </MultiTextureTransform>
+        </Appearance>
+        <Sphere/>
+      </Shape>
+    </Transform>
+    <Inline DEF='Starfield'
+        url='"assets/starfield.x3d"'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='TranslationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='TranslationInterpolator' fromField='value_changed' toNode='_1' toField='set_translation'/>
+  </Scene>
+</X3D>

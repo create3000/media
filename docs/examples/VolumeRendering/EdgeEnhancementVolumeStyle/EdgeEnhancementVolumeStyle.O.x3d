@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Texturing3D' level='2'/>
+    <component name='VolumeRendering' level='2'/>
+    <meta name='TODO' content='get brain2.nrrd on savage server'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='26 March 2011'/>
+    <meta name='creator' content='Andrew Wood, Nicholas Polys: Virginia Tech'/>
+    <meta name='description' content='Volume rendering of a brain MR image, rendered with basic edge enhancement style'/>
+    <meta name='generator' content='Titania V4.5.17, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/EdgeEnhancementVolumeStyle/EdgeEnhancementVolumeStyle.O.x3d'/>
+    <meta name='license' content='../license.html'/>
+    <meta name='modified' content='Fri, 18 Oct 2019 13:23:46 GMT'/>
+    <meta name='reference' content='EdgeBrain.x3d'/>
+    <meta name='reference' content='Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/brain2.nrrd'/>
+    <meta name='reference' content='All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip'/>
+    <meta name='reference' content='Run the download target in the Ant build.xml file to install reference nrrd files locally.'/>
+    <meta name='reference' content='build.xml'/>
+    <meta name='reference' content='Volume Data obtained from, !! 3D Visualizer !!'/>
+    <meta name='title' content='EdgeBrain.x3d'/>
+  </head>
+  <Scene>
+    <WorldInfo
+        title='EdgeEnhancementVolumeStyle.O'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Group>
+      <Viewpoint DEF='VP'
+          description='Edge Brain'
+          position='-0.00920216 0.012033 -0.184913'
+          orientation='0.000511972764407604 0.999933806630981 0.0114943568921364 3.2306103826178'
+          centerOfRotation='0.00728844 0.00776813 -0.000164086'/>
+      <Background DEF='BG'
+          skyColor='0.2 0.2 0.2'/>
+      <Transform
+          scale='0.117188 0.117188 0.117188'>
+        <VolumeData
+            dimensions='1.28 1.28 1'>
+          <EdgeEnhancementVolumeStyle/>
+          <ImageTexture3D containerField='voxels'
+              url='"datasets/nrrd/brain.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/brain2.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/brain.nrrd"'/>
+        </VolumeData>
+      </Transform>
+    </Group>
+  </Scene>
+</X3D>

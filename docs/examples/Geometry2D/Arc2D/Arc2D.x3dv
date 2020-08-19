@@ -1,0 +1,52 @@
+#X3D V3.3 utf8 Titania V4.5.8
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Geometry2D : 2
+
+META "comment" "World of Titania"
+META "created" "Wed, 23 Jan 2019 11:38:33 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.10, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Geometry2D/Arc2D/Arc2D.O.x3d"
+META "modified" "Wed, 23 Jan 2019 12:29:02 GMT"
+
+WorldInfo {
+  title "Arc2D.O"
+}
+
+NavigationInfo {
+  type "EXAMINE"
+  transitionType "ANIMATE"
+}
+
+Background {
+  skyAngle 1.5708
+  skyColor [ 0.1 0.1 0.1, 0.3 0.3 0.3 ]
+  groundAngle 1.5708
+  groundColor [ 0.1 0.1 0.1, 0.3 0.3 0.3 ]
+}
+
+Viewpoint {
+  description "Initial View"
+  position 0 0 3.08613
+  centerOfRotation -0.0197983 -0.0453368 0
+}
+
+DEF Arc2D Transform {
+  children Shape {
+    appearance Appearance {
+      lineProperties LineProperties {
+        linewidthScaleFactor 4
+      }
+      material DEF Tropical26 Material {
+        emissiveColor 0 0.521996 0.327569
+      }
+    }
+    geometry Arc2D {
+      startAngle 5.55
+      endAngle 3.88
+    }
+  }
+}

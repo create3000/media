@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Layering' level='1'/>
+    <component name='Layout' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Mon, 25 Sep 2017 05:26:15 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V3.0.4, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Interpolation/PositionInterpolator/PositionInterpolator.x3d'/>
+    <meta name='modified' content='Tue, 26 Sep 2017 13:14:02 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_1' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='NavigationInfo' containerField='value'
+            name='NavigationInfo'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='type' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"EXAMINE"'/>
+        </MetadataSet>
+        <MetadataSet DEF='Viewpoint' containerField='value'
+            name='Viewpoint'
+            reference='http://titania.create3000.de'>
+          <MetadataDouble DEF='position' containerField='value'
+              name='position'
+              reference='http://titania.create3000.de'
+              value='0, 0, 10'/>
+          <MetadataDouble DEF='orientation' containerField='value'
+              name='orientation'
+              reference='http://titania.create3000.de'
+              value='0, 0, 1, 0'/>
+          <MetadataDouble DEF='centerOfRotation' containerField='value'
+              name='centerOfRotation'
+              reference='http://titania.create3000.de'
+              value='0, 0, 0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'/>
+        </MetadataSet>
+        <MetadataSet DEF='LayerSet' containerField='value'
+            name='LayerSet'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeLayer' containerField='value'
+              name='activeLayer'
+              reference='http://titania.create3000.de'
+              value='1'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <LayerSet
+        activeLayer='-1'
+        order='1, 2, 3'>
+      <LayoutLayer>
+        <Layout
+            scaleMode='"FRACTION", "FRACTION"'/>
+        <Background DEF='Gray'/>
+        <Transform DEF='Rectangle2D'
+            translation='0 -0.31 0'
+            scale='1 0.381 0.5'>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='1 1 1'
+                  transparency='0.906'/>
+            </Appearance>
+            <Rectangle2D
+                size='1 1'/>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_2'
+            translation='0 -0.01 0'
+            scale='1 0.071 0.5'>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='1 1 1'
+                  transparency='0.906'/>
+            </Appearance>
+            <Rectangle2D
+                size='1 1'/>
+          </Shape>
+        </Transform>
+      </LayoutLayer>
+      <Layer>
+        <Viewpoint
+            position='8 0 12'
+            orientation='0 1 0 1'
+            centerOfRotation='-3.07889 -0.314556 5.86004'/>
+        <Group>
+          <Group DEF='Animation'>
+            <MetadataSet DEF='Animation_3'
+                name='Animation'
+                reference='http://titania.create3000.de'>
+              <MetadataInteger DEF='duration' containerField='value'
+                  name='duration'
+                  reference='http://titania.create3000.de'
+                  value='110'/>
+              <MetadataInteger DEF='frameRate' containerField='value'
+                  name='frameRate'
+                  reference='http://titania.create3000.de'
+                  value='10'/>
+            </MetadataSet>
+            <TimeSensor DEF='AnimationTimer'
+                cycleInterval='11'
+                loop='true'
+                startTime='1506319814.61558'
+                stopTime='1506319814.61558'/>
+            <PositionInterpolator DEF='BoxTranslationInterpolator'
+                key='0, 0.909091, 0.999999, 1'
+                keyValue='-14 0 0, 6 0 0, 6 0 0, -14 0 0'>
+              <MetadataSet DEF='Interpolator'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 100, 110'/>
+                <MetadataDouble DEF='keyValue' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-14, 0, 0, 6, 0, 0, -14, 0, 0'/>
+                <MetadataString DEF='keyType' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR"'/>
+                <MetadataInteger DEF='keySize' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_4'
+                key='0, 0.818182, 0.90909, 0.909091, 1'
+                keyValue='-12 0 0, 6 0 0, 6 0 0, -14 0 0, -12 0 0'>
+              <MetadataSet DEF='Interpolator_5'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_6' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 90, 100, 110'/>
+                <MetadataDouble DEF='keyValue_7' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-12, 0, 0, 6, 0, 0, -14, 0, 0, -12, 0, 0'/>
+                <MetadataString DEF='keyType_8' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_9' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_10'
+                key='0, 0.727273, 0.818181, 0.818182, 1'
+                keyValue='-10 0 0, 6 0 0, 6 0 0, -14 0 0, -10 0 0'>
+              <MetadataSet DEF='Interpolator_11'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_12' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 80, 90, 110'/>
+                <MetadataDouble DEF='keyValue_13' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-10, 0, 0, 6, 0, 0, -14, 0, 0, -10, 0, 0'/>
+                <MetadataString DEF='keyType_14' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_15' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_16'
+                key='0, 0.636364, 0.727272, 0.727273, 1'
+                keyValue='-8 0 0, 6 0 0, 6 0 0, -14 0 0, -8 0 0'>
+              <MetadataSet DEF='Interpolator_17'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_18' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 70, 80, 110'/>
+                <MetadataDouble DEF='keyValue_19' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-8, 0, 0, 6, 0, 0, -14, 0, 0, -8, 0, 0'/>
+                <MetadataString DEF='keyType_20' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_21' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_22'
+                key='0, 0.545455, 0.636363, 0.636364, 1'
+                keyValue='-6 0 0, 6 0 0, 6 0 0, -14 0 0, -6 0 0'>
+              <MetadataSet DEF='Interpolator_23'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_24' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 60, 70, 110'/>
+                <MetadataDouble DEF='keyValue_25' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-6, 0, 0, 6, 0, 0, -14, 0, 0, -6, 0, 0'/>
+                <MetadataString DEF='keyType_26' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_27' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_28'
+                key='0, 0.454545, 0.545454, 0.545455, 1'
+                keyValue='-4 0 0, 6 0 0, 6 0 0, -14 0 0, -4 0 0'>
+              <MetadataSet DEF='Interpolator_29'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_30' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 50, 60, 110'/>
+                <MetadataDouble DEF='keyValue_31' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-4, 0, 0, 6, 0, 0, -14, 0, 0, -4, 0, 0'/>
+                <MetadataString DEF='keyType_32' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_33' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_34'
+                key='0, 0.363636, 0.454544, 0.454545, 1'
+                keyValue='-2 0 0, 6 0 0, 6 0 0, -14 0 0, -2 0 0'>
+              <MetadataSet DEF='Interpolator_35'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_36' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 40, 50, 110'/>
+                <MetadataDouble DEF='keyValue_37' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='-2, 0, 0, 6, 0, 0, -14, 0, 0, -2, 0, 0'/>
+                <MetadataString DEF='keyType_38' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_39' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_40'
+                key='0, 0.272727, 0.363635, 0.363636, 1'
+                keyValue='0 0 0, 6 0 0, 6 0 0, -14 0 0, 0 0 0'>
+              <MetadataSet DEF='Interpolator_41'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_42' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 30, 40, 110'/>
+                <MetadataDouble DEF='keyValue_43' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='0, 0, 0, 6, 0, 0, -14, 0, 0, 0, 0, 0'/>
+                <MetadataString DEF='keyType_44' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_45' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_46'
+                key='0, 0.181818, 0.272726, 0.272727, 1'
+                keyValue='2 0 0, 6 0 0, 6 0 0, -14 0 0, 2 0 0'>
+              <MetadataSet DEF='Interpolator_47'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_48' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 20, 30, 110'/>
+                <MetadataDouble DEF='keyValue_49' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='2, 0, 0, 6, 0, 0, -14, 0, 0, 2, 0, 0'/>
+                <MetadataString DEF='keyType_50' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_51' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_52'
+                key='0, 0.0909091, 0.181817, 0.181818, 1'
+                keyValue='4 0 0, 6 0 0, 6 0 0, -14 0 0, 4 0 0'>
+              <MetadataSet DEF='Interpolator_53'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_54' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 10, 20, 110'/>
+                <MetadataDouble DEF='keyValue_55' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='4, 0, 0, 6, 0, 0, -14, 0, 0, 4, 0, 0'/>
+                <MetadataString DEF='keyType_56' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"LINEAR", "CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_57' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+            <PositionInterpolator DEF='BoxTranslationInterpolator_58'
+                key='0, 0.0909081, 0.0909091, 1'
+                keyValue='6 0 0, 6 0 0, -14 0 0, 6 0 0'>
+              <MetadataSet DEF='Interpolator_59'
+                  name='Interpolator'
+                  reference='http://titania.create3000.de'>
+                <MetadataInteger DEF='key_60' containerField='value'
+                    name='key'
+                    reference='http://titania.create3000.de'
+                    value='0, 10, 110'/>
+                <MetadataDouble DEF='keyValue_61' containerField='value'
+                    name='keyValue'
+                    reference='http://titania.create3000.de'
+                    value='6, 0, 0, -14, 0, 0, 6, 0, 0'/>
+                <MetadataString DEF='keyType_62' containerField='value'
+                    name='keyType'
+                    reference='http://titania.create3000.de'
+                    value='"CONSTANT", "LINEAR", "LINEAR"'/>
+                <MetadataInteger DEF='keySize_63' containerField='value'
+                    name='keySize'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </PositionInterpolator>
+          </Group>
+          <Transform DEF='Red'
+              translation='-10.8556 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass5'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.748016 0 0.0400871'
+                    specularColor='0.89697 0.89697 0.89697'
+                    shininess='1'
+                    transparency='0.359073'/>
+              </Appearance>
+              <Box DEF='_64'
+                  solid='false'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box'
+              translation='6 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass3'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.748016 0.299537 0'
+                    specularColor='0.836364 0.836364 0.836364'
+                    shininess='0.921212'
+                    transparency='0.34749'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Yellow'
+              translation='5.14444 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass1'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.748014 0.62085 0'
+                    specularColor='0.860606 0.860606 0.860599'
+                    shininess='0.939394'
+                    transparency='0.34749'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_65'
+              translation='3.14443 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass18'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.381944 0.748016 0'
+                    specularColor='0.963636 0.963636 0.963636'
+                    shininess='0.981818'
+                    transparency='0.370656'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_66'
+              translation='-0.855576 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass14'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0 0.631244 0.748016'
+                    specularColor='0.915152 0.915152 0.915152'
+                    shininess='0.642424'
+                    transparency='0.389961'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_67'
+              translation='-2.85557 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass13'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.0207323 0.339645 0.748016'
+                    specularColor='0.90303 0.90303 0.90303'
+                    shininess='0.927273'
+                    transparency='0.362934'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_68'
+              translation='-4.85557 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass12'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.002317 0 0.748016'
+                    specularColor='0.884848 0.884848 0.884848'
+                    shininess='0.830303'
+                    transparency='0.34749'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_69'
+              translation='1.14442 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass17'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0 0.748016 0.176015'
+                    specularColor='0.981818 0.981818 0.981818'
+                    shininess='0.721212'
+                    transparency='0.355212'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_70'
+              translation='-12.8556 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass4'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.748016 0.139569 0'
+                    specularColor='0.709091 0.709091 0.709091'
+                    shininess='0.478788'
+                    transparency='0.59'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_71'
+              translation='-8.85557 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass6'
+                    ambientIntensity='0.00746438'
+                    diffuseColor='0.0291577 0.0262922 0.0269642'
+                    specularColor='0.981818 0 0'
+                    shininess='0.030303'
+                    transparency='0.389961'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Box_72'
+              translation='-6.85557 0 0'
+              scale='0.138356 5 4'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Glass12_73'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.299085 0 0.748016'
+                    specularColor='0.884848 0.884848 0.884848'
+                    shininess='0.830303'
+                    transparency='0.34749'/>
+              </Appearance>
+              <Box USE='_64'/>
+            </Shape>
+          </Transform>
+        </Group>
+      </Layer>
+      <Layer>
+        <Transform DEF='Text'
+            translation='-6.58324 -2.42055 0'>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='1 1 1'/>
+            </Appearance>
+            <Text
+                string='"X3D is versatile,", "use X3D graphics elsewhere."'
+                solid='true'>
+              <FontStyle
+                  family='"Roice-BlackItalicSC.otf", "SANS"'/>
+            </Text>
+          </Shape>
+        </Transform>
+      </Layer>
+    </LayerSet>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator' fromField='value_changed' toNode='Box_72' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_4' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_4' fromField='value_changed' toNode='Box_68' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_10' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_10' fromField='value_changed' toNode='Box_67' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_16' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_16' fromField='value_changed' toNode='Box_66' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_22' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_22' fromField='value_changed' toNode='Box_69' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_28' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_28' fromField='value_changed' toNode='Box_65' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_34' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_34' fromField='value_changed' toNode='Yellow' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_40' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_40' fromField='value_changed' toNode='Box' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_46' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_46' fromField='value_changed' toNode='Box_70' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_52' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_52' fromField='value_changed' toNode='Red' toField='set_translation'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxTranslationInterpolator_58' toField='set_fraction'/>
+    <ROUTE fromNode='BoxTranslationInterpolator_58' fromField='value_changed' toNode='Box_71' toField='set_translation'/>
+  </Scene>
+</X3D>

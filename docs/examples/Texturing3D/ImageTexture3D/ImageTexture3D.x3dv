@@ -1,0 +1,262 @@
+#X3D V3.3 utf8 Titania V4.6.5
+
+PROFILE Immersive
+
+COMPONENT CADGeometry : 1
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Shaders : 1
+COMPONENT Texturing3D : 1
+
+META "comment" "World of Titania"
+META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.6.4, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
+META "modified" "Tue, 29 Oct 2019 09:52:02 GMT"
+
+PROTO Volume [
+  inputOutput SFVec3f dimensions 1 1 1
+  inputOutput SFNode  voxels NULL
+]
+{
+  Group {
+    children [
+      DEF _1 ProximitySensor {
+        size -1 -1 -1
+      }
+      DEF _2 Transform {
+        children Shape {
+          appearance Appearance {
+            texture IS voxels
+            textureTransform DEF _3 TextureTransform3D {
+              translation 0.5 0.5 0.5
+              center -0.5 -0.5 -0.5
+            }
+            shaders DEF ComposedShader ComposedShader {
+              language "GLSL"
+              parts [
+                DEF VertexShader ShaderPart {
+                  url "data:x-shader/x-vertex,#version 300 es
+
+precision mediump float;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_TextureMatrix [1];
+
+in vec4 x3d_Vertex;
+in vec4 x3d_TexCoord0;
+
+out vec3 vertex;
+out vec4 texCoord;
+
+void
+main ()
+{
+	vec4 position = x3d_ModelViewMatrix * x3d_Vertex;
+
+	vertex   = position .xyz;
+	texCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;
+
+	gl_Position = x3d_ProjectionMatrix * position;
+}"
+                }
+                DEF FragmentShader ShaderPart {
+                  type "FRAGMENT"
+                  url "data:x-shader/x-fragment,#version 300 es
+
+precision mediump float;
+precision mediump sampler3D;
+
+uniform int       x3d_NumTextures;
+uniform sampler3D x3d_Texture3D [1];
+
+uniform int  x3d_NumClipPlanes;
+uniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];
+
+in vec3 vertex;
+in vec4 texCoord;
+
+out vec4 x3d_FragColor;
+
+void
+clip ()
+{
+	for (int i = 0; i < x3d_MaxClipPlanes; ++ i)
+	{
+		if (i == x3d_NumClipPlanes)
+			break;
+
+		if (dot (vertex, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)
+			discard;
+	}
+}
+
+vec4
+getTextureColor (in vec3 texCoord)
+{
+	if (x3d_NumTextures == 0)
+		vec4 (1.0, 1.0, 1.0, 1.0);
+
+	if (texCoord .s < 0.0 || texCoord .s > 1.0)
+		discard;
+
+	if (texCoord .t < 0.0 || texCoord .t > 1.0)
+		discard;
+
+	if (texCoord .p < 0.0 || texCoord .p > 1.0)
+		discard;
+
+	vec4 voxelColor   = texture (x3d_Texture3D [0], texCoord);
+	
+	return voxelColor;
+}
+
+void
+main ()
+{
+	clip ();
+
+	x3d_FragColor = getTextureColor (texCoord .stp / texCoord .q);
+}"
+                }
+              ]
+            }
+          }
+          geometry DEF _4 QuadSet {
+            texCoord TextureCoordinate3D { }
+            coord Coordinate { }
+          }
+        }
+      }
+    ]
+  }
+
+  DEF VolumeScript Script {
+    inputOutput    SFVec3f dimensions IS dimensions
+    initializeOnly SFNode  textureTransform USE _3
+    initializeOnly SFNode  geometry USE _4
+
+    url "vrmlscript:
+
+var NUM_PLANES = 200;
+
+function initialize ()
+{
+	set_dimension ();
+}
+
+function set_dimension ()
+{
+	var
+		size     = dimensions .length (),
+		size1_2  = size / 2,
+		coord    = geometry .coord,
+		texCoord = geometry .texCoord;
+	
+	coord .point .length = 0;
+
+	for (var i = 0; i < NUM_PLANES; ++ i)
+	{
+		var z = i / (NUM_PLANES - 1) - 0.5;
+
+		coord .point .push (new SFVec3f ( size1_2,  size1_2, size * z),
+		                    new SFVec3f (-size1_2,  size1_2, size * z),
+		                    new SFVec3f (-size1_2, -size1_2, size * z),
+		                    new SFVec3f ( size1_2, -size1_2, size * z));
+	}
+
+	texCoord .point = coord .point;
+	
+	textureTransform .scale = new SFVec3f (1 / dimensions .x, 1 / dimensions .y, 1 / dimensions .z);
+}
+"
+  }
+
+  ROUTE _1.orientation_changed TO _2.set_rotation
+  ROUTE _1.orientation_changed TO _3.set_rotation
+}
+
+WorldInfo {
+  title "DCM1"
+}
+
+DEF Gray Background {
+  skyColor 0.2 0.2 0.2
+}
+
+Viewpoint {
+  description "Scan"
+  position 0.83541 0.877791 1.8987
+  orientation -0.649757706629822 0.743135472136551 0.15988931398796 0.639534522901374
+  centerOfRotation 0.158101 0.219243 0.605812
+}
+
+DEF Volume_5 Transform {
+  children [
+    DEF Volume Volume {
+      voxels DEF _6 ImageTexture3D {
+        url "datasets/dicom/IM00001.implicit_little_endian.dcm"
+      }
+    }
+    DEF _7 ClipPlane {
+      plane 0 0 -1 0.799866
+    }
+  ]
+}
+
+DEF VisibleClipPlane Transform {
+  children [
+    DEF PlaneSensor PlaneSensor {
+      axisRotation 0 1 0 1.5708
+      offset 2.91112e-06 0 0.799866
+      maxPosition -1 0
+    }
+    DEF Rectangle2D Transform {
+      translation 2.91112e-06 0 0.799866
+      scale 0.5 0.5 1
+      children [
+        Shape {
+          appearance Appearance {
+            lineProperties DEF _8 LineProperties {
+              linewidthScaleFactor 2
+            }
+            material Material {
+              transparency 1
+            }
+          }
+          geometry Rectangle2D { }
+        }
+        Shape {
+          appearance Appearance {
+            lineProperties USE _8
+            material Material { }
+          }
+          geometry IndexedLineSet {
+            coordIndex [ 0, 1, 2, 3, 0 ]
+            coord Coordinate {
+              point [ -1 -1 0, 1 -1 0, 1 1 0, -1 1 0 ]
+            }
+          }
+        }
+      ]
+    }
+    DEF ClipPlaneScript Script {
+      inputOnly  SFVec3f set_translation
+      outputOnly SFVec4f plane_changed
+
+      url "vrmlscript:
+function set_translation (value)
+{
+	var distanceFromOrigin = new SFVec3f (0, 0, -1) .dot (value);
+
+	plane_changed = new SFVec4f (0,0,-1, -distanceFromOrigin);
+}
+"
+    }
+  ]
+}
+
+ROUTE PlaneSensor.translation_changed TO Rectangle2D.set_translation
+ROUTE PlaneSensor.translation_changed TO ClipPlaneScript.set_translation
+ROUTE ClipPlaneScript.plane_changed TO _7.set_plane

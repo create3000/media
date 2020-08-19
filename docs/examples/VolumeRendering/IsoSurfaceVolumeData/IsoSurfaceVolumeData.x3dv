@@ -1,0 +1,55 @@
+#X3D V3.3 utf8 Titania V4.6.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Texturing3D : 2
+COMPONENT VolumeRendering : 3
+
+META "comment" "World of Titania"
+META "created" "24 March 2011"
+META "creator" "Andrew Wood, Nicholas Polys: Virginia Tech"
+META "description" "Volume rendering of a CT scan of a skull, rendered as an isosurface with cartoon render style"
+META "generator" "Titania V4.6.3, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/IsoSurfaceVolumeData/IsoSurfaceVolumeData.O.x3d"
+META "license" "../license.html"
+META "modified" "Tue, 22 Oct 2019 10:26:01 GMT"
+META "reference" "IsoSurfaceSkull.x3d"
+META "reference" "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/skull.nrrd"
+META "reference" "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
+META "reference" "Run the download target in the Ant build.xml file to install reference nrrd files locally."
+META "reference" "build.xml"
+META "reference" "Volume Data obtained from http://www.volvis.org"
+META "title" "IsoSurfaceSkull.x3d"
+
+WorldInfo {
+  title "IsoSurfaceVolumeData.O"
+}
+
+Group {
+  children [
+    DEF VP Viewpoint {
+      description "IsoSurface Skull"
+      position 0 0 0.299249
+      orientation 0 0 -0.113320737191137 6.28318530717959
+    }
+    DEF BG Background {
+      skyColor 0.2 0.2 0.2
+    }
+    DEF _1 Transform {
+      rotation -0.734984397936391 0.477428228081317 0.481518661965676 1.71916544983595
+      scale 0.117188 0.117188 0.117188
+      scaleOrientation -0.373584715954867 -0.0259322116773033 -0.927233509102453 0.257019911109868
+      children IsoSurfaceVolumeData {
+        dimensions 1.28 1.28 1.28
+        surfaceValues 0.15
+        renderStyle CartoonVolumeStyle {
+          colorSteps 32
+        }
+        voxels ImageTexture3D {
+          url [ "datasets/nrrd/skull.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/skull.nrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/skull.nrd" ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,685 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 20 Dec 2015 16:23:08 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.9, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 07 Jan 2019 04:18:13 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": -1,
+            "@order": [ 0, 1, 2 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "X3DLights",
+                  "-children": [
+                    { "Script":
+                      {
+                        "@DEF": "EnterWorldScript",
+                        "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tBrowser .setBrowserOption (\"Shading\",          \"PHONG\");",
+"\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
+"}"
+                        ]
+                      }
+                    },
+                    { "NavigationInfo":
+                      {
+                        "@type": [ "NONE" ],
+                        "@headlight": false
+                      }
+                    },
+                    { "OrthoViewpoint":
+                      {
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "BlackRectangle2D",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@DEF": "Metal27",
+                                      "@ambientIntensity": 0,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@specularColor": [ 0.780612, 0.774022, 0.752349 ],
+                                      "@shininess": 0.102041
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@DEF": "_1",
+                                  "@size": [ 20, 20 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "TouchPlane",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@DEF": "Rectangle2D",
+                              "@translation": [ 0, 0, 0.15 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Metal27_2",
+                                            "@ambientIntensity": 0,
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@shininess": 0,
+                                            "@transparency": 1
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Rectangle2D":
+                                      {
+                                        "@USE": "_1"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "LightsTouch"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Lights",
+                        "@translation": [ 0, 0, 0.15 ],
+                        "-children": [
+                          { "Group":
+                            {
+                              "@DEF": "ColorAnimation",
+                              "-children": [
+                                { "TimeSensor":
+                                  {
+                                    "@DEF": "_3",
+                                    "@cycleInterval": 30,
+                                    "@loop": true
+                                  }
+                                },
+                                { "ColorInterpolator":
+                                  {
+                                    "@DEF": "Light1ColorInterpolator",
+                                    "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                                    "@keyValue": [ 1, 0, 0, 0.5, 1, 0, 0, 1, 1, 0.5, 0, 1, 1, 0, 0 ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light1",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.645102,
+                              "@location": [ -1, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light2",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.19518,
+                              "@location": [ -0.714286, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light3",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.888487,
+                              "@location": [ -0.428571, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light4",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.912746,
+                              "@location": [ -0.142857, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light5",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.249688,
+                              "@location": [ 0.142857, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light6",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.60139,
+                              "@location": [ 0.428571, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light7",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.999609,
+                              "@location": [ 0.714286, 0, 0 ]
+                            }
+                          },
+                          { "PointLight":
+                            {
+                              "@DEF": "Light8",
+                              "@color": [ 0, 1, 0.607978 ],
+                              "@intensity": 0.645102,
+                              "@location": [ 1, 0, 0 ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "TimeSensor":
+                      {
+                        "@DEF": "LightsTimer",
+                        "@loop": true
+                      }
+                    },
+                    { "Script":
+                      {
+                        "@DEF": "LightsScript",
+                        "@directOutput": true,
+                        "field": [
+                          {
+                            "@accessType": "inputOnly",
+                            "@type": "SFBool",
+                            "@name": "set_active"
+                          },
+                          {
+                            "@accessType": "inputOnly",
+                            "@type": "SFVec3f",
+                            "@name": "set_hitPoint"
+                          },
+                          {
+                            "@accessType": "inputOnly",
+                            "@type": "SFTime",
+                            "@name": "set_time"
+                          },
+                          {
+                            "@accessType": "inputOutput",
+                            "@type": "SFTime",
+                            "@name": "cycleInterval",
+                            "@value": 2
+                          }
+                        ],
+                        "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\tlight      = 0,",
+"\tlights     = [ ],",
+"\ttimeSensor = null,",
+"\tstartTime  = 0;",
+"",
+"function initialize ()",
+"{",
+"\tfor (var i = 1; i <= 8; ++ i)",
+"\t\tlights .push (Browser .currentScene .getNamedNode (\"Light\" + i));",
+"",
+"\tfor (var i = 0; i < 8; ++ i)",
+"\t\tlights [i] .location = new SFVec3f (i / 3.5 - 1, 0, 0);",
+"}",
+"",
+"function set_active (value)",
+"{",
+"\tvar",
+"\t\ttouchSensor = Browser .currentScene .getNamedNode (\"LightsTouch\"),",
+"\t\tself        = Browser .currentScene .getNamedNode (\"LightsScript\");",
+"\t",
+"\tif (touchSensor .isActive)",
+"\t\tBrowser .addRoute (touchSensor, \"hitPoint_changed\", self, \"set_hitPoint\");",
+"\telse",
+"\t\tBrowser .deleteRoute (touchSensor, \"hitPoint_changed\", self, \"set_hitPoint\");",
+"}",
+"",
+"function set_hitPoint (value, time)",
+"{",
+"\tif (time - startTime > 0.1)",
+"\t{",
+"\t\tlights [light] .location = value;",
+"\t",
+"\t\tstartTime = time;",
+"",
+"\t\tlight = (light + 1) % 8;",
+"\t}",
+"}",
+"",
+"function set_time (value)",
+"{",
+"\tset_time2 (value);",
+"}",
+"",
+"function set_time1 (time)",
+"{",
+"\ttime /= cycleInterval;",
+"",
+"\tfor (var i = 0; i < 8; ++ i)",
+"\t\tlights [i] .intensity = get_intensity (time);",
+"}",
+"",
+"function set_time2 (time)",
+"{",
+"\tvar factor = cycleInterval / 7;",
+"",
+"\ttime /= cycleInterval;",
+"",
+"\tfor (var i = 0; i < 8; ++ i)",
+"\t\tlights [i] .intensity = get_intensity (time - factor * i);",
+"}",
+"",
+"function get_intensity (value)",
+"{",
+"\treturn Math .sin ((value - Math .floor (value)) * Math .PI);",
+"}"
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "Text",
+                  "-children": [
+                    { "NavigationInfo":
+                      {
+                        "@type": [ "NONE" ],
+                        "@headlight": false
+                      }
+                    },
+                    { "OrthoViewpoint":
+                      {
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "lights",
+                        "@translation": [ 0, 0.248408, 0 ],
+                        "@scale": [ 0.449912, 0.174422, 4.39968 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "lights.png" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_4",
+                        "@translation": [ 0, -0.0191083, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@emissiveColor": [ 1, 1, 1 ],
+                                      "@shininess": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "An Interactive X3D Experience" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@DEF": "_5",
+                                      "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
+                                      "@size": 0.08,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Disk2D",
+                        "@translation": [ -0.15, -0.259941, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "@DEF": "_6",
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@emissiveColor": [ 0.382, 0.382, 0.382 ],
+                                      "@shininess": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Disk2D":
+                                {
+                                  "@outerRadius": 0.14
+                                }
+                              }
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Text_7",
+                              "@translation": [ 0, -0.00799999, 0 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "_8",
+                                            "@ambientIntensity": 0,
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@shininess": 0
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "JOIN" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@USE": "_5"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Disk2D_9",
+                        "@translation": [ 0.15, -0.259941, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "@USE": "_6"
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Text_10",
+                              "@translation": [ 0, 0.00100001, 0 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@USE": "_8"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "US" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@USE": "_5"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Text_11",
+                        "@translation": [ 0, -0.617834, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@emissiveColor": [ 1, 1, 1 ],
+                                      "@shininess": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "Click and move your mouse to place", "the lights on the screen." ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "CharlotteSansBookPlain.otf", "SERIF" ],
+                                      "@size": 0.08,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "LightsTouch",
+            "@fromField": "isActive",
+            "@toNode": "LightsScript",
+            "@toField": "set_active"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "LightsTimer",
+            "@fromField": "time",
+            "@toNode": "LightsScript",
+            "@toField": "set_time"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light2",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light3",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light4",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light5",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light6",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light7",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1",
+            "@fromField": "color",
+            "@toNode": "Light8",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_3",
+            "@fromField": "fraction_changed",
+            "@toNode": "Light1ColorInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Light1ColorInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Light1",
+            "@toField": "color"
+          }
+        }
+      ]
+    }
+  }
+}

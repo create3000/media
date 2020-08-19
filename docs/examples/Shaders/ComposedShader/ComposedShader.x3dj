@@ -1,0 +1,286 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Wed, 06 Dec 2017 01:50:04 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.5.0, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shaders/ComposedShader/ComposedShader.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Thu, 11 Apr 2019 08:13:32 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "Shaders",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"BumpShader",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "heightScale",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "bumpMapWidth",
+                  "@value": 1024
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "bumpMapHeight",
+                  "@value": 1024
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "bumpMap"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "ComposedShader":
+                  {
+                    "@DEF": "ComposedShader",
+                    "@language": "GLSL",
+                    "-parts": [
+                      { "ShaderPart":
+                        {
+                          "@DEF": "VertexShader",
+                          "@url": [ "data:x-shader/x-vertex,\n\n// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-\n\nprecision mediump float;\nprecision mediump int;\n\nuniform mat4 x3d_TextureMatrix [x3d_MaxTextures];\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nuniform float x3d_LinewidthScaleFactor;\nuniform bool  x3d_Lighting;  // true if a X3DMaterialNode is attached, otherwise false\n\nattribute vec4 x3d_Color;\nattribute vec4 x3d_TexCoord0;\nattribute vec3 x3d_Normal;\nattribute vec4 x3d_Vertex;\n\nvarying vec4 C;  // color\nvarying vec4 t;  // texCoord\nvarying vec3 vN; // normalized normal vector at this point on geometry\nvarying vec3 v;  // point on geometry\n\nvoid\nmain ()\n{\n\tgl_PointSize = x3d_LinewidthScaleFactor;\n\n\tvec4 p = x3d_ModelViewMatrix * x3d_Vertex;\n\n\tvN = x3d_Normal;\n\tt  = x3d_TextureMatrix [0] * x3d_TexCoord0;\n\tC  = x3d_Color;\n\tv  = p .xyz;\n\n\tgl_Position = x3d_ProjectionMatrix * p;\n}\n" ]
+                        }
+                      },
+                      { "ShaderPart":
+                        {
+                          "@DEF": "FragmentShader",
+                          "@type": "FRAGMENT",
+                          "@url": [ "data:x-shader/x-fragment,\n\n// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-\n\nprecision mediump float;\nprecision mediump int;\n\nuniform int x3d_GeometryType;\n\nuniform int  x3d_NumClipPlanes;\nuniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];\n\nuniform float x3d_LinewidthScaleFactor;\nuniform bool  x3d_Lighting;      // true if a X3DMaterialNode is attached, otherwise false\nuniform bool  x3d_ColorMaterial; // true if a X3DColorNode is attached, otherwise false\n\nuniform int x3d_NumLights;\nuniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];\nuniform bool x3d_SeparateBackColor;\nuniform x3d_MaterialParameters x3d_FrontMaterial;\nuniform x3d_MaterialParameters x3d_BackMaterial;\n\nuniform int         x3d_TextureType [x3d_MaxTextures]; // true if a X3DTexture2DNode is attached, otherwise false\nuniform sampler2D   x3d_Texture2D [x3d_MaxTextures];\nuniform samplerCube x3d_CubeMapTexture [x3d_MaxTextures];\n\nuniform x3d_FogParameters x3d_Fog;\n\nuniform mat3 x3d_NormalMatrix;\n\nuniform float     heightScale;\nuniform int       bumpMapWidth;\nuniform int       bumpMapHeight;\nuniform sampler2D bumpMap;\n\nvarying vec4 C;  // color\nvarying vec4 t;  // texCoord\nvarying vec3 vN; // normalized normal vector at this point on geometry\nvarying vec3 v;  // point on geometry\n\nvoid\nclip ()\n{\n\tfor (int i = 0; i < x3d_MaxClipPlanes; ++ i)\n\t{\n\t\tif (i == x3d_NumClipPlanes)\n\t\t\tbreak;\n\n\t\tif (dot (v, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)\n\t\t\tdiscard;\n\t}\n}\n\nvec3\ngetNormal (in vec3 N)\n{\n\tvec2 texCoord = x3d_GeometryType == x3d_Geometry3D || gl_FrontFacing ? vec2 (t) : vec2 (1.0 - t .s, t .t);\n\tvec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);\n\tvec3 g        = vec3 (0.0, 0.0, heightScale * texture2D (bumpMap, texCoord) .r);\n\tvec3 r        = vec3 (1.0, 0.0, heightScale * texture2D (bumpMap, texCoord + vec2 (s .x, 0)) .r);\n\tvec3 a        = vec3 (0.0, 1.0, heightScale * texture2D (bumpMap, texCoord + vec2 (0, s .y)) .r);\n\n\tvec3 n = cross (r - g, a - g);\n\tvec3 x = cross (vec3 (0.0, 1.0, 0.0), N);\n\t\n\tif (dot (x, x) == 0.0)\n\t\tx = vec3 (1.0, 0.0, 0.0);\n\t\n\tvec3 y = cross (N, x);\n\n\tn = normalize (n);\n\tx = normalize (x);\n\ty = normalize (y);\n\n\treturn x3d_NormalMatrix * mat3 (x, y, N) * n;\n}\n\nvec4\ngetTextureColor ()\n{\n\tif (x3d_TextureType [0] == x3d_TextureType2D)\n\t{\n\t\tif (x3d_GeometryType == x3d_Geometry3D || gl_FrontFacing)\n\t\t\treturn texture2D (x3d_Texture2D [0], vec2 (t));\n\t\t\n\t\t// If dimension is x3d_Geometry2D the texCoords must be flipped.\n\t\treturn texture2D (x3d_Texture2D [0], vec2 (1.0 - t .s, t .t));\n\t}\n\n\tif (x3d_TextureType [0] == x3d_TextureTypeCubeMapTexture)\n\t{\n\t\tif (x3d_GeometryType == x3d_Geometry3D || gl_FrontFacing)\n\t\t\treturn textureCube (x3d_CubeMapTexture [0], vec3 (t));\n\t\t\n\t\t// If dimension is x3d_Geometry2D the texCoords must be flipped.\n\t\treturn textureCube (x3d_CubeMapTexture [0], vec3 (1.0 - t .s, t .t, t .z));\n\t}\n\n\treturn vec4 (1.0, 1.0, 1.0, 1.0);\n}\n\nfloat\ngetSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)\n{\n\tfloat spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));\n\t\n\tif (spotAngle >= cutOffAngle)\n\t\treturn 0.0;\n\telse if (spotAngle <= beamWidth)\n\t\treturn 1.0;\n\n\treturn (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);\n}\n\nvec4\ngetMaterialColor (in x3d_MaterialParameters material)\n{\n\tif (x3d_Lighting)\n\t{\n\t\tvec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));\n\t\tvec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position\n\t\tfloat dV = length (v);\n\n\t\t// Calculate diffuseFactor & alpha\n\n\t\tvec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);\n\t\tfloat alpha         = 1.0 - material .transparency;\n\n\t\tif (x3d_ColorMaterial)\n\t\t{\n\t\t\tif (x3d_TextureType [0] != x3d_None)\n\t\t\t{\n\t\t\t\tvec4 T = getTextureColor ();\n\n\t\t\t\tdiffuseFactor  = T .rgb * C .rgb;\n\t\t\t\talpha         *= T .a;\n\t\t\t}\n\t\t\telse\n\t\t\t\tdiffuseFactor = C .rgb;\n\n\t\t\talpha *= C .a;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif (x3d_TextureType [0] != x3d_None)\n\t\t\t{\n\t\t\t\tvec4 T = getTextureColor ();\n\n\t\t\t\tdiffuseFactor  = T .rgb * material .diffuseColor;\n\t\t\t\talpha         *= T .a;\n\t\t\t}\n\t\t\telse\n\t\t\t\tdiffuseFactor = material .diffuseColor;\n\t\t}\n\n\t\tvec3 ambientTerm = diffuseFactor * material .ambientIntensity;\n\n\t\t// Apply light sources\n\n\t\tvec3 finalColor = vec3 (0.0, 0.0, 0.0);\n\n\t\tfor (int i = 0; i < x3d_MaxLights; ++ i)\n\t\t{\n\t\t\tif (i == x3d_NumLights)\n\t\t\t\tbreak;\n\n\t\t\tx3d_LightSourceParameters light = x3d_LightSource [i];\n\n\t\t\tvec3  vL = light .location - v;\n\t\t\tfloat dL = length (vL);\n\t\t\tbool  di = light .type == x3d_DirectionalLight;\n\n\t\t\tif (di || dL <= light .radius)\n\t\t\t{\n\t\t\t\tvec3 d = light .direction;\n\t\t\t\tvec3 c = light .attenuation;\n\t\t\t\tvec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.\n\t\t\t\tvec3 H = normalize (L + V);             // Specular term\n\n\t\t\t\tfloat lightAngle     = dot (N, L);      // Angle between normal and light ray.\n\t\t\t\tvec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);\n\t\t\t\tfloat specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;\n\t\t\t\tvec3  specularTerm   = material .specularColor * specularFactor;\n\n\t\t\t\tfloat attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);\n\t\t\t\tfloat spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;\n\t\t\t\tfloat attenuationSpotFactor       = attenuationFactor * spotFactor;\n\t\t\t\tvec3  ambientColor                = light .ambientIntensity * ambientTerm;\n\t\t\t\tvec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);\n\n\t\t\t\tfinalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);\n\t\t\t}\n\t\t}\n\n\t\tfinalColor += material .emissiveColor;\n\n\t\treturn vec4 (finalColor, alpha);\n\t}\n\telse\n\t{\n\t\tvec4 finalColor = vec4 (1.0, 1.0, 1.0, 1.0);\n\t\n\t\tif (x3d_ColorMaterial)\n\t\t{\n\t\t\tif (x3d_TextureType [0] != x3d_None)\n\t\t\t{\n\t\t\t\tvec4 T = getTextureColor ();\n\n\t\t\t\tfinalColor = T * C;\n\t\t\t}\n\t\t\telse\n\t\t\t\tfinalColor = C;\n\t\t}\n\t\telse\n\t\t{\n\t\t\tif (x3d_TextureType [0] != x3d_None)\n\t\t\t\tfinalColor = getTextureColor ();\n\t\t}\n\n\t\treturn finalColor;\n\t}\n}\n\nfloat\ngetFogInterpolant ()\n{\n\t// Returns 0.0 for fog color and 1.0 for material color.\n\n\tif (x3d_Fog .type == x3d_None)\n\t\treturn 1.0;\n\n\tif (x3d_Fog .visibilityRange <= 0.0)\n\t\treturn 0.0;\n\n\tfloat dV = length (v);\n\n\tif (dV >= x3d_Fog .visibilityRange)\n\t\treturn 0.0;\n\n\tif (x3d_Fog .type == x3d_LinearFog)\n\t\treturn (x3d_Fog .visibilityRange - dV) / x3d_Fog .visibilityRange;\n\n\tif (x3d_Fog .type == x3d_ExponentialFog)\n\t\treturn exp (-dV / (x3d_Fog .visibilityRange - dV));\n\n\treturn 1.0;\n}\n\nvec3\ngetFogColor (vec3 color)\n{\n\treturn mix (x3d_Fog .color, color, getFogInterpolant ());\n}\n\nvoid\nmain ()\n{\n\tclip ();\n\n\tbool frontColor = gl_FrontFacing || ! x3d_SeparateBackColor;\n\n\tgl_FragColor = frontColor ? getMaterialColor (x3d_FrontMaterial) : getMaterialColor (x3d_BackMaterial);\n\n\tgl_FragColor .rgb = getFogColor (gl_FragColor .rgb);\n}\n" ]
+                        }
+                      }
+                    ],
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "heightScale"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "bumpMapWidth"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "bumpMapHeight"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFNode",
+                        "@name": "bumpMap"
+                      }
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "heightScale",
+                          "@protoField": "heightScale"
+                        },
+                        {
+                          "@nodeField": "bumpMapWidth",
+                          "@protoField": "bumpMapWidth"
+                        },
+                        {
+                          "@nodeField": "bumpMapHeight",
+                          "@protoField": "bumpMapHeight"
+                        },
+                        {
+                          "@nodeField": "bumpMap",
+                          "@protoField": "bumpMap"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Background":
+          {
+            "@DEF": "Gray",
+            "@skyColor": [ 0.2, 0.2, 0.2 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View",
+            "@position": [ 0.0230918, 1.93258, 3.8192 ],
+            "@orientation": [ 0.999915173842092, -0.0126691707655475, -0.00302278554529849, 5.81471712749516 ],
+            "@centerOfRotation": [ -0.02, 0, 0 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Box",
+            "-children": [
+              { "Group":
+                {
+                  "@DEF": "Animation",
+                  "-children": [
+                    { "TimeSensor":
+                      {
+                        "@DEF": "AnimationTimer",
+                        "@cycleInterval": 12,
+                        "@loop": true,
+                        "@startTime": 1512868952.01575,
+                        "@stopTime": 1512868952.01575
+                      }
+                    },
+                    { "OrientationInterpolator":
+                      {
+                        "@DEF": "BoxRotationInterpolator",
+                        "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                        "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.14159253438051, 0, 1, 0, 1.57079644600419, 0, 0, 1, 0 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                        }
+                      },
+                      "-texture": { "ImageTexture":
+                        {
+                          "@url": [ "diffuse.png" ],
+                          "@repeatS": false,
+                          "@repeatT": false
+                        }
+                      },
+                      "-shaders": [
+                        { "ProtoInstance":
+                          {
+                            "@name": "BumpShader",
+                            "fieldValue": [
+                              {
+                                "@name": "heightScale",
+                                "@value": -20
+                              },
+                              {
+                                "@name": "bumpMapWidth",
+                                "@value": 256
+                              },
+                              {
+                                "@name": "bumpMapHeight",
+                                "@value": 256
+                              },
+                              {
+                                "@name": "bumpMap",
+                                "-children": [
+                                  { "ImageTexture":
+                                    {
+                                      "@DEF": "_1",
+                                      "@url": [ "depth.png" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "-geometry": { "Box":
+                    {
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxRotationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxRotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Box",
+            "@toField": "rotation"
+          }
+        }
+      ]
+    }
+  }
+}

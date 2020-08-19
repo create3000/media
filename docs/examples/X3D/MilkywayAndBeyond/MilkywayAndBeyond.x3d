@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Interpolation' level='4'/>
+    <component name='Layering' level='1'/>
+    <component name='Layout' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Mon, 04 Apr 2016 01:15:14 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/MilkywayAndBeyond/MilkywayAndBeyond.O.x3d'/>
+    <meta name='modified' content='Sun, 27 Jan 2019 16:06:52 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='MFFloat' url='"MFFloat.x3d#MFFloat"'>
+      <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+      <field accessType='inputOutput' type='MFFloat' name='keyValue'/>
+      <field accessType='outputOnly' type='MFFloat' name='value_changed'/>
+    </ExternProtoDeclare>
+    <ExternProtoDeclare name='MFNode' url='"MFNode.x3d#MFNode"'>
+      <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+      <field accessType='inputOutput' type='MFNode' name='keyValue'/>
+      <field accessType='outputOnly' type='MFNode' name='value_changed'/>
+    </ExternProtoDeclare>
+    <ExternProtoDeclare name='FloatArrayInterpolator' url='"FloatArrayInterpolator.x3d#FloatArrayInterpolator"'>
+      <field accessType='inputOnly' type='SFFloat' name='set_fraction'/>
+      <field accessType='inputOutput' type='MFFloat' name='key'/>
+      <field accessType='inputOutput' type='MFFloat' name='keyValue'/>
+      <field accessType='outputOnly' type='MFFloat' name='value_changed'/>
+    </ExternProtoDeclare>
+    <WorldInfo/>
+    <LayerSet DEF='_1'
+        activeLayer='-1'
+        order='1, 2, 3, 4, 5'>
+      <Layer DEF='Background'
+          isPickable='false'>
+        <Background
+            skyAngle='71.4645, 90.0002'
+            skyColor='0 0 0, 0.145147 0.145147 0.145147, 0.368 0.368 0.368'
+            groundAngle='73.7259, 90.0002'
+            groundColor='0 0 0, 0.146 0.146 0.146, 0.368 0.368 0.368'/>
+      </Layer>
+      <LayoutLayer DEF='Layout'>
+        <Layout
+            align='"LEFT", "TOP"'
+            offsetUnits='"FRACTION", "FRACTION"'
+            sizeUnits='"FRACTION", "FRACTION"'
+            scaleMode='"FRACTION", "FRACTION"'/>
+        <Transform DEF='Rectangle2D'
+            translation='0.0816685 0.413343 0'
+            scale='0.417387 0.0830214 0.353753'>
+          <Shape>
+            <Appearance>
+              <ImageTexture
+                  url='"elephant-4214115.jpg"'/>
+              <TextureTransform
+                  translation='0 0.87'
+                  scale='1 0.32'/>
+            </Appearance>
+            <IndexedFaceSet
+                texCoordIndex='0, 1, 2, 3, -1'
+                coordIndex='0, 1, 2, 3, -1'>
+              <TextureCoordinate
+                  point='0 0, 1 0, 1 1, 0 1'/>
+              <Coordinate
+                  point='-1 -1 0, 1 -1 0, 1 1 0, -1 1 0'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_2'>
+          <Shape>
+            <Appearance>
+              <Material DEF='_3'
+                  diffuseColor='0.493057 0.802707 1'/>
+            </Appearance>
+            <IndexedFaceSet
+                texCoordIndex='0, 1, 2, 3, -1'
+                coordIndex='0, 1, 2, 3, -1'>
+              <TextureCoordinate
+                  point='0 0, 1 0, 1 1, 0 1'/>
+              <Coordinate
+                  point='-0.505 0.374869 0, -0.345 0.374869 0, -0.345 0.494869 0, -0.505 0.494869 0'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_4'>
+          <Shape>
+            <Appearance>
+              <Material DEF='_5'
+                  diffuseColor='0.133844 0.400708 0.711178'/>
+              <ImageTexture
+                  url='"stripes.png"'/>
+              <TextureTransform
+                  rotation='30'
+                  scale='53.36 53.36'/>
+            </Appearance>
+            <IndexedFaceSet
+                texCoordIndex='0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1'
+                coordIndex='0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1'>
+              <TextureCoordinate
+                  point='0.387728 2.96516e-08, 1 2.96516e-08, 1 0.0447725, 0.387728 0.0447725, 0.159191 2.96516e-08, 0.378079 2.96516e-08, 0.378079 0.0447725, 0.159191 0.0447725, 0 0, 0.159191 0, 0.159191 0.089545, 0 0.089545'/>
+              <Coordinate
+                  point='-0.115302 0.269869 0, 0.500082 0.269869 0, 0.500082 0.314869 0, -0.115302 0.314869 0, -0.345 0.269869 0, -0.125 0.269869 0, -0.125 0.314869 0, -0.345 0.314869 0, -0.505 0.269869 0, -0.345 0.269869 0, -0.345 0.359869 0, -0.505 0.359869 0'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_6'
+            translation='-0.235 0.245 0'
+            scale='0.11 0.01 0.353753'>
+          <Shape>
+            <Appearance>
+              <Material DEF='_7'
+                  diffuseColor='1 1 1'/>
+            </Appearance>
+            <Rectangle2D/>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_8'
+            translation='0.19239 0.245 0'
+            scale='0.307692 0.01 0.353753'>
+          <Shape>
+            <Appearance>
+              <Material USE='_7'/>
+            </Appearance>
+            <Rectangle2D/>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_9'
+            translation='-0.425 -0.433806 0'
+            scale='0.08 0.06 0.353754'>
+          <Shape>
+            <Appearance>
+              <Material USE='_5'/>
+            </Appearance>
+            <Rectangle2D/>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_10'
+            translation='-0.425 0 0'
+            scale='0.08 0.255 0.353753'>
+          <Shape>
+            <Appearance>
+              <Material USE='_7'/>
+            </Appearance>
+            <IndexedFaceSet
+                colorIndex='0, 0, 0, 0, -1, 0, 1, 1, 0, -1'
+                texCoordIndex='4, 2, 3, 5, -1, 5, 0, 1, 4, -1'
+                coordIndex='4, 2, 3, 5, -1, 5, 0, 1, 4, -1'>
+              <Color
+                  color='1 1 1, 0.493057 0.802707 1'/>
+              <TextureCoordinate
+                  point='0 0, 1 0, 1 1, 0 1, 1 0.953508, 0 0.953508'/>
+              <Coordinate
+                  point='-1 -1 0, 1 -1 0, 1 1 0, -1 1 0, 1 0.907016 0, -1 0.907016 0'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"FRACTION", "FRACTION"'
+              offset='-0.36, 0.19'
+              sizeUnits='"FRACTION", "FRACTION"'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='Text'
+              translation='0 0 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='0 0 0'/>
+              </Appearance>
+              <Text DEF='SidebarText'
+                  string='"Universe", "Galaxy", "Pulsars"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    style='BOLD'
+                    pointSize='16'
+                    spacing='1.6'
+                    justify='"END", "BEGIN"'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </LayoutGroup>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"FRACTION", "FRACTION"'
+              offset='-0.36, -0.42'
+              sizeUnits='"FRACTION", "FRACTION"'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='Text_11'
+              translation='0 0 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='1 1 1'/>
+              </Appearance>
+              <Text
+                  string='"Data Visualisation by", "Paul Bourke"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    style='BOLD'
+                    pointSize='9'
+                    spacing='1.2'
+                    justify='"END", "BEGIN"'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </LayoutGroup>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"FRACTION", "FRACTION"'
+              offset='0.48, 0.3'
+              sizeUnits='"FRACTION", "FRACTION"'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='Text_12'
+              translation='0 0 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='1 1 1'/>
+              </Appearance>
+              <Text
+                  string='"Made with Titania"'
+                  length='236'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    style='BOLD'
+                    pointSize='9'
+                    spacing='1.2'
+                    justify='"END", "BEGIN"'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </LayoutGroup>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"FRACTION", "FRACTION"'
+              offset='-0.32, 0.36'
+              sizeUnits='"FRACTION", "FRACTION"'
+              scaleMode='"PIXEL", "PIXEL"'/>
+          <Transform DEF='Text_13'
+              translation='0 0 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='1 1 1'/>
+              </Appearance>
+              <Text DEF='MilkywayText'
+                  string='"Milkyway and Beyond"'
+                  solid='true'>
+                <ScreenFontStyle
+                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    style='BOLD'
+                    pointSize='26'
+                    spacing='1.6'
+                    justify='"BEGIN", "END"'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </LayoutGroup>
+        <Group DEF='HomeButton'>
+          <Transform DEF='Rectangle2D_14'
+              translation='-0.425 -0.314165 0'
+              scale='0.08 0.045 0.353753'>
+            <Shape>
+              <Appearance>
+                <Material USE='_3'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+          <LayoutGroup>
+            <Layout
+                align='"LEFT", "TOP"'
+                offsetUnits='"FRACTION", "FRACTION"'
+                offset='-0.36, -0.3'
+                sizeUnits='"FRACTION", "FRACTION"'
+                scaleMode='"PIXEL", "PIXEL"'/>
+            <Transform DEF='Text_15'
+                translation='0 0 1'>
+              <Shape>
+                <Appearance>
+                  <Material
+                      diffuseColor='0 0 0'/>
+                </Appearance>
+                <Text
+                    string='"Home"'
+                    solid='true'>
+                  <ScreenFontStyle
+                      family='"Voltaire/Voltaire.ttf", "SANS"'
+                      style='BOLD'
+                      pointSize='16'
+                      spacing='1.6'
+                      justify='"END", "BEGIN"'/>
+                </Text>
+              </Shape>
+            </Transform>
+          </LayoutGroup>
+          <TouchSensor DEF='_16'/>
+        </Group>
+      </LayoutLayer>
+      <Layer DEF='Galaxy'>
+        <Viewport DEF='_17'
+            clipBoundary='0.695109, 1, 0.304912, 0.726974'/>
+        <Background
+            skyColor='0.085 0.085 0.085'/>
+        <Transform
+            translation='0.0190885 -0.0138826 -0.00390446'
+            scale='1.86766 1.86766 1.86766'>
+          <Inline
+              url='"pulsarpos.x3d"'/>
+        </Transform>
+        <Transform DEF='ResizeButton'
+            translation='3.81477e-13 -1.03854e-07 2.38402'
+            scale='9.75756 9.75756 9.75756'
+            scaleOrientation='0 0 -1 44.9999961509023'>
+          <Shape>
+            <Appearance>
+              <Material
+                  transparency='1'/>
+            </Appearance>
+            <Rectangle2D/>
+          </Shape>
+          <TouchSensor DEF='_18'/>
+          <Script DEF='GalaxyToggleScript'>
+            <field accessType='inputOnly' type='SFTime' name='set_time'/>
+            <field accessType='inputOutput' type='SFTime' name='resetTime'/>
+            <field accessType='inputOutput' type='SFBool' name='active'/>
+            <field accessType='outputOnly' type='SFTime' name='triggerTrue'/>
+            <field accessType='outputOnly' type='SFTime' name='triggerFalse'/>
+            <field accessType='initializeOnly' type='SFBool' name='toggle'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	active = false;
+	toggle = false;
+}
+
+function set_resetTime (value, time)
+{
+	if (toggle)
+		set_time (value, time);
+}
+
+function set_time (value, time)
+{
+	if (active)
+		return;
+
+	toggle = ! toggle;
+
+	if (toggle)
+		triggerTrue = time;
+	else
+		triggerFalse = time;
+}]]>
+          </Script>
+          <ProtoInstance name='MFNode' DEF='Layers'>
+            <fieldValue name='keyValue'>
+              <Layer USE='Background' containerField='keyValue'/>
+              <LayoutLayer USE='Layout' containerField='keyValue'/>
+              <Layer DEF='Pulsars' containerField='keyValue'>
+                <Viewport DEF='_19'
+                    clipBoundary='0.697, 1, 0, 0.29'/>
+                <Background
+                    skyColor='0.085 0.085 0.085'/>
+                <Transform>
+                  <Inline
+                      url='"pulsars.x3d"'/>
+                </Transform>
+                <Transform DEF='ResizeButton_20'
+                    translation='0 -1.73635e-07 2.91311'
+                    scale='8.8919 8.8919 8.8919'
+                    scaleOrientation='-0.516855678645447 0.066477445823548 -0.853487525772188 57.1484129626132'>
+                  <Shape>
+                    <Appearance>
+                      <Material
+                          transparency='1'/>
+                    </Appearance>
+                    <Rectangle2D/>
+                  </Shape>
+                  <TouchSensor DEF='_21'/>
+                  <Script DEF='PulsarsToggleScript'>
+                    <field accessType='inputOnly' type='SFTime' name='set_time'/>
+                    <field accessType='inputOutput' type='SFTime' name='resetTime'/>
+                    <field accessType='inputOutput' type='SFBool' name='active'/>
+                    <field accessType='outputOnly' type='SFTime' name='triggerTrue'/>
+                    <field accessType='outputOnly' type='SFTime' name='triggerFalse'/>
+                    <field accessType='initializeOnly' type='SFBool' name='toggle'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	active = false;
+	toggle = false;
+}
+
+function set_resetTime (value, time)
+{
+	if (toggle)
+		set_time (value, time);
+}
+
+function set_time (value, time)
+{
+	if (active)
+		return;
+
+	toggle = ! toggle;
+
+	if (toggle)
+		triggerTrue = time;
+	else
+		triggerFalse = time;
+}]]>
+                  </Script>
+                  <ProtoInstance name='MFNode' DEF='Layers_22'>
+                    <fieldValue name='keyValue'>
+                      <Layer USE='Background' containerField='keyValue'/>
+                      <LayoutLayer USE='Layout' containerField='keyValue'/>
+                      <Layer USE='Galaxy' containerField='keyValue'/>
+                      <Layer DEF='Universe' containerField='keyValue'>
+                        <Viewport DEF='_23'
+                            clipBoundary='0.165, 0.688, 0, 0.726'/>
+                        <NavigationInfo
+                            transitionType='"TELEPORT"'/>
+                        <Background
+                            skyColor='0.085 0.085 0.085'/>
+                        <Transform DEF='_24'
+                            translation='0.00704333 0.0134851 0.0105878'
+                            scale='11.1125 11.1125 11.1125'>
+                          <Inline
+                              url='"universe.x3d"'/>
+                        </Transform>
+                        <Transform DEF='ResizeButton_25'
+                            translation='0 4 0'
+                            rotation='-0.999999999993254 -3.67320644183592e-06 -3.87957778337562e-13 89.9999945280246'
+                            scale='5.37823 5.37822 5.37822'
+                            scaleOrientation='-0.999999999996086 1.22935148054597e-06 2.51317855295013e-06 45.0000000002237'>
+                          <Shape>
+                            <Appearance>
+                              <Material
+                                  transparency='1'/>
+                            </Appearance>
+                            <Rectangle2D/>
+                          </Shape>
+                          <TouchSensor DEF='_26'/>
+                          <Script DEF='UniverseToggleScript'>
+                            <field accessType='inputOnly' type='SFTime' name='set_time'/>
+                            <field accessType='inputOutput' type='SFTime' name='resetTime'/>
+                            <field accessType='inputOutput' type='SFBool' name='active'/>
+                            <field accessType='outputOnly' type='SFTime' name='triggerTrue'/>
+                            <field accessType='outputOnly' type='SFTime' name='triggerFalse'/>
+                            <field accessType='initializeOnly' type='SFBool' name='toggle'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	active = false;
+	toggle = false;
+}
+
+function set_resetTime (value, time)
+{
+	if (toggle)
+		set_time (value, time);
+}
+
+function set_time (value, time)
+{
+	if (active)
+		return;
+
+	toggle = ! toggle;
+
+	if (toggle)
+		triggerTrue = time;
+	else
+		triggerFalse = time;
+}]]>
+                          </Script>
+                          <ProtoInstance name='MFNode' DEF='Layers_27'>
+                            <fieldValue name='keyValue'>
+                              <Layer USE='Background' containerField='keyValue'/>
+                              <LayoutLayer USE='Layout' containerField='keyValue'/>
+                              <Layer USE='Galaxy' containerField='keyValue'/>
+                              <Layer USE='Pulsars' containerField='keyValue'/>
+                              <Layer USE='Universe' containerField='keyValue'/>
+                            </fieldValue>
+                          </ProtoInstance>
+                          <ProtoInstance name='MFFloat' DEF='NormalSize'>
+                            <fieldValue name='keyValue' value='0.165, 0.688, 0, 0.726'/>
+                          </ProtoInstance>
+                          <ProtoInstance name='MFFloat' DEF='FullScreen'>
+                            <fieldValue name='keyValue' value='0.165, 1, 0, 1'/>
+                          </ProtoInstance>
+                          <Group>
+                            <TimeSensor DEF='_28'
+                                cycleInterval='2'
+                                startTime='1506562816.92316'/>
+                            <EaseInEaseOut DEF='_29'
+                                key='0, 1'
+                                easeInEaseOut='0 1, 1 0'/>
+                            <ProtoInstance name='FloatArrayInterpolator' DEF='_30'>
+                              <fieldValue name='key' value='0, 1'/>
+                              <fieldValue name='keyValue' value='0.165, 0.688, 0, 0.726, 0.165, 1, 0, 1'/>
+                            </ProtoInstance>
+                            <TimeSensor DEF='_31'
+                                cycleInterval='2'
+                                startTime='1506562819.46883'/>
+                            <EaseInEaseOut DEF='_32'
+                                key='0, 1'
+                                easeInEaseOut='0 1, 1 0'/>
+                            <ProtoInstance name='FloatArrayInterpolator' DEF='_33'>
+                              <fieldValue name='key' value='0, 1'/>
+                              <fieldValue name='keyValue' value='0.165, 1, 0, 1, 0.165, 0.688, 0, 0.726'/>
+                            </ProtoInstance>
+                          </Group>
+                        </Transform>
+                      </Layer>
+                      <Layer USE='Pulsars' containerField='keyValue'/>
+                    </fieldValue>
+                  </ProtoInstance>
+                  <ProtoInstance name='MFFloat' DEF='NormalSize_34'>
+                    <fieldValue name='keyValue' value='0.697, 1, 0, 0.29'/>
+                  </ProtoInstance>
+                  <ProtoInstance name='MFFloat' DEF='FullScreen_35'>
+                    <fieldValue name='keyValue' value='0.165, 1, 0, 1'/>
+                  </ProtoInstance>
+                  <Group>
+                    <TimeSensor DEF='_36'
+                        cycleInterval='2'
+                        startTime='1506563747.81161'/>
+                    <EaseInEaseOut DEF='_37'
+                        key='0, 1'
+                        easeInEaseOut='0 1, 1 0'/>
+                    <ProtoInstance name='FloatArrayInterpolator' DEF='_38'>
+                      <fieldValue name='key' value='0, 1'/>
+                      <fieldValue name='keyValue' value='0.697, 1, 0, 0.29, 0.165, 1, 0, 1'/>
+                    </ProtoInstance>
+                    <TimeSensor DEF='_39'
+                        cycleInterval='2'
+                        startTime='1506563750.33323'/>
+                    <EaseInEaseOut DEF='_40'
+                        key='0, 1'
+                        easeInEaseOut='0 1, 1 0'/>
+                    <ProtoInstance name='FloatArrayInterpolator' DEF='_41'>
+                      <fieldValue name='key' value='0, 1'/>
+                      <fieldValue name='keyValue' value='0.165, 1, 0, 1, 0.697, 1, 0, 0.29'/>
+                    </ProtoInstance>
+                  </Group>
+                </Transform>
+              </Layer>
+              <Layer USE='Universe' containerField='keyValue'/>
+              <Layer USE='Galaxy' containerField='keyValue'/>
+            </fieldValue>
+          </ProtoInstance>
+          <ProtoInstance name='MFFloat' DEF='NormalSize_42'>
+            <fieldValue name='keyValue' value='0.697, 1, 0.306, 0.726'/>
+          </ProtoInstance>
+          <ProtoInstance name='MFFloat' DEF='FullScreen_43'>
+            <fieldValue name='keyValue' value='0.165, 1, 0, 1'/>
+          </ProtoInstance>
+          <Group>
+            <TimeSensor DEF='_44'
+                cycleInterval='2'
+                startTime='1506562822.0172'/>
+            <EaseInEaseOut DEF='_45'
+                key='0, 1'
+                easeInEaseOut='0 1, 1 0'/>
+            <ProtoInstance name='FloatArrayInterpolator' DEF='_46'>
+              <fieldValue name='key' value='0, 1'/>
+              <fieldValue name='keyValue' value='0.697, 1, 0.306, 0.726, 0.165, 1, 0, 1'/>
+            </ProtoInstance>
+            <TimeSensor DEF='_47'
+                cycleInterval='2'
+                startTime='1506562824.97054'/>
+            <EaseInEaseOut DEF='_48'
+                key='0, 1'
+                easeInEaseOut='0 1, 1 0'/>
+            <ProtoInstance name='FloatArrayInterpolator' DEF='_49'>
+              <fieldValue name='key' value='0, 1'/>
+              <fieldValue name='keyValue' value='0.165, 1, 0, 1, 0.697, 1, 0.306, 0.726'/>
+            </ProtoInstance>
+          </Group>
+        </Transform>
+      </Layer>
+      <Layer USE='Universe'/>
+      <Layer USE='Pulsars'/>
+    </LayerSet>
+    <ROUTE fromNode='_26' fromField='touchTime' toNode='UniverseToggleScript' toField='set_time'/>
+    <ROUTE fromNode='UniverseToggleScript' fromField='triggerTrue' toNode='_28' toField='set_startTime'/>
+    <ROUTE fromNode='_28' fromField='fraction_changed' toNode='_29' toField='set_fraction'/>
+    <ROUTE fromNode='_31' fromField='fraction_changed' toNode='_32' toField='set_fraction'/>
+    <ROUTE fromNode='UniverseToggleScript' fromField='triggerFalse' toNode='_31' toField='set_startTime'/>
+    <ROUTE fromNode='_44' fromField='fraction_changed' toNode='_45' toField='set_fraction'/>
+    <ROUTE fromNode='_47' fromField='fraction_changed' toNode='_48' toField='set_fraction'/>
+    <ROUTE fromNode='GalaxyToggleScript' fromField='triggerFalse' toNode='_47' toField='set_startTime'/>
+    <ROUTE fromNode='GalaxyToggleScript' fromField='triggerTrue' toNode='_44' toField='set_startTime'/>
+    <ROUTE fromNode='_18' fromField='touchTime' toNode='GalaxyToggleScript' toField='set_time'/>
+    <ROUTE fromNode='_39' fromField='fraction_changed' toNode='_40' toField='set_fraction'/>
+    <ROUTE fromNode='_36' fromField='fraction_changed' toNode='_37' toField='set_fraction'/>
+    <ROUTE fromNode='PulsarsToggleScript' fromField='triggerFalse' toNode='_39' toField='set_startTime'/>
+    <ROUTE fromNode='PulsarsToggleScript' fromField='triggerTrue' toNode='_36' toField='set_startTime'/>
+    <ROUTE fromNode='_21' fromField='touchTime' toNode='PulsarsToggleScript' toField='set_time'/>
+    <ROUTE fromNode='_36' fromField='isActive' toNode='PulsarsToggleScript' toField='set_active'/>
+    <ROUTE fromNode='_39' fromField='isActive' toNode='PulsarsToggleScript' toField='set_active'/>
+    <ROUTE fromNode='_28' fromField='isActive' toNode='UniverseToggleScript' toField='set_active'/>
+    <ROUTE fromNode='_31' fromField='isActive' toNode='UniverseToggleScript' toField='set_active'/>
+    <ROUTE fromNode='_44' fromField='isActive' toNode='GalaxyToggleScript' toField='set_active'/>
+    <ROUTE fromNode='_47' fromField='isActive' toNode='GalaxyToggleScript' toField='set_active'/>
+    <ROUTE fromNode='_16' fromField='touchTime' toNode='GalaxyToggleScript' toField='set_resetTime'/>
+    <ROUTE fromNode='_16' fromField='touchTime' toNode='PulsarsToggleScript' toField='set_resetTime'/>
+    <ROUTE fromNode='_16' fromField='touchTime' toNode='UniverseToggleScript' toField='set_resetTime'/>
+    <ROUTE fromNode='_40' fromField='modifiedFraction_changed' toNode='_41' toField='set_fraction'/>
+    <ROUTE fromNode='_41' fromField='value_changed' toNode='_19' toField='set_clipBoundary'/>
+    <ROUTE fromNode='_45' fromField='modifiedFraction_changed' toNode='_46' toField='set_fraction'/>
+    <ROUTE fromNode='_46' fromField='value_changed' toNode='_17' toField='set_clipBoundary'/>
+    <ROUTE fromNode='_48' fromField='modifiedFraction_changed' toNode='_49' toField='set_fraction'/>
+    <ROUTE fromNode='_49' fromField='value_changed' toNode='_17' toField='set_clipBoundary'/>
+    <ROUTE fromNode='_29' fromField='modifiedFraction_changed' toNode='_30' toField='set_fraction'/>
+    <ROUTE fromNode='_30' fromField='value_changed' toNode='_23' toField='set_clipBoundary'/>
+    <ROUTE fromNode='_32' fromField='modifiedFraction_changed' toNode='_33' toField='set_fraction'/>
+    <ROUTE fromNode='_33' fromField='value_changed' toNode='_23' toField='set_clipBoundary'/>
+    <ROUTE fromNode='_37' fromField='modifiedFraction_changed' toNode='_38' toField='set_fraction'/>
+    <ROUTE fromNode='_38' fromField='value_changed' toNode='_19' toField='set_clipBoundary'/>
+    <ROUTE fromNode='NormalSize_42' fromField='value_changed' toNode='_17' toField='set_clipBoundary'/>
+    <ROUTE fromNode='FullScreen_43' fromField='value_changed' toNode='_17' toField='set_clipBoundary'/>
+    <ROUTE fromNode='NormalSize' fromField='value_changed' toNode='_23' toField='set_clipBoundary'/>
+    <ROUTE fromNode='FullScreen' fromField='value_changed' toNode='_23' toField='set_clipBoundary'/>
+    <ROUTE fromNode='NormalSize_34' fromField='value_changed' toNode='_19' toField='set_clipBoundary'/>
+    <ROUTE fromNode='FullScreen_35' fromField='value_changed' toNode='_19' toField='set_clipBoundary'/>
+    <ROUTE fromNode='GalaxyToggleScript' fromField='triggerTrue' toNode='Layers' toField='set_triggerTime'/>
+    <ROUTE fromNode='Layers' fromField='value_changed' toNode='_1' toField='set_layers'/>
+    <ROUTE fromNode='UniverseToggleScript' fromField='triggerTrue' toNode='Layers_27' toField='set_triggerTime'/>
+    <ROUTE fromNode='Layers_27' fromField='value_changed' toNode='_1' toField='set_layers'/>
+    <ROUTE fromNode='PulsarsToggleScript' fromField='triggerTrue' toNode='Layers_22' toField='set_triggerTime'/>
+    <ROUTE fromNode='Layers_22' fromField='value_changed' toNode='_1' toField='set_layers'/>
+  </Scene>
+</X3D>

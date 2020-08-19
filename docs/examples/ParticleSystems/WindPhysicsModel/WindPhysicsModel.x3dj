@@ -1,0 +1,202 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sat, 02 Dec 2017 06:40:01 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.7, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/WindPhysicsModel/WindPhysicsModel.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Thu, 07 Nov 2019 12:53:42 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 5
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+            "@title": "WindPhysicsModel.O"
+          }
+        },
+        { "Background":
+          {
+            "@skyAngle": [ 1.09223, 1.5708 ],
+            "@skyColor": [ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3 ],
+            "@groundAngle": [ 1.1248, 1.5708 ],
+            "@groundColor": [ 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Inital View",
+            "@position": [ 13.2074, 11.9628, 17.9561 ],
+            "@orientation": [ -0.38928278404824, 0.911548075869159, 0.132434962992728, 0.714407813830447 ],
+            "@centerOfRotation": [ -0.300751, 5.38755, 0.400722 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "_1",
+            "@translation": [ 5, 0, 0 ],
+            "@rotation": [ 0, -1, 0, 2.65019992197869 ],
+            "@center": [ -5, 0, 0 ],
+            "-children": [
+              { "Group":
+                {
+                  "@DEF": "Animation",
+                  "-children": [
+                    { "TimeSensor":
+                      {
+                        "@DEF": "AnimationTimer",
+                        "@cycleInterval": 30,
+                        "@loop": true,
+                        "@resumeTime": 1512203239.13936,
+                        "@pauseTime": 1512203239.07353
+                      }
+                    },
+                    { "OrientationInterpolator":
+                      {
+                        "@DEF": "RotationInterpolator",
+                        "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                        "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, 1, 0, 3.14159265358979, 0, 1, 0, 1.5707963267949, 0, 0, 1, 0 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Transform":
+                {
+                  "@translation": [ 0, 4.181, 0.672502 ],
+                  "-children": [
+                    { "ParticleSystem":
+                      {
+                        "@geometryType": "POINT",
+                        "@maxParticles": 2000,
+                        "@particleLifetime": 1.5,
+                        "@lifetimeVariation": 0.5,
+                        "@particleSize": [ 1, 1 ],
+                        "-emitter": { "PointEmitter":
+                          {
+                            "@direction": [ 0, 0, 0 ],
+                            "@speed": 0.6,
+                            "@variation": 0.5,
+                            "@mass": 0.1,
+                            "@surfaceArea": 0.1
+                          }
+                        },
+                        "-physics": [
+                          { "WindPhysicsModel":
+                            {
+                              "@direction": [ 0, 1, 0 ],
+                              "@speed": 0.7,
+                              "@gustiness": 1.7,
+                              "@turbulence": 0.1
+                            }
+                          },
+                          { "WindPhysicsModel":
+                            {
+                              "@direction": [ 1, 0, 0 ],
+                              "@speed": 0.6,
+                              "@gustiness": 2
+                            }
+                          }
+                        ],
+                        "-appearance": { "Appearance":
+                          {
+                            "@DEF": "_2",
+                            "-pointProperties": { "PointProperties":
+                              {
+                                "@pointSizeScaleFactor": 8,
+                                "@pointSizeMaxValue": 8
+                              }
+                            },
+                            "-material": { "Material":
+                              {
+                                "@emissiveColor": [ 0.0437445, 0.0437445, 0.0437445 ],
+                                "@transparency": 0.96
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Inline":
+                {
+                  "@url": [ "toy-train.x3d" ]
+                }
+              }
+            ]
+          }
+        },
+        { "Inline":
+          {
+            "@DEF": "Cylinder",
+            "@url": [ "cylinder.x3d" ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "RotationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "RotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "_1",
+            "@toField": "rotation"
+          }
+        }
+      ]
+    }
+  }
+}

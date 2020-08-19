@@ -1,0 +1,191 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Interchange",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Thu, 21 Dec 2017 01:06:44 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.11, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/EnvironmentalEffects/TextureBackground/TextureBackground.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 27 Jan 2019 16:09:11 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 2
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "TextureBackground":
+          {
+            "@DEF": "NightSky",
+            "-frontTexture": { "ImageTexture":
+              {
+                "@url": [ "assets/NightSky/NightSky-front.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@DEF": "_1",
+                    "@minificationFilter": "DEFAULT",
+                    "@magnificationFilter": "DEFAULT",
+                    "@boundaryModeS": "CLAMP_TO_EDGE",
+                    "@boundaryModeT": "CLAMP_TO_EDGE",
+                    "@boundaryModeR": "CLAMP_TO_EDGE",
+                    "@textureCompression": "DEFAULT"
+                  }
+                }
+              }
+            },
+            "-backTexture": { "ImageTexture":
+              {
+                "@url": [ "assets/NightSky/NightSky-back.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_1"
+                  }
+                }
+              }
+            },
+            "-leftTexture": { "ImageTexture":
+              {
+                "@url": [ "assets/NightSky/NightSky-left.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_1"
+                  }
+                }
+              }
+            },
+            "-rightTexture": { "ImageTexture":
+              {
+                "@url": [ "assets/NightSky/NightSky-right.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_1"
+                  }
+                }
+              }
+            },
+            "-topTexture": { "ImageTexture":
+              {
+                "@url": [ "assets/NightSky/NightSky-top.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_1"
+                  }
+                }
+              }
+            },
+            "-bottomTexture": { "ImageTexture":
+              {
+                "@url": [ "assets/NightSky/NightSky-bottom.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Snow",
+            "@translation": [ 0, 5, 0 ],
+            "-children": [
+              { "ParticleSystem":
+                {
+                  "@geometryType": "SPRITE",
+                  "@maxParticles": 2000,
+                  "@particleLifetime": 40,
+                  "@lifetimeVariation": 0.01,
+                  "@particleSize": [ 0.1, 0.1 ],
+                  "-emitter": { "SurfaceEmitter":
+                    {
+                      "@speed": 0.1,
+                      "@mass": 0.01,
+                      "@surfaceArea": 0.01,
+                      "-surface": { "IndexedFaceSet":
+                        {
+                          "@ccw": false,
+                          "@coordIndex": [ 0, 1, 2, 3, -1 ],
+                          "-coord": { "Coordinate":
+                            {
+                              "@point": [ -10, 0, 10, 10, 0, 10, 10, 0, -10, -10, 0, -10 ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "-physics": [
+                    { "WindPhysicsModel":
+                      {
+                        "@direction": [ 0, -1, 0 ],
+                        "@speed": 1,
+                        "@turbulence": 0.96
+                      }
+                    }
+                  ],
+                  "@bboxSize": [ 30, 30, 30 ],
+                  "@bboxCenter": [ 0, -3, 0 ],
+                  "-appearance": { "Appearance":
+                    {
+                      "@DEF": "_2",
+                      "-texture": { "ImageTexture":
+                        {
+                          "@url": [ "assets/snow-flake.png" ],
+                          "@repeatS": false,
+                          "@repeatT": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

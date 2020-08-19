@@ -1,0 +1,1163 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Mon, 27 Nov 2017 03:13:31 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.9, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 07 Jan 2019 03:59:38 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "Interpolation",
+          "@level": 4
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"Canvas",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFVec2f",
+                  "@name": "size",
+                  "@value": [ 8, 8 ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "components",
+                  "@value": 3
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFInt32",
+                  "@name": "array",
+                  "@value": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+                },
+                {
+                  "@accessType": "initializeOnly",
+                  "@type": "SFBool",
+                  "@name": "repeatS"
+                },
+                {
+                  "@accessType": "initializeOnly",
+                  "@type": "SFBool",
+                  "@name": "repeatT"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFColor",
+                  "@name": "bgColor"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFColor",
+                  "@name": "fgColor"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "opacity"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "clear"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "enabled"
+                },
+                {
+                  "@accessType": "inputOnly",
+                  "@type": "SFVec2f",
+                  "@name": "set_hitTexCoord"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "horizontallyWrap"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "verticallyWrap"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFString",
+                  "@name": "combineMode",
+                  "@value": "STAMP"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "brush"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "ProtoDeclare":
+                  {
+                    "@name":"Data",
+                    "ProtoInterface": {
+                      "field": [
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFVec2f",
+                          "@name": "size",
+                          "@value": [ 8, 8 ]
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFInt32",
+                          "@name": "components",
+                          "@value": 3
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "MFInt32",
+                          "@name": "array"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFColor",
+                          "@name": "bgColor"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFColor",
+                          "@name": "fgColor"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFFloat",
+                          "@name": "opacity"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFTime",
+                          "@name": "clear"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFBool",
+                          "@name": "enabled"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFBool",
+                          "@name": "horizontallyWrap"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFBool",
+                          "@name": "verticallyWrap"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFString",
+                          "@name": "combineMode",
+                          "@value": "STAMP"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFNode",
+                          "@name": "brush"
+                        }
+                      ]
+                    },
+                    "ProtoBody": {
+                      "-children": [
+                        { "Group":
+                          {
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "PixelTexture":
+                  {
+                    "@DEF": "_1",
+                    "@image": [ 8, 8, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "repeatS",
+                          "@protoField": "repeatS"
+                        },
+                        {
+                          "@nodeField": "repeatT",
+                          "@protoField": "repeatT"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "CanvasScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFImage",
+                        "@name": "image_changed"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFVec2f",
+                        "@name": "set_size"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "MFInt32",
+                        "@name": "set_array"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFColor",
+                        "@name": "set_bgColor"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFColor",
+                        "@name": "set_fgColor"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_clear"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFVec2f",
+                        "@name": "set_hitTexCoord"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFInt32",
+                        "@name": "bgColor"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFInt32",
+                        "@name": "fgColor"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "data",
+                        "-children": [
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_2",
+                              "@name": "Data",
+                              "fieldValue": [
+
+                              ],
+                              "IS": {
+                                "connect": [
+                                  {
+                                    "@nodeField": "size",
+                                    "@protoField": "size"
+                                  },
+                                  {
+                                    "@nodeField": "components",
+                                    "@protoField": "components"
+                                  },
+                                  {
+                                    "@nodeField": "array",
+                                    "@protoField": "array"
+                                  },
+                                  {
+                                    "@nodeField": "bgColor",
+                                    "@protoField": "bgColor"
+                                  },
+                                  {
+                                    "@nodeField": "fgColor",
+                                    "@protoField": "fgColor"
+                                  },
+                                  {
+                                    "@nodeField": "opacity",
+                                    "@protoField": "opacity"
+                                  },
+                                  {
+                                    "@nodeField": "clear",
+                                    "@protoField": "clear"
+                                  },
+                                  {
+                                    "@nodeField": "enabled",
+                                    "@protoField": "enabled"
+                                  },
+                                  {
+                                    "@nodeField": "horizontallyWrap",
+                                    "@protoField": "horizontallyWrap"
+                                  },
+                                  {
+                                    "@nodeField": "verticallyWrap",
+                                    "@protoField": "verticallyWrap"
+                                  },
+                                  {
+                                    "@nodeField": "combineMode",
+                                    "@protoField": "combineMode"
+                                  },
+                                  {
+                                    "@nodeField": "brush",
+                                    "@protoField": "brush"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function set_array(value, time) {",
+"\t// send out new picture ",
+"\timage_changed = new SFImage(data.size.x, data.size.y, data.components, value);",
+"}",
+"",
+"function color2int (value, alpha) {",
+"\tcolor = (Math.floor(value.r * 0xFF) << 16) | (Math.floor(value.g * 0xFF) << 8) | Math.floor(value.b * 0xFF);",
+"\tif (data.components == 4) color = (color << 8) | Math.floor(alpha * 0xFF);",
+"\treturn color;",
+"}",
+"",
+"function set_bgColor (value, time) { bgColor = color2int(value, data.opacity); }",
+"function set_fgColor (value, time) { fgColor = color2int(value, data.opacity); }",
+"",
+"function set_clear (value, time) {",
+"\t// create new clean picture",
+"\tarray = new MFInt32();",
+"\tfor(j = 0; j < data.size.y; j++) {",
+"\t\tfor(k = 0; k < data.size.x; k++) {",
+"\t\t\ti = j * data.size.x + k;",
+"\t\t\tarray[i] = bgColor;",
+"\t\t}",
+"\t}",
+"\tdata.array = array;",
+"}",
+"",
+"function set_size(value, time) {",
+"\tif (data.array.length < value.x * value.y) {",
+"\t\tarray = new MFInt32();",
+"\t\tfor(j = 0; j < data.size.y; j++) {",
+"\t\t\tfor(k = 0; k < data.size.x; k++) {",
+"\t\t\t\ti = j * data.size.x + k;",
+"\t\t\t\tif (i < data.array.length) array[i] = data.array[i];",
+"\t\t\t\telse array[i] = bgColor;",
+"\t\t\t}",
+"\t\t}",
+"\t\tdata.array = array;",
+"\t\treturn TRUE;",
+"\t} else {",
+"\t\tset_array(data.array, 1);",
+"\t\treturn FALSE;",
+"\t}",
+"}",
+"",
+"function add_pixel (pixel1, pixel2) {",
+"\tcolor = 0;",
+"\tfor (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {",
+"\t\tc1 = (pixel1 >>> s) & 0xff;",
+"\t\tc2 = (pixel2 >>> s) & 0xff;",
+"\t\tc = c1 + c2; if (c > 255) c = 255;",
+"\t\tcolor |= (c << s);",
+"\t}",
+"\treturn color;",
+"}",
+"",
+"function sub_pixel (pixel1, pixel2) {",
+"\tcolor = 0;",
+"\tfor (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {",
+"\t\tc1 = (pixel1 >>> s) & 0xff;",
+"\t\tc2 = (pixel2 >>> s) & 0xff;",
+"\t\tc = c1 - c2; if (c < 0) c = 0;",
+"\t\tcolor |= (c << s);",
+"\t}",
+"\treturn color;",
+"}",
+"",
+"function mult_pixel (pixel1, pixel2) {",
+"\tcolor = 0;",
+"\tfor (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {",
+"\t\tc1 = (pixel1 >>> s) & 0xff;",
+"\t\tc2 = (pixel2 >>> s) & 0xff;",
+"\t\tc = Math.floor((c1 * c2) / 65024);",
+"\t\tcolor |= (c << s);",
+"\t}",
+"\treturn color;",
+"}",
+"",
+"function div_pixel (pixel1, pixel2) {",
+"\tcolor = 0;",
+"\tfor (i = 0, s = 0; i < data.components; ++i, s = 8 * i) {",
+"\t\tc1 = (pixel1 >>> s) & 0xff;",
+"\t\tc2 = (pixel2 >>> s) & 0xff;",
+"\t\tc = Math.floor(c1 / c2);",
+"\t\tcolor |= (c << s);",
+"\t}",
+"\treturn color;",
+"}",
+"",
+"function avrg_pixel (pixel1, pixel2) {",
+"\to1 = pixel1 & 0xFF;",
+"\to2 = pixel2 & 0xFF;",
+"\to = o1 + o2; if (o > 255) o = 255;",
+"",
+"\tcolor = o; o2 /= 255;",
+"\tfor (i = 1, s = 8 * i; i < data.components; ++i, s = 8 * i) {",
+"\t\tc1 = (pixel1 >>> s) & 0xff;",
+"\t\tc2 = (pixel2 >>> s) & 0xff;",
+"\t\tc = Math.floor((c1 + c2) / 2);",
+"\t\tcolor |= (c << s);",
+"\t}",
+"",
+"\treturn color;",
+"}",
+"",
+"function brush_pixel (pixel1, pixel2) {",
+"\to1 = pixel1 & 0xFF;",
+"\to2 = pixel2 & 0xFF;",
+"\to = o1 + o2; if (o > 255) o = 255;",
+"",
+"\tcolor = o; o2 /= 255;",
+"\tfor (i = 1, s = 8 * i; i < data.components; ++i, s = 8 * i) {",
+"\t\tc1 = (pixel1 >>> s) & 0xff;",
+"\t\tc2 = (pixel2 >>> s) & 0xff;",
+"\t\tc = Math.floor(c1 + ((c2 - c1) * o2));",
+"\t\tcolor |= (c << s);",
+"\t}",
+"",
+"\treturn color;",
+"}",
+"",
+"function set_pixel(value) {",
+"\t// color pixel using current foreground color",
+"\tout = 0;",
+"\tpixel = new SFVec2f(",
+"\t\t               value.x < 0 ? (data.horizontallyWrap ? value.x + data.size.x : out = 1 ) :",
+"\t\t(value.x > data.size.x - 1 ? (data.horizontallyWrap ? value.x % data.size.x : out = 1 ) : value.x),",
+"\t\t               value.y < 0 ? (data.verticallyWrap ? value.y + data.size.y : out = 1 ) :",
+"\t\t(value.y > data.size.y - 1 ? (data.verticallyWrap ? value.y % data.size.y : out = 1 ) : value.y)",
+"\t);",
+"\tif (out) return ;",
+"\tif (data.combineMode == 'STAMP') data.array[pixel.y * data.size.x + pixel.x] = fgColor;",
+"\telse if (data.combineMode == 'BRUSH') data.array[pixel.y * data.size.x + pixel.x] = brush_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);",
+"\telse if (data.combineMode == 'OR')   data.array[pixel.y * data.size.x + pixel.x] |= fgColor;",
+"\telse if (data.combineMode == 'XOR')  data.array[pixel.y * data.size.x + pixel.x] ^= fgColor;",
+"\telse if (data.combineMode == 'AND')  data.array[pixel.y * data.size.x + pixel.x] &= fgColor;",
+"\telse if (data.combineMode == 'ADD')  data.array[pixel.y * data.size.x + pixel.x] = add_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);",
+"\telse if (data.combineMode == 'SUB')  data.array[pixel.y * data.size.x + pixel.x] = sub_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);",
+"\telse if (data.combineMode == 'AVRG') data.array[pixel.y * data.size.x + pixel.x] = avrg_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);",
+"\telse if (data.combineMode == 'MULT') data.array[pixel.y * data.size.x + pixel.x] = mult_pixel(data.array[pixel.y * data.size.x + pixel.x], fgColor);",
+"\telse if (data.combineMode == 'DIV') data.array[pixel.y * data.size.x + pixel.x] /= fgColor;",
+"\telse if (data.combineMode == 'DIV2') data.array[pixel.y * data.size.x + pixel.x] = fgColor / data.array[pixel.y * data.size.x + pixel.x];",
+"}",
+"",
+"function set_brush(value) {",
+"\tx = value.x - Math.floor(data.brush.size.x/2);",
+"\ty = value.y - Math.floor(data.brush.size.y/2);",
+"\tfor(j = 0; j < data.brush.size.y; j++) {",
+"\t\tfor(k = 0; k < data.brush.size.x; k++) {",
+"\t\t\ti = j * data.brush.size.x + k;",
+"\t\t\tfgColor = data.brush.array[i];",
+"\t\t\tpixel = new SFVec2f(x + k, y + j);",
+"\t\t\tset_pixel(pixel);",
+"\t\t}",
+"\t}",
+"}",
+"",
+"function set_hitTexCoord(value, time) {",
+"\tpixel = new SFVec2f(Math.round(value.x * data.size.x), Math.round(value.y * data.size.y));",
+"\tif (data.enabled) {",
+"\t\tif (data.brush) set_brush(pixel);",
+"\t\telse set_pixel(pixel);",
+"\t}",
+"}",
+"",
+"function initialize () {",
+"\tset_bgColor(data.bgColor, 1);",
+"\tset_fgColor(data.fgColor, 1);",
+"\tif (!set_size(data.size, 1)) {",
+"\t\tif (data.clear) set_clear(1, 1);",
+"\t}",
+"}",
+"\t"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "set_hitTexCoord",
+                          "@protoField": "set_hitTexCoord"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "CanvasScript",
+                    "@fromField": "image_changed",
+                    "@toNode": "_1",
+                    "@toField": "image"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "size",
+                    "@toNode": "CanvasScript",
+                    "@toField": "set_size"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "array",
+                    "@toNode": "CanvasScript",
+                    "@toField": "set_array"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "bgColor",
+                    "@toNode": "CanvasScript",
+                    "@toField": "set_bgColor"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "fgColor",
+                    "@toNode": "CanvasScript",
+                    "@toField": "set_fgColor"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "clear",
+                    "@toNode": "CanvasScript",
+                    "@toField": "set_clear"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+            "@info": [ "Created in CosmoWorlds", "Packaged by CosmoPackage" ]
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "NONE" ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@position": [ -2.03376, -2.79428, 6.874 ],
+            "@fieldOfView": 0.785398
+          }
+        },
+        { "TimeSensor":
+          {
+            "@DEF": "_3",
+            "@loop": true,
+            "@startTime": 1
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "DiscoScript",
+            "@directOutput": true,
+            "field": [
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFFloat",
+                "@name": "scaleF"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFFloat",
+                "@name": "rotateF"
+              },
+              {
+                "@accessType": "inputOnly",
+                "@type": "SFTime",
+                "@name": "set_time"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFNode",
+                "@name": "brush",
+                "-children": [
+                  { "ProtoInstance":
+                    {
+                      "@DEF": "_4",
+                      "@name": "Canvas",
+                      "fieldValue": [
+                        {
+                          "@name": "size",
+                          "@value": [ 1, 1 ]
+                        },
+                        {
+                          "@name": "array",
+                          "@value": [ 8527156 ]
+                        },
+                        {
+                          "@name": "bgColor",
+                          "@value": [ 0.510025, 0.115847, 0.207168 ]
+                        },
+                        {
+                          "@name": "clear",
+                          "@value": 1546833576.51676
+                        },
+                        {
+                          "@name": "enabled",
+                          "@value": true
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFNode",
+                "@name": "canvas",
+                "-children": [
+                  { "ProtoInstance":
+                    {
+                      "@DEF": "_5",
+                      "@name": "Canvas",
+                      "fieldValue": [
+                        {
+                          "@name": "size",
+                          "@value": [ 32, 32 ]
+                        },
+                        {
+                          "@name": "array",
+                          "@value": [ 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 0, 0, 7094150, 10641407, 7094150, 0, 0, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 0, 7094150, 10641407, 0, 7094150, 0, 7094150, 10641407, 7810746, 0, 7094150, 0, 7094150, 0, 0, 10641407, 10641407, 4263476, 7094150, 13334527, 7810746, 10641407, 0, 0, 0, 0, 0, 9584383, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 0, 12414975, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 7094150, 0, 4263476, 4263476, 12414975, 10641407, 0, 7810746, 10641407, 7094150, 7094150, 10641407, 0, 4263476, 0, 0, 0, 10641407, 7094150, 7094150, 0, 0, 4263476, 0, 9584383, 0, 7094150, 0, 7094150, 0, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 7094150, 7094150, 4263476, 10641407, 0, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 4263476, 7094150, 13334527, 7094150, 0, 0, 7094150, 7810746, 0, 4263476, 10641407, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 0, 12414975, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7810746, 7094150, 10641407, 0, 13334527, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 7810746, 0, 0, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 7094150, 10641407, 10641407, 12414975, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 4263476, 0, 0, 0, 12414975, 7094150, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 9584383, 7094150, 10641407, 7094150, 12414975, 12414975, 0, 12414975, 7094150, 7094150, 0, 7094150, 0, 0, 7094150, 7810746, 0, 10641407, 0, 0, 0, 4263476, 0, 7810746, 0, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 0, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 11160831, 0, 4263476, 0, 10641407, 9584383, 7094150, 0, 0, 0, 7094150, 0, 0, 0, 0, 0, 10641407, 10641407, 7094150, 12414975, 0, 0, 7094150, 0, 7094150, 7094150, 12414975, 10641407, 7094150, 7094150, 0, 0, 7094150, 7094150, 4263476, 7094150, 0, 0, 0, 0, 0, 0, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 9584383, 0, 7094150, 10641407, 10641407, 0, 12414975, 7094150, 9584383, 7094150, 0, 0, 4263476, 0, 0, 0, 0, 4263476, 0, 12414975, 0, 10641407, 0, 10641407, 0, 4263476, 0, 7094150, 0, 0, 7094150, 0, 7094150, 7094150, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 7810746, 7094150, 7810746, 0, 10438399, 0, 7094150, 10641407, 0, 7094150, 0, 0, 0, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 7094150, 7094150, 4263476, 0, 13334527, 0, 10641407, 0, 0, 7810746, 12414975, 7094150, 0, 7094150, 7094150, 10641407, 7094150, 0, 6362472, 0, 7094150, 7094150, 10641407, 0, 12414975, 7094150, 0, 12414975, 0, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 0, 10641407, 0, 7094150, 0, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 7094150, 0, 7094150, 7094150, 12414975, 7094150, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 12414975, 10641407, 0, 7094150, 0, 7094150, 7094150, 7094150, 0, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 0, 7094150, 0, 0, 7094150, 0, 10641407, 10641407, 0, 10641407, 12414975, 7094150, 0, 0, 9584383, 7094150, 7810746, 7094150, 7094150, 10641407, 0, 10641407, 7810746, 7094150, 7094150, 0, 7094150, 0, 10641407, 10641407, 9584383, 12414975, 10641407, 10641407, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 7094150, 0, 12414975, 0, 0, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 7094150, 7094150, 12414975, 4263476, 7094150, 0, 7094150, 7094150, 11160831, 4263476, 7094150, 10641407, 4263476, 7094150, 0, 7094150, 0, 7810746, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 0, 0, 7094150, 10641407, 10641407, 0, 0, 0, 10641407, 0, 0, 7094150, 10641407, 12414975, 4263476, 8136174, 7094150, 10641407, 7094150, 10641407, 0, 0, 7094150, 0, 10641407, 0, 10641407, 0, 10641407, 7810746, 10641407, 0, 10641407, 9584383, 7094150, 12414975, 10641407, 7094150, 0, 0, 0, 0, 0, 0, 0, 7094150, 0, 0, 7810746, 10438399, 0, 0, 0, 7094150, 0, 4263476, 7094150, 0, 10641407, 12414975, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 7094150, 10438399, 0, 0, 0, 10641407, 0, 0, 7094150, 9055743, 10641407, 0, 0, 0, 10641407, 0, 7094150, 7094150, 12414975, 0, 7094150, 10641407, 0, 7094150, 0, 0, 10641407, 0, 12414975, 0, 0, 7810746, 7810746, 0, 7094150, 0, 0, 0, 7094150, 7094150, 0, 9584383, 12414975, 7094150, 0, 7094150, 12414975, 10641407, 12414975, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7810746, 0, 7094150, 0, 0, 0, 0, 7094150, 7094150, 9584383, 7094150, 7094150, 0, 4263476, 10641407, 7094150, 10641407, 4263476, 0, 0, 7810746, 0, 10641407, 4263476, 10641407, 7094150, 0, 10641407, 7094150, 0, 7810746, 10641407, 12414975, 7094150, 4263476, 0, 4263476, 7094150, 0, 0, 4263476, 7094150, 0, 0, 10641407, 10641407, 0, 0, 0, 7094150, 0, 0, 12414975, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 0, 0, 12414975, 7094150, 0, 7094150, 0, 7094150, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 7810746, 0, 7094150, 13334527, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 7094150, 7094150, 0, 7810746, 0, 0, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 0, 10641407, 0, 0, 10641407, 0, 0, 0, 7094150, 13334527, 0, 7094150, 0, 0, 0, 0, 10641407, 10641407, 10641407, 7094150, 7094150, 10641407, 10641407, 7094150, 7094150, 10641407, 7094150, 0, 0, 10641407, 4263476, 0, 0, 4263476, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 0, 7094150, 7094150, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 10641407, 0, 0, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 10438399, 4263476, 0, 0, 0, 0, 0, 0, 0, 0, 10898175, 0, 0, 10641407, 0, 10641407, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 0, 7094150, 12414975, 7094150, 0, 0, 0, 10641407, 0, 7094150, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 0, 10641407, 7094150, 12414975, 7094150, 7094150, 7094150, 7094150, 12414975, 9584383, 0, 0, 0, 0, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 0, 7094150, 7094150, 7094150, 7094150, 0, 7810746, 10641407, 10641407, 7810746, 7094150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6362472, 0, 7094150, 0, 7810746, 7810746, 0, 10438399, 0, 7094150, 10641407, 4263476, 7094150, 7094150, 7094150, 10641407, 7094150, 0, 0, 4263476, 7094150, 7094150, 7094150, 4263476, 0, 10641407, 12414975, 10641407, 0, 0, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7094150, 0, 4263476, 7094150, 0, 0, 0, 0, 7094150, 0, 13794303, 7094150, 0, 0, 0, 7094150 ]
+                        },
+                        {
+                          "@name": "repeatS",
+                          "@value": true
+                        },
+                        {
+                          "@name": "repeatT",
+                          "@value": true
+                        },
+                        {
+                          "@name": "fgColor",
+                          "@value": [ 1, 0, 0 ]
+                        },
+                        {
+                          "@name": "opacity",
+                          "@value": 1
+                        },
+                        {
+                          "@name": "clear",
+                          "@value": 1
+                        },
+                        {
+                          "@name": "enabled",
+                          "@value": true
+                        },
+                        {
+                          "@name": "horizontallyWrap",
+                          "@value": true
+                        },
+                        {
+                          "@name": "verticallyWrap",
+                          "@value": true
+                        },
+                        {
+                          "@name": "combineMode",
+                          "@value": "AVRG"
+                        },
+                        {
+                          "@name": "brush",
+                          "-children": [
+                            { "ProtoInstance":
+                              {
+                                "@name": "Canvas",
+                                "@USE": "_4"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFTime",
+                "@name": "cycleInterval",
+                "@value": 0.01
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFTime",
+                "@name": "cycleTime",
+                "@value": 1546833578.26627
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFTime",
+                "@name": "colorInterval",
+                "@value": 30
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFTime",
+                "@name": "colorTime",
+                "@value": 1546833576.51676
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFFloat",
+                "@name": "blackLevel",
+                "@value": 0.2
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFTime",
+                "@name": "scaleTime",
+                "@value": 1546833565.51583
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFTime",
+                "@name": "rotateTime",
+                "@value": 1546833563.52952
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"function set_time (value, time)",
+"{",
+"\tif (time - cycleTime > cycleInterval)",
+"\t{",
+"\t\tcycleTime = time;",
+"",
+"\t\tif (time - colorTime > colorInterval)",
+"\t\t{",
+"\t\t\tcolorTime = time;",
+"\t\t\t",
+"\t\t\tbgColor = Math .random () > blackLevel",
+"\t\t\t\t? new SFColor (Math .random (), Math.random (), Math.random ())",
+"\t\t\t\t: new SFColor (0, 0, 0);",
+"\t\t\t",
+"\t\t\tbrush.bgColor = bgColor;",
+"\t\t\tbrush.clear   = time;",
+"\t\t}",
+"\t",
+"\t\tcanvas.set_hitTexCoord = new SFVec2f (Math.random (), Math.random ());",
+"",
+"\t\tif (time - scaleTime > 19)",
+"\t\t{",
+"\t\t\tscaleTime = time;",
+"\t\t\tscaleF    = Math .random ();",
+"\t\t}",
+"\t\t",
+"\t\tif (time - rotateTime > 17)",
+"\t\t{",
+"\t\t\trotateTime = time;",
+"\t\t\trotateF    = Math .random ();",
+"\t\t}",
+"\t}",
+"}"
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@scale": [ 1.65374, 1.65369, 1.65377 ],
+            "-children": [
+              { "Group":
+                {
+                  "-children": [
+                    { "Group":
+                      {
+                        "@DEF": "UnnamedAnimation3",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@DEF": "Time_6",
+                              "@cycleInterval": 20,
+                              "@loop": true,
+                              "@startTime": 1
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Group":
+                      {
+                        "-children": [
+                          { "ScalarInterpolator":
+                            {
+                              "@DEF": "_7",
+                              "@key": [ 0, 1 ],
+                              "@keyValue": [ 1, -1 ]
+                            }
+                          },
+                          { "ScalarInterpolator":
+                            {
+                              "@DEF": "_8",
+                              "@key": [ 0, 1 ],
+                              "@keyValue": [ 0.74, 0.74 ]
+                            }
+                          },
+                          { "Script":
+                            {
+                              "@DEF": "_9",
+                              "field": [
+                                {
+                                  "@accessType": "outputOnly",
+                                  "@type": "SFVec2f",
+                                  "@name": "vec"
+                                },
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "xIn"
+                                },
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "yIn"
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "xBuf",
+                                  "@value": -0.175203
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "yBuf",
+                                  "@value": 0.74
+                                }
+                              ],
+                              "#sourceText": [
+"ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } "
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Group":
+                {
+                  "-children": [
+                    { "Group":
+                      {
+                        "@DEF": "scale",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@DEF": "Time_10",
+                              "@cycleInterval": 10,
+                              "@stopTime": 1
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Group":
+                      {
+                        "-children": [
+                          { "ScalarInterpolator":
+                            {
+                              "@DEF": "_11",
+                              "@key": [ 0, 1 ],
+                              "@keyValue": [ 0.1, 5 ]
+                            }
+                          },
+                          { "ScalarInterpolator":
+                            {
+                              "@DEF": "_12",
+                              "@key": [ 0, 1 ],
+                              "@keyValue": [ 0.2, 5 ]
+                            }
+                          },
+                          { "Script":
+                            {
+                              "@DEF": "_13",
+                              "field": [
+                                {
+                                  "@accessType": "outputOnly",
+                                  "@type": "SFVec2f",
+                                  "@name": "vec"
+                                },
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "xIn"
+                                },
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "yIn"
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "xBuf",
+                                  "@value": 1.40365
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFFloat",
+                                  "@name": "yBuf",
+                                  "@value": 1.47705
+                                }
+                              ],
+                              "#sourceText": [
+"ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } "
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Group":
+                {
+                  "-children": [
+                    { "Group":
+                      {
+                        "@DEF": "rotate",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@DEF": "Time",
+                              "@cycleInterval": 10,
+                              "@stopTime": 1
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "ScalarInterpolator":
+                      {
+                        "@DEF": "UnnamedShapeRotationInterp",
+                        "@key": [ 0, 1 ],
+                        "@keyValue": [ 0, 0.785398 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-texture": { "ProtoInstance":
+                        {
+                          "@name": "Canvas",
+                          "@USE": "_5"
+                        }
+                      },
+                      "-textureTransform": { "TextureTransform":
+                        {
+                          "@DEF": "_14",
+                          "@translation": [ -0.175203, 0.74 ],
+                          "@rotation": 0.636027,
+                          "@scale": [ 1.40365, 1.47705 ],
+                          "@center": [ -0.5, -0.5 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "IndexedFaceSet":
+                    {
+                      "@creaseAngle": 0.5,
+                      "@coordIndex": [ 0, 1, 2, 3, -1, 4, 5, 1, 0, -1, 6, 7, 3, 2, -1 ],
+                      "-texCoord": { "TextureCoordinate":
+                        {
+                          "@point": [ 0, 1, 0, 0, 0.00132632, -0.000351131, 0.00132632, 0.999649, 0, 1, 0, 0, 0.00132632, -0.000351131, 0.00132632, 0.999649 ]
+                        }
+                      },
+                      "-coord": { "Coordinate":
+                        {
+                          "@point": [ -3.45959, 2.01432, 1, -3.45959, -5.345, 1, 1, -5.345, 1, 1, 2.01432, 1, -3.45959, 2.01432, 5.00948, -3.45959, -5.345, 5.00948, 1, -5.345, 5.16322, 1, 2.01432, 5.16322 ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_3",
+            "@fromField": "time",
+            "@toNode": "DiscoScript",
+            "@toField": "set_time"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Time_6",
+            "@fromField": "fraction_changed",
+            "@toNode": "_7",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Time_6",
+            "@fromField": "fraction_changed",
+            "@toNode": "_8",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_7",
+            "@fromField": "value_changed",
+            "@toNode": "_9",
+            "@toField": "xIn"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_8",
+            "@fromField": "value_changed",
+            "@toNode": "_9",
+            "@toField": "yIn"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DiscoScript",
+            "@fromField": "scaleF",
+            "@toNode": "_11",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DiscoScript",
+            "@fromField": "scaleF",
+            "@toNode": "_12",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_11",
+            "@fromField": "value_changed",
+            "@toNode": "_13",
+            "@toField": "xIn"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_12",
+            "@fromField": "value_changed",
+            "@toNode": "_13",
+            "@toField": "yIn"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DiscoScript",
+            "@fromField": "rotateF",
+            "@toNode": "UnnamedShapeRotationInterp",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_9",
+            "@fromField": "vec",
+            "@toNode": "_14",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "UnnamedShapeRotationInterp",
+            "@fromField": "value_changed",
+            "@toNode": "_14",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_13",
+            "@fromField": "vec",
+            "@toNode": "_14",
+            "@toField": "scale"
+          }
+        }
+      ]
+    }
+  }
+}

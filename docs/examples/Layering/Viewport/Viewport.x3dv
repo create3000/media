@@ -1,0 +1,108 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Layering : 1
+COMPONENT Layout : 1
+COMPONENT ParticleSystems : 1
+COMPONENT Shape : 4
+
+META "comment" "World of Titania"
+META "created" "Sun, 03 Dec 2017 04:29:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.3, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Layering/Viewport/Viewport.O.x3d"
+META "modified" "Sat, 20 Oct 2018 19:22:12 GMT"
+META "titania-add-metadata" "true"
+
+WorldInfo {
+}
+
+LayerSet {
+  order [ 1, 2, 3 ]
+  layers [
+    DEF Background Layer {
+      isPickable FALSE
+      children DEF White Background {
+        skyColor 1 1 1
+      }
+    }
+    DEF UnderTheSea_1 LayoutLayer {
+      layout Layout {
+        scaleMode [ "STRETCH", "NONE" ]
+      }
+      viewport DEF _2 Viewport {
+        clipBoundary [ 0, 1, 0.177, 0.822 ]
+      }
+      children [
+        DEF Gray_3 Background {
+          skyColor 0.2 0.2 0.2
+        }
+        DEF UnderTheSea Transform {
+          scale 2.48 1.16 1
+          children Shape {
+            appearance Appearance {
+              texture ImageTexture {
+                url "under-the-sea.png"
+                repeatS FALSE
+                repeatT FALSE
+              }
+            }
+            geometry Rectangle2D {
+              size 1 1
+            }
+          }
+        }
+      ]
+    }
+    DEF Particles Layer {
+      isPickable FALSE
+      viewport USE _2
+      children [
+        DEF Bubbles1 ParticleSystem {
+          maxParticles 3
+          particleLifetime 15
+          lifetimeVariation 0.2
+          particleSize 2 2
+          emitter PolylineEmitter {
+            speed 0.5
+            variation 0.5
+            coordIndex [ 0, 1, -1 ]
+            coord Coordinate {
+              point [ -10 -5 0, 10 -5 0 ]
+            }
+          }
+          appearance Appearance {
+            texture ImageTexture {
+              url "bubble1.png"
+              repeatS FALSE
+              repeatT FALSE
+            }
+          }
+        }
+        DEF Bubbles2 ParticleSystem {
+          maxParticles 5
+          particleLifetime 15
+          lifetimeVariation 0.2
+          particleSize 1.5 1.5
+          emitter PolylineEmitter {
+            speed 0.5
+            variation 0.5
+            coordIndex [ 0, 1, -1 ]
+            coord Coordinate {
+              point [ -10 -5 0, 10 -5 0 ]
+            }
+          }
+          appearance Appearance {
+            texture ImageTexture {
+              url "bubble2.png"
+              repeatS FALSE
+              repeatT FALSE
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

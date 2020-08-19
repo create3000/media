@@ -1,0 +1,141 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "TODO",
+          "@content": "get brain2.nrrd on savage server"
+        },
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "26 March 2011"
+        },
+        {
+          "@name": "creator",
+          "@content": "Andrew Wood, Nicholas Polys: Virginia Tech"
+        },
+        {
+          "@name": "description",
+          "@content": "Volume rendering of a brain MR image, rendered with basic edge enhancement style"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.5.17, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/EdgeEnhancementVolumeStyle/EdgeEnhancementVolumeStyle.O.x3d"
+        },
+        {
+          "@name": "license",
+          "@content": "../license.html"
+        },
+        {
+          "@name": "modified",
+          "@content": "Fri, 18 Oct 2019 13:23:46 GMT"
+        },
+        {
+          "@name": "reference",
+          "@content": "EdgeBrain.x3d"
+        },
+        {
+          "@name": "reference",
+          "@content": "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/brain2.nrrd"
+        },
+        {
+          "@name": "reference",
+          "@content": "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
+        },
+        {
+          "@name": "reference",
+          "@content": "Run the download target in the Ant build.xml file to install reference nrrd files locally."
+        },
+        {
+          "@name": "reference",
+          "@content": "build.xml"
+        },
+        {
+          "@name": "reference",
+          "@content": "Volume Data obtained from, !! 3D Visualizer !!"
+        },
+        {
+          "@name": "title",
+          "@content": "EdgeBrain.x3d"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Texturing3D",
+          "@level": 2
+        },
+        {
+          "@name": "VolumeRendering",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+            "@title": "EdgeEnhancementVolumeStyle.O"
+          }
+        },
+        { "Group":
+          {
+            "-children": [
+              { "Viewpoint":
+                {
+                  "@DEF": "VP",
+                  "@description": "Edge Brain",
+                  "@position": [ -0.00920216, 0.012033, -0.184913 ],
+                  "@orientation": [ 0.000511972764407604, 0.999933806630981, 0.0114943568921364, 3.2306103826178 ],
+                  "@centerOfRotation": [ 0.00728844, 0.00776813, -0.000164086 ]
+                }
+              },
+              { "Background":
+                {
+                  "@DEF": "BG",
+                  "@skyColor": [ 0.2, 0.2, 0.2 ]
+                }
+              },
+              { "Transform":
+                {
+                  "@scale": [ 0.117188, 0.117188, 0.117188 ],
+                  "-children": [
+                    { "VolumeData":
+                      {
+                        "@dimensions": [ 1.28, 1.28, 1 ],
+                        "-renderStyle": { "EdgeEnhancementVolumeStyle":
+                          {
+                          }
+                        },
+                        "-voxels": { "ImageTexture3D":
+                          {
+                            "@url": [ "datasets/nrrd/brain.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/brain2.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/brain.nrrd" ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

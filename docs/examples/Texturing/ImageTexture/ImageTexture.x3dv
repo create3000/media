@@ -1,0 +1,171 @@
+#X3D V3.3 utf8 Titania V4.6.7
+
+PROFILE Immersive
+
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 02 Dec 2018 17:40:27 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/ImageTexture/ImageTexture.O.x3d"
+META "modified" "Sun, 17 Nov 2019 09:11:03 GMT"
+
+PROTO Image [
+  inputOutput SFBool loop FALSE
+  inputOutput SFTime startTime 0
+]
+{
+  DEF Rectangle2D Transform {
+    translation 1044.12 -2617.58 -6880.61
+    children Shape {
+      appearance Appearance {
+        texture DEF _1 ImageTexture {
+          url "https://picsum.photos/364/325/?random&_stamp=0.8048866108647563"
+        }
+      }
+      geometry DEF _2 IndexedFaceSet {
+        solid FALSE
+        texCoordIndex [ 0, 1, 2, 3, -1 ]
+        coordIndex [ 0, 1, 2, 3, -1 ]
+        texCoord TextureCoordinate {
+          point [ 0 0, 1 0, 1 1, 0 1 ]
+        }
+        coord Coordinate {
+          point [ -182 -162.5 0, 182 -162.5 0, 182 162.5 0, -182 162.5 0 ]
+        }
+      }
+    }
+  }
+
+  DEF _3 TimeSensor {
+    cycleInterval 10
+    loop IS loop
+    startTime IS startTime
+  }
+
+  DEF _4 PositionInterpolator {
+    key [ 0, 1 ]
+    keyValue [ 1363 -3417 -10000, 340.75 -854.25 0 ]
+  }
+
+  DEF ImageScript Script {
+    inputOnly      SFTime set_cycleTime
+    initializeOnly SFNode texture USE _1
+    initializeOnly SFNode geometry USE _2
+    initializeOnly SFNode interpolator USE _4
+
+    url "ecmascript:
+
+var
+	minWidth  = 200,
+	minHeight = 200,
+	maxWidth  = 400,
+	maxHeidht = 400;
+
+function initialize ()
+{
+	set_cycleTime (0, 0);
+}
+
+function set_cycleTime (value, time)
+{
+	if (value === 0 || random (0, 100) < 20)
+	{
+		var
+			width  = random (minWidth, maxWidth),
+			height = random (minHeight, maxHeidht);
+
+		texture .url = new MFString (\"https://picsum.photos/\" + width + \"/\" + height + \"/?random&_stamp=\" + Math .random ());
+
+		geometry .coord .point = new MFVec3f (
+			new SFVec3f (-width/2, -height/2, 0),
+			new SFVec3f ( width/2, -height/2, 0),
+			new SFVec3f ( width/2,  height/2, 0),
+			new SFVec3f (-width/2,  height/2, 0)
+		);
+	}
+
+	var
+		x = random (-6000, 6000),
+		y = random (-4000, 4000);
+
+	interpolator .keyValue = new MFVec3f (
+		new SFVec3f (x, y, -10000),
+		new SFVec3f (x/4, y/4, 0)
+	);
+}
+
+function random (min, max)
+{
+	return Math .floor (min + Math .random () * (max - min));
+}
+"
+    directOutput TRUE
+  }
+
+  ROUTE _4.value_changed TO Rectangle2D.set_translation
+  ROUTE _3.fraction_changed TO _4.set_fraction
+  ROUTE _3.cycleTime TO ImageScript.set_cycleTime
+}
+
+PROTO Images [ ]
+{
+  DEF _5 Group { }
+
+  DEF ImagesScript Script {
+    inputOnly      SFTime set_time
+    initializeOnly SFNode timeSensor DEF _6 TimeSensor {
+      cycleInterval 0.1
+    }
+    initializeOnly SFNode group USE _5
+
+    url "ecmascript:
+
+var
+	numImages = 100,
+	n         = 0;
+
+function initialize ()
+{
+	n = 0;
+	
+	group .children .length = 0;
+
+	timeSensor .startTime = 0;
+	timeSensor .loop      = true;
+}
+
+function set_time (value, time)
+{
+	if (n === numImages)
+	{
+		timeSensor .stopTime = time;
+		timeSensor .loop     = false;
+	}
+	
+	++ n;
+	
+	var image = Browser .currentScene .createProto (\"Image\");
+
+	image .startTime = n * timeSensor .cycleInterval;
+	image .loop      = true;
+	
+	group .children .push (image);
+}
+"
+    directOutput TRUE
+  }
+
+  ROUTE _6.cycleTime TO ImagesScript.set_time
+}
+
+WorldInfo {
+}
+
+Viewpoint {
+  description "Initial View"
+  position 0 0 1000
+}
+
+Images { }

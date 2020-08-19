@@ -1,0 +1,132 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 27 Jan 2019 12:29:03 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.11, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Text/Text/Text.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 27 Jan 2019 12:29:03 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+            "@title": "Text.O"
+          }
+        },
+        { "Background":
+          {
+            "@skyColor": [ 1, 1, 1 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View"
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Ubuntu",
+            "@translation": [ -5.89326, 0, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@ambientIntensity": 0,
+                          "@diffuseColor": [ 0, 0, 0 ],
+                          "@shininess": 0
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@string": [ "Ubuntu" ],
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "SANS" ],
+                          "@style": "BOLD"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Glyphs",
+            "@translation": [ -5.89326, 0, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@ambientIntensity": 0,
+                          "@diffuseColor": [ 0, 0, 0 ],
+                          "@shininess": 0
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@string": [ "", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&/()=?\\'" ],
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "SANS" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

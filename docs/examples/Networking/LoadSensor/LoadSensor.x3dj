@@ -1,0 +1,1733 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Tue, 28 Nov 2017 11:47:53 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.11, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/LoadSensor/LoadSensor.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sun, 27 Jan 2019 15:04:21 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"BooleanSwitch",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFBool",
+                "@name": "whichChoice"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFVec3f",
+                "@name": "bboxSize"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFVec3f",
+                "@name": "bboxCenter"
+              },
+              {
+                "@accessType": "inputOnly",
+                "@type": "MFNode",
+                "@name": "addChildren"
+              },
+              {
+                "@accessType": "inputOnly",
+                "@type": "MFNode",
+                "@name": "removeChildren"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFNode",
+                "@name": "children"
+              }
+            ],
+            "@url": [ "assets/BooleanSwitch.x3d#BooleanSwitch" ]
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": -1,
+            "@order": [ 0, 1, 2, 3 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Background",
+                  "@isPickable": false,
+                  "-children": [
+                    { "Background":
+                      {
+                        "@skyAngle": [ 1.09223, 1.5708 ],
+                        "@skyColor": [ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3 ],
+                        "@groundAngle": [ 1.1248, 1.5708 ],
+                        "@groundColor": [ 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "Model",
+                  "-children": [
+                    { "Viewpoint":
+                      {
+                        "@position": [ 0, 0, 18.8454 ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Images",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@translation": [ -12, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_1",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.0627804176091118" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@DEF": "_2",
+                                              "@size": [ 2.7, 2 ]
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_3",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_4",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.779485543026762" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_5",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_6",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.029944279029766818" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_7",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_8",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.6399236246258556" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -9, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_9",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_10",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.43474795609898087" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_11",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_12",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.2269121015854384" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_13",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_14",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.9659207310524175" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_15",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_16",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.938643344963352" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -6, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_17",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_18",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.344666176620097" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_19",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_20",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.09404398745550835" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_21",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_22",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.319547992309949" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_23",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_24",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.08042770608270844" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ -3, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_25",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_26",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.8488169931856263" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_27",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_28",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.2791865705993909" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_29",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_30",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.41537223771501486" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_31",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_32",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.3024802055225807" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_33",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_34",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.7767677217862783" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_35",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_36",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.6029179244912598" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_37",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_38",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.7462787596449603" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_39",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_40",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.018624003323363114" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 3, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_41",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_42",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.24673967957836818" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_43",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_44",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.23328149310531476" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_45",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_46",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.04817828279539371" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_47",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_48",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.8238838350867131" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 6, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_49",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_50",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.00860313207814467" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_51",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_52",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.6458371210879333" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_53",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_54",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.330329672452481" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_55",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_56",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.1382852738951461" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 9, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_57",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_58",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.9557136523080219" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_59",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_60",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.7756076443627684" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_61",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_62",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.12812948547309788" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_63",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_64",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.8641720595735717" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@translation": [ 12, 0, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_65",
+                                    "@translation": [ 0, 4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_66",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.7649565194583272" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_67",
+                                    "@translation": [ 0, 1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_68",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.2457792600998875" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_69",
+                                    "@translation": [ 0, -1.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_70",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.594987210941756" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Rectangle2D_71",
+                                    "@translation": [ 0, -4.5, 0 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@DEF": "_72",
+                                                  "@url": [ "https://picsum.photos/270/200/?random&_stamp=0.2135839020738839" ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "TouchSensor":
+                      {
+                        "@DEF": "_73",
+                        "@description": "Click To Load New Images"
+                      }
+                    },
+                    { "Script":
+                      {
+                        "@DEF": "FlickrScript",
+                        "@directOutput": true,
+                        "field": [
+                          {
+                            "@accessType": "inputOutput",
+                            "@type": "SFTime",
+                            "@name": "loadTime",
+                            "@value": 1546831163.06251
+                          },
+                          {
+                            "@accessType": "initializeOnly",
+                            "@type": "MFNode",
+                            "@name": "images",
+                            "-children": [
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_1"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_4"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_8"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_10"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_12"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_14"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_16"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_18"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_20"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_22"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_24"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_26"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_28"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_30"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_32"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_34"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_36"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_38"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_40"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_42"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_44"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_46"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_48"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_50"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_52"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_54"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_56"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_58"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_60"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_62"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_64"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_66"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_68"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_70"
+                                }
+                              },
+                              { "ImageTexture":
+                                {
+                                  "@USE": "_72"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tset_loadTime (0, 0);",
+"}",
+"",
+"function set_loadTime (value, time)",
+"{",
+"\tfor (var i = 0, length = images .length; i < length; ++ i)",
+"\t{",
+"\t\timages [i] .url = new MFString (\"https://picsum.photos/270/200/?random&_stamp=\" + Math .random ());",
+"\t}\t",
+"}"
+                        ]
+                      }
+                    },
+                    { "LoadSensor":
+                      {
+                        "@DEF": "_74",
+                        "-watchList": [
+                          { "ImageTexture":
+                            {
+                              "@USE": "_1"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_4"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_6"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_8"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_10"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_12"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_14"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_16"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_18"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_20"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_22"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_24"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_26"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_28"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_30"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_32"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_34"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_36"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_38"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_40"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_42"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_44"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_46"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_48"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_50"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_52"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_54"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_56"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_58"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_60"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_62"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_64"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_66"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_68"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_70"
+                            }
+                          },
+                          { "ImageTexture":
+                            {
+                              "@USE": "_72"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "_75",
+                        "@name": "BooleanSwitch",
+                        "fieldValue": [
+                          {
+                            "@name": "children",
+                            "-children": [
+                              { "Transform":
+                                {
+                                  "@DEF": "Disk2D_76",
+                                  "@translation": [ 0, -6.81799, 0 ],
+                                  "@scale": [ 0.5, 0.5, 0.5 ],
+                                  "-children": [
+                                    { "Shape":
+                                      {
+                                        "@DEF": "_77",
+                                        "-appearance": { "Appearance":
+                                          {
+                                            "-material": { "Material":
+                                              {
+                                                "@diffuseColor": [ 0, 0, 0 ]
+                                              }
+                                            }
+                                          }
+                                        },
+                                        "-geometry": { "Disk2D":
+                                          {
+                                          }
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              { "Group":
+                                {
+                                  "-children": [
+                                    { "Transform":
+                                      {
+                                        "@DEF": "Disk2D",
+                                        "@translation": [ 2.38955, -6.81799, 0 ],
+                                        "@scale": [ 0.5, 0.5, 0.5 ],
+                                        "-children": [
+                                          { "Group":
+                                            {
+                                              "@DEF": "Animation",
+                                              "-children": [
+                                                { "TimeSensor":
+                                                  {
+                                                    "@DEF": "AnimationTimer",
+                                                    "@loop": true,
+                                                    "@startTime": 1548601131.2048,
+                                                    "@stopTime": 1548601135.65393
+                                                  }
+                                                },
+                                                { "PositionInterpolator":
+                                                  {
+                                                    "@DEF": "Disk2DTranslationInterpolator",
+                                                    "@key": [ 0, 0.5, 1 ],
+                                                    "@keyValue": [ -3, -6.81799, 0, 3, -6.81799, 0, -3, -6.81799, 0 ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          { "Shape":
+                                            {
+                                              "@USE": "_77"
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    { "VisibilitySensor":
+                                      {
+                                        "@DEF": "_78",
+                                        "@size": [ 1, 1, 1 ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "HUD"
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_73",
+            "@fromField": "touchTime",
+            "@toNode": "FlickrScript",
+            "@toField": "loadTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "Disk2DTranslationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Disk2DTranslationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Disk2D",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_78",
+            "@fromField": "enterTime",
+            "@toNode": "AnimationTimer",
+            "@toField": "startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_78",
+            "@fromField": "exitTime",
+            "@toNode": "AnimationTimer",
+            "@toField": "stopTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_74",
+            "@fromField": "isActive",
+            "@toNode": "_75",
+            "@toField": "whichChoice"
+          }
+        }
+      ]
+    }
+  }
+}

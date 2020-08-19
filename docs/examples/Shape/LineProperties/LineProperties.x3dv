@@ -1,0 +1,118 @@
+#X3D V3.3 utf8 Titania V4.5.0
+
+PROFILE Immersive
+
+COMPONENT Grouping : 3
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Mon, 15 Apr 2019 01:44:57 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.5.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shape/LineProperties/LineProperties.O.x3d"
+META "modified" "Mon, 15 Apr 2019 02:42:45 GMT"
+
+WorldInfo {
+}
+
+Viewpoint {
+  position 0 0 13.265
+}
+
+Transform {
+  children [
+    DEF Animation Group {
+      children [
+        DEF AnimationTimer TimeSensor {
+          cycleInterval 12
+          loop TRUE
+          startTime 1555296156.64912
+          stopTime 1555296156.64912
+        }
+        DEF RotationInterpolator OrientationInterpolator {
+          key [ 0, 0.25, 0.5, 0.75, 1 ]
+          keyValue [ 0 0 1 0, 0 1 0 1.5707963267949, 0 1 0 3.14159253438051, 0 1 0 4.7123888611754, 0 0 1 0 ]
+        }
+        DEF RotationInterpolator_1 OrientationInterpolator {
+          key [ 0, 0.25, 0.5, 0.75, 1 ]
+          keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.14159253438051, 0 1 0 1.57079644600419, 0 0 1 0 ]
+        }
+        DEF RotationInterpolator_2 OrientationInterpolator {
+          key [ 0, 0.25, 0.5, 0.75, 1 ]
+          keyValue [ 0 0 1 0, 0 1 0 1.5707963267949, 0 1 0 3.14159253438051, 0 1 0 4.7123888611754, 0 0 1 0 ]
+        }
+      ]
+    }
+    DEF _3 Transform {
+      rotation 0 1 0 0.462843733150726
+      children DEF Box Transform {
+        rotation 0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265
+        scaleOrientation 0.919403734768909 -0.393313272309237 -0.00120096560392552 4.00563050840657
+        children Shape {
+          appearance Appearance {
+            lineProperties LineProperties {
+              linetype 2
+              linewidthScaleFactor 2
+            }
+            material Material {
+              emissiveColor 1 1 0
+            }
+          }
+          geometry DEF _4 IndexedLineSet {
+            coordIndex [ 0, 1, 2, 3, 0, -1, 5, 4, 7, 6, 5, -1, 2, 6, -1, 7, 3, -1, 5, 1, -1, 0, 4, -1 ]
+            coord Coordinate {
+              point [ -1 -1 1, 1 -1 1, 1 1 1, -1 1 1, -1 -1 -1, 1 -1 -1, 1 1 -1, -1 1 -1 ]
+            }
+          }
+        }
+      }
+    }
+    DEF _5 Transform {
+      rotation 0 -1 0 0.462843733150726
+      children DEF Box_6 Transform {
+        rotation 0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265
+        scale 1.75736 1.75736 1.75736
+        scaleOrientation -0.329043930035858 0.566697417302696 -0.755370193566712 0.67555490580333
+        children Shape {
+          appearance Appearance {
+            lineProperties LineProperties {
+              linetype 3
+              linewidthScaleFactor 2
+            }
+            material Material {
+              emissiveColor 1 0.5 0
+            }
+          }
+          geometry USE _4
+        }
+      }
+    }
+    DEF _7 Transform {
+      rotation 0 1 0 0.462843733150726
+      children DEF Box_8 Transform {
+        rotation 0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265
+        scale 2.82844 2.82844 2.82844
+        scaleOrientation 0.111350277667656 0.40117999342139 0.909206097945757 0.731417893085076
+        children Shape {
+          appearance Appearance {
+            lineProperties LineProperties {
+              linetype 4
+              linewidthScaleFactor 2
+            }
+            material Material {
+              emissiveColor 1 0 0
+            }
+          }
+          geometry USE _4
+        }
+      }
+    }
+  ]
+}
+
+ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
+ROUTE RotationInterpolator.value_changed TO _3.set_rotation
+ROUTE AnimationTimer.fraction_changed TO RotationInterpolator_1.set_fraction
+ROUTE RotationInterpolator_1.value_changed TO _5.set_rotation
+ROUTE AnimationTimer.fraction_changed TO RotationInterpolator_2.set_fraction
+ROUTE RotationInterpolator_2.value_changed TO _7.set_rotation

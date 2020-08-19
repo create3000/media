@@ -1,0 +1,1343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Layering' level='1'/>
+    <component name='Shape' level='3'/>
+    <component name='Time' level='2'/>
+    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Wed, 27 Sep 2017 11:50:59 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.4.4, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SugarSmack/SugarSmack.O.x3d'/>
+    <meta name='modified' content='Wed, 27 Mar 2019 07:59:33 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='MFInt32' url='"MFInt32.x3d#MFInt32"'>
+      <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+      <field accessType='inputOutput' type='MFInt32' name='keyValue'/>
+      <field accessType='outputOnly' type='MFInt32' name='value_changed'/>
+    </ExternProtoDeclare>
+    <ProtoDeclare name='Maze'>
+      <ProtoInterface>
+        <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+        <field accessType='inputOutput' type='SFInt32' name='width' value='11'/>
+        <field accessType='inputOutput' type='SFInt32' name='height' value='11'/>
+        <field accessType='inputOutput' type='SFFloat' name='complexity' value='0.75'/>
+        <field accessType='inputOutput' type='SFFloat' name='density' value='0.75'/>
+        <field accessType='outputOnly' type='MFInt32' name='matrix'/>
+        <field accessType='outputOnly' type='SFTime' name='generatedTime'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Script DEF='MazeScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+          <field accessType='inputOutput' type='SFInt32' name='width'/>
+          <field accessType='inputOutput' type='SFInt32' name='height'/>
+          <field accessType='inputOutput' type='SFFloat' name='complexity'/>
+          <field accessType='inputOutput' type='SFFloat' name='density'/>
+          <field accessType='inputOutput' type='MFInt32' name='matrix'/>
+          <field accessType='outputOnly' type='SFTime' name='generatedTime'/>
+          <IS>
+            <connect nodeField='set_triggerTime' protoField='set_triggerTime'/>
+            <connect nodeField='width' protoField='width'/>
+            <connect nodeField='height' protoField='height'/>
+            <connect nodeField='complexity' protoField='complexity'/>
+            <connect nodeField='density' protoField='density'/>
+            <connect nodeField='matrix' protoField='matrix'/>
+            <connect nodeField='generatedTime' protoField='generatedTime'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function set_triggerTime (value, time)
+{
+	generateMaze (complexity, density);
+
+	generatedTime = time;
+}
+
+function generateMaze (complexity, density)
+{
+   // Only odd shapes
+
+	if (width  % 2 == 0) ++ width;
+	if (height % 2 == 0) ++ height;
+
+	// Adjust complexity and density relative to maze size
+
+	complexity = Math .floor (complexity * 5 * (width + height));
+	density    = Math .floor (density * Math .floor (width / 2) * Math .floor (height / 2));
+
+	// Build actual maze
+
+	matrix .length = width * height;
+
+	for (var i = 0; i < matrix .length; ++ i)
+		matrix [i] = 0;
+
+	// Fill borders
+
+	for (var x = 0; x < width; ++ x)
+	{
+		matrix [getIndex (x, 0)]          = 1;
+		matrix [getIndex (x, height - 1)] = 1;
+	}
+
+	for (var y = 0; y < height; ++ y)
+	{
+		matrix [getIndex (0, y)]         = 1;
+		matrix [getIndex (width - 1, y)] = 1;
+	}
+	
+	// Make aisles
+
+	for (var i = 0; i < density; ++ i)
+	{
+		var
+			x = Math .round (random (0, Math .floor (width  / 2))) * 2,
+			y = Math .round (random (0, Math .floor (height / 2))) * 2;
+
+		matrix [getIndex (x, y)] = 1;
+
+		for (var j = 0; j < complexity; ++ j)
+		{
+			var neighbours = [ ];
+
+			if (x > 1)          neighbours .push ([x - 2, y]);
+			if (x < width - 2)  neighbours .push ([x + 2, y]);
+			if (y > 1)          neighbours .push ([x, y - 2]);
+			if (y < height - 2) neighbours .push ([x, y + 2]);
+			
+			if (neighbours .length)
+			{
+				var neighbour = neighbours [Math .round (random (0, neighbours .length - 1))];
+				
+				var
+					x_ = neighbour [0],
+					y_ = neighbour [1];
+				
+				if (matrix [getIndex (x_, y_)] == 0)
+				{
+					matrix [getIndex (x_, y_)] = 1;
+					matrix [getIndex (x_ + Math .floor ((x - x_) / 2), y_ + Math .floor ((y - y_) / 2))] = 1;
+					
+					x = x_;
+					y = y_;
+				}
+			}
+		}
+	}
+}
+
+function getIndex (x, y)
+{
+	return width * y + x;
+}
+
+function random (min, max)
+{
+	return Math .random () * (max - min) + min;
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='MazeGeometry'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='MFInt32' name='type' value='1'/>
+        <field accessType='inputOutput' type='SFBool' name='rotate' value='true'/>
+        <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize' value='2 2 2'/>
+        <field accessType='inputOutput' type='MFString' name='mazeElementUrl'/>
+        <field accessType='inputOutput' type='SFNode' name='maze'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Inline DEF='_1'>
+          <IS>
+            <connect nodeField='url' protoField='mazeElementUrl'/>
+          </IS>
+        </Inline>
+        <LoadSensor DEF='_2'>
+          <Inline USE='_1' containerField='watchList'/>
+        </LoadSensor>
+        <Script DEF='MazeGeometryScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='SFTime' name='set_loadTime'/>
+          <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+          <field accessType='inputOutput' type='MFInt32' name='type'/>
+          <field accessType='inputOutput' type='SFBool' name='rotate'/>
+          <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize'/>
+          <field accessType='initializeOnly' type='SFNode' name='inlineNode'>
+            <Inline USE='_1' containerField='inlineNode'/>
+          </field>
+          <field accessType='inputOutput' type='SFNode' name='maze'/>
+          <field accessType='initializeOnly' type='SFNode' name='elementProxy'/>
+          <field accessType='initializeOnly' type='SFNode' name='elementShape'/>
+          <field accessType='initializeOnly' type='SFNode' name='proxy'>
+            <Shape containerField='proxy'>
+              <IndexedFaceSet>
+                <Coordinate/>
+              </IndexedFaceSet>
+            </Shape>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='shape'>
+            <Shape containerField='shape'>
+              <Appearance>
+                <Material
+                    ambientIntensity='0.553957'
+                    specularColor='0.922 0.922 0.922'
+                    shininess='0.923547'/>
+              </Appearance>
+              <IndexedFaceSet>
+                <Coordinate/>
+              </IndexedFaceSet>
+            </Shape>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='self'>
+            <Script USE='MazeGeometryScript' containerField='self'/>
+          </field>
+          <IS>
+            <connect nodeField='type' protoField='type'/>
+            <connect nodeField='rotate' protoField='rotate'/>
+            <connect nodeField='mazeElementSize' protoField='mazeElementSize'/>
+            <connect nodeField='maze' protoField='maze'/>
+          </IS>
+<![CDATA[ecmascript:
+	
+var route;
+
+function initialize ()
+{
+	set_maze (maze, 0);
+}
+
+function set_loadTime ()
+{
+	var collisionNode = Browser .currentScene .getImportedNode ("MazeElement");
+	
+	if (elementProxy || elementShape)
+		return;
+	
+	elementProxy = collisionNode .proxy;
+	elementShape = collisionNode .children [0];
+	
+	collisionNode .proxy        = proxy;
+	collisionNode .children [0] = shape;
+}
+
+function set_maze (value, time)
+{
+	if (route)
+		Browser .currentScene .deleteRoute (route);
+
+	if (maze)
+		route = Browser .currentScene .addRoute (maze, "generatedTime", self, "set_triggerTime");
+}
+
+function set_triggerTime (value, time)
+{
+	if (maze .matrix .length == 0)
+		return;
+
+	generateGeometry (elementProxy, proxy);
+	generateGeometry (elementShape, shape);
+}
+
+function generateGeometry (elementShape, shape)
+{
+	var
+		elementWidth    = mazeElementSize .x,
+		elementDepth    = mazeElementSize .z,
+		elementGeometry = elementShape .geometry,
+		elementCoord    = elementGeometry .coord,
+		geometry        = shape .geometry,
+		coord           = geometry .coord,
+		offset          = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);
+
+	shape .appearance = elementShape .appearance;
+
+	geometry .solid           = elementGeometry .solid;
+	geometry .ccw             = elementGeometry .ccw;
+	geometry .convex          = elementGeometry .convex;
+	geometry .creaseAngle     = elementGeometry .creaseAngle;
+	geometry .colorPerVertex  = elementGeometry .colorPerVertex;
+	geometry .normalPerVertex = elementGeometry .normalPerVertex;
+	geometry .color           = elementGeometry .color;
+
+	var
+		colorIndex = new MFInt32 (),
+		coordIndex = new MFInt32 ();
+
+	coord .point .length = 0;
+
+	for (var y = 0; y < maze .height; ++ y)
+	{
+		for (var x = 0; x < maze .width; ++ x)
+		{
+			if (isType (maze .matrix [getIndex (x, y)]))
+			{
+				var rotations = rotate ? getRotations (x, y) : [ false ];
+
+				for (var r = 0; r < rotations .length; ++ r)
+				{
+					var rotation = rotations [r];
+				
+					for (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)
+						colorIndex .push (elementGeometry .colorIndex [i]);
+				
+					var numPoints = coord .point .length;
+				
+					for (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)
+					{
+						var index = elementGeometry .coordIndex [i];
+					
+						if (index < 0)
+							coordIndex .push (-1);
+						else
+							coordIndex .push (numPoints + index);
+					}
+
+					for (var i = 0, length = elementCoord .point .length; i < length; ++ i)
+					{
+						var point = elementCoord .point [i];
+					
+						if (rotate)
+							point = rotation .multVec (point);
+
+						point = point .add (new SFVec3f (x * elementWidth, 0, y * elementDepth));
+						point = point .subtract (offset);
+
+						coord .point .push (point);
+					}
+				}
+			}
+		}
+	}
+	
+	geometry .colorIndex = colorIndex;
+	geometry .coordIndex = coordIndex;
+}
+
+function isType (value)
+{
+	for (var i = 0; i < type .length; ++ i)
+	{
+		if (type [i] == value)
+			return true;
+	}
+
+	return false;
+}
+
+function getRotations (x, y)
+{
+	var
+		rotations  = [ ],
+		horizontal = false,
+		vertical   = false;
+
+	if (x > 0)                horizontal |= maze .matrix [getIndex (x - 1, y)];
+	if (x < maze .width - 1)  horizontal |= maze .matrix [getIndex (x + 1, y)];
+	if (y > 0)                vertical   |= maze .matrix [getIndex (x, y - 1)];
+	if (y < maze .height - 1) vertical   |= maze .matrix [getIndex (x, y + 1)];
+
+	if (! (horizontal || vertical))
+	{
+		horizontal = true;
+		vertical   = true;
+	}
+
+	if (horizontal)
+		rotations .push (new SFRotation (0, 1, 0, Math .PI / 2));
+
+	if (vertical)
+		rotations .push (new SFRotation (0, 0, 1, 0));
+
+	return rotations;
+}
+
+function getIndex (x, y)
+{
+	return maze .width * y + x;
+}
+]]>
+        </Script>
+        <IMPORT inlineDEF='_1' importedDEF='MazeElement'/>
+        <ROUTE fromNode='_2' fromField='loadTime' toNode='MazeGeometryScript' toField='set_loadTime'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='Globe'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFBool' name='enabled'/>
+        <field accessType='inputOnly' type='SFTime' name='set_turnTime'/>
+        <field accessType='inputOutput' type='SFTime' name='cycleInterval'/>
+        <field accessType='inputOutput' type='SFFloat' name='radius' value='1'/>
+        <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize' value='2 2 2'/>
+        <field accessType='inputOutput' type='SFTime' name='startTime'/>
+        <field accessType='inputOutput' type='SFTime' name='stopTime'/>
+        <field accessType='outputOnly' type='SFTime' name='cycleTime'/>
+        <field accessType='outputOnly' type='SFInt32' name='direction_changed'/>
+        <field accessType='outputOnly' type='MFInt32' name='position_changed'/>
+        <field accessType='outputOnly' type='SFVec3f' name='translation_changed'/>
+        <field accessType='outputOnly' type='SFRotation' name='rotation_changed'/>
+        <field accessType='inputOutput' type='SFNode' name='maze'/>
+        <field accessType='inputOutput' type='MFNode' name='translationChildren'/>
+        <field accessType='inputOutput' type='MFNode' name='children'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Collision DEF='Shape'
+            enabled='false'>
+          <Transform DEF='_3'
+              translation='-8 2 4'
+              rotation='-0.284180511188001 -0.790532371841786 0.542494245251621 185.949206667814'>
+            <IS>
+              <connect nodeField='translation' protoField='translation_changed'/>
+              <connect nodeField='rotation' protoField='rotation_changed'/>
+              <connect nodeField='children' protoField='children'/>
+            </IS>
+          </Transform>
+          <Group>
+            <IS>
+              <connect nodeField='children' protoField='translationChildren'/>
+            </IS>
+          </Group>
+        </Collision>
+        <Script DEF='GlobeScript'
+            directOutput='true'>
+          <field accessType='inputOutput' type='SFTime' name='cycleInterval'/>
+          <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+          <field accessType='inputOnly' type='SFTime' name='set_turnTime'/>
+          <field accessType='inputOnly' type='SFTime' name='set_cycleTime'/>
+          <field accessType='inputOutput' type='SFFloat' name='radius'/>
+          <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize'/>
+          <field accessType='outputOnly' type='SFInt32' name='direction_changed'/>
+          <field accessType='outputOnly' type='MFInt32' name='position_changed'/>
+          <field accessType='inputOutput' type='SFNode' name='maze'/>
+          <field accessType='initializeOnly' type='SFNode' name='transform'>
+            <Transform USE='_3' containerField='transform'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='timeSensor'>
+            <TimeSensor DEF='_4' containerField='timeSensor'
+                cycleInterval='0'
+                loop='true'>
+              <IS>
+                <connect nodeField='enabled' protoField='enabled'/>
+                <connect nodeField='startTime' protoField='startTime'/>
+                <connect nodeField='stopTime' protoField='stopTime'/>
+                <connect nodeField='cycleTime' protoField='cycleTime'/>
+              </IS>
+            </TimeSensor>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='positionInterpolator'>
+            <PositionInterpolator DEF='_5' containerField='positionInterpolator'
+                key='0, 1'
+                keyValue='-8 2 4, -4 2 4'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='orientationInterpolator'>
+            <OrientationInterpolator DEF='_6' containerField='orientationInterpolator'
+                key='0, 0.25, 0.5, 0.75, 1'
+                keyValue='-0.284180511188001 -0.790532371841786 0.542494245251621 185.949206667814, 0.471950584965486 0.697161480359967 -0.539655923392892 189.608794592081, 0.64245736891161 0.569991777568564 -0.512208846697712 204.736550266607, 0.790426756107843 0.407195559520415 -0.457621371371233 218.697477248719, 0.904626025961796 0.207714310453148 -0.372164638816668 230.661122157893'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='self'>
+            <Script USE='GlobeScript' containerField='self'/>
+          </field>
+          <IS>
+            <connect nodeField='cycleInterval' protoField='cycleInterval'/>
+            <connect nodeField='set_turnTime' protoField='set_turnTime'/>
+            <connect nodeField='radius' protoField='radius'/>
+            <connect nodeField='mazeElementSize' protoField='mazeElementSize'/>
+            <connect nodeField='direction_changed' protoField='direction_changed'/>
+            <connect nodeField='position_changed' protoField='position_changed'/>
+            <connect nodeField='maze' protoField='maze'/>
+          </IS>
+<![CDATA[ecmascript:
+
+var
+	ANY   = -1,
+	WEST  = 0,
+	EAST  = 1,
+	SOUTH = 2,
+	NORTH = 3;
+
+var route;
+
+var opposites = [	1, 0, 3, 2 ];
+
+var
+	turnTime     = 0,
+	turnInterval = 0;
+
+function initialize ()
+{
+	set_maze (maze, 0);
+}
+
+function set_maze (value, time)
+{
+	if (route)
+		Browser .currentScene .deleteRoute (route);
+
+	if (maze)
+	{
+		route = Browser .currentScene .addRoute (maze, "generatedTime", self, "set_triggerTime");
+	
+		set_triggerTime (time, time);	
+	}
+}
+
+function set_triggerTime (value, time)
+{
+	if (maze .matrix .length == 0)
+		return;
+
+	var x, y;
+
+	do
+	{
+		x = Math .floor (Math .random () * maze .width);
+		y = Math .floor (Math .random () * maze .height);
+	}
+	while (maze .matrix [getIndex (x, y)] != 0);
+
+	direction_changed        = ANY;
+	position_changed [0]     = x;
+	position_changed [1]     = y;
+	position_changed [2]     = x;
+	position_changed [3]     = y;
+
+	transform .translation = getTranslation (x ,y);
+	transform .rotation    = new SFRotation ();
+						
+	timeSensor .cycleInterval         = cycleInterval;
+	positionInterpolator    .key      = new MFFloat (0, 1);
+	orientationInterpolator .key      = new MFFloat (0, 1);
+	positionInterpolator    .keyValue = new MFVec3f (transform .translation, transform .translation);
+	orientationInterpolator .keyValue = new MFRotation (transform .rotation, transform .rotation);
+}
+
+function set_turnTime (value, time)
+{
+	if (! maze)
+		return;
+
+	if (maze .matrix .length == 0)
+		return;
+
+	if (time - turnTime < turnInterval)
+		return;
+
+	turnTime = time;
+
+	var
+		x  = position_changed [0],
+		y  = position_changed [1],
+		fc = timeSensor .fraction_changed * cycleInterval;
+	
+	direction_changed = opposites [direction_changed];
+
+	position_changed [0] = position_changed [2];
+	position_changed [1] = position_changed [3];
+	position_changed [2] = x;
+	position_changed [3] = y;
+
+	if (timeSensor .fraction_changed >= 1)
+		timeSensor .cycleInterval = cycleInterval;
+	else
+		timeSensor .cycleInterval = fc / (cycleInterval - fc) * cycleInterval;
+	
+	mirrorInterpolator (timeSensor .fraction_changed, positionInterpolator);
+	mirrorInterpolator (timeSensor .fraction_changed, orientationInterpolator);
+
+	turnInterval = timeSensor .cycleInterval * (1 - timeSensor .fraction_changed);
+}
+
+function mirrorInterpolator (f, interpolator)
+{
+	for (var i = 0; i < interpolator .key .length; ++ i)
+	{
+		if (interpolator .key [i] >= f)
+			break;
+	}
+	
+	var k = i + 1;
+	
+	interpolator .key [i]      = f;
+	interpolator .keyValue [i] = interpolator .value_changed;
+
+	if (i)
+	{	
+		for (-- i; i >= 0; -- i, ++ k)
+		{
+			interpolator .key [k]      = f + (1 - interpolator .key [i] / f) * (1 - f);
+			interpolator .keyValue [k] = interpolator .keyValue [i];
+		}
+	}
+
+	interpolator .key      .length = k;
+	interpolator .keyValue .length = k;
+}
+
+function set_cycleTime (value, time)
+{
+	if (! maze)
+		return;
+
+	if (maze .matrix .length == 0)
+		return;
+
+	// Determine new position.
+
+	var positions = getPositions (position_changed [2], position_changed [3], direction_changed);
+		
+	if (positions .length == 0)
+		positions = getPositions (position_changed [2], position_changed [3], ANY);
+	
+	var index = Math .floor (Math .random () * positions .length);
+
+	direction_changed = positions [index] [2];
+
+	position_changed [0] = position_changed [2];
+	position_changed [1] = position_changed [3];
+	position_changed [2] = positions [index] [0];
+	position_changed [3] = positions [index] [1];
+
+	// Setup interpolators.
+
+	var
+		startTranslation = positionInterpolator .value_changed,
+		stopTranslation  = getTranslation (position_changed [2], position_changed [3]),
+		startRotation    = orientationInterpolator .value_changed,
+		rotations        = getRotations (startTranslation, stopTranslation);
+
+	timeSensor .cycleInterval = cycleInterval;
+
+	positionInterpolator .key [0]     = 0;
+	positionInterpolator .key [1]     = 1;
+	positionInterpolator .key .length = 2;
+
+	positionInterpolator .keyValue [0]     = startTranslation;
+	positionInterpolator .keyValue [1]     = stopTranslation;
+	positionInterpolator .keyValue .length = 2;
+
+	for (var i = 0; i < rotations .length; ++ i)
+	{
+		orientationInterpolator .key [i]      = i / (rotations .length - 1);
+		orientationInterpolator .keyValue [i] = startRotation .multiply (rotations [i]);
+	}
+
+	orientationInterpolator .key      .length = rotations .length;
+	orientationInterpolator .keyValue .length = rotations .length;
+}
+
+function getTranslation (x ,y)
+{
+	var offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2,
+	                          0,
+	                          (maze .height - 1) * mazeElementSize .z / 2);
+
+	var translation = new SFVec3f (x * mazeElementSize .x, radius, y * mazeElementSize .z);
+
+	return translation .subtract (offset);
+}
+
+function getRotations (startTranslation, stopTranslation)
+{
+	var
+		rotations   = new MFRotation (),
+		direction   = stopTranslation .subtract (startTranslation),
+		axis        = direction .cross (new SFVec3f (0, 1, 0)),
+		length      = direction .length (),
+		revolutions = length / (2 * Math .PI * radius),
+		numKeys     = Math .ceil (revolutions) * 4;
+
+	for (var i = 0; i <= numKeys; ++ i)
+		rotations .push (new SFRotation (axis, -i / numKeys * revolutions * 2 * Math .PI));
+
+	return rotations;
+}
+
+function getPositions (x, y, direction)
+{
+	var positions = [ ];
+
+	if (direction != EAST)
+		if (x > 0)
+			if (maze .matrix [getIndex (x - 1, y)] == 0)
+				positions .push ([x - 1, y, WEST]);
+
+	if (direction != WEST)
+		if (x < maze .width - 1)
+			if (maze .matrix [getIndex (x + 1, y)] == 0)
+				positions .push ([x + 1, y, EAST]);
+
+	if (direction != NORTH)
+		if (y > 0)
+			if (maze .matrix [getIndex (x, y - 1)] == 0)
+				positions .push ([x, y - 1, SOUTH]);
+
+	if (direction != SOUTH)
+		if (y < maze .height - 1)
+			if (maze .matrix [getIndex (x, y + 1)] == 0)
+				positions .push ([x, y + 1, NORTH]);
+
+	return positions;
+}
+
+function getIndex (x, y)
+{
+	return maze .width * y + x;
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_4' fromField='fraction_changed' toNode='_6' toField='set_fraction'/>
+        <ROUTE fromNode='_4' fromField='fraction_changed' toNode='_5' toField='set_fraction'/>
+        <ROUTE fromNode='_4' fromField='cycleTime' toNode='GlobeScript' toField='set_cycleTime'/>
+        <ROUTE fromNode='_6' fromField='value_changed' toNode='_3' toField='set_rotation'/>
+        <ROUTE fromNode='_5' fromField='value_changed' toNode='_3' toField='set_translation'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='MazeCollisionManager'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='MFNode' name='collidables'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Script DEF='MazeCollisionManagerScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='MFInt32' name='set_position'/>
+          <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
+          <field accessType='inputOutput' type='MFNode' name='collidables'/>
+          <field accessType='initializeOnly' type='SFNode' name='self'>
+            <Script USE='MazeCollisionManagerScript' containerField='self'/>
+          </field>
+          <IS>
+            <connect nodeField='collidables' protoField='collidables'/>
+          </IS>
+<![CDATA[ecmascript:
+
+var
+	routes      = [ ],
+	connections = [ ],
+	map         = { };
+
+function initialize ()
+{
+	set_collidables (collidables, 0);
+}
+
+function set_position (value, time)
+{
+	var currentScene = Browser .currentScene;
+
+	for (var i = 0; i < connections .length; ++ i)
+	{
+		currentScene .deleteRoute (connections [i]);
+	}
+
+	map = { };
+	
+	for (var i = 0; i < collidables .length; ++ i)
+	{
+		var
+			collidable = collidables [i],
+			position   = collidable .position_changed;
+		
+		for (var p = 0; p < position .length; p += 2)
+		{
+			var
+				x = position [p + 0],
+				y = position [p + 1],
+				k = x + ":" + y,
+				m = map [k];
+			
+			if (! m)
+				m = map [k] = [ ];
+			
+			m .push (collidable);
+		}
+	}
+	
+	for (var k in map)
+	{
+		var m = map [k];
+		
+		if (m .length < 2)
+		{
+			delete map [k];
+			continue;
+		}
+
+		connections .push (currentScene .addRoute (m [0], "translation_changed", self, "set_translation"));
+	}
+}
+
+function set_translation (value, time)
+{
+	for (var k in map)
+	{
+		var m = map [k];
+
+		for (var c1 = 0; c1 < m .length; ++ c1)
+		{
+			var collidable1 = m [c1];
+		
+			for (var c2 = 0; c2 < m .length; ++ c2)
+			{
+				var collidable2 = m [c2];
+		
+				if (collidable1 === collidable2)
+					continue;
+
+				var
+					r = collidable1 .radius + collidable2 .radius,
+					l = collidable1 .translation_changed .subtract (collidable2 .translation_changed) .length ();
+
+				if (l < r)
+				{
+					if (collidable1 .direction_changed == collidable2 .direction_changed)
+					{
+						if (collidable1 .cycleInterval < collidable2 .cycleInterval)
+							collidable1 .set_turnTime = time; 
+					}
+					else
+					{
+						collidable1 .set_turnTime = time;
+					}
+				}
+			}
+		}
+	}
+}
+
+function set_collidables (value, time)
+{
+	var currentScene = Browser .currentScene;
+
+	for (var i = 0; i < routes .length; ++ i)
+	{
+		currentScene .deleteRoute (routes [i]);
+	}
+
+	routes .length = 0;
+
+	for (var i = 0; i < collidables .length; ++ i)
+	{
+		routes .push (currentScene .addRoute (collidables [i], "position_changed", self, "set_position"));
+	}
+}
+
+function eventsProcessed ()
+{
+	
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='BonusMap'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='MFFloat' name='density' value='1'/>
+        <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize'/>
+        <field accessType='outputOnly' type='SFInt32' name='item_changed'/>
+        <field accessType='outputOnly' type='SFTime' name='enterTime'/>
+        <field accessType='inputOutput' type='SFNode' name='maze'/>
+        <field accessType='inputOutput' type='MFNode' name='items'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Collision DEF='Group_7'
+            enabled='false'/>
+        <Script DEF='BonusMapScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+          <field accessType='inputOnly' type='SFTime' name='set_enterTime'/>
+          <field accessType='inputOutput' type='MFFloat' name='density'/>
+          <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize'/>
+          <field accessType='outputOnly' type='SFInt32' name='item_changed'/>
+          <field accessType='outputOnly' type='SFTime' name='enterTime'/>
+          <field accessType='inputOutput' type='SFNode' name='maze'/>
+          <field accessType='inputOutput' type='MFNode' name='items'/>
+          <field accessType='initializeOnly' type='SFNode' name='group'>
+            <Collision USE='Group_7' containerField='group'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='self'>
+            <Script USE='BonusMapScript' containerField='self'/>
+          </field>
+          <IS>
+            <connect nodeField='density' protoField='density'/>
+            <connect nodeField='mazeElementSize' protoField='mazeElementSize'/>
+            <connect nodeField='item_changed' protoField='item_changed'/>
+            <connect nodeField='enterTime' protoField='enterTime'/>
+            <connect nodeField='maze' protoField='maze'/>
+            <connect nodeField='items' protoField='items'/>
+          </IS>
+<![CDATA[ecmascript:
+
+var route;
+
+function initialize ()
+{
+	set_maze (maze, 0);
+}
+
+function set_triggerTime (value, time)
+{
+	if (! maze)
+		return;
+
+	group .children .length = 0;
+
+	for (var y = 0; y < maze .height; ++ y)
+	{
+		for (var x = 0; x < maze .width; ++ x)
+		{
+			if (maze .matrix [getIndex (x, y)])
+				continue;
+	
+			for (var d = 0; d < density .length; ++ d)
+			{
+				if (Math .random () < density [d])
+					break;
+			}
+
+			if (d >= items .length)
+				continue;
+
+			group .children .push (getNode (d, x, y));
+		}
+	}
+}
+
+function set_enterTime (value, time)
+{
+	enterTime = time;
+
+	for (var i = 0; i < group .children .length; ++ i)
+	{
+		var
+			transform       = group .children [i],
+			lod             = transform .children [0],
+			visiblitySensor = lod .children [0];
+	
+		if (visiblitySensor .enterTime == value)
+		{
+			group .removeChildren = new MFNode (transform);
+			break;
+		}
+	}
+}
+
+function set_maze (value, time)
+{
+	if (route)
+		Browser .currentScene .deleteRoute (route);
+
+	if (maze)
+		route = Browser .currentScene .addRoute (maze, "generatedTime", self, "set_triggerTime");
+}
+
+function getNode (b, x, y)
+{
+	var
+		currentScene    = Browser .currentScene,
+		lod             = currentScene .createNode ("LOD"),
+		transform       = currentScene .createNode ("Transform"),
+		visiblitySensor = currentScene .createNode ("VisibilitySensor");
+	
+	Browser .currentScene .addRoute (visiblitySensor, "enterTime", self, "set_enterTime");
+	
+	lod .range .push (1);
+	lod .children .push (visiblitySensor);
+	lod .children .push (items [b]);
+	
+	visiblitySensor .size  = new SFVec3f (1, 1, 1);
+	transform .translation = getTranslation (x, y);
+	transform .children .push (lod);
+	
+	return transform;
+}
+
+function getTranslation (x ,y)
+{
+	var offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2,
+	                          0,
+	                          (maze .height - 1) * mazeElementSize .z / 2);
+
+	var translation = new SFVec3f (x * mazeElementSize .x, 1.2, y * mazeElementSize .z);
+
+	return translation .subtract (offset);
+}
+
+function getIndex (x, y)
+{
+	return maze .width * y + x;
+}
+
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='TimeControler'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFTime' name='resetTime'/>
+        <field accessType='inputOutput' type='SFNode' name='timer'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Script DEF='TimeControlerScript'
+            directOutput='true'>
+          <field accessType='inputOutput' type='SFTime' name='resetTime'/>
+          <field accessType='inputOutput' type='SFNode' name='timer'/>
+          <IS>
+            <connect nodeField='resetTime' protoField='resetTime'/>
+            <connect nodeField='timer' protoField='timer'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function set_resetTime (value, time)
+{
+	if (! timer)
+		return;
+
+	timer .stopTime  = value;
+	timer .startTime = value;
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo/>
+    <LayerSet DEF='_8'
+        activeLayer='1'
+        order='2, 3'>
+      <Layer DEF='Playground'
+          isPickable='false'>
+        <TimeTrigger DEF='_9'/>
+        <ProtoInstance name='MFInt32' DEF='_10'>
+          <fieldValue name='keyValue' value='1, 3'/>
+        </ProtoInstance>
+        <NavigationInfo DEF='None'
+            type='"NONE"'
+            transitionType='"TELEPORT"'/>
+        <OrthoViewpoint
+            position='0 50.1169 0'
+            orientation='1 0 0 270'
+            fieldOfView='-36, -20, 36, 20'/>
+        <Background DEF='_11'
+            skyAngle='76.5191, 90.0002'
+            skyColor='0.045 0.045 0.045, 0.195 0.195 0.195, 0.185 0.185 0.185'
+            groundAngle='60.5651, 90.0002'
+            groundColor='0 0 0, 0 0 0, 0.185 0.185 0.185'/>
+        <DirectionalLight
+            intensity='0.656934'
+            ambientIntensity='0.382716'
+            direction='0.65147 2.93442e-08 -0.758675'/>
+        <DirectionalLight
+            ambientIntensity='0.302469'
+            direction='-3.52397e-06 -0.860529 0.509401'
+            shadowIntensity='1'/>
+        <Group DEF='Navigation'>
+          <NavigationInfo DEF='Walk'
+              type='"WALK"'
+              headlight='false'
+              transitionType='"TELEPORT"'/>
+          <Viewpoint DEF='_12'
+              description='Maze'
+              position='12 2 -28'
+              orientation='0 1 0 90'
+              centerOfRotation='2.30881 1.59995 -0.422763'/>
+          <Script DEF='ViewpointPositionScript'
+              directOutput='true'>
+            <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+            <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize' value='4 2 4'/>
+            <field accessType='outputOnly' type='SFVec3f' name='position_changed'/>
+            <field accessType='outputOnly' type='SFRotation' name='orientation_changed'/>
+            <field accessType='initializeOnly' type='SFNode' name='maze'>
+              <ProtoInstance name='Maze' DEF='_13' containerField='maze'>
+                <fieldValue name='width' value='17'/>
+                <fieldValue name='height' value='17'/>
+              </ProtoInstance>
+            </field>
+<![CDATA[ecmascript:
+
+function set_triggerTime (value, time)
+{
+	if (maze .matrix .length == 0)
+		return;
+
+	var
+		x = -1,
+		y = -1;
+
+	do
+	{
+		x = Math .floor (Math .random () * maze .width);
+		y = Math .floor (Math .random () * maze .height);
+	}
+	while (maze .matrix [getIndex (x, y)] != 0);
+						
+	var offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2, 0, (maze .height - 1) * mazeElementSize .z / 2);
+	
+
+
+	var position = new SFVec3f (x * mazeElementSize .x, mazeElementSize .y, y * mazeElementSize .z);
+	position = position .subtract (offset);
+	
+	bind                = true;
+	position_changed    = position;
+	orientation_changed = getRotation (x, y);
+}
+
+function getRotation (x, y)
+{
+	if (x > 0)
+		if (maze .matrix [getIndex (x - 1, y)] == 0)
+			return new SFRotation (0, 1, 0, 1 / 2 * Math .PI);
+		
+	if (x < maze .width - 1)
+		if (maze .matrix [getIndex (x + 1, y)] == 0)
+			return new SFRotation (0, 1, 0, 3 / 2 * Math .PI);
+	  
+	if (y > 0)
+		if (maze .matrix [getIndex (x, y - 1)] == 0)
+			return new SFRotation (0, 1, 0, Math .PI);
+		
+	if (y < maze .height - 1)
+		if (maze .matrix [getIndex (x, y + 1)] == 0)
+			return new SFRotation (0, 1, 0, 0);
+
+	return new SFRotation (0, 1, 0, 0);
+}
+
+function getIndex (x, y)
+{
+	return maze .width * y + x;
+}
+]]>
+          </Script>
+        </Group>
+        <ProtoInstance name='MazeGeometry' DEF='Walls'>
+          <fieldValue name='mazeElementSize' value='4 2 4'/>
+          <fieldValue name='mazeElementUrl' value='"maze-element.x3d"'/>
+          <fieldValue name='maze'>
+            <ProtoInstance name='Maze' USE='_13' containerField='maze'/>
+          </fieldValue>
+        </ProtoInstance>
+        <ProtoInstance name='MazeGeometry' DEF='Floor'>
+          <fieldValue name='type' value='0, 1'/>
+          <fieldValue name='rotate' value='false'/>
+          <fieldValue name='mazeElementSize' value='4 2 4'/>
+          <fieldValue name='mazeElementUrl' value='"maze-floor-element.x3d"'/>
+          <fieldValue name='maze'>
+            <ProtoInstance name='Maze' USE='_13' containerField='maze'/>
+          </fieldValue>
+        </ProtoInstance>
+        <LoadSensor>
+          <ProtoInstance name='MazeGeometry' USE='Walls' containerField='watchList'/>
+          <ProtoInstance name='MazeGeometry' USE='Floor' containerField='watchList'/>
+          <Inline DEF='Globe1' containerField='watchList'
+              url='"globe1.x3d"'/>
+        </LoadSensor>
+        <Group DEF='Globes'
+            bboxSize='70 10 70'
+            bboxCenter='0 2 0'>
+          <ProtoInstance name='MazeCollisionManager'>
+            <fieldValue name='collidables'>
+              <ProtoInstance name='Globe' DEF='_14' containerField='collidables'>
+                <fieldValue name='enabled' value='true'/>
+                <fieldValue name='cycleInterval' value='4'/>
+                <fieldValue name='radius' value='2'/>
+                <fieldValue name='mazeElementSize' value='4 2 4'/>
+                <fieldValue name='startTime' value='1508046433.07247'/>
+                <fieldValue name='stopTime' value='1508046433.07247'/>
+                <fieldValue name='maze'>
+                  <ProtoInstance name='Maze' USE='_13' containerField='maze'/>
+                </fieldValue>
+                <fieldValue name='children'>
+                  <Inline USE='Globe1'/>
+                </fieldValue>
+              </ProtoInstance>
+              <ProtoInstance name='Globe' DEF='_15' containerField='collidables'>
+                <fieldValue name='enabled' value='true'/>
+                <fieldValue name='cycleInterval' value='4'/>
+                <fieldValue name='radius' value='2'/>
+                <fieldValue name='mazeElementSize' value='4 2 4'/>
+                <fieldValue name='startTime' value='1507984705.53519'/>
+                <fieldValue name='stopTime' value='1507984705.53519'/>
+                <fieldValue name='maze'>
+                  <ProtoInstance name='Maze' USE='_13' containerField='maze'/>
+                </fieldValue>
+                <fieldValue name='children'>
+                  <Inline USE='Globe1'/>
+                </fieldValue>
+              </ProtoInstance>
+            </fieldValue>
+          </ProtoInstance>
+          <ProtoInstance name='Globe' USE='_14'/>
+          <ProtoInstance name='Globe' USE='_15'/>
+        </Group>
+        <ProtoInstance name='BonusMap' DEF='_16'>
+          <fieldValue name='density' value='0.8'/>
+          <fieldValue name='mazeElementSize' value='4 2 4'/>
+          <fieldValue name='maze'>
+            <ProtoInstance name='Maze' USE='_13' containerField='maze'/>
+          </fieldValue>
+          <fieldValue name='items'>
+            <Inline DEF='_17' containerField='items'
+                url='"bonus-mint.x3d"'/>
+            <Inline DEF='_18' containerField='items'
+                url='"bonus-blue.x3d"'/>
+          </fieldValue>
+        </ProtoInstance>
+        <Group DEF='BonusSound_19'>
+          <Sound DEF='BonusSound'
+              intensity='0.133159'
+              minBack='55'
+              minFront='55'
+              maxBack='60'
+              maxFront='60'>
+            <AudioClip DEF='_20'
+                url='"star-collect.mp3"'
+                startTime='1546835705.23872'
+                pauseTime='1510042948.99191'
+                stopTime='1546835705.23872'/>
+          </Sound>
+          <ProtoInstance name='TimeControler' DEF='_21'>
+            <fieldValue name='resetTime' value='1546835705.23872'/>
+            <fieldValue name='timer'>
+              <AudioClip USE='_20' containerField='timer'/>
+            </fieldValue>
+          </ProtoInstance>
+        </Group>
+        <VisibilitySensor DEF='_22'
+            size='-1 -1 -1'/>
+      </Layer>
+      <Layer DEF='HUD'>
+        <TimeTrigger DEF='_23'/>
+        <ProtoInstance name='MFInt32' DEF='_24'>
+          <fieldValue name='keyValue' value='2, 3'/>
+        </ProtoInstance>
+        <Transform DEF='Background'
+            translation='0 0 -10'
+            scale='35.7089 35.7089 35.7089'>
+          <Shape>
+            <Appearance>
+              <ImageTexture
+                  url='"hud-background.jpg"'
+                  repeatS='false'
+                  repeatT='false'/>
+            </Appearance>
+            <Rectangle2D
+                size='1.05833 0.705556'/>
+          </Shape>
+        </Transform>
+        <Transform DEF='SugarSmack'
+            translation='-5.04174 1.24997 0'>
+          <Shape>
+            <Appearance>
+              <Material DEF='Rococo28'
+                  ambientIntensity='0.226102'
+                  diffuseColor='0 0 0'
+                  specularColor='0.0955906 0.0955906 0.0955906'
+                  shininess='0.078125'/>
+            </Appearance>
+            <Text
+                string='"Sugar Smack"'
+                solid='true'>
+              <FontStyle
+                  family='"Minimum-Toc.otf"'
+                  size='0.6'
+                  justify='"BEGIN", "BEGIN"'/>
+            </Text>
+          </Shape>
+        </Transform>
+        <Transform DEF='StartNewGame'>
+          <Transform DEF='Rectangle2D'
+              translation='-0.568659 -0.0935914 0'
+              scale='4.65256 0.593919 1'>
+            <Shape>
+              <Appearance>
+                <Material
+                    transparency='1'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Text'
+              translation='-5.04174 0.329928 0'
+              scale='2.3206 2.3206 2.3206'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Rococo13'
+                    ambientIntensity='0.187004'
+                    diffuseColor='0.840849 0.227154 0.32302'
+                    specularColor='0.251984 0.251984 0.251984'
+                    shininess='0.6'/>
+              </Appearance>
+              <Text
+                  string='"Start New Game"'
+                  solid='true'>
+                <FontStyle
+                    family='"Minimum-Toc.otf"'
+                    size='0.6'
+                    justify='"BEGIN", "BEGIN"'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <TouchSensor DEF='_25'/>
+        </Transform>
+      </Layer>
+      <Layer DEF='Debug'>
+        <Switch>
+          <Transform DEF='Reset'
+              translation='6.74236 -3.02708 0'
+              scale='0.473103 0.473103 0.473103'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Box/>
+            </Shape>
+            <BooleanTrigger DEF='_26'/>
+            <BooleanToggle DEF='_27'/>
+            <BooleanFilter DEF='_28'/>
+            <TouchSensor USE='_25'/>
+          </Transform>
+        </Switch>
+      </Layer>
+    </LayerSet>
+    <Script DEF='EnterWorldScript'>
+      <field accessType='outputOnly' type='SFBool' name='entered'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	Browser .setBrowserOption ("Shading", "PHONG");
+
+	entered = true;
+}
+]]>
+    </Script>
+    <BooleanFilter DEF='_29'/>
+    <ROUTE fromNode='ViewpointPositionScript' fromField='position_changed' toNode='_12' toField='set_position'/>
+    <ROUTE fromNode='ViewpointPositionScript' fromField='orientation_changed' toNode='_12' toField='set_orientation'/>
+    <ROUTE fromNode='_27' fromField='toggle_changed' toNode='_28' toField='set_boolean'/>
+    <ROUTE fromNode='_25' fromField='touchTime' toNode='_26' toField='set_triggerTime'/>
+    <ROUTE fromNode='_26' fromField='triggerTrue' toNode='_27' toField='set_boolean'/>
+    <ROUTE fromNode='_22' fromField='isActive' toNode='_11' toField='set_bind'/>
+    <ROUTE fromNode='_13' fromField='generatedTime' toNode='ViewpointPositionScript' toField='set_triggerTime'/>
+    <ROUTE fromNode='_22' fromField='isActive' toNode='_12' toField='set_bind'/>
+    <ROUTE fromNode='EnterWorldScript' fromField='entered' toNode='_29' toField='set_boolean'/>
+    <ROUTE fromNode='_29' fromField='inputNegate' toNode='_27' toField='set_toggle'/>
+    <ROUTE fromNode='_22' fromField='isActive' toNode='Walk' toField='set_bind'/>
+    <ROUTE fromNode='_28' fromField='inputTrue' toNode='_9' toField='set_boolean'/>
+    <ROUTE fromNode='_28' fromField='inputFalse' toNode='_23' toField='set_boolean'/>
+    <ROUTE fromNode='_9' fromField='triggerTime' toNode='_13' toField='set_triggerTime'/>
+    <ROUTE fromNode='_22' fromField='isActive' toNode='_14' toField='set_enabled'/>
+    <ROUTE fromNode='_22' fromField='isActive' toNode='_15' toField='set_enabled'/>
+    <ROUTE fromNode='_16' fromField='enterTime' toNode='_21' toField='set_resetTime'/>
+    <ROUTE fromNode='_24' fromField='value_changed' toNode='_8' toField='set_order'/>
+    <ROUTE fromNode='_23' fromField='triggerTime' toNode='_24' toField='set_triggerTime'/>
+    <ROUTE fromNode='_10' fromField='value_changed' toNode='_8' toField='set_order'/>
+    <ROUTE fromNode='_9' fromField='triggerTime' toNode='_10' toField='set_triggerTime'/>
+  </Scene>
+</X3D>

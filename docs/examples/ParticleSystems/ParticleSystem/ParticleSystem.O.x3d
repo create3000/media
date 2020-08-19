@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='CubeMapTexturing' level='1'/>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Grouping' level='3'/>
+    <component name='ParticleSystems' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 15 May 2016 00:16:04 GMT'/>
+    <meta name='creator' content='holger'/>
+    <meta name='generator' content='Titania V4.0.2, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ParticleSystem/ParticleSystem.O.x3d'/>
+    <meta name='modified' content='Wed, 06 Dec 2017 16:23:00 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='FresnelShader' url='"assets/FresnelShader.x3d#FresnelShader"'>
+      <field accessType='inputOutput' type='SFFloat' name='refraction'/>
+      <field accessType='inputOutput' type='SFFloat' name='reflection'/>
+      <field accessType='inputOutput' type='SFNode' name='cubeMapTexture'/>
+    </ExternProtoDeclare>
+    <WorldInfo
+        title='Bubbles'/>
+    <NavigationInfo
+        headlight='false'/>
+    <TextureBackground DEF='LostValley'>
+      <ImageTexture DEF='_1' containerField='frontTexture'
+          url='"assets/LostValley/LostValley-front.jpg"'>
+        <TextureProperties DEF='_2'
+            minificationFilter='DEFAULT'
+            magnificationFilter='DEFAULT'
+            boundaryModeS='CLAMP_TO_EDGE'
+            boundaryModeT='CLAMP_TO_EDGE'
+            boundaryModeR='CLAMP_TO_EDGE'
+            textureCompression='DEFAULT'/>
+      </ImageTexture>
+      <ImageTexture DEF='_3' containerField='backTexture'
+          url='"assets/LostValley/LostValley-back.jpg"'>
+        <TextureProperties USE='_2'/>
+      </ImageTexture>
+      <ImageTexture DEF='_4' containerField='leftTexture'
+          url='"assets/LostValley/LostValley-left.jpg"'>
+        <TextureProperties USE='_2'/>
+      </ImageTexture>
+      <ImageTexture DEF='_5' containerField='rightTexture'
+          url='"assets/LostValley/LostValley-right.jpg"'>
+        <TextureProperties USE='_2'/>
+      </ImageTexture>
+      <ImageTexture DEF='_6' containerField='topTexture'
+          url='"assets/LostValley/LostValley-top.jpg"'>
+        <TextureProperties USE='_2'/>
+      </ImageTexture>
+      <ImageTexture DEF='_7' containerField='bottomTexture'
+          url='"assets/LostValley/LostValley-bottom.jpg"'>
+        <TextureProperties USE='_2'/>
+      </ImageTexture>
+    </TextureBackground>
+    <DirectionalLight
+        direction='-0.505161 -0.602832 -0.61758'/>
+    <Transform DEF='Viewpoint'
+        rotation='0 -1 0 3.15695106761078'>
+      <Group DEF='Animation'>
+        <TimeSensor DEF='AnimationTimer'
+            cycleInterval='24'
+            loop='true'/>
+        <OrientationInterpolator DEF='RotationInterpolator'
+            key='0, 0.25, 0.5, 0.75, 1'
+            keyValue='0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.14159253438051, 0 1 0 1.57079644600419, 0 0 1 0'/>
+      </Group>
+      <Viewpoint
+          description='Initial View'
+          position='0 0 19.212'/>
+    </Transform>
+    <ParticleSystem DEF='SoapBubbles'
+        geometryType='GEOMETRY'
+        maxParticles='100'
+        lifetimeVariation='0.8'
+        particleSize='1 1'
+        bboxSize='30 30 30'>
+      <PointEmitter
+          direction='0 0 0'
+          speed='2'
+          variation='0.5'
+          mass='0.1'
+          surfaceArea='0.1'/>
+      <WindPhysicsModel
+          speed='1'
+          gustiness='1.5'/>
+      <Appearance>
+        <TwoSidedMaterial
+            separateBackColor='true'
+            specularColor='0 0.192168 0.357'
+            shininess='0.073718'
+            transparency='0.291667'
+            backSpecularColor='0.44 0.115049 0.334728'
+            backShininess='0.0541516'
+            backTransparency='0.270758'/>
+        <ProtoInstance name='FresnelShader' containerField='shaders'>
+          <fieldValue name='cubeMapTexture'>
+            <ComposedCubeMapTexture containerField='cubeMapTexture'>
+              <ImageTexture USE='_1' containerField='front'/>
+              <ImageTexture USE='_3' containerField='back'/>
+              <ImageTexture USE='_4' containerField='left'/>
+              <ImageTexture USE='_5' containerField='right'/>
+              <ImageTexture USE='_6' containerField='top'/>
+              <ImageTexture USE='_7' containerField='bottom'/>
+            </ComposedCubeMapTexture>
+          </fieldValue>
+        </ProtoInstance>
+      </Appearance>
+      <Sphere
+          solid='false'/>
+    </ParticleSystem>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='Viewpoint' toField='set_rotation'/>
+  </Scene>
+</X3D>

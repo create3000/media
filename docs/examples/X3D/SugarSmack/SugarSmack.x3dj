@@ -1,0 +1,2727 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Wed, 27 Sep 2017 11:50:59 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.4.4, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SugarSmack/SugarSmack.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Wed, 27 Mar 2019 07:59:33 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 3
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"MFInt32",
+            "field": [
+              {
+                "@accessType": "inputOnly",
+                "@type": "SFTime",
+                "@name": "set_triggerTime"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "keyValue"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFInt32",
+                "@name": "value_changed"
+              }
+            ],
+            "@url": [ "MFInt32.x3d#MFInt32" ]
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"Maze",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOnly",
+                  "@type": "SFTime",
+                  "@name": "set_triggerTime"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "width",
+                  "@value": 11
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "height",
+                  "@value": 11
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "complexity",
+                  "@value": 0.75
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "density",
+                  "@value": 0.75
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "MFInt32",
+                  "@name": "matrix"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFTime",
+                  "@name": "generatedTime"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Script":
+                  {
+                    "@DEF": "MazeScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_triggerTime"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "width"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "height"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "complexity"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "density"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFInt32",
+                        "@name": "matrix"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFTime",
+                        "@name": "generatedTime"
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function set_triggerTime (value, time)",
+"{",
+"\tgenerateMaze (complexity, density);",
+"",
+"\tgeneratedTime = time;",
+"}",
+"",
+"function generateMaze (complexity, density)",
+"{",
+"   // Only odd shapes",
+"",
+"\tif (width  % 2 == 0) ++ width;",
+"\tif (height % 2 == 0) ++ height;",
+"",
+"\t// Adjust complexity and density relative to maze size",
+"",
+"\tcomplexity = Math .floor (complexity * 5 * (width + height));",
+"\tdensity    = Math .floor (density * Math .floor (width / 2) * Math .floor (height / 2));",
+"",
+"\t// Build actual maze",
+"",
+"\tmatrix .length = width * height;",
+"",
+"\tfor (var i = 0; i < matrix .length; ++ i)",
+"\t\tmatrix [i] = 0;",
+"",
+"\t// Fill borders",
+"",
+"\tfor (var x = 0; x < width; ++ x)",
+"\t{",
+"\t\tmatrix [getIndex (x, 0)]          = 1;",
+"\t\tmatrix [getIndex (x, height - 1)] = 1;",
+"\t}",
+"",
+"\tfor (var y = 0; y < height; ++ y)",
+"\t{",
+"\t\tmatrix [getIndex (0, y)]         = 1;",
+"\t\tmatrix [getIndex (width - 1, y)] = 1;",
+"\t}",
+"\t",
+"\t// Make aisles",
+"",
+"\tfor (var i = 0; i < density; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\tx = Math .round (random (0, Math .floor (width  / 2))) * 2,",
+"\t\t\ty = Math .round (random (0, Math .floor (height / 2))) * 2;",
+"",
+"\t\tmatrix [getIndex (x, y)] = 1;",
+"",
+"\t\tfor (var j = 0; j < complexity; ++ j)",
+"\t\t{",
+"\t\t\tvar neighbours = [ ];",
+"",
+"\t\t\tif (x > 1)          neighbours .push ([x - 2, y]);",
+"\t\t\tif (x < width - 2)  neighbours .push ([x + 2, y]);",
+"\t\t\tif (y > 1)          neighbours .push ([x, y - 2]);",
+"\t\t\tif (y < height - 2) neighbours .push ([x, y + 2]);",
+"\t\t\t",
+"\t\t\tif (neighbours .length)",
+"\t\t\t{",
+"\t\t\t\tvar neighbour = neighbours [Math .round (random (0, neighbours .length - 1))];",
+"\t\t\t\t",
+"\t\t\t\tvar",
+"\t\t\t\t\tx_ = neighbour [0],",
+"\t\t\t\t\ty_ = neighbour [1];",
+"\t\t\t\t",
+"\t\t\t\tif (matrix [getIndex (x_, y_)] == 0)",
+"\t\t\t\t{",
+"\t\t\t\t\tmatrix [getIndex (x_, y_)] = 1;",
+"\t\t\t\t\tmatrix [getIndex (x_ + Math .floor ((x - x_) / 2), y_ + Math .floor ((y - y_) / 2))] = 1;",
+"\t\t\t\t\t",
+"\t\t\t\t\tx = x_;",
+"\t\t\t\t\ty = y_;",
+"\t\t\t\t}",
+"\t\t\t}",
+"\t\t}",
+"\t}",
+"}",
+"",
+"function getIndex (x, y)",
+"{",
+"\treturn width * y + x;",
+"}",
+"",
+"function random (min, max)",
+"{",
+"\treturn Math .random () * (max - min) + min;",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "set_triggerTime",
+                          "@protoField": "set_triggerTime"
+                        },
+                        {
+                          "@nodeField": "width",
+                          "@protoField": "width"
+                        },
+                        {
+                          "@nodeField": "height",
+                          "@protoField": "height"
+                        },
+                        {
+                          "@nodeField": "complexity",
+                          "@protoField": "complexity"
+                        },
+                        {
+                          "@nodeField": "density",
+                          "@protoField": "density"
+                        },
+                        {
+                          "@nodeField": "matrix",
+                          "@protoField": "matrix"
+                        },
+                        {
+                          "@nodeField": "generatedTime",
+                          "@protoField": "generatedTime"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"MazeGeometry",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFInt32",
+                  "@name": "type",
+                  "@value": [ 1 ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "rotate",
+                  "@value": true
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFVec3f",
+                  "@name": "mazeElementSize",
+                  "@value": [ 2, 2, 2 ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFString",
+                  "@name": "mazeElementUrl"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "maze"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Inline":
+                  {
+                    "@DEF": "_1",
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "url",
+                          "@protoField": "mazeElementUrl"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "LoadSensor":
+                  {
+                    "@DEF": "_2",
+                    "-watchList": [
+                      { "Inline":
+                        {
+                          "@USE": "_1"
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "MazeGeometryScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_loadTime"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_triggerTime"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFInt32",
+                        "@name": "type"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFBool",
+                        "@name": "rotate"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFVec3f",
+                        "@name": "mazeElementSize"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "inlineNode",
+                        "-children": [
+                          { "Inline":
+                            {
+                              "@USE": "_1"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFNode",
+                        "@name": "maze"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "elementProxy"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "elementShape"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "proxy",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-geometry": { "IndexedFaceSet":
+                                {
+                                  "-coord": { "Coordinate":
+                                    {
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "shape",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@ambientIntensity": 0.553957,
+                                      "@specularColor": [ 0.922, 0.922, 0.922 ],
+                                      "@shininess": 0.923547
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "IndexedFaceSet":
+                                {
+                                  "-coord": { "Coordinate":
+                                    {
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "self",
+                        "-children": [
+                          { "Script":
+                            {
+                              "@USE": "MazeGeometryScript"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"\t",
+"var route;",
+"",
+"function initialize ()",
+"{",
+"\tset_maze (maze, 0);",
+"}",
+"",
+"function set_loadTime ()",
+"{",
+"\tvar collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");",
+"\t",
+"\tif (elementProxy || elementShape)",
+"\t\treturn;",
+"\t",
+"\telementProxy = collisionNode .proxy;",
+"\telementShape = collisionNode .children [0];",
+"\t",
+"\tcollisionNode .proxy        = proxy;",
+"\tcollisionNode .children [0] = shape;",
+"}",
+"",
+"function set_maze (value, time)",
+"{",
+"\tif (route)",
+"\t\tBrowser .currentScene .deleteRoute (route);",
+"",
+"\tif (maze)",
+"\t\troute = Browser .currentScene .addRoute (maze, \"generatedTime\", self, \"set_triggerTime\");",
+"}",
+"",
+"function set_triggerTime (value, time)",
+"{",
+"\tif (maze .matrix .length == 0)",
+"\t\treturn;",
+"",
+"\tgenerateGeometry (elementProxy, proxy);",
+"\tgenerateGeometry (elementShape, shape);",
+"}",
+"",
+"function generateGeometry (elementShape, shape)",
+"{",
+"\tvar",
+"\t\telementWidth    = mazeElementSize .x,",
+"\t\telementDepth    = mazeElementSize .z,",
+"\t\telementGeometry = elementShape .geometry,",
+"\t\telementCoord    = elementGeometry .coord,",
+"\t\tgeometry        = shape .geometry,",
+"\t\tcoord           = geometry .coord,",
+"\t\toffset          = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);",
+"",
+"\tshape .appearance = elementShape .appearance;",
+"",
+"\tgeometry .solid           = elementGeometry .solid;",
+"\tgeometry .ccw             = elementGeometry .ccw;",
+"\tgeometry .convex          = elementGeometry .convex;",
+"\tgeometry .creaseAngle     = elementGeometry .creaseAngle;",
+"\tgeometry .colorPerVertex  = elementGeometry .colorPerVertex;",
+"\tgeometry .normalPerVertex = elementGeometry .normalPerVertex;",
+"\tgeometry .color           = elementGeometry .color;",
+"",
+"\tvar",
+"\t\tcolorIndex = new MFInt32 (),",
+"\t\tcoordIndex = new MFInt32 ();",
+"",
+"\tcoord .point .length = 0;",
+"",
+"\tfor (var y = 0; y < maze .height; ++ y)",
+"\t{",
+"\t\tfor (var x = 0; x < maze .width; ++ x)",
+"\t\t{",
+"\t\t\tif (isType (maze .matrix [getIndex (x, y)]))",
+"\t\t\t{",
+"\t\t\t\tvar rotations = rotate ? getRotations (x, y) : [ false ];",
+"",
+"\t\t\t\tfor (var r = 0; r < rotations .length; ++ r)",
+"\t\t\t\t{",
+"\t\t\t\t\tvar rotation = rotations [r];",
+"\t\t\t\t",
+"\t\t\t\t\tfor (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)",
+"\t\t\t\t\t\tcolorIndex .push (elementGeometry .colorIndex [i]);",
+"\t\t\t\t",
+"\t\t\t\t\tvar numPoints = coord .point .length;",
+"\t\t\t\t",
+"\t\t\t\t\tfor (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)",
+"\t\t\t\t\t{",
+"\t\t\t\t\t\tvar index = elementGeometry .coordIndex [i];",
+"\t\t\t\t\t",
+"\t\t\t\t\t\tif (index < 0)",
+"\t\t\t\t\t\t\tcoordIndex .push (-1);",
+"\t\t\t\t\t\telse",
+"\t\t\t\t\t\t\tcoordIndex .push (numPoints + index);",
+"\t\t\t\t\t}",
+"",
+"\t\t\t\t\tfor (var i = 0, length = elementCoord .point .length; i < length; ++ i)",
+"\t\t\t\t\t{",
+"\t\t\t\t\t\tvar point = elementCoord .point [i];",
+"\t\t\t\t\t",
+"\t\t\t\t\t\tif (rotate)",
+"\t\t\t\t\t\t\tpoint = rotation .multVec (point);",
+"",
+"\t\t\t\t\t\tpoint = point .add (new SFVec3f (x * elementWidth, 0, y * elementDepth));",
+"\t\t\t\t\t\tpoint = point .subtract (offset);",
+"",
+"\t\t\t\t\t\tcoord .point .push (point);",
+"\t\t\t\t\t}",
+"\t\t\t\t}",
+"\t\t\t}",
+"\t\t}",
+"\t}",
+"\t",
+"\tgeometry .colorIndex = colorIndex;",
+"\tgeometry .coordIndex = coordIndex;",
+"}",
+"",
+"function isType (value)",
+"{",
+"\tfor (var i = 0; i < type .length; ++ i)",
+"\t{",
+"\t\tif (type [i] == value)",
+"\t\t\treturn true;",
+"\t}",
+"",
+"\treturn false;",
+"}",
+"",
+"function getRotations (x, y)",
+"{",
+"\tvar",
+"\t\trotations  = [ ],",
+"\t\thorizontal = false,",
+"\t\tvertical   = false;",
+"",
+"\tif (x > 0)                horizontal |= maze .matrix [getIndex (x - 1, y)];",
+"\tif (x < maze .width - 1)  horizontal |= maze .matrix [getIndex (x + 1, y)];",
+"\tif (y > 0)                vertical   |= maze .matrix [getIndex (x, y - 1)];",
+"\tif (y < maze .height - 1) vertical   |= maze .matrix [getIndex (x, y + 1)];",
+"",
+"\tif (! (horizontal || vertical))",
+"\t{",
+"\t\thorizontal = true;",
+"\t\tvertical   = true;",
+"\t}",
+"",
+"\tif (horizontal)",
+"\t\trotations .push (new SFRotation (0, 1, 0, Math .PI / 2));",
+"",
+"\tif (vertical)",
+"\t\trotations .push (new SFRotation (0, 0, 1, 0));",
+"",
+"\treturn rotations;",
+"}",
+"",
+"function getIndex (x, y)",
+"{",
+"\treturn maze .width * y + x;",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "type",
+                          "@protoField": "type"
+                        },
+                        {
+                          "@nodeField": "rotate",
+                          "@protoField": "rotate"
+                        },
+                        {
+                          "@nodeField": "mazeElementSize",
+                          "@protoField": "mazeElementSize"
+                        },
+                        {
+                          "@nodeField": "maze",
+                          "@protoField": "maze"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "IMPORT":
+                  {
+                    "@inlineDEF": "_1",
+                    "@importedDEF": "MazeElement"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "loadTime",
+                    "@toNode": "MazeGeometryScript",
+                    "@toField": "set_loadTime"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"Globe",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFBool",
+                  "@name": "enabled"
+                },
+                {
+                  "@accessType": "inputOnly",
+                  "@type": "SFTime",
+                  "@name": "set_turnTime"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "cycleInterval"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFFloat",
+                  "@name": "radius",
+                  "@value": 1
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFVec3f",
+                  "@name": "mazeElementSize",
+                  "@value": [ 2, 2, 2 ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "startTime"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "stopTime"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFTime",
+                  "@name": "cycleTime"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFInt32",
+                  "@name": "direction_changed"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "MFInt32",
+                  "@name": "position_changed"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFVec3f",
+                  "@name": "translation_changed"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFRotation",
+                  "@name": "rotation_changed"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "maze"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFNode",
+                  "@name": "translationChildren"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFNode",
+                  "@name": "children"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Collision":
+                  {
+                    "@DEF": "Shape",
+                    "@enabled": false,
+                    "-children": [
+                      { "Transform":
+                        {
+                          "@DEF": "_3",
+                          "@translation": [ -8, 2, 4 ],
+                          "@rotation": [ -0.284180511188001, -0.790532371841786, 0.542494245251621, 185.949206667814 ],
+                          "IS": {
+                            "connect": [
+                              {
+                                "@nodeField": "translation",
+                                "@protoField": "translation_changed"
+                              },
+                              {
+                                "@nodeField": "rotation",
+                                "@protoField": "rotation_changed"
+                              },
+                              {
+                                "@nodeField": "children",
+                                "@protoField": "children"
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      { "Group":
+                        {
+                          "IS": {
+                            "connect": [
+                              {
+                                "@nodeField": "children",
+                                "@protoField": "translationChildren"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "GlobeScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFTime",
+                        "@name": "cycleInterval"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_triggerTime"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_turnTime"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_cycleTime"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFFloat",
+                        "@name": "radius"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFVec3f",
+                        "@name": "mazeElementSize"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFInt32",
+                        "@name": "direction_changed"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "MFInt32",
+                        "@name": "position_changed"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFNode",
+                        "@name": "maze"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "transform",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@USE": "_3"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "timeSensor",
+                        "-children": [
+                          { "TimeSensor":
+                            {
+                              "@DEF": "_4",
+                              "@cycleInterval": 0,
+                              "@loop": true,
+                              "IS": {
+                                "connect": [
+                                  {
+                                    "@nodeField": "enabled",
+                                    "@protoField": "enabled"
+                                  },
+                                  {
+                                    "@nodeField": "startTime",
+                                    "@protoField": "startTime"
+                                  },
+                                  {
+                                    "@nodeField": "stopTime",
+                                    "@protoField": "stopTime"
+                                  },
+                                  {
+                                    "@nodeField": "cycleTime",
+                                    "@protoField": "cycleTime"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "positionInterpolator",
+                        "-children": [
+                          { "PositionInterpolator":
+                            {
+                              "@DEF": "_5",
+                              "@key": [ 0, 1 ],
+                              "@keyValue": [ -8, 2, 4, -4, 2, 4 ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "orientationInterpolator",
+                        "-children": [
+                          { "OrientationInterpolator":
+                            {
+                              "@DEF": "_6",
+                              "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                              "@keyValue": [ -0.284180511188001, -0.790532371841786, 0.542494245251621, 185.949206667814, 0.471950584965486, 0.697161480359967, -0.539655923392892, 189.608794592081, 0.64245736891161, 0.569991777568564, -0.512208846697712, 204.736550266607, 0.790426756107843, 0.407195559520415, -0.457621371371233, 218.697477248719, 0.904626025961796, 0.207714310453148, -0.372164638816668, 230.661122157893 ]
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "self",
+                        "-children": [
+                          { "Script":
+                            {
+                              "@USE": "GlobeScript"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\tANY   = -1,",
+"\tWEST  = 0,",
+"\tEAST  = 1,",
+"\tSOUTH = 2,",
+"\tNORTH = 3;",
+"",
+"var route;",
+"",
+"var opposites = [\t1, 0, 3, 2 ];",
+"",
+"var",
+"\tturnTime     = 0,",
+"\tturnInterval = 0;",
+"",
+"function initialize ()",
+"{",
+"\tset_maze (maze, 0);",
+"}",
+"",
+"function set_maze (value, time)",
+"{",
+"\tif (route)",
+"\t\tBrowser .currentScene .deleteRoute (route);",
+"",
+"\tif (maze)",
+"\t{",
+"\t\troute = Browser .currentScene .addRoute (maze, \"generatedTime\", self, \"set_triggerTime\");",
+"\t",
+"\t\tset_triggerTime (time, time);\t",
+"\t}",
+"}",
+"",
+"function set_triggerTime (value, time)",
+"{",
+"\tif (maze .matrix .length == 0)",
+"\t\treturn;",
+"",
+"\tvar x, y;",
+"",
+"\tdo",
+"\t{",
+"\t\tx = Math .floor (Math .random () * maze .width);",
+"\t\ty = Math .floor (Math .random () * maze .height);",
+"\t}",
+"\twhile (maze .matrix [getIndex (x, y)] != 0);",
+"",
+"\tdirection_changed        = ANY;",
+"\tposition_changed [0]     = x;",
+"\tposition_changed [1]     = y;",
+"\tposition_changed [2]     = x;",
+"\tposition_changed [3]     = y;",
+"",
+"\ttransform .translation = getTranslation (x ,y);",
+"\ttransform .rotation    = new SFRotation ();",
+"\t\t\t\t\t\t",
+"\ttimeSensor .cycleInterval         = cycleInterval;",
+"\tpositionInterpolator    .key      = new MFFloat (0, 1);",
+"\torientationInterpolator .key      = new MFFloat (0, 1);",
+"\tpositionInterpolator    .keyValue = new MFVec3f (transform .translation, transform .translation);",
+"\torientationInterpolator .keyValue = new MFRotation (transform .rotation, transform .rotation);",
+"}",
+"",
+"function set_turnTime (value, time)",
+"{",
+"\tif (! maze)",
+"\t\treturn;",
+"",
+"\tif (maze .matrix .length == 0)",
+"\t\treturn;",
+"",
+"\tif (time - turnTime < turnInterval)",
+"\t\treturn;",
+"",
+"\tturnTime = time;",
+"",
+"\tvar",
+"\t\tx  = position_changed [0],",
+"\t\ty  = position_changed [1],",
+"\t\tfc = timeSensor .fraction_changed * cycleInterval;",
+"\t",
+"\tdirection_changed = opposites [direction_changed];",
+"",
+"\tposition_changed [0] = position_changed [2];",
+"\tposition_changed [1] = position_changed [3];",
+"\tposition_changed [2] = x;",
+"\tposition_changed [3] = y;",
+"",
+"\tif (timeSensor .fraction_changed >= 1)",
+"\t\ttimeSensor .cycleInterval = cycleInterval;",
+"\telse",
+"\t\ttimeSensor .cycleInterval = fc / (cycleInterval - fc) * cycleInterval;",
+"\t",
+"\tmirrorInterpolator (timeSensor .fraction_changed, positionInterpolator);",
+"\tmirrorInterpolator (timeSensor .fraction_changed, orientationInterpolator);",
+"",
+"\tturnInterval = timeSensor .cycleInterval * (1 - timeSensor .fraction_changed);",
+"}",
+"",
+"function mirrorInterpolator (f, interpolator)",
+"{",
+"\tfor (var i = 0; i < interpolator .key .length; ++ i)",
+"\t{",
+"\t\tif (interpolator .key [i] >= f)",
+"\t\t\tbreak;",
+"\t}",
+"\t",
+"\tvar k = i + 1;",
+"\t",
+"\tinterpolator .key [i]      = f;",
+"\tinterpolator .keyValue [i] = interpolator .value_changed;",
+"",
+"\tif (i)",
+"\t{\t",
+"\t\tfor (-- i; i >= 0; -- i, ++ k)",
+"\t\t{",
+"\t\t\tinterpolator .key [k]      = f + (1 - interpolator .key [i] / f) * (1 - f);",
+"\t\t\tinterpolator .keyValue [k] = interpolator .keyValue [i];",
+"\t\t}",
+"\t}",
+"",
+"\tinterpolator .key      .length = k;",
+"\tinterpolator .keyValue .length = k;",
+"}",
+"",
+"function set_cycleTime (value, time)",
+"{",
+"\tif (! maze)",
+"\t\treturn;",
+"",
+"\tif (maze .matrix .length == 0)",
+"\t\treturn;",
+"",
+"\t// Determine new position.",
+"",
+"\tvar positions = getPositions (position_changed [2], position_changed [3], direction_changed);",
+"\t\t",
+"\tif (positions .length == 0)",
+"\t\tpositions = getPositions (position_changed [2], position_changed [3], ANY);",
+"\t",
+"\tvar index = Math .floor (Math .random () * positions .length);",
+"",
+"\tdirection_changed = positions [index] [2];",
+"",
+"\tposition_changed [0] = position_changed [2];",
+"\tposition_changed [1] = position_changed [3];",
+"\tposition_changed [2] = positions [index] [0];",
+"\tposition_changed [3] = positions [index] [1];",
+"",
+"\t// Setup interpolators.",
+"",
+"\tvar",
+"\t\tstartTranslation = positionInterpolator .value_changed,",
+"\t\tstopTranslation  = getTranslation (position_changed [2], position_changed [3]),",
+"\t\tstartRotation    = orientationInterpolator .value_changed,",
+"\t\trotations        = getRotations (startTranslation, stopTranslation);",
+"",
+"\ttimeSensor .cycleInterval = cycleInterval;",
+"",
+"\tpositionInterpolator .key [0]     = 0;",
+"\tpositionInterpolator .key [1]     = 1;",
+"\tpositionInterpolator .key .length = 2;",
+"",
+"\tpositionInterpolator .keyValue [0]     = startTranslation;",
+"\tpositionInterpolator .keyValue [1]     = stopTranslation;",
+"\tpositionInterpolator .keyValue .length = 2;",
+"",
+"\tfor (var i = 0; i < rotations .length; ++ i)",
+"\t{",
+"\t\torientationInterpolator .key [i]      = i / (rotations .length - 1);",
+"\t\torientationInterpolator .keyValue [i] = startRotation .multiply (rotations [i]);",
+"\t}",
+"",
+"\torientationInterpolator .key      .length = rotations .length;",
+"\torientationInterpolator .keyValue .length = rotations .length;",
+"}",
+"",
+"function getTranslation (x ,y)",
+"{",
+"\tvar offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2,",
+"\t                          0,",
+"\t                          (maze .height - 1) * mazeElementSize .z / 2);",
+"",
+"\tvar translation = new SFVec3f (x * mazeElementSize .x, radius, y * mazeElementSize .z);",
+"",
+"\treturn translation .subtract (offset);",
+"}",
+"",
+"function getRotations (startTranslation, stopTranslation)",
+"{",
+"\tvar",
+"\t\trotations   = new MFRotation (),",
+"\t\tdirection   = stopTranslation .subtract (startTranslation),",
+"\t\taxis        = direction .cross (new SFVec3f (0, 1, 0)),",
+"\t\tlength      = direction .length (),",
+"\t\trevolutions = length / (2 * Math .PI * radius),",
+"\t\tnumKeys     = Math .ceil (revolutions) * 4;",
+"",
+"\tfor (var i = 0; i <= numKeys; ++ i)",
+"\t\trotations .push (new SFRotation (axis, -i / numKeys * revolutions * 2 * Math .PI));",
+"",
+"\treturn rotations;",
+"}",
+"",
+"function getPositions (x, y, direction)",
+"{",
+"\tvar positions = [ ];",
+"",
+"\tif (direction != EAST)",
+"\t\tif (x > 0)",
+"\t\t\tif (maze .matrix [getIndex (x - 1, y)] == 0)",
+"\t\t\t\tpositions .push ([x - 1, y, WEST]);",
+"",
+"\tif (direction != WEST)",
+"\t\tif (x < maze .width - 1)",
+"\t\t\tif (maze .matrix [getIndex (x + 1, y)] == 0)",
+"\t\t\t\tpositions .push ([x + 1, y, EAST]);",
+"",
+"\tif (direction != NORTH)",
+"\t\tif (y > 0)",
+"\t\t\tif (maze .matrix [getIndex (x, y - 1)] == 0)",
+"\t\t\t\tpositions .push ([x, y - 1, SOUTH]);",
+"",
+"\tif (direction != SOUTH)",
+"\t\tif (y < maze .height - 1)",
+"\t\t\tif (maze .matrix [getIndex (x, y + 1)] == 0)",
+"\t\t\t\tpositions .push ([x, y + 1, NORTH]);",
+"",
+"\treturn positions;",
+"}",
+"",
+"function getIndex (x, y)",
+"{",
+"\treturn maze .width * y + x;",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "cycleInterval",
+                          "@protoField": "cycleInterval"
+                        },
+                        {
+                          "@nodeField": "set_turnTime",
+                          "@protoField": "set_turnTime"
+                        },
+                        {
+                          "@nodeField": "radius",
+                          "@protoField": "radius"
+                        },
+                        {
+                          "@nodeField": "mazeElementSize",
+                          "@protoField": "mazeElementSize"
+                        },
+                        {
+                          "@nodeField": "direction_changed",
+                          "@protoField": "direction_changed"
+                        },
+                        {
+                          "@nodeField": "position_changed",
+                          "@protoField": "position_changed"
+                        },
+                        {
+                          "@nodeField": "maze",
+                          "@protoField": "maze"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_4",
+                    "@fromField": "fraction_changed",
+                    "@toNode": "_6",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_4",
+                    "@fromField": "fraction_changed",
+                    "@toNode": "_5",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_4",
+                    "@fromField": "cycleTime",
+                    "@toNode": "GlobeScript",
+                    "@toField": "set_cycleTime"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_6",
+                    "@fromField": "value_changed",
+                    "@toNode": "_3",
+                    "@toField": "rotation"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_5",
+                    "@fromField": "value_changed",
+                    "@toNode": "_3",
+                    "@toField": "translation"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"MazeCollisionManager",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFNode",
+                  "@name": "collidables"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Script":
+                  {
+                    "@DEF": "MazeCollisionManagerScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "MFInt32",
+                        "@name": "set_position"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFVec3f",
+                        "@name": "set_translation"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFNode",
+                        "@name": "collidables"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "self",
+                        "-children": [
+                          { "Script":
+                            {
+                              "@USE": "MazeCollisionManagerScript"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"var",
+"\troutes      = [ ],",
+"\tconnections = [ ],",
+"\tmap         = { };",
+"",
+"function initialize ()",
+"{",
+"\tset_collidables (collidables, 0);",
+"}",
+"",
+"function set_position (value, time)",
+"{",
+"\tvar currentScene = Browser .currentScene;",
+"",
+"\tfor (var i = 0; i < connections .length; ++ i)",
+"\t{",
+"\t\tcurrentScene .deleteRoute (connections [i]);",
+"\t}",
+"",
+"\tmap = { };",
+"\t",
+"\tfor (var i = 0; i < collidables .length; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\tcollidable = collidables [i],",
+"\t\t\tposition   = collidable .position_changed;",
+"\t\t",
+"\t\tfor (var p = 0; p < position .length; p += 2)",
+"\t\t{",
+"\t\t\tvar",
+"\t\t\t\tx = position [p + 0],",
+"\t\t\t\ty = position [p + 1],",
+"\t\t\t\tk = x + \":\" + y,",
+"\t\t\t\tm = map [k];",
+"\t\t\t",
+"\t\t\tif (! m)",
+"\t\t\t\tm = map [k] = [ ];",
+"\t\t\t",
+"\t\t\tm .push (collidable);",
+"\t\t}",
+"\t}",
+"\t",
+"\tfor (var k in map)",
+"\t{",
+"\t\tvar m = map [k];",
+"\t\t",
+"\t\tif (m .length < 2)",
+"\t\t{",
+"\t\t\tdelete map [k];",
+"\t\t\tcontinue;",
+"\t\t}",
+"",
+"\t\tconnections .push (currentScene .addRoute (m [0], \"translation_changed\", self, \"set_translation\"));",
+"\t}",
+"}",
+"",
+"function set_translation (value, time)",
+"{",
+"\tfor (var k in map)",
+"\t{",
+"\t\tvar m = map [k];",
+"",
+"\t\tfor (var c1 = 0; c1 < m .length; ++ c1)",
+"\t\t{",
+"\t\t\tvar collidable1 = m [c1];",
+"\t\t",
+"\t\t\tfor (var c2 = 0; c2 < m .length; ++ c2)",
+"\t\t\t{",
+"\t\t\t\tvar collidable2 = m [c2];",
+"\t\t",
+"\t\t\t\tif (collidable1 === collidable2)",
+"\t\t\t\t\tcontinue;",
+"",
+"\t\t\t\tvar",
+"\t\t\t\t\tr = collidable1 .radius + collidable2 .radius,",
+"\t\t\t\t\tl = collidable1 .translation_changed .subtract (collidable2 .translation_changed) .length ();",
+"",
+"\t\t\t\tif (l < r)",
+"\t\t\t\t{",
+"\t\t\t\t\tif (collidable1 .direction_changed == collidable2 .direction_changed)",
+"\t\t\t\t\t{",
+"\t\t\t\t\t\tif (collidable1 .cycleInterval < collidable2 .cycleInterval)",
+"\t\t\t\t\t\t\tcollidable1 .set_turnTime = time; ",
+"\t\t\t\t\t}",
+"\t\t\t\t\telse",
+"\t\t\t\t\t{",
+"\t\t\t\t\t\tcollidable1 .set_turnTime = time;",
+"\t\t\t\t\t}",
+"\t\t\t\t}",
+"\t\t\t}",
+"\t\t}",
+"\t}",
+"}",
+"",
+"function set_collidables (value, time)",
+"{",
+"\tvar currentScene = Browser .currentScene;",
+"",
+"\tfor (var i = 0; i < routes .length; ++ i)",
+"\t{",
+"\t\tcurrentScene .deleteRoute (routes [i]);",
+"\t}",
+"",
+"\troutes .length = 0;",
+"",
+"\tfor (var i = 0; i < collidables .length; ++ i)",
+"\t{",
+"\t\troutes .push (currentScene .addRoute (collidables [i], \"position_changed\", self, \"set_position\"));",
+"\t}",
+"}",
+"",
+"function eventsProcessed ()",
+"{",
+"\t",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "collidables",
+                          "@protoField": "collidables"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"BonusMap",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFFloat",
+                  "@name": "density",
+                  "@value": [ 1 ]
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFVec3f",
+                  "@name": "mazeElementSize"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFInt32",
+                  "@name": "item_changed"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFTime",
+                  "@name": "enterTime"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "maze"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFNode",
+                  "@name": "items"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Collision":
+                  {
+                    "@DEF": "Group_7",
+                    "@enabled": false
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "BonusMapScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_triggerTime"
+                      },
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFTime",
+                        "@name": "set_enterTime"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFFloat",
+                        "@name": "density"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFVec3f",
+                        "@name": "mazeElementSize"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFInt32",
+                        "@name": "item_changed"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFTime",
+                        "@name": "enterTime"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFNode",
+                        "@name": "maze"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFNode",
+                        "@name": "items"
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "group",
+                        "-children": [
+                          { "Collision":
+                            {
+                              "@USE": "Group_7"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "self",
+                        "-children": [
+                          { "Script":
+                            {
+                              "@USE": "BonusMapScript"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"var route;",
+"",
+"function initialize ()",
+"{",
+"\tset_maze (maze, 0);",
+"}",
+"",
+"function set_triggerTime (value, time)",
+"{",
+"\tif (! maze)",
+"\t\treturn;",
+"",
+"\tgroup .children .length = 0;",
+"",
+"\tfor (var y = 0; y < maze .height; ++ y)",
+"\t{",
+"\t\tfor (var x = 0; x < maze .width; ++ x)",
+"\t\t{",
+"\t\t\tif (maze .matrix [getIndex (x, y)])",
+"\t\t\t\tcontinue;",
+"\t",
+"\t\t\tfor (var d = 0; d < density .length; ++ d)",
+"\t\t\t{",
+"\t\t\t\tif (Math .random () < density [d])",
+"\t\t\t\t\tbreak;",
+"\t\t\t}",
+"",
+"\t\t\tif (d >= items .length)",
+"\t\t\t\tcontinue;",
+"",
+"\t\t\tgroup .children .push (getNode (d, x, y));",
+"\t\t}",
+"\t}",
+"}",
+"",
+"function set_enterTime (value, time)",
+"{",
+"\tenterTime = time;",
+"",
+"\tfor (var i = 0; i < group .children .length; ++ i)",
+"\t{",
+"\t\tvar",
+"\t\t\ttransform       = group .children [i],",
+"\t\t\tlod             = transform .children [0],",
+"\t\t\tvisiblitySensor = lod .children [0];",
+"\t",
+"\t\tif (visiblitySensor .enterTime == value)",
+"\t\t{",
+"\t\t\tgroup .removeChildren = new MFNode (transform);",
+"\t\t\tbreak;",
+"\t\t}",
+"\t}",
+"}",
+"",
+"function set_maze (value, time)",
+"{",
+"\tif (route)",
+"\t\tBrowser .currentScene .deleteRoute (route);",
+"",
+"\tif (maze)",
+"\t\troute = Browser .currentScene .addRoute (maze, \"generatedTime\", self, \"set_triggerTime\");",
+"}",
+"",
+"function getNode (b, x, y)",
+"{",
+"\tvar",
+"\t\tcurrentScene    = Browser .currentScene,",
+"\t\tlod             = currentScene .createNode (\"LOD\"),",
+"\t\ttransform       = currentScene .createNode (\"Transform\"),",
+"\t\tvisiblitySensor = currentScene .createNode (\"VisibilitySensor\");",
+"\t",
+"\tBrowser .currentScene .addRoute (visiblitySensor, \"enterTime\", self, \"set_enterTime\");",
+"\t",
+"\tlod .range .push (1);",
+"\tlod .children .push (visiblitySensor);",
+"\tlod .children .push (items [b]);",
+"\t",
+"\tvisiblitySensor .size  = new SFVec3f (1, 1, 1);",
+"\ttransform .translation = getTranslation (x, y);",
+"\ttransform .children .push (lod);",
+"\t",
+"\treturn transform;",
+"}",
+"",
+"function getTranslation (x ,y)",
+"{",
+"\tvar offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2,",
+"\t                          0,",
+"\t                          (maze .height - 1) * mazeElementSize .z / 2);",
+"",
+"\tvar translation = new SFVec3f (x * mazeElementSize .x, 1.2, y * mazeElementSize .z);",
+"",
+"\treturn translation .subtract (offset);",
+"}",
+"",
+"function getIndex (x, y)",
+"{",
+"\treturn maze .width * y + x;",
+"}",
+""
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "density",
+                          "@protoField": "density"
+                        },
+                        {
+                          "@nodeField": "mazeElementSize",
+                          "@protoField": "mazeElementSize"
+                        },
+                        {
+                          "@nodeField": "item_changed",
+                          "@protoField": "item_changed"
+                        },
+                        {
+                          "@nodeField": "enterTime",
+                          "@protoField": "enterTime"
+                        },
+                        {
+                          "@nodeField": "maze",
+                          "@protoField": "maze"
+                        },
+                        {
+                          "@nodeField": "items",
+                          "@protoField": "items"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "ProtoDeclare":
+          {
+            "@name":"TimeControler",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFTime",
+                  "@name": "resetTime"
+                },
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFNode",
+                  "@name": "timer"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Script":
+                  {
+                    "@DEF": "TimeControlerScript",
+                    "@directOutput": true,
+                    "field": [
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFTime",
+                        "@name": "resetTime"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "SFNode",
+                        "@name": "timer"
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function set_resetTime (value, time)",
+"{",
+"\tif (! timer)",
+"\t\treturn;",
+"",
+"\ttimer .stopTime  = value;",
+"\ttimer .startTime = value;",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "resetTime",
+                          "@protoField": "resetTime"
+                        },
+                        {
+                          "@nodeField": "timer",
+                          "@protoField": "timer"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@DEF": "_8",
+            "@activeLayer": 1,
+            "@order": [ 2, 3 ],
+            "-layers": [
+              { "Layer":
+                {
+                  "@DEF": "Playground",
+                  "@isPickable": false,
+                  "-children": [
+                    { "TimeTrigger":
+                      {
+                        "@DEF": "_9"
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "_10",
+                        "@name": "MFInt32",
+                        "fieldValue": [
+                          {
+                            "@name": "keyValue",
+                            "@value": [ 1, 3 ]
+                          }
+                        ]
+                      }
+                    },
+                    { "NavigationInfo":
+                      {
+                        "@DEF": "None",
+                        "@type": [ "NONE" ],
+                        "@transitionType": [ "TELEPORT" ]
+                      }
+                    },
+                    { "OrthoViewpoint":
+                      {
+                        "@position": [ 0, 50.1169, 0 ],
+                        "@orientation": [ 1, 0, 0, 270 ],
+                        "@fieldOfView": [ -36, -20, 36, 20 ]
+                      }
+                    },
+                    { "Background":
+                      {
+                        "@DEF": "_11",
+                        "@skyAngle": [ 76.5191, 90.0002 ],
+                        "@skyColor": [ 0.045, 0.045, 0.045, 0.195, 0.195, 0.195, 0.185, 0.185, 0.185 ],
+                        "@groundAngle": [ 60.5651, 90.0002 ],
+                        "@groundColor": [ 0, 0, 0, 0, 0, 0, 0.185, 0.185, 0.185 ]
+                      }
+                    },
+                    { "DirectionalLight":
+                      {
+                        "@intensity": 0.656934,
+                        "@ambientIntensity": 0.382716,
+                        "@direction": [ 0.65147, 2.93442e-08, -0.758675 ]
+                      }
+                    },
+                    { "DirectionalLight":
+                      {
+                        "@ambientIntensity": 0.302469,
+                        "@direction": [ -3.52397e-06, -0.860529, 0.509401 ],
+                        "@shadowIntensity": 1
+                      }
+                    },
+                    { "Group":
+                      {
+                        "@DEF": "Navigation",
+                        "-children": [
+                          { "NavigationInfo":
+                            {
+                              "@DEF": "Walk",
+                              "@type": [ "WALK" ],
+                              "@headlight": false,
+                              "@transitionType": [ "TELEPORT" ]
+                            }
+                          },
+                          { "Viewpoint":
+                            {
+                              "@DEF": "_12",
+                              "@description": "Maze",
+                              "@position": [ 12, 2, -28 ],
+                              "@orientation": [ 0, 1, 0, 90 ],
+                              "@centerOfRotation": [ 2.30881, 1.59995, -0.422763 ]
+                            }
+                          },
+                          { "Script":
+                            {
+                              "@DEF": "ViewpointPositionScript",
+                              "@directOutput": true,
+                              "field": [
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFTime",
+                                  "@name": "set_triggerTime"
+                                },
+                                {
+                                  "@accessType": "inputOutput",
+                                  "@type": "SFVec3f",
+                                  "@name": "mazeElementSize",
+                                  "@value": [ 4, 2, 4 ]
+                                },
+                                {
+                                  "@accessType": "outputOnly",
+                                  "@type": "SFVec3f",
+                                  "@name": "position_changed"
+                                },
+                                {
+                                  "@accessType": "outputOnly",
+                                  "@type": "SFRotation",
+                                  "@name": "orientation_changed"
+                                },
+                                {
+                                  "@accessType": "initializeOnly",
+                                  "@type": "SFNode",
+                                  "@name": "maze",
+                                  "-children": [
+                                    { "ProtoInstance":
+                                      {
+                                        "@DEF": "_13",
+                                        "@name": "Maze",
+                                        "fieldValue": [
+                                          {
+                                            "@name": "width",
+                                            "@value": 17
+                                          },
+                                          {
+                                            "@name": "height",
+                                            "@value": 17
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "#sourceText": [
+"ecmascript:",
+"",
+"function set_triggerTime (value, time)",
+"{",
+"\tif (maze .matrix .length == 0)",
+"\t\treturn;",
+"",
+"\tvar",
+"\t\tx = -1,",
+"\t\ty = -1;",
+"",
+"\tdo",
+"\t{",
+"\t\tx = Math .floor (Math .random () * maze .width);",
+"\t\ty = Math .floor (Math .random () * maze .height);",
+"\t}",
+"\twhile (maze .matrix [getIndex (x, y)] != 0);",
+"\t\t\t\t\t\t",
+"\tvar offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2, 0, (maze .height - 1) * mazeElementSize .z / 2);",
+"\t",
+"",
+"",
+"\tvar position = new SFVec3f (x * mazeElementSize .x, mazeElementSize .y, y * mazeElementSize .z);",
+"\tposition = position .subtract (offset);",
+"\t",
+"\tbind                = true;",
+"\tposition_changed    = position;",
+"\torientation_changed = getRotation (x, y);",
+"}",
+"",
+"function getRotation (x, y)",
+"{",
+"\tif (x > 0)",
+"\t\tif (maze .matrix [getIndex (x - 1, y)] == 0)",
+"\t\t\treturn new SFRotation (0, 1, 0, 1 / 2 * Math .PI);",
+"\t\t",
+"\tif (x < maze .width - 1)",
+"\t\tif (maze .matrix [getIndex (x + 1, y)] == 0)",
+"\t\t\treturn new SFRotation (0, 1, 0, 3 / 2 * Math .PI);",
+"\t  ",
+"\tif (y > 0)",
+"\t\tif (maze .matrix [getIndex (x, y - 1)] == 0)",
+"\t\t\treturn new SFRotation (0, 1, 0, Math .PI);",
+"\t\t",
+"\tif (y < maze .height - 1)",
+"\t\tif (maze .matrix [getIndex (x, y + 1)] == 0)",
+"\t\t\treturn new SFRotation (0, 1, 0, 0);",
+"",
+"\treturn new SFRotation (0, 1, 0, 0);",
+"}",
+"",
+"function getIndex (x, y)",
+"{",
+"\treturn maze .width * y + x;",
+"}"
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "Walls",
+                        "@name": "MazeGeometry",
+                        "fieldValue": [
+                          {
+                            "@name": "mazeElementSize",
+                            "@value": [ 4, 2, 4 ]
+                          },
+                          {
+                            "@name": "mazeElementUrl",
+                            "@value": [ "maze-element.x3d" ]
+                          },
+                          {
+                            "@name": "maze",
+                            "-children": [
+                              { "ProtoInstance":
+                                {
+                                  "@name": "Maze",
+                                  "@USE": "_13"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "Floor",
+                        "@name": "MazeGeometry",
+                        "fieldValue": [
+                          {
+                            "@name": "type",
+                            "@value": [ 0, 1 ]
+                          },
+                          {
+                            "@name": "rotate",
+                            "@value": false
+                          },
+                          {
+                            "@name": "mazeElementSize",
+                            "@value": [ 4, 2, 4 ]
+                          },
+                          {
+                            "@name": "mazeElementUrl",
+                            "@value": [ "maze-floor-element.x3d" ]
+                          },
+                          {
+                            "@name": "maze",
+                            "-children": [
+                              { "ProtoInstance":
+                                {
+                                  "@name": "Maze",
+                                  "@USE": "_13"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    { "LoadSensor":
+                      {
+                        "-watchList": [
+                          { "ProtoInstance":
+                            {
+                              "@name": "MazeGeometry",
+                              "@USE": "Walls"
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@name": "MazeGeometry",
+                              "@USE": "Floor"
+                            }
+                          },
+                          { "Inline":
+                            {
+                              "@DEF": "Globe1",
+                              "@url": [ "globe1.x3d" ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Group":
+                      {
+                        "@DEF": "Globes",
+                        "@bboxSize": [ 70, 10, 70 ],
+                        "@bboxCenter": [ 0, 2, 0 ],
+                        "-children": [
+                          { "ProtoInstance":
+                            {
+                              "@name": "MazeCollisionManager",
+                              "fieldValue": [
+                                {
+                                  "@name": "collidables",
+                                  "-children": [
+                                    { "ProtoInstance":
+                                      {
+                                        "@DEF": "_14",
+                                        "@name": "Globe",
+                                        "fieldValue": [
+                                          {
+                                            "@name": "enabled",
+                                            "@value": true
+                                          },
+                                          {
+                                            "@name": "cycleInterval",
+                                            "@value": 4
+                                          },
+                                          {
+                                            "@name": "radius",
+                                            "@value": 2
+                                          },
+                                          {
+                                            "@name": "mazeElementSize",
+                                            "@value": [ 4, 2, 4 ]
+                                          },
+                                          {
+                                            "@name": "startTime",
+                                            "@value": 1508046433.07247
+                                          },
+                                          {
+                                            "@name": "stopTime",
+                                            "@value": 1508046433.07247
+                                          },
+                                          {
+                                            "@name": "maze",
+                                            "-children": [
+                                              { "ProtoInstance":
+                                                {
+                                                  "@name": "Maze",
+                                                  "@USE": "_13"
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "@name": "children",
+                                            "-children": [
+                                              { "Inline":
+                                                {
+                                                  "@USE": "Globe1"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    { "ProtoInstance":
+                                      {
+                                        "@DEF": "_15",
+                                        "@name": "Globe",
+                                        "fieldValue": [
+                                          {
+                                            "@name": "enabled",
+                                            "@value": true
+                                          },
+                                          {
+                                            "@name": "cycleInterval",
+                                            "@value": 4
+                                          },
+                                          {
+                                            "@name": "radius",
+                                            "@value": 2
+                                          },
+                                          {
+                                            "@name": "mazeElementSize",
+                                            "@value": [ 4, 2, 4 ]
+                                          },
+                                          {
+                                            "@name": "startTime",
+                                            "@value": 1507984705.53519
+                                          },
+                                          {
+                                            "@name": "stopTime",
+                                            "@value": 1507984705.53519
+                                          },
+                                          {
+                                            "@name": "maze",
+                                            "-children": [
+                                              { "ProtoInstance":
+                                                {
+                                                  "@name": "Maze",
+                                                  "@USE": "_13"
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "@name": "children",
+                                            "-children": [
+                                              { "Inline":
+                                                {
+                                                  "@USE": "Globe1"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@name": "Globe",
+                              "@USE": "_14"
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@name": "Globe",
+                              "@USE": "_15"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "_16",
+                        "@name": "BonusMap",
+                        "fieldValue": [
+                          {
+                            "@name": "density",
+                            "@value": [ 0.8 ]
+                          },
+                          {
+                            "@name": "mazeElementSize",
+                            "@value": [ 4, 2, 4 ]
+                          },
+                          {
+                            "@name": "maze",
+                            "-children": [
+                              { "ProtoInstance":
+                                {
+                                  "@name": "Maze",
+                                  "@USE": "_13"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "@name": "items",
+                            "-children": [
+                              { "Inline":
+                                {
+                                  "@DEF": "_17",
+                                  "@url": [ "bonus-mint.x3d" ]
+                                }
+                              },
+                              { "Inline":
+                                {
+                                  "@DEF": "_18",
+                                  "@url": [ "bonus-blue.x3d" ]
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    { "Group":
+                      {
+                        "@DEF": "BonusSound_19",
+                        "-children": [
+                          { "Sound":
+                            {
+                              "@DEF": "BonusSound",
+                              "@intensity": 0.133159,
+                              "@minBack": 55,
+                              "@minFront": 55,
+                              "@maxBack": 60,
+                              "@maxFront": 60,
+                              "-source": { "AudioClip":
+                                {
+                                  "@DEF": "_20",
+                                  "@url": [ "star-collect.mp3" ],
+                                  "@startTime": 1546835705.23872,
+                                  "@pauseTime": 1510042948.99191,
+                                  "@stopTime": 1546835705.23872
+                                }
+                              }
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_21",
+                              "@name": "TimeControler",
+                              "fieldValue": [
+                                {
+                                  "@name": "resetTime",
+                                  "@value": 1546835705.23872
+                                },
+                                {
+                                  "@name": "timer",
+                                  "-children": [
+                                    { "AudioClip":
+                                      {
+                                        "@USE": "_20"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "VisibilitySensor":
+                      {
+                        "@DEF": "_22",
+                        "@size": [ -1, -1, -1 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "HUD",
+                  "-children": [
+                    { "TimeTrigger":
+                      {
+                        "@DEF": "_23"
+                      }
+                    },
+                    { "ProtoInstance":
+                      {
+                        "@DEF": "_24",
+                        "@name": "MFInt32",
+                        "fieldValue": [
+                          {
+                            "@name": "keyValue",
+                            "@value": [ 2, 3 ]
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Background",
+                        "@translation": [ 0, 0, -10 ],
+                        "@scale": [ 35.7089, 35.7089, 35.7089 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "hud-background.jpg" ],
+                                      "@repeatS": false,
+                                      "@repeatT": false
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 1.05833, 0.705556 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "SugarSmack",
+                        "@translation": [ -5.04174, 1.24997, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@DEF": "Rococo28",
+                                      "@ambientIntensity": 0.226102,
+                                      "@diffuseColor": [ 0, 0, 0 ],
+                                      "@specularColor": [ 0.0955906, 0.0955906, 0.0955906 ],
+                                      "@shininess": 0.078125
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "Sugar Smack" ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "Minimum-Toc.otf" ],
+                                      "@size": 0.6,
+                                      "@justify": [ "BEGIN", "BEGIN" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "StartNewGame",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@DEF": "Rectangle2D",
+                              "@translation": [ -0.568659, -0.0935914, 0 ],
+                              "@scale": [ 4.65256, 0.593919, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@transparency": 1
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Rectangle2D":
+                                      {
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Text",
+                              "@translation": [ -5.04174, 0.329928, 0 ],
+                              "@scale": [ 2.3206, 2.3206, 2.3206 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Rococo13",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.840849, 0.227154, 0.32302 ],
+                                            "@specularColor": [ 0.251984, 0.251984, 0.251984 ],
+                                            "@shininess": 0.6
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "Start New Game" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "Minimum-Toc.otf" ],
+                                            "@size": 0.6,
+                                            "@justify": [ "BEGIN", "BEGIN" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_25"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "Debug",
+                  "-children": [
+                    { "Switch":
+                      {
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@DEF": "Reset",
+                              "@translation": [ 6.74236, -3.02708, 0 ],
+                              "@scale": [ 0.473103, 0.473103, 0.473103 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                      }
+                                    }
+                                  }
+                                },
+                                { "BooleanTrigger":
+                                  {
+                                    "@DEF": "_26"
+                                  }
+                                },
+                                { "BooleanToggle":
+                                  {
+                                    "@DEF": "_27"
+                                  }
+                                },
+                                { "BooleanFilter":
+                                  {
+                                    "@DEF": "_28"
+                                  }
+                                },
+                                { "TouchSensor":
+                                  {
+                                    "@USE": "_25"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "EnterWorldScript",
+            "field": [
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFBool",
+                "@name": "entered"
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tBrowser .setBrowserOption (\"Shading\", \"PHONG\");",
+"",
+"\tentered = true;",
+"}"
+            ]
+          }
+        },
+        { "BooleanFilter":
+          {
+            "@DEF": "_29"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ViewpointPositionScript",
+            "@fromField": "position_changed",
+            "@toNode": "_12",
+            "@toField": "position"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ViewpointPositionScript",
+            "@fromField": "orientation_changed",
+            "@toNode": "_12",
+            "@toField": "orientation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_27",
+            "@fromField": "toggle",
+            "@toNode": "_28",
+            "@toField": "set_boolean"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_25",
+            "@fromField": "touchTime",
+            "@toNode": "_26",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_26",
+            "@fromField": "triggerTrue",
+            "@toNode": "_27",
+            "@toField": "set_boolean"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_22",
+            "@fromField": "isActive",
+            "@toNode": "_11",
+            "@toField": "set_bind"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_13",
+            "@fromField": "generatedTime",
+            "@toNode": "ViewpointPositionScript",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_22",
+            "@fromField": "isActive",
+            "@toNode": "_12",
+            "@toField": "set_bind"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "EnterWorldScript",
+            "@fromField": "entered",
+            "@toNode": "_29",
+            "@toField": "set_boolean"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_29",
+            "@fromField": "inputNegate",
+            "@toNode": "_27",
+            "@toField": "toggle"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_22",
+            "@fromField": "isActive",
+            "@toNode": "Walk",
+            "@toField": "set_bind"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_28",
+            "@fromField": "inputTrue",
+            "@toNode": "_9",
+            "@toField": "set_boolean"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_28",
+            "@fromField": "inputFalse",
+            "@toNode": "_23",
+            "@toField": "set_boolean"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_9",
+            "@fromField": "triggerTime",
+            "@toNode": "_13",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_22",
+            "@fromField": "isActive",
+            "@toNode": "_14",
+            "@toField": "enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_22",
+            "@fromField": "isActive",
+            "@toNode": "_15",
+            "@toField": "enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_16",
+            "@fromField": "enterTime",
+            "@toNode": "_21",
+            "@toField": "resetTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_24",
+            "@fromField": "value_changed",
+            "@toNode": "_8",
+            "@toField": "order"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_23",
+            "@fromField": "triggerTime",
+            "@toNode": "_24",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_10",
+            "@fromField": "value_changed",
+            "@toNode": "_8",
+            "@toField": "order"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_9",
+            "@fromField": "triggerTime",
+            "@toNode": "_10",
+            "@toField": "set_triggerTime"
+          }
+        }
+      ]
+    }
+  }
+}

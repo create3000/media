@@ -1,0 +1,267 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 24 Sep 2017 10:08:54 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.0, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Interpolation/PositionInterpolator2D/PositionInterpolator2D.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sat, 16 Jun 2018 17:01:27 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "Interpolation",
+          "@level": 4
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"Torus",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "minorRadius"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "majorRadius"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFInt32",
+                "@name": "minorDimension"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFInt32",
+                "@name": "majorDimension"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFBool",
+                "@name": "solid"
+              }
+            ],
+            "@url": [ "Torus.x3d#Torus" ]
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "EXAMINE" ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View"
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Torus",
+            "@rotation": [ -0.119054280875312, 0.702080394499344, -0.702074923255993, 2.90460301492766 ],
+            "@scale": [ 0.51084, 0.51084, 0.199605 ],
+            "@scaleOrientation": [ -8.08179853906393e-07, -5.49994432803296e-07, -0.999999999999522, 0.099290624614057 ],
+            "-children": [
+              { "Group":
+                {
+                  "@DEF": "GlowAnimation",
+                  "-children": [
+                    { "TimeSensor":
+                      {
+                        "@DEF": "GlowAnimationTimer",
+                        "@cycleInterval": 6,
+                        "@loop": true
+                      }
+                    },
+                    { "PositionInterpolator2D":
+                      {
+                        "@DEF": "TranslationInterpolator",
+                        "@key": [ 0, 1 ],
+                        "@keyValue": [ 0, 0.4, 0, 1.4 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@DEF": "Neon28",
+                          "@ambientIntensity": 0,
+                          "@diffuseColor": [ 0, 0, 0 ],
+                          "@specularColor": [ 0.951039, 0.314318, 1 ],
+                          "@emissiveColor": [ 0, 0.277276, 1 ],
+                          "@shininess": 0.536
+                        }
+                      },
+                      "-texture": { "ImageTexture":
+                        {
+                          "@url": [ "glow.png" ]
+                        }
+                      },
+                      "-textureTransform": { "TextureTransform":
+                        {
+                          "@DEF": "_1",
+                          "@translation": [ 0, 0.4 ],
+                          "@scale": [ 1, 2 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "ProtoInstance":
+                    {
+                      "@name": "Torus",
+                      "fieldValue": [
+                        {
+                          "@name": "minorRadius",
+                          "@value": 1.4
+                        },
+                        {
+                          "@name": "majorRadius",
+                          "@value": 10
+                        },
+                        {
+                          "@name": "majorDimension",
+                          "@value": 60
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Text",
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@diffuseColor": [ 1, 1, 1 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@DEF": "_2",
+                      "@string": [ "Titania" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "Nanami Outline/NanamiOutline-Oblq.otf" ],
+                          "@size": 1.92,
+                          "@justify": [ "MIDDLE", "MIDDLE" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              { "Script":
+                {
+                  "@DEF": "BrowserScript",
+                  "field": [
+                    {
+                      "@accessType": "outputOnly",
+                      "@type": "MFString",
+                      "@name": "string_changed"
+                    }
+                  ],
+                  "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tstring_changed [0] = Browser .name;",
+"}"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "GlowAnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "TranslationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "TranslationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "_1",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BrowserScript",
+            "@fromField": "string_changed",
+            "@toNode": "_2",
+            "@toField": "string"
+          }
+        }
+      ]
+    }
+  }
+}

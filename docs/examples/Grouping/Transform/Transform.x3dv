@@ -1,0 +1,434 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Shape : 4
+
+UNIT angle degree 0.0174532925199432958
+
+META "comment" "World of Titania"
+META "created" "Fri, 22 Sep 2017 14:23:20 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.8, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Grouping/Transform/Transform.O.x3d"
+META "modified" "Mon, 07 Jan 2019 02:28:19 GMT"
+META "titania-add-metadata" "true"
+
+EXTERNPROTO Rotor [
+  inputOutput SFBool     enabled
+  inputOutput SFTime     cycleInterval
+  inputOutput SFVec3f    axis
+  inputOutput SFFloat    angle
+  inputOutput SFBool     loop
+  inputOutput SFTime     startTime
+  inputOutput SFTime     pauseTime
+  inputOutput SFTime     resumeTime
+  inputOutput SFTime     stopTime
+  outputOnly  SFBool     isActive
+  outputOnly  SFTime     cycleTime
+  outputOnly  SFRotation rotation_changed
+]
+[ "Rotor.x3d#Rotor", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/Rotor.x3d#Rotor" ]
+
+EXTERNPROTO Grid [
+  inputOutput    SFVec3f    translation
+  inputOutput    SFRotation rotation
+  inputOutput    SFVec3f    scale
+  inputOutput    MFInt32    dimension
+  inputOutput    MFInt32    majorLineEvery
+  inputOutput    MFInt32    majorLineOffset
+  inputOutput    SFVec3f    planeOffset
+  inputOutput    SFColor    planeColor
+  inputOutput    SFFloat    planeTransparency
+  inputOutput    SFColor    lineColor
+  inputOutput    SFFloat    lineTransparency
+  inputOutput    SFColor    majorLineColor
+  inputOutput    SFFloat    majorLineTransparency
+  inputOutput    SFBool     numbers
+  inputOutput    SFVec3f    numberOffset
+  inputOutput    SFNode     numberAppearance
+  inputOutput    SFNode     numberFontStyle
+  initializeOnly SFBool     solid
+]
+[ "Grid.x3d#Grid", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/Grid.x3d#Grid" ]
+
+PROTO Gear [
+  inputOutput    SFFloat teeth 10
+  inputOutput    SFFloat toothDepth 2
+  inputOutput    SFFloat innerRadius 1
+  inputOutput    SFFloat outerRadius 4
+  inputOutput    SFFloat width 1
+  initializeOnly SFFloat creaseAngle 0
+]
+{
+  DEF Gear IndexedFaceSet {
+    creaseAngle IS creaseAngle
+    coordIndex [ 0, 1, 2, 4, 3, -1, 3, 4, 5, 7, 6, -1, 6, 7, 8, 10, 9, -1, 9, 10, 11, 13, 12, -1, 12, 13, 14, 16, 15, -1, 15, 16, 17, 19, 18, -1, 18, 19, 20, 22, 21, -1, 21, 22, 23, 25, 24, -1, 24, 25, 26, 28, 27, -1, 27, 28, 29, 31, 30, -1, 35, 36, 37, 38, -1, 39, 40, 41, 42, -1, 43, 44, 45, 46, -1, 47, 48, 49, 50, -1, 51, 52, 53, 54, -1, 55, 56, 57, 58, -1, 59, 60, 61, 62, -1, 63, 64, 65, 66, -1, 67, 68, 69, 70, -1, 71, 72, 73, 74, -1, 75, 78, 79, 77, 76, -1, 78, 81, 82, 80, 79, -1, 81, 84, 85, 83, 82, -1, 84, 87, 88, 86, 85, -1, 87, 90, 91, 89, 88, -1, 90, 93, 94, 92, 91, -1, 93, 96, 97, 95, 94, -1, 96, 99, 100, 98, 97, -1, 99, 102, 103, 101, 100, -1, 102, 105, 106, 104, 103, -1, 107, 108, 109, 110, -1, 111, 112, 113, 114, -1, 115, 116, 117, 118, -1, 119, 120, 121, 122, -1, 123, 124, 125, 126, -1, 127, 128, 129, 130, -1, 131, 132, 133, 134, -1, 135, 136, 137, 138, -1, 139, 140, 141, 142, -1, 143, 144, 145, 146, -1, 147, 148, 150, 149, -1, 149, 150, 152, 151, -1, 151, 152, 154, 153, -1, 153, 154, 156, 155, -1, 155, 156, 158, 157, -1, 157, 158, 160, 159, -1, 159, 160, 162, 161, -1, 161, 162, 164, 163, -1, 163, 164, 166, 165, -1, 165, 166, 168, 167, -1, 167, 168, 170, 169, -1, 169, 170, 172, 171, -1, 171, 172, 174, 173, -1, 173, 174, 176, 175, -1, 175, 176, 178, 177, -1, 177, 178, 180, 179, -1, 179, 180, 182, 181, -1, 181, 182, 184, 183, -1, 183, 184, 186, 185, -1, 185, 186, 188, 187, -1, 187, 188, 190, 189, -1, 189, 190, 192, 191, -1, 191, 192, 194, 193, -1, 193, 194, 196, 195, -1, 195, 196, 198, 197, -1, 197, 198, 200, 199, -1, 199, 200, 202, 201, -1, 201, 202, 204, 203, -1, 203, 204, 206, 205, -1, 205, 206, 208, 207, -1, 207, 208, 210, 209, -1, 209, 210, 212, 211, -1, 211, 212, 214, 213, -1, 213, 214, 216, 215, -1, 215, 216, 218, 217, -1, 217, 218, 220, 219, -1, 219, 220, 222, 221, -1, 221, 222, 224, 223, -1, 223, 224, 226, 225, -1, 225, 226, 148, 147, -1, 227, 228, 230, 229, -1, 229, 230, 232, 231, -1, 231, 232, 234, 233, -1, 233, 234, 236, 235, -1, 235, 236, 238, 237, -1, 237, 238, 240, 239, -1, 239, 240, 242, 241, -1, 241, 242, 244, 243, -1, 243, 244, 246, 245, -1, 245, 246, 228, 227, -1 ]
+    coord Coordinate {
+      point [ 1 0 0.5, 3 0 0.5, 2.67302 1.36197 0.5, 0.809017 0.587785 0.5, 2.42705 1.76336 0.5, 1.36197 2.67302 0.5, 0.309017 0.951057 0.5, 0.927051 2.85317 0.5, -0.469303 2.96306 0.5, -0.309017 0.951057 0.5, -0.927051 2.85317 0.5, -2.12132 2.12132 0.5, -0.809017 0.587785 0.5, -2.42705 1.76336 0.5, -2.96306 0.469303 0.5, -1 1.22465e-16 0.5, -3 3.67394e-16 0.5, -2.67302 -1.36197 0.5, -0.809017 -0.587785 0.5, -2.42705 -1.76336 0.5, -1.36197 -2.67302 0.5, -0.309017 -0.951057 0.5, -0.927051 -2.85317 0.5, 0.469303 -2.96306 0.5, 0.309017 -0.951057 0.5, 0.927051 -2.85317 0.5, 2.12132 -2.12132 0.5, 0.809017 -0.587785 0.5, 2.42705 -1.76336 0.5, 2.96306 -0.469303 0.5, 1 0 0.5, 3 0 0.5, 0 0 0, 0 0 0, 0 0 0, 3 0 0.5, 4.93844 0.782172 0.5, 4.75528 1.54508 0.5, 2.67302 1.36197 0.5, 2.42705 1.76336 0.5, 3.53553 3.53553 0.5, 2.93893 4.04508 0.5, 1.36197 2.67302 0.5, 0.927051 2.85317 0.5, 0.782172 4.93844 0.5, 1.11022e-15 5 0.5, -0.469303 2.96306 0.5, -0.927051 2.85317 0.5, -2.26995 4.45503 0.5, -2.93893 4.04508 0.5, -2.12132 2.12132 0.5, -2.42705 1.76336 0.5, -4.45503 2.26995 0.5, -4.75528 1.54508 0.5, -2.96306 0.469303 0.5, -3 3.67394e-16 0.5, -4.93844 -0.782172 0.5, -4.75528 -1.54508 0.5, -2.67302 -1.36197 0.5, -2.42705 -1.76336 0.5, -3.53553 -3.53553 0.5, -2.93893 -4.04508 0.5, -1.36197 -2.67302 0.5, -0.927051 -2.85317 0.5, -0.782172 -4.93844 0.5, -1.11022e-15 -5 0.5, 0.469303 -2.96306 0.5, 0.927051 -2.85317 0.5, 2.26995 -4.45503 0.5, 2.93893 -4.04508 0.5, 2.12132 -2.12132 0.5, 2.42705 -1.76336 0.5, 4.45503 -2.26995 0.5, 4.75528 -1.54508 0.5, 2.96306 -0.469303 0.5, 1 0 -0.5, 3 0 -0.5, 2.67302 1.36197 -0.5, 0.809017 0.587785 -0.5, 2.42705 1.76336 -0.5, 1.36197 2.67302 -0.5, 0.309017 0.951057 -0.5, 0.927051 2.85317 -0.5, -0.469303 2.96306 -0.5, -0.309017 0.951057 -0.5, -0.927051 2.85317 -0.5, -2.12132 2.12132 -0.5, -0.809017 0.587785 -0.5, -2.42705 1.76336 -0.5, -2.96306 0.469303 -0.5, -1 1.22465e-16 -0.5, -3 3.67394e-16 -0.5, -2.67302 -1.36197 -0.5, -0.809017 -0.587785 -0.5, -2.42705 -1.76336 -0.5, -1.36197 -2.67302 -0.5, -0.309017 -0.951057 -0.5, -0.927051 -2.85317 -0.5, 0.469303 -2.96306 -0.5, 0.309017 -0.951057 -0.5, 0.927051 -2.85317 -0.5, 2.12132 -2.12132 -0.5, 0.809017 -0.587785 -0.5, 2.42705 -1.76336 -0.5, 2.96306 -0.469303 -0.5, 1 0 -0.5, 3 0 -0.5, 2.67302 1.36197 -0.5, 4.75528 1.54508 -0.5, 4.93844 0.782172 -0.5, 3 0 -0.5, 1.36197 2.67302 -0.5, 2.93893 4.04508 -0.5, 3.53553 3.53553 -0.5, 2.42705 1.76336 -0.5, -0.469303 2.96306 -0.5, 1.11022e-15 5 -0.5, 0.782172 4.93844 -0.5, 0.927051 2.85317 -0.5, -2.12132 2.12132 -0.5, -2.93893 4.04508 -0.5, -2.26995 4.45503 -0.5, -0.927051 2.85317 -0.5, -2.96306 0.469303 -0.5, -4.75528 1.54508 -0.5, -4.45503 2.26995 -0.5, -2.42705 1.76336 -0.5, -2.67302 -1.36197 -0.5, -4.75528 -1.54508 -0.5, -4.93844 -0.782172 -0.5, -3 3.67394e-16 -0.5, -1.36197 -2.67302 -0.5, -2.93893 -4.04508 -0.5, -3.53553 -3.53553 -0.5, -2.42705 -1.76336 -0.5, 0.469303 -2.96306 -0.5, -1.11022e-15 -5 -0.5, -0.782172 -4.93844 -0.5, -0.927051 -2.85317 -0.5, 2.12132 -2.12132 -0.5, 2.93893 -4.04508 -0.5, 2.26995 -4.45503 -0.5, 0.927051 -2.85317 -0.5, 2.96306 -0.469303 -0.5, 4.75528 -1.54508 -0.5, 4.45503 -2.26995 -0.5, 2.42705 -1.76336 -0.5, 3 0 0.5, 3 0 -0.5, 4.93844 0.782172 0.5, 4.93844 0.782172 -0.5, 4.75528 1.54508 0.5, 4.75528 1.54508 -0.5, 2.67302 1.36197 0.5, 2.67302 1.36197 -0.5, 2.42705 1.76336 0.5, 2.42705 1.76336 -0.5, 3.53553 3.53553 0.5, 3.53553 3.53553 -0.5, 2.93893 4.04508 0.5, 2.93893 4.04508 -0.5, 1.36197 2.67302 0.5, 1.36197 2.67302 -0.5, 0.927051 2.85317 0.5, 0.927051 2.85317 -0.5, 0.782172 4.93844 0.5, 0.782172 4.93844 -0.5, 1.11022e-15 5 0.5, 1.11022e-15 5 -0.5, -0.469303 2.96306 0.5, -0.469303 2.96306 -0.5, -0.927051 2.85317 0.5, -0.927051 2.85317 -0.5, -2.26995 4.45503 0.5, -2.26995 4.45503 -0.5, -2.93893 4.04508 0.5, -2.93893 4.04508 -0.5, -2.12132 2.12132 0.5, -2.12132 2.12132 -0.5, -2.42705 1.76336 0.5, -2.42705 1.76336 -0.5, -4.45503 2.26995 0.5, -4.45503 2.26995 -0.5, -4.75528 1.54508 0.5, -4.75528 1.54508 -0.5, -2.96306 0.469303 0.5, -2.96306 0.469303 -0.5, -3 3.67394e-16 0.5, -3 3.67394e-16 -0.5, -4.93844 -0.782172 0.5, -4.93844 -0.782172 -0.5, -4.75528 -1.54508 0.5, -4.75528 -1.54508 -0.5, -2.67302 -1.36197 0.5, -2.67302 -1.36197 -0.5, -2.42705 -1.76336 0.5, -2.42705 -1.76336 -0.5, -3.53553 -3.53553 0.5, -3.53553 -3.53553 -0.5, -2.93893 -4.04508 0.5, -2.93893 -4.04508 -0.5, -1.36197 -2.67302 0.5, -1.36197 -2.67302 -0.5, -0.927051 -2.85317 0.5, -0.927051 -2.85317 -0.5, -0.782172 -4.93844 0.5, -0.782172 -4.93844 -0.5, -1.11022e-15 -5 0.5, -1.11022e-15 -5 -0.5, 0.469303 -2.96306 0.5, 0.469303 -2.96306 -0.5, 0.927051 -2.85317 0.5, 0.927051 -2.85317 -0.5, 2.26995 -4.45503 0.5, 2.26995 -4.45503 -0.5, 2.93893 -4.04508 0.5, 2.93893 -4.04508 -0.5, 2.12132 -2.12132 0.5, 2.12132 -2.12132 -0.5, 2.42705 -1.76336 0.5, 2.42705 -1.76336 -0.5, 4.45503 -2.26995 0.5, 4.45503 -2.26995 -0.5, 4.75528 -1.54508 0.5, 4.75528 -1.54508 -0.5, 2.96306 -0.469303 0.5, 2.96306 -0.469303 -0.5, 1 0 -0.5, 1 0 0.5, 0.809017 0.587785 -0.5, 0.809017 0.587785 0.5, 0.309017 0.951057 -0.5, 0.309017 0.951057 0.5, -0.309017 0.951057 -0.5, -0.309017 0.951057 0.5, -0.809017 0.587785 -0.5, -0.809017 0.587785 0.5, -1 1.22465e-16 -0.5, -1 1.22465e-16 0.5, -0.809017 -0.587785 -0.5, -0.809017 -0.587785 0.5, -0.309017 -0.951057 -0.5, -0.309017 -0.951057 0.5, 0.309017 -0.951057 -0.5, 0.309017 -0.951057 0.5, 0.809017 -0.587785 -0.5, 0.809017 -0.587785 0.5, 1 0 -0.5, 1 0 0.5 ]
+    }
+  }
+
+  Script {
+    inputOutput    SFFloat teeth IS teeth
+    inputOutput    SFFloat toothDepth IS toothDepth
+    inputOutput    SFFloat innerRadius IS innerRadius
+    inputOutput    SFFloat outerRadius IS outerRadius
+    inputOutput    SFFloat width IS width
+    initializeOnly SFNode  gear USE Gear
+
+    url "ecmascript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	print ('### Generating gear ...');
+
+	var indices = new MFInt32 ();
+	var points  = new MFVec3f ();
+
+	var cos = Math .cos;
+	var sin = Math .sin;
+
+	// Radien and tooth angle
+
+	var radius0 = innerRadius;
+	var radius1 = outerRadius - toothDepth / 2;
+	var radius2 = outerRadius + toothDepth / 2;
+	var da = 2 * Math .PI / teeth / 4;
+
+	// Front vectors
+
+	var vectorf0 = new SFVec3f (radius0, 0, width * 0.5);
+	var vectorf1 = new SFVec3f (radius1, 0, width * 0.5);
+	var vectorf2 = new SFVec3f (radius2, 0, width * 0.5);
+
+	// Back vectors
+
+	var vectorb0 = new SFVec3f (radius0, 0, -width * 0.5);
+	var vectorb1 = new SFVec3f (radius1, 0, -width * 0.5);
+	var vectorb2 = new SFVec3f (radius2, 0, -width * 0.5);
+
+	// Generate front face indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 3;
+
+		indices [indices .length] = index;
+		indices [indices .length] = index + 1;
+		indices [indices .length] = index + 2;
+		indices [indices .length] = index + 4;
+		indices [indices .length] = index + 3;
+		indices [indices .length] = -1;
+	}
+
+	// Generate front face points
+
+	for (var i = 0; i < teeth + 1; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf0);
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);
+	}
+
+	points .length = points .length - 1;
+
+	points [points .length] = new SFVec3f ();
+	points [points .length] = new SFVec3f ();
+	points [points .length] = new SFVec3f ();
+
+
+	// Generate front sides of teeth indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 4;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = -1;
+	}
+
+	// Generate front sides of teeth points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + da)     .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);
+	}
+
+
+	// Generate back face indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 3;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = points .length + index + 4;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = -1;
+	}
+
+	// Generate back face points
+
+	for (var i = 0; i < teeth + 1; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb0);
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);
+	}
+
+	points .length = points .length - 1;
+
+
+	// Generate back sides of teeth indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 4;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = -1;
+	}
+
+	// Generate front sides of teeth points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorb2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + da)     .multVec (vectorb2);
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb1);
+	}
+
+
+	// Generate outward faces of teeth indices
+
+	for (var i = 0; i < teeth * 4; ++ i)
+	{
+		var index = i * 2;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = -1;
+	}
+
+	indices [indices .length - 3] = points .length + 1;
+	indices [indices .length - 2] = points .length;
+
+	// Generate outward faces of teeth points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+	   var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorb1);
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + da) .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + da) .multVec (vectorb2);
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorb2);
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);
+	}
+
+
+	// Generate inside radius cylinder points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 2;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = -1;
+	}
+
+	indices [indices .length - 3] = points .length + 1;
+	indices [indices .length - 2] = points .length;
+
+	// Generate inside radius cylinder indices
+
+	for (var i = 0; i < teeth + 1; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorb0);
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorf0);
+	}
+
+	print ('### Generating gear done.');
+
+	gear .coord .point   = points;
+	gear .set_coordIndex = indices;
+}
+"
+    directOutput TRUE
+  }
+}
+
+WorldInfo {
+}
+
+DEF None NavigationInfo {
+  type "NONE"
+  headlight FALSE
+}
+
+DEF Examine NavigationInfo {
+  type "EXAMINE"
+  headlight FALSE
+}
+
+DEF White Background {
+  skyColor 1 1 1
+}
+
+DEF _1 OrthoViewpoint {
+  description "Initial View"
+  position -31.9206 26.1946 31.6035
+  orientation 0.5199480077987 0.825917412387935 0.217978203269455 306.1170626402
+  centerOfRotation 3.92971 -2.324 -3.5675
+  fieldOfView [ -22.13, -15.83, 5.99, 38.28 ]
+}
+
+DEF _2 Viewpoint {
+  description "Perspective"
+  position -41.2725 42.6755 38.89
+  orientation -0.56019187756473 -0.797236169473889 -0.224943438208595 53.6521853850443
+  centerOfRotation 3.75422 2.73351 -7.84869
+}
+
+Group {
+  children [
+    DirectionalLight {
+      intensity 0.48
+      direction 0 -1 0
+    }
+    DirectionalLight {
+      ambientIntensity 0.48
+      direction 0.747624 -0.456296 -0.482548
+    }
+    DEF TransformText Transform {
+      children [
+        DEF Text Transform {
+          translation -26.0162 0.522795 -41.3646
+          rotation -0.999999999993254 -3.67320512848233e-06 -1.72095619204259e-18 90.0000000000002
+          scale 4.70841 4.70841 4.70841
+          scaleOrientation 0.998514277199544 -0.0537817447270235 -0.00876140187346953 4.64170084948354
+          children Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 0
+              }
+            }
+            geometry Text {
+              string "Transform"
+              solid TRUE
+            }
+          }
+        }
+        DEF Text_3 Transform {
+          translation -25.6365 0.729452 -35.4932
+          rotation -0.999999999993254 -3.67320512848233e-06 -1.72095619204259e-18 90.0000000000002
+          scale 4.70841 4.70841 4.70841
+          scaleOrientation 0.999999999998594 2.04310939291156e-07 -1.66466840314536e-06 224.999999999872
+          children Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0 0 0
+              }
+            }
+            geometry Text {
+              string [ "A Transform node is a", "grouping node that", "defines a coordinate", "system." ]
+              solid TRUE
+              fontStyle FontStyle {
+                size 0.6
+                spacing 1.2
+              }
+            }
+          }
+        }
+      ]
+    }
+    DEF Earth Transform {
+      translation -20 0.865071 -5
+      rotation -1 0 0 89.9999863396235
+      scale 10.0527 10.0527 0.100527
+      children [
+        DEF _4 Rotor {
+          cycleInterval 20
+          axis 0 -1 0
+          loop TRUE
+        }
+        DEF earth Transform {
+          rotation 0 -1 0 322.251577377319
+          children Inline {
+            url [ "earth.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/earth.x3d" ]
+          }
+        }
+      ]
+    }
+    DEF gears Inline {
+      url [ "gears.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/gears.x3d" ]
+    }
+    DEF horizontal-bars Inline {
+      url [ "horizontal-bars.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/horizontal-bars.x3d" ]
+    }
+    DEF vertical-bars Inline {
+      url [ "vertical-bars.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/vertical-bars.x3d" ]
+    }
+    DEF graph-with-bars Inline {
+      url [ "graph-with-bars.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/graph-with-bars.x3d" ]
+    }
+  ]
+}
+
+Grid {
+  scale 1.5 1.5 1.5
+  dimension [ 190, 10, 190 ]
+  planeTransparency 1
+  lineColor 0 0 0
+  lineTransparency 0.952941
+  majorLineColor 0 0 0
+  majorLineTransparency 0.905882
+}
+
+DEF EarthShadow Transform {
+  translation 0 -0.593197 0
+  children USE Earth
+}
+
+ROUTE _4.rotation_changed TO earth.set_rotation
+ROUTE _2.isBound TO Examine.set_bind
+ROUTE _1.isBound TO None.set_bind

@@ -1,0 +1,426 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 12 Nov 2017 22:36:28 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.6.7, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PrimitivePickSensor/PrimitivePickSensor.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Thu, 07 Nov 2019 12:34:43 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        },
+        {
+          "@name": "Picking",
+          "@level": 3
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ProtoDeclare":
+          {
+            "@name":"Bullet",
+            "ProtoInterface": {
+              "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "MFNode",
+                  "@name": "target"
+                },
+                {
+                  "@accessType": "outputOnly",
+                  "@type": "SFTime",
+                  "@name": "hitTime"
+                }
+              ]
+            },
+            "ProtoBody": {
+              "-children": [
+                { "Transform":
+                  {
+                    "@DEF": "Sphere",
+                    "@translation": [ 0, 0, 5 ],
+                    "@scale": [ 0.1, 0.1, 0.1 ],
+                    "-children": [
+                      { "Group":
+                        {
+                          "@DEF": "Animation",
+                          "-children": [
+                            { "TimeSensor":
+                              {
+                                "@DEF": "AnimationTimer",
+                                "@loop": true,
+                                "@startTime": 1553259874.45089,
+                                "@stopTime": 1553259874.45089
+                              }
+                            },
+                            { "PositionInterpolator":
+                              {
+                                "@DEF": "SphereTranslationInterpolator",
+                                "@key": [ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ],
+                                "@keyValue": [ 0, 0, 5, 0, 0, 5.7, 0, 0, 7.6, 0, 0, 10.4, 0, 0, 13.8, 0, 0, 17.5, 0, 0, 21.2, 0, 0, 24.6, 0, 0, 27.4, 0, 0, 29.3, 0, 0, 30 ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      { "Shape":
+                        {
+                          "-appearance": { "Appearance":
+                            {
+                              "-material": { "Material":
+                                {
+                                  "@diffuseColor": [ 1, 0, 0 ]
+                                }
+                              }
+                            }
+                          },
+                          "-geometry": { "Sphere":
+                            {
+                              "@DEF": "_1"
+                            }
+                          }
+                        }
+                      },
+                      { "PrimitivePickSensor":
+                        {
+                          "@DEF": "_2",
+                          "@objectType": [ "TARGET" ],
+                          "-pickingGeometry": { "Sphere":
+                            {
+                              "@USE": "_1"
+                            }
+                          },
+                          "IS": {
+                            "connect": [
+                              {
+                                "@nodeField": "pickTarget",
+                                "@protoField": "target"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "BulletScript",
+                    "field": [
+                      {
+                        "@accessType": "inputOnly",
+                        "@type": "SFBool",
+                        "@name": "set_active"
+                      },
+                      {
+                        "@accessType": "outputOnly",
+                        "@type": "SFTime",
+                        "@name": "hitTime"
+                      }
+                    ],
+                    "#sourceText": [
+"ecmascript:",
+"",
+"function set_active (value, time)",
+"{",
+"\tif (value)",
+"\t\thitTime = time;",
+"}"
+                    ],
+                    "IS": {
+                      "connect": [
+                        {
+                          "@nodeField": "hitTime",
+                          "@protoField": "hitTime"
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "AnimationTimer",
+                    "@fromField": "fraction_changed",
+                    "@toNode": "SphereTranslationInterpolator",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "SphereTranslationInterpolator",
+                    "@fromField": "value_changed",
+                    "@toNode": "Sphere",
+                    "@toField": "translation"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_2",
+                    "@fromField": "isActive",
+                    "@toNode": "BulletScript",
+                    "@toField": "set_active"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial view",
+            "@position": [ -11.1888, 7.48501, -6.36741 ],
+            "@orientation": [ 0.149654479144934, 0.954657302760335, 0.25735767165216, 4.15514972474677 ]
+          }
+        },
+        { "Group":
+          {
+            "-children": [
+              { "Group":
+                {
+                  "@DEF": "SkyAnimation",
+                  "-children": [
+                    { "TimeSensor":
+                      {
+                        "@DEF": "SkyAnimationTimer",
+                        "@cycleInterval": 0.3,
+                        "@startTime": 1573130083.14116,
+                        "@stopTime": 1553262000.52021
+                      }
+                    },
+                    { "ColorInterpolator":
+                      {
+                        "@DEF": "HitColorScriptColorInterpolator",
+                        "@key": [ 0, 0.333333, 0.666667, 1 ],
+                        "@keyValue": [ 1, 1, 1, 0.740741, 0.740741, 0.740741, 0.259259, 0.259259, 0.259259, 0, 0, 0 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Background":
+                {
+                  "@DEF": "_3"
+                }
+              },
+              { "Script":
+                {
+                  "@DEF": "HitColorScript",
+                  "field": [
+                    {
+                      "@accessType": "inputOutput",
+                      "@type": "SFColor",
+                      "@name": "color"
+                    },
+                    {
+                      "@accessType": "outputOnly",
+                      "@type": "MFColor",
+                      "@name": "skyColor_changed"
+                    }
+                  ],
+                  "#sourceText": [
+"ecmascript:",
+"",
+"function set_color (value, time)",
+"{",
+"\tskyColor_changed [0] = value;",
+"}"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "RocketShip",
+            "-children": [
+              { "Inline":
+                {
+                  "@url": [ "assets/rocket-ship.x3dz" ]
+                }
+              }
+            ]
+          }
+        },
+        { "PickableGroup":
+          {
+            "@DEF": "Target",
+            "@objectType": [ "TARGET" ],
+            "-children": [
+              { "Transform":
+                {
+                  "@DEF": "_4",
+                  "@translation": [ 0, 0, 25 ],
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-material": { "Material":
+                              {
+                                "@transparency": 1
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "Box":
+                          {
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@DEF": "Bullet",
+            "@name": "Bullet",
+            "fieldValue": [
+              {
+                "@name": "target",
+                "-children": [
+                  { "Transform":
+                    {
+                      "@USE": "_4"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@translation": [ 0, 0, -4.04154 ],
+            "-children": [
+              { "ParticleSystem":
+                {
+                  "@geometryType": "POINT",
+                  "@particleLifetime": 0.53,
+                  "-emitter": { "PointEmitter":
+                    {
+                      "@direction": [ 0, 0, -1 ],
+                      "@speed": 3.02,
+                      "@mass": 0.01,
+                      "@surfaceArea": 0.06
+                    }
+                  },
+                  "-physics": [
+                    { "WindPhysicsModel":
+                      {
+                        "@speed": 0.88,
+                        "@gustiness": 0.07
+                      }
+                    }
+                  ],
+                  "@colorKey": [ 0, 1 ],
+                  "-colorRamp": { "Color":
+                    {
+                      "@color": [ 1, 1, 0, 1, 0, 0 ]
+                    }
+                  },
+                  "-appearance": { "Appearance":
+                    {
+                      "@DEF": "_5",
+                      "-pointProperties": { "PointProperties":
+                        {
+                          "@pointSizeScaleFactor": 4.94,
+                          "@pointSizeMaxValue": 4.94
+                        }
+                      },
+                      "-material": { "Material":
+                        {
+                          "@emissiveColor": [ 0.403, 0.403, 0.403 ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "HitColorScript",
+            "@fromField": "skyColor_changed",
+            "@toNode": "_3",
+            "@toField": "skyColor"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "SkyAnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "HitColorScriptColorInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "HitColorScriptColorInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "HitColorScript",
+            "@toField": "color"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Bullet",
+            "@fromField": "hitTime",
+            "@toNode": "SkyAnimationTimer",
+            "@toField": "startTime"
+          }
+        }
+      ]
+    }
+  }
+}

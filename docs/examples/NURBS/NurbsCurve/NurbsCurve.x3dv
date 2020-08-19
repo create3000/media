@@ -1,0 +1,222 @@
+#X3D V3.3 utf8 Titania V4.6.0
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Layering : 1
+COMPONENT Layout : 1
+COMPONENT NURBS : 1
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsCurve/NurbsCurve.O.x3d"
+META "modified" "Sat, 26 Jan 2019 01:49:04 GMT"
+
+PROTO AnimatedCurve [
+  inputOnly   SFTime     set_time
+  inputOutput SFDouble   speed 1
+  inputOutput SFRotation rotation 0 0 1 0
+  inputOutput SFNode     material NULL
+]
+{
+  DEF NurbsCurve Transform {
+    rotation IS rotation
+    children Shape {
+      appearance Appearance {
+        material IS material
+      }
+      geometry DEF _1 NurbsCurve {
+        controlPoint CoordinateDouble { }
+      }
+    }
+  }
+
+  DEF AnimatedCurveScript Script {
+    inputOnly      SFTime   set_time IS set_time
+    inputOutput    SFDouble speed IS speed
+    initializeOnly SFNode   geometry USE _1
+
+    url "ecmascript:
+
+var
+	points = [ ],
+	firstY = Math .random () * Math .PI,
+	firstZ = Math .random () * Math .PI;
+
+function initialize ()
+{
+	for (var x = -10; x <= 10; ++ x)
+		points .push (new SFVec3d (x, 0, 0));
+
+	set_time (0, 0);
+}
+
+function set_time (value, time)
+{
+	var controlPoint = geometry .controlPoint;
+
+	for (var i = 0, length = points .length; i < length; ++ i)
+	{
+		var
+			p = points [i],
+			x = p .x;
+
+		p .y = Math .sin (x * (Math .sin (firstY + time * speed) * 0.3));
+		p .z = Math .sin (x * (Math .sin (firstZ + time * speed) * 0.3));
+
+		controlPoint .point [i] = p;
+	}
+}
+"
+    directOutput TRUE
+  }
+}
+
+PROTO MachineLearning [
+  inputOutput SFDouble speed 1
+  inputOutput SFInt32  curves 10
+  inputOutput MFNode   material [ ]
+]
+{
+  DEF _2 Transform { }
+
+  DEF _3 TimeSensor {
+    cycleInterval 120
+    loop TRUE
+  }
+
+  DEF BoxRotationInterpolator OrientationInterpolator {
+    key [ 0, 0.25, 0.5, 0.75, 1 ]
+    keyValue [ 0 0 1 0, -3.06559318185163e-18 3.67320512848233e-06 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 3.67320512426576e-06 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -3.67320524850646e-06 0.999999999993254 1.57079638639955, 0 0 1 0 ]
+  }
+
+  DEF MachineLearningScript Script {
+    initializeOnly SFNode   group USE _2
+    inputOutput    SFDouble speed IS speed
+    inputOutput    SFInt32  curves IS curves
+    inputOutput    MFNode   material IS material
+    initializeOnly SFNode   timer USE _3
+
+    url "ecmascript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	group .children .length = 0;
+
+	for (var i = 0; i < curves; ++ i)
+	{
+		var curve = Browser .currentScene .createProto (\"AnimatedCurve\");
+
+		curve .speed    = speed;
+		curve .rotation = new SFRotation (Math .random () - 0.5,
+		                                  Math .random () - 0.5,
+		                                  Math .random () - 0.5,
+		                                  Math .random () * Math .PI);
+
+		if (material .length)
+			curve .material = material [Math .floor (material .length * Math .random ())];
+
+		group .children .push (curve);
+		
+		Browser .addRoute (timer, \"time\", curve, \"set_time\");
+	}
+}
+"
+    directOutput TRUE
+  }
+
+  ROUTE _3.fraction_changed TO BoxRotationInterpolator.set_fraction
+  ROUTE BoxRotationInterpolator.value_changed TO _2.set_rotation
+}
+
+WorldInfo {
+}
+
+LayerSet {
+  activeLayer 1
+  order [ 1, 2 ]
+  layers [
+    DEF Curves Layer {
+      isPickable FALSE
+      children [
+        Background {
+          skyColor 0.0980392 0.0980392 0.0980392
+        }
+        Viewpoint {
+          description "Machine Learning"
+          position 0 0 20.3168
+        }
+        MachineLearning {
+          speed 0.5
+          curves 40
+          material [
+            DEF _4 Material {
+              diffuseColor 0 0 0
+              emissiveColor 0.268985 0.140202 0.722821
+            }
+            DEF _5 Material {
+              emissiveColor 0.277986 0.277986 0.277986
+            }
+          ]
+        }
+      ]
+    }
+    DEF MachineLearning LayoutLayer {
+      isPickable FALSE
+      children [
+        DEF Text Transform {
+          children Shape {
+            appearance Appearance {
+              material Material { }
+            }
+            geometry Text {
+              string "Heuristics"
+              solid TRUE
+              fontStyle FontStyle {
+                family "assets/BaskervilleOldFacDCD.otf"
+                size 0.49
+                justify [ "MIDDLE", "MIDDLE" ]
+              }
+            }
+          }
+        }
+        DEF Text_6 Transform {
+          translation 0 -0.417991 0
+          children Shape {
+            appearance Appearance {
+              material Material { }
+            }
+            geometry Text {
+              string "MACHINE LEARNING"
+              solid TRUE
+              fontStyle FontStyle {
+                family "assets/Canaro-LightDEMO.otf"
+                size 0.11
+                justify [ "MIDDLE", "MIDDLE" ]
+              }
+            }
+          }
+        }
+        DEF Rectangle2D Transform {
+          translation 0 -0.417991 -1
+          scale 0.71 0.09 1
+          children Shape {
+            appearance Appearance {
+              material USE _4
+            }
+            geometry Rectangle2D { }
+          }
+        }
+      ]
+    }
+  ]
+}

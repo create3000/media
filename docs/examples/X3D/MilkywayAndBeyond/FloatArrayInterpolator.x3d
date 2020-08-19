@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sun, 27 Jan 2019 16:04:13 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/MilkywayAndBeyond/FloatArrayInterpolator.x3d'/>
+    <meta name='modified' content='Sun, 27 Jan 2019 16:04:13 GMT'/>
+    <meta name='titania-output-style' content='Nicest'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='FloatArrayInterpolator'>
+      <ProtoInterface>
+        <field accessType='inputOnly' type='SFFloat' name='set_fraction'/>
+        <field accessType='inputOutput' type='MFFloat' name='key'/>
+        <field accessType='inputOutput' type='MFFloat' name='keyValue'/>
+        <field accessType='outputOnly' type='MFFloat' name='value_changed'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Script DEF='FloatArrayInterpolatorScript'>
+          <field accessType='inputOnly' type='SFFloat' name='set_fraction'/>
+          <field accessType='inputOutput' type='MFFloat' name='key'/>
+          <field accessType='inputOutput' type='MFFloat' name='keyValue'/>
+          <field accessType='outputOnly' type='MFFloat' name='value_changed'/>
+          <IS>
+            <connect nodeField='set_fraction' protoField='set_fraction'/>
+            <connect nodeField='key' protoField='key'/>
+            <connect nodeField='keyValue' protoField='keyValue'/>
+            <connect nodeField='value_changed' protoField='value_changed'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+}
+
+function set_fraction (fraction)
+{
+	var length = key .length;
+
+	switch (length)
+	{
+		case 0:
+			// Interpolator nodes containing no keys in the key field shall not produce any events.
+			return;
+		case 1:
+			return interpolate (0, 0, 0);
+		default:
+		{
+			if (fraction <= key [0])
+				return interpolate (0, 1, 0);
+
+			var index1 = upperBound (key, 0, length, fraction, function (a, b) { return a < b; });
+
+			if (index1 !== length)
+			{
+				var
+					index0 = index1 - 1,
+					weight = (fraction - key [index0]) / (key [index1] - key [index0]);
+
+				interpolate (index0, index1, clamp (weight, 0, 1));
+			}
+			else
+				interpolate (length - 2, length - 1, 1);
+		}
+	}
+}
+
+function interpolate (index0, index1, weight)
+{
+	var size = key .length > 1 ? Math .floor (keyValue .length / key .length) : 0;
+
+	index0 *= size;
+	index1  = index0 + size;
+
+	value_changed .length = size;
+
+	for (var i = 0; i < size; ++ i)
+	{
+		value_changed [i] = lerp (keyValue [index0 + i], keyValue [index1 + i], weight);
+	}
+}
+
+function lerp (source, destination, t)
+{
+	return source + t * (destination - source);
+}
+
+function clamp (value, min, max)
+{
+	return value < min ? min : (value > max ? max : value);
+}
+
+function upperBound (array, first, last, value, comp)
+{
+	// http://en.cppreference.com/w/cpp/algorithm/upper_bound
+
+	var
+		index = 0,
+		step  = 0,
+		count = last - first;
+
+	while (count > 0)
+	{
+		step  = count >>> 1;
+		index = first + step;
+
+		if (comp (value, array [index]))
+			count = step;
+
+		else
+		{
+			first  = ++ index;
+			count -= step + 1;
+		}
+	}
+
+	return first;
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo
+        title='FloatArrayInterpolator'/>
+  </Scene>
+</X3D>

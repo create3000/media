@@ -1,0 +1,745 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Interpolation : 4
+COMPONENT Layering : 1
+COMPONENT Layout : 1
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+UNIT angle degree 0.0174532925199432958
+
+META "comment" "World of Titania"
+META "created" "Mon, 04 Apr 2016 01:15:14 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/MilkywayAndBeyond/MilkywayAndBeyond.O.x3d"
+META "modified" "Sun, 27 Jan 2019 16:06:52 GMT"
+
+EXTERNPROTO MFFloat [
+  inputOnly   SFTime  set_triggerTime
+  inputOutput MFFloat keyValue
+  outputOnly  MFFloat value_changed
+]
+"MFFloat.x3d#MFFloat"
+
+EXTERNPROTO MFNode [
+  inputOnly   SFTime set_triggerTime
+  inputOutput MFNode keyValue
+  outputOnly  MFNode value_changed
+]
+"MFNode.x3d#MFNode"
+
+EXTERNPROTO FloatArrayInterpolator [
+  inputOnly   SFFloat set_fraction
+  inputOutput MFFloat key
+  inputOutput MFFloat keyValue
+  outputOnly  MFFloat value_changed
+]
+"FloatArrayInterpolator.x3d#FloatArrayInterpolator"
+
+WorldInfo {
+}
+
+DEF _1 LayerSet {
+  activeLayer -1
+  order [ 1, 2, 3, 4, 5 ]
+  layers [
+    DEF Background Layer {
+      isPickable FALSE
+      children Background {
+        skyAngle [ 71.4645, 90.0002 ]
+        skyColor [ 0 0 0, 0.145147 0.145147 0.145147, 0.368 0.368 0.368 ]
+        groundAngle [ 73.7259, 90.0002 ]
+        groundColor [ 0 0 0, 0.146 0.146 0.146, 0.368 0.368 0.368 ]
+      }
+    }
+    DEF Layout LayoutLayer {
+      layout Layout {
+        align [ "LEFT", "TOP" ]
+        offsetUnits [ "FRACTION", "FRACTION" ]
+        sizeUnits [ "FRACTION", "FRACTION" ]
+        scaleMode [ "FRACTION", "FRACTION" ]
+      }
+      children [
+        DEF Rectangle2D Transform {
+          translation 0.0816685 0.413343 0
+          scale 0.417387 0.0830214 0.353753
+          children Shape {
+            appearance Appearance {
+              texture ImageTexture {
+                url "elephant-4214115.jpg"
+              }
+              textureTransform TextureTransform {
+                translation 0 0.87
+                scale 1 0.32
+              }
+            }
+            geometry IndexedFaceSet {
+              texCoordIndex [ 0, 1, 2, 3, -1 ]
+              coordIndex [ 0, 1, 2, 3, -1 ]
+              texCoord TextureCoordinate {
+                point [ 0 0, 1 0, 1 1, 0 1 ]
+              }
+              coord Coordinate {
+                point [ -1 -1 0, 1 -1 0, 1 1 0, -1 1 0 ]
+              }
+            }
+          }
+        }
+        DEF Rectangle2D_2 Transform {
+          children Shape {
+            appearance Appearance {
+              material DEF _3 Material {
+                diffuseColor 0.493057 0.802707 1
+              }
+            }
+            geometry IndexedFaceSet {
+              texCoordIndex [ 0, 1, 2, 3, -1 ]
+              coordIndex [ 0, 1, 2, 3, -1 ]
+              texCoord TextureCoordinate {
+                point [ 0 0, 1 0, 1 1, 0 1 ]
+              }
+              coord Coordinate {
+                point [ -0.505 0.374869 0, -0.345 0.374869 0, -0.345 0.494869 0, -0.505 0.494869 0 ]
+              }
+            }
+          }
+        }
+        DEF Rectangle2D_4 Transform {
+          children Shape {
+            appearance Appearance {
+              material DEF _5 Material {
+                diffuseColor 0.133844 0.400708 0.711178
+              }
+              texture ImageTexture {
+                url "stripes.png"
+              }
+              textureTransform TextureTransform {
+                rotation 30
+                scale 53.36 53.36
+              }
+            }
+            geometry IndexedFaceSet {
+              texCoordIndex [ 0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1 ]
+              coordIndex [ 0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1 ]
+              texCoord TextureCoordinate {
+                point [ 0.387728 2.96516e-08, 1 2.96516e-08, 1 0.0447725, 0.387728 0.0447725, 0.159191 2.96516e-08, 0.378079 2.96516e-08, 0.378079 0.0447725, 0.159191 0.0447725, 0 0, 0.159191 0, 0.159191 0.089545, 0 0.089545 ]
+              }
+              coord Coordinate {
+                point [ -0.115302 0.269869 0, 0.500082 0.269869 0, 0.500082 0.314869 0, -0.115302 0.314869 0, -0.345 0.269869 0, -0.125 0.269869 0, -0.125 0.314869 0, -0.345 0.314869 0, -0.505 0.269869 0, -0.345 0.269869 0, -0.345 0.359869 0, -0.505 0.359869 0 ]
+              }
+            }
+          }
+        }
+        DEF Rectangle2D_6 Transform {
+          translation -0.235 0.245 0
+          scale 0.11 0.01 0.353753
+          children Shape {
+            appearance Appearance {
+              material DEF _7 Material {
+                diffuseColor 1 1 1
+              }
+            }
+            geometry Rectangle2D { }
+          }
+        }
+        DEF Rectangle2D_8 Transform {
+          translation 0.19239 0.245 0
+          scale 0.307692 0.01 0.353753
+          children Shape {
+            appearance Appearance {
+              material USE _7
+            }
+            geometry Rectangle2D { }
+          }
+        }
+        DEF Rectangle2D_9 Transform {
+          translation -0.425 -0.433806 0
+          scale 0.08 0.06 0.353754
+          children Shape {
+            appearance Appearance {
+              material USE _5
+            }
+            geometry Rectangle2D { }
+          }
+        }
+        DEF Rectangle2D_10 Transform {
+          translation -0.425 0 0
+          scale 0.08 0.255 0.353753
+          children Shape {
+            appearance Appearance {
+              material USE _7
+            }
+            geometry IndexedFaceSet {
+              colorIndex [ 0, 0, 0, 0, -1, 0, 1, 1, 0, -1 ]
+              texCoordIndex [ 4, 2, 3, 5, -1, 5, 0, 1, 4, -1 ]
+              coordIndex [ 4, 2, 3, 5, -1, 5, 0, 1, 4, -1 ]
+              color Color {
+                color [ 1 1 1, 0.493057 0.802707 1 ]
+              }
+              texCoord TextureCoordinate {
+                point [ 0 0, 1 0, 1 1, 0 1, 1 0.953508, 0 0.953508 ]
+              }
+              coord Coordinate {
+                point [ -1 -1 0, 1 -1 0, 1 1 0, -1 1 0, 1 0.907016 0, -1 0.907016 0 ]
+              }
+            }
+          }
+        }
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "FRACTION", "FRACTION" ]
+            offset [ -0.36, 0.19 ]
+            sizeUnits [ "FRACTION", "FRACTION" ]
+            scaleMode [ "PIXEL", "PIXEL" ]
+          }
+          children DEF Text Transform {
+            translation 0 0 1
+            children Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 0 0 0
+                }
+              }
+              geometry DEF SidebarText Text {
+                string [ "Universe", "Galaxy", "Pulsars" ]
+                solid TRUE
+                fontStyle ScreenFontStyle {
+                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  style "BOLD"
+                  pointSize 16
+                  spacing 1.6
+                  justify [ "END", "BEGIN" ]
+                }
+              }
+            }
+          }
+        }
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "FRACTION", "FRACTION" ]
+            offset [ -0.36, -0.42 ]
+            sizeUnits [ "FRACTION", "FRACTION" ]
+            scaleMode [ "PIXEL", "PIXEL" ]
+          }
+          children DEF Text_11 Transform {
+            translation 0 0 1
+            children Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 1
+                }
+              }
+              geometry Text {
+                string [ "Data Visualisation by", "Paul Bourke" ]
+                solid TRUE
+                fontStyle ScreenFontStyle {
+                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  style "BOLD"
+                  pointSize 9
+                  spacing 1.2
+                  justify [ "END", "BEGIN" ]
+                }
+              }
+            }
+          }
+        }
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "FRACTION", "FRACTION" ]
+            offset [ 0.48, 0.3 ]
+            sizeUnits [ "FRACTION", "FRACTION" ]
+            scaleMode [ "PIXEL", "PIXEL" ]
+          }
+          children DEF Text_12 Transform {
+            translation 0 0 1
+            children Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 1
+                }
+              }
+              geometry Text {
+                string "Made with Titania"
+                length 236
+                solid TRUE
+                fontStyle ScreenFontStyle {
+                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  style "BOLD"
+                  pointSize 9
+                  spacing 1.2
+                  justify [ "END", "BEGIN" ]
+                }
+              }
+            }
+          }
+        }
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "FRACTION", "FRACTION" ]
+            offset [ -0.32, 0.36 ]
+            sizeUnits [ "FRACTION", "FRACTION" ]
+            scaleMode [ "PIXEL", "PIXEL" ]
+          }
+          children DEF Text_13 Transform {
+            translation 0 0 1
+            children Shape {
+              appearance Appearance {
+                material Material {
+                  diffuseColor 1 1 1
+                }
+              }
+              geometry DEF MilkywayText Text {
+                string "Milkyway and Beyond"
+                solid TRUE
+                fontStyle ScreenFontStyle {
+                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  style "BOLD"
+                  pointSize 26
+                  spacing 1.6
+                  justify [ "BEGIN", "END" ]
+                }
+              }
+            }
+          }
+        }
+        DEF HomeButton Group {
+          children [
+            DEF Rectangle2D_14 Transform {
+              translation -0.425 -0.314165 0
+              scale 0.08 0.045 0.353753
+              children Shape {
+                appearance Appearance {
+                  material USE _3
+                }
+                geometry Rectangle2D { }
+              }
+            }
+            LayoutGroup {
+              layout Layout {
+                align [ "LEFT", "TOP" ]
+                offsetUnits [ "FRACTION", "FRACTION" ]
+                offset [ -0.36, -0.3 ]
+                sizeUnits [ "FRACTION", "FRACTION" ]
+                scaleMode [ "PIXEL", "PIXEL" ]
+              }
+              children DEF Text_15 Transform {
+                translation 0 0 1
+                children Shape {
+                  appearance Appearance {
+                    material Material {
+                      diffuseColor 0 0 0
+                    }
+                  }
+                  geometry Text {
+                    string "Home"
+                    solid TRUE
+                    fontStyle ScreenFontStyle {
+                      family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                      style "BOLD"
+                      pointSize 16
+                      spacing 1.6
+                      justify [ "END", "BEGIN" ]
+                    }
+                  }
+                }
+              }
+            }
+            DEF _16 TouchSensor { }
+          ]
+        }
+      ]
+    }
+    DEF Galaxy Layer {
+      viewport DEF _17 Viewport {
+        clipBoundary [ 0.695109, 1, 0.304912, 0.726974 ]
+      }
+      children [
+        Background {
+          skyColor 0.085 0.085 0.085
+        }
+        Transform {
+          translation 0.0190885 -0.0138826 -0.00390446
+          scale 1.86766 1.86766 1.86766
+          children Inline {
+            url "pulsarpos.x3d"
+          }
+        }
+        DEF ResizeButton Transform {
+          translation 3.81477e-13 -1.03854e-07 2.38402
+          scale 9.75756 9.75756 9.75756
+          scaleOrientation 0 0 -1 44.9999961509023
+          children [
+            Shape {
+              appearance Appearance {
+                material Material {
+                  transparency 1
+                }
+              }
+              geometry Rectangle2D { }
+            }
+            DEF _18 TouchSensor { }
+            DEF GalaxyToggleScript Script {
+              inputOnly      SFTime set_time
+              inputOutput    SFTime resetTime 0
+              inputOutput    SFBool active FALSE
+              outputOnly     SFTime triggerTrue
+              outputOnly     SFTime triggerFalse
+              initializeOnly SFBool toggle FALSE
+
+              url "ecmascript:
+
+function initialize ()
+{
+	active = false;
+	toggle = false;
+}
+
+function set_resetTime (value, time)
+{
+	if (toggle)
+		set_time (value, time);
+}
+
+function set_time (value, time)
+{
+	if (active)
+		return;
+
+	toggle = ! toggle;
+
+	if (toggle)
+		triggerTrue = time;
+	else
+		triggerFalse = time;
+}"
+            }
+            DEF Layers MFNode {
+              keyValue [
+                USE Background
+                USE Layout
+                DEF Pulsars Layer {
+                  viewport DEF _19 Viewport {
+                    clipBoundary [ 0.697, 1, 0, 0.29 ]
+                  }
+                  children [
+                    Background {
+                      skyColor 0.085 0.085 0.085
+                    }
+                    Transform {
+                      children Inline {
+                        url "pulsars.x3d"
+                      }
+                    }
+                    DEF ResizeButton_20 Transform {
+                      translation 0 -1.73635e-07 2.91311
+                      scale 8.8919 8.8919 8.8919
+                      scaleOrientation -0.516855678645447 0.066477445823548 -0.853487525772188 57.1484129626132
+                      children [
+                        Shape {
+                          appearance Appearance {
+                            material Material {
+                              transparency 1
+                            }
+                          }
+                          geometry Rectangle2D { }
+                        }
+                        DEF _21 TouchSensor { }
+                        DEF PulsarsToggleScript Script {
+                          inputOnly      SFTime set_time
+                          inputOutput    SFTime resetTime 0
+                          inputOutput    SFBool active FALSE
+                          outputOnly     SFTime triggerTrue
+                          outputOnly     SFTime triggerFalse
+                          initializeOnly SFBool toggle FALSE
+
+                          url "ecmascript:
+
+function initialize ()
+{
+	active = false;
+	toggle = false;
+}
+
+function set_resetTime (value, time)
+{
+	if (toggle)
+		set_time (value, time);
+}
+
+function set_time (value, time)
+{
+	if (active)
+		return;
+
+	toggle = ! toggle;
+
+	if (toggle)
+		triggerTrue = time;
+	else
+		triggerFalse = time;
+}"
+                        }
+                        DEF Layers_22 MFNode {
+                          keyValue [
+                            USE Background
+                            USE Layout
+                            USE Galaxy
+                            DEF Universe Layer {
+                              viewport DEF _23 Viewport {
+                                clipBoundary [ 0.165, 0.688, 0, 0.726 ]
+                              }
+                              children [
+                                NavigationInfo {
+                                  transitionType "TELEPORT"
+                                }
+                                Background {
+                                  skyColor 0.085 0.085 0.085
+                                }
+                                DEF _24 Transform {
+                                  translation 0.00704333 0.0134851 0.0105878
+                                  scale 11.1125 11.1125 11.1125
+                                  children Inline {
+                                    url "universe.x3d"
+                                  }
+                                }
+                                DEF ResizeButton_25 Transform {
+                                  translation 0 4 0
+                                  rotation -0.999999999993254 -3.67320644183592e-06 -3.87957778337562e-13 89.9999945280246
+                                  scale 5.37823 5.37822 5.37822
+                                  scaleOrientation -0.999999999996086 1.22935148054597e-06 2.51317855295013e-06 45.0000000002237
+                                  children [
+                                    Shape {
+                                      appearance Appearance {
+                                        material Material {
+                                          transparency 1
+                                        }
+                                      }
+                                      geometry Rectangle2D { }
+                                    }
+                                    DEF _26 TouchSensor { }
+                                    DEF UniverseToggleScript Script {
+                                      inputOnly      SFTime set_time
+                                      inputOutput    SFTime resetTime 0
+                                      inputOutput    SFBool active FALSE
+                                      outputOnly     SFTime triggerTrue
+                                      outputOnly     SFTime triggerFalse
+                                      initializeOnly SFBool toggle FALSE
+
+                                      url "ecmascript:
+
+function initialize ()
+{
+	active = false;
+	toggle = false;
+}
+
+function set_resetTime (value, time)
+{
+	if (toggle)
+		set_time (value, time);
+}
+
+function set_time (value, time)
+{
+	if (active)
+		return;
+
+	toggle = ! toggle;
+
+	if (toggle)
+		triggerTrue = time;
+	else
+		triggerFalse = time;
+}"
+                                    }
+                                    DEF Layers_27 MFNode {
+                                      keyValue [
+                                        USE Background
+                                        USE Layout
+                                        USE Galaxy
+                                        USE Pulsars
+                                        USE Universe
+                                      ]
+                                    }
+                                    DEF NormalSize MFFloat {
+                                      keyValue [ 0.165, 0.688, 0, 0.726 ]
+                                    }
+                                    DEF FullScreen MFFloat {
+                                      keyValue [ 0.165, 1, 0, 1 ]
+                                    }
+                                    Group {
+                                      children [
+                                        DEF _28 TimeSensor {
+                                          cycleInterval 2
+                                          startTime 1506562816.92316
+                                        }
+                                        DEF _29 EaseInEaseOut {
+                                          key [ 0, 1 ]
+                                          easeInEaseOut [ 0 1, 1 0 ]
+                                        }
+                                        DEF _30 FloatArrayInterpolator {
+                                          key [ 0, 1 ]
+                                          keyValue [ 0.165, 0.688, 0, 0.726, 0.165, 1, 0, 1 ]
+                                        }
+                                        DEF _31 TimeSensor {
+                                          cycleInterval 2
+                                          startTime 1506562819.46883
+                                        }
+                                        DEF _32 EaseInEaseOut {
+                                          key [ 0, 1 ]
+                                          easeInEaseOut [ 0 1, 1 0 ]
+                                        }
+                                        DEF _33 FloatArrayInterpolator {
+                                          key [ 0, 1 ]
+                                          keyValue [ 0.165, 1, 0, 1, 0.165, 0.688, 0, 0.726 ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                            USE Pulsars
+                          ]
+                        }
+                        DEF NormalSize_34 MFFloat {
+                          keyValue [ 0.697, 1, 0, 0.29 ]
+                        }
+                        DEF FullScreen_35 MFFloat {
+                          keyValue [ 0.165, 1, 0, 1 ]
+                        }
+                        Group {
+                          children [
+                            DEF _36 TimeSensor {
+                              cycleInterval 2
+                              startTime 1506563747.81161
+                            }
+                            DEF _37 EaseInEaseOut {
+                              key [ 0, 1 ]
+                              easeInEaseOut [ 0 1, 1 0 ]
+                            }
+                            DEF _38 FloatArrayInterpolator {
+                              key [ 0, 1 ]
+                              keyValue [ 0.697, 1, 0, 0.29, 0.165, 1, 0, 1 ]
+                            }
+                            DEF _39 TimeSensor {
+                              cycleInterval 2
+                              startTime 1506563750.33323
+                            }
+                            DEF _40 EaseInEaseOut {
+                              key [ 0, 1 ]
+                              easeInEaseOut [ 0 1, 1 0 ]
+                            }
+                            DEF _41 FloatArrayInterpolator {
+                              key [ 0, 1 ]
+                              keyValue [ 0.165, 1, 0, 1, 0.697, 1, 0, 0.29 ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+                USE Universe
+                USE Galaxy
+              ]
+            }
+            DEF NormalSize_42 MFFloat {
+              keyValue [ 0.697, 1, 0.306, 0.726 ]
+            }
+            DEF FullScreen_43 MFFloat {
+              keyValue [ 0.165, 1, 0, 1 ]
+            }
+            Group {
+              children [
+                DEF _44 TimeSensor {
+                  cycleInterval 2
+                  startTime 1506562822.0172
+                }
+                DEF _45 EaseInEaseOut {
+                  key [ 0, 1 ]
+                  easeInEaseOut [ 0 1, 1 0 ]
+                }
+                DEF _46 FloatArrayInterpolator {
+                  key [ 0, 1 ]
+                  keyValue [ 0.697, 1, 0.306, 0.726, 0.165, 1, 0, 1 ]
+                }
+                DEF _47 TimeSensor {
+                  cycleInterval 2
+                  startTime 1506562824.97054
+                }
+                DEF _48 EaseInEaseOut {
+                  key [ 0, 1 ]
+                  easeInEaseOut [ 0 1, 1 0 ]
+                }
+                DEF _49 FloatArrayInterpolator {
+                  key [ 0, 1 ]
+                  keyValue [ 0.165, 1, 0, 1, 0.697, 1, 0.306, 0.726 ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    USE Universe
+    USE Pulsars
+  ]
+}
+
+ROUTE _26.touchTime TO UniverseToggleScript.set_time
+ROUTE UniverseToggleScript.triggerTrue TO _28.set_startTime
+ROUTE _28.fraction_changed TO _29.set_fraction
+ROUTE _31.fraction_changed TO _32.set_fraction
+ROUTE UniverseToggleScript.triggerFalse TO _31.set_startTime
+ROUTE _44.fraction_changed TO _45.set_fraction
+ROUTE _47.fraction_changed TO _48.set_fraction
+ROUTE GalaxyToggleScript.triggerFalse TO _47.set_startTime
+ROUTE GalaxyToggleScript.triggerTrue TO _44.set_startTime
+ROUTE _18.touchTime TO GalaxyToggleScript.set_time
+ROUTE _39.fraction_changed TO _40.set_fraction
+ROUTE _36.fraction_changed TO _37.set_fraction
+ROUTE PulsarsToggleScript.triggerFalse TO _39.set_startTime
+ROUTE PulsarsToggleScript.triggerTrue TO _36.set_startTime
+ROUTE _21.touchTime TO PulsarsToggleScript.set_time
+ROUTE _36.isActive TO PulsarsToggleScript.set_active
+ROUTE _39.isActive TO PulsarsToggleScript.set_active
+ROUTE _28.isActive TO UniverseToggleScript.set_active
+ROUTE _31.isActive TO UniverseToggleScript.set_active
+ROUTE _44.isActive TO GalaxyToggleScript.set_active
+ROUTE _47.isActive TO GalaxyToggleScript.set_active
+ROUTE _16.touchTime TO GalaxyToggleScript.set_resetTime
+ROUTE _16.touchTime TO PulsarsToggleScript.set_resetTime
+ROUTE _16.touchTime TO UniverseToggleScript.set_resetTime
+ROUTE _40.modifiedFraction_changed TO _41.set_fraction
+ROUTE _41.value_changed TO _19.set_clipBoundary
+ROUTE _45.modifiedFraction_changed TO _46.set_fraction
+ROUTE _46.value_changed TO _17.set_clipBoundary
+ROUTE _48.modifiedFraction_changed TO _49.set_fraction
+ROUTE _49.value_changed TO _17.set_clipBoundary
+ROUTE _29.modifiedFraction_changed TO _30.set_fraction
+ROUTE _30.value_changed TO _23.set_clipBoundary
+ROUTE _32.modifiedFraction_changed TO _33.set_fraction
+ROUTE _33.value_changed TO _23.set_clipBoundary
+ROUTE _37.modifiedFraction_changed TO _38.set_fraction
+ROUTE _38.value_changed TO _19.set_clipBoundary
+ROUTE NormalSize_42.value_changed TO _17.set_clipBoundary
+ROUTE FullScreen_43.value_changed TO _17.set_clipBoundary
+ROUTE NormalSize.value_changed TO _23.set_clipBoundary
+ROUTE FullScreen.value_changed TO _23.set_clipBoundary
+ROUTE NormalSize_34.value_changed TO _19.set_clipBoundary
+ROUTE FullScreen_35.value_changed TO _19.set_clipBoundary
+ROUTE GalaxyToggleScript.triggerTrue TO Layers.set_triggerTime
+ROUTE Layers.value_changed TO _1.set_layers
+ROUTE UniverseToggleScript.triggerTrue TO Layers_27.set_triggerTime
+ROUTE Layers_27.value_changed TO _1.set_layers
+ROUTE PulsarsToggleScript.triggerTrue TO Layers_22.set_triggerTime
+ROUTE Layers_22.value_changed TO _1.set_layers

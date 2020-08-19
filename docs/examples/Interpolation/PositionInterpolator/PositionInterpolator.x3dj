@@ -1,0 +1,829 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Mon, 25 Sep 2017 05:26:15 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V3.0.4, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Interpolation/PositionInterpolator/PositionInterpolator.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Tue, 26 Sep 2017 13:14:02 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Layout",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": -1,
+            "@order": [ 1, 2, 3 ],
+            "-layers": [
+              { "LayoutLayer":
+                {
+                  "-layout": { "Layout":
+                    {
+                      "@scaleMode": [ "FRACTION", "FRACTION" ]
+                    }
+                  },
+                  "-children": [
+                    { "Background":
+                      {
+                        "@DEF": "Gray"
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Rectangle2D",
+                        "@translation": [ 0, -0.31, 0 ],
+                        "@scale": [ 1, 0.381, 0.5 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@diffuseColor": [ 1, 1, 1 ],
+                                      "@transparency": 0.906
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 1, 1 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Rectangle2D_1",
+                        "@translation": [ 0, -0.01, 0 ],
+                        "@scale": [ 1, 0.071, 0.5 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@diffuseColor": [ 1, 1, 1 ],
+                                      "@transparency": 0.906
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 1, 1 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "-children": [
+                    { "Viewpoint":
+                      {
+                        "@position": [ 8, 0, 12 ],
+                        "@orientation": [ 0, 1, 0, 1 ],
+                        "@centerOfRotation": [ -3.07889, -0.314556, 5.86004 ]
+                      }
+                    },
+                    { "Group":
+                      {
+                        "-children": [
+                          { "Group":
+                            {
+                              "@DEF": "Animation",
+                              "-children": [
+                                { "TimeSensor":
+                                  {
+                                    "@DEF": "AnimationTimer",
+                                    "@cycleInterval": 11,
+                                    "@loop": true,
+                                    "@startTime": 1506319814.61558,
+                                    "@stopTime": 1506319814.61558
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator",
+                                    "@key": [ 0, 0.909091, 0.999999, 1 ],
+                                    "@keyValue": [ -14, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_2",
+                                    "@key": [ 0, 0.818182, 0.90909, 0.909091, 1 ],
+                                    "@keyValue": [ -12, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, -12, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_3",
+                                    "@key": [ 0, 0.727273, 0.818181, 0.818182, 1 ],
+                                    "@keyValue": [ -10, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, -10, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_4",
+                                    "@key": [ 0, 0.636364, 0.727272, 0.727273, 1 ],
+                                    "@keyValue": [ -8, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, -8, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_5",
+                                    "@key": [ 0, 0.545455, 0.636363, 0.636364, 1 ],
+                                    "@keyValue": [ -6, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, -6, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_6",
+                                    "@key": [ 0, 0.454545, 0.545454, 0.545455, 1 ],
+                                    "@keyValue": [ -4, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, -4, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_7",
+                                    "@key": [ 0, 0.363636, 0.454544, 0.454545, 1 ],
+                                    "@keyValue": [ -2, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, -2, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_8",
+                                    "@key": [ 0, 0.272727, 0.363635, 0.363636, 1 ],
+                                    "@keyValue": [ 0, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, 0, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_9",
+                                    "@key": [ 0, 0.181818, 0.272726, 0.272727, 1 ],
+                                    "@keyValue": [ 2, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, 2, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_10",
+                                    "@key": [ 0, 0.0909091, 0.181817, 0.181818, 1 ],
+                                    "@keyValue": [ 4, 0, 0, 6, 0, 0, 6, 0, 0, -14, 0, 0, 4, 0, 0 ]
+                                  }
+                                },
+                                { "PositionInterpolator":
+                                  {
+                                    "@DEF": "BoxTranslationInterpolator_11",
+                                    "@key": [ 0, 0.0909081, 0.0909091, 1 ],
+                                    "@keyValue": [ 6, 0, 0, 6, 0, 0, -14, 0, 0, 6, 0, 0 ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Red",
+                              "@translation": [ -10.8556, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass5",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.748016, 0, 0.0400871 ],
+                                            "@specularColor": [ 0.89697, 0.89697, 0.89697 ],
+                                            "@shininess": 1,
+                                            "@transparency": 0.359073
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@DEF": "_12",
+                                        "@solid": false
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box",
+                              "@translation": [ 6, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass3",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.748016, 0.299537, 0 ],
+                                            "@specularColor": [ 0.836364, 0.836364, 0.836364 ],
+                                            "@shininess": 0.921212,
+                                            "@transparency": 0.34749
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Yellow",
+                              "@translation": [ 5.14444, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass1",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.748014, 0.62085, 0 ],
+                                            "@specularColor": [ 0.860606, 0.860606, 0.860599 ],
+                                            "@shininess": 0.939394,
+                                            "@transparency": 0.34749
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_13",
+                              "@translation": [ 3.14443, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass18",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.381944, 0.748016, 0 ],
+                                            "@specularColor": [ 0.963636, 0.963636, 0.963636 ],
+                                            "@shininess": 0.981818,
+                                            "@transparency": 0.370656
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_14",
+                              "@translation": [ -0.855576, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass14",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0, 0.631244, 0.748016 ],
+                                            "@specularColor": [ 0.915152, 0.915152, 0.915152 ],
+                                            "@shininess": 0.642424,
+                                            "@transparency": 0.389961
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_15",
+                              "@translation": [ -2.85557, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass13",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.0207323, 0.339645, 0.748016 ],
+                                            "@specularColor": [ 0.90303, 0.90303, 0.90303 ],
+                                            "@shininess": 0.927273,
+                                            "@transparency": 0.362934
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_16",
+                              "@translation": [ -4.85557, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass12",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.002317, 0, 0.748016 ],
+                                            "@specularColor": [ 0.884848, 0.884848, 0.884848 ],
+                                            "@shininess": 0.830303,
+                                            "@transparency": 0.34749
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_17",
+                              "@translation": [ 1.14442, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass17",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0, 0.748016, 0.176015 ],
+                                            "@specularColor": [ 0.981818, 0.981818, 0.981818 ],
+                                            "@shininess": 0.721212,
+                                            "@transparency": 0.355212
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_18",
+                              "@translation": [ -12.8556, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass4",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.748016, 0.139569, 0 ],
+                                            "@specularColor": [ 0.709091, 0.709091, 0.709091 ],
+                                            "@shininess": 0.478788,
+                                            "@transparency": 0.59
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_19",
+                              "@translation": [ -8.85557, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass6",
+                                            "@ambientIntensity": 0.00746438,
+                                            "@diffuseColor": [ 0.0291577, 0.0262922, 0.0269642 ],
+                                            "@specularColor": [ 0.981818, 0, 0 ],
+                                            "@shininess": 0.030303,
+                                            "@transparency": 0.389961
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Box_20",
+                              "@translation": [ -6.85557, 0, 0 ],
+                              "@scale": [ 0.138356, 5, 4 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Glass12_21",
+                                            "@ambientIntensity": 0.187004,
+                                            "@diffuseColor": [ 0.299085, 0, 0.748016 ],
+                                            "@specularColor": [ 0.884848, 0.884848, 0.884848 ],
+                                            "@shininess": 0.830303,
+                                            "@transparency": 0.34749
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Box":
+                                      {
+                                        "@USE": "_12"
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Text",
+                        "@translation": [ -6.58324, -2.42055, 0 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@diffuseColor": [ 1, 1, 1 ]
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "X3D is versatile,", "use X3D graphics elsewhere." ],
+                                  "@solid": true,
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@family": [ "Roice-BlackItalicSC.otf", "SANS" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Box_20",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_2",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_2",
+            "@fromField": "value_changed",
+            "@toNode": "Box_16",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_3",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_3",
+            "@fromField": "value_changed",
+            "@toNode": "Box_15",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_4",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_4",
+            "@fromField": "value_changed",
+            "@toNode": "Box_14",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_5",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_5",
+            "@fromField": "value_changed",
+            "@toNode": "Box_17",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_6",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_6",
+            "@fromField": "value_changed",
+            "@toNode": "Box_13",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_7",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_7",
+            "@fromField": "value_changed",
+            "@toNode": "Yellow",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_8",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_8",
+            "@fromField": "value_changed",
+            "@toNode": "Box",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_9",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_9",
+            "@fromField": "value_changed",
+            "@toNode": "Box_18",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_10",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_10",
+            "@fromField": "value_changed",
+            "@toNode": "Red",
+            "@toField": "translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "BoxTranslationInterpolator_11",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "BoxTranslationInterpolator_11",
+            "@fromField": "value_changed",
+            "@toNode": "Box_19",
+            "@toField": "translation"
+          }
+        }
+      ]
+    }
+  }
+}

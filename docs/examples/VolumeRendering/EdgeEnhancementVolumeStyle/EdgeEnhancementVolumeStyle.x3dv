@@ -1,0 +1,52 @@
+#X3D V3.3 utf8 Titania V4.5.17
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Texturing3D : 2
+COMPONENT VolumeRendering : 2
+
+META "TODO" "get brain2.nrrd on savage server"
+META "comment" "World of Titania"
+META "created" "26 March 2011"
+META "creator" "Andrew Wood, Nicholas Polys: Virginia Tech"
+META "description" "Volume rendering of a brain MR image, rendered with basic edge enhancement style"
+META "generator" "Titania V4.5.17, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/EdgeEnhancementVolumeStyle/EdgeEnhancementVolumeStyle.O.x3d"
+META "license" "../license.html"
+META "modified" "Fri, 18 Oct 2019 13:23:46 GMT"
+META "reference" "EdgeBrain.x3d"
+META "reference" "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/brain2.nrrd"
+META "reference" "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
+META "reference" "Run the download target in the Ant build.xml file to install reference nrrd files locally."
+META "reference" "build.xml"
+META "reference" "Volume Data obtained from, !! 3D Visualizer !!"
+META "title" "EdgeBrain.x3d"
+
+WorldInfo {
+  title "EdgeEnhancementVolumeStyle.O"
+}
+
+Group {
+  children [
+    DEF VP Viewpoint {
+      description "Edge Brain"
+      position -0.00920216 0.012033 -0.184913
+      orientation 0.000511972764407604 0.999933806630981 0.0114943568921364 3.2306103826178
+      centerOfRotation 0.00728844 0.00776813 -0.000164086
+    }
+    DEF BG Background {
+      skyColor 0.2 0.2 0.2
+    }
+    Transform {
+      scale 0.117188 0.117188 0.117188
+      children VolumeData {
+        dimensions 1.28 1.28 1
+        renderStyle EdgeEnhancementVolumeStyle { }
+        voxels ImageTexture3D {
+          url [ "datasets/nrrd/brain.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/brain2.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/brain.nrrd" ]
+        }
+      }
+    }
+  ]
+}

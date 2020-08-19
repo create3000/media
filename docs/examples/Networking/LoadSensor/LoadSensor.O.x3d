@@ -1,0 +1,846 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Layering' level='1'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/LoadSensor/LoadSensor.O.x3d'/>
+    <meta name='modified' content='Sun, 27 Jan 2019 15:04:21 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
+      <field accessType='inputOutput' type='SFBool' name='whichChoice'/>
+      <field accessType='initializeOnly' type='SFVec3f' name='bboxSize'/>
+      <field accessType='initializeOnly' type='SFVec3f' name='bboxCenter'/>
+      <field accessType='inputOnly' type='MFNode' name='addChildren'/>
+      <field accessType='inputOnly' type='MFNode' name='removeChildren'/>
+      <field accessType='inputOutput' type='MFNode' name='children'/>
+    </ExternProtoDeclare>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_1' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='true'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <Script DEF='FlickrScript' containerField='value'
+                directOutput='true'>
+              <field accessType='inputOutput' type='SFTime' name='loadTime' value='1546831163.06251'/>
+              <field accessType='initializeOnly' type='MFNode' name='images'>
+                <ImageTexture DEF='_2' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.0627804176091118"'/>
+                <ImageTexture DEF='_3' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.779485543026762"'/>
+                <ImageTexture DEF='_4' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.029944279029766818"'/>
+                <ImageTexture DEF='_5' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.6399236246258556"'/>
+                <ImageTexture DEF='_6' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.43474795609898087"'/>
+                <ImageTexture DEF='_7' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.2269121015854384"'/>
+                <ImageTexture DEF='_8' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.9659207310524175"'/>
+                <ImageTexture DEF='_9' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.938643344963352"'/>
+                <ImageTexture DEF='_10' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.344666176620097"'/>
+                <ImageTexture DEF='_11' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.09404398745550835"'/>
+                <ImageTexture DEF='_12' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.319547992309949"'/>
+                <ImageTexture DEF='_13' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.08042770608270844"'/>
+                <ImageTexture DEF='_14' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.8488169931856263"'/>
+                <ImageTexture DEF='_15' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.2791865705993909"'/>
+                <ImageTexture DEF='_16' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.41537223771501486"'/>
+                <ImageTexture DEF='_17' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.3024802055225807"'/>
+                <ImageTexture DEF='_18' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.7767677217862783"'/>
+                <ImageTexture DEF='_19' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.6029179244912598"'/>
+                <ImageTexture DEF='_20' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.7462787596449603"'/>
+                <ImageTexture DEF='_21' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.018624003323363114"'/>
+                <ImageTexture DEF='_22' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.24673967957836818"'/>
+                <ImageTexture DEF='_23' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.23328149310531476"'/>
+                <ImageTexture DEF='_24' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.04817828279539371"'/>
+                <ImageTexture DEF='_25' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.8238838350867131"'/>
+                <ImageTexture DEF='_26' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.00860313207814467"'/>
+                <ImageTexture DEF='_27' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.6458371210879333"'/>
+                <ImageTexture DEF='_28' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.330329672452481"'/>
+                <ImageTexture DEF='_29' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.1382852738951461"'/>
+                <ImageTexture DEF='_30' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.9557136523080219"'/>
+                <ImageTexture DEF='_31' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.7756076443627684"'/>
+                <ImageTexture DEF='_32' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.12812948547309788"'/>
+                <ImageTexture DEF='_33' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.8641720595735717"'/>
+                <ImageTexture DEF='_34' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.7649565194583272"'/>
+                <ImageTexture DEF='_35' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.2457792600998875"'/>
+                <ImageTexture DEF='_36' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.594987210941756"'/>
+                <ImageTexture DEF='_37' containerField='images'
+                    url='"https://picsum.photos/270/200/?random&amp;_stamp=0.2135839020738839"'/>
+              </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	set_loadTime (0, 0);
+}
+
+function set_loadTime (value, time)
+{
+	for (var i = 0, length = images .length; i < length; ++ i)
+	{
+		images [i] .url = new MFString ("https://picsum.photos/270/200/?random&_stamp=" + Math .random ());
+	}	
+}
+]]>
+            </Script>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='BrowserPanel' containerField='value'
+            name='BrowserPanel'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='layerNumber' containerField='value'
+              name='layerNumber'
+              reference='http://titania.create3000.de'
+              value='-1, 0, 0, 0, 0, -1, -1, -1'/>
+          <MetadataString DEF='type_38' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
+          <MetadataSet DEF='viewpoints' containerField='value'
+              name='viewpoints'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
+                name='PerspectiveViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_39' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='5.87788534164429, 6.46984958648682, 13.8524446487427'/>
+              <MetadataDouble DEF='orientation_40' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='-0.704047462871212, 0.695566762376517, 0.143192350010952, 0.568941727555854'/>
+              <MetadataDouble DEF='centerOfRotation_41' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+            <MetadataSet DEF='TopViewpoint' containerField='value'
+                name='TopViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_42' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='-0.0320612526145463, 10.8662109375, 0.0937320149966475'/>
+              <MetadataDouble DEF='orientation_43' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='1, 0, 0, 4.71238898038469'/>
+              <MetadataDouble DEF='centerOfRotation_44' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.0320612526145463, 0, 0.0937320149966475'/>
+              <MetadataDouble DEF='fieldOfViewScale_45' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.21023944190259'/>
+            </MetadataSet>
+            <MetadataSet DEF='FrontViewpoint' containerField='value'
+                name='FrontViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_46' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='-0.00884759203065143, 0.0177734813359099, 10000'/>
+              <MetadataDouble DEF='orientation_47' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 1, 0'/>
+              <MetadataDouble DEF='centerOfRotation_48' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.00884759203065143, 0.0177734813359099, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale_49' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.212467484375'/>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='LayerSet' containerField='value'
+            name='LayerSet'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeLayer' containerField='value'
+              name='activeLayer'
+              reference='http://titania.create3000.de'
+              value='-1'/>
+        </MetadataSet>
+        <MetadataSet DEF='Prototype' containerField='value'
+            name='Prototype'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='path' containerField='value'
+              name='path'
+              reference='http://titania.create3000.de'
+              value='"BooleanSwitch"'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <LayerSet
+        activeLayer='-1'
+        order='0, 1, 2, 3'>
+      <Layer DEF='Background'
+          isPickable='false'>
+        <Background
+            skyAngle='1.09223, 1.5708'
+            skyColor='0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3'
+            groundAngle='1.1248, 1.5708'
+            groundColor='0.4 0.4 0.4, 0.4 0.4 0.4, 0.3 0.3 0.3'/>
+      </Layer>
+      <Layer DEF='Model'>
+        <MetadataSet DEF='Titania_50'
+            name='Titania'
+            reference='http://titania.create3000.de'>
+          <MetadataSet DEF='Grid_51' containerField='value'
+              name='Grid'
+              reference='http://titania.create3000.de'>
+            <MetadataBoolean DEF='enabled_52' containerField='value'
+                name='enabled'
+                reference='http://titania.create3000.de'
+                value='true'/>
+            <MetadataFloat DEF='translation' containerField='value'
+                name='translation'
+                reference='http://titania.create3000.de'
+                value='0, 0, 0'/>
+            <MetadataInteger DEF='dimension' containerField='value'
+                name='dimension'
+                reference='http://titania.create3000.de'
+                value='10, 10, 10'/>
+            <MetadataFloat DEF='scale' containerField='value'
+                name='scale'
+                reference='http://titania.create3000.de'
+                value='1, 0.5, 1'/>
+          </MetadataSet>
+          <MetadataSet DEF='BrowserPanel_53' containerField='value'
+              name='BrowserPanel'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='viewpoints_54' containerField='value'
+                name='viewpoints'
+                reference='http://titania.create3000.de'>
+              <MetadataSet DEF='FrontViewpoint_55' containerField='value'
+                  name='FrontViewpoint'
+                  reference='http://titania.create3000.de'>
+                <MetadataDouble DEF='position' containerField='value'
+                    name='position'
+                    reference='http://titania.create3000.de'
+                    value='0.621060277084836, -0.318609975454716, 10000'/>
+                <MetadataDouble DEF='orientation' containerField='value'
+                    name='orientation'
+                    reference='http://titania.create3000.de'
+                    value='0, 0, 1, 0'/>
+                <MetadataDouble DEF='centerOfRotation' containerField='value'
+                    name='centerOfRotation'
+                    reference='http://titania.create3000.de'
+                    value='0.621060277084836, -0.318609975454716, 0'/>
+                <MetadataDouble DEF='fieldOfViewScale_56' containerField='value'
+                    name='fieldOfViewScale'
+                    reference='http://titania.create3000.de'
+                    value='2.2018528425147'/>
+              </MetadataSet>
+              <MetadataSet DEF='PerspectiveViewpoint_57' containerField='value'
+                  name='PerspectiveViewpoint'
+                  reference='http://titania.create3000.de'>
+                <MetadataDouble DEF='position_58' containerField='value'
+                    name='position'
+                    reference='http://titania.create3000.de'
+                    value='16.4301579422679, 13.8003462222024, 17.2425986100032'/>
+                <MetadataDouble DEF='orientation_59' containerField='value'
+                    name='orientation'
+                    reference='http://titania.create3000.de'
+                    value='0.66270799280222, -0.718966131196923, -0.209537152953317, 5.45454883657247'/>
+                <MetadataDouble DEF='centerOfRotation_60' containerField='value'
+                    name='centerOfRotation'
+                    reference='http://titania.create3000.de'
+                    value='3.20355269160595, -0.858586202396391, -1.58243169227367'/>
+                <MetadataDouble DEF='fieldOfViewScale_61' containerField='value'
+                    name='fieldOfViewScale'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <Viewpoint
+            position='0 0 18.8454'/>
+        <Transform DEF='Images'>
+          <Transform
+              translation='-12 0 0'>
+            <Transform DEF='Rectangle2D'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_2'/>
+                </Appearance>
+                <Rectangle2D DEF='_62'
+                    size='2.7 2'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_63'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_3'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_64'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_4'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_65'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_5'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='-9 0 0'>
+            <Transform DEF='Rectangle2D_66'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_6'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_67'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_7'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_68'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_8'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_69'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_9'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='-6 0 0'>
+            <Transform DEF='Rectangle2D_70'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_10'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_71'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_11'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_72'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_12'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_73'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_13'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='-3 0 0'>
+            <Transform DEF='Rectangle2D_74'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_14'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_75'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_15'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_76'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_16'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_77'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_17'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform>
+            <Transform DEF='Rectangle2D_78'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_18'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_79'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_19'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_80'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_20'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_81'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_21'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='3 0 0'>
+            <Transform DEF='Rectangle2D_82'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_22'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_83'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_23'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_84'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_24'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_85'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_25'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='6 0 0'>
+            <Transform DEF='Rectangle2D_86'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_26'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_87'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_27'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_88'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_28'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_89'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_29'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='9 0 0'>
+            <Transform DEF='Rectangle2D_90'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_30'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_91'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_31'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_92'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_32'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_93'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_33'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+          <Transform
+              translation='12 0 0'>
+            <Transform DEF='Rectangle2D_94'
+                translation='0 4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_34'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_95'
+                translation='0 1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_35'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_96'
+                translation='0 -1.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_36'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Rectangle2D_97'
+                translation='0 -4.5 0'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture USE='_37'/>
+                </Appearance>
+                <Rectangle2D USE='_62'/>
+              </Shape>
+            </Transform>
+          </Transform>
+        </Transform>
+        <TouchSensor DEF='_98'
+            description='Click To Load New Images'/>
+        <Script USE='FlickrScript'/>
+        <LoadSensor DEF='_99'>
+          <ImageTexture USE='_2' containerField='watchList'/>
+          <ImageTexture USE='_3' containerField='watchList'/>
+          <ImageTexture USE='_4' containerField='watchList'/>
+          <ImageTexture USE='_5' containerField='watchList'/>
+          <ImageTexture USE='_6' containerField='watchList'/>
+          <ImageTexture USE='_7' containerField='watchList'/>
+          <ImageTexture USE='_8' containerField='watchList'/>
+          <ImageTexture USE='_9' containerField='watchList'/>
+          <ImageTexture USE='_10' containerField='watchList'/>
+          <ImageTexture USE='_11' containerField='watchList'/>
+          <ImageTexture USE='_12' containerField='watchList'/>
+          <ImageTexture USE='_13' containerField='watchList'/>
+          <ImageTexture USE='_14' containerField='watchList'/>
+          <ImageTexture USE='_15' containerField='watchList'/>
+          <ImageTexture USE='_16' containerField='watchList'/>
+          <ImageTexture USE='_17' containerField='watchList'/>
+          <ImageTexture USE='_18' containerField='watchList'/>
+          <ImageTexture USE='_19' containerField='watchList'/>
+          <ImageTexture USE='_20' containerField='watchList'/>
+          <ImageTexture USE='_21' containerField='watchList'/>
+          <ImageTexture USE='_22' containerField='watchList'/>
+          <ImageTexture USE='_23' containerField='watchList'/>
+          <ImageTexture USE='_24' containerField='watchList'/>
+          <ImageTexture USE='_25' containerField='watchList'/>
+          <ImageTexture USE='_26' containerField='watchList'/>
+          <ImageTexture USE='_27' containerField='watchList'/>
+          <ImageTexture USE='_28' containerField='watchList'/>
+          <ImageTexture USE='_29' containerField='watchList'/>
+          <ImageTexture USE='_30' containerField='watchList'/>
+          <ImageTexture USE='_31' containerField='watchList'/>
+          <ImageTexture USE='_32' containerField='watchList'/>
+          <ImageTexture USE='_33' containerField='watchList'/>
+          <ImageTexture USE='_34' containerField='watchList'/>
+          <ImageTexture USE='_35' containerField='watchList'/>
+          <ImageTexture USE='_36' containerField='watchList'/>
+          <ImageTexture USE='_37' containerField='watchList'/>
+        </LoadSensor>
+        <ProtoInstance name='BooleanSwitch' DEF='_100'>
+          <fieldValue name='children'>
+            <Transform DEF='Disk2D_101'
+                translation='0 -6.81799 0'
+                scale='0.5 0.5 0.5'>
+              <Shape DEF='_102'>
+                <Appearance>
+                  <Material
+                      diffuseColor='0 0 0'/>
+                </Appearance>
+                <Disk2D/>
+              </Shape>
+            </Transform>
+            <Group>
+              <Transform DEF='Disk2D'
+                  translation='2.38955 -6.81799 0'
+                  scale='0.5 0.5 0.5'>
+                <Group DEF='Animation'>
+                  <MetadataSet DEF='Animation_103'
+                      name='Animation'
+                      reference='http://titania.create3000.de'>
+                    <MetadataInteger DEF='duration_104' containerField='value'
+                        name='duration'
+                        reference='http://titania.create3000.de'
+                        value='10'/>
+                    <MetadataInteger DEF='frameRate_105' containerField='value'
+                        name='frameRate'
+                        reference='http://titania.create3000.de'
+                        value='10'/>
+                  </MetadataSet>
+                  <TimeSensor DEF='AnimationTimer'
+                      loop='true'
+                      startTime='1548601131.2048'
+                      stopTime='1548601135.65393'/>
+                  <PositionInterpolator DEF='Disk2DTranslationInterpolator'
+                      key='0, 0.5, 1'
+                      keyValue='-3 -6.81799 0, 3 -6.81799 0, -3 -6.81799 0'>
+                    <MetadataSet DEF='Interpolator_106'
+                        name='Interpolator'
+                        reference='http://titania.create3000.de'>
+                      <MetadataInteger DEF='key_107' containerField='value'
+                          name='key'
+                          reference='http://titania.create3000.de'
+                          value='0, 5, 10'/>
+                      <MetadataDouble DEF='keyValue_108' containerField='value'
+                          name='keyValue'
+                          reference='http://titania.create3000.de'
+                          value='-3, -6.8179874420166, 0, 3, -6.8179874420166, 0, -3, -6.8179874420166, 0'/>
+                      <MetadataString DEF='keyType_109' containerField='value'
+                          name='keyType'
+                          reference='http://titania.create3000.de'
+                          value='"LINEAR", "LINEAR", "LINEAR"'/>
+                      <MetadataInteger DEF='keySize_110' containerField='value'
+                          name='keySize'
+                          reference='http://titania.create3000.de'
+                          value='1'/>
+                    </MetadataSet>
+                  </PositionInterpolator>
+                </Group>
+                <Shape USE='_102'/>
+              </Transform>
+              <VisibilitySensor DEF='_111'
+                  size='1 1 1'/>
+            </Group>
+          </fieldValue>
+        </ProtoInstance>
+      </Layer>
+      <Layer DEF='HUD'>
+        <MetadataSet DEF='Titania_112'
+            name='Titania'
+            reference='http://titania.create3000.de'>
+          <MetadataSet DEF='BrowserPanel_113' containerField='value'
+              name='BrowserPanel'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='viewpoints_114' containerField='value'
+                name='viewpoints'
+                reference='http://titania.create3000.de'>
+              <MetadataSet DEF='FrontViewpoint_115' containerField='value'
+                  name='FrontViewpoint'
+                  reference='http://titania.create3000.de'>
+                <MetadataDouble DEF='position_116' containerField='value'
+                    name='position'
+                    reference='http://titania.create3000.de'
+                    value='0.270680099468101, -4.1404341848056, 10.8662109375'/>
+                <MetadataDouble DEF='orientation_117' containerField='value'
+                    name='orientation'
+                    reference='http://titania.create3000.de'
+                    value='0, 0, 1, 0'/>
+                <MetadataDouble DEF='centerOfRotation_118' containerField='value'
+                    name='centerOfRotation'
+                    reference='http://titania.create3000.de'
+                    value='0.270680099468101, -4.1404341848056, 0'/>
+                <MetadataDouble DEF='fieldOfViewScale_119' containerField='value'
+                    name='fieldOfViewScale'
+                    reference='http://titania.create3000.de'
+                    value='0.203532124507175'/>
+              </MetadataSet>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+      </Layer>
+    </LayerSet>
+    <ROUTE fromNode='_98' fromField='touchTime' toNode='FlickrScript' toField='set_loadTime'/>
+    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='Disk2DTranslationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='Disk2DTranslationInterpolator' fromField='value_changed' toNode='Disk2D' toField='set_translation'/>
+    <ROUTE fromNode='_111' fromField='enterTime' toNode='AnimationTimer' toField='set_startTime'/>
+    <ROUTE fromNode='_111' fromField='exitTime' toNode='AnimationTimer' toField='set_stopTime'/>
+    <ROUTE fromNode='_99' fromField='isActive' toNode='_100' toField='set_whichChoice'/>
+  </Scene>
+</X3D>

@@ -1,0 +1,235 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Fri, 01 Dec 2017 15:31:14 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.0.3, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ForcePhysicsModel/ForcePhysicsModel.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sat, 16 Dec 2017 09:23:05 GMT"
+        },
+        {
+          "@name": "titania-add-metadata",
+          "@content": "true"
+        }
+      ],
+      "component": [
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        },
+        {
+          "@name": "Rendering",
+          "@level": 4
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.0174532925199432958
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"Grid",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "translation"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFRotation",
+                "@name": "rotation"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "scale"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "dimension"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "majorLineEvery"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "MFInt32",
+                "@name": "majorLineOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "planeOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "planeColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "planeTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "lineColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "lineTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFColor",
+                "@name": "majorLineColor"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "majorLineTransparency"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFVec3f",
+                "@name": "numberOffset"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFNode",
+                "@name": "numberAppearance"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFNode",
+                "@name": "numberFontStyle"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFBool",
+                "@name": "solid"
+              }
+            ],
+            "@url": [ "Grid.x3d#Grid" ]
+          }
+        },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "Background":
+          {
+            "@DEF": "Gray",
+            "@skyColor": [ 0.2, 0.2, 0.2 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View",
+            "@position": [ 10.0825, 13.7472, 16.6886 ],
+            "@orientation": [ -0.454975355207785, 0.881434725338287, 0.126768494198552, 35.084158645404 ]
+          }
+        },
+        { "ParticleSystem":
+          {
+            "@DEF": "_1",
+            "@geometryType": "LINE",
+            "@maxParticles": 800,
+            "@particleLifetime": 2,
+            "@particleSize": [ 0.02, 1 ],
+            "-emitter": { "ConeEmitter":
+              {
+                "@angle": 20,
+                "@speed": 20,
+                "@mass": 0.5
+              }
+            },
+            "-physics": [
+              { "ForcePhysicsModel":
+                {
+                }
+              }
+            ],
+            "@colorKey": [ 0, 1 ],
+            "-colorRamp": { "ColorRGBA":
+              {
+                "@color": [ 0, 0, 1, 1, 0, 0.5, 1, 1 ]
+              }
+            },
+            "@bboxSize": [ 16, 16, 16 ],
+            "@bboxCenter": [ 0, 8, 0 ],
+            "-appearance": { "Appearance":
+              {
+                "-lineProperties": { "LineProperties":
+                  {
+                    "@linewidthScaleFactor": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        { "ProtoInstance":
+          {
+            "@name": "Grid",
+            "fieldValue": [
+              {
+                "@name": "numberAppearance",
+                "-children": [
+                  { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@transparency": 1
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

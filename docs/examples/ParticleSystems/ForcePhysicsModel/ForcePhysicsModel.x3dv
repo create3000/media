@@ -1,0 +1,83 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT ParticleSystems : 1
+COMPONENT Rendering : 4
+
+UNIT angle degree 0.0174532925199432958
+
+META "comment" "World of Titania"
+META "created" "Fri, 01 Dec 2017 15:31:14 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.0.3, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ForcePhysicsModel/ForcePhysicsModel.O.x3d"
+META "modified" "Sat, 16 Dec 2017 09:23:05 GMT"
+META "titania-add-metadata" "true"
+
+EXTERNPROTO Grid [
+  inputOutput    SFVec3f    translation
+  inputOutput    SFRotation rotation
+  inputOutput    SFVec3f    scale
+  inputOutput    MFInt32    dimension
+  inputOutput    MFInt32    majorLineEvery
+  inputOutput    MFInt32    majorLineOffset
+  inputOutput    SFVec3f    planeOffset
+  inputOutput    SFColor    planeColor
+  inputOutput    SFFloat    planeTransparency
+  inputOutput    SFColor    lineColor
+  inputOutput    SFFloat    lineTransparency
+  inputOutput    SFColor    majorLineColor
+  inputOutput    SFFloat    majorLineTransparency
+  inputOutput    SFVec3f    numberOffset
+  inputOutput    SFNode     numberAppearance
+  inputOutput    SFNode     numberFontStyle
+  initializeOnly SFBool     solid
+]
+"Grid.x3d#Grid"
+
+WorldInfo {
+}
+
+DEF Gray Background {
+  skyColor 0.2 0.2 0.2
+}
+
+Viewpoint {
+  description "Initial View"
+  position 10.0825 13.7472 16.6886
+  orientation -0.454975355207785 0.881434725338287 0.126768494198552 35.084158645404
+}
+
+DEF _1 ParticleSystem {
+  geometryType "LINE"
+  maxParticles 800
+  particleLifetime 2
+  particleSize 0.02 1
+  emitter ConeEmitter {
+    angle 20
+    speed 20
+    mass 0.5
+  }
+  physics ForcePhysicsModel { }
+  colorKey [ 0, 1 ]
+  colorRamp ColorRGBA {
+    color [ 0 0 1 1, 0 0.5 1 1 ]
+  }
+  bboxSize 16 16 16
+  bboxCenter 0 8 0
+  appearance Appearance {
+    lineProperties LineProperties {
+      linewidthScaleFactor 2
+    }
+  }
+}
+
+Grid {
+  numberAppearance Appearance {
+    material Material {
+      transparency 1
+    }
+  }
+}

@@ -1,0 +1,327 @@
+#X3D V3.3 utf8 Titania V4.4.3
+
+PROFILE Immersive
+
+COMPONENT EnvironmentalEffects : 3
+COMPONENT Grouping : 3
+COMPONENT Shape : 4
+COMPONENT Time : 2
+
+META "comment" "World of Titania"
+META "created" "Wed, 29 Nov 2017 00:17:07 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/Anchor/Anchor.O.x3d"
+META "modified" "Sun, 27 Jan 2019 14:58:01 GMT"
+META "titania-add-metadata" "true"
+
+WorldInfo {
+}
+
+NavigationInfo {
+  type "NONE"
+  headlight FALSE
+}
+
+Viewpoint {
+  position 6.40135 -5.22835 10.7282
+  orientation 0.585763446404589 0.769642002403876 -0.254032228254545 0.683950257164812
+  centerOfRotation -0.439189 1.02694 -1.19944
+}
+
+DEF White Background {
+  skyColor 1 1 1
+}
+
+DirectionalLight {
+  ambientIntensity 0.835991
+  direction -0.584419 0.286636 -0.75914
+}
+
+Anchor {
+  description "http://create3000.de"
+  url "http://create3000.de"
+  children Transform {
+    children [
+      DEF Animation Group {
+        children [
+          DEF AnimationTimer TimeSensor {
+            cycleInterval 12
+            loop TRUE
+          }
+          DEF BoxRotationInterpolator OrientationInterpolator {
+            key [ 0, 0.25, 0.5, 0.75, 1 ]
+            keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.14159253438051, 0 1 0 1.57079644600419, 0 0 1 0 ]
+          }
+        ]
+      }
+      DEF Box_1 Transform {
+        translation -2.99785 2.99073 -2.72545
+        children Shape {
+          appearance DEF _2 Appearance {
+            material Material {
+              ambientIntensity 0.399038
+              diffuseColor 0.841 0.841 0.841
+            }
+          }
+          geometry DEF _3 Box { }
+        }
+      }
+      DEF Box Transform {
+        translation 2 -1.44128 2
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_4 Transform {
+        translation 2 0.768636 2
+        scale 0.807819 0.807819 0.807819
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_5 Transform {
+        translation 2.34642 3.12524 2.68216
+        rotation 0 -1 0 4.29460642224273
+        scale 0.964652 0.964652 0.964652
+        children Shape {
+          appearance DEF _6 Appearance {
+            material DEF Rococo24 Material {
+              ambientIntensity 0.226102
+              diffuseColor 0.28636 0.554905 0.904409
+              specularColor 0.0955906 0.0955906 0.0955906
+              shininess 0.078125
+            }
+          }
+          geometry USE _3
+        }
+      }
+      DEF Box_7 Transform {
+        translation -0.986631 -2.00014 2
+        rotation 0 -1 0 4.29460642224273
+        children Shape {
+          appearance USE _6
+          geometry USE _3
+        }
+      }
+      DEF Box_8 Transform {
+        translation -0.586669 0.638275 2
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_9 Transform {
+        translation -0.586669 2.99471 2
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_10 Transform {
+        translation -3.21626 0.638275 2
+        scale 0.784474 0.784474 0.784474
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_11 Transform {
+        translation -3.71573 -2.57139 2
+        scale 1.10679 1.10679 1.10679
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_12 Transform {
+        translation -5.77882 2.27115 2
+        scale 0.359812 0.359812 0.359812
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_13 Transform {
+        translation -3.19692 4.00116 2
+        rotation 0 -1 0 4.29460642224273
+        children Shape {
+          appearance USE _6
+          geometry USE _3
+        }
+      }
+      DEF Box_14 Transform {
+        translation 2 0.868302 -0.343802
+        scale 0.807819 0.807819 0.807819
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_15 Transform {
+        translation 2 3.04236 -0.061313
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_16 Transform {
+        translation 2 -1.41035 -0.602299
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_17 Transform {
+        translation 2 -2.09482 -3.84417
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_18 Transform {
+        translation 2.68853 0.718106 -3.37328
+        rotation 0 -1 0 4.29460642224273
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _6
+          geometry USE _3
+        }
+      }
+      DEF Box_19 Transform {
+        translation 3.90262 3.48009 -3.06294
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_20 Transform {
+        translation 5.12978 2.8284 -6.33901
+        scale 0.617149 0.617149 0.617149
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_21 Transform {
+        translation -0.622955 -1.41035 -0.510004
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_22 Transform {
+        translation -3.13922 -1.41035 -0.339588
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_23 Transform {
+        translation -0.491561 -2.23364 -3.04673
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_24 Transform {
+        translation -3.4317 -3.15799 -2.92382
+        scale 0.993173 0.993173 0.993173
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_25 Transform {
+        translation -0.586669 0.638275 -0.363712
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_26 Transform {
+        translation -3.02648 0.847233 -0.363712
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_27 Transform {
+        translation -3.07204 3.2154 -0.363712
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_28 Transform {
+        translation -0.538259 2.98689 -0.363712
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_29 Transform {
+        translation -0.387514 0.758733 -2.72545
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_30 Transform {
+        translation -2.67964 0.848522 -2.72545
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_31 Transform {
+        translation 1.7054 3.25344 -2.72545
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+      DEF Box_32 Transform {
+        translation -0.490449 3.01681 -2.72545
+        children Shape {
+          appearance USE _2
+          geometry USE _3
+        }
+      }
+    ]
+  }
+}
+
+DEF Shadow Transform {
+  translation -0.256602 -5.83826 -0.184634
+  rotation -0.996032255435311 0.0874932528469986 -0.0162688917476778 1.43117953405799
+  scale 4.20884 4.20883 4.20883
+  scaleOrientation 0.995956787652368 -0.0489210736244371 -0.075344579663095 0.443933961013422
+  center 0 0 -0.27296
+  children Shape {
+    appearance Appearance {
+      material Material { }
+      texture ImageTexture {
+        url "assets/glow.png"
+        repeatS FALSE
+        repeatT FALSE
+      }
+    }
+    geometry Rectangle2D { }
+  }
+}
+
+ROUTE AnimationTimer.fraction_changed TO BoxRotationInterpolator.set_fraction
+ROUTE BoxRotationInterpolator.value_changed TO Box_13.set_rotation
+ROUTE BoxRotationInterpolator.value_changed TO Box_5.set_rotation
+ROUTE BoxRotationInterpolator.value_changed TO Box_7.set_rotation
+ROUTE BoxRotationInterpolator.value_changed TO Box_18.set_rotation

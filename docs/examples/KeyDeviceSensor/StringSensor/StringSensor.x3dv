@@ -1,0 +1,257 @@
+#X3D V3.3 utf8 Titania V4.6.7
+
+PROFILE Immersive
+
+META "comment" "World of Titania"
+META "created" "Thu, 13 Dec 2018 13:18:33 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/KeyDeviceSensor/StringSensor/StringSensor.O.x3d"
+META "modified" "Thu, 07 Nov 2019 12:42:43 GMT"
+
+WorldInfo {
+}
+
+NavigationInfo {
+  type "NONE"
+}
+
+DEF YouWin Transform {
+  translation 0 3 0
+  children Shape {
+    appearance DEF _1 Appearance {
+      material Material {
+        diffuseColor 0 0 0
+        emissiveColor 0 1 1
+      }
+    }
+    geometry Text {
+      string "You win"
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.7
+        justify "MIDDLE"
+      }
+    }
+  }
+}
+
+DEF EnterYourName Transform {
+  translation 0 2.53057 0
+  children Shape {
+    appearance USE _1
+    geometry Text {
+      string "enter your name"
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+        justify "MIDDLE"
+      }
+    }
+  }
+}
+
+DEF PointSet Transform {
+  translation 0 1.57545 0
+  scale 0.4 1 1
+  children Shape {
+    appearance DEF _2 Appearance {
+      pointProperties PointProperties {
+        pointSizeScaleFactor 4
+        pointSizeMaxValue 4
+      }
+      material DEF _3 Material {
+        diffuseColor 0 0 0
+        emissiveColor 1 0 0
+      }
+    }
+    geometry PointSet {
+      coord Coordinate {
+        point [ -5 0 0, -4 0 0, -3 0 0, -2 0 0, -1 0 0, 0 0 0, 1 0 0, 2 0 0, 3 0 0, 4 0 0, 5 0 0 ]
+      }
+    }
+  }
+}
+
+DEF _4 StringSensor { }
+
+DEF ScoreScript Script {
+  inputOnly      SFString set_enteredText
+  inputOnly      SFString set_finalText
+  outputOnly     MFString name_changed
+  outputOnly     MFString score_changed
+  outputOnly     MFString names_changed
+  outputOnly     MFString scores_changed
+  initializeOnly MFString names [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ]
+  initializeOnly MFString scores [ "64954", "90797", "76015", "75371", "59181", "93368" ]
+  initializeOnly SFNode   sound DEF _5 AudioClip {
+    description "screws"
+    url "assets/screws.mp3"
+    pauseTime 1544722794.88013
+  }
+
+  url "ecmascript:
+
+function initialize ()
+{
+	set_enteredText (\"\", 0);
+	set_score ();
+	
+	names_changed  = names;
+	scores_changed = scores;
+}
+
+function set_enteredText (value, time)
+{
+	name_changed [0] = value;
+	sound .stopTime  = time;
+	sound .startTime = time;
+}
+
+function set_finalText (value, time)
+{
+	if (value .match (/^\\s*$/))
+		return;
+
+	names  .unshift (value);
+	scores .unshift (score_changed [0]);
+
+	names  .length = Math .min (7, names .length);
+	scores .length = Math .min (7, scores .length);
+	
+	names_changed  = names;
+	scores_changed = scores;
+
+	set_enteredText (\"\", 0);
+	set_score ();
+}
+
+function set_score ()
+{
+	score_changed [0] = random (50000, 100000);
+}
+
+function random (min, max)
+{
+	return Math .floor (Math .random () * (max - min) + min);
+}"
+}
+
+DEF Name Transform {
+  translation 0 1.74394 0
+  children Shape {
+    appearance DEF _6 Appearance {
+      material USE _3
+    }
+    geometry DEF _7 Text {
+      string ""
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+        justify "MIDDLE"
+      }
+    }
+  }
+}
+
+DEF Score Transform {
+  translation 0 1.16039 0
+  children Shape {
+    appearance USE _6
+    geometry DEF _8 Text {
+      string "74499"
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+        justify "MIDDLE"
+      }
+    }
+  }
+}
+
+DEF PlayersText Transform {
+  translation -6 0.608401 0
+  children Shape {
+    appearance USE _6
+    geometry Text {
+      string "Players"
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+      }
+    }
+  }
+}
+
+DEF ScoresText Transform {
+  translation 6 0.608401 0
+  children Shape {
+    appearance USE _6
+    geometry Text {
+      string "Scores"
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+        justify "END"
+      }
+    }
+  }
+}
+
+DEF Names Transform {
+  translation -6 0 0
+  children Shape {
+    appearance USE _1
+    geometry DEF _9 Text {
+      string [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ]
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+        spacing 1.2
+      }
+    }
+  }
+}
+
+DEF Scores Transform {
+  translation 6 0 0
+  children Shape {
+    appearance USE _1
+    geometry DEF _10 Text {
+      string [ "64954", "90797", "76015", "75371", "59181", "93368" ]
+      solid TRUE
+      fontStyle FontStyle {
+        family "assets/ATComputer.otf"
+        size 0.4
+        spacing 1.2
+        justify "END"
+      }
+    }
+  }
+}
+
+DEF StarField Inline {
+  url "assets/starfield.x3d"
+}
+
+DEF screws Sound {
+  minBack 20
+  minFront 20
+  maxBack 30
+  maxFront 30
+  source USE _5
+}
+
+ROUTE _4.enteredText TO ScoreScript.set_enteredText
+ROUTE _4.finalText TO ScoreScript.set_finalText
+ROUTE ScoreScript.name_changed TO _7.set_string
+ROUTE ScoreScript.score_changed TO _8.set_string
+ROUTE ScoreScript.names_changed TO _9.set_string
+ROUTE ScoreScript.scores_changed TO _10.set_string

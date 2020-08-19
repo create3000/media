@@ -1,0 +1,273 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sat, 30 Jun 2018 14:23:48 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.3.0, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Switch/Switch.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sat, 30 Jun 2018 15:43:38 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Layout",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "WorldInfo":
+          {
+          }
+        },
+        { "LayerSet":
+          {
+            "@activeLayer": -1,
+            "@order": [ 1, 2 ],
+            "-layers": [
+              { "LayoutLayer":
+                {
+                  "@DEF": "Clouds",
+                  "-layout": { "Layout":
+                    {
+                      "@scaleMode": [ "STRETCH", "STRETCH" ]
+                    }
+                  },
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@DEF": "Rectangle2D",
+                        "@scale": [ 1.6, 1, 1 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  },
+                                  "-texture": { "ImageTexture":
+                                    {
+                                      "@url": [ "assets/clouds.jpg" ]
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@size": [ 1, 1 ]
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Layer":
+                {
+                  "@DEF": "LegoMens",
+                  "-children": [
+                    { "Viewpoint":
+                      {
+                        "@position": [ 8.55853, 14.0994, 17.5892 ],
+                        "@orientation": [ -0.702493566218813, 0.693784242009822, 0.15863863010008, 0.629356170493366 ],
+                        "@centerOfRotation": [ 0.453916, 4.9987, 0.559686 ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "Platform",
+                        "@rotation": [ 0, -1, 0, 0.57171960394431 ],
+                        "-children": [
+                          { "Group":
+                            {
+                              "@DEF": "SwitchAnimation",
+                              "-children": [
+                                { "TimeSensor":
+                                  {
+                                    "@DEF": "SwitchAnimationTimer",
+                                    "@cycleInterval": 15,
+                                    "@loop": true
+                                  }
+                                },
+                                { "IntegerSequencer":
+                                  {
+                                    "@DEF": "MensWhichChoiceInterpolator",
+                                    "@key": [ 0, 0.333333, 0.666667, 1 ],
+                                    "@keyValue": [ 0, 1, 2, 0 ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Group":
+                            {
+                              "@DEF": "PlatformRotationAnimation",
+                              "-children": [
+                                { "TimeSensor":
+                                  {
+                                    "@DEF": "AnimationTimer",
+                                    "@cycleInterval": 20,
+                                    "@loop": true
+                                  }
+                                },
+                                { "OrientationInterpolator":
+                                  {
+                                    "@DEF": "PlatformRotationInterpolator",
+                                    "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                                    "@keyValue": [ 0, 1, 0, 1.16099466823039, 0, -1, 0, 0.379149921334659, 0, 1, 0, 4.35789393518189, 0, 1, 0, 2.80748864666412, 0, 1, 0, 1.16099466823039 ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Switch":
+                            {
+                              "@DEF": "Mens",
+                              "@whichChoice": 0,
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "GordonFreeman",
+                                    "@translation": [ 415.087, -3.0715, -276.76 ],
+                                    "@scale": [ 0.0128517, 0.0128517, 0.0128517 ],
+                                    "@center": [ -415.087, 8.0715, 276.76 ],
+                                    "-children": [
+                                      { "Inline":
+                                        {
+                                          "@url": [ "assets/lego_gordon_freeman_half-life/scene.x3d" ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "JonSnow",
+                                    "@translation": [ 0, 5, 0 ],
+                                    "@scale": [ 5, 5, 5 ],
+                                    "-children": [
+                                      { "Inline":
+                                        {
+                                          "@url": [ "assets/lego_jon_snow/scene.x3d" ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "StreetFighter",
+                                    "@translation": [ 0, 5, 0 ],
+                                    "@scale": [ 5, 5, 5 ],
+                                    "-children": [
+                                      { "Inline":
+                                        {
+                                          "@url": [ "assets/lego_mad_hatter_street_fighter_twist./scene.x3d" ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Platform_1",
+                              "@translation": [ 0.291846, -1.25397, -0.614791 ],
+                              "@scale": [ 0.19916, 0.19916, 0.19916 ],
+                              "-children": [
+                                { "Inline":
+                                  {
+                                    "@url": [ "assets/60_years_lego_bricks_-_mini_space_ship/scene.x3d" ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "PlatformRotationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "PlatformRotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Platform",
+            "@toField": "rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "SwitchAnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "MensWhichChoiceInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "MensWhichChoiceInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Mens",
+            "@toField": "whichChoice"
+          }
+        }
+      ]
+    }
+  }
+}

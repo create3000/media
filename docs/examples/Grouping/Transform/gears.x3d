@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Interchange' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+  <head>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sat, 23 Sep 2017 10:46:25 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Grouping/Transform/gears.x3d'/>
+    <meta name='modified' content='Mon, 21 Jan 2019 08:40:37 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='Rotor' url='"Rotor.x3d#Rotor", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/Rotor.x3d#Rotor"'>
+      <field accessType='inputOutput' type='SFBool' name='enabled'/>
+      <field accessType='inputOutput' type='SFTime' name='cycleInterval'/>
+      <field accessType='inputOutput' type='SFVec3f' name='axis'/>
+      <field accessType='inputOutput' type='SFFloat' name='angle'/>
+      <field accessType='inputOutput' type='SFBool' name='loop'/>
+      <field accessType='inputOutput' type='SFTime' name='startTime'/>
+      <field accessType='inputOutput' type='SFTime' name='pauseTime'/>
+      <field accessType='inputOutput' type='SFTime' name='resumeTime'/>
+      <field accessType='inputOutput' type='SFTime' name='stopTime'/>
+      <field accessType='outputOnly' type='SFBool' name='isActive'/>
+      <field accessType='outputOnly' type='SFTime' name='cycleTime'/>
+      <field accessType='outputOnly' type='SFRotation' name='rotation_changed'/>
+    </ExternProtoDeclare>
+    <ProtoDeclare name='Gear'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFFloat' name='teeth' value='10'/>
+        <field accessType='inputOutput' type='SFFloat' name='toothDepth' value='2'/>
+        <field accessType='inputOutput' type='SFFloat' name='innerRadius' value='1'/>
+        <field accessType='inputOutput' type='SFFloat' name='outerRadius' value='4'/>
+        <field accessType='inputOutput' type='SFFloat' name='width' value='1'/>
+        <field accessType='initializeOnly' type='SFFloat' name='creaseAngle'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <IndexedFaceSet DEF='Gear'>
+          <IS>
+            <connect nodeField='creaseAngle' protoField='creaseAngle'/>
+          </IS>
+          <Coordinate/>
+        </IndexedFaceSet>
+        <Script
+            directOutput='true'>
+          <field accessType='inputOutput' type='SFFloat' name='teeth'/>
+          <field accessType='inputOutput' type='SFFloat' name='toothDepth'/>
+          <field accessType='inputOutput' type='SFFloat' name='innerRadius'/>
+          <field accessType='inputOutput' type='SFFloat' name='outerRadius'/>
+          <field accessType='inputOutput' type='SFFloat' name='width'/>
+          <field accessType='initializeOnly' type='SFNode' name='gear'>
+            <IndexedFaceSet USE='Gear' containerField='gear'/>
+          </field>
+          <IS>
+            <connect nodeField='teeth' protoField='teeth'/>
+            <connect nodeField='toothDepth' protoField='toothDepth'/>
+            <connect nodeField='innerRadius' protoField='innerRadius'/>
+            <connect nodeField='outerRadius' protoField='outerRadius'/>
+            <connect nodeField='width' protoField='width'/>
+          </IS>
+<![CDATA[vrmlscript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	print ('### Generating gear ...');
+
+	var indices = new MFInt32 ();
+	var points  = new MFVec3f ();
+
+	var cos = Math .cos;
+	var sin = Math .sin;
+
+	// Radien and tooth angle
+
+	var radius0 = innerRadius;
+	var radius1 = outerRadius - toothDepth / 2;
+	var radius2 = outerRadius + toothDepth / 2;
+	var da = 2 * Math .PI / teeth / 4;
+
+	// Front vectors
+
+	var vectorf0 = new SFVec3f (radius0, 0, width * 0.5);
+	var vectorf1 = new SFVec3f (radius1, 0, width * 0.5);
+	var vectorf2 = new SFVec3f (radius2, 0, width * 0.5);
+
+	// Back vectors
+
+	var vectorb0 = new SFVec3f (radius0, 0, -width * 0.5);
+	var vectorb1 = new SFVec3f (radius1, 0, -width * 0.5);
+	var vectorb2 = new SFVec3f (radius2, 0, -width * 0.5);
+
+	// Generate front face indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 3;
+
+		indices [indices .length] = index;
+		indices [indices .length] = index + 1;
+		indices [indices .length] = index + 2;
+		indices [indices .length] = index + 4;
+		indices [indices .length] = index + 3;
+		indices [indices .length] = -1;
+	}
+
+	// Generate front face points
+
+	for (var i = 0; i < teeth + 1; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf0);
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);
+	}
+
+	points .length = points .length - 1;
+
+	points [points .length] = new SFVec3f ();
+	points [points .length] = new SFVec3f ();
+	points [points .length] = new SFVec3f ();
+
+
+	// Generate front sides of teeth indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 4;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = -1;
+	}
+
+	// Generate front sides of teeth points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + da)     .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);
+	}
+
+
+	// Generate back face indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 3;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = points .length + index + 4;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = -1;
+	}
+
+	// Generate back face points
+
+	for (var i = 0; i < teeth + 1; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb0);
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);
+	}
+
+	points .length = points .length - 1;
+
+
+	// Generate back sides of teeth indices
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 4;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = -1;
+	}
+
+	// Generate front sides of teeth points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorb2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + da)     .multVec (vectorb2);
+		points [points .length] = new SFRotation (0, 0, 1, angle)          .multVec (vectorb1);
+	}
+
+
+	// Generate outward faces of teeth indices
+
+	for (var i = 0; i < teeth * 4; ++ i)
+	{
+		var index = i * 2;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = -1;
+	}
+
+	indices [indices .length - 3] = points .length + 1;
+	indices [indices .length - 2] = points .length;
+
+	// Generate outward faces of teeth points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+	   var angle = i * 2 * Math .PI / teeth;
+
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorb1);
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + da) .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + da) .multVec (vectorb2);
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorf2);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 2 * da) .multVec (vectorb2);
+
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorf1);
+		points [points .length] = new SFRotation (0, 0, 1, angle + 3 * da) .multVec (vectorb1);
+	}
+
+
+	// Generate inside radius cylinder points
+
+	for (var i = 0; i < teeth; ++ i)
+	{
+		var index = i * 2;
+
+		indices [indices .length] = points .length + index;
+		indices [indices .length] = points .length + index + 1;
+		indices [indices .length] = points .length + index + 3;
+		indices [indices .length] = points .length + index + 2;
+		indices [indices .length] = -1;
+	}
+
+	indices [indices .length - 3] = points .length + 1;
+	indices [indices .length - 2] = points .length;
+
+	// Generate inside radius cylinder indices
+
+	for (var i = 0; i < teeth + 1; ++ i)
+	{
+		var angle = i * 2 * Math .PI / teeth;
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorb0);
+		points [points .length] = new SFRotation (0, 0, 1, angle) .multVec (vectorf0);
+	}
+
+	print ('### Generating gear done.');
+
+	gear .coord .point   = points;
+	gear .set_coordIndex = indices;
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo
+        title='gears'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Transform DEF='Gears'
+        translation='3.61246 0 0'>
+      <ProtoInstance name='Rotor' DEF='RedRotor'>
+        <fieldValue name='cycleInterval' value='20'/>
+        <fieldValue name='loop' value='true'/>
+      </ProtoInstance>
+      <ProtoInstance name='Rotor' DEF='GreenRotor'>
+        <fieldValue name='cycleInterval' value='10'/>
+        <fieldValue name='loop' value='true'/>
+      </ProtoInstance>
+      <ProtoInstance name='Rotor' DEF='BlueRotor'>
+        <fieldValue name='cycleInterval' value='10'/>
+        <fieldValue name='loop' value='true'/>
+      </ProtoInstance>
+      <Transform DEF='YellowGear'
+          translation='16.8199 0.725497 -15.0021'
+          rotation='-0.999999999995868 -2.53532439741599e-06 -1.35527550021284e-06 1.57079620759179'
+          scale='1.12665 1.12665 1.12665'
+          scaleOrientation='0.167446075525065 0.97155697493695 0.167448070286334 1.59964733512399'>
+        <Transform DEF='Gear_1'
+            rotation='0 0 1 0.653807394799457'>
+          <Shape>
+            <Appearance>
+              <Material DEF='_2'
+                  diffuseColor='0.912022 0.740099 0.28164'/>
+            </Appearance>
+            <ProtoInstance name='Gear' containerField='geometry'>
+              <fieldValue name='teeth' value='20'/>
+              <fieldValue name='toothDepth' value='0.5'/>
+              <fieldValue name='innerRadius' value='3'/>
+              <fieldValue name='creaseAngle' value='0.6'/>
+            </ProtoInstance>
+          </Shape>
+        </Transform>
+      </Transform>
+      <Transform DEF='BlueGear'
+          translation='8.47829 0.658103 -10.8839'
+          rotation='0.113377185176265 0.702547812911911 -0.702546926869798 2.91579846636058'
+          scale='1.12665 1.12665 0.845297'
+          scaleOrientation='1.88117515458878e-07 -3.91820192920257e-07 -0.999999999999906 0.144207723604494'>
+        <Transform DEF='Gear_3'
+            rotation='0 0 1 1.30761478959891'
+            scale='1 1 0.389622'>
+          <Shape>
+            <Appearance>
+              <Material DEF='_4'
+                  diffuseColor='0.0765998 0.271042 0.498303'/>
+            </Appearance>
+            <ProtoInstance name='Gear' containerField='geometry'>
+              <fieldValue name='toothDepth' value='0.5'/>
+              <fieldValue name='innerRadius' value='1.2'/>
+              <fieldValue name='outerRadius' value='2'/>
+              <fieldValue name='width' value='2'/>
+              <fieldValue name='creaseAngle' value='0.7'/>
+            </ProtoInstance>
+          </Shape>
+        </Transform>
+      </Transform>
+      <Transform DEF='RedGear'
+          translation='16.622 0.645209 -23.7623'
+          rotation='-0.00707002850835463 0.707089152579327 -0.707089064405284 3.15573324957294'
+          scale='1.12665 1.12665 1.12665'
+          scaleOrientation='-0.0467731001503026 -0.119775444243871 0.991698603436807 3.90592105156555'>
+        <Transform DEF='Gear_5'
+            rotation='0 0 1 1.30761478959891'>
+          <Shape>
+            <Appearance>
+              <Material DEF='_6'
+                  diffuseColor='0.90876 0.172012 0.252202'/>
+            </Appearance>
+            <ProtoInstance name='Gear' containerField='geometry'>
+              <fieldValue name='toothDepth' value='0.5'/>
+              <fieldValue name='innerRadius' value='1.3'/>
+              <fieldValue name='outerRadius' value='2'/>
+              <fieldValue name='width' value='0.5'/>
+            </ProtoInstance>
+          </Shape>
+        </Transform>
+      </Transform>
+      <Transform DEF='Fields'
+          translation='-3.61246 0 0'>
+        <Transform DEF='translation'
+            translation='5.94119 0.818256 -30.8507'
+            rotation='-0.999999999993254 -3.67320512848233e-06 -1.72095619204259e-18 1.5707963267949'
+            scale='4.70841 4.70841 4.70841'
+            scaleOrientation='0.158167575600449 -0.930886206492497 -0.329293013273414 0.586570160578551'>
+          <Shape>
+            <Appearance>
+              <Material USE='_6'/>
+            </Appearance>
+            <Text
+                string='"translation"'
+                solid='true'>
+              <FontStyle DEF='_7'
+                  family='"SANS"'
+                  style='BOLD'
+                  size='0.4'
+                  spacing='1.2'/>
+            </Text>
+          </Shape>
+        </Transform>
+        <Transform DEF='rotation'
+            translation='28.7035 0.732753 -26.1196'
+            rotation='-0.999999999993254 -3.67320512847439e-06 -8.06820058083402e-18 1.5707963267949'
+            scale='4.70841 4.70841 4.70841'
+            scaleOrientation='0.10500195452289 0.993589175133877 -0.0418943982312148 0.435076306033356'>
+          <Shape>
+            <Appearance>
+              <Material USE='_2'/>
+            </Appearance>
+            <Text
+                string='"rotation"'
+                solid='true'>
+              <FontStyle USE='_7'/>
+            </Text>
+          </Shape>
+        </Transform>
+        <Transform DEF='scale'
+            translation='-0.59521 0.709785 -3.95509'
+            rotation='-0.999999999993254 -3.67320512848233e-06 -1.72095619204259e-18 1.5707963267949'
+            scale='4.70841 4.70841 4.70841'
+            scaleOrientation='0.0150364702413376 0.0396703119144065 0.999099680169749 3.92480898181388'>
+          <Shape>
+            <Appearance>
+              <Material USE='_4'/>
+            </Appearance>
+            <Text
+                string='"scale"'
+                solid='true'>
+              <FontStyle USE='_7'/>
+            </Text>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D'
+            translation='2.0339 0.694565 -3.11978'
+            rotation='-0.999999999993254 -3.67320558322968e-06 0 1.57079614798772'
+            scale='3.34228 0.296299 0.999999'>
+          <Shape>
+            <Appearance>
+              <Material USE='_4'/>
+            </Appearance>
+            <IndexedFaceSet
+                solid='false'
+                texCoordIndex='4, 3, 0, 5, -1, 5, 1, 2, 4, -1, 4, 2, 2, 4, -1'
+                coordIndex='4, 3, 0, 5, -1, 5, 1, 2, 4, -1, 4, 2, 6, 7, -1'>
+              <TextureCoordinate
+                  point='0 0, 1 0, 1 1, 0 1, 0.895889 1, 0.891308 0'/>
+              <Coordinate
+                  point='-1 -1 0, 0.64996 -1 0, 0.828801 1 0, -1 1 0, 0.620579 1 0, 0.611417 -1 0, 2.14224 16.0911 -2.91993e-15, 1.93402 16.0911 -2.91993e-15'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_8'
+            translation='14.4782 0.694615 -29.9441'
+            rotation='4.49207015509755e-22 0.707106844406813 -0.707106717966276 3.14158745889278'
+            scale='-3.342 -0.296 -1'>
+          <Shape>
+            <Appearance>
+              <Material USE='_6'/>
+            </Appearance>
+            <IndexedFaceSet
+                solid='false'
+                texCoordIndex='4, 3, 0, 5, -1, 5, 1, 2, 4, -1, 4, 2, 2, 4, -1'
+                coordIndex='4, 3, 0, 5, -1, 5, 1, 2, 4, -1, 4, 2, 6, 7, -1'>
+              <TextureCoordinate
+                  point='0 0, 1 0, 1 1, 0 1, 0.895889 1, 0.891308 0'/>
+              <Coordinate
+                  point='-2.67008 -1 0, 0.64996 -1 0, 0.828801 1 0, -2.67008 1 0, 0.620579 1 0, 0.611417 -1 0, 1.51787 8.91725 -1.53188e-15, 1.30965 8.91725 -1.53188e-15'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+        <Transform DEF='Rectangle2D_9'
+            translation='30.1341 0.694672 -25.2184'
+            rotation='-2.59734850655282e-06 0.707106717963891 0.707106844404428 3.14159265358979'
+            scale='3.342 0.296 1'>
+          <Shape>
+            <Appearance>
+              <Material USE='_2'/>
+            </Appearance>
+            <IndexedFaceSet
+                solid='false'
+                texCoordIndex='4, 3, 0, 5, -1, 5, 1, 2, 4, -1, 4, 2, 2, 4, -1'
+                coordIndex='4, 3, 0, 5, -1, 5, 1, 2, 4, -1, 4, 2, 6, 7, -1'>
+              <TextureCoordinate
+                  point='0 0, 1 0, 1 1, 0 1, 0.895889 1, 0.891308 0'/>
+              <Coordinate
+                  point='-1.92216 -1 0, 0.64996 -1 0, 0.828801 1 0, -1.92216 1 0, 0.620579 1 0, 0.611417 -1 0, 1.98996 14.3414 -2.58139e-15, 1.78174 14.3414 -2.58139e-15'/>
+            </IndexedFaceSet>
+          </Shape>
+        </Transform>
+      </Transform>
+    </Transform>
+    <ROUTE fromNode='RedRotor' fromField='rotation_changed' toNode='Gear_1' toField='set_rotation'/>
+    <ROUTE fromNode='GreenRotor' fromField='rotation_changed' toNode='Gear_3' toField='set_rotation'/>
+    <ROUTE fromNode='BlueRotor' fromField='rotation_changed' toNode='Gear_5' toField='set_rotation'/>
+  </Scene>
+</X3D>

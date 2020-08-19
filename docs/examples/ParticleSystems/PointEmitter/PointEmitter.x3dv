@@ -1,0 +1,188 @@
+#X3D V3.3 utf8 Titania V4.5.0
+
+PROFILE Immersive
+
+COMPONENT ParticleSystems : 1
+COMPONENT Shaders : 1
+COMPONENT Shape : 4
+
+META "comment" "World of Titania"
+META "created" "Sun, 17 Dec 2017 11:21:49 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.5.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/PointEmitter/PointEmitter.O.x3d"
+META "modified" "Thu, 11 Apr 2019 08:18:49 GMT"
+META "titania-add-metadata" "true"
+
+EXTERNPROTO ComposeSFVec3f [
+  inputOutput SFFloat x
+  inputOutput SFFloat y
+  inputOutput SFFloat z
+  outputOnly  SFVec3f value_changed
+]
+[ "ComposeSFVec3f.x3d#ComposeSFVec3f", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/ComposeSFVec3f.x3d#ComposeSFVec3f" ]
+
+EXTERNPROTO Noise [
+  inputOutput SFBool  enabled
+  inputOutput SFFloat frequency
+  inputOutput SFFloat amplitude
+  inputOutput SFFloat phase
+  outputOnly  SFFloat value_changed
+]
+[ "Noise.x3d#Noise", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/Noise.x3d#Noise" ]
+
+WorldInfo {
+  title "scene"
+}
+
+NavigationInfo {
+  headlight FALSE
+}
+
+Viewpoint {
+  description "Initial View"
+}
+
+DEF X Noise {
+  enabled TRUE
+  frequency 0.5
+  amplitude 5
+}
+
+DEF Y Noise {
+  enabled TRUE
+  frequency 0.5
+  amplitude 4
+}
+
+DEF Z Noise {
+  enabled TRUE
+  frequency 0.5
+  amplitude 5
+}
+
+DEF _1 ComposeSFVec3f {
+  x 5.6248
+  y 4.54379
+  z 3.6676
+}
+
+ParticleSystem {
+  maxParticles 500
+  particleLifetime 4.5
+  particleSize 0.16 0.16
+  emitter DEF _2 PointEmitter {
+    position 5.6248 4.54379 3.6676
+    direction 0 0 0
+    speed 1.49
+  }
+  bboxSize 11 11 11
+  appearance Appearance {
+    texture ImageTexture {
+      url "star.png"
+    }
+    shaders DEF ComposedShader ComposedShader {
+      language "GLSL"
+      parts [
+        DEF VertexShader ShaderPart {
+          url "data:x-shader/x-vertex,
+
+precision mediump float;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+
+attribute float x3d_ParticleId;
+attribute vec4  x3d_ParticlePosition;
+attribute float x3d_ParticleElapsedTime;
+attribute float x3d_ParticleLife;
+attribute vec4  x3d_Vertex;
+attribute vec4  x3d_TexCoord0;
+attribute vec4  x3d_Color;
+
+varying vec3 color;
+varying vec4 texCoord;
+
+/* Random number generation */
+
+const int RAND_MAX = int (0x7fffffff);
+const int RAND_MIN = int (0x80000000);
+
+int seed = 1;
+
+void
+srand (in int value)
+{
+	seed = value;
+}
+
+// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].
+int
+rand ()
+{
+	return seed = seed * 1103515245 + 12345;
+}
+
+// Return a uniform distributed random floating point number in the interval [0, 1].
+float
+random ()
+{
+	return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;
+}
+
+#define PI 3.1415
+
+mat4
+getRotation (in float a)
+{
+	float s = sin (a);
+	float c = cos (a);
+	
+	return mat4 ( c,    s, 0.0, 0.0,
+	             -s,    c, 0.0, 0.0,
+	             0.0, 0.0, 1.0, 0.0,
+	             0.0, 0.0, 0.0, 1.0);
+}
+
+void
+main ()
+{
+	mat4 r = getRotation (-2.0 * x3d_ParticleElapsedTime * 2.0 * PI);
+	vec4 v = x3d_ParticlePosition + r * (x3d_Vertex - x3d_ParticlePosition);
+
+	srand (int (x3d_ParticleLife * 107.0));
+
+	color    = vec3 (random (), random (), random ());
+	texCoord = x3d_TexCoord0;
+
+	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
+}"
+        }
+        DEF FragmentShader ShaderPart {
+          type "FRAGMENT"
+          url "data:x-shader/x-fragment,
+
+precision mediump float;
+
+uniform sampler2D x3d_Texture2D [1];
+
+varying vec3 color;
+varying vec4 texCoord;
+
+void
+main ()
+{
+	float a = texture2D (x3d_Texture2D [0], texCoord .st) .a;
+
+	gl_FragColor = vec4 (color, a);
+}"
+        }
+      ]
+    }
+  }
+}
+
+ROUTE X.value_changed TO _1.set_x
+ROUTE Y.value_changed TO _1.set_y
+ROUTE Z.value_changed TO _1.set_z
+ROUTE _1.value_changed TO _2.set_position

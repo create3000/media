@@ -1,0 +1,327 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Immersive",
+    "@version": "3.3",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "World of Titania"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 15 May 2016 00:16:04 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "holger"
+        },
+        {
+          "@name": "generator",
+          "@content": "Titania V4.0.2, http://titania.create3000.de"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ParticleSystem/ParticleSystem.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Wed, 06 Dec 2017 16:23:00 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "CubeMapTexturing",
+          "@level": 1
+        },
+        {
+          "@name": "EnvironmentalEffects",
+          "@level": 3
+        },
+        {
+          "@name": "Grouping",
+          "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 1
+        },
+        {
+          "@name": "Shape",
+          "@level": 4
+        },
+        {
+          "@name": "Time",
+          "@level": 2
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "ExternProtoDeclare":
+          {
+            "@name":"FresnelShader",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "refraction"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "reflection"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFNode",
+                "@name": "cubeMapTexture"
+              }
+            ],
+            "@url": [ "assets/FresnelShader.x3d#FresnelShader" ]
+          }
+        },
+        { "WorldInfo":
+          {
+            "@title": "Bubbles"
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@headlight": false
+          }
+        },
+        { "TextureBackground":
+          {
+            "@DEF": "LostValley",
+            "-frontTexture": { "ImageTexture":
+              {
+                "@DEF": "_1",
+                "@url": [ "assets/LostValley/LostValley-front.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@DEF": "_2",
+                    "@minificationFilter": "DEFAULT",
+                    "@magnificationFilter": "DEFAULT",
+                    "@boundaryModeS": "CLAMP_TO_EDGE",
+                    "@boundaryModeT": "CLAMP_TO_EDGE",
+                    "@boundaryModeR": "CLAMP_TO_EDGE",
+                    "@textureCompression": "DEFAULT"
+                  }
+                }
+              }
+            },
+            "-backTexture": { "ImageTexture":
+              {
+                "@DEF": "_3",
+                "@url": [ "assets/LostValley/LostValley-back.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_2"
+                  }
+                }
+              }
+            },
+            "-leftTexture": { "ImageTexture":
+              {
+                "@DEF": "_4",
+                "@url": [ "assets/LostValley/LostValley-left.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_2"
+                  }
+                }
+              }
+            },
+            "-rightTexture": { "ImageTexture":
+              {
+                "@DEF": "_5",
+                "@url": [ "assets/LostValley/LostValley-right.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_2"
+                  }
+                }
+              }
+            },
+            "-topTexture": { "ImageTexture":
+              {
+                "@DEF": "_6",
+                "@url": [ "assets/LostValley/LostValley-top.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_2"
+                  }
+                }
+              }
+            },
+            "-bottomTexture": { "ImageTexture":
+              {
+                "@DEF": "_7",
+                "@url": [ "assets/LostValley/LostValley-bottom.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        { "DirectionalLight":
+          {
+            "@direction": [ -0.505161, -0.602832, -0.61758 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Viewpoint",
+            "@rotation": [ 0, -1, 0, 3.15695106761078 ],
+            "-children": [
+              { "Group":
+                {
+                  "@DEF": "Animation",
+                  "-children": [
+                    { "TimeSensor":
+                      {
+                        "@DEF": "AnimationTimer",
+                        "@cycleInterval": 24,
+                        "@loop": true
+                      }
+                    },
+                    { "OrientationInterpolator":
+                      {
+                        "@DEF": "RotationInterpolator",
+                        "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
+                        "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.14159253438051, 0, 1, 0, 1.57079644600419, 0, 0, 1, 0 ]
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Viewpoint":
+                {
+                  "@description": "Initial View",
+                  "@position": [ 0, 0, 19.212 ]
+                }
+              }
+            ]
+          }
+        },
+        { "ParticleSystem":
+          {
+            "@DEF": "SoapBubbles",
+            "@geometryType": "GEOMETRY",
+            "@maxParticles": 100,
+            "@lifetimeVariation": 0.8,
+            "@particleSize": [ 1, 1 ],
+            "-emitter": { "PointEmitter":
+              {
+                "@direction": [ 0, 0, 0 ],
+                "@speed": 2,
+                "@variation": 0.5,
+                "@mass": 0.1,
+                "@surfaceArea": 0.1
+              }
+            },
+            "-physics": [
+              { "WindPhysicsModel":
+                {
+                  "@speed": 1,
+                  "@gustiness": 1.5
+                }
+              }
+            ],
+            "@bboxSize": [ 30, 30, 30 ],
+            "-appearance": { "Appearance":
+              {
+                "-material": { "TwoSidedMaterial":
+                  {
+                    "@separateBackColor": true,
+                    "@specularColor": [ 0, 0.192168, 0.357 ],
+                    "@shininess": 0.073718,
+                    "@transparency": 0.291667,
+                    "@backSpecularColor": [ 0.44, 0.115049, 0.334728 ],
+                    "@backShininess": 0.0541516,
+                    "@backTransparency": 0.270758
+                  }
+                },
+                "-shaders": [
+                  { "ProtoInstance":
+                    {
+                      "@name": "FresnelShader",
+                      "fieldValue": [
+                        {
+                          "@name": "cubeMapTexture",
+                          "-children": [
+                            { "ComposedCubeMapTexture":
+                              {
+                                "-front": { "ImageTexture":
+                                  {
+                                    "@USE": "_1"
+                                  }
+                                },
+                                "-back": { "ImageTexture":
+                                  {
+                                    "@USE": "_3"
+                                  }
+                                },
+                                "-left": { "ImageTexture":
+                                  {
+                                    "@USE": "_4"
+                                  }
+                                },
+                                "-right": { "ImageTexture":
+                                  {
+                                    "@USE": "_5"
+                                  }
+                                },
+                                "-top": { "ImageTexture":
+                                  {
+                                    "@USE": "_6"
+                                  }
+                                },
+                                "-bottom": { "ImageTexture":
+                                  {
+                                    "@USE": "_7"
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "-geometry": { "Sphere":
+              {
+                "@solid": false
+              }
+            }
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimationTimer",
+            "@fromField": "fraction_changed",
+            "@toNode": "RotationInterpolator",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "RotationInterpolator",
+            "@fromField": "value_changed",
+            "@toNode": "Viewpoint",
+            "@toField": "rotation"
+          }
+        }
+      ]
+    }
+  }
+}
