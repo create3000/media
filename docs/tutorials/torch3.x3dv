@@ -1,0 +1,143 @@
+#X3D V3.3 utf8 Titania V4.3.0
+
+PROFILE Full
+
+META "comment" "World of Titania"
+META "created" "Fri, 29 Jun 2018 12:21:15 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/torch3.x3dv"
+META "modified" "Fri, 29 Jun 2018 12:21:16 GMT"
+
+WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value DEF selectGeometry MetadataBoolean {
+          name "selectGeometry"
+          reference "http://titania.create3000.de"
+          value FALSE
+        }
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
+  title "torch3"
+}
+
+#
+#  torch3.wrl
+#  A torch (low detail)
+#    by David R. Nadeau
+#
+#  A simple torch model used in LOD node illustrations (see torches.wrl).
+#
+Transform {
+  translation 0 0 0.2
+  scale 0.5 0.5 0.5
+  # Additional Flames (eliminated)
+  children [
+    # Torch handle (simplified)
+    Shape {
+      appearance DEF Gray Appearance {
+        material Material {
+          diffuseColor 0.4 0.4 0.4
+        }
+      }
+      geometry IndexedFaceSet {
+        coordIndex [
+          0,
+          1,
+          2,
+          -1
+        ]
+        coord Coordinate {
+          point [
+            -0.15 0 0,
+            0 -1.5 0,
+            0.15 0 0
+          ]
+        }
+      }
+    }
+    # Fire pot (simplified)
+    DEF Ring Shape {
+      appearance USE Gray
+      geometry IndexedFaceSet {
+        coordIndex [
+          0,
+          1,
+          2,
+          3,
+          -1,
+          4,
+          5,
+          6,
+          7,
+          -1
+        ]
+        coord Coordinate {
+          # First ring
+          # Second ring
+          point [
+            -0.4 -0.05 0.1,
+            0.4 -0.05 0.1,
+            0.4 0.05 0.1,
+            -0.4 0.05 0.1,
+            -0.4 0.15 0.1,
+            0.4 0.15 0.1,
+            0.4 0.25 0.1,
+            -0.4 0.25 0.1
+          ]
+        }
+      }
+    }
+    # Fire pot detail (eliminated)
+    # Mounting bracket (eliminated)
+    # Flames (simplified)
+    DEF Flames Shape {
+      # No appearance, use emissive shading
+      geometry IndexedFaceSet {
+        coordIndex [
+          0,
+          1,
+          2,
+          -1
+        ]
+        color Color {
+          color [
+            1 0 0,
+            0.9 0.5 0,
+            1 0 0
+          ]
+        }
+        coord Coordinate {
+          point [
+            0.18 0 0.05,
+            0 1.2 0.05,
+            -0.18 0 0.05
+          ]
+        }
+      }
+    }
+  ]
+}

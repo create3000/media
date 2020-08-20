@@ -1,0 +1,142 @@
+#X3D V3.3 utf8 Titania V4.3.0
+
+PROFILE Full
+
+META "comment" "World of Titania"
+META "created" "Fri, 29 Jun 2018 23:04:54 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///run/user/1000/gvfs/ftp:host=create3000.de/html/create3000.de/media/htdocs/tutorials/chair.x3dv"
+META "modified" "Fri, 29 Jun 2018 23:04:56 GMT"
+
+WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value DEF selectGeometry MetadataBoolean {
+          name "selectGeometry"
+          reference "http://titania.create3000.de"
+          value FALSE
+        }
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
+  title "chair"
+}
+
+#
+#  Dinette Chair
+#  chair.wrl
+#        by David R. Nadeau
+#
+#  This chair is inlined in to the dinette.wrl file to illustrate inline
+#  groups.
+#
+#
+#  Chair seat
+#
+Transform {
+  translation 0 0.5 0
+  children Shape {
+    appearance DEF Brown Appearance {
+      material Material {
+        diffuseColor 0.6 0.35 0
+      }
+    }
+    geometry Box {
+      size 0.39 0.03 0.41
+    }
+  }
+}
+
+#
+#  Chair legs
+#
+Transform {
+  translation 0.1575 0.2485 0.1575
+  children DEF Leg Shape {
+    appearance USE Brown
+    geometry Box {
+      size 0.03 0.497 0.03
+    }
+  }
+}
+
+Transform {
+  translation -0.1575 0.2485 0.1575
+  children USE Leg
+}
+
+Transform {
+  translation -0.1575 0.2485 -0.1575
+  children USE Leg
+}
+
+Transform {
+  translation 0.1575 0.2485 -0.1575
+  children USE Leg
+}
+
+#
+#  Chair back
+#
+Transform {
+  translation 0.1875 0.5 0
+  rotation 0 0 1 6.11318530717959
+  children [
+    Transform {
+      translation 0 0.54 0
+      children Shape {
+        appearance USE Brown
+        geometry Box {
+          size 0.06 0.17 0.43
+        }
+      }
+    }
+    Transform {
+      translation 0 0.2275 0
+      children DEF BackPole Shape {
+        appearance USE Brown
+        geometry Box {
+          size 0.02 0.455 0.02
+        }
+      }
+    }
+    Transform {
+      translation 0 0.2275 -0.083
+      children USE BackPole
+    }
+    Transform {
+      translation 0 0.2275 0.083
+      children USE BackPole
+    }
+    Transform {
+      translation 0 0.2275 -0.166
+      children USE BackPole
+    }
+    Transform {
+      translation 0 0.2275 0.166
+      children USE BackPole
+    }
+  ]
+}

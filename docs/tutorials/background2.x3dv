@@ -1,0 +1,91 @@
+#X3D V3.3 utf8 Titania V4.0.6a
+
+PROFILE Full
+
+META "comment" "World of Titania"
+META "created" "Sun, 18 Mar 2018 03:04:29 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.0.6a, http://titania.create3000.de"
+META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/tutorials/background2.x3dv"
+META "modified" "Sun, 18 Mar 2018 03:37:34 GMT"
+
+WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value [
+          DEF selectGeometry MetadataBoolean {
+            name "selectGeometry"
+            reference "http://titania.create3000.de"
+            value FALSE
+          }
+          DEF nodes MetadataSet {
+            name "nodes"
+            reference "http://titania.create3000.de"
+            value DEF _1 Viewpoint {
+              description "Initial View"
+              position -0.268406 -2.53264 9.67025
+              orientation 0.994146728364967 -0.107154129421103 0.0137940215034549 0.257544119026967
+            }
+          }
+        ]
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
+  title "background1"
+}
+
+DEF Summer Background {
+  frontUrl "clouds1.png"
+  backUrl "clouds2.png"
+  leftUrl "clouds3.png"
+  rightUrl "clouds4.png"
+  skyAngle [
+    0.8,
+    1.3,
+    1.4,
+    1.5708
+  ]
+  skyColor [
+    0.21 0.31 0.59,
+    0.33 0.45 0.7,
+    0.57 0.66 0.85,
+    0.6 0.73 0.89,
+    0.7 0.83 0.98
+  ]
+  groundAngle [
+    0.659972,
+    1.2,
+    1.39912,
+    1.5708
+  ]
+  groundColor [
+    0.105712 0.156051 0.297,
+    0.187629 0.255857 0.398,
+    0.33604 0.405546 0.542,
+    0.3612 0.469145 0.602,
+    0.39471 0.522059 0.669
+  ]
+}
+
+USE _1

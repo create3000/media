@@ -1,0 +1,75 @@
+#X3D V3.3 utf8 Titania V4.3.0
+
+PROFILE Full
+
+META "comment" "World of Titania"
+META "created" "Fri, 29 Jun 2018 12:20:52 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/lod.x3dv"
+META "modified" "Fri, 29 Jun 2018 12:20:52 GMT"
+
+WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value [
+          DEF selectGeometry MetadataBoolean {
+            name "selectGeometry"
+            reference "http://titania.create3000.de"
+            value FALSE
+          }
+          DEF nodes MetadataSet {
+            name "nodes"
+            reference "http://titania.create3000.de"
+            value DEF _1 Viewpoint {
+              position 0 -0.075 4.20605
+              centerOfRotation 0 -0.075 0.225
+            }
+          }
+        ]
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
+  title "lod"
+}
+
+USE _1
+
+LOD {
+  range [
+    7,
+    10
+  ]
+  children [
+    Inline {
+      url "torch1.x3dv"
+    }
+    Inline {
+      url "torch2.x3dv"
+    }
+    Inline {
+      url "torch3.x3dv"
+    }
+  ]
+}

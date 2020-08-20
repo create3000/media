@@ -1,0 +1,106 @@
+#X3D V3.3 utf8 Titania V4.3.0
+
+PROFILE Full
+
+META "comment" "World of Titania"
+META "created" "Fri, 29 Jun 2018 23:04:45 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///run/user/1000/gvfs/ftp:host=create3000.de/html/create3000.de/media/htdocs/tutorials/table.x3dv"
+META "modified" "Fri, 29 Jun 2018 23:04:47 GMT"
+
+WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value DEF selectGeometry MetadataBoolean {
+          name "selectGeometry"
+          reference "http://titania.create3000.de"
+          value FALSE
+        }
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
+  title "table"
+}
+
+#
+#  table.wrl
+#        by David R. Nadeau
+#
+#  This table is inlined in to the dinette.wrl file to illustrate inline
+#  groups.
+#
+#
+#  Table top
+#
+Transform {
+  translation 0 0.615 0
+  children Shape {
+    appearance DEF Brown Appearance {
+      material Material {
+        diffuseColor 0.6 0.35 0
+      }
+    }
+    geometry Cylinder {
+      height 0.03
+      radius 0.7
+    }
+  }
+}
+
+#
+#  Table leg
+#
+Transform {
+  translation 0 0.3075 0
+  children Shape {
+    appearance USE Brown
+    geometry Box {
+      size 0.09 0.57 0.09
+    }
+  }
+}
+
+#
+#  Table leg base
+#
+Transform {
+  translation 0 0.015 0
+  children Shape {
+    appearance USE Brown
+    geometry Box {
+      size 0.5 0.03 0.5
+    }
+  }
+}
+
+Transform {
+  translation 0 0.045 0
+  children Shape {
+    appearance USE Brown
+    geometry Box {
+      size 0.35 0.03 0.35
+    }
+  }
+}

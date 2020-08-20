@@ -1,0 +1,82 @@
+#X3D V3.3 utf8 Titania V4.3.0
+
+PROFILE Full
+
+META "comment" "World of Titania"
+META "created" "Fri, 29 Jun 2018 11:46:00 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "identifier" "file:///home/holger/scene.x3dv"
+META "modified" "Fri, 29 Jun 2018 11:47:41 GMT"
+META "titania-output-style" "Nicest"
+
+WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value [
+          DEF selectGeometry MetadataBoolean {
+            name "selectGeometry"
+            reference "http://titania.create3000.de"
+            value FALSE
+          }
+          DEF nodes MetadataSet {
+            name "nodes"
+            reference "http://titania.create3000.de"
+            value DEF _1 Viewpoint {
+              position 0 0 1.83579
+            }
+          }
+        ]
+      }
+    ]
+  }
+  title "scene"
+}
+
+USE _1
+
+Group {
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 1
+        }
+      }
+      geometry Box {
+        size 0.23 0.1 1.5
+      }
+    }
+    DEF C4 TouchSensor { }
+    Sound {
+      maxBack 100
+      maxFront 100
+      source DEF PitchC4 AudioClip {
+        url "tone1.mp3"
+      }
+    }
+  ]
+}
+
+ROUTE C4.touchTime TO PitchC4.set_startTime
