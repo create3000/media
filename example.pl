@@ -13,6 +13,8 @@ sub example {
     $file =~ s|http://code\.create3000\.de/x_ite/latest/dist/x_ite\.min\.js|https://create3000.github.io/code/x_ite/latest/dist/x_ite.min.js|sgo;
     $file =~ s|http://create3000\.de/x_ite/|https://github.com/create3000/x_ite/wiki|sgo;
     $file =~ s| target="_blank"||sgo;
+    $file =~ s|class="download-button" href="(.*?)\.x3d"|class="download-button" href="$1.zip"|sgo;
+    $file =~ s|getMetadata|getMetaDatas|sgo;
 
     $filename =~ s|$o|$n|;
 
