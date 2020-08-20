@@ -1,3 +1,5 @@
+use v5.10.0;
+use open qw/:std :utf8/;
 
 use File::Basename qw(basename dirname);
 
