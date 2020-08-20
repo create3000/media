@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Accessing the External Browser</title>
+		<meta charset="utf-8"/>
+			  
+		<link rel="stylesheet" href="https://code.create3000.de/x_ite/alpha/dist/x_ite.css" type="text/css" media="all"/>
+		<script type="text/javascript" src="https://code.create3000.de/x_ite/alpha/dist/x_ite.min.js"></script>
+
+		<script
+			src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"></script>
+
+	<style>
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400);
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: transparent;
+}
+
+body {
+	color: white;
+	font-family: PT Sans;
+	font-size: 12pt;
+}
+
+.browser {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 35px;
+	left: 0px;
+	width: auto;
+	height: auto;
+}
+
+.buttons {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	height: 30px;
+	display: flex;
+}
+
+.button {
+	box-sizing: border-box;
+	height: 100%;
+	width: 100%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+	</style>
+	<script type="text/javascript">
+function init ()
+{
+	var
+		Browser = X3D .getBrowser ("X3DCanvas"),              // Get the browser instance.
+		scene   = Browser .currentScene,                      // Get the scene.
+		timer   = scene .getNamedNode ("SpinAnimationTimer"); // Get box TouchSensor node.
+	
+	// Add field callback to get informed when cycleTime is fired. "time" is an arbitrary
+	// string to identify the callback, for intance if you later want to remove the callback.
+	timer .addFieldCallback ("cycleTime", "time", function (value)
+	{
+		console .log ("cycleTime: " + value);
+	});
+	
+	changeStyle ();
+	changeBackground ();
+};
+
+function center ()
+{
+	var Browser = X3D .getBrowser (".browser"); // Get the browser instance.
+
+	Browser .changeViewpoint ("Viewpoint");
+}
+
+function changeStyle ()
+{
+	var
+		Browser    = X3D .getBrowser (".browser"),            // Get the browser instance.
+		scene      = Browser .currentScene,                   // Get the scene.
+		switchNode = scene .getNamedNode ("Adrenaline");      // Get Switch node.
+
+	// Change styles.
+
+	switchNode .whichChoice = parseInt ($("#change-style") .val ());
+}
+
+function changeBackground ()
+{
+	var
+		Browser        = X3D .getBrowser (".browser"),            // Get the browser instance.
+		scene          = Browser .currentScene,                   // Get the scene.
+		backgroundNode = scene .getNamedNode ("Background");      // Get Background node.
+
+	switch (parseInt ($("#change-background") .val ()))
+	{
+		case 0:
+			backgroundNode .skyColor [0] = new X3D .SFColor (1, 1, 1);
+			break;
+		case 1:
+			backgroundNode .skyColor [0] = new X3D .SFColor (0, 0, 0);
+			break;
+	}
+}
+
+function spin ()
+{
+	var
+		Browser = X3D .getBrowser (".browser"),               // Get the browser instance.
+		scene   = Browser .currentScene,                      // Get the scene.
+		timer   = scene .getNamedNode ("SpinAnimationTimer"); // Get TimeSensor node.
+
+	if (timer .isPaused)
+		timer .resumeTime = Date .now () / 1000;
+	else
+		timer .pauseTime = Date .now () / 1000;
+}
+	</script>
+   </head>
+	<body>
+
+		<X3DCanvas class="browser" timings="false" src="adrenaline.x3d" onload="init ()">
+			<img class="fallback" src="adrenaline.png"/>
+		</X3DCanvas>
+
+		<div class="buttons">
+			<button id="center" class="button" onclick="center ()">Center</button>
+			<select id="change-style" class="button" onchange="changeStyle ()">
+				<option value="0">Balls</option>
+				<option value="1">Sticks And Balls</option>
+				<option value="2">Sticks</option>
+				<option value="3">Line</option>
+			</select>
+			<select id="change-background" class="button" onchange="changeBackground ()">
+				<option value="0">White Background</option>
+				<option value="1">Black Background</option>
+			</select>
+			<button id="spin" class="button" onclick="spin ()">Spin</button>
+		</div>
+
+	</body>
+</html>
