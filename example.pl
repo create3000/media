@@ -1,4 +1,6 @@
 
+use File::Basename qw(basename dirname);
+
 print "hello\n";
 system "pwd";
 
@@ -6,6 +8,8 @@ sub example {
     $filename = shift;
     print $filename;
     chomp $filename;
+
+    # example.html
 
     $file = `cat '$filename'`;
 
@@ -21,6 +25,16 @@ sub example {
     open FILE, ">", $filename;
     print FILE $file;
     close FILE;
+
+    # zip
+
+    $p = dirname $filename;
+    $d = basename $p;
+    $p = dirname $p;
+
+    chdir "$p";
+    system "zip '$d.zip' '$d/' -r -x '*$d.O.x3d' -x '*$d.zip'";
+    system "mv '$d.zip' '$d/'";
 }
 
 $o = "/Volumes/Home/Projekte/create3000.de/media/htdocs/components/";
