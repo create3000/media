@@ -37,7 +37,7 @@ sub example {
     $p = dirname $p;
 
     chdir "$p";
-    system "zip '$d.zip' '$d/' -r -x '*$d.O.x3d' -x '*$d.zip'";
+    system "zip '$d.zip' '$d/' -r -x '*$d.O.x3d' -x '*$d.zip' -x 'screenshot-small.png'";
     system "mv '$d.zip' '$d/'";
 }
 
