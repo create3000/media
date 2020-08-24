@@ -32,9 +32,7 @@ sub example {
 
     # zip
 
-    $p = dirname $folder;
-
-    chdir $p;
+    chdir dirname $folder;
     system "zip '$base.zip' '$base/' -r -x '*$base.O.x3d' -x '*$base.zip' -x 'screenshot-small.png'";
     system "mv '$base.zip' '$base/'";
 }
