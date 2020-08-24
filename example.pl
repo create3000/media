@@ -10,34 +10,36 @@ system "pwd";
 
 sub example {
     $filename = shift;
-    print $filename;
     chomp $filename;
 
-    say $filename;
-    return;
+    $folder = dirname $filename;
+    $base   = basename dirname $filename;
 
+    say $base;
+ 
     # example.html
 
-    $file = `cat '$filename'`;
+    $x3d = "x3dv" if -f "$folder/$base.x3dv"; 
+    $x3d = "x3d"  if -f "$folder/$base.x3d";
 
-    $filename =~ s|$o|$n|;
+    $html = `cat $cwd/example.html`;
+    $html =~ s/BASE/$base/sgo;
+    $html =~ s/FILE_NAME/$base.$x3d/sgo;
 
-    open FILE, ">", $filename;
-    print FILE $file;
+    open FILE, ">", "$folder/example.html";
+    print FILE $html;
     close FILE;
 
     # zip
 
-    $p = dirname $filename;
-    $d = basename $p;
-    $p = dirname $p;
+    $p = dirname $folder;
 
-    chdir "$p";
-    system "zip '$d.zip' '$d/' -r -x '*$d.O.x3d' -x '*$d.zip' -x 'screenshot-small.png'";
-    system "mv '$d.zip' '$d/'";
+    chdir $p;
+    system "zip '$base.zip' '$base/' -r -x '*$base.O.x3d' -x '*$base.zip' -x 'screenshot-small.png'";
+    system "mv '$base.zip' '$base/'";
 }
 
-$docs = "/Volumes/Home/Projekte/media/docs/";
 $cwd  = cwd ();
+$docs = "$cwd/docs/";
 
 example $_ foreach `find $docs -type f -name 'example.html'`;
