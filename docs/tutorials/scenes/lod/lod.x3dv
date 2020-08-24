@@ -3,11 +3,11 @@
 PROFILE Full
 
 META "comment" "World of Titania"
-META "created" "Fri, 29 Jun 2018 12:44:33 GMT"
+META "created" "Fri, 29 Jun 2018 12:20:52 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Titania V4.3.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/scene.x3dv"
-META "modified" "Fri, 29 Jun 2018 12:45:10 GMT"
+META "identifier" "file:///home/holger/lod.x3dv"
+META "modified" "Fri, 29 Jun 2018 12:20:52 GMT"
 
 WorldInfo {
   metadata DEF Titania MetadataSet {
@@ -26,6 +26,10 @@ WorldInfo {
           DEF nodes MetadataSet {
             name "nodes"
             reference "http://titania.create3000.de"
+            value DEF _1 Viewpoint {
+              position 0 -0.075 4.20605
+              centerOfRotation 0 -0.075 0.225
+            }
           }
         ]
       }
@@ -47,55 +51,25 @@ WorldInfo {
       }
     ]
   }
-  title "scene"
+  title "lod"
 }
 
-DEF Ball Transform {
-  children Shape {
-    appearance Appearance {
-      material Material {
-        ambientIntensity 0.5
-        diffuseColor 1 1 1
-        specularColor 0.7 0.7 0.7
-        shininess 0.4
-      }
-      texture ImageTexture {
-        url "beach.jpg"
-      }
-      textureTransform TextureTransform {
-        scale 2 1
-      }
+USE _1
+
+LOD {
+  range [
+    7,
+    10
+  ]
+  children [
+    Inline {
+      url "assets/torch1.x3dv"
     }
-    geometry Sphere { }
-  }
+    Inline {
+      url "assets/torch2.x3dv"
+    }
+    Inline {
+      url "assets/torch3.x3dv"
+    }
+  ]
 }
-
-DEF Clock TimeSensor {
-  cycleInterval 2
-  loop TRUE
-  startTime 1
-}
-
-DEF Bouncer Script {
-  initializeOnly SFFloat bounceHeight 3
-  inputOnly      SFFloat set_fraction
-  outputOnly     SFVec3f value_changed
-  inputOutput    SFBool  enabled TRUE
-
-  url "ecmascript:
-function set_fraction (fraction, time)
-{
-   if (!enabled)
-      return;
-
-   var y = 4.0 * bounceHeight * fraction * (1.0 - fraction);
-
-   value_changed [0] = 0.0;
-   value_changed [1] = y;
-   value_changed [2] = 0.0;
-}
-"
-}
-
-ROUTE Clock.fraction_changed TO Bouncer.set_fraction
-ROUTE Bouncer.value_changed TO Ball.set_translation
