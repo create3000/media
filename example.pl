@@ -6,8 +6,6 @@ use open qw/:std :utf8/;
 use File::Basename qw(basename dirname);
 use Cwd;
 
-system "pwd";
-
 sub example {
     $filename = shift;
     chomp $filename;
@@ -40,4 +38,4 @@ sub example {
 $cwd  = cwd ();
 $docs = "$cwd/docs/";
 
-example $_ foreach `find $docs -type f -name 'example.html'`;
+example $_ foreach sort `find $docs -type f -name 'example.html'`;
