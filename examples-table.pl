@@ -66,7 +66,8 @@ open HOME, ">", "Home.md";
 print HOME $home;
 close HOME;
 
-system "git add -A";
-system "git", "commit", "-am", "Updated Wiki.";
+system "git", "pull", "origin";
+system "git", "add", "-A";
+system "git", "commit", "-am", "Updated examples table.";
 system "git", "push";
 system "git", "push", "origin";
