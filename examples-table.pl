@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 use v5.10.0;
+use utf8;
 use open qw/:std :utf8/;
 
 use File::Basename qw(basename dirname);
@@ -37,13 +38,14 @@ foreach $row (@table)
 	{
 		chomp $example;
 
-		$folder   = dirname $example;
-		$basename = basename $folder;
+		$folder    = dirname $example;
+		$basename  = basename $folder;
+		$component = basename dirname $folder;
 
 		$folder =~ s|$cwd/docs/||;
 
 		$output .= "    <td>\n";
-		$output .= "      <a href=\"https://create3000.github.io/media/$folder/example.html\" title=\"$basename\">\n";
+		$output .= "      <a href=\"https://create3000.github.io/media/$folder/example.html\" title=\"$component » $basename\">\n";
 		$output .= "        <img src=\"https://create3000.github.io/media/$folder/screenshot-small.png\" alt=\"$basename\"/>\n";
 		$output .= "      </a>\n";
 		$output .= "    </td>\n";
