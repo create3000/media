@@ -36,8 +36,13 @@ PROTO BumpShader [
 
 // -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
 
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+precision highp int;
+#else
 precision mediump float;
 precision mediump int;
+#endif
 
 uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
 uniform mat4 x3d_ProjectionMatrix;
@@ -78,8 +83,13 @@ main ()
 
 // -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
 
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+precision highp int;
+#else
 precision mediump float;
 precision mediump int;
+#endif
 
 uniform int x3d_GeometryType;
 
