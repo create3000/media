@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=765"/>
+	<meta name="viewport" content="width=1080"/>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/kayahr/jquery-fullscreen-plugin@1.1.4/jquery.fullscreen-min.js"></script>
@@ -21,6 +21,7 @@ html, body {
 	margin: 0px;
 	padding: 0px;
 	border: 0px;
+	height: 100%;
 }
 
 html {
@@ -37,14 +38,14 @@ body {
 }
 
 header > div ,
-div.main > div,
+main > div,
 footer > div {
 	margin: 0px auto;
 	padding: 10px 0px 10px 0px;
-	width: 63vw;
+	width: 1000px;
 }
 
-div.main {
+main {
 	background: #3d4145;
 }
 
@@ -96,9 +97,8 @@ footer a:hover {
 .browser {
 	display: block;
 	margin: 10px 0px;
-	width: auto;
 	width: 100%;
-	height: 35vw;
+	height: 563px;
 	box-shadow: 0px 2px 12px 1px rgba(0, 0, 0, 0.75);
 }
 
@@ -166,84 +166,6 @@ footer a:hover {
 	word-wrap: break-word;
 	font-family: Ubuntu Mono;
 	font-size: 10pt;
-}
-
-@media only screen and (max-width: 1366px) {
-
-	html {
-		font-size: 0.9pt;
-	}
-
-	body {
-		padding-bottom: 24px;
-	}
-	
-	header > div ,
-	main > div,
-	footer > div {
-		padding: 8px 0px 8px 0px;
-	}
-
-	h1 {
-		margin: 8px 32px 8px 0px;
-		font-size: 18rem;
-	}
-	
-	h2 {
-		margin: 8px 32px 8px 0px;
-		font-size: 24rem;
-	}
-	
-	.buttons img {
-		padding: 3px;
-		height: 9px;
-	}
-
-	.browser {
-		margin: 8px 0px;
-	}
-	
-	.fallback {
-		padding: 15vw 30px 0 24px;
-		font-size: 1.1vw;
-	}
-}
-
-
-@media only screen and (max-width: 1280px) {
-
-	html {
-		font-size: 0.8pt;
-	}
-
-	body {
-		padding-bottom: 20px;
-	}
-	
-	header > div ,
-	main > div,
-	footer > div {
-		padding: 5px 0px 5px 0px;
-	}
-
-	h1 {
-		margin: 5px 30px 5px 0px;
-		font-size: 18rem;
-	}
-	
-	h2 {
-		margin: 5px 30px 5px 0px;
-		font-size: 24rem;
-	}
-
-	.browser {
-		margin: 5px 0px;
-		height: 30vw;
-	}
-	
-	.fallback {
-		padding: 15vw 30px 0 24px;
-	}
 }
 	</style>
 
@@ -388,7 +310,7 @@ function (error)
 				</table>
 			</div>
 		</header>
-		<div class="main">
+		<main>
 			<div>
 				<X3DCanvas id="browser" class="browser" src="ColorRGBA.x3d">
 					<p class="fallback">Sorry!<br/>
@@ -399,13 +321,13 @@ function (error)
 					</p>
 				</X3DCanvas>
 			</div>
-		</div>
+		</main>
 		<footer>
 			<div>
 				<h1><a class="version" href="https://github.com/create3000/x_ite/wiki" title="Visit X_ITE Project Page"></a></h1>
 			</div>
 		</footer>
-	</page>
+	</div>
 	<div class="meta-data">
 		<h1>Metadata</h1>
 		<table class="meta-data-table">
