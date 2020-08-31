@@ -283,6 +283,8 @@ X3D (function ()
 			}
 	
 			$.featherlight ($(".meta-data"));
+
+			return false;
 		});
 
 		var scrollId;
@@ -311,14 +313,23 @@ X3D (function ()
 			$(".x_ite-console") .click (function () { clicked = true; });
 
 			$(".x_ite-console") .css ("display", hidden ? "block" : "none");
+
+			return false;
 		});
 
 		$(".clock-button") .click (function ()
 		{
 			Browser .getBrowserTimings () .setEnabled (! Browser .getBrowserTimings () .getEnabled ());
+
+			return false;
 		});
 
-		$(".fullscreen-button") .click (function () { $("#browser") .fullScreen (true); });	
+		$(".fullscreen-button") .click (function ()
+		{
+			$("#browser") .fullScreen (true);
+
+			return false;
+		});	
 	});
 },
 function (error)
