@@ -17,8 +17,10 @@
   </head>
   <Scene>
     <ExternProtoDeclare name='FresnelShader' url='"assets/FresnelShader.x3d#FresnelShader"'>
-      <field accessType='inputOutput' type='SFFloat' name='refraction'/>
-      <field accessType='inputOutput' type='SFFloat' name='reflection'/>
+      <field name='chromaticDispertion' accessType='inputOutput' type='SFVec3f'/>
+      <field name='bias' accessType='inputOutput' type='SFFloat'/>
+      <field name='scale' accessType='inputOutput' type='SFFloat'/>
+      <field name='power' accessType='inputOutput' type='SFFloat'/>
       <field accessType='inputOutput' type='SFNode' name='cubeMapTexture'/>
     </ExternProtoDeclare>
     <WorldInfo
