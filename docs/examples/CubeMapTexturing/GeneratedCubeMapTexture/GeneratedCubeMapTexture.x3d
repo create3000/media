@@ -56,16 +56,11 @@
         </field>
 <![CDATA[ecmascript:
 
-function initialize ()
-{
-	viewpoint .set_bind = true;
-}
-
 function set_fraction (value, time)
 {
 	var r1 = new SFRotation (1, 0, 0, Math .PI / -6);
 	var r2 = new SFRotation (0, 1, 0, Math .PI * 2 * value);
-	
+
 	var p = r2 .multVec (r1 .multVec (new SFVec3f (0, 0, 5)));
 
 	viewpoint .position = p;
