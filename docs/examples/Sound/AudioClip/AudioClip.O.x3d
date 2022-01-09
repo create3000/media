@@ -305,9 +305,8 @@ function build ()
         centerOfRotation='16.3446 -3.2586 -15.2548'/>
     <Script DEF='AudioScript'
         directOutput='true'>
-      <field accessType='inputOnly' type='MFNode' name='set_audio'/>
       <field accessType='inputOnly' type='SFBool' name='set_active'/>
-      <field accessType='initializeOnly' type='MFString' name='files'/>
+      <field accessType='initializeOnly' type='MFString' name='files' value='"assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don&apos;t Pay My Bills.mp3", "assets/audio/03. Crockett&apos;s Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3"'/>
       <field accessType='initializeOnly' type='SFNode' name='source'>
         <AudioClip DEF='AudioClip'/>
       </field>
@@ -316,18 +315,11 @@ function build ()
       </field>
 <![CDATA[ecmascript:
 
-var track = 0;
+let track = 0;
 
 function initialize ()
 {
-	Browser .createX3DFromURL (new MFString ("assets/audio.php"), self, "set_audio")
-}
-
-function set_audio (value, time)
-{
-	files = value [0] .files;
-
-	set_active (false, time);
+	set_active (false, 0);
 }
 
 function set_active (value, time)
@@ -335,7 +327,7 @@ function set_active (value, time)
 	if (value)
 		return;
 
-	var url = files [track ++ % files .length];
+	const url = files [track ++ % files .length];
 
 	source .url       = new MFString (url);
 	source .startTime = time;
