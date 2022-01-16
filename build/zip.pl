@@ -19,8 +19,8 @@ sub zip {
    say $base;
 
    chdir dirname $folder;
-   system "zip '$base.zip' '$base/' -r -x '*$base.O.x3d' -x '*$base.zip' -x 'screenshot-small.png'";
-   system "mv '$base.zip' '$base/'";
+   system "zip", "$base.zip", "$base/", "-r", "-x", "*/$base.O.x3d", "-x", "*/$base.zip", "-x", "*/screenshot-small.png";
+   system "mv", "$base.zip", "$base/";
 }
 
 zip $_ foreach sort `find $examples -maxdepth 2 -mindepth 2 -type d`;
