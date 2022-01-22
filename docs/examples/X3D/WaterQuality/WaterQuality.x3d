@@ -208,13 +208,8 @@
                 <ShaderPart DEF='WaterVertex'>
 <![CDATA[data:text/plain,
 
-#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
 precision highp int;
-#else
-precision mediump float;
-precision mediump int;
-#endif
 
 uniform mat3 x3d_NormalMatrix;
 uniform mat4 x3d_ProjectionMatrix;
@@ -330,13 +325,8 @@ main ()
 #extension GL_EXT_frag_depth : enable
 #endif
 
-#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
 precision highp int;
-#else
-precision mediump float;
-precision mediump int;
-#endif
 
 uniform x3d_MaterialParameters x3d_Material;
 uniform samplerCube x3d_CubeMapTexture [x3d_MaxTextures];
