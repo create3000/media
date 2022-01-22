@@ -6,12 +6,12 @@
     <component name='Followers' level='1'/>
     <component name='Shape' level='5'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Mon, 08 Jan 2018 16:52:18 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Geometry2D/Polypoint2D/Polypoint2D.O.x3d'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:41:54 GMT'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0, https://create3000.github.io/Sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geometry2D/Polypoint2D/Polypoint2D.x3d'/>
+    <meta name='modified' content='Sat, 22 Jan 2022 18:47:37 +0100'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
@@ -62,15 +62,14 @@ function set_time (value, time)
 function random (min, max)
 {
 	return Math .random () * (max - min) + min;
-}
-]]>
+}]]>
         </Script>
         <ROUTE fromNode='_1' fromField='value_changed' toNode='Points' toField='set_point'/>
         <ROUTE fromNode='RandomPointsScript' fromField='point_changed' toNode='_1' toField='set_destination'/>
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo
-        title='Polypoint2D.O'/>
+        title='Polypoint2D.O.x3d'/>
     <NavigationInfo
         type='"EXAMINE"'
         transitionType='"ANIMATE"'/>
@@ -88,11 +87,11 @@ function random (min, max)
           cycleInterval='0.7'
           loop='true'/>
       <Shape>
-        <Appearance DEF='_2'>
+        <Appearance>
           <PointProperties
               pointSizeScaleFactor='30'
               pointSizeMaxValue='30'/>
-          <Material DEF='Tropical26_3'
+          <UnlitMaterial
               emissiveColor='0.758 0.0155368 0'/>
         </Appearance>
         <ProtoInstance name='RandomPoints' DEF='Points3' containerField='geometry'>
@@ -111,7 +110,7 @@ function random (min, max)
           <PointProperties
               pointSizeScaleFactor='20'
               pointSizeMaxValue='20'/>
-          <Material DEF='Tropical26'
+          <UnlitMaterial
               emissiveColor='0.758 0.218443 0'/>
         </Appearance>
         <ProtoInstance name='RandomPoints' DEF='Points1' containerField='geometry'>
@@ -130,7 +129,7 @@ function random (min, max)
           <PointProperties
               pointSizeScaleFactor='25'
               pointSizeMaxValue='25'/>
-          <Material DEF='Tropical26_4'
+          <UnlitMaterial
               emissiveColor='0.758 0.635603 0'/>
         </Appearance>
         <ProtoInstance name='RandomPoints' DEF='Points2' containerField='geometry'>

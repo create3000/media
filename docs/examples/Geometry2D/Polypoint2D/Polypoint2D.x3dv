@@ -1,4 +1,4 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V3.3 utf8 Sunrise X3D Browser V1.0
 
 PROFILE Immersive
 
@@ -7,12 +7,12 @@ COMPONENT Followers : 1
 COMPONENT Shape : 5
 COMPONENT Time : 2
 
-META "comment" "World of Titania"
+META "comment" "World of Sunrise X3D Editor"
 META "created" "Mon, 08 Jan 2018 16:52:18 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Geometry2D/Polypoint2D/Polypoint2D.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:41:54 GMT"
+META "generator" "Sunrise X3D Editor V1.0, https://create3000.github.io/Sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geometry2D/Polypoint2D/Polypoint2D.x3dv"
+META "modified" "Sat, 22 Jan 2022 18:47:48 +0100"
 META "titania-add-metadata" "true"
 
 PROTO RandomPoints [
@@ -58,8 +58,7 @@ function set_time (value, time)
 function random (min, max)
 {
 	return Math .random () * (max - min) + min;
-}
-"
+}"
   }
 
   ROUTE _1.value_changed TO Points.set_point
@@ -67,7 +66,7 @@ function random (min, max)
 }
 
 WorldInfo {
-  title "Polypoint2D.O"
+  title "Polypoint2D.O.x3d"
 }
 
 NavigationInfo {
@@ -77,9 +76,15 @@ NavigationInfo {
 
 Background {
   skyAngle 1.5708
-  skyColor [ 0.1 0.1 0.1, 0.3 0.3 0.3 ]
+  skyColor [
+    0.1 0.1 0.1,
+    0.3 0.3 0.3
+  ]
   groundAngle 1.5708
-  groundColor [ 0.1 0.1 0.1, 0.3 0.3 0.3 ]
+  groundColor [
+    0.1 0.1 0.1,
+    0.3 0.3 0.3
+  ]
 }
 
 Viewpoint {
@@ -95,12 +100,12 @@ DEF RedPoints Transform {
       loop TRUE
     }
     Shape {
-      appearance DEF _2 Appearance {
+      appearance Appearance {
         pointProperties PointProperties {
           pointSizeScaleFactor 30
           pointSizeMaxValue 30
         }
-        material DEF Tropical26_3 Material {
+        material UnlitMaterial {
           emissiveColor 0.758 0.0155368 0
         }
       }
@@ -125,7 +130,7 @@ DEF OrangePoints Transform {
           pointSizeScaleFactor 20
           pointSizeMaxValue 20
         }
-        material DEF Tropical26 Material {
+        material UnlitMaterial {
           emissiveColor 0.758 0.218443 0
         }
       }
@@ -150,7 +155,7 @@ DEF YellowPoints Transform {
           pointSizeScaleFactor 25
           pointSizeMaxValue 25
         }
-        material DEF Tropical26_4 Material {
+        material UnlitMaterial {
           emissiveColor 0.758 0.635603 0
         }
       }
