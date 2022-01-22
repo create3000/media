@@ -158,14 +158,11 @@ uniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];
 uniform x3d_FogParameters x3d_Fog;
 
 uniform float x3d_LinewidthScaleFactor;
-uniform bool  x3d_Lighting;      // true if a X3DMaterialNode is attached, otherwise false
 uniform bool  x3d_ColorMaterial; // true if a X3DColorNode is attached, otherwise false
 
 uniform int x3d_NumLights;
 uniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];
-uniform bool x3d_SeparateBackColor;
-uniform x3d_MaterialParameters x3d_FrontMaterial;
-uniform x3d_MaterialParameters x3d_BackMaterial;
+uniform x3d_MaterialParameters x3d_Material;
 
 uniform int         x3d_TextureType [x3d_MaxTextures];
 uniform sampler2D   x3d_Texture2D [x3d_MaxTextures];
@@ -304,96 +301,82 @@ getMaterialColor (in x3d_MaterialParameters material)
 
 	float y  = getWaveHeight (p);
 	vec3  Nw = x3d_NormalMatrix * getWaveNormal (p);
-	
-	if (x3d_Lighting)
+
+	vec3  N  = normalize ((gl_FrontFacing ? vN : -vN) + Nw);
+	vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
+	float dV = length (v);
+
+	// Calculate diffuseFactor & alpha
+
+	vec3  diffuseColor = material .diffuseColor;
+	float alpha        = 1.0 - material .transparency;
+
+	if (x3d_ColorMaterial)
 	{
-		vec3  N  = normalize ((gl_FrontFacing ? vN : -vN) + Nw);
-		vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
-		float dV = length (v);
+		diffuseColor = C .rgb;
+		alpha       *= C .a;
+	}
 
-		// Calculate diffuseFactor & alpha
+	float fresnel     = 0.0;
+	bool  reflections = true;
 
-		vec3  diffuseColor = material .diffuseColor;
-		float alpha        = 1.0 - material .transparency;
+	if (reflections)
+	{
+		fresnel  = pow (1.0 - dot (V, N), 5.0);
+		fresnel  = mix (0.0, 1.0, min (1.0, fresnel));
+		//fresnel *= max (0.0, dot (N, yUp));
+	}
+	
+	vec3 ambientTerm = diffuseColor * material .ambientIntensity;
 
-		if (x3d_ColorMaterial)
+	// Apply light sources
+
+	vec3 finalColor = vec3 (0.0, 0.0, 0.0);
+
+	for (int i = 0; i < x3d_MaxLights; ++ i)
+	{
+		if (i == x3d_NumLights)
+			break;
+
+		x3d_LightSourceParameters light = x3d_LightSource [i];
+
+		vec3  vL = light .location - v;
+		float dL = length (vL);
+		bool  di = light .type == x3d_DirectionalLight;
+
+		if (di || dL <= light .radius)
 		{
-			diffuseColor = C .rgb;
-			alpha       *= C .a;
-		}
+			vec3 d = light .direction;
+			vec3 c = light .attenuation;
+			vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
+			vec3 H = normalize (L + V);             // Specular term
 
-		float fresnel     = 0.0;
-		bool  reflections = true;
+			float lightAngle     = max (0.0, dot (N, L));
+			float specularFactor = material .shininess > 0.0 ? pow (max (0.0, dot (H, N)), material .shininess * 4096.0) * 128.0 : 1.0;
+			vec3  ambientColor   = light .ambientIntensity * ambientTerm;
 
-		if (reflections)
-		{
-			fresnel  = pow (1.0 - dot (V, N), 5.0);
-			fresnel  = mix (0.0, 1.0, min (1.0, fresnel));
-			//fresnel *= max (0.0, dot (N, yUp));
-		}
-		
-		vec3 ambientTerm = diffuseColor * material .ambientIntensity;
+			vec3 waterColor = clamp ((specularFactor * lightAngle * (1.0 - fresnel)) * material .specularColor, 0.0, 1.0);
 
-		// Apply light sources
-
-		vec3 finalColor = vec3 (0.0, 0.0, 0.0);
-
-		for (int i = 0; i < x3d_MaxLights; ++ i)
-		{
-			if (i == x3d_NumLights)
-				break;
-
-			x3d_LightSourceParameters light = x3d_LightSource [i];
-
-			vec3  vL = light .location - v;
-			float dL = length (vL);
-			bool  di = light .type == x3d_DirectionalLight;
-
-			if (di || dL <= light .radius)
+			if (fresnel > 0.0)
 			{
-				vec3 d = light .direction;
-				vec3 c = light .attenuation;
-				vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
-				vec3 H = normalize (L + V);             // Specular term
+				waterColor += getSkyColor (reflect (-V, N), L) * fresnel;
+			}
 
-				float lightAngle     = max (0.0, dot (N, L));
-				float specularFactor = material .shininess > 0.0 ? pow (max (0.0, dot (H, N)), material .shininess * 4096.0) * 128.0 : 1.0;
-				vec3  ambientColor   = light .ambientIntensity * ambientTerm;
+			// Normalized height between (0,1)
+			float height = (y + AMPLITUDE_MAX) / (AMPLITUDE_MAX * 2.0);
 
-				vec3 waterColor = clamp ((specularFactor * lightAngle * (1.0 - fresnel)) * material .specularColor, 0.0, 1.0);
+			waterColor += diffuseColor * (1.0 - (1.0 - height) * contrast);
+			waterColor *= light .color;
+			waterColor += ambientColor;
+			waterColor *= light .intensity;
 
-				if (fresnel > 0.0)
-				{
-					waterColor += getSkyColor (reflect (-V, N), L) * fresnel;
-				}
-
-				// Normalized height between (0,1)
-				float height = (y + AMPLITUDE_MAX) / (AMPLITUDE_MAX * 2.0);
-
-				waterColor += diffuseColor * (1.0 - (1.0 - height) * contrast);
-				waterColor *= light .color;
-				waterColor += ambientColor;
- 				waterColor *= light .intensity;
- 
-  				finalColor += waterColor;
-  			}
+			finalColor += waterColor;
 		}
-
-		finalColor += material .emissiveColor;
-
-		return vec4 (finalColor, alpha);
 	}
-	else
-	{
-		vec4 finalColor = vec4 (1.0, 1.0, 1.0, 1.0);
-	
-		if (x3d_ColorMaterial)
-		{
-			finalColor = C;
-		}
 
-		return finalColor;
-	}
+	finalColor += material .emissiveColor;
+
+	return vec4 (finalColor, alpha);
 }
 
 vec3
@@ -420,10 +403,8 @@ void
 main ()
 {
 	clip ();
- 
-	bool frontColor = gl_FrontFacing || ! x3d_SeparateBackColor;
 
-	gl_FragColor = frontColor ? getMaterialColor (x3d_FrontMaterial) : getMaterialColor (x3d_BackMaterial);
+	gl_FragColor = getMaterialColor (x3d_Material);
 
 	gl_FragColor .rgb = getFogColor (gl_FragColor .rgb);
 }

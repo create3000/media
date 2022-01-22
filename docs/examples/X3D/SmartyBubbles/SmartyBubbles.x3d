@@ -112,7 +112,7 @@ main ()
 precision mediump float;
 
 uniform x3d_PointPropertiesParameters x3d_PointProperties;
-uniform x3d_MaterialParameters x3d_FrontMaterial;
+uniform x3d_MaterialParameters x3d_Material;
 
 varying vec4 color;
 varying vec3 normal;
@@ -122,7 +122,7 @@ main ()
 {
 	float l = x3d_PointProperties .pointSizeScaleFactor / 2.0;
 	float t = distance (vec2 (0.5, 0.5), gl_PointCoord) * 2.0 * l - l + 1.0;
-	float a = 1.0 - x3d_FrontMaterial .transparency;
+	float a = 1.0 - x3d_Material .transparency;
 
 	gl_FragColor .rgb = color .rgb;
 	gl_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));

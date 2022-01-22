@@ -138,7 +138,7 @@
                                       {
                                         "@DEF": "FragmentShader",
                                         "@type": "FRAGMENT",
-                                        "@url": [ "data:text/plain,\n\nprecision mediump float;\n\nuniform x3d_PointPropertiesParameters x3d_PointProperties;\nuniform x3d_MaterialParameters x3d_FrontMaterial;\n\nvarying vec4 color;\nvarying vec3 normal;\n\nvoid\nmain ()\n{\n\tfloat l = x3d_PointProperties .pointSizeScaleFactor / 2.0;\n\tfloat t = distance (vec2 (0.5, 0.5), gl_PointCoord) * 2.0 * l - l + 1.0;\n\tfloat a = 1.0 - x3d_FrontMaterial .transparency;\n\n\tgl_FragColor .rgb = color .rgb;\n\tgl_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));\n}\n" ]
+                                        "@url": [ "data:text/plain,\n\nprecision mediump float;\n\nuniform x3d_PointPropertiesParameters x3d_PointProperties;\nuniform x3d_MaterialParameters x3d_Material;\n\nvarying vec4 color;\nvarying vec3 normal;\n\nvoid\nmain ()\n{\n\tfloat l = x3d_PointProperties .pointSizeScaleFactor / 2.0;\n\tfloat t = distance (vec2 (0.5, 0.5), gl_PointCoord) * 2.0 * l - l + 1.0;\n\tfloat a = 1.0 - x3d_Material .transparency;\n\n\tgl_FragColor .rgb = color .rgb;\n\tgl_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));\n}\n" ]
                                       }
                                     }
                                   ]

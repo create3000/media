@@ -338,7 +338,7 @@ precision mediump float;
 precision mediump int;
 #endif
 
-uniform x3d_MaterialParameters x3d_FrontMaterial;
+uniform x3d_MaterialParameters x3d_Material;
 uniform samplerCube x3d_CubeMapTexture [x3d_MaxTextures];
 
 varying vec3 texCoord;
@@ -352,7 +352,7 @@ void
 main ()
 {
 	vec3 color   = vec3 (textureCube (x3d_CubeMapTexture [0], texCoord));
-	gl_FragColor = vec4 (color, 1.0 - x3d_FrontMaterial .transparency);
+	gl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);
 
 	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
 	//http://outerra.blogspot.com/2013/07/logarithmic-depth-buffer-optimizations.html

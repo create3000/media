@@ -371,7 +371,7 @@
                                       {
                                         "@DEF": "FragmentShader",
                                         "@type": "FRAGMENT",
-                                        "@url": [ "data:x-shader/x-fragment,\n\nprecision mediump float;\n\nuniform x3d_MaterialParameters x3d_FrontMaterial;\nuniform sampler2D x3d_Texture2D [1];\n\nvarying vec4 color;\nvarying vec4 texCoord;\n\nvoid\nmain ()\n{\n\tvec4  t = texture2D (x3d_Texture2D [0], texCoord .st);\n\tfloat a = 1.0 - x3d_FrontMaterial .transparency;\n\n\tgl_FragColor = vec4 (color .rgb * t .rgb, a * color .a * t .a);\n}" ]
+                                        "@url": [ "data:x-shader/x-fragment,\n\nprecision mediump float;\n\nuniform x3d_MaterialParameters x3d_Material;\nuniform sampler2D x3d_Texture2D [1];\n\nvarying vec4 color;\nvarying vec4 texCoord;\n\nvoid\nmain ()\n{\n\tvec4  t = texture2D (x3d_Texture2D [0], texCoord .st);\n\tfloat a = 1.0 - x3d_Material .transparency;\n\n\tgl_FragColor = vec4 (color .rgb * t .rgb, a * color .a * t .a);\n}" ]
                                       }
                                     }
                                   ]
