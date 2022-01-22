@@ -68,7 +68,7 @@ uniform vec2  velocity;
 uniform float turbulence;
 
 attribute vec4 x3d_Color;
-attribute vec4 x3d_TexCoord;
+attribute vec4 x3d_TexCoord0;
 attribute vec3 x3d_Normal;
 attribute vec4 x3d_Vertex;
 
@@ -133,7 +133,7 @@ main ()
 
 	vN = normalize (x3d_NormalMatrix * x3d_Normal);
 
-	t = x3d_TextureMatrix [0] * x3d_TexCoord;
+	t = x3d_TextureMatrix [0] * x3d_TexCoord0;
 	C = x3d_Color;
 	v = mv .xyz;
 
