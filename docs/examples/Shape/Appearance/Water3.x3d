@@ -95,7 +95,7 @@ float nnoise (in vec2 x)
 float
 getWaveHeight (in vec2 xy)
 {
-	// Octave transform matrix from Alexander Alekseev aka TDM 
+	// Octave transform matrix from Alexander Alekseev aka TDM
 	const mat2 octave_m = mat2 (1.8, 1.2, -1.2, 1.8);
 
 	float m = amplitude;
@@ -156,7 +156,7 @@ uniform x3d_MaterialParameters x3d_Material;
 
 uniform int         x3d_TextureType [x3d_MaxTextures];
 uniform sampler2D   x3d_Texture2D [x3d_MaxTextures];
-uniform samplerCube x3d_CubeMapTexture [x3d_MaxTextures];
+uniform samplerCube x3d_TextureCube [x3d_MaxTextures];
 
 uniform mat3  x3d_NormalMatrix;
 
@@ -199,7 +199,7 @@ float nnoise (in vec2 x)
 float
 getWaveHeight (in vec2 xy)
 {
-	// Octave transform matrix from Alexander Alekseev aka TDM 
+	// Octave transform matrix from Alexander Alekseev aka TDM
 	const mat2 octave_m = mat2 (1.8, 1.2, -1.2, 1.8);
 
 	float m = amplitude;
@@ -236,9 +236,9 @@ getWaveNormal (in vec2 pos)
 	vec3 n2 = vec3 (p2.x, getWaveHeight (p2), p2.y);
 	vec3 n3 = vec3 (p3.x, getWaveHeight (p3), p3.y);
 	vec3 n4 = vec3 (p4.x, getWaveHeight (p4), p4.y);
-   
+
    vec3 n = cross (n3 - n4, n1 - n2);
-   
+
    return normalize (n);
 }
 
@@ -259,7 +259,7 @@ float
 getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
 {
 	float spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));
-	
+
 	if (spotAngle >= cutOffAngle)
 		return 0.0;
 	else if (spotAngle <= beamWidth)
@@ -316,7 +316,7 @@ getMaterialColor (in x3d_MaterialParameters material)
 		fresnel  = mix (0.0, 1.0, min (1.0, fresnel));
 		//fresnel *= max (0.0, dot (N, yUp));
 	}
-	
+
 	vec3 ambientTerm = diffuseColor * material .ambientIntensity;
 
 	// Apply light sources

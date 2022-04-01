@@ -423,9 +423,9 @@ getWaveNormal (in vec2 pos)
 	vec3 n2 = vec3 (p2.x, getWaveHeight (p2), p2.y);
 	vec3 n3 = vec3 (p3.x, getWaveHeight (p3), p3.y);
 	vec3 n4 = vec3 (p4.x, getWaveHeight (p4), p4.y);
-   
+
    vec3 n = cross (n1 - n2, n3 - n4);
-   
+
    return normalize (n);
 }
 
@@ -434,7 +434,7 @@ main ()
 {
 	for (int i = 0; i < WAVE_MAX; ++ i)
 		offset [i] = normalize (direction [i]) * set_time * speed [i];
-	
+
 	vec4 vertex = x3d_Vertex;
 	vec2 pos    = vec2 (vertex .x, vertex .z);
 	vertex .y   = getWaveHeight (pos);
@@ -461,7 +461,7 @@ precision highp float;
 precision highp int;
 
 uniform x3d_MaterialParameters x3d_Material;
-uniform samplerCube x3d_CubeMapTexture [x3d_MaxTextures];
+uniform samplerCube x3d_TextureCube [x3d_MaxTextures];
 
 varying vec3 texCoord;
 
@@ -473,7 +473,7 @@ varying float depth;
 void
 main ()
 {
-	vec3 color   = vec3 (textureCube (x3d_CubeMapTexture [0], texCoord));
+	vec3 color   = vec3 (textureCube (x3d_TextureCube [0], texCoord));
 	gl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);
 
 	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
