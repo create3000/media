@@ -54,8 +54,7 @@
           </IS>
         </ProtoInstance>
         <Script DEF='_world'
-            directOutput='true'
-            mustEvaluate='true'>
+            directOutput='true'>
           <field accessType='outputOnly' type='SFBool' name='isActive'/>
           <field accessType='outputOnly' type='SFTime' name='enterTime'/>
           <field accessType='outputOnly' type='SFTime' name='exitTime'/>
@@ -124,7 +123,7 @@ function set_children(value, time)
 		} else if (value[i].toString() == 'Scene { }') {
 			found = TRUE;
 			scene = value[i];
-		} 
+		}
 	}
 	if (!found) return;
 	Browser.addRoute(scene, 'enterTime', self, 'set_startTimeC');
@@ -144,7 +143,7 @@ function initialize()
 	}
 	if (data.startTime) data.startTime = 1;
 }
-]]> 
+]]>
         </Script>
         <ROUTE fromNode='Data' fromField='startTime_changed' toNode='_world' toField='set_startTime'/>
         <ROUTE fromNode='Data' fromField='stopTime_changed' toNode='_world' toField='set_stopTime'/>

@@ -43,8 +43,7 @@
           </IS>
         </ProtoInstance>
         <Script DEF='_import'
-            directOutput='true'
-            mustEvaluate='true'>
+            directOutput='true'>
           <field accessType='outputOnly' type='SFBool' name='isActive'/>
           <field accessType='outputOnly' type='SFTime' name='exitTime'/>
           <field accessType='inputOnly' type='SFTime' name='set_startTime'/>
@@ -103,7 +102,7 @@ function set_children(value, time) {
 	}
 }
 function initialize() { if (data.startTime) loadUrl(); }
-    ]]> 
+    ]]>
         </Script>
         <ROUTE fromNode='Data' fromField='url_changed' toNode='_import' toField='set_url'/>
         <ROUTE fromNode='Data' fromField='startTime_changed' toNode='_import' toField='set_startTime'/>
