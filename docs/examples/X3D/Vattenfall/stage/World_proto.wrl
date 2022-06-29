@@ -4,9 +4,9 @@ PROTO World [
   exposedField  SFBool    enabled		TRUE
   exposedField  SFTime    startTime		0
   exposedField  SFTime    stopTime		0
-  eventOut      SFBool    isActive
-  eventOut      SFTime    enterTime
-  eventOut      SFTime    exitTime
+  eventOut      SFBool    isActive		
+  eventOut      SFTime    enterTime		
+  eventOut      SFTime    exitTime		
   exposedField  MFNode    interface		[ ]
   exposedField  MFNode    children		[ ]
 ]
@@ -19,20 +19,20 @@ PROTO World [
     exposedField  MFNode    children		[ ]
   ]
   {
-    Group {
+    Group { 
       children [
-        Switch {
+        Switch { 
           whichChoice -1
           choice IS iface
         }
-        Group {
+        Group { 
           children IS children
         }
       ]
     }
   }
 
-  DEF Data Data {
+  DEF Data Data { 
     enabled IS enabled
     startTime IS startTime
     stopTime IS stopTime
@@ -40,7 +40,7 @@ PROTO World [
     iface IS interface
   }
 
-  DEF _world Script {
+  DEF _world Script { 
     eventOut  SFBool    isActive IS isActive
     eventOut  SFTime    enterTime IS enterTime
     eventOut  SFTime    exitTime IS exitTime
@@ -100,7 +100,7 @@ function set_children(value, time)
 		} else if (value[i] == 'Scene { }') {
 			found = TRUE;
 			scene = value[i];
-		}
+		} 
 	}
 	if (!found) return;
 	Browser.addRoute(scene, 'enterTime', self, 'set_startTimeC');
@@ -122,6 +122,7 @@ function initialize()
 }
 "
     directOutput TRUE
+    mustEvaluate TRUE
   }
 
   ROUTE Data.startTime_changed TO _world.set_startTime

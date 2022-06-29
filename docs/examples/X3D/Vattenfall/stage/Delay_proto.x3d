@@ -30,7 +30,8 @@
           </ProtoBody>
         </ProtoDeclare>
         <Script DEF='_delay'
-            directOutput='true'>
+            directOutput='true'
+            mustEvaluate='true'>
           <field accessType='outputOnly' type='SFBool' name='isActive'/>
           <field accessType='outputOnly' type='SFTime' name='exitTime'/>
           <field accessType='inputOnly' type='SFTime' name='set_startTime'/>
@@ -81,7 +82,7 @@ function set_isActive(value, time) {
 function initialize() {
 	if (data.startTime) data.startTime = 1;
 }
-]]>
+]]> 
         </Script>
         <ROUTE fromNode='TimeSensor' fromField='isActive' toNode='_delay' toField='set_isActive'/>
         <ROUTE fromNode='Data' fromField='startTime_changed' toNode='_delay' toField='set_startTime'/>
