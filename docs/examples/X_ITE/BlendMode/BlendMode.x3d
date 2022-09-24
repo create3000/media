@@ -137,8 +137,8 @@ attribute vec4 x3d_Color;
 attribute vec4 x3d_TexCoord0;
 attribute vec4 x3d_Vertex;
 
-attribute float x3d_ParticleElapsedTime;
-attribute vec4  x3d_ParticlePosition;
+attribute vec4 x3d_Particle;
+attribute vec4 x3d_ParticlePosition;
 
 varying vec4 color;
 varying vec4 texCoord;
@@ -150,7 +150,7 @@ getXZRotation (in float a)
 {
 	float s = sin (a);
 	float c = cos (a);
-	
+
 	return mat4 ( c,  0.0 ,  s, 0.0,
 	             0.0, 1.0, 0.0, 0.0,
 	             -s,  0.0,   c, 0.0,
@@ -160,8 +160,9 @@ getXZRotation (in float a)
 void
 main ()
 {
-	float s = 1.0 - x3d_ParticleElapsedTime;
-	mat4  r = getXZRotation (x3d_ParticleElapsedTime * 2.0 * PI / 2.0);
+  float e = x3d_Particle [3] / x3d_Particle [2];
+	float s = 1.0 - e;
+	mat4  r = getXZRotation (e * 2.0 * PI / 2.0);
 	vec4  p = x3d_ParticlePosition * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);
 	vec4  v = (x3d_Vertex - x3d_ParticlePosition) * s + r * p;
 
@@ -171,27 +172,6 @@ main ()
 	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
 }
 ]]>
-              </ShaderPart>
-              <ShaderPart DEF='FragmentShader'
-                  type='FRAGMENT'>
-<![CDATA[data:x-shader/x-fragment,
-
-precision mediump float;
-
-uniform x3d_MaterialParameters x3d_Material;
-uniform sampler2D x3d_Texture2D [1];
-
-varying vec4 color;
-varying vec4 texCoord;
-
-void
-main ()
-{
-	vec4  t = texture2D (x3d_Texture2D [0], texCoord .st);
-	float a = 1.0 - x3d_Material .transparency;
-
-	gl_FragColor = vec4 (color .rgb * t .rgb, a * color .a * t .a);
-}]]>
               </ShaderPart>
             </ComposedShader>
             <BlendMode

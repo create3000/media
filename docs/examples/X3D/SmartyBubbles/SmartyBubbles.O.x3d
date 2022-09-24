@@ -42,9 +42,9 @@ uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat3 x3d_NormalMatrix;
 
-attribute float x3d_ParticleId;
-attribute vec4  x3d_Vertex;
-attribute vec3  x3d_Normal;
+attribute vec4 x3d_Particle;
+attribute vec4 x3d_Vertex;
+attribute vec3 x3d_Normal;
 
 varying vec4 color;
 varying vec3 normal;
@@ -79,7 +79,7 @@ random ()
 void
 main ()
 {
-	srand (int (x3d_ParticleId));
+	srand (int (x3d_Particle [0]));
 
 	color  = vec4 (random (), random (), random (), random ());
 	normal = x3d_NormalMatrix * x3d_Normal;
