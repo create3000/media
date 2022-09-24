@@ -195,6 +195,27 @@ main ()
 }
 "
                 }
+                DEF FragmentShader ShaderPart {
+                  type "FRAGMENT"
+                  url "data:x-shader/x-fragment,
+
+precision mediump float;
+
+uniform x3d_MaterialParameters x3d_Material;
+uniform sampler2D x3d_Texture2D [1];
+
+varying vec4 color;
+varying vec4 texCoord;
+
+void
+main ()
+{
+	vec4  t = texture2D (x3d_Texture2D [0], texCoord .st);
+	float a = 1.0 - x3d_Material .transparency;
+
+	gl_FragColor = vec4 (color .rgb * t .rgb, a * color .a * t .a);
+}"
+                }
               ]
             }
             blendMode BlendMode {
