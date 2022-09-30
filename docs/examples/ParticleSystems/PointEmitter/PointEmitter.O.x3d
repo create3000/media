@@ -47,7 +47,7 @@ uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 
 attribute vec4 x3d_Particle;
-attribute vec4 x3d_ParticlePosition;
+attribute vec3 x3d_ParticlePosition;
 attribute vec4 x3d_Vertex;
 attribute vec4 x3d_TexCoord0;
 attribute vec4 x3d_Color;
@@ -100,7 +100,7 @@ main ()
 {
   float f = x3d_Particle [3] / x3d_Particle [2];
 	mat3  r = getRotation (-2.0 * f * 2.0 * PI);
-	vec4  v = vec4 (x3d_ParticlePosition .xyz + r * x3d_Vertex .xyz, 1.0);
+	vec4  v = vec4 (x3d_ParticlePosition + r * x3d_Vertex .xyz, 1.0);
 
 	srand (int (x3d_Particle [1] * 107.0));
 
