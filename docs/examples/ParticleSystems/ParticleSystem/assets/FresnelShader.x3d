@@ -64,6 +64,7 @@ uniform float power;
 
 in vec3 x3d_Normal;
 in vec4 x3d_Vertex;
+in vec4 x3d_ParticlePosition;
 
 out vec3  t;
 out vec3  tr;
@@ -74,8 +75,9 @@ out float rfac;
 void
 main ()
 {
+  vec3 vertex     = vec4 (x3d_ParticlePosition .xyz + x3d_Vertex .xyz, x3d_Vertex .w);
   vec3 fragNormal = normalize (x3d_NormalMatrix * x3d_Normal);
-  vec3 incident   = normalize ((x3d_ModelViewMatrix * x3d_Vertex) .xyz);
+  vec3 incident   = normalize ((x3d_ModelViewMatrix * vertex) .xyz);
 
   t    = reflect (incident, fragNormal) * x3d_NormalMatrix;
   tr   = refract (incident, fragNormal, chromaticDispertion .x) * x3d_NormalMatrix;
@@ -83,7 +85,7 @@ main ()
   tb   = refract (incident, fragNormal, chromaticDispertion .z) * x3d_NormalMatrix;
   rfac = bias + scale * pow (clamp (0.5 + 0.5 * dot (incident, fragNormal), 0.0, 1.0), power);
 
-  gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;
+  gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;
 }
 ]]>
           </ShaderPart>
