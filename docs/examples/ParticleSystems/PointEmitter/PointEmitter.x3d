@@ -128,8 +128,9 @@ getRotation (in float a)
 void
 main ()
 {
-	mat4 r = getRotation (-2.0 * x3d_Particle [3] / x3d_Particle [2] * 2.0 * PI);
-	vec4 v = vec4 (real (x3d_ParticlePosition) + real (r * x3d_Vertex), 1.0);;
+  float f = x3d_Particle [3] / x3d_Particle [2];
+	mat4  r = getRotation (-2.0 * f * 2.0 * PI);
+	vec4  v = vec4 (real (x3d_ParticlePosition) + real (r * x3d_Vertex), 1.0);
 
 	srand (int (x3d_Particle [1] * 107.0));
 
