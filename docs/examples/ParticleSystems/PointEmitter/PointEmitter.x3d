@@ -113,16 +113,15 @@ random ()
 
 #define PI 3.1415
 
-mat4
+mat3
 getRotation (in float a)
 {
 	float s = sin (a);
 	float c = cos (a);
 
-	return mat4 (  c,   s, 0.0, 0.0,
-	              -s,   c, 0.0, 0.0,
-	             0.0, 0.0, 1.0, 0.0,
-	             0.0, 0.0, 0.0, 1.0);
+	return mat3 (  c,   s, 0.0,
+	              -s,   c, 0.0,
+	             0.0, 0.0, 1.0);
 }
 
 void
@@ -130,7 +129,7 @@ main ()
 {
   float f = x3d_Particle [3] / x3d_Particle [2];
 	mat4  r = getRotation (-2.0 * f * 2.0 * PI);
-	vec4  v = vec4 (real (x3d_ParticlePosition) + real (r * x3d_Vertex), 1.0);
+	vec4  v = vec4 (x3d_ParticlePosition .xyz + r * x3d_Vertex .xyz, 1.0);
 
 	srand (int (x3d_Particle [1] * 107.0));
 
