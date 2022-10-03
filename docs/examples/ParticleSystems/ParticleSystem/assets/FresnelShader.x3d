@@ -57,14 +57,14 @@ uniform mat4 x3d_ModelViewMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat3 x3d_NormalMatrix;
 
-uniform vec3  chromaticDispertion;
+uniform vec3  chromaticDispersion;
 uniform float bias;
 uniform float scale;
 uniform float power;
 
 in vec3 x3d_Normal;
 in vec4 x3d_Vertex;
-in vec3 x3d_ParticlePosition;
+in mat4 x3d_ParticleMatrix;
 
 out vec3  t;
 out vec3  tr;
@@ -75,14 +75,14 @@ out float rfac;
 void
 main ()
 {
-  vec4 vertex     = vec4 (x3d_ParticlePosition + x3d_Vertex .xyz, x3d_Vertex .w);
+  vec4 vertex     = x3d_ParticleMatrix * x3d_Vertex;
   vec3 fragNormal = normalize (x3d_NormalMatrix * x3d_Normal);
   vec3 incident   = normalize ((x3d_ModelViewMatrix * vertex) .xyz);
 
   t    = reflect (incident, fragNormal) * x3d_NormalMatrix;
-  tr   = refract (incident, fragNormal, chromaticDispertion .x) * x3d_NormalMatrix;
-  tg   = refract (incident, fragNormal, chromaticDispertion .y) * x3d_NormalMatrix;
-  tb   = refract (incident, fragNormal, chromaticDispertion .z) * x3d_NormalMatrix;
+  tr   = refract (incident, fragNormal, chromaticDispersion .x) * x3d_NormalMatrix;
+  tg   = refract (incident, fragNormal, chromaticDispersion .y) * x3d_NormalMatrix;
+  tb   = refract (incident, fragNormal, chromaticDispersion .z) * x3d_NormalMatrix;
   rfac = bias + scale * pow (clamp (0.5 + 0.5 * dot (incident, fragNormal), 0.0, 1.0), power);
 
   gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;
