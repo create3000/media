@@ -13,7 +13,7 @@
   <Scene>
     <ProtoDeclare name='FresnelShader'>
       <ProtoInterface>
-        <field name='chromaticDispertion' accessType='inputOutput' type='SFVec3f' value='0.98 1 1.033'/>
+        <field name='chromaticDispersion' accessType='inputOutput' type='SFVec3f' value='0.98 1 1.033'/>
         <field name='bias' accessType='inputOutput' type='SFFloat' value='0.5'/>
         <field name='scale' accessType='inputOutput' type='SFFloat' value='0.5'/>
         <field name='power' accessType='inputOutput' type='SFFloat' value='2'/>
@@ -22,13 +22,13 @@
       <ProtoBody>
         <ComposedShader DEF='FresnelShader'
             language='GLSL'>
-          <field name='chromaticDispertion' accessType='inputOutput' type='SFVec3f' value='0.98 1 1.033'/>
+          <field name='chromaticDispersion' accessType='inputOutput' type='SFVec3f' value='0.98 1 1.033'/>
           <field name='bias' accessType='inputOutput' type='SFFloat' value='0.5'/>
           <field name='scale' accessType='inputOutput' type='SFFloat' value='0.5'/>
           <field name='power' accessType='inputOutput' type='SFFloat' value='2'/>
           <field accessType='inputOutput' type='SFNode' name='cubMapTexture'/>
           <IS>
-            <connect nodeField='chromaticDispertion' protoField='chromaticDispertion'/>
+            <connect nodeField='chromaticDispersion' protoField='chromaticDispersion'/>
             <connect nodeField='bias' protoField='bias'/>
             <connect nodeField='scale' protoField='scale'/>
             <connect nodeField='power' protoField='power'/>
