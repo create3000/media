@@ -160,7 +160,7 @@ attribute vec4 x3d_TexCoord0;
 attribute vec4 x3d_Vertex;
 
 attribute vec4 x3d_Particle;
-attribute vec4 x3d_ParticlePosition;
+attribute mat4 x3d_ParticleMatrix;
 
 varying vec4 color;
 varying vec4 texCoord;
@@ -173,20 +173,20 @@ getXZRotation (in float a)
 	float s = sin (a);
 	float c = cos (a);
 
-	return mat4 ( c,  0.0 ,  s, 0.0,
+	return mat4 (  c, 0.0 ,  s, 0.0,
 	             0.0, 1.0, 0.0, 0.0,
-	             -s,  0.0,   c, 0.0,
+	              -s, 0.0,   c, 0.0,
 	             0.0, 0.0, 0.0, 1.0);
 }
 
 void
 main ()
 {
-  float e = x3d_Particle [3] / x3d_Particle [2];
+  float e = x3d_Particle [2] / x3d_Particle [1];
 	float s = 1.0 - e;
 	mat4  r = getXZRotation (e * 2.0 * PI / 2.0);
-	vec4  p = x3d_ParticlePosition * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);
-	vec4  v = (x3d_Vertex - x3d_ParticlePosition) * s + r * p;
+	vec4  p = x3d_ParticleMatrix [3] * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);
+	vec4  v = vec4 (x3d_Vertex .xyz * s, 0.0) + r * p;
 
 	color    = x3d_Color;
 	texCoord = x3d_TexCoord0;
