@@ -59,7 +59,7 @@ LayerSet {
               language "GLSL"
               parts [
                 DEF VertexShader ShaderPart {
-                  url "data:text/plain,
+                  url "data:text/plain,#version 300 es
 
 precision mediump float;
 
@@ -69,13 +69,13 @@ uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat3 x3d_NormalMatrix;
 
-attribute vec4 x3d_Particle;
-attribute mat4 x3d_ParticleMatrix;
-attribute vec4 x3d_Vertex;
-attribute vec3 x3d_Normal;
+in vec4 x3d_Particle;
+in mat4 x3d_ParticleMatrix;
+in vec4 x3d_Vertex;
+in vec3 x3d_Normal;
 
-varying vec4 color;
-varying vec3 normal;
+out vec4 color;
+out vec3 normal;
 
 /* Random number generation */
 
@@ -107,7 +107,7 @@ random ()
 void
 main ()
 {
-	srand (gl_VertexId + int (x3d_Particle [0]));
+	srand (gl_InstanceID + int (x3d_Particle [0]));
 
 	color  = vec4 (random (), random (), random (), random ());
 	normal = x3d_NormalMatrix * x3d_Normal;
@@ -118,15 +118,17 @@ main ()
                 }
                 DEF FragmentShader ShaderPart {
                   type "FRAGMENT"
-                  url "data:text/plain,
+                  url "data:text/plain,#version 300 es
 
 precision mediump float;
 
 uniform x3d_PointPropertiesParameters x3d_PointProperties;
 uniform x3d_MaterialParameters x3d_Material;
 
-varying vec4 color;
-varying vec3 normal;
+in vec4 color;
+in vec3 normal;
+
+out vec4 x3d_FragColor;
 
 void
 main ()
@@ -135,8 +137,8 @@ main ()
 	float t = distance (vec2 (0.5, 0.5), gl_PointCoord) * 2.0 * l - l + 1.0;
 	float a = 1.0 - x3d_Material .transparency;
 
-	gl_FragColor .rgb = color .rgb;
-	gl_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));
+	x3d_FragColor .rgb = color .rgb;
+	x3d_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));
 }
 "
                 }
