@@ -43,6 +43,7 @@ uniform mat4 x3d_ModelViewMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 attribute vec4 x3d_Particle;
+attribute mat4 x3d_ParticleMatrix;
 attribute vec4 x3d_Vertex;
 attribute vec3 x3d_Normal;
 
@@ -85,7 +86,7 @@ main ()
 	normal = x3d_NormalMatrix * x3d_Normal;
 
 	gl_PointSize = x3d_PointProperties .pointSizeScaleFactor;
-	gl_Position  = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;
+	gl_Position  = x3d_ProjectionMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex));
 }]]>
             </ShaderPart>
           </MetadataSet>
