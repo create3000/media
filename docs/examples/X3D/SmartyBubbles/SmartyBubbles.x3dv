@@ -107,7 +107,7 @@ random ()
 void
 main ()
 {
-	srand (int (x3d_Particle [0]));
+	srand (gl_InstanceId + int (x3d_Particle [0]));
 
 	color  = vec4 (random (), random (), random (), random ());
 	normal = x3d_NormalMatrix * x3d_Normal;
