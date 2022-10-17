@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<X3D profile='Core' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
-    <component name='Followers' level='1'/>
-    <component name='NURBS' level='3'/>
+    <component name='Shape' level='5'/>
+    <component name='Rendering' level='5'/>
+    <component name='NURBS' level='4'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='World of Titania'/>
+    <component name='Followers' level='4'/>
+    <component name='Scripting' level='1'/>
+    <component name='Core' level='2'/>
+    <component name='Navigation' level='3'/>
+    <component name='Grouping' level='3'/>
+    <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Mon, 17 Jun 2019 10:51:39 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.5.6, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/CoordinateChaser/CoordinateChaser.O.x3d'/>
-    <meta name='modified' content='Tue, 18 Jun 2019 13:43:04 GMT'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.0, https://create3000.github.io/Sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/CoordinateChaser/CoordinateChaser.x3d'/>
+    <meta name='modified' content='Mon, 17 Oct 2022 23:15:37 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Bumps'>
       <ProtoInterface>
+        <field accessType='inputOutput' type='SFInt32' name='linetype' value='1'/>
         <field accessType='inputOutput' type='SFColor' name='color' value='1 1 1'/>
       </ProtoInterface>
       <ProtoBody>
         <Shape>
           <Appearance>
             <LineProperties
-                linewidthScaleFactor='6'/>
+                linewidthScaleFactor='6'>
+              <IS>
+                <connect nodeField='linetype' protoField='linetype'/>
+              </IS>
+            </LineProperties>
             <Material
                 diffuseColor='0 0 0'>
               <IS>
@@ -96,46 +107,44 @@ function bumps (a, n, m)
         <ROUTE fromNode='_2' fromField='cycleTime' toNode='BumpsScript' toField='set_time'/>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
     <Viewpoint
         position='15 7.708 18.954'
         centerOfRotation='15 6.07793 0'/>
-    <Transform>
+    <Transform DEF='Red'>
       <ProtoInstance name='Bumps'>
         <fieldValue name='color' value='1 0 0'/>
       </ProtoInstance>
     </Transform>
-    <Transform
+    <Transform DEF='Yellow'
         translation='0 2 0'>
       <ProtoInstance name='Bumps'>
+        <fieldValue name='linetype' value='13'/>
         <fieldValue name='color' value='1 1 0'/>
       </ProtoInstance>
     </Transform>
-    <Transform
+    <Transform DEF='Green'
         translation='0 4 0'>
       <ProtoInstance name='Bumps'>
         <fieldValue name='color' value='0.00800333 1 0'/>
       </ProtoInstance>
     </Transform>
-    <Transform
+    <Transform DEF='Cyan'
         translation='0 6 0'>
       <ProtoInstance name='Bumps'>
         <fieldValue name='color' value='0 0.997684 1'/>
       </ProtoInstance>
     </Transform>
-    <Transform
+    <Transform DEF='Blue'
         translation='0 8 0'>
       <ProtoInstance name='Bumps'>
         <fieldValue name='color' value='0 0 1'/>
       </ProtoInstance>
     </Transform>
-    <Transform
+    <Transform DEF='Magenta'
         translation='0 10 0'>
       <ProtoInstance name='Bumps'>
         <fieldValue name='color' value='0.998073 0 1'/>
       </ProtoInstance>
     </Transform>
-    <Transform DEF='Box'
-        translation='8.21123 4.23988 0'/>
   </Scene>
 </X3D>
