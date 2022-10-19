@@ -61,7 +61,7 @@ body {
 	<script type="text/javascript">
 function init ()
 {
-	var
+	const
 		Browser = X3D .getBrowser ("X3d-canvas"),              // Get the browser instance.
 		scene   = Browser .currentScene,                      // Get the scene.
 		timer   = scene .getNamedNode ("SpinAnimationTimer"); // Get box TouchSensor node.
@@ -79,14 +79,14 @@ function init ()
 
 function center ()
 {
-	var Browser = X3D .getBrowser (".browser"); // Get the browser instance.
+	const Browser = X3D .getBrowser (".browser"); // Get the browser instance.
 
 	Browser .changeViewpoint ("Viewpoint");
 }
 
 function changeStyle ()
 {
-	var
+	const
 		Browser    = X3D .getBrowser (".browser"),            // Get the browser instance.
 		scene      = Browser .currentScene,                   // Get the scene.
 		switchNode = scene .getNamedNode ("Adrenaline");      // Get Switch node.
@@ -98,7 +98,7 @@ function changeStyle ()
 
 function changeBackground ()
 {
-	var
+	const
 		Browser        = X3D .getBrowser (".browser"),            // Get the browser instance.
 		scene          = Browser .currentScene,                   // Get the scene.
 		backgroundNode = scene .getNamedNode ("Background");      // Get Background node.
@@ -116,7 +116,7 @@ function changeBackground ()
 
 function spin ()
 {
-	var
+	const
 		Browser = X3D .getBrowser (".browser"),               // Get the browser instance.
 		scene   = Browser .currentScene,                      // Get the scene.
 		timer   = scene .getNamedNode ("SpinAnimationTimer"); // Get TimeSensor node.

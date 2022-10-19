@@ -69,7 +69,7 @@ body {
  				<Scene DEF='scene'>
 					<Viewpoint position='16.0328 13.056 34.2417' orientation='-0.624839 0.780206 0.0292506 0.543473' />
     				<Background skyColor='1 1 1'/>
-    
+
 					<Transform scale='2.5 2.5 2.5'>
 						<Shape DEF='CUBE1'>
  							<Appearance>
@@ -166,7 +166,7 @@ body {
 						<Transform USE='XFORM2c'/>
 						<Transform USE='XFORM2d'/>
 					</Transform>
-	
+
 					<TimeSensor DEF='TIMER' cycleInterval='30' loop='true'/>
 					<OrientationInterpolator DEF='ROTOR_A' key='0 0.5 1' keyValue='1 0 0 0, 1 0 0 3.14, 1 0 0 6.28'/>
 					<OrientationInterpolator DEF='ROTOR_B' key='0 0.5 1' keyValue='0 1 0 0, 0 1 0 3.14, 0 1 0 6.28'/>
@@ -192,7 +192,7 @@ body {
 				</Scene>
 			</X3D>
 		</X3DCanvas>
-		
+
 		<div class="html">
 			<p>
 				XHTML and X_ITE can<br/>
@@ -203,8 +203,9 @@ body {
 		<button id="toggleAnimation" class="button input input-button" onclick="toggleAnimation ()">HTML Button to Toggle Animation</button>
 
 		<script>
-var routeA, routeB, routeC, routeD;
-var scene = document .querySelector ('Scene');
+const scene = document .querySelector ('Scene');
+
+let routeA, routeB, routeC, routeD;
 
 function toggleAnimation ()
 {
@@ -216,50 +217,50 @@ function toggleAnimation ()
 
 function freezeA ()
 {
-	var el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_A"]');
-	
+	const el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_A"]');
+
 	if (el)
 	{
 		routeA = el;
 		el .remove ();
 	}
-	else { scene.appendChild (routeA); }
+	else { scene .appendChild (routeA); }
 }
 
 function freezeB ()
 {
-	var el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_B"]');
-	
+	const el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_B"]');
+
 	if (el)
 	{
 		routeB = el;
-		el.remove();
+		el .remove ();
 	}
-	else { scene.appendChild (routeB); }
+	else { scene .appendChild (routeB); }
 }
 
 function freezeC ()
 {
-	var el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_C"]');
-	
+	const el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_C"]');
+
 	if (el)
 	{
 		routeC = el;
-		el.remove();
+		el .remove ();
 	}
-	else { scene.appendChild (routeC); }
+	else { scene .appendChild (routeC); }
 }
 
 function freezeD ()
 {
-	var el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_D"]');
-	
+	const el = document .querySelector ('ROUTE[fromNode="TIMER"][toNode="ROTOR_D"]');
+
 	if (el)
 	{
 		routeD = el;
-		el.remove();
+		el .remove ();
 	}
-	else { scene.appendChild (routeD); }
+	else { scene .appendChild (routeD); }
 }
 		</script>
 	</body>
