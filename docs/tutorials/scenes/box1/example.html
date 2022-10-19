@@ -10,8 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/noelboss/featherlight@1.7.8/release/featherlight.min.css"/>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/noelboss/featherlight@1.7.8/release/featherlight.min.js"></script>
 
-	<!-- X_ICTE requirements -->
-	<link rel="stylesheet" type="text/css" href="https://create3000.github.io/code/x_ite/latest/dist/x_ite.css"/>
+	<!-- X_ITE requirements -->
 	<script type="text/javascript" src="https://create3000.github.io/code/x_ite/latest/dist/x_ite.min.js"></script>
 
 	<style>
@@ -186,12 +185,12 @@ X3D (function ()
 				metadata     = currentScene .getMetaDatas (),
 				names        = [ ],
 				tbody        = $(".meta-data-table tbody");
-	
+
 			for (var name in metadata)
 				names .push (name);
-	
+
 			names .sort ();
-	
+
 			tbody .empty ();
 
 			for (var i = 0; i < names .length; ++ i)
@@ -199,11 +198,11 @@ X3D (function ()
 				var
 					name = names [i],
 					tr   = $("<tr>") .appendTo (tbody);
-	
+
 				$("<td>") .text (name) .appendTo (tr);
 				$("<td>") .text (metadata [name]) .appendTo (tr);
 			}
-	
+
 			$.featherlight ($(".meta-data"));
 
 			return false;
@@ -214,14 +213,14 @@ X3D (function ()
 		$(".console-button") .click (function ()
 		{
 			var clicked = false;
-		
+
 			function updateScroll ()
 			{
 				if (clicked)
 					return;
 
 				var element = $(".x_ite-console");
-	
+
 				element .scrollTop ($(".x_ite-console") .prop ("scrollHeight"));
 			}
 
@@ -251,7 +250,7 @@ X3D (function ()
 			$("#browser") .fullScreen (true);
 
 			return false;
-		});	
+		});
 	});
 },
 function (error)
@@ -312,14 +311,14 @@ function (error)
 		</header>
 		<main>
 			<div>
-				<X3DCanvas id="browser" class="browser" src="box1.x3dv">
+				<X3d-canvas id="browser" class="browser" src="box1.x3dv">
 					<p class="fallback">Sorry!<br/>
 						<br/>
 						Your browser may not support all features required by <a href="https://github.com/create3000/x_ite/wiki">X_ITE!</a>
 						Please use the latest release of Chrome, Firefox, Safari, Opera, or Edge.
 						Make sure to regulary update your browser to make your Internet experience more secure and pleasant.
 					</p>
-				</X3DCanvas>
+				</X3d-canvas>
 			</div>
 		</main>
 		<footer>
