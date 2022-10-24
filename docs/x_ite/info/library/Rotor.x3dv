@@ -1,4 +1,17 @@
-#X3D V3.3 utf8 Titania
+#X3D V3.3 utf8 X_ITE V6.1.0
+
+PROFILE Core
+
+COMPONENT Time : 2
+COMPONENT Interpolation : 5
+COMPONENT Scripting : 1
+
+META "created" "Mon, 24 Oct 2022 16:15:12 GMT"
+META "comment" "World of Sunrise X3D Editor"
+META "creator" "Holger Seelig"
+META "generator" "Sunrise X3D Editor V1.0.0, https://create3000.github.io/Sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/x_ite/info/library/Rotor.x3dv"
+META "modified" "Mon, 24 Oct 2022 16:15:12 GMT"
 
 PROTO Rotor [
   inputOutput SFBool     enabled TRUE
@@ -20,16 +33,28 @@ PROTO Rotor [
     cycleInterval IS cycleInterval
     loop IS loop
     startTime IS startTime
-    pauseTime IS pauseTime
     resumeTime IS resumeTime
+    pauseTime IS pauseTime
     stopTime IS stopTime
     isActive IS isActive
     cycleTime IS cycleTime
   }
 
   DEF Interpolator OrientationInterpolator {
-    key [ 0, 0.25, 0.5, 0.75, 1 ]
-    keyValue [ 0 0 1 0, 0 0 1 1.5708, 0 0 1 3.14159, 0 0 1 4.71239, 0 0 1 0 ]
+    key [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ]
+    keyValue [
+      0 0 1 0,
+      0 0 1 1.5708,
+      0 0 1 3.14159,
+      0 0 1 4.71239,
+      0 0 1 0
+    ]
     value_changed IS rotation_changed
   }
 
