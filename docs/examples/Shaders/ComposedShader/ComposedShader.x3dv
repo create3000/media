@@ -1,19 +1,15 @@
-#X3D V3.3 utf8 Titania V4.5.0
+#X3D V3.3 utf8 X_ITE V6.1.0
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
 COMPONENT Shaders : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
 
-META "comment" "World of Titania"
+META "comment" "World of Sunrise X3D Editor"
 META "created" "Wed, 06 Dec 2017 01:50:04 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.5.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shaders/ComposedShader/ComposedShader.O.x3d"
-META "modified" "Thu, 11 Apr 2019 08:13:32 GMT"
+META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Shaders/ComposedShader/ComposedShader.x3dv"
+META "modified" "Wed, 02 Nov 2022 08:25:08 GMT"
 META "titania-add-metadata" "true"
 
 PROTO BumpShader [
@@ -80,21 +76,14 @@ main ()
 precision highp float;
 precision highp int;
 
-uniform int x3d_GeometryType;
-
 uniform int  x3d_NumClipPlanes;
 uniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];
-
-uniform float x3d_LinewidthScaleFactor;
-uniform bool  x3d_ColorMaterial; // true if a X3DColorNode is attached, otherwise false
 
 uniform int x3d_NumLights;
 uniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];
 uniform x3d_MaterialParameters x3d_Material;
 
-uniform int         x3d_TextureType [x3d_MaxTextures]; // true if a X3DTexture2DNode is attached, otherwise false
-uniform sampler2D   x3d_Texture2D [x3d_MaxTextures];
-uniform samplerCube x3d_TextureCube [x3d_MaxTextures];
+uniform sampler2D x3d_Texture2D [x3d_MaxTextures];
 
 uniform x3d_FogParameters x3d_Fog;
 
@@ -126,7 +115,7 @@ clip ()
 vec3
 getNormal (in vec3 N)
 {
-	vec2 texCoord = x3d_GeometryType == x3d_Geometry3D || gl_FrontFacing ? vec2 (t) : vec2 (1.0 - t .s, t .t);
+	vec2 texCoord = vec2 (t);
 	vec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);
 	vec3 g        = vec3 (0.0, 0.0, heightScale * texture2D (bumpMap, texCoord) .r);
 	vec3 r        = vec3 (1.0, 0.0, heightScale * texture2D (bumpMap, texCoord + vec2 (s .x, 0)) .r);
@@ -150,25 +139,7 @@ getNormal (in vec3 N)
 vec4
 getTextureColor ()
 {
-	if (x3d_TextureType [0] == x3d_TextureType2D)
-	{
-		if (x3d_GeometryType == x3d_Geometry3D || gl_FrontFacing)
-			return texture2D (x3d_Texture2D [0], vec2 (t));
-
-		// If dimension is x3d_Geometry2D the texCoords must be flipped.
-		return texture2D (x3d_Texture2D [0], vec2 (1.0 - t .s, t .t));
-	}
-
-	if (x3d_TextureType [0] == x3d_TextureTypeCube)
-	{
-		if (x3d_GeometryType == x3d_Geometry3D || gl_FrontFacing)
-			return textureCube (x3d_TextureCube [0], vec3 (t));
-
-		// If dimension is x3d_Geometry2D the texCoords must be flipped.
-		return textureCube (x3d_TextureCube [0], vec3 (1.0 - t .s, t .t, t .z));
-	}
-
-	return vec4 (1.0, 1.0, 1.0, 1.0);
+  return texture2D (x3d_Texture2D [0], vec2 (t));
 }
 
 float
@@ -187,84 +158,62 @@ getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
 vec4
 getMaterialColor (in x3d_MaterialParameters material)
 {
-	vec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));
-	vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
-	float dV = length (v);
+  vec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));
+  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
+  float dV = length (v);
 
-	// Calculate diffuseFactor & alpha
+  // Calculate diffuseFactor & alpha
 
-	vec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);
-	float alpha         = 1.0 - material .transparency;
+  vec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);
+  float alpha         = 1.0 - material .transparency;
 
-	if (x3d_ColorMaterial)
-	{
-		if (x3d_TextureType [0] != x3d_None)
-		{
-			vec4 T = getTextureColor ();
+  vec4 T = getTextureColor ();
 
-			diffuseFactor  = T .rgb * C .rgb;
-			alpha         *= T .a;
-		}
-		else
-			diffuseFactor = C .rgb;
+  diffuseFactor  = T .rgb * material .diffuseColor;
+  alpha         *= T .a;
 
-		alpha *= C .a;
-	}
-	else
-	{
-		if (x3d_TextureType [0] != x3d_None)
-		{
-			vec4 T = getTextureColor ();
+  vec3 ambientTerm = diffuseFactor * material .ambientIntensity;
 
-			diffuseFactor  = T .rgb * material .diffuseColor;
-			alpha         *= T .a;
-		}
-		else
-			diffuseFactor = material .diffuseColor;
-	}
+  // Apply light sources
 
-	vec3 ambientTerm = diffuseFactor * material .ambientIntensity;
+  vec3 finalColor = vec3 (0.0, 0.0, 0.0);
 
-	// Apply light sources
+  for (int i = 0; i < x3d_MaxLights; ++ i)
+  {
+    if (i == x3d_NumLights)
+      break;
 
-	vec3 finalColor = vec3 (0.0, 0.0, 0.0);
+    x3d_LightSourceParameters light = x3d_LightSource [i];
 
-	for (int i = 0; i < x3d_MaxLights; ++ i)
-	{
-		if (i == x3d_NumLights)
-			break;
+    vec3  vL = light .location - v;
+    float dL = length (vL);
+    bool  di = light .type == x3d_DirectionalLight;
 
-		x3d_LightSourceParameters light = x3d_LightSource [i];
+    if (di || dL <= light .radius)
+    {
+      vec3 d = light .direction;
+      vec3 c = light .attenuation;
+      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
+      vec3 H = normalize (L + V);             // Specular term
 
-		vec3  vL = light .location - v;
-		float dL = length (vL);
-		bool  di = light .type == x3d_DirectionalLight;
+      float lightAngle     = dot (N, L);      // Angle between normal and light ray.
+      vec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);
+      float specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;
+      vec3  specularTerm   = material .specularColor * specularFactor;
 
-		if (di || dL <= light .radius)
-		{
-			vec3 d = light .direction;
-			vec3 c = light .attenuation;
-			vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
-			vec3 H = normalize (L + V);             // Specular term
+      float attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);
+      float spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;
+      float attenuationSpotFactor       = attenuationFactor * spotFactor;
+      vec3  ambientColor                = light .ambientIntensity * ambientTerm;
+      vec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);
 
-			float lightAngle     = dot (N, L);      // Angle between normal and light ray.
-			vec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);
-			float specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;
-			vec3  specularTerm   = material .specularColor * specularFactor;
+      finalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);
+    }
+  }
 
-			float attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);
-			float spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;
-			float attenuationSpotFactor       = attenuationFactor * spotFactor;
-			vec3  ambientColor                = light .ambientIntensity * ambientTerm;
-			vec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);
+  finalColor += material .emissiveColor;
 
-			finalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);
-		}
-	}
-
-	finalColor += material .emissiveColor;
-
-	return vec4 (finalColor, alpha);
+  return vec4 (finalColor, alpha);
 }
 
 float
@@ -313,8 +262,7 @@ main ()
   }
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 DEF Gray Background {
   skyColor 0.2 0.2 0.2
@@ -323,13 +271,30 @@ DEF Gray Background {
 Viewpoint {
   description "Initial View"
   position 0.0230918 1.93258 3.8192
-  orientation 0.999915173842092 -0.0126691707655475 -0.00302278554529849 5.81471712749516
+  orientation 0.99991517384209 -0.012669170765548 -0.0030227855452985 5.8147171274952
   centerOfRotation -0.02 0 0
 }
 
 DEF Box Transform {
+  rotation 0 -1 0 0.088359440555841
   children [
     DEF Animation Group {
+      metadata DEF Animation_1 MetadataSet {
+        name "Animation"
+        reference "http://titania.create3000.de"
+        value [
+          DEF duration MetadataInteger {
+            name "duration"
+            reference "http://titania.create3000.de"
+            value 120
+          }
+          DEF frameRate MetadataInteger {
+            name "frameRate"
+            reference "http://titania.create3000.de"
+            value 10
+          }
+        ]
+      }
       children [
         DEF AnimationTimer TimeSensor {
           cycleInterval 12
@@ -338,8 +303,79 @@ DEF Box Transform {
           stopTime 1512868952.01575
         }
         DEF BoxRotationInterpolator OrientationInterpolator {
-          key [ 0, 0.25, 0.5, 0.75, 1 ]
-          keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.14159253438051, 0 1 0 1.57079644600419, 0 0 1 0 ]
+          metadata DEF Interpolator MetadataSet {
+            name "Interpolator"
+            reference "http://titania.create3000.de"
+            value [
+              DEF key MetadataInteger {
+                name "key"
+                reference "http://titania.create3000.de"
+                value [
+                  0,
+                  30,
+                  60,
+                  90,
+                  120
+                ]
+              }
+              DEF keyValue MetadataDouble {
+                name "keyValue"
+                reference "http://titania.create3000.de"
+                value [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  -1,
+                  0,
+                  1.5707963267949,
+                  0,
+                  -1,
+                  0,
+                  3.1415925343805,
+                  0,
+                  1,
+                  0,
+                  1.5707964460042,
+                  0,
+                  0,
+                  1,
+                  0
+                ]
+              }
+              DEF keyType MetadataString {
+                name "keyType"
+                reference "http://titania.create3000.de"
+                value [
+                  "LINEAR",
+                  "LINEAR",
+                  "LINEAR",
+                  "LINEAR",
+                  "LINEAR"
+                ]
+              }
+              DEF keySize MetadataInteger {
+                name "keySize"
+                reference "http://titania.create3000.de"
+                value 1
+              }
+            ]
+          }
+          key [
+            0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ]
+          keyValue [
+            0 0 1 0,
+            0 -1 0 1.5707963267949,
+            0 -1 0 3.1415925343805,
+            0 1 0 1.5707964460042,
+            0 0 1 0
+          ]
         }
       ]
     }
