@@ -1,75 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<X3D profile='Interchange' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Texturing3D' level='2'/>
+    <component name='Texturing3D' level='3'/>
     <component name='VolumeRendering' level='2'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='28 April 2011'/>
-    <meta name='creator' content='Andrew Wood, Nicholas Polys: Virginia Tech'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='PET scan of human torso exibiting several abnormalities'/>
-    <meta name='generator' content='Titania V4.6.3, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/ToneMappedVolumeStyle/ToneMappedVolumeStyle.O.x3d'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/VolumeRendering/ToneMappedVolumeStyle/ToneMappedVolumeStyle.O.x3d'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Tue, 22 Oct 2019 10:24:05 GMT'/>
-    <meta name='reference' content='BasicInternals.x3d'/>
-    <meta name='reference' content='Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/internals.nrrd'/>
-    <meta name='reference' content='All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip'/>
-    <meta name='reference' content='Run the download target in the Ant build.xml file to install reference nrrd files locally.'/>
-    <meta name='reference' content='build.xml'/>
+    <meta name='modified' content='Fri, 04 Nov 2022 22:50:41 GMT'/>
     <meta name='reference' content='Volume Data obtained from http://www.volvis.org'/>
     <meta name='title' content='BasicInternals.x3d'/>
   </head>
   <Scene>
     <WorldInfo
-        title='ToneMappedVolumeStyle.O'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <Transform DEF='_1' containerField='value'
-                rotation='-0.805985460535052 -0.355718235953516 -0.473129975816603 1.52136144419423'
-                scale='0.000292969 0.000292969 0.000292969'
-                scaleOrientation='0.154149716984712 -0.62367421699242 -0.766334349884189 0.966643571835713'>
-              <VolumeData
-                  dimensions='512 512 452'>
-                <ToneMappedVolumeStyle/>
-                <ImageTexture3D containerField='voxels'
-                    url='"datasets/nrrd/internals.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/internals.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/internals.nrrd"'/>
-              </VolumeData>
-            </Transform>
-          </MetadataSet>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
+        title='ToneMappedVolumeStyle'/>
     <Group>
       <Viewpoint DEF='VP'
           description='Basic Internals'
           position='0 0 0.211438'/>
       <Background DEF='BG'/>
-      <Transform USE='_1'/>
+      <Transform
+          rotation='-0.80598546053505 -0.35571823595352 -0.4731299758166 1.5213614441942'
+          scale='0.000292969 0.000292969 0.000292969'
+          scaleOrientation='0.15414971698471 -0.62367421699242 -0.76633434988419 0.96664357183571'>
+        <VolumeData
+            dimensions='512 512 452'>
+          <ToneMappedVolumeStyle
+              warmColor='1 1 0 1'/>
+          <ImageTexture3D containerField='voxels'
+              url='"datasets/nrrd/internals.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/internals.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/internals.nrrd"'/>
+        </VolumeData>
+      </Transform>
     </Group>
   </Scene>
 </X3D>
