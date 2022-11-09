@@ -1,18 +1,17 @@
-#X3D V3.3 utf8 Titania V4.6.5
+#X3D V3.3 utf8 X_ITE V6.1.0
 
 PROFILE Immersive
 
-COMPONENT CADGeometry : 1
-COMPONENT EnvironmentalEffects : 3
+COMPONENT CADGeometry : 2
 COMPONENT Shaders : 1
-COMPONENT Texturing3D : 1
+COMPONENT Texturing3D : 3
 
-META "comment" "World of Titania"
+META "comment" "World of Sunrise X3D Editor"
 META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.4, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
-META "modified" "Tue, 29 Oct 2019 09:52:02 GMT"
+META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.x3dv"
+META "modified" "Wed, 09 Nov 2022 21:07:02 GMT"
 
 PROTO Volume [
   inputOutput SFVec3f dimensions 1 1 1
@@ -68,25 +67,21 @@ main ()
 precision mediump float;
 precision mediump sampler3D;
 
-uniform int       x3d_NumTextures;
 uniform sampler3D x3d_Texture3D [1];
-
-uniform int  x3d_NumClipPlanes;
-uniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];
+uniform vec4 x3d_ClipPlane [1];
 
 in vec3 vertex;
 in vec4 texCoord;
 
 out vec4 x3d_FragColor;
 
+#define NUM_CLIP_PLANES 1
+
 void
 clip ()
 {
-	for (int i = 0; i < x3d_MaxClipPlanes; ++ i)
+	for (int i = 0; i < NUM_CLIP_PLANES; ++ i)
 	{
-		if (i == x3d_NumClipPlanes)
-			break;
-
 		if (dot (vertex, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)
 			discard;
 	}
@@ -95,9 +90,6 @@ clip ()
 vec4
 getTextureColor (in vec3 texCoord)
 {
-	if (x3d_NumTextures == 0)
-		vec4 (1.0, 1.0, 1.0, 1.0);
-
 	if (texCoord .s < 0.0 || texCoord .s > 1.0)
 		discard;
 
@@ -107,7 +99,7 @@ getTextureColor (in vec3 texCoord)
 	if (texCoord .p < 0.0 || texCoord .p > 1.0)
 		discard;
 
-	vec4 voxelColor   = texture (x3d_Texture3D [0], texCoord);
+	vec4 voxelColor = texture (x3d_Texture3D [0], texCoord);
 	
 	return voxelColor;
 }
@@ -178,6 +170,52 @@ function set_dimension ()
 }
 
 WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value [
+          DEF selectGeometry MetadataBoolean {
+            name "selectGeometry"
+            reference "http://titania.create3000.de"
+            value FALSE
+          }
+          DEF nodes MetadataSet {
+            name "nodes"
+            reference "http://titania.create3000.de"
+          }
+        ]
+      }
+      DEF Prototype MetadataSet {
+        name "Prototype"
+        reference "http://titania.create3000.de"
+        value DEF path MetadataString {
+          name "path"
+          reference "http://titania.create3000.de"
+          value "Volume"
+        }
+      }
+    ]
+  }
   title "DCM1"
 }
 
@@ -188,19 +226,19 @@ DEF Gray Background {
 Viewpoint {
   description "Scan"
   position 0.83541 0.877791 1.8987
-  orientation -0.649757706629822 0.743135472136551 0.15988931398796 0.639534522901374
+  orientation -0.64975770662982 0.74313547213655 0.15988931398796 0.63953452290137
   centerOfRotation 0.158101 0.219243 0.605812
 }
 
-DEF Volume_5 Transform {
+DEF Volume_1 Transform {
   children [
     DEF Volume Volume {
-      voxels DEF _6 ImageTexture3D {
+      voxels DEF _5 ImageTexture3D {
         url "datasets/dicom/IM00001.implicit_little_endian.dcm"
       }
     }
-    DEF _7 ClipPlane {
-      plane 0 0 -1 0.799866
+    DEF _6 ClipPlane {
+      plane 0 0 -1 0.41783
     }
   ]
 }
@@ -209,16 +247,16 @@ DEF VisibleClipPlane Transform {
   children [
     DEF PlaneSensor PlaneSensor {
       axisRotation 0 1 0 1.5708
-      offset 2.91112e-06 0 0.799866
+      offset 0.00000150782 0 0.41783
       maxPosition -1 0
     }
     DEF Rectangle2D Transform {
-      translation 2.91112e-06 0 0.799866
+      translation 0.00000150782 0 0.41783
       scale 0.5 0.5 1
       children [
         Shape {
           appearance Appearance {
-            lineProperties DEF _8 LineProperties {
+            lineProperties DEF _7 LineProperties {
               linewidthScaleFactor 2
             }
             material Material {
@@ -229,13 +267,24 @@ DEF VisibleClipPlane Transform {
         }
         Shape {
           appearance Appearance {
-            lineProperties USE _8
+            lineProperties USE _7
             material Material { }
           }
           geometry IndexedLineSet {
-            coordIndex [ 0, 1, 2, 3, 0 ]
+            coordIndex [
+              0,
+              1,
+              2,
+              3,
+              0
+            ]
             coord Coordinate {
-              point [ -1 -1 0, 1 -1 0, 1 1 0, -1 1 0 ]
+              point [
+                -1 -1 0,
+                1 -1 0,
+                1 1 0,
+                -1 1 0
+              ]
             }
           }
         }
@@ -259,4 +308,4 @@ function set_translation (value)
 
 ROUTE PlaneSensor.translation_changed TO Rectangle2D.set_translation
 ROUTE PlaneSensor.translation_changed TO ClipPlaneScript.set_translation
-ROUTE ClipPlaneScript.plane_changed TO _7.set_plane
+ROUTE ClipPlaneScript.plane_changed TO _6.set_plane
