@@ -142,23 +142,10 @@ main ()
 precision highp float;
 precision highp int;
 
-uniform int x3d_GeometryType;
-uniform int x3d_NumClipPlanes;
-uniform vec4 x3d_ClipPlane [x3d_MaxClipPlanes];
-uniform x3d_FogParameters x3d_Fog;
-
-uniform float x3d_LinewidthScaleFactor;
-uniform bool  x3d_ColorMaterial; // true if a X3DColorNode is attached, otherwise false
-
-uniform int x3d_NumLights;
-uniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];
+uniform x3d_LightSourceParameters x3d_LightSource [1];
 uniform x3d_MaterialParameters x3d_Material;
 
-uniform int         x3d_TextureType [x3d_MaxTextures];
-uniform sampler2D   x3d_Texture2D [x3d_MaxTextures];
-uniform samplerCube x3d_TextureCube [x3d_MaxTextures];
-
-uniform mat3  x3d_NormalMatrix;
+uniform mat3 x3d_NormalMatrix;
 
 uniform float set_time;
 uniform float amplitude;
@@ -242,19 +229,6 @@ getWaveNormal (in vec2 pos)
    return normalize (n);
 }
 
-void
-clip ()
-{
-	for (int i = 0; i < x3d_MaxClipPlanes; ++ i)
-	{
-		if (i == x3d_NumClipPlanes)
-			break;
-
-		if (dot (v, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)
-			discard;
-	}
-}
-
 float
 getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
 {
@@ -280,8 +254,6 @@ getSkyColor (in vec3 rd, in vec3 lightDirection)
 
 	return clamp (color, 0.0, 1.0);
 }
-uniform mat4 x3d_ProjectionMatrix;
-uniform mat4 x3d_ModelViewMatrix;
 
 vec4
 getMaterialColor (in x3d_MaterialParameters material)
@@ -301,12 +273,6 @@ getMaterialColor (in x3d_MaterialParameters material)
 	vec3  diffuseColor = material .diffuseColor;
 	float alpha        = 1.0 - material .transparency;
 
-	if (x3d_ColorMaterial)
-	{
-		diffuseColor = C .rgb;
-		alpha       *= C .a;
-	}
-
 	float fresnel     = 0.0;
 	bool  reflections = true;
 
@@ -323,11 +289,8 @@ getMaterialColor (in x3d_MaterialParameters material)
 
 	vec3 finalColor = vec3 (0.0, 0.0, 0.0);
 
-	for (int i = 0; i < x3d_MaxLights; ++ i)
+	for (int i = 0; i < 1; ++ i)
 	{
-		if (i == x3d_NumLights)
-			break;
-
 		x3d_LightSourceParameters light = x3d_LightSource [i];
 
 		vec3  vL = light .location - v;
@@ -369,34 +332,10 @@ getMaterialColor (in x3d_MaterialParameters material)
 	return vec4 (finalColor, alpha);
 }
 
-vec3
-getFogColor (in vec3 color)
-{
-	if (x3d_Fog .type == x3d_None)
-		return color;
-
-	float dV = length (v);
-
-	if (dV >= x3d_Fog .visibilityRange)
-		return x3d_Fog .color;
-
-	if (x3d_Fog .type == x3d_LinearFog)
-		return mix (x3d_Fog .color, color, (x3d_Fog .visibilityRange - dV) / x3d_Fog .visibilityRange);
-
-	if (x3d_Fog .type == x3d_ExponentialFog)
-		return mix (x3d_Fog .color, color, exp (-dV / (x3d_Fog .visibilityRange - dV)));
-
-	return color;
-}
-
 void
 main ()
 {
-	clip ();
-
 	gl_FragColor = getMaterialColor (x3d_Material);
-
-	gl_FragColor .rgb = getFogColor (gl_FragColor .rgb);
 }
 ]]>
           </ShaderPart>
