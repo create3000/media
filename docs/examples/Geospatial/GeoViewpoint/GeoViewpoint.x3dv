@@ -1,25 +1,117 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V3.3 utf8 X_ITE V6.1.0
 
 PROFILE Immersive
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Geospatial : 1
+COMPONENT Geospatial : 2
 COMPONENT Layout : 2
 
-META "comment" "World of Titania"
+META "comment" "World of Sunrise X3D Editor"
 META "created" "Tue, 12 Aug 2014 04:27:36 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Geospatial/GeoViewpoint/GeoViewpoint.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:46:32 GMT"
+META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geospatial/GeoViewpoint/GeoViewpoint.x3dv"
+META "modified" "Thu, 10 Nov 2022 21:40:50 GMT"
 META "titania-add-metadata" "true"
 
 WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF NavigationInfo MetadataSet {
+        name "NavigationInfo"
+        reference "http://titania.create3000.de"
+        value DEF type MetadataString {
+          name "type"
+          reference "http://titania.create3000.de"
+          value "EXAMINE"
+        }
+      }
+      DEF Viewpoint MetadataSet {
+        name "Viewpoint"
+        reference "http://titania.create3000.de"
+        value [
+          DEF position MetadataDouble {
+            name "position"
+            reference "http://titania.create3000.de"
+            value [
+              16113113,
+              9048258,
+              7648308
+            ]
+          }
+          DEF orientation MetadataDouble {
+            name "orientation"
+            reference "http://titania.create3000.de"
+            value [
+              0.29846283422145,
+              0.54143282415765,
+              0.78598373616327,
+              2.2341131789901
+            ]
+          }
+          DEF centerOfRotation MetadataDouble {
+            name "centerOfRotation"
+            reference "http://titania.create3000.de"
+            value [
+              0,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value [
+          DEF nodes MetadataSet {
+            name "nodes"
+            reference "http://titania.create3000.de"
+            value DEF _1 Appearance {
+              pointProperties PointProperties {
+                pointSizeScaleFactor 10
+                pointSizeMaxValue 10
+              }
+              material Material {
+                emissiveColor 1 0.502179 0
+              }
+            }
+          }
+          DEF selectGeometry MetadataBoolean {
+            name "selectGeometry"
+            reference "http://titania.create3000.de"
+            value FALSE
+          }
+        ]
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
 }
 
 NavigationInfo {
-  avatarSize [ 10000, 1.6, 0.75 ]
-  visibilityLimit 1e+08
+  avatarSize [
+    10000,
+    1.6,
+    0.75
+  ]
+  visibilityLimit 1e+8
 }
 
 DEF Gray Background {
@@ -29,103 +121,139 @@ DEF Gray Background {
 DEF GeoViewpoints Transform {
   children [
     DEF Zero GeoViewpoint {
-      geoSystem [ "GD", "WE", "longitude_first" ]
+      geoSystem [
+        "GD",
+        "WE",
+        "longitude_first"
+      ]
       description "Zero"
       position 0 0 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF NorthPole GeoViewpoint {
       description "North Pole"
       position 90 0 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF SouthPole GeoViewpoint {
       description "South Pole"
       position -90 0 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF London GeoViewpoint {
       description "London"
       position 51 0 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF Leipzig GeoViewpoint {
       description "Leipzig"
       position 51.31 12.37 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF Nairobi GeoViewpoint {
       description "Nairobi"
       position -1.33 36.84 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF NewYork GeoViewpoint {
       description "New York"
       position 39.99 -72.99 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF RioDeJaneiro GeoViewpoint {
       description "Rio de Janeiro"
       position -22 -42.97 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF Sydney GeoViewpoint {
       description "Sydney"
       position -37.01 143.98 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF Tokyo GeoViewpoint {
       description "Tokyo"
       position 35 138.99 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF MenloPark GeoViewpoint {
       description "Menlo Park"
       position 37.45 -122.1834 13621864
       orientation -1 0 0 1.5708
-      centerOfRotation -56.3205925360818 -40.8183506610198 -6262282.93095481
+      centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
     }
     DEF UTMMenloPark GeoViewpoint {
-      geoSystem [ "UTM", "WE", "Z10" ]
+      geoSystem [
+        "UTM",
+        "WE",
+        "Z10"
+      ]
       description "UTM Menlo Park "
-      position 4153603.92759802 594759.412887271 13621864
-      orientation -0.999995010546454 -0.00313182293937362 0.000412997910010724 1.56951439079855
-      centerOfRotation 1039686.95787579 26999691.3079166 -6277396.31330616
+      position 4153603.927598 594759.41288727 13621864
+      orientation -0.99999501054645 -0.0031318229393736 0.00041299791001072 1.5695143907986
+      centerOfRotation 1039686.9578758 26999691.307917 -6277396.3133062
       fieldOfView 0.785
     }
     DEF UTMNewSeeland GeoViewpoint {
-      geoSystem [ "UTM", "WE", "Z60", "S" ]
+      geoSystem [
+        "UTM",
+        "WE",
+        "Z60",
+        "S"
+      ]
       description "UTM New Seeland"
-      position 5340947.73344923 319266.304201755 13621864
+      position 5340947.7334492 319266.30420175 13621864
       orientation 1 0 0 4.708782
-      centerOfRotation -134687642.22724 -152229936.343916 -6277396.31330616
+      centerOfRotation -134687642.22724 -152229936.34392 -6277396.3133062
     }
   ]
 }
 
 DEF Earth Transform {
-  scale 6.37814e+06 6.37814e+06 6.35675e+06
+  scale 6.37814e+6 6.37814e+6 6.35675e+6
   children [
     DEF Axes Shape {
       geometry IndexedLineSet {
         colorPerVertex FALSE
-        colorIndex [ 0, 1, 2 ]
-        coordIndex [ 0, 1, -1, 0, 2, -1, 0, 3, -1 ]
+        colorIndex [
+          0,
+          1,
+          2
+        ]
+        coordIndex [
+          0,
+          1,
+          -1,
+          0,
+          2,
+          -1,
+          0,
+          3,
+          -1
+        ]
         color Color {
-          color [ 1 0 0, 0 1 0, 0 0 1 ]
+          color [
+            1 0 0,
+            0 1 0,
+            0 0 1
+          ]
         }
         coord Coordinate {
-          point [ 0 0 0, 1 0 0, 0 1 0, 0 0 1 ]
+          point [
+            0 0 0,
+            1 0 0,
+            0 1 0,
+            0 0 1
+          ]
         }
       }
     }
@@ -148,21 +276,25 @@ DEF Earth Transform {
 
 DEF Points Transform {
   children Shape {
-    appearance DEF _1 Appearance {
-      pointProperties PointProperties {
-        pointSizeScaleFactor 10
-        pointSizeMaxValue 10
-      }
-      material Material {
-        emissiveColor 1 0.502179 0
-      }
-    }
+    appearance USE _1
     geometry PointSet {
       coord GeoCoordinate {
         geoOrigin GeoOrigin {
           geoSystem "GC"
         }
-        point [ 0 0 0, 90 0 0, -90 0 0, 51 0 0, 51.31 12.37 0, -1.33 36.84 0, 39.992 -72.994 0, -22 -42.97 0, -37.01 143.98 0, 35.007 138.999 0, 37.45 -122.1834 0 ]
+        point [
+          0 0 0,
+          90 0 0,
+          -90 0 0,
+          51 0 0,
+          51.31 12.37 0,
+          -1.33 36.84 0,
+          39.992 -72.994 0,
+          -22 -42.97 0,
+          -37.01 143.98 0,
+          35.007 138.999 0,
+          37.45 -122.1834 0
+        ]
       }
     }
   }
@@ -170,20 +302,24 @@ DEF Points Transform {
 
 DEF Texts Transform {
   children [
-    DEF Zero_2 GeoLocation {
+    DEF Zero_1 GeoLocation {
       geoCoords 0 0 1000000
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance DEF _3 Appearance {
+          appearance DEF _2 Appearance {
             material Material {
               diffuseColor 0 0 0
             }
           }
           geometry Text {
             string "Zero"
-            fontStyle DEF _4 ScreenFontStyle {
-              family [ "Ubuntu Condensed", "Ubuntu", "SANS" ]
+            fontStyle DEF _3 ScreenFontStyle {
+              family [
+                "Ubuntu Condensed",
+                "Ubuntu",
+                "SANS"
+              ]
             }
           }
         }
@@ -194,10 +330,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "North Pole"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -207,10 +343,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "South Pole"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -220,10 +356,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "London"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -233,10 +369,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "Leipzig"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -246,10 +382,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "Nairobi"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -259,10 +395,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "New York"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -272,10 +408,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "Rio de Janeiro"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -285,10 +421,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "Sydney"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -298,10 +434,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "Tokyo"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -311,10 +447,10 @@ DEF Texts Transform {
       children Billboard {
         axisOfRotation 0 0 0
         children Shape {
-          appearance USE _3
+          appearance USE _2
           geometry Text {
             string "Menlo Park"
-            fontStyle USE _4
+            fontStyle USE _3
           }
         }
       }
@@ -330,13 +466,17 @@ DEF UTM Transform {
           pointSizeScaleFactor 10
           pointSizeMaxValue 10
         }
-        material DEF _5 Material {
+        material DEF _4 Material {
           emissiveColor 1 0.996398 0
         }
       }
       geometry PointSet {
         coord GeoCoordinate {
-          geoSystem [ "UTM", "WE", "Z10" ]
+          geoSystem [
+            "UTM",
+            "WE",
+            "Z10"
+          ]
           point 4145173 572227 0
         }
       }
@@ -347,24 +487,19 @@ DEF UTM Transform {
           pointSizeScaleFactor 10
           pointSizeMaxValue 10
         }
-        material USE _5
+        material USE _4
       }
       geometry PointSet {
         coord GeoCoordinate {
-          geoSystem [ "UTM", "WE", "Z60", "S" ]
+          geoSystem [
+            "UTM",
+            "WE",
+            "Z60",
+            "S"
+          ]
           point 5427419.7 314369.5 0
         }
       }
     }
   ]
-}
-
-DEF EnterWorldScript Script {
-  url "ecmascript:
-
-function initialize ()
-{
-	Browser .setBrowserOption (\"LogarithmicDepthBuffer\", true);
-}
-"
 }
