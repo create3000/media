@@ -1,1 +1,3 @@
-# x_ite-docs
+# media
+
+Hosting of media files for X_ITE website.
