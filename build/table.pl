@@ -45,7 +45,7 @@ foreach $row (@table)
 		$folder =~ s|$cwd/docs/||;
 
 		$output .= "    <td>\n";
-		$output .= "      <a href=\"https://create3000.github.io/media/$folder/example.html\" title=\"$component » $basename\">\n";
+		$output .= "      <a href=\"https://create3000.github.io/media/$folder/$basename.x3d\" title=\"$component » $basename\">\n";
 		$output .= "        <img src=\"https://create3000.github.io/media/$folder/screenshot-small.png\" alt=\"$basename\"/>\n";
 		$output .= "      </a>\n";
 		$output .= "    </td>\n";
@@ -58,10 +58,10 @@ $output .= "</table>\n";
 
 # Wiki
 
-chdir "$cwd/../x_ite/docs";
-$index = `cat index.md`;
+chdir "$cwd/../x_ite/docs/_posts";
+$index = `cat getting-started.md`;
 $index =~ s|<table class="examples">.*?</table>\n|$output|sgo;
 
-open INDEX, ">", "index.md";
+open INDEX, ">", "getting-started.md";
 print INDEX $index;
 close INDEX;
