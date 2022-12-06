@@ -273,6 +273,6 @@ function getEquationFactor (i, channel, factor, blendColor)
 
 function xmlOutput (blendMode)
 {
-	$("#XML") .text (blendMode .toXMLString ());
-	$("#VRML") .text (blendMode .toVRMLString ());
+	$("#XML")  .text (blendMode .toXMLString ()  .trim ());
+	$("#VRML") .text (blendMode .toVRMLString () .trim ());
 }
