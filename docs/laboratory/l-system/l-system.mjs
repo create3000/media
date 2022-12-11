@@ -59,8 +59,8 @@ function init ()
 function download ()
 {
 	const
-	 	x3dsyntax = X3D .getBrowser () .currentScene .toVRMLString (),
-		blob      = new Blob ([x3dsyntax], { type: "model/x3d+vrml;charset=utf-8" });
+	 	x3dSyntax = X3D .getBrowser () .currentScene .toVRMLString (),
+		blob      = new Blob ([x3dSyntax], { type: "model/x3d+vrml;charset=utf-8" });
 
 	saveAs (blob, "l-system.x3dv");
 
