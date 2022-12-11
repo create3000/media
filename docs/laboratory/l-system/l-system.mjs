@@ -71,7 +71,7 @@ function resetView (event)
 {
 	const Browser = X3D .getBrowser ();
 
-	Browser .getActiveLayer () .lookAt (1, true);
+	Browser .currentScene .getNamedNode ("Viewpoint") .viewAll = true;
 
 	return false;
 }
