@@ -61,6 +61,16 @@ div.color {
 
 /* Tabby */
 
+html {
+	--tab-panel-color: rgba(0,0,0,0.5);
+	--tab-hover: rgba(255,255,255,0.05);
+}
+
+html[data-mode=light] {
+	--tab-panel-color: rgba(0,0,0,0.05);
+	--tab-hover: rgba(0,0,0,0.05);
+}
+
 [role=tablist],
 [role=tablist] [role=presentation] {
 	margin: 0 !important;
@@ -77,14 +87,14 @@ div.color {
 }
 
 [role=tab]:hover:not([aria-selected=true]) {
-	background-color: rgba(255,255,255,0.05);
+	background-color: var(--tab-hover);
 }
 
 [role=tab][aria-selected=true] {
-	background-color: rgba(0,0,0,0.5);
+	background-color: var(--tab-panel-color);
 }
 
 [role=tabpanel] {
 	padding: 10px;
-	background-color: rgba(0,0,0,0.5);
+	background-color: var(--tab-panel-color);
 }
