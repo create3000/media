@@ -45,9 +45,9 @@ foreach $row (@table)
 		$folder =~ s|$cwd/docs/||;
 
 		$output .= "    <td>\n";
-		$output .= "      <a href=\"https://create3000.github.io/media/$folder/$basename.x3d\" title=\"$component » $basename\">\n";
-		$output .= "        <img src=\"https://create3000.github.io/media/$folder/screenshot-small.png\" alt=\"$basename\"/>\n";
-		$output .= "      </a>\n";
+		$output .= "      <a href=\"https://create3000.github.io/media/$folder/$basename.x3d\" title=\"$component » $basename\">";
+		$output .= "<img src=\"https://create3000.github.io/media/$folder/screenshot-small.png\" alt=\"$basename\"/>";
+		$output .= "</a>\n";
 		$output .= "    </td>\n";
 	}
 
