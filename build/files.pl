@@ -20,9 +20,11 @@ sub example {
    $x3dv = "$folder/$base.x3dv";
    $x3dj = "$folder/$base.x3dj";
 
-   system "npx", "../x3d-tidy", "-s", "COMPACT", "-f", "-m", "-i", $orig, "-o", $x3d;
-   system "npx", "../x3d-tidy", "-s", "COMPACT", "-f", "-m", "-i", $orig, "-o", $x3dv;
-   system "npx", "../x3d-tidy", "-s", "COMPACT", "-f", "-m", "-i", $orig, "-o", $x3dj;
+   say $base;
+
+   system "npx ../x3d-tidy            -f -m -i '$orig' -o '$x3d'  2>/dev/null";
+   system "npx ../x3d-tidy -s COMPACT -f -m -i '$orig' -o '$x3dv' 2>/dev/null";
+   system "npx ../x3d-tidy -s COMPACT -f -m -i '$orig' -o '$x3dj' 2>/dev/null";
 
    exit;
 }
