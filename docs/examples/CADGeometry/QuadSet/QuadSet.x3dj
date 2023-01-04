@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,11 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.10, http://titania.create3000.de"
-        },
-        {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CADGeometry/QuadSet/QuadSet.O.x3d"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "modified",
@@ -34,23 +30,19 @@
       "component": [
         {
           "@name": "CADGeometry",
-          "@level": 1
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
+          "@level": 2
         },
         {
           "@name": "Layering",
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "Scripting",
+          "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -68,7 +60,7 @@
               { "Layer":
                 {
                   "@DEF": "Squares",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Viewpoint":
                       {
@@ -230,7 +222,7 @@
 "\t\t\ts = squares [i],",
 "\t\t\te = (s .elapsedTime += dt),",
 "\t\t\tf = e / s .duration;",
-"\t\t\t",
+"",
 "\t\tif (f > 1)",
 "\t\t{",
 "\t\t\ts .elapsedTime = 0;",
@@ -284,11 +276,11 @@
 "\tvar",
 "\t\tc = bilinearColor (colors, x, y),",
 "\t\th = c .getHSV ();",
-"\t",
+"",
 "\th [2] *= Math .random ();",
-"\t",
+"",
 "\tc .setHSV (h [0], h [1], h [2]);",
-"\t",
+"",
 "\treturn c;",
 "}",
 "",
@@ -302,17 +294,17 @@
 "\t\tbilinear (colors [0] .g, colors [1] .g, colors [2] .g, colors [3] .g, x, y),",
 "\t\tbilinear (colors [0] .b, colors [1] .b, colors [2] .b, colors [3] .b, x, y)",
 "\t);",
-"\t",
+"",
 "\tvar",
 "\t\th = c .getHSV (),",
 "\t\tr = new SFColor ();",
-"\t\t",
+"",
 "\tr .setHSV (",
 "\t\th [0],",
 "\t\th [1],",
 "\t\tstretch (h [2])",
 "\t);",
-"\t\t",
+"",
 "\treturn  r;",
 "}",
 "",
@@ -339,7 +331,8 @@
 "\t);",
 "",
 "\treturn c;",
-"}"
+"}",
+""
                         ]
                       }
                     },
@@ -355,7 +348,7 @@
               { "Layer":
                 {
                   "@DEF": "X_ITE",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -424,7 +417,8 @@
 "function initialize ()",
 "{",
 "\tversion_changed [0] = \"version \" + Browser .version;",
-"}"
+"}",
+""
                         ]
                       }
                     }

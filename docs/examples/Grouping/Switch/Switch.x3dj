@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.0, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,19 +33,19 @@
       ],
       "component": [
         {
+          "@name": "EventUtilities",
+          "@level": 1
+        },
+        {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
           "@name": "Layering",
           "@level": 1
         },
         {
           "@name": "Layout",
-          "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
           "@level": 2
         }
       ]
@@ -175,6 +175,7 @@
                                     "-children": [
                                       { "Inline":
                                         {
+                                          "@global": true,
                                           "@url": [ "assets/lego_gordon_freeman_half-life/scene.x3d" ]
                                         }
                                       }
@@ -189,6 +190,7 @@
                                     "-children": [
                                       { "Inline":
                                         {
+                                          "@global": true,
                                           "@url": [ "assets/lego_jon_snow/scene.x3d" ]
                                         }
                                       }
@@ -203,6 +205,7 @@
                                     "-children": [
                                       { "Inline":
                                         {
+                                          "@global": true,
                                           "@url": [ "assets/lego_mad_hatter_street_fighter_twist./scene.x3d" ]
                                         }
                                       }
@@ -220,6 +223,7 @@
                               "-children": [
                                 { "Inline":
                                   {
+                                    "@global": true,
                                     "@url": [ "assets/60_years_lego_bricks_-_mini_space_ship/scene.x3d" ]
                                   }
                                 }

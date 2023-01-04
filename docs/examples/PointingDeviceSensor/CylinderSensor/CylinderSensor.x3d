@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
     <component name='Geometry2D' level='2'/>
-    <component name='Shape' level='4'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Mon, 27 Nov 2017 02:44:02 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.0.2, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/PointingDeviceSensor/CylinderSensor/CylinderSensor.x3d'/>
     <meta name='modified' content='Mon, 27 Nov 2017 02:53:33 GMT'/>
   </head>
@@ -32,10 +33,10 @@
       </ProtoInterface>
       <ProtoBody>
         <CylinderSensor DEF='CylinderTouch'
-            diskAngle='9.69914e+08'>
+            diskAngle='9.69914e+8'>
           <IS>
-            <connect nodeField='enabled' protoField='enabled'/>
             <connect nodeField='description' protoField='description'/>
+            <connect nodeField='enabled' protoField='enabled'/>
             <connect nodeField='axisRotation' protoField='axisRotation'/>
             <connect nodeField='autoOffset' protoField='autoOffset'/>
             <connect nodeField='trackPoint_changed' protoField='trackPoint_changed'/>
@@ -225,17 +226,17 @@ function set_length (length)
               endAngle='345'/>
         </Shape>
       </Transform>
-      <Transform DEF='Number_2'
+      <Transform DEF='Number_1'
           translation='2 0 0'
           scale='0.5 0.5 0.5'>
         <Shape>
           <Appearance>
             <Material USE='_1'/>
           </Appearance>
-          <ProtoInstance name='Number' DEF='_3' containerField='geometry'>
+          <ProtoInstance name='Number' DEF='_2' containerField='geometry'>
             <fieldValue name='precision' value='3'/>
             <fieldValue name='fontStyle'>
-              <FontStyle DEF='_4'
+              <FontStyle DEF='_3'
                   family='"TYPEWRITER"'
                   justify='"MIDDLE", "MIDDLE"'/>
             </fieldValue>
@@ -244,6 +245,6 @@ function set_length (length)
       </Transform>
     </Transform>
     <ROUTE fromNode='DiskSensor' fromField='rotation_changed' toNode='Cylinder' toField='set_rotation'/>
-    <ROUTE fromNode='DiskSensor' fromField='value_changed' toNode='_3' toField='set_value'/>
+    <ROUTE fromNode='DiskSensor' fromField='value_changed' toNode='_2' toField='set_value'/>
   </Scene>
 </X3D>

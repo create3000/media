@@ -1,24 +1,24 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
           "@content": "World of Titania"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         }
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -43,7 +43,7 @@
             "@description": "Initial View",
             "@position": [ 2.50599, 2.75837, 5.90587 ],
             "@orientation": [ -0.704047440947535, 0.695566770035024, 0.143192420603437, 0.568942006035107 ],
-            "@centerOfRotation": [ 8.07257e-07, 1.16639e-06, -8.87304e-07 ]
+            "@centerOfRotation": [ 8.07257e-7, 0.00000116639, -8.87304e-7 ]
           }
         },
         { "Transform":
@@ -93,7 +93,8 @@
 "{",
 "\tBrowser .setBrowserOption (\"Shading\",          \"PHONG\");",
 "\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
-"}"
+"}",
+""
             ]
           }
         }

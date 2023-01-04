@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Interpolation' level='4'/>
     <component name='Layering' level='1'/>
-    <component name='NURBS' level='1'/>
-    <component name='Time' level='2'/>
+    <component name='NURBS' level='4'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Navigation/LogarithmicDepthBuffer/LogarithmicDepthBuffer.O.x3d'/>
     <meta name='modified' content='Sun, 17 Nov 2019 07:54:42 GMT'/>
   </head>
@@ -33,18 +33,18 @@
           <Transform DEF='Text_1'
               translation='1 0 0'>
             <Shape>
-              <Appearance DEF='_2'>
+              <Appearance DEF='_1'>
                 <Material>
                   <IS>
                     <connect nodeField='diffuseColor' protoField='color'/>
                   </IS>
                 </Material>
               </Appearance>
-              <Text DEF='_3'>
+              <Text DEF='_2'>
                 <IS>
                   <connect nodeField='string' protoField='string'/>
                 </IS>
-                <FontStyle DEF='_4'
+                <FontStyle DEF='_3'
                     family='"TYPEWRITER"'
                     justify='"BEGIN", "MIDDLE"'/>
               </Text>
@@ -52,8 +52,8 @@
           </Transform>
           <Transform DEF='Sphere'>
             <Shape>
-              <Appearance USE='_2'/>
-              <Sphere DEF='_5'
+              <Appearance USE='_1'/>
+              <Sphere DEF='_4'
                   radius='0.5'/>
             </Shape>
           </Transform>
@@ -67,13 +67,13 @@
           <field accessType='inputOutput' type='SFDouble' name='size'/>
           <field accessType='outputOnly' type='SFVec3f' name='viewpointPosition_changed'/>
           <field accessType='initializeOnly' type='SFNode' name='sphere'>
-            <Sphere USE='_5' containerField='sphere'/>
+            <Sphere USE='_4' containerField='sphere'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='text'>
             <Transform USE='Text_1' containerField='text'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='fontStyle'>
-            <FontStyle USE='_4'/>
+            <FontStyle USE='_3'/>
           </field>
           <IS>
             <connect nodeField='xOffset' protoField='xOffset'/>
@@ -108,7 +108,7 @@ function eventsProcessed ()
 }
 ]]>
         </Script>
-        <ROUTE fromNode='_3' fromField='textBounds' toNode='SizeTextScript' toField='set_textBounds'/>
+        <ROUTE fromNode='_2' fromField='textBounds' toNode='SizeTextScript' toField='set_textBounds'/>
       </ProtoBody>
     </ProtoDeclare>
     <ProtoDeclare name='Sizes'>
@@ -122,13 +122,13 @@ function eventsProcessed ()
       </ProtoInterface>
       <ProtoBody>
         <Group>
-          <Viewpoint DEF='_6'
+          <Viewpoint DEF='_5'
               description='Animation'>
             <IS>
               <connect nodeField='fieldOfView' protoField='fieldOfView'/>
             </IS>
           </Viewpoint>
-          <Group DEF='_7'/>
+          <Group DEF='_6'/>
           <Switch>
             <Shape DEF='Line'>
               <Appearance>
@@ -138,16 +138,16 @@ function eventsProcessed ()
               </Appearance>
               <LineSet
                   vertexCount='2'>
-                <CoordinateDouble DEF='_8'
-                    point='0 -nan 0, 0 nan 0'/>
+                <CoordinateDouble DEF='_7'
+                    point='0 NaN 0, 0 NaN 0'/>
               </LineSet>
             </Shape>
           </Switch>
         </Group>
-        <TimeSensor DEF='_9'
+        <TimeSensor DEF='_8'
             cycleInterval='0'
             loop='true'/>
-        <SplinePositionInterpolator DEF='_10'/>
+        <SplinePositionInterpolator DEF='_9'/>
         <Script DEF='SizesScript'
             directOutput='true'>
           <field accessType='inputOutput' type='SFTime' name='textInterval'/>
@@ -157,26 +157,26 @@ function eventsProcessed ()
           <field accessType='inputOutput' type='MFString' name='string'/>
           <field accessType='inputOutput' type='MFDouble' name='size'/>
           <field accessType='initializeOnly' type='SFNode' name='timeSensor'>
-            <TimeSensor USE='_9' containerField='timeSensor'/>
+            <TimeSensor USE='_8' containerField='timeSensor'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
-            <Viewpoint USE='_6' containerField='viewpoint'/>
+            <Viewpoint USE='_5' containerField='viewpoint'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Group USE='_7' containerField='group'/>
+            <Group USE='_6' containerField='group'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='lineCoord'>
-            <CoordinateDouble USE='_8' containerField='lineCoord'/>
+            <CoordinateDouble USE='_7' containerField='lineCoord'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='script'>
             <Script DEF='ViewpointScript' containerField='script'
                 directOutput='true'>
               <field accessType='inputOnly' type='SFVec3f' name='set_viewpointPosition'/>
               <field accessType='initializeOnly' type='SFNode' name='interpolator'>
-                <SplinePositionInterpolator USE='_10' containerField='interpolator'/>
+                <SplinePositionInterpolator USE='_9' containerField='interpolator'/>
               </field>
               <field accessType='initializeOnly' type='SFNode' name='group'>
-                <Group USE='_7' containerField='group'/>
+                <Group USE='_6' containerField='group'/>
               </field>
 <![CDATA[ecmascript:
 
@@ -274,8 +274,8 @@ function eventsProcessed ()
 }
 ]]>
         </Script>
-        <ROUTE fromNode='_9' fromField='fraction_changed' toNode='_10' toField='set_fraction'/>
-        <ROUTE fromNode='_10' fromField='value_changed' toNode='_6' toField='set_position'/>
+        <ROUTE fromNode='_8' fromField='fraction_changed' toNode='_9' toField='set_fraction'/>
+        <ROUTE fromNode='_9' fromField='value_changed' toNode='_5' toField='set_position'/>
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo/>
@@ -303,14 +303,14 @@ function set_startTime (value, time)
       <Layer DEF='Sizes'>
         <NavigationInfo
             type='"EXAMINE"'
-            avatarSize='1e-05, 1.6, 0.75'
+            avatarSize='0.00001, 1.6, 0.75'
             visibilityLimit='1e+24'/>
         <ProtoInstance name='Sizes'>
           <fieldValue name='textInterval' value='4'/>
           <fieldValue name='xOffset' value='1.35'/>
           <fieldValue name='displaySize' value='0.111111'/>
           <fieldValue name='string' value='"microscopic (1 μm)", "minuscule (1 mm)", "tiny (1 cm)", "small (1 dm)", "child-sized (1 m)", "tree-sized (10 m)", "building-sized (100 m)", "medium (1 km)", "city-sized (10 km)", "moon-sized (3,400 km)", "planet-sized (12,000 km)", "sun-sized (1,400,000 km)", "solar system (50 Au)", "gargantuan (1 ly)", "ludicrous (1 pc)", "mind boggling (1,000 ly)", "galaxy-sized (120,000 ly)", "ooops (100,000,000 ly)"'/>
-          <fieldValue name='size' value='1e-06, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23'/>
+          <fieldValue name='size' value='0.000001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23'/>
         </ProtoInstance>
       </Layer>
       <Layer DEF='HUD'>
@@ -321,7 +321,7 @@ function set_startTime (value, time)
             <Appearance>
               <Material/>
             </Appearance>
-            <Text DEF='_11'
+            <Text DEF='_10'
                 string='"Logarithmic Depth Buffer: false"'
                 solid='true'>
               <FontStyle
@@ -332,6 +332,6 @@ function set_startTime (value, time)
         </Transform>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='LogarithmicDepthBufferScript' fromField='string_changed' toNode='_11' toField='set_string'/>
+    <ROUTE fromNode='LogarithmicDepthBufferScript' fromField='string_changed' toNode='_10' toField='set_string'/>
   </Scene>
 </X3D>

@@ -1,26 +1,23 @@
-#X3D V3.3 utf8 Titania V4.4.4
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
 COMPONENT EnvironmentalSensor : 3
-COMPONENT Grouping : 3
 COMPONENT Layering : 1
-COMPONENT Layout : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Layout : 2
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Sun, 24 Feb 2019 11:52:29 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.0, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/EnvironmentalSensor/TransformSensor/TransformSensor.O.x3d"
 META "modified" "Mon, 25 Feb 2019 03:46:04 GMT"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer 1
@@ -41,10 +38,11 @@ LayerSet {
           centerOfRotation -0.322971 -5.94617 6.62646
         }
         DEF RaceTrack Inline {
+          global TRUE
           url "assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d"
         }
         DEF CarRed Transform {
-          translation -3.41998e-06 1.27034 19.3074
+          translation -0.00000341998 1.27034 19.3074
           rotation 7.01098813588437e-17 1 5.23547981568597e-17 163.501318485902
           scale 2.12352 2.12352 2.12352
           scaleOrientation 3.9267146445042e-16 1 5.03693766912935e-16 90
@@ -58,7 +56,7 @@ LayerSet {
                 }
                 DEF Murcielago640TranslationInterpolator PositionInterpolator {
                   key [ 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1 ]
-                  keyValue [ -3.41998e-06 1.27034 19.3074, -3.41998e-06 1.27034 19.3074, 2.81904e-06 1.27034 -33.0293, 2.81904e-06 1.27034 -33.0293, 2.81904e-06 1.27034 -33.0293, -3.41998e-06 1.27034 19.3074, -3.41998e-06 1.27034 19.3074 ]
+                  keyValue [ -0.00000341998 1.27034 19.3074, -0.00000341998 1.27034 19.3074, 0.00000281904 1.27034 -33.0293, 0.00000281904 1.27034 -33.0293, 0.00000281904 1.27034 -33.0293, -0.00000341998 1.27034 19.3074, -0.00000341998 1.27034 19.3074 ]
                 }
                 DEF Murcielago640RotationInterpolator OrientationInterpolator {
                   key [ 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1 ]
@@ -67,12 +65,13 @@ LayerSet {
               ]
             }
             Inline {
+              global TRUE
               url "assets/Murcielago640.x3d"
             }
           ]
         }
         DEF CarYellow Transform {
-          translation -9.38979e-07 1.27034 4.61112
+          translation -9.38979e-7 1.27034 4.61112
           rotation 0 1 0 269.999985628564
           scale 2.12352 2.12352 2.12352
           center 0 0 11.4343
@@ -87,7 +86,7 @@ LayerSet {
                 }
                 DEF CarYellowTranslationInterpolator PositionInterpolator {
                   key [ 0, 0.171429, 0.328571, 0.5, 0.671429, 0.828571, 1 ]
-                  keyValue [ -7.96401e-06 1.27034 14.9697, -4.59149e-06 1.27034 14.8243, 1.43998e-05 1.27034 -38.2793, 1.43998e-05 1.27034 -38.2793, 1.43998e-05 1.27034 -38.2793, -7.24219e-06 1.27034 15.6481, -7.96401e-06 1.27034 14.9697 ]
+                  keyValue [ -0.00000796401 1.27034 14.9697, -0.00000459149 1.27034 14.8243, 0.0000143998 1.27034 -38.2793, 0.0000143998 1.27034 -38.2793, 0.0000143998 1.27034 -38.2793, -0.00000724219 1.27034 15.6481, -0.00000796401 1.27034 14.9697 ]
                 }
                 DEF CarYellowRotationInterpolator OrientationInterpolator {
                   key [ 0, 0.171429, 0.328571, 0.5, 0.671429, 0.828571, 1 ]
@@ -96,6 +95,7 @@ LayerSet {
               ]
             }
             Inline {
+              global TRUE
               url "assets/Murcielago640-yellow.x3d"
             }
           ]
@@ -137,7 +137,7 @@ LayerSet {
       ]
     }
     DEF HUD LayoutLayer {
-      isPickable FALSE
+      pickable FALSE
       children [
         DEF RedLapNumberText Transform {
           translation 1.6484 0.678502 0
@@ -199,7 +199,7 @@ function pad (num, size)
                 }
               }
             }
-            DEF LapScript_4 Script {
+            DEF LapScript_1 Script {
               outputOnly MFString string_changed
               inputOnly  SFTime   set_enterTime
 
@@ -257,5 +257,5 @@ ROUTE YellowCarAnimationTimer.fraction_changed TO CarYellowTranslationInterpolat
 ROUTE CarYellowTranslationInterpolator.value_changed TO CarYellow.set_translation
 ROUTE YellowCarAnimationTimer.fraction_changed TO CarYellowRotationInterpolator.set_fraction
 ROUTE CarYellowRotationInterpolator.value_changed TO CarYellow.set_rotation
-ROUTE LapScript_4.string_changed TO _3.set_string
-ROUTE YellowSensor.enterTime TO LapScript_4.set_enterTime
+ROUTE LapScript_1.string_changed TO _3.set_string
+ROUTE YellowSensor.enterTime TO LapScript_1.set_enterTime

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='ParticleSystems' level='1'/>
+    <component name='ParticleSystems' level='3'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <component name='Shape' level='5'/>
-    <component name='Time' level='2'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sat, 19 Dec 2015 09:16:40 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SmartyBubbles/SmartyBubbles.O.x3d'/>
     <meta name='modified' content='Thu, 07 Nov 2019 12:52:47 GMT'/>
   </head>
@@ -156,7 +156,7 @@ main ()
           </Shape>
         </Transform>
         <Group DEF='BubblesMenu'>
-          <Transform DEF='Header_3'
+          <Transform DEF='Header_1'
               translation='1.6905 -0.759496 -1'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
@@ -184,7 +184,7 @@ main ()
               <Appearance>
                 <Material/>
               </Appearance>
-              <Text DEF='_4'
+              <Text DEF='_3'
                   string='"numParticles 100"'
                   solid='true'>
                 <FontStyle
@@ -194,14 +194,14 @@ main ()
             </Shape>
           </Transform>
           <Transform DEF='numParticlesSlider'
-              translation='0.0735 -0.9285 -3.51117e-06'
+              translation='0.0735 -0.9285 -0.00000351117'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet'>
               <Shape>
                 <Appearance>
                   <LineProperties
                       linewidthScaleFactor='2'/>
-                  <Material DEF='Artdeco31_5'
+                  <Material DEF='Artdeco31_1'
                       emissiveColor='0.721 0.721 0.721'/>
                 </Appearance>
                 <IndexedLineSet
@@ -223,7 +223,7 @@ main ()
                   <Disk2D/>
                 </Shape>
               </Transform>
-              <PlaneSensor DEF='_6'
+              <PlaneSensor DEF='_4'
                   offset='0.184127 0 0'
                   maxPosition='1 0'/>
             </Transform>
@@ -235,7 +235,7 @@ main ()
               <Appearance>
                 <Material/>
               </Appearance>
-              <Text DEF='_7'
+              <Text DEF='_5'
                   string='"pointSize 97"'
                   solid='true'>
                 <FontStyle
@@ -245,14 +245,14 @@ main ()
             </Shape>
           </Transform>
           <Transform DEF='pointSizeSlider'
-              translation='0.2205 -0.8305 -3.15105e-06'
+              translation='0.2205 -0.8305 -0.00000315105'
               center='0 -0.027 0'>
-            <Transform DEF='IndexedLineSet_8'>
+            <Transform DEF='IndexedLineSet_1'>
               <Shape>
                 <Appearance>
                   <LineProperties
                       linewidthScaleFactor='2'/>
-                  <Material DEF='Artdeco31_9'
+                  <Material DEF='Artdeco31_2'
                       emissiveColor='0.721 0.721 0.721'/>
                 </Appearance>
                 <IndexedLineSet
@@ -264,7 +264,7 @@ main ()
               </Shape>
             </Transform>
             <Transform>
-              <Transform DEF='Rectangle2D_10'
+              <Transform DEF='Rectangle2D_1'
                   translation='0.972896 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
@@ -274,13 +274,13 @@ main ()
                   <Disk2D/>
                 </Shape>
               </Transform>
-              <PlaneSensor DEF='_11'
+              <PlaneSensor DEF='_6'
                   offset='0.972896 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Group>
               <Group DEF='Animation'>
-                <TimeSensor DEF='_12'
+                <TimeSensor DEF='_7'
                     cycleInterval='6.8'
                     loop='true'
                     startTime='1450552664.38374'
@@ -291,7 +291,8 @@ main ()
                     key='0, 0.0147059, 0.0294118, 0.0441176, 0.0588235, 0.0735294, 0.0882353, 0.102941, 0.117647, 0.132353, 0.147059, 0.161765, 0.176471, 0.191176, 0.205882, 0.220588, 0.235294, 0.25, 0.264706, 0.279412, 0.294118, 0.308824, 0.323529, 0.338235, 0.352941, 0.367647, 0.382353, 0.397059, 0.411765, 0.426471, 0.441176, 0.455882, 0.470588, 0.485294, 0.5, 0.514706, 0.529412, 0.544118, 0.558824, 0.573529, 0.588235, 0.602941, 0.617647, 0.632353, 0.647059, 0.661765, 0.676471, 0.691176, 0.705882, 0.720588, 0.735294, 0.75, 0.764706, 0.779412, 0.794118, 0.808824, 0.823529, 0.838235, 0.852941, 0.867647, 0.882353, 0.897059, 0.911765, 0.926471, 0.941176, 0.955882, 0.970588, 0.985294, 1'
                     keyValue='0.200605 0 0, 0.202642 0 0, 0.208588 0 0, 0.2182 0 0, 0.231232 0 0, 0.247441 0 0, 0.266581 0 0, 0.288408 0 0, 0.312679 0 0, 0.339147 0 0, 0.367569 0 0, 0.3977 0 0, 0.429295 0 0, 0.462111 0 0, 0.495902 0 0, 0.530424 0 0, 0.565432 0 0, 0.600683 0 0, 0.63593 0 0, 0.670931 0 0, 0.70544 0 0, 0.739212 0 0, 0.772004 0 0, 0.803571 0 0, 0.833668 0 0, 0.86205 0 0, 0.888474 0 0, 0.912694 0 0, 0.934466 0 0, 0.953546 0 0, 0.969689 0 0, 0.98265 0 0, 0.992186 0 0, 0.99805 0 0, 1 0 0, 0.997866 0 0, 0.991808 0 0, 0.982071 0 0, 0.968899 0 0, 0.95254 0 0, 0.933237 0 0, 0.911238 0 0, 0.886786 0 0, 0.860128 0 0, 0.831508 0 0, 0.801174 0 0, 0.769369 0 0, 0.736339 0 0, 0.70233 0 0, 0.667588 0 0, 0.632357 0 0, 0.596883 0 0, 0.561412 0 0, 0.526189 0 0, 0.49146 0 0, 0.457469 0 0, 0.424463 0 0, 0.392687 0 0, 0.362387 0 0, 0.333807 0 0, 0.307193 0 0, 0.282792 0 0, 0.260847 0 0, 0.241605 0 0, 0.225311 0 0, 0.212211 0 0, 0.20255 0 0, 0.196573 0 0, 0.194526 0 0'/>
               </Group>
-              <Script DEF='pointSizeScript'>
+              <Script DEF='pointSizeScript'
+                  description=''>
                 <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
                 <field accessType='inputOutput' type='SFString' name='description' value='pointSize'/>
                 <field accessType='inputOutput' type='SFFloat' name='minValue' value='1'/>
@@ -322,7 +323,8 @@ function set_value (value)
 }]]>
               </Script>
             </Group>
-            <Script DEF='numParticlesScript'>
+            <Script DEF='numParticlesScript'
+                description=''>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
               <field accessType='inputOutput' type='SFString' name='description' value='numParticles'/>
               <field accessType='inputOutput' type='SFInt32' name='minValue' value='10'/>
@@ -352,7 +354,7 @@ function set_value (value)
 	string_changed [0] = description + " " + currentValue;
 }]]>
             </Script>
-            <Transform DEF='Rectangle2D_13'
+            <Transform DEF='Rectangle2D_2'
                 translation='-0.0729483 0 0'
                 scale='0.027 0.0267372 0.0267372'>
               <Shape>
@@ -361,13 +363,13 @@ function set_value (value)
                 </Appearance>
                 <Rectangle2D/>
               </Shape>
-              <TouchSensor DEF='_14'
+              <TouchSensor DEF='_8'
                   description='Toggle Animation'/>
               <Script DEF='TogglePointSizeAnim'
                   directOutput='true'>
                 <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
                 <field accessType='initializeOnly' type='SFNode' name='timer'>
-                  <TimeSensor USE='_12' containerField='timer'/>
+                  <TimeSensor USE='_7' containerField='timer'/>
                 </field>
 <![CDATA[ecmascript:
 
@@ -389,17 +391,17 @@ function set_touchTime (value, time)
         </Group>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='_6' fromField='translation_changed' toNode='Rectangle2D' toField='set_translation'/>
-    <ROUTE fromNode='_6' fromField='translation_changed' toNode='numParticlesScript' toField='set_translation'/>
-    <ROUTE fromNode='numParticlesScript' fromField='string_changed' toNode='_4' toField='set_string'/>
-    <ROUTE fromNode='_11' fromField='translation_changed' toNode='Rectangle2D_10' toField='set_translation'/>
-    <ROUTE fromNode='_11' fromField='translation_changed' toNode='pointSizeScript' toField='set_translation'/>
-    <ROUTE fromNode='pointSizeScript' fromField='string_changed' toNode='_7' toField='set_string'/>
-    <ROUTE fromNode='_12' fromField='fraction_changed' toNode='pointSizeScriptSet_translationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='_4' fromField='translation_changed' toNode='Rectangle2D' toField='set_translation'/>
+    <ROUTE fromNode='_4' fromField='translation_changed' toNode='numParticlesScript' toField='set_translation'/>
+    <ROUTE fromNode='numParticlesScript' fromField='string_changed' toNode='_3' toField='set_string'/>
+    <ROUTE fromNode='_6' fromField='translation_changed' toNode='Rectangle2D_1' toField='set_translation'/>
+    <ROUTE fromNode='_6' fromField='translation_changed' toNode='pointSizeScript' toField='set_translation'/>
+    <ROUTE fromNode='pointSizeScript' fromField='string_changed' toNode='_5' toField='set_string'/>
+    <ROUTE fromNode='_7' fromField='fraction_changed' toNode='pointSizeScriptSet_translationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='pointSizeScript' toField='set_translation'/>
-    <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='_11' toField='set_offset'/>
-    <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='Rectangle2D_10' toField='set_translation'/>
-    <ROUTE fromNode='_14' fromField='touchTime' toNode='TogglePointSizeAnim' toField='set_touchTime'/>
+    <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='_6' toField='set_offset'/>
+    <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='Rectangle2D_1' toField='set_translation'/>
+    <ROUTE fromNode='_8' fromField='touchTime' toNode='TogglePointSizeAnim' toField='set_touchTime'/>
     <ROUTE fromNode='numParticlesScript' fromField='value_changed' toNode='_1' toField='set_maxParticles'/>
     <ROUTE fromNode='pointSizeScript' fromField='value_changed' toNode='_2' toField='set_pointSizeScaleFactor'/>
   </Scene>

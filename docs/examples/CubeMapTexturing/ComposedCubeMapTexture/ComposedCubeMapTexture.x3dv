@@ -1,18 +1,14 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT CubeMapTexturing : 1
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
+COMPONENT CubeMapTexturing : 3
 COMPONENT Shaders : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
 
 META "comment" "World of Titania"
 META "created" "Sat, 30 Apr 2016 02:18:39 GMT"
 META "creator" "holger"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CubeMapTexturing/ComposedCubeMapTexture/ComposedCubeMapTexture.O.x3d"
 META "modified" "Sun, 27 Jan 2019 15:59:48 GMT"
 META "titania-add-metadata" "true"
@@ -186,8 +182,7 @@ main ()
   }
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 DEF WideOcean TextureBackground {
   frontTexture DEF _1 ImageTexture {
@@ -258,12 +253,12 @@ DEF Dolphin Transform {
           shininess 0.073718
         }
         texture DEF _10 ComposedCubeMapTexture {
-          front USE _1
-          back USE _3
-          left USE _4
-          right USE _5
-          top USE _6
-          bottom USE _7
+          frontTexture USE _1
+          backTexture USE _3
+          leftTexture USE _4
+          rightTexture USE _5
+          bottomTexture USE _7
+          topTexture USE _6
         }
         shaders FresnelShader {
           reflection 0.4

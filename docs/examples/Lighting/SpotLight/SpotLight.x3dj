@@ -1,18 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
-        },
-        {
-          "@name": "created",
-          "@content": "Mon, 05 Feb 2018 07:19:25 GMT"
+          "@content": "World of Sunrise X3D Editor"
         },
         {
           "@name": "created",
@@ -23,20 +19,22 @@
           "@content": "Holger Seelig"
         },
         {
-          "@name": "creator",
-          "@content": "Holger Seelig"
-        },
-        {
           "@name": "generator",
-          "@content": "Titania V4.3.0, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Lighting/SpotLight/SpotLight.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Lighting/SpotLight/SpotLight.O.x3d"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 04 Jun 2018 13:07:24 GMT"
+          "@content": "Thu, 27 Oct 2022 08:25:59 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -44,8 +42,7 @@
       "-children": [
         { "WorldInfo":
           {
-            "@title": "scene",
-            "@info": [ "version: 2.0", "generator: Sketchfab-3.19.3" ]
+            "@title": "SpotLight Example"
           }
         },
         { "NavigationInfo":
@@ -58,7 +55,7 @@
           {
             "@description": "Initial View",
             "@position": [ 0.949704, 2.95092, 2.749 ],
-            "@orientation": [ -0.847972220594469, 0.505991626676289, 0.157846719426057, 0.705034434450008 ],
+            "@orientation": [ -0.84797222059447, 0.50599162667629, 0.15784671942606, 0.70503443445001 ],
             "@centerOfRotation": [ -0.012644, 1.74348, -0.0051609 ]
           }
         },
@@ -75,8 +72,7 @@
                   "@direction": [ -0.800235, -0.458164, -0.386923 ],
                   "@beamWidth": 0.262209,
                   "@cutOffAngle": 0.58252,
-                  "@shadows": true,
-                  "@shadowIntensity": 1
+                  "@shadows": true
                 }
               },
               { "SpotLight":
@@ -87,8 +83,7 @@
                   "@direction": [ 0.223661, -0.225644, -0.948188 ],
                   "@beamWidth": 0.368243,
                   "@cutOffAngle": 0.678938,
-                  "@shadows": true,
-                  "@shadowIntensity": 1
+                  "@shadows": true
                 }
               }
             ]
@@ -97,7 +92,22 @@
         { "Inline":
           {
             "@DEF": "Models",
+            "@global": true,
             "@url": [ "models.x3d", "file:///home/holger/Schreibtisch/SpotLight/models.x3d" ]
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "PhongScript",
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"   Browser .setBrowserOption (\"Shading\", \"PHONG\");",
+"}",
+""
+            ]
           }
         }
       ]

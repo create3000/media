@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,10 +33,6 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
           "@name": "Geometry2D",
           "@level": 2
         },
@@ -46,6 +42,14 @@
         },
         {
           "@name": "ParticleSystems",
+          "@level": 3
+        },
+        {
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
           "@level": 1
         },
         {
@@ -53,12 +57,8 @@
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 5
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -131,14 +131,14 @@
                                     { "ShaderPart":
                                       {
                                         "@DEF": "VertexShader",
-                                        "@url": [ "data:text/plain,\n\nprecision mediump float;\n\nuniform x3d_PointPropertiesParameters x3d_PointProperties;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\nuniform mat3 x3d_NormalMatrix;\n\nattribute float x3d_ParticleId;\nattribute vec4  x3d_Vertex;\nattribute vec3  x3d_Normal;\n\nvarying vec4 color;\nvarying vec3 normal;\n\n/* Random number generation */\n\nconst int RAND_MAX = int (0x7fffffff);\nconst int RAND_MIN = int (0x80000000);\n\nint seed = 1;\n\nvoid\nsrand (in int value)\n{\n\tseed = value;\n}\n\n// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].\nint\nrand ()\n{\n\treturn seed = seed * 1103515245 + 12345;\n}\n\n// Return a uniform distributed random floating point number in the interval [0, 1].\nfloat\nrandom ()\n{\n\treturn float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;\n}\n\nvoid\nmain ()\n{\n\tsrand (int (x3d_ParticleId));\n\n\tcolor  = vec4 (random (), random (), random (), random ());\n\tnormal = x3d_NormalMatrix * x3d_Normal;\n\n\tgl_PointSize = x3d_PointProperties .pointSizeScaleFactor;\n\tgl_Position  = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;\n}" ]
+                                        "@url": [ "data:text/plain,#version 300 es\n\nprecision mediump float;\n\nuniform x3d_PointPropertiesParameters x3d_PointProperties;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\nuniform mat3 x3d_NormalMatrix;\n\nin vec4 x3d_Particle;\nin mat4 x3d_ParticleMatrix;\nin vec4 x3d_Vertex;\nin vec3 x3d_Normal;\n\nout vec4 color;\nout vec3 normal;\n\n/* Random number generation */\n\nconst int RAND_MAX = int (0x7fffffff);\nconst int RAND_MIN = int (0x80000000);\n\nint seed = 1;\n\nvoid\nsrand (in int value)\n{\n\tseed = value;\n}\n\n// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].\nint\nrand ()\n{\n\treturn seed = seed * 1103515245 + 12345;\n}\n\n// Return a uniform distributed random floating point number in the interval [0, 1].\nfloat\nrandom ()\n{\n\treturn float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;\n}\n\nvoid\nmain ()\n{\n\tsrand (gl_InstanceID + int (x3d_Particle [0]));\n\n\tcolor  = vec4 (random (), random (), random (), random ());\n\tnormal = x3d_NormalMatrix * x3d_Normal;\n\n\tgl_PointSize = x3d_PointProperties .pointSizeScaleFactor;\n\tgl_Position  = x3d_ProjectionMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex));\n}" ]
                                       }
                                     },
                                     { "ShaderPart":
                                       {
                                         "@DEF": "FragmentShader",
                                         "@type": "FRAGMENT",
-                                        "@url": [ "data:text/plain,\n\nprecision mediump float;\n\nuniform x3d_PointPropertiesParameters x3d_PointProperties;\nuniform x3d_MaterialParameters x3d_Material;\n\nvarying vec4 color;\nvarying vec3 normal;\n\nvoid\nmain ()\n{\n\tfloat l = x3d_PointProperties .pointSizeScaleFactor / 2.0;\n\tfloat t = distance (vec2 (0.5, 0.5), gl_PointCoord) * 2.0 * l - l + 1.0;\n\tfloat a = 1.0 - x3d_Material .transparency;\n\n\tgl_FragColor .rgb = color .rgb;\n\tgl_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));\n}\n" ]
+                                        "@url": [ "data:text/plain,#version 300 es\n\nprecision mediump float;\n\nuniform x3d_PointPropertiesParameters x3d_PointProperties;\nuniform x3d_MaterialParameters x3d_Material;\n\nin vec4 color;\nin vec3 normal;\n\nout vec4 x3d_FragColor;\n\nvoid\nmain ()\n{\n\tfloat l = x3d_PointProperties .pointSizeScaleFactor / 2.0;\n\tfloat t = distance (vec2 (0.5, 0.5), gl_PointCoord) * 2.0 * l - l + 1.0;\n\tfloat a = 1.0 - x3d_Material .transparency;\n\n\tx3d_FragColor .rgb = color .rgb;\n\tx3d_FragColor .a   = mix (color .a * a, 0.0, clamp (t, 0.0, 1.0));\n}\n" ]
                                       }
                                     }
                                   ]
@@ -199,7 +199,7 @@
                         "-children": [
                           { "Transform":
                             {
-                              "@DEF": "Header_3",
+                              "@DEF": "Header_1",
                               "@translation": [ 1.6905, -0.759496, -1 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
@@ -254,7 +254,7 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_4",
+                                        "@DEF": "_3",
                                         "@string": [ "numParticles 100" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
@@ -273,7 +273,7 @@
                           { "Transform":
                             {
                               "@DEF": "numParticlesSlider",
-                              "@translation": [ 0.0735, -0.9285, -3.51117e-06 ],
+                              "@translation": [ 0.0735, -0.9285, -0.00000351117 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
@@ -291,7 +291,7 @@
                                               },
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "Artdeco31_5",
+                                                  "@DEF": "Artdeco31_1",
                                                   "@emissiveColor": [ 0.721, 0.721, 0.721 ]
                                                 }
                                               }
@@ -343,7 +343,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_6",
+                                          "@DEF": "_4",
                                           "@offset": [ 0.184127, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
@@ -372,7 +372,7 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_7",
+                                        "@DEF": "_5",
                                         "@string": [ "pointSize 97" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
@@ -391,12 +391,12 @@
                           { "Transform":
                             {
                               "@DEF": "pointSizeSlider",
-                              "@translation": [ 0.2205, -0.8305, -3.15105e-06 ],
+                              "@translation": [ 0.2205, -0.8305, -0.00000315105 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "IndexedLineSet_8",
+                                    "@DEF": "IndexedLineSet_1",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -409,7 +409,7 @@
                                               },
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "Artdeco31_9",
+                                                  "@DEF": "Artdeco31_2",
                                                   "@emissiveColor": [ 0.721, 0.721, 0.721 ]
                                                 }
                                               }
@@ -436,7 +436,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_10",
+                                          "@DEF": "Rectangle2D_1",
                                           "@translation": [ 0.972896, 0, 0 ],
                                           "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                           "-children": [
@@ -461,7 +461,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_11",
+                                          "@DEF": "_6",
                                           "@offset": [ 0.972896, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
@@ -478,7 +478,7 @@
                                           "-children": [
                                             { "TimeSensor":
                                               {
-                                                "@DEF": "_12",
+                                                "@DEF": "_7",
                                                 "@cycleInterval": 6.8,
                                                 "@loop": true,
                                                 "@startTime": 1450552664.38374,
@@ -500,6 +500,7 @@
                                       { "Script":
                                         {
                                           "@DEF": "pointSizeScript",
+                                          "@description": "",
                                           "field": [
                                             {
                                               "@accessType": "inputOnly",
@@ -572,6 +573,7 @@
                                 { "Script":
                                   {
                                     "@DEF": "numParticlesScript",
+                                    "@description": "",
                                     "field": [
                                       {
                                         "@accessType": "inputOnly",
@@ -640,7 +642,7 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Rectangle2D_13",
+                                    "@DEF": "Rectangle2D_2",
                                     "@translation": [ -0.0729483, 0, 0 ],
                                     "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                     "-children": [
@@ -662,7 +664,7 @@
                                       },
                                       { "TouchSensor":
                                         {
-                                          "@DEF": "_14",
+                                          "@DEF": "_8",
                                           "@description": "Toggle Animation"
                                         }
                                       },
@@ -683,7 +685,7 @@
                                               "-children": [
                                                 { "TimeSensor":
                                                   {
-                                                    "@USE": "_12"
+                                                    "@USE": "_7"
                                                   }
                                                 }
                                               ]
@@ -724,7 +726,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_6",
+            "@fromNode": "_4",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D",
             "@toField": "translation"
@@ -732,7 +734,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_6",
+            "@fromNode": "_4",
             "@fromField": "translation_changed",
             "@toNode": "numParticlesScript",
             "@toField": "set_translation"
@@ -742,21 +744,21 @@
           {
             "@fromNode": "numParticlesScript",
             "@fromField": "string_changed",
-            "@toNode": "_4",
+            "@toNode": "_3",
             "@toField": "string"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_11",
+            "@fromNode": "_6",
             "@fromField": "translation_changed",
-            "@toNode": "Rectangle2D_10",
+            "@toNode": "Rectangle2D_1",
             "@toField": "translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_11",
+            "@fromNode": "_6",
             "@fromField": "translation_changed",
             "@toNode": "pointSizeScript",
             "@toField": "set_translation"
@@ -766,13 +768,13 @@
           {
             "@fromNode": "pointSizeScript",
             "@fromField": "string_changed",
-            "@toNode": "_7",
+            "@toNode": "_5",
             "@toField": "string"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_12",
+            "@fromNode": "_7",
             "@fromField": "fraction_changed",
             "@toNode": "pointSizeScriptSet_translationInterpolator",
             "@toField": "set_fraction"
@@ -790,7 +792,7 @@
           {
             "@fromNode": "pointSizeScriptSet_translationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_11",
+            "@toNode": "_6",
             "@toField": "offset"
           }
         },
@@ -798,13 +800,13 @@
           {
             "@fromNode": "pointSizeScriptSet_translationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "Rectangle2D_10",
+            "@toNode": "Rectangle2D_1",
             "@toField": "translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_14",
+            "@fromNode": "_8",
             "@fromField": "touchTime",
             "@toNode": "TogglePointSizeAnim",
             "@toField": "set_touchTime"

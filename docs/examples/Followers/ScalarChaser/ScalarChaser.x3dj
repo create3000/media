@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,16 +33,16 @@
       ],
       "component": [
         {
+          "@name": "EventUtilities",
+          "@level": 1
+        },
+        {
           "@name": "Followers",
           "@level": 1
         },
         {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
-          "@name": "Interpolation",
-          "@level": 4
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layering",
@@ -53,8 +53,16 @@
           "@level": 2
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -117,7 +125,6 @@
                     },
                     "ProtoBody": {
                       "-children": [
-
                       ]
                     }
                   }
@@ -163,7 +170,6 @@
                     "@DEF": "_3",
                     "@name": "Fields",
                     "fieldValue": [
-
                     ],
                     "IS": {
                       "connect": [
@@ -410,7 +416,8 @@
 "\t{ }",
 "\t",
 "\tinitialized = true;",
-"}"
+"}",
+""
             ]
           }
         },
@@ -430,7 +437,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Earth_8",
+                        "@DEF": "Earth_1",
                         "-children": [
                           { "Shape":
                             {
@@ -492,6 +499,7 @@
                     { "Inline":
                       {
                         "@DEF": "Cities",
+                        "@global": true,
                         "@url": [ "assets/cities.x3dz" ]
                       }
                     }
@@ -500,7 +508,7 @@
               },
               { "LayoutLayer":
                 {
-                  "@DEF": "HUD_9",
+                  "@DEF": "HUD_1",
                   "-layout": { "Layout":
                     {
                     }
@@ -584,7 +592,7 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_10",
+                                    "@DEF": "_8",
                                     "@name": "Year",
                                     "fieldValue": [
                                       {
@@ -600,7 +608,7 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_11"
+                                    "@DEF": "_9"
                                   }
                                 },
                                 { "BooleanFilter":
@@ -615,7 +623,7 @@
                                 },
                                 { "TimeTrigger":
                                   {
-                                    "@DEF": "_12"
+                                    "@DEF": "_10"
                                   }
                                 },
                                 { "ProtoInstance":
@@ -634,28 +642,28 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_13",
+                                    "@DEF": "_11",
                                     "@name": "Year"
                                   }
                                 },
                                 { "TouchSensor":
                                   {
+                                    "@DEF": "_12"
+                                  }
+                                },
+                                { "BooleanFilter":
+                                  {
+                                    "@DEF": "_13"
+                                  }
+                                },
+                                { "BooleanFilter":
+                                  {
                                     "@DEF": "_14"
-                                  }
-                                },
-                                { "BooleanFilter":
-                                  {
-                                    "@DEF": "_15"
-                                  }
-                                },
-                                { "BooleanFilter":
-                                  {
-                                    "@DEF": "_16"
                                   }
                                 },
                                 { "TimeTrigger":
                                   {
-                                    "@DEF": "_17"
+                                    "@DEF": "_15"
                                   }
                                 },
                                 { "ProtoInstance":
@@ -680,7 +688,7 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_18",
+                                    "@DEF": "_16",
                                     "@name": "Year",
                                     "fieldValue": [
                                       {
@@ -692,22 +700,22 @@
                                 },
                                 { "TouchSensor":
                                   {
+                                    "@DEF": "_17"
+                                  }
+                                },
+                                { "BooleanFilter":
+                                  {
+                                    "@DEF": "_18"
+                                  }
+                                },
+                                { "BooleanFilter":
+                                  {
                                     "@DEF": "_19"
-                                  }
-                                },
-                                { "BooleanFilter":
-                                  {
-                                    "@DEF": "_20"
-                                  }
-                                },
-                                { "BooleanFilter":
-                                  {
-                                    "@DEF": "_21"
                                   }
                                 },
                                 { "TimeTrigger":
                                   {
-                                    "@DEF": "_22"
+                                    "@DEF": "_20"
                                   }
                                 },
                                 { "ProtoInstance":
@@ -781,7 +789,7 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "X3D-Experiment_23",
+                              "@DEF": "X3D-Experiment_1",
                               "@translation": [ -15.8876, -9.44926, 0 ],
                               "@scale": [ 1, 0.999998, 1 ],
                               "-children": [
@@ -817,7 +825,7 @@
                     },
                     { "LayoutGroup":
                       {
-                        "@DEF": "Inspired_24",
+                        "@DEF": "Inspired_1",
                         "-layout": { "Layout":
                           {
                             "@align": [ "RIGHT", "BOTTOM" ],
@@ -919,31 +927,23 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "AnimateCities",
-            "@fromField": "value_changed",
-            "@toNode": "PointInterpolator",
-            "@toField": "set_fraction"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_14",
+            "@fromNode": "_12",
             "@fromField": "isOver",
-            "@toNode": "_15",
+            "@toNode": "_13",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_19",
+            "@fromNode": "_17",
             "@fromField": "isOver",
-            "@toNode": "_20",
+            "@toNode": "_18",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_11",
+            "@fromNode": "_9",
             "@fromField": "isOver",
             "@toNode": "EnableYear",
             "@toField": "set_boolean"
@@ -959,17 +959,17 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_13",
             "@fromField": "inputTrue",
-            "@toNode": "_16",
+            "@toNode": "_14",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_18",
             "@fromField": "inputTrue",
-            "@toNode": "_21",
+            "@toNode": "_19",
             "@toField": "set_boolean"
           }
         },
@@ -977,13 +977,13 @@
           {
             "@fromNode": "EnableYear",
             "@fromField": "inputTrue",
-            "@toNode": "_12",
+            "@toNode": "_10",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_17",
+            "@fromNode": "_15",
             "@fromField": "triggerTime",
             "@toNode": "Cities2000",
             "@toField": "set_triggerTime"
@@ -991,7 +991,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_12",
+            "@fromNode": "_10",
             "@fromField": "triggerTime",
             "@toNode": "Cities1995",
             "@toField": "set_triggerTime"
@@ -999,15 +999,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_13",
             "@fromField": "inputTrue",
-            "@toNode": "_17",
+            "@toNode": "_15",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
+            "@fromNode": "_20",
             "@fromField": "triggerTime",
             "@toNode": "Cities2005",
             "@toField": "set_triggerTime"
@@ -1015,9 +1015,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_18",
             "@fromField": "inputTrue",
-            "@toNode": "_22",
+            "@toNode": "_20",
             "@toField": "set_boolean"
           }
         },
@@ -1055,17 +1055,17 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_18",
             "@fromField": "inputTrue",
-            "@toNode": "_18",
+            "@toNode": "_16",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_16",
+            "@fromNode": "_14",
             "@fromField": "inputNegate",
-            "@toNode": "_18",
+            "@toNode": "_16",
             "@toField": "enabled"
           }
         },
@@ -1073,23 +1073,23 @@
           {
             "@fromNode": "DisableOthers",
             "@fromField": "inputNegate",
-            "@toNode": "_18",
+            "@toNode": "_16",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_21",
+            "@fromNode": "_19",
             "@fromField": "inputNegate",
-            "@toNode": "_10",
+            "@toNode": "_8",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_16",
+            "@fromNode": "_14",
             "@fromField": "inputNegate",
-            "@toNode": "_10",
+            "@toNode": "_8",
             "@toField": "enabled"
           }
         },
@@ -1097,15 +1097,15 @@
           {
             "@fromNode": "EnableYear",
             "@fromField": "inputTrue",
-            "@toNode": "_10",
+            "@toNode": "_8",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_21",
+            "@fromNode": "_19",
             "@fromField": "inputNegate",
-            "@toNode": "_13",
+            "@toNode": "_11",
             "@toField": "enabled"
           }
         },
@@ -1113,16 +1113,24 @@
           {
             "@fromNode": "DisableOthers",
             "@fromField": "inputNegate",
-            "@toNode": "_13",
+            "@toNode": "_11",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_13",
             "@fromField": "inputTrue",
-            "@toNode": "_13",
+            "@toNode": "_11",
             "@toField": "enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AnimateCities",
+            "@fromField": "value_changed",
+            "@toNode": "PointInterpolator",
+            "@toField": "set_fraction"
           }
         }
       ]

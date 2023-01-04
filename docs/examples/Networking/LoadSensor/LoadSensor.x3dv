@@ -1,16 +1,17 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
+COMPONENT EnvironmentalSensor : 3
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
 
 META "comment" "World of Titania"
 META "created" "Tue, 28 Nov 2017 11:47:53 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/LoadSensor/LoadSensor.O.x3d"
 META "modified" "Sun, 27 Jan 2019 15:04:21 GMT"
 META "titania-add-metadata" "true"
@@ -25,15 +26,14 @@ EXTERNPROTO BooleanSwitch [
 ]
 "assets/BooleanSwitch.x3d#BooleanSwitch"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer -1
   order [ 0, 1, 2, 3 ]
   layers [
     DEF Background Layer {
-      isPickable FALSE
+      pickable FALSE
       children Background {
         skyAngle [ 1.09223, 1.5708 ]
         skyColor [ 0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3 ]
@@ -64,33 +64,33 @@ LayerSet {
                     }
                   }
                 }
-                DEF Rectangle2D_3 Transform {
+                DEF Rectangle2D_1 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _4 ImageTexture {
+                      texture DEF _3 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.779485543026762"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_5 Transform {
+                DEF Rectangle2D_2 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _6 ImageTexture {
+                      texture DEF _4 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.029944279029766818"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_7 Transform {
+                DEF Rectangle2D_3 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _8 ImageTexture {
+                      texture DEF _5 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.6399236246258556"
                       }
                     }
@@ -102,44 +102,44 @@ LayerSet {
             Transform {
               translation -9 0 0
               children [
-                DEF Rectangle2D_9 Transform {
+                DEF Rectangle2D_4 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _10 ImageTexture {
+                      texture DEF _6 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.43474795609898087"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_11 Transform {
+                DEF Rectangle2D_5 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _12 ImageTexture {
+                      texture DEF _7 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.2269121015854384"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_13 Transform {
+                DEF Rectangle2D_6 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _14 ImageTexture {
+                      texture DEF _8 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.9659207310524175"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_15 Transform {
+                DEF Rectangle2D_7 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _16 ImageTexture {
+                      texture DEF _9 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.938643344963352"
                       }
                     }
@@ -151,44 +151,44 @@ LayerSet {
             Transform {
               translation -6 0 0
               children [
-                DEF Rectangle2D_17 Transform {
+                DEF Rectangle2D_8 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _18 ImageTexture {
+                      texture DEF _10 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.344666176620097"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_19 Transform {
+                DEF Rectangle2D_9 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _20 ImageTexture {
+                      texture DEF _11 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.09404398745550835"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_21 Transform {
+                DEF Rectangle2D_10 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _22 ImageTexture {
+                      texture DEF _12 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.319547992309949"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_23 Transform {
+                DEF Rectangle2D_11 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _24 ImageTexture {
+                      texture DEF _13 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.08042770608270844"
                       }
                     }
@@ -200,44 +200,44 @@ LayerSet {
             Transform {
               translation -3 0 0
               children [
-                DEF Rectangle2D_25 Transform {
+                DEF Rectangle2D_12 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _26 ImageTexture {
+                      texture DEF _14 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.8488169931856263"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_27 Transform {
+                DEF Rectangle2D_13 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _28 ImageTexture {
+                      texture DEF _15 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.2791865705993909"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_29 Transform {
+                DEF Rectangle2D_14 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _30 ImageTexture {
+                      texture DEF _16 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.41537223771501486"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_31 Transform {
+                DEF Rectangle2D_15 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _32 ImageTexture {
+                      texture DEF _17 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.3024802055225807"
                       }
                     }
@@ -248,44 +248,44 @@ LayerSet {
             }
             Transform {
               children [
-                DEF Rectangle2D_33 Transform {
+                DEF Rectangle2D_16 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _34 ImageTexture {
+                      texture DEF _18 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.7767677217862783"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_35 Transform {
+                DEF Rectangle2D_17 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _36 ImageTexture {
+                      texture DEF _19 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.6029179244912598"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_37 Transform {
+                DEF Rectangle2D_18 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _38 ImageTexture {
+                      texture DEF _20 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.7462787596449603"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_39 Transform {
+                DEF Rectangle2D_19 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _40 ImageTexture {
+                      texture DEF _21 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.018624003323363114"
                       }
                     }
@@ -297,44 +297,44 @@ LayerSet {
             Transform {
               translation 3 0 0
               children [
-                DEF Rectangle2D_41 Transform {
+                DEF Rectangle2D_20 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _42 ImageTexture {
+                      texture DEF _22 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.24673967957836818"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_43 Transform {
+                DEF Rectangle2D_21 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _44 ImageTexture {
+                      texture DEF _23 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.23328149310531476"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_45 Transform {
+                DEF Rectangle2D_22 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _46 ImageTexture {
+                      texture DEF _24 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.04817828279539371"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_47 Transform {
+                DEF Rectangle2D_23 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _48 ImageTexture {
+                      texture DEF _25 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.8238838350867131"
                       }
                     }
@@ -346,44 +346,44 @@ LayerSet {
             Transform {
               translation 6 0 0
               children [
-                DEF Rectangle2D_49 Transform {
+                DEF Rectangle2D_24 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _50 ImageTexture {
+                      texture DEF _26 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.00860313207814467"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_51 Transform {
+                DEF Rectangle2D_25 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _52 ImageTexture {
+                      texture DEF _27 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.6458371210879333"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_53 Transform {
+                DEF Rectangle2D_26 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _54 ImageTexture {
+                      texture DEF _28 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.330329672452481"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_55 Transform {
+                DEF Rectangle2D_27 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _56 ImageTexture {
+                      texture DEF _29 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.1382852738951461"
                       }
                     }
@@ -395,44 +395,44 @@ LayerSet {
             Transform {
               translation 9 0 0
               children [
-                DEF Rectangle2D_57 Transform {
+                DEF Rectangle2D_28 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _58 ImageTexture {
+                      texture DEF _30 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.9557136523080219"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_59 Transform {
+                DEF Rectangle2D_29 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _60 ImageTexture {
+                      texture DEF _31 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.7756076443627684"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_61 Transform {
+                DEF Rectangle2D_30 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _62 ImageTexture {
+                      texture DEF _32 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.12812948547309788"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_63 Transform {
+                DEF Rectangle2D_31 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _64 ImageTexture {
+                      texture DEF _33 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.8641720595735717"
                       }
                     }
@@ -444,44 +444,44 @@ LayerSet {
             Transform {
               translation 12 0 0
               children [
-                DEF Rectangle2D_65 Transform {
+                DEF Rectangle2D_32 Transform {
                   translation 0 4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _66 ImageTexture {
+                      texture DEF _34 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.7649565194583272"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_67 Transform {
+                DEF Rectangle2D_33 Transform {
                   translation 0 1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _68 ImageTexture {
+                      texture DEF _35 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.2457792600998875"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_69 Transform {
+                DEF Rectangle2D_34 Transform {
                   translation 0 -1.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _70 ImageTexture {
+                      texture DEF _36 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.594987210941756"
                       }
                     }
                     geometry USE _2
                   }
                 }
-                DEF Rectangle2D_71 Transform {
+                DEF Rectangle2D_35 Transform {
                   translation 0 -4.5 0
                   children Shape {
                     appearance Appearance {
-                      texture DEF _72 ImageTexture {
+                      texture DEF _37 ImageTexture {
                         url "https://picsum.photos/270/200/?random&_stamp=0.2135839020738839"
                       }
                     }
@@ -492,48 +492,48 @@ LayerSet {
             }
           ]
         }
-        DEF _73 TouchSensor {
+        DEF _38 TouchSensor {
           description "Click To Load New Images"
         }
         DEF FlickrScript Script {
           inputOutput    SFTime loadTime 1546831163.06251
           initializeOnly MFNode images [
             USE _1
+            USE _3
             USE _4
+            USE _5
             USE _6
+            USE _7
             USE _8
+            USE _9
             USE _10
+            USE _11
             USE _12
+            USE _13
             USE _14
+            USE _15
             USE _16
+            USE _17
             USE _18
+            USE _19
             USE _20
+            USE _21
             USE _22
+            USE _23
             USE _24
+            USE _25
             USE _26
+            USE _27
             USE _28
+            USE _29
             USE _30
+            USE _31
             USE _32
+            USE _33
             USE _34
+            USE _35
             USE _36
-            USE _38
-            USE _40
-            USE _42
-            USE _44
-            USE _46
-            USE _48
-            USE _50
-            USE _52
-            USE _54
-            USE _56
-            USE _58
-            USE _60
-            USE _62
-            USE _64
-            USE _66
-            USE _68
-            USE _70
-            USE _72
+            USE _37
           ]
 
           url "ecmascript:
@@ -553,52 +553,53 @@ function set_loadTime (value, time)
 "
           directOutput TRUE
         }
-        DEF _74 LoadSensor {
-          watchList [
+        DEF _39 LoadSensor {
+          children [
             USE _1
+            USE _3
             USE _4
+            USE _5
             USE _6
+            USE _7
             USE _8
+            USE _9
             USE _10
+            USE _11
             USE _12
+            USE _13
             USE _14
+            USE _15
             USE _16
+            USE _17
             USE _18
+            USE _19
             USE _20
+            USE _21
             USE _22
+            USE _23
             USE _24
+            USE _25
             USE _26
+            USE _27
             USE _28
+            USE _29
             USE _30
+            USE _31
             USE _32
+            USE _33
             USE _34
+            USE _35
             USE _36
-            USE _38
-            USE _40
-            USE _42
-            USE _44
-            USE _46
-            USE _48
-            USE _50
-            USE _52
-            USE _54
-            USE _56
-            USE _58
-            USE _60
-            USE _62
-            USE _64
-            USE _66
-            USE _68
-            USE _70
-            USE _72
+            USE _37
           ]
         }
-        DEF _75 BooleanSwitch {
+        DEF _40 BooleanSwitch {
+          whichChoice TRUE
           children [
-            DEF Disk2D_76 Transform {
+            DEF Disk2D_1 Transform {
               translation 0 -6.81799 0
               scale 0.5 0.5 0.5
-              children DEF _77 Shape {
+              children DEF _41 Shape {
                 appearance Appearance {
                   material Material {
                     diffuseColor 0 0 0
@@ -607,7 +608,7 @@ function set_loadTime (value, time)
                 geometry Disk2D { }
               }
             }
-            Group {
+            DEF _42 Group {
               children [
                 DEF Disk2D Transform {
                   translation 2.38955 -6.81799 0
@@ -626,10 +627,10 @@ function set_loadTime (value, time)
                         }
                       ]
                     }
-                    USE _77
+                    USE _41
                   ]
                 }
-                DEF _78 VisibilitySensor {
+                DEF _43 VisibilitySensor {
                   size 1 1 1
                 }
               ]
@@ -638,14 +639,13 @@ function set_loadTime (value, time)
         }
       ]
     }
-    DEF HUD Layer {
-    }
+    DEF HUD Layer { }
   ]
 }
 
-ROUTE _73.touchTime TO FlickrScript.set_loadTime
+ROUTE _38.touchTime TO FlickrScript.set_loadTime
 ROUTE AnimationTimer.fraction_changed TO Disk2DTranslationInterpolator.set_fraction
 ROUTE Disk2DTranslationInterpolator.value_changed TO Disk2D.set_translation
-ROUTE _78.enterTime TO AnimationTimer.set_startTime
-ROUTE _78.exitTime TO AnimationTimer.set_stopTime
-ROUTE _74.isActive TO _75.set_whichChoice
+ROUTE _43.enterTime TO AnimationTimer.set_startTime
+ROUTE _43.exitTime TO AnimationTimer.set_stopTime
+ROUTE _39.isActive TO _40.set_whichChoice

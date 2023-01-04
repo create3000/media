@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
     <component name='Layering' level='1'/>
-    <component name='Layout' level='1'/>
-    <component name='NURBS' level='3'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='Layout' level='2'/>
+    <component name='NURBS' level='4'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsSweptSurface/NurbsSweptSurface.O.x3d'/>
     <meta name='modified' content='Sat, 26 Jan 2019 01:49:12 GMT'/>
   </head>
@@ -102,7 +101,7 @@ function eventsProcessed ()
             loop='true'/>
         <OrientationInterpolator DEF='BoxRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
-            keyValue='0 0 1 0, -3.06559318185163e-18 3.67320512848233e-06 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 3.67320512426576e-06 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -3.67320524850646e-06 0.999999999993254 1.57079638639955, 0 0 1 0'/>
+            keyValue='0 0 1 0, -3.06559318185163e-18 0.00000367320512848233 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 0.00000367320512426576 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -0.00000367320524850646 0.999999999993254 1.57079638639955, 0 0 1 0'/>
         <Script DEF='TubeScript'
             directOutput='true'>
           <field accessType='inputOnly' type='SFFloat' name='set_fraction'/>
@@ -172,7 +171,7 @@ function build ()
     <LayerSet
         order='1, 2'>
       <Layer DEF='TubeLines'
-          isPickable='false'>
+          pickable='false'>
         <Background
             skyColor='0.0588235 0.156863 0.305882'/>
         <NavigationInfo
@@ -198,7 +197,7 @@ function build ()
         </ProtoInstance>
       </Layer>
       <LayoutLayer DEF='Colors'
-          isPickable='false'>
+          pickable='false'>
         <Transform DEF='Text'
             translation='0 -0.632616 0'>
           <Shape>

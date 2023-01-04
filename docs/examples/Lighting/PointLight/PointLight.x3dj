@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.0, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,20 +37,8 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -189,7 +177,7 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Sphere_6",
+                                    "@DEF": "Sphere_1",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -197,7 +185,7 @@
                                             {
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "_7",
+                                                  "@DEF": "_6",
                                                   "@emissiveColor": [ 0, 1, 0 ]
                                                 }
                                               }
@@ -223,14 +211,14 @@
                               "-children": [
                                 { "PointLight":
                                   {
-                                    "@DEF": "_8",
+                                    "@DEF": "_7",
                                     "@color": [ 0, 0, 1 ],
                                     "@attenuation": [ 0.07, 0.16, 0.88 ]
                                   }
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Sphere_9",
+                                    "@DEF": "Sphere_2",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -238,7 +226,7 @@
                                             {
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "_10",
+                                                  "@DEF": "_8",
                                                   "@emissiveColor": [ 0, 0, 1 ]
                                                 }
                                               }
@@ -264,14 +252,14 @@
                               "-children": [
                                 { "PointLight":
                                   {
-                                    "@DEF": "_11",
+                                    "@DEF": "_9",
                                     "@color": [ 1, 0, 1 ],
                                     "@attenuation": [ 0.07, 0.16, 0.88 ]
                                   }
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Sphere_12",
+                                    "@DEF": "Sphere_3",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -279,7 +267,7 @@
                                             {
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "_13",
+                                                  "@DEF": "_10",
                                                   "@emissiveColor": [ 1, 0, 1 ]
                                                 }
                                               }
@@ -307,6 +295,7 @@
                         "-children": [
                           { "Inline":
                             {
+                              "@global": true,
                               "@url": [ "beethoven.x3dz" ]
                             }
                           }
@@ -393,15 +382,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_11",
-            "@fromField": "color",
-            "@toNode": "_13",
-            "@toField": "emissiveColor"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_8",
+            "@fromNode": "_9",
             "@fromField": "color",
             "@toNode": "_10",
             "@toField": "emissiveColor"
@@ -409,9 +390,17 @@
         },
         { "ROUTE":
           {
+            "@fromNode": "_7",
+            "@fromField": "color",
+            "@toNode": "_8",
+            "@toField": "emissiveColor"
+          }
+        },
+        { "ROUTE":
+          {
             "@fromNode": "_5",
             "@fromField": "color",
-            "@toNode": "_7",
+            "@toNode": "_6",
             "@toField": "emissiveColor"
           }
         }

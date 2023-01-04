@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "World of Sunrise X3D Editor"
         },
         {
           "@name": "created",
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.6, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/CoordinateChaser/CoordinateChaser.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/CoordinateChaser/CoordinateChaser.O.x3d"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 18 Jun 2019 13:43:04 GMT"
+          "@content": "Mon, 17 Oct 2022 23:17:05 GMT"
         }
       ],
       "component": [
@@ -38,11 +38,11 @@
         },
         {
           "@name": "NURBS",
-          "@level": 3
+          "@level": 4
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -53,6 +53,12 @@
             "@name":"Bumps",
             "ProtoInterface": {
               "field": [
+                {
+                  "@accessType": "inputOutput",
+                  "@type": "SFInt32",
+                  "@name": "linetype",
+                  "@value": 1
+                },
                 {
                   "@accessType": "inputOutput",
                   "@type": "SFColor",
@@ -69,7 +75,15 @@
                       {
                         "-lineProperties": { "LineProperties":
                           {
-                            "@linewidthScaleFactor": 6
+                            "@linewidthScaleFactor": 6,
+                            "IS": {
+                              "connect": [
+                                {
+                                  "@nodeField": "linetype",
+                                  "@protoField": "linetype"
+                                }
+                              ]
+                            }
                           }
                         },
                         "-material": { "Material":
@@ -176,7 +190,8 @@
 "\tfor (let i = 0; i < m; ++ i) bump (a, n);",
 "\t",
 "\treturn a;",
-"};"
+"};",
+""
                     ]
                   }
                 },
@@ -200,10 +215,6 @@
             }
           }
         },
-        { "WorldInfo":
-          {
-          }
-        },
         { "Viewpoint":
           {
             "@position": [ 15, 7.708, 18.954 ],
@@ -212,6 +223,7 @@
         },
         { "Transform":
           {
+            "@DEF": "Red",
             "-children": [
               { "ProtoInstance":
                 {
@@ -229,12 +241,17 @@
         },
         { "Transform":
           {
+            "@DEF": "Yellow",
             "@translation": [ 0, 2, 0 ],
             "-children": [
               { "ProtoInstance":
                 {
                   "@name": "Bumps",
                   "fieldValue": [
+                    {
+                      "@name": "linetype",
+                      "@value": 13
+                    },
                     {
                       "@name": "color",
                       "@value": [ 1, 1, 0 ]
@@ -247,6 +264,7 @@
         },
         { "Transform":
           {
+            "@DEF": "Green",
             "@translation": [ 0, 4, 0 ],
             "-children": [
               { "ProtoInstance":
@@ -265,6 +283,7 @@
         },
         { "Transform":
           {
+            "@DEF": "Cyan",
             "@translation": [ 0, 6, 0 ],
             "-children": [
               { "ProtoInstance":
@@ -283,6 +302,7 @@
         },
         { "Transform":
           {
+            "@DEF": "Blue",
             "@translation": [ 0, 8, 0 ],
             "-children": [
               { "ProtoInstance":
@@ -301,6 +321,7 @@
         },
         { "Transform":
           {
+            "@DEF": "Magenta",
             "@translation": [ 0, 10, 0 ],
             "-children": [
               { "ProtoInstance":
@@ -315,12 +336,6 @@
                 }
               }
             ]
-          }
-        },
-        { "Transform":
-          {
-            "@DEF": "Box",
-            "@translation": [ 8.21123, 4.23988, 0 ]
           }
         }
       ]

@@ -1,4 +1,4 @@
-#X3D V3.3 utf8 X_ITE V6.1.0
+#X3D V4.0 utf8 X_ITE V8.4.1
 
 PROFILE Interchange
 
@@ -7,9 +7,9 @@ COMPONENT Shaders : 1
 META "comment" "World of Sunrise X3D Editor"
 META "created" "Wed, 06 Dec 2017 01:50:04 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Shaders/ComposedShader/ComposedShader.x3dv"
-META "modified" "Thu, 10 Nov 2022 10:44:46 GMT"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Shaders/ComposedShader/ComposedShader.O.x3d"
+META "modified" "Thu, 10 Nov 2022 10:40:56 GMT"
 META "titania-add-metadata" "true"
 
 PROTO BumpShader [
@@ -219,25 +219,9 @@ Viewpoint {
 }
 
 DEF Box Transform {
-  rotation 0 -1 0 1.18003669216
+  rotation 0 -1 0 0.47815060001555
   children [
     DEF Animation Group {
-      metadata DEF Animation_1 MetadataSet {
-        name "Animation"
-        reference "http://titania.create3000.de"
-        value [
-          DEF duration MetadataInteger {
-            name "duration"
-            reference "http://titania.create3000.de"
-            value 120
-          }
-          DEF frameRate MetadataInteger {
-            name "frameRate"
-            reference "http://titania.create3000.de"
-            value 10
-          }
-        ]
-      }
       children [
         DEF AnimationTimer TimeSensor {
           cycleInterval 12
@@ -246,79 +230,8 @@ DEF Box Transform {
           stopTime 1512868952.01575
         }
         DEF BoxRotationInterpolator OrientationInterpolator {
-          metadata DEF Interpolator MetadataSet {
-            name "Interpolator"
-            reference "http://titania.create3000.de"
-            value [
-              DEF key MetadataInteger {
-                name "key"
-                reference "http://titania.create3000.de"
-                value [
-                  0,
-                  30,
-                  60,
-                  90,
-                  120
-                ]
-              }
-              DEF keyValue MetadataDouble {
-                name "keyValue"
-                reference "http://titania.create3000.de"
-                value [
-                  0,
-                  0,
-                  1,
-                  0,
-                  0,
-                  -1,
-                  0,
-                  1.5707963267949,
-                  0,
-                  -1,
-                  0,
-                  3.1415925343805,
-                  0,
-                  1,
-                  0,
-                  1.5707964460042,
-                  0,
-                  0,
-                  1,
-                  0
-                ]
-              }
-              DEF keyType MetadataString {
-                name "keyType"
-                reference "http://titania.create3000.de"
-                value [
-                  "LINEAR",
-                  "LINEAR",
-                  "LINEAR",
-                  "LINEAR",
-                  "LINEAR"
-                ]
-              }
-              DEF keySize MetadataInteger {
-                name "keySize"
-                reference "http://titania.create3000.de"
-                value 1
-              }
-            ]
-          }
-          key [
-            0,
-            0.25,
-            0.5,
-            0.75,
-            1
-          ]
-          keyValue [
-            0 0 1 0,
-            0 -1 0 1.5707963267949,
-            0 -1 0 3.1415925343805,
-            0 1 0 1.5707964460042,
-            0 0 1 0
-          ]
+          key [ 0, 0.25, 0.5, 0.75, 1 ]
+          keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.1415925343805, 0 1 0 1.5707964460042, 0 0 1 0 ]
         }
       ]
     }

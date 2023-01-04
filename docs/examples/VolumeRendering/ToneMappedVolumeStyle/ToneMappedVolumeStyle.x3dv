@@ -1,29 +1,23 @@
-#X3D V3.3 utf8 Titania V4.6.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
 COMPONENT Texturing3D : 2
-COMPONENT VolumeRendering : 2
+COMPONENT VolumeRendering : 4
 
-META "comment" "World of Titania"
+META "comment" "World of Sunrise X3D Editor"
 META "created" "28 April 2011"
-META "creator" "Andrew Wood, Nicholas Polys: Virginia Tech"
+META "creator" "Holger Seelig"
 META "description" "PET scan of human torso exibiting several abnormalities"
-META "generator" "Titania V4.6.3, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/ToneMappedVolumeStyle/ToneMappedVolumeStyle.O.x3d"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/VolumeRendering/ToneMappedVolumeStyle/ToneMappedVolumeStyle.O.x3d"
 META "license" "../license.html"
-META "modified" "Tue, 22 Oct 2019 10:24:05 GMT"
-META "reference" "BasicInternals.x3d"
-META "reference" "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/internals.nrrd"
-META "reference" "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
-META "reference" "Run the download target in the Ant build.xml file to install reference nrrd files locally."
-META "reference" "build.xml"
+META "modified" "Fri, 04 Nov 2022 22:55:22 GMT"
 META "reference" "Volume Data obtained from http://www.volvis.org"
 META "title" "BasicInternals.x3d"
 
 WorldInfo {
-  title "ToneMappedVolumeStyle.O"
+  title "ToneMappedVolumeStyle"
 }
 
 Group {
@@ -33,13 +27,16 @@ Group {
       position 0 0 0.211438
     }
     DEF BG Background { }
-    DEF _1 Transform {
-      rotation -0.805985460535052 -0.355718235953516 -0.473129975816603 1.52136144419423
+    Transform {
+      rotation -0.80598546053505 -0.35571823595352 -0.4731299758166 1.5213614441942
       scale 0.000292969 0.000292969 0.000292969
-      scaleOrientation 0.154149716984712 -0.62367421699242 -0.766334349884189 0.966643571835713
+      scaleOrientation 0.15414971698471 -0.62367421699242 -0.76633434988419 0.96664357183571
       children VolumeData {
         dimensions 512 512 452
-        renderStyle ToneMappedVolumeStyle { }
+        renderStyle ToneMappedVolumeStyle {
+          coolColor 0 0 1 1
+          warmColor 1 1 0 1
+        }
         voxels ImageTexture3D {
           url [ "datasets/nrrd/internals.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/internals.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/internals.nrrd" ]
         }

@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,20 +33,20 @@
       ],
       "component": [
         {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
-          "@name": "Interpolation",
-          "@level": 4
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layout",
           "@level": 2
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -234,6 +234,7 @@
                       "-children": [
                         { "Appearance":
                           {
+                            "@DEF": "_1",
                             "-material": { "Material":
                               {
                                 "@diffuseColor": [ 0, 0, 0 ]
@@ -248,6 +249,7 @@
                       "-children": [
                         { "ScreenFontStyle":
                           {
+                            "@DEF": "_2",
                             "@justify": [ "END", "BEGIN" ]
                           }
                         }
@@ -524,7 +526,8 @@
 "\t{",
 "\t\txInterpolator .key .length = 0;",
 "\t}",
-"}"
+"}",
+""
                   ]
                 }
               }
@@ -599,7 +602,8 @@
 "{",
 "\tpoint_changed .x = xInterpolator .value_changed;",
 "\tpoint_changed .y = yInterpolator .value_changed;",
-"}"
+"}",
+""
                   ]
                 }
               },
@@ -609,7 +613,7 @@
                     {
                       "-lineProperties": { "LineProperties":
                         {
-                          "@DEF": "_1",
+                          "@DEF": "_3",
                           "@linewidthScaleFactor": 3
                         }
                       },
@@ -676,7 +680,7 @@
                             "-children": [
                               { "Polypoint2D":
                                 {
-                                  "@DEF": "_2",
+                                  "@DEF": "_4",
                                   "@point": [ -20, -10, -5, 5, 10, -5, 20, 10 ]
                                 }
                               }
@@ -724,7 +728,8 @@
 "\t}",
 "",
 "\tpoints .point .length = i;",
-"}"
+"}",
+""
                         ]
                       }
                     },
@@ -747,7 +752,7 @@
                         },
                         "-geometry": { "Polypoint2D":
                           {
-                            "@USE": "_2"
+                            "@USE": "_4"
                           }
                         }
                       }
@@ -771,7 +776,7 @@
                         },
                         "-geometry": { "Polypoint2D":
                           {
-                            "@USE": "_2"
+                            "@USE": "_4"
                           }
                         }
                       }
@@ -810,7 +815,7 @@
                             "-children": [
                               { "LineSet":
                                 {
-                                  "@DEF": "_3",
+                                  "@DEF": "_5",
                                   "@vertexCount": [ 2, 2, 2, 2 ],
                                   "-coord": { "Coordinate":
                                     {
@@ -828,7 +833,7 @@
                             "-children": [
                               { "Polypoint2D":
                                 {
-                                  "@DEF": "_4",
+                                  "@DEF": "_6",
                                   "@point": [ -20, -10, -5, 5, 10, -5, 20, 10 ]
                                 }
                               }
@@ -892,7 +897,8 @@
 "\tlines .vertexCount .length  = i;",
 "\tlines .coord .point .length = i * 2;",
 "\tpoints .point .length       = i;",
-"}"
+"}",
+""
                         ]
                       }
                     },
@@ -907,7 +913,7 @@
                             },
                             "-material": { "Material":
                               {
-                                "@DEF": "_5",
+                                "@DEF": "_7",
                                 "@emissiveColor": [ 0.117647, 0.564706, 1 ]
                               }
                             }
@@ -915,7 +921,7 @@
                         },
                         "-geometry": { "LineSet":
                           {
-                            "@USE": "_3"
+                            "@USE": "_5"
                           }
                         }
                       }
@@ -932,14 +938,14 @@
                             },
                             "-material": { "Material":
                               {
-                                "@USE": "_5"
+                                "@USE": "_7"
                               }
                             }
                           }
                         },
                         "-geometry": { "Polypoint2D":
                           {
-                            "@USE": "_2"
+                            "@USE": "_4"
                           }
                         }
                       }
@@ -963,7 +969,7 @@
                         },
                         "-geometry": { "Polypoint2D":
                           {
-                            "@USE": "_4"
+                            "@USE": "_6"
                           }
                         }
                       }
@@ -980,14 +986,14 @@
                             },
                             "-material": { "Material":
                               {
-                                "@USE": "_5"
+                                "@USE": "_7"
                               }
                             }
                           }
                         },
                         "-geometry": { "Polypoint2D":
                           {
-                            "@USE": "_4"
+                            "@USE": "_6"
                           }
                         }
                       }

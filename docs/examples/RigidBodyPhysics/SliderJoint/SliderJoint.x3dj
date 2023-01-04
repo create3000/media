@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,7 +24,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,14 +37,6 @@
         {
           "@name": "modified",
           "@content": "Sun, 27 Jan 2019 15:45:23 GMT"
-        },
-        {
-          "@name": "reference",
-          "@content": "http://www.xj3d.org/extensions/index.html#Physics"
-        },
-        {
-          "@name": "reference",
-          "@content": "originals/ball_bounce.x3dv"
         },
         {
           "@name": "reference",
@@ -73,23 +65,7 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
           "@name": "RigidBodyPhysics",
-          "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
           "@level": 2
         }
       ],
@@ -97,7 +73,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -223,7 +199,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "Box_2",
+                  "@DEF": "Box_1",
                   "@translation": [ 0, 1, 0 ],
                   "-shape": { "Shape":
                     {
@@ -267,11 +243,11 @@
         },
         { "RigidBodyCollection":
           {
-            "@DEF": "_3",
+            "@DEF": "_1",
             "-bodies": [
               { "RigidBody":
                 {
-                  "@DEF": "Ground_4",
+                  "@DEF": "Ground_2",
                   "@fixed": true,
                   "-geometry": [
                     { "CollidableShape":
@@ -284,7 +260,7 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Slider_5",
+                  "@DEF": "Slider_1",
                   "@fixed": true,
                   "@position": [ 0, 1, 0 ],
                   "-geometry": [
@@ -298,12 +274,12 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Box_6",
+                  "@DEF": "Box_2",
                   "@position": [ 0, 1, 0 ],
                   "-geometry": [
                     { "CollidableShape":
                       {
-                        "@USE": "Box_2"
+                        "@USE": "Box_1"
                       }
                     }
                   ]
@@ -318,12 +294,12 @@
                   "@maxSeparation": 1.5,
                   "-body1": { "RigidBody":
                     {
-                      "@USE": "Slider_5"
+                      "@USE": "Slider_1"
                     }
                   },
                   "-body2": { "RigidBody":
                     {
-                      "@USE": "Box_6"
+                      "@USE": "Box_2"
                     }
                   }
                 }

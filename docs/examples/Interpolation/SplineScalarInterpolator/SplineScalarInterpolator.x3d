@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Grouping' level='3'/>
-    <component name='Interpolation' level='4'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layout' level='2'/>
-    <component name='Time' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Fri, 22 Sep 2017 06:52:58 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d'/>
     <meta name='modified' content='Thu, 07 Nov 2019 12:59:27 GMT'/>
   </head>
@@ -58,13 +58,13 @@
         <fieldValue name='majorLineTransparency' value='0.4'/>
         <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
         <fieldValue name='numberAppearance'>
-          <Appearance containerField='numberAppearance'>
+          <Appearance DEF='_1' containerField='numberAppearance'>
             <Material
                 diffuseColor='0 0 0'/>
           </Appearance>
         </fieldValue>
         <fieldValue name='numberFontStyle'>
-          <ScreenFontStyle containerField='numberFontStyle'
+          <ScreenFontStyle DEF='_2' containerField='numberFontStyle'
               justify='"END", "BEGIN"'/>
         </fieldValue>
       </ProtoInstance>
@@ -310,7 +310,7 @@ function set_y (value, time)
       </Script>
       <Shape>
         <Appearance>
-          <LineProperties DEF='_1'
+          <LineProperties DEF='_3'
               linewidthScaleFactor='3'/>
           <Material
               emissiveColor='0.552941 0.270588 0.14902'/>
@@ -330,7 +330,7 @@ function set_y (value, time)
           <field accessType='inputOnly' type='MFFloat' name='set_x'/>
           <field accessType='inputOnly' type='MFFloat' name='set_y'/>
           <field accessType='initializeOnly' type='SFNode' name='points'>
-            <Polypoint2D DEF='_2' containerField='points'
+            <Polypoint2D DEF='_4' containerField='points'
                 point='-20 -10, -5 5, 10 -5, 20 10'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
@@ -366,7 +366,7 @@ function eventsProcessed ()
             <Material
                 emissiveColor='1 0.75 0.5'/>
           </Appearance>
-          <Polypoint2D USE='_2'/>
+          <Polypoint2D USE='_4'/>
         </Shape>
         <Shape>
           <Appearance>
@@ -376,7 +376,7 @@ function eventsProcessed ()
             <Material
                 emissiveColor='1 0.5 0'/>
           </Appearance>
-          <Polypoint2D USE='_2'/>
+          <Polypoint2D USE='_4'/>
         </Shape>
       </Transform>
       <Transform DEF='KeyVelocity'>
@@ -386,14 +386,14 @@ function eventsProcessed ()
           <field accessType='inputOnly' type='MFFloat' name='set_y'/>
           <field accessType='inputOnly' type='MFFloat' name='set_velocity'/>
           <field accessType='initializeOnly' type='SFNode' name='lines'>
-            <LineSet DEF='_3' containerField='lines'
+            <LineSet DEF='_5' containerField='lines'
                 vertexCount='2, 2, 2, 2'>
               <Coordinate
                   point='-20 -10 0, -20 -10 0, -5 5 0, -5 5 0, 10 -5 0, 10 -5 0, 20 10 0, 20 10 0'/>
             </LineSet>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='points'>
-            <Polypoint2D DEF='_4' containerField='points'
+            <Polypoint2D DEF='_6' containerField='points'
                 point='-20 -10, -5 5, 10 -5, 20 10'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
@@ -441,19 +441,19 @@ function eventsProcessed ()
           <Appearance>
             <LineProperties
                 linewidthScaleFactor='2'/>
-            <Material DEF='_5'
+            <Material DEF='_7'
                 emissiveColor='0.117647 0.564706 1'/>
           </Appearance>
-          <LineSet USE='_3'/>
+          <LineSet USE='_5'/>
         </Shape>
         <Shape>
           <Appearance>
             <PointProperties
                 pointSizeScaleFactor='8'
                 pointSizeMaxValue='8'/>
-            <Material USE='_5'/>
+            <Material USE='_7'/>
           </Appearance>
-          <Polypoint2D USE='_2'/>
+          <Polypoint2D USE='_4'/>
         </Shape>
         <Shape>
           <Appearance>
@@ -463,16 +463,16 @@ function eventsProcessed ()
             <Material
                 emissiveColor='0.429132 0.718372 1'/>
           </Appearance>
-          <Polypoint2D USE='_4'/>
+          <Polypoint2D USE='_6'/>
         </Shape>
         <Shape>
           <Appearance>
             <PointProperties
                 pointSizeScaleFactor='8'
                 pointSizeMaxValue='8'/>
-            <Material USE='_5'/>
+            <Material USE='_7'/>
           </Appearance>
-          <Polypoint2D USE='_4'/>
+          <Polypoint2D USE='_6'/>
         </Shape>
       </Transform>
     </Switch>

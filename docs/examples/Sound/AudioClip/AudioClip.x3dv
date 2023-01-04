@@ -1,16 +1,16 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT Shape : 3
-COMPONENT Time : 2
+COMPONENT Scripting : 1
+COMPONENT Sound : 3
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.8, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d"
 META "modified" "Sun, 06 Jan 2019 14:22:33 GMT"
 
@@ -155,8 +155,7 @@ function build ()
   ROUTE _2.cycleTime TO SpectrumAnalyserScript.set_time
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 NavigationInfo {
   type "EXAMINE"
@@ -170,26 +169,18 @@ Viewpoint {
 }
 
 DEF AudioScript Script {
-  inputOnly      MFNode   set_audio
   inputOnly      SFBool   set_active
-  initializeOnly MFString files [ ]
+  initializeOnly MFString files [ "assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don't Pay My Bills.mp3", "assets/audio/03. Crockett's Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3" ]
   initializeOnly SFNode   source DEF AudioClip AudioClip { }
   initializeOnly SFNode   self USE AudioScript
 
   url "ecmascript:
 
-var track = 0;
+let track = 0;
 
 function initialize ()
 {
-	Browser .createX3DFromURL (new MFString (\"assets/audio.php\"), self, \"set_audio\")
-}
-
-function set_audio (value, time)
-{
-	files = value [0] .files;
-
-	set_active (false, time);
+	set_active (false, 0);
 }
 
 function set_active (value, time)
@@ -197,7 +188,7 @@ function set_active (value, time)
 	if (value)
 		return;
 
-	var url = files [track ++ % files .length];
+	const url = files [track ++ % files .length];
 
 	source .url       = new MFString (url);
 	source .startTime = time;

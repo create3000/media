@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,24 +33,12 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
           "@name": "RigidBodyPhysics",
-          "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
           "@level": 2
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -1715,7 +1703,8 @@
 "\t",
 "\tfor (var i = 0; i < collection .bodies .length; ++ i)",
 "\t\tcollection .bodies [i] .forces [0] = force;",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -1781,9 +1770,10 @@
                           "-children": [
                             { "Appearance":
                               {
+                                "@DEF": "_87",
                                 "-material": { "Material":
                                   {
-                                    "@DEF": "Metal10_87",
+                                    "@DEF": "Metal10_1",
                                     "@ambientIntensity": 0.00714286,
                                     "@diffuseColor": [ 0.314286, 0.0743647, 0 ],
                                     "@specularColor": [ 1, 0.766841, 0 ],
@@ -1812,6 +1802,7 @@
                           "-children": [
                             { "Appearance":
                               {
+                                "@DEF": "_89",
                                 "-material": { "Material":
                                   {
                                     "@DEF": "Metal31",

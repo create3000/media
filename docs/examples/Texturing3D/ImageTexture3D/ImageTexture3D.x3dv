@@ -1,17 +1,21 @@
-#X3D V3.3 utf8 X_ITE V6.1.0
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
 COMPONENT CADGeometry : 2
+COMPONENT EnvironmentalSensor : 3
+COMPONENT Geometry2D : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
 COMPONENT Shaders : 1
-COMPONENT Texturing3D : 3
+COMPONENT Texturing3D : 2
 
 META "comment" "World of Sunrise X3D Editor"
 META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.x3dv"
-META "modified" "Wed, 09 Nov 2022 21:17:37 GMT"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
+META "modified" "Wed, 09 Nov 2022 21:17:04 GMT"
 
 PROTO Volume [
   inputOutput SFVec3f dimensions 1 1 1
@@ -170,52 +174,6 @@ function set_dimension ()
 }
 
 WorldInfo {
-  metadata DEF Titania MetadataSet {
-    name "Titania"
-    reference "http://titania.create3000.de"
-    value [
-      DEF Page MetadataSet {
-        name "Page"
-        reference "http://titania.create3000.de"
-        value [
-          DEF activeView MetadataInteger {
-            name "activeView"
-            reference "http://titania.create3000.de"
-            value 1
-          }
-          DEF multiView MetadataInteger {
-            name "multiView"
-            reference "http://titania.create3000.de"
-            value 0
-          }
-        ]
-      }
-      DEF Selection MetadataSet {
-        name "Selection"
-        reference "http://titania.create3000.de"
-        value [
-          DEF selectGeometry MetadataBoolean {
-            name "selectGeometry"
-            reference "http://titania.create3000.de"
-            value FALSE
-          }
-          DEF nodes MetadataSet {
-            name "nodes"
-            reference "http://titania.create3000.de"
-          }
-        ]
-      }
-      DEF Prototype MetadataSet {
-        name "Prototype"
-        reference "http://titania.create3000.de"
-        value DEF path MetadataString {
-          name "path"
-          reference "http://titania.create3000.de"
-          value "Volume"
-        }
-      }
-    ]
-  }
   title "DCM1"
 }
 
@@ -271,20 +229,9 @@ DEF VisibleClipPlane Transform {
             material Material { }
           }
           geometry IndexedLineSet {
-            coordIndex [
-              0,
-              1,
-              2,
-              3,
-              0
-            ]
+            coordIndex [ 0, 1, 2, 3, 0 ]
             coord Coordinate {
-              point [
-                -1 -1 0,
-                1 -1 0,
-                1 1 0,
-                -1 1 0
-              ]
+              point [ -1 -1 0, 1 -1 0, 1 1 0, -1 1 0 ]
             }
           }
         }

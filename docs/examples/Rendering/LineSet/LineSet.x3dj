@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,12 +37,8 @@
       ],
       "component": [
         {
-          "@name": "Shape",
-          "@level": 5
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -354,7 +350,8 @@
 "\t\tp2 .vx = Math .min (p2 .vx + ax, s2);",
 "\t\tp2 .vy = Math .min (p2 .vy + ay, s2);",
 "\t}",
-"}"
+"}",
+""
             ]
           }
         },

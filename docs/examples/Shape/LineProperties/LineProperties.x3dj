@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.0, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -29,16 +29,6 @@
         {
           "@name": "modified",
           "@content": "Mon, 15 Apr 2019 02:42:45 GMT"
-        }
-      ],
-      "component": [
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
-          "@name": "Time",
-          "@level": 2
         }
       ]
     },
@@ -95,7 +85,7 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_3",
+                  "@DEF": "_1",
                   "@rotation": [ 0, 1, 0, 0.462843733150726 ],
                   "-children": [
                     { "Transform":
@@ -123,7 +113,7 @@
                               },
                               "-geometry": { "IndexedLineSet":
                                 {
-                                  "@DEF": "_4",
+                                  "@DEF": "_2",
                                   "@coordIndex": [ 0, 1, 2, 3, 0, -1, 5, 4, 7, 6, 5, -1, 2, 6, -1, 7, 3, -1, 5, 1, -1, 0, 4, -1 ],
                                   "-coord": { "Coordinate":
                                     {
@@ -142,12 +132,12 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_5",
+                  "@DEF": "_3",
                   "@rotation": [ 0, -1, 0, 0.462843733150726 ],
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Box_6",
+                        "@DEF": "Box_1",
                         "@rotation": [ 0.590284499391797, 0.244506671005275, -0.769272836912687, 0.98786105818265 ],
                         "@scale": [ 1.75736, 1.75736, 1.75736 ],
                         "@scaleOrientation": [ -0.329043930035858, 0.566697417302696, -0.755370193566712, 0.67555490580333 ],
@@ -171,7 +161,7 @@
                               },
                               "-geometry": { "IndexedLineSet":
                                 {
-                                  "@USE": "_4"
+                                  "@USE": "_2"
                                 }
                               }
                             }
@@ -184,12 +174,12 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_7",
+                  "@DEF": "_4",
                   "@rotation": [ 0, 1, 0, 0.462843733150726 ],
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Box_8",
+                        "@DEF": "Box_2",
                         "@rotation": [ 0.590284499391797, 0.244506671005275, -0.769272836912687, 0.98786105818265 ],
                         "@scale": [ 2.82844, 2.82844, 2.82844 ],
                         "@scaleOrientation": [ 0.111350277667656, 0.40117999342139, 0.909206097945757, 0.731417893085076 ],
@@ -213,7 +203,7 @@
                               },
                               "-geometry": { "IndexedLineSet":
                                 {
-                                  "@USE": "_4"
+                                  "@USE": "_2"
                                 }
                               }
                             }
@@ -239,7 +229,7 @@
           {
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_3",
+            "@toNode": "_1",
             "@toField": "rotation"
           }
         },
@@ -255,7 +245,7 @@
           {
             "@fromNode": "RotationInterpolator_1",
             "@fromField": "value_changed",
-            "@toNode": "_5",
+            "@toNode": "_3",
             "@toField": "rotation"
           }
         },
@@ -271,7 +261,7 @@
           {
             "@fromNode": "RotationInterpolator_2",
             "@fromField": "value_changed",
-            "@toNode": "_7",
+            "@toNode": "_4",
             "@toField": "rotation"
           }
         }

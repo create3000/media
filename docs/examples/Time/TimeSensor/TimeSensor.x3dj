@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,12 +33,12 @@
       ],
       "component": [
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "Scripting",
+          "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -164,7 +164,8 @@
 "\t\treturn \"0\" + value;",
 "\t\t",
 "\treturn value .toString ();",
-"}"
+"}",
+""
             ]
           }
         },
@@ -174,10 +175,10 @@
             "-children": [
               { "Shape":
                 {
-                  "@DEF": "Seconds_2",
+                  "@DEF": "Seconds_1",
                   "-appearance": { "Appearance":
                     {
-                      "@DEF": "_3",
+                      "@DEF": "_2",
                       "-material": { "UnlitMaterial":
                         {
                           "@emissiveColor": [ 0, 1, 0.995191 ]
@@ -187,7 +188,7 @@
                   },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_4",
+                      "@DEF": "_3",
                       "@name": "ArcOpen2D",
                       "fieldValue": [
                         {
@@ -217,15 +218,15 @@
               },
               { "Shape":
                 {
-                  "@DEF": "Minutes_5",
+                  "@DEF": "Minutes_1",
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_3"
+                      "@USE": "_2"
                     }
                   },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_6",
+                      "@DEF": "_4",
                       "@name": "ArcOpen2D",
                       "fieldValue": [
                         {
@@ -251,15 +252,15 @@
               },
               { "Shape":
                 {
-                  "@DEF": "Hours_7",
+                  "@DEF": "Hours_1",
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_3"
+                      "@USE": "_2"
                     }
                   },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_8",
+                      "@DEF": "_5",
                       "@name": "ArcOpen2D",
                       "fieldValue": [
                         {
@@ -289,15 +290,15 @@
               },
               { "Shape":
                 {
-                  "@DEF": "Text_9",
+                  "@DEF": "Text_1",
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_3"
+                      "@USE": "_2"
                     }
                   },
                   "-geometry": { "Text":
                     {
-                      "@DEF": "_10",
+                      "@DEF": "_6",
                       "@string": [ "05:02:08" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
@@ -320,7 +321,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "Text":
@@ -343,13 +344,13 @@
               },
               { "Group":
                 {
-                  "@DEF": "Minutes5_11",
+                  "@DEF": "Minutes5_1",
                   "-children": [
                     { "Shape":
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -381,7 +382,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -413,7 +414,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -449,7 +450,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -485,7 +486,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -521,7 +522,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_3"
+                            "@USE": "_2"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -563,7 +564,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "string_changed",
-            "@toNode": "_10",
+            "@toNode": "_6",
             "@toField": "string"
           }
         },
@@ -579,7 +580,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "seconds_changed",
-            "@toNode": "_4",
+            "@toNode": "_3",
             "@toField": "startAngle"
           }
         },
@@ -587,7 +588,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "minutes_changed",
-            "@toNode": "_6",
+            "@toNode": "_4",
             "@toField": "startAngle"
           }
         },
@@ -595,7 +596,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "hours_changed",
-            "@toNode": "_8",
+            "@toNode": "_5",
             "@toField": "startAngle"
           }
         }

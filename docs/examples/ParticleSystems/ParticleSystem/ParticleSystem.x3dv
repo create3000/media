@@ -1,18 +1,14 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT CubeMapTexturing : 1
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
-COMPONENT ParticleSystems : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT CubeMapTexturing : 3
+COMPONENT ParticleSystems : 3
 
 META "comment" "World of Titania"
 META "created" "Sun, 15 May 2016 00:16:04 GMT"
 META "creator" "holger"
-META "generator" "Titania V4.0.2, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ParticleSystem/ParticleSystem.O.x3d"
 META "modified" "Wed, 06 Dec 2017 16:23:00 GMT"
 
@@ -112,13 +108,13 @@ DEF SoapBubbles ParticleSystem {
   bboxSize 30 30 30
   appearance Appearance {
     shaders FresnelShader {
-      cubeMapTexture ComposedCubeMapTexture {
-        front USE _1
-        back USE _3
-        left USE _4
-        right USE _5
-        top USE _6
-        bottom USE _7
+      cubeMapTexture DEF _8 ComposedCubeMapTexture {
+        frontTexture USE _1
+        backTexture USE _3
+        leftTexture USE _4
+        rightTexture USE _5
+        bottomTexture USE _7
+        topTexture USE _6
       }
     }
   }

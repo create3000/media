@@ -1,29 +1,27 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Layout : 1
-COMPONENT ParticleSystems : 1
-COMPONENT Shape : 4
+COMPONENT Layout : 2
+COMPONENT ParticleSystems : 3
 
 META "comment" "World of Titania"
 META "created" "Sun, 03 Dec 2017 04:29:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.3, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Layering/Viewport/Viewport.O.x3d"
 META "modified" "Sat, 20 Oct 2018 19:22:12 GMT"
 META "titania-add-metadata" "true"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   order [ 1, 2, 3 ]
   layers [
     DEF Background Layer {
-      isPickable FALSE
+      pickable FALSE
       children DEF White Background {
         skyColor 1 1 1
       }
@@ -32,11 +30,11 @@ LayerSet {
       layout Layout {
         scaleMode [ "STRETCH", "NONE" ]
       }
-      viewport DEF _2 Viewport {
+      viewport DEF _1 Viewport {
         clipBoundary [ 0, 1, 0.177, 0.822 ]
       }
       children [
-        DEF Gray_3 Background {
+        DEF Gray_1 Background {
           skyColor 0.2 0.2 0.2
         }
         DEF UnderTheSea Transform {
@@ -57,8 +55,8 @@ LayerSet {
       ]
     }
     DEF Particles Layer {
-      isPickable FALSE
-      viewport USE _2
+      pickable FALSE
+      viewport USE _1
       children [
         DEF Bubbles1 ParticleSystem {
           maxParticles 3

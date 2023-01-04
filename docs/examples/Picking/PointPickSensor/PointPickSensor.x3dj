@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -38,11 +38,11 @@
         },
         {
           "@name": "Picking",
-          "@level": 1
+          "@level": 3
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -99,7 +99,8 @@
 "\tposition_changed = new SFVec3f ((Math .random () * 2 - 1) * size .x,",
 "\t                                (Math .random () * 2 - 1) * size .y,",
 "\t                                (Math .random () * 2 - 1) * size .z);",
-"}"
+"}",
+""
                         ]
                       }
                     },
@@ -111,7 +112,6 @@
                     { "Transform":
                       {
                         "@DEF": "Sphere",
-                        "@translation": [ -3.06313, 3.56277, 0 ],
                         "-children": [
                           { "Shape":
                             {
@@ -348,7 +348,8 @@
 "\t",
 "\tpoint .length = length;",
 "\tcolor .length = length;",
-"}"
+"}",
+""
                   ]
                 }
               }

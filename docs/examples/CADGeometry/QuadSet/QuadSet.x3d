@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='CADGeometry' level='1'/>
-    <component name='Grouping' level='3'/>
+    <component name='CADGeometry' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 17 Jun 2018 23:30:11 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CADGeometry/QuadSet/QuadSet.O.x3d'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='modified' content='Wed, 23 Jan 2019 12:28:58 GMT'/>
   </head>
   <Scene>
@@ -20,7 +18,7 @@
         activeLayer='-1'
         order='0, 1, 2'>
       <Layer DEF='Squares'
-          isPickable='false'>
+          pickable='false'>
         <Viewpoint
             description='Initial View'
             position='30.0442 0.317675 10.6157'
@@ -103,7 +101,7 @@ function set_time ()
 			s = squares [i],
 			e = (s .elapsedTime += dt),
 			f = e / s .duration;
-			
+
 		if (f > 1)
 		{
 			s .elapsedTime = 0;
@@ -157,11 +155,11 @@ function squareColor (colors, x, y)
 	var
 		c = bilinearColor (colors, x, y),
 		h = c .getHSV ();
-	
+
 	h [2] *= Math .random ();
-	
+
 	c .setHSV (h [0], h [1], h [2]);
-	
+
 	return c;
 }
 
@@ -175,17 +173,17 @@ function bilinearColor (colors, x, y)
 		bilinear (colors [0] .g, colors [1] .g, colors [2] .g, colors [3] .g, x, y),
 		bilinear (colors [0] .b, colors [1] .b, colors [2] .b, colors [3] .b, x, y)
 	);
-	
+
 	var
 		h = c .getHSV (),
 		r = new SFColor ();
-		
+
 	r .setHSV (
 		h [0],
 		h [1],
 		stretch (h [2])
 	);
-		
+
 	return  r;
 }
 
@@ -219,7 +217,7 @@ function randomColor (i)
             loop='true'/>
       </Layer>
       <Layer DEF='X_ITE'
-          isPickable='false'>
+          pickable='false'>
         <Transform DEF='Browser'>
           <Shape>
             <Text

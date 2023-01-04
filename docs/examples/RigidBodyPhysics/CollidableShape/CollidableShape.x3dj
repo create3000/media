@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,7 +24,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,14 +37,6 @@
         {
           "@name": "modified",
           "@content": "Sun, 27 Jan 2019 15:44:29 GMT"
-        },
-        {
-          "@name": "reference",
-          "@content": "http://www.xj3d.org/extensions/index.html#Physics"
-        },
-        {
-          "@name": "reference",
-          "@content": "originals/ball_bounce.x3dv"
         },
         {
           "@name": "reference",
@@ -73,31 +65,19 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
           "@name": "RigidBodyPhysics",
-          "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
           "@level": 2
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -132,8 +112,7 @@
           {
             "@ambientIntensity": 0.517564,
             "@direction": [ -0.576224, -0.484397, -0.658275 ],
-            "@shadows": true,
-            "@shadowIntensity": 1
+            "@shadows": true
           }
         },
         { "Group":
@@ -181,14 +160,14 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "Box_2",
+                  "@DEF": "Box_1",
                   "-shape": { "Shape":
                     {
                       "-appearance": { "Appearance":
                         {
                           "-material": { "Material":
                             {
-                              "@DEF": "Neon12_3",
+                              "@DEF": "Neon12_1",
                               "@ambientIntensity": 0.341463,
                               "@diffuseColor": [ 0.16, 0.16, 0.16 ],
                               "@specularColor": [ 0.661, 0.661, 0.661 ],
@@ -233,7 +212,7 @@
             "-children": [
               { "CollidableShape":
                 {
-                  "@DEF": "_4",
+                  "@DEF": "_1",
                   "@translation": [ 3.11381, 0.268063, 0.932841 ],
                   "@rotation": [ -0.681947759502894, 0.681953431509507, -0.264361099995485, 150.384080815102 ],
                   "-shape": { "Shape":
@@ -253,7 +232,7 @@
                           },
                           "-texture": { "ImageTexture":
                             {
-                              "@DEF": "_5",
+                              "@DEF": "_2",
                               "@url": [ "assets/pattern.png" ],
                               "@repeatS": false,
                               "@repeatT": false
@@ -272,7 +251,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_6",
+                  "@DEF": "_3",
                   "@translation": [ 0.521994, 0.651746, 0.62277 ],
                   "@rotation": [ 0.962780228183078, 0.190940982359961, 0.19130003740048, 239.88151610971 ],
                   "-shape": { "Shape":
@@ -291,7 +270,7 @@
                           },
                           "-texture": { "ImageTexture":
                             {
-                              "@USE": "_5"
+                              "@USE": "_2"
                             }
                           }
                         }
@@ -308,7 +287,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_7",
+                  "@DEF": "_4",
                   "@translation": [ 1.12941, 0.809975, -0.0803498 ],
                   "@rotation": [ -0.0476734620747855, -0.143534897533492, 0.988496366481793, 110.261364766748 ],
                   "-shape": { "Shape":
@@ -327,7 +306,7 @@
                           },
                           "-texture": { "ImageTexture":
                             {
-                              "@USE": "_5"
+                              "@USE": "_2"
                             }
                           }
                         }
@@ -344,7 +323,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_8",
+                  "@DEF": "_5",
                   "@translation": [ -0.373253, 0.747585, 1.97687 ],
                   "@rotation": [ 0.382156609201704, 0.819518163463704, 0.427020298084054, 62.1255908227802 ],
                   "-shape": { "Shape":
@@ -363,7 +342,7 @@
                           },
                           "-texture": { "ImageTexture":
                             {
-                              "@USE": "_5"
+                              "@USE": "_2"
                             }
                           }
                         }
@@ -379,7 +358,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_9",
+                  "@DEF": "_6",
                   "@translation": [ -0.898481, 0.857364, 0.444717 ],
                   "@rotation": [ 0.161317304676402, 0.948984364637549, -0.270934327328363, 139.756983001434 ],
                   "-shape": { "Shape":
@@ -391,7 +370,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_10",
+                  "@DEF": "_7",
                   "@translation": [ -0.592892, 2.33872, 0.522488 ],
                   "@rotation": [ -0.531549211943425, 0.415884555885109, -0.737893966360354, 9.47122750492214 ],
                   "-shape": { "Shape":
@@ -403,7 +382,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_11",
+                  "@DEF": "_8",
                   "@translation": [ 0.191002, 2.88364, -0.466006 ],
                   "@rotation": [ -0.11807069541653, 0.646709403119323, 0.753544895659486, 12.5663842975163 ],
                   "-shape": { "Shape":
@@ -415,7 +394,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_12",
+                  "@DEF": "_9",
                   "@translation": [ -0.196173, 4.29747, -0.0548038 ],
                   "-shape": { "Shape":
                     {
@@ -426,7 +405,7 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "_13",
+                  "@DEF": "_10",
                   "@translation": [ 0.0246046, 4.98726, -0.0397003 ],
                   "-shape": { "Shape":
                     {
@@ -471,7 +450,7 @@
                       "-children": [
                         { "RigidBodyCollection":
                           {
-                            "@DEF": "_14",
+                            "@DEF": "_11",
                             "@iterations": 5,
                             "-collider": { "CollisionCollection":
                               {
@@ -499,7 +478,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "Box_2"
+                                        "@USE": "Box_1"
                                       }
                                     }
                                   ]
@@ -515,7 +494,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_4"
+                                        "@USE": "_1"
                                       }
                                     }
                                   ]
@@ -531,7 +510,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_6"
+                                        "@USE": "_3"
                                       }
                                     }
                                   ]
@@ -547,7 +526,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_7"
+                                        "@USE": "_4"
                                       }
                                     }
                                   ]
@@ -563,7 +542,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_8"
+                                        "@USE": "_5"
                                       }
                                     }
                                   ]
@@ -579,7 +558,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_9"
+                                        "@USE": "_6"
                                       }
                                     }
                                   ]
@@ -595,7 +574,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_10"
+                                        "@USE": "_7"
                                       }
                                     }
                                   ]
@@ -611,7 +590,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_11"
+                                        "@USE": "_8"
                                       }
                                     }
                                   ]
@@ -625,7 +604,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_12"
+                                        "@USE": "_9"
                                       }
                                     }
                                   ]
@@ -639,7 +618,7 @@
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_13"
+                                        "@USE": "_10"
                                       }
                                     }
                                   ]

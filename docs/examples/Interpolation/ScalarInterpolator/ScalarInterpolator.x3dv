@@ -1,18 +1,18 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT Grouping : 3
-COMPONENT Interpolation : 4
+COMPONENT Geometry2D : 2
 COMPONENT Layout : 2
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Wed, 22 Nov 2017 08:26:49 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/ScalarInterpolator/ScalarInterpolator.O.x3d"
 META "modified" "Thu, 07 Nov 2019 13:00:27 GMT"
 
@@ -69,12 +69,12 @@ DEF Grid Group {
       majorLineColor 0 0 0
       majorLineTransparency 0.4
       numberOffset -0.1 0 0.14
-      numberAppearance Appearance {
+      numberAppearance DEF _1 Appearance {
         material Material {
           diffuseColor 0 0 0
         }
       }
-      numberFontStyle ScreenFontStyle {
+      numberFontStyle DEF _2 ScreenFontStyle {
         justify [ "END", "BEGIN" ]
       }
     }
@@ -293,7 +293,7 @@ function set_y (value, time)
     }
     Shape {
       appearance Appearance {
-        lineProperties DEF _2 LineProperties {
+        lineProperties DEF _3 LineProperties {
           linewidthScaleFactor 3
         }
         material Material {
@@ -314,7 +314,7 @@ DEF Points Transform {
     DEF PointsScript Script {
       inputOnly      MFFloat set_x
       inputOnly      MFFloat set_y
-      initializeOnly SFNode  points DEF _3 Polypoint2D {
+      initializeOnly SFNode  points DEF _4 Polypoint2D {
         point [ -20 -10, -5 5, 10 -5, 20 10 ]
       }
       initializeOnly SFNode  xInterpolator USE XInterpolator
@@ -350,7 +350,7 @@ function eventsProcessed ()
           emissiveColor 1 0.75 0.5
         }
       }
-      geometry USE _3
+      geometry USE _4
     }
     Shape {
       appearance Appearance {
@@ -362,7 +362,7 @@ function eventsProcessed ()
           emissiveColor 1 0.5 0
         }
       }
-      geometry USE _3
+      geometry USE _4
     }
   ]
 }

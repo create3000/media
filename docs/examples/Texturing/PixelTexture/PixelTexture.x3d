@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Grouping' level='3'/>
-    <component name='Interpolation' level='4'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='Scripting' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Mon, 27 Nov 2017 03:13:31 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:59:38 GMT'/>
   </head>
@@ -53,7 +50,15 @@
           </ProtoBody>
         </ProtoDeclare>
         <PixelTexture DEF='_1'
-            image='8 8 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'>
+            image='8 8 3
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
+              0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0'>
           <IS>
             <connect nodeField='repeatS' protoField='repeatS'/>
             <connect nodeField='repeatT' protoField='repeatT'/>
@@ -364,19 +369,19 @@ function set_time (value, time)
         scale='1.65374 1.65369 1.65377'>
       <Group>
         <Group DEF='UnnamedAnimation3'>
-          <TimeSensor DEF='Time_6'
+          <TimeSensor DEF='Time_1'
               cycleInterval='20'
               loop='true'
               startTime='1'/>
         </Group>
         <Group>
-          <ScalarInterpolator DEF='_7'
+          <ScalarInterpolator DEF='_6'
               key='0, 1'
               keyValue='1, -1'/>
-          <ScalarInterpolator DEF='_8'
+          <ScalarInterpolator DEF='_7'
               key='0, 1'
               keyValue='0.74, 0.74'/>
-          <Script DEF='_9'>
+          <Script DEF='_8'>
             <field accessType='outputOnly' type='SFVec2f' name='vec'/>
             <field accessType='inputOnly' type='SFFloat' name='xIn'/>
             <field accessType='inputOnly' type='SFFloat' name='yIn'/>
@@ -388,18 +393,18 @@ function set_time (value, time)
       </Group>
       <Group>
         <Group DEF='scale'>
-          <TimeSensor DEF='Time_10'
+          <TimeSensor DEF='Time_2'
               cycleInterval='10'
               stopTime='1'/>
         </Group>
         <Group>
-          <ScalarInterpolator DEF='_11'
+          <ScalarInterpolator DEF='_9'
               key='0, 1'
               keyValue='0.1, 5'/>
-          <ScalarInterpolator DEF='_12'
+          <ScalarInterpolator DEF='_10'
               key='0, 1'
               keyValue='0.2, 5'/>
-          <Script DEF='_13'>
+          <Script DEF='_11'>
             <field accessType='outputOnly' type='SFVec2f' name='vec'/>
             <field accessType='inputOnly' type='SFFloat' name='xIn'/>
             <field accessType='inputOnly' type='SFFloat' name='yIn'/>
@@ -422,7 +427,7 @@ function set_time (value, time)
       <Shape>
         <Appearance>
           <ProtoInstance name='Canvas' USE='_5' containerField='texture'/>
-          <TextureTransform DEF='_14'
+          <TextureTransform DEF='_12'
               translation='-0.175203 0.74'
               rotation='0.636027'
               scale='1.40365 1.47705'
@@ -439,17 +444,17 @@ function set_time (value, time)
       </Shape>
     </Transform>
     <ROUTE fromNode='_3' fromField='time' toNode='DiscoScript' toField='set_time'/>
-    <ROUTE fromNode='Time_6' fromField='fraction_changed' toNode='_7' toField='set_fraction'/>
-    <ROUTE fromNode='Time_6' fromField='fraction_changed' toNode='_8' toField='set_fraction'/>
-    <ROUTE fromNode='_7' fromField='value_changed' toNode='_9' toField='xIn'/>
-    <ROUTE fromNode='_8' fromField='value_changed' toNode='_9' toField='yIn'/>
-    <ROUTE fromNode='DiscoScript' fromField='scaleF' toNode='_11' toField='set_fraction'/>
-    <ROUTE fromNode='DiscoScript' fromField='scaleF' toNode='_12' toField='set_fraction'/>
-    <ROUTE fromNode='_11' fromField='value_changed' toNode='_13' toField='xIn'/>
-    <ROUTE fromNode='_12' fromField='value_changed' toNode='_13' toField='yIn'/>
+    <ROUTE fromNode='Time_1' fromField='fraction_changed' toNode='_6' toField='set_fraction'/>
+    <ROUTE fromNode='Time_1' fromField='fraction_changed' toNode='_7' toField='set_fraction'/>
+    <ROUTE fromNode='_6' fromField='value_changed' toNode='_8' toField='xIn'/>
+    <ROUTE fromNode='_7' fromField='value_changed' toNode='_8' toField='yIn'/>
+    <ROUTE fromNode='DiscoScript' fromField='scaleF' toNode='_9' toField='set_fraction'/>
+    <ROUTE fromNode='DiscoScript' fromField='scaleF' toNode='_10' toField='set_fraction'/>
+    <ROUTE fromNode='_9' fromField='value_changed' toNode='_11' toField='xIn'/>
+    <ROUTE fromNode='_10' fromField='value_changed' toNode='_11' toField='yIn'/>
     <ROUTE fromNode='DiscoScript' fromField='rotateF' toNode='UnnamedShapeRotationInterp' toField='set_fraction'/>
-    <ROUTE fromNode='_9' fromField='vec' toNode='_14' toField='set_translation'/>
-    <ROUTE fromNode='UnnamedShapeRotationInterp' fromField='value_changed' toNode='_14' toField='set_rotation'/>
-    <ROUTE fromNode='_13' fromField='vec' toNode='_14' toField='set_scale'/>
+    <ROUTE fromNode='_8' fromField='vec' toNode='_12' toField='set_translation'/>
+    <ROUTE fromNode='UnnamedShapeRotationInterp' fromField='value_changed' toNode='_12' toField='set_rotation'/>
+    <ROUTE fromNode='_11' fromField='vec' toNode='_12' toField='set_scale'/>
   </Scene>
 </X3D>

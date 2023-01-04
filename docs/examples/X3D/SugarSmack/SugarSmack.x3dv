@@ -1,18 +1,22 @@
-#X3D V3.3 utf8 Titania V4.4.4
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
+COMPONENT EnvironmentalSensor : 3
+COMPONENT EventUtilities : 1
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 3
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Sound : 3
+COMPONENT Text : 1
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Wed, 27 Sep 2017 11:50:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.4, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SugarSmack/SugarSmack.O.x3d"
 META "modified" "Wed, 27 Mar 2019 07:59:33 GMT"
 META "titania-add-metadata" "true"
@@ -148,11 +152,12 @@ PROTO MazeGeometry [
 ]
 {
   DEF _1 Inline {
+    global TRUE
     url IS mazeElementUrl
   }
 
   DEF _2 LoadSensor {
-    watchList USE _1
+    children USE _1
   }
 
   DEF MazeGeometryScript Script {
@@ -803,7 +808,7 @@ PROTO BonusMap [
   inputOutput MFNode  items [ ]
 ]
 {
-  DEF Group_7 Collision {
+  DEF Group_1 Collision {
     enabled FALSE
   }
 
@@ -816,7 +821,7 @@ PROTO BonusMap [
     outputOnly     SFTime  enterTime IS enterTime
     inputOutput    SFNode  maze IS maze
     inputOutput    MFNode  items IS items
-    initializeOnly SFNode  group USE Group_7
+    initializeOnly SFNode  group USE Group_1
     initializeOnly SFNode  self USE BonusMapScript
 
     url "ecmascript:
@@ -950,18 +955,17 @@ function set_resetTime (value, time)
   }
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
-DEF _8 LayerSet {
+DEF _7 LayerSet {
   activeLayer 1
   order [ 2, 3 ]
   layers [
     DEF Playground Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
-        DEF _9 TimeTrigger { }
-        DEF _10 MFInt32 {
+        DEF _8 TimeTrigger { }
+        DEF _9 MFInt32 {
           keyValue [ 1, 3 ]
         }
         DEF None NavigationInfo {
@@ -973,7 +977,7 @@ DEF _8 LayerSet {
           orientation 1 0 0 270
           fieldOfView [ -36, -20, 36, 20 ]
         }
-        DEF _11 Background {
+        DEF _10 Background {
           skyAngle [ 76.5191, 90.0002 ]
           skyColor [ 0.045 0.045 0.045, 0.195 0.195 0.195, 0.185 0.185 0.185 ]
           groundAngle [ 60.5651, 90.0002 ]
@@ -982,13 +986,12 @@ DEF _8 LayerSet {
         DirectionalLight {
           intensity 0.656934
           ambientIntensity 0.382716
-          direction 0.65147 2.93442e-08 -0.758675
+          direction 0.65147 2.93442e-8 -0.758675
         }
         DirectionalLight {
           ambientIntensity 0.302469
-          direction -3.52397e-06 -0.860529 0.509401
-			 shadows TRUE
-          shadowIntensity 1
+          direction -0.00000352397 -0.860529 0.509401
+          shadows TRUE
         }
         DEF Navigation Group {
           children [
@@ -997,7 +1000,7 @@ DEF _8 LayerSet {
               headlight FALSE
               transitionType "TELEPORT"
             }
-            DEF _12 Viewpoint {
+            DEF _11 Viewpoint {
               description "Maze"
               position 12 2 -28
               orientation 0 1 0 90
@@ -1008,7 +1011,7 @@ DEF _8 LayerSet {
               inputOutput    SFVec3f    mazeElementSize 4 2 4
               outputOnly     SFVec3f    position_changed
               outputOnly     SFRotation orientation_changed
-              initializeOnly SFNode     maze DEF _13 Maze {
+              initializeOnly SFNode     maze DEF _12 Maze {
                 width 17
                 height 17
               }
@@ -1076,20 +1079,21 @@ function getIndex (x, y)
         DEF Walls MazeGeometry {
           mazeElementSize 4 2 4
           mazeElementUrl "maze-element.x3d"
-          maze USE _13
+          maze USE _12
         }
         DEF Floor MazeGeometry {
           type [ 0, 1 ]
           rotate FALSE
           mazeElementSize 4 2 4
           mazeElementUrl "maze-floor-element.x3d"
-          maze USE _13
+          maze USE _12
         }
         LoadSensor {
-          watchList [
+          children [
             USE Walls
             USE Floor
             DEF Globe1 Inline {
+              global TRUE
               url "globe1.x3d"
             }
           ]
@@ -1100,46 +1104,48 @@ function getIndex (x, y)
           children [
             MazeCollisionManager {
               collidables [
-                DEF _14 Globe {
+                DEF _13 Globe {
                   enabled TRUE
                   cycleInterval 4
                   radius 2
                   mazeElementSize 4 2 4
                   startTime 1508046433.07247
                   stopTime 1508046433.07247
-                  maze USE _13
+                  maze USE _12
                   children USE Globe1
                 }
-                DEF _15 Globe {
+                DEF _14 Globe {
                   enabled TRUE
                   cycleInterval 4
                   radius 2
                   mazeElementSize 4 2 4
                   startTime 1507984705.53519
                   stopTime 1507984705.53519
-                  maze USE _13
+                  maze USE _12
                   children USE Globe1
                 }
               ]
             }
+            USE _13
             USE _14
-            USE _15
           ]
         }
-        DEF _16 BonusMap {
+        DEF _15 BonusMap {
           density 0.8
           mazeElementSize 4 2 4
-          maze USE _13
+          maze USE _12
           items [
-            DEF _17 Inline {
+            DEF _16 Inline {
+              global TRUE
               url "bonus-mint.x3d"
             }
-            DEF _18 Inline {
+            DEF _17 Inline {
+              global TRUE
               url "bonus-blue.x3d"
             }
           ]
         }
-        DEF BonusSound_19 Group {
+        DEF BonusSound_1 Group {
           children [
             DEF BonusSound Sound {
               intensity 0.133159
@@ -1147,28 +1153,28 @@ function getIndex (x, y)
               minFront 55
               maxBack 60
               maxFront 60
-              source DEF _20 AudioClip {
+              source DEF _18 AudioClip {
                 url "star-collect.mp3"
                 startTime 1546835705.23872
                 pauseTime 1510042948.99191
                 stopTime 1546835705.23872
               }
             }
-            DEF _21 TimeControler {
+            DEF _19 TimeControler {
               resetTime 1546835705.23872
-              timer USE _20
+              timer USE _18
             }
           ]
         }
-        DEF _22 VisibilitySensor {
+        DEF _20 VisibilitySensor {
           size -1 -1 -1
         }
       ]
     }
     DEF HUD Layer {
       children [
-        DEF _23 TimeTrigger { }
-        DEF _24 MFInt32 {
+        DEF _21 TimeTrigger { }
+        DEF _22 MFInt32 {
           keyValue [ 2, 3 ]
         }
         DEF Background Transform {
@@ -1246,7 +1252,7 @@ function getIndex (x, y)
                 }
               }
             }
-            DEF _25 TouchSensor { }
+            DEF _23 TouchSensor { }
           ]
         }
       ]
@@ -1263,10 +1269,10 @@ function getIndex (x, y)
               }
               geometry Box { }
             }
-            DEF _26 BooleanTrigger { }
-            DEF _27 BooleanToggle { }
-            DEF _28 BooleanFilter { }
-            USE _25
+            DEF _24 BooleanTrigger { }
+            DEF _25 BooleanToggle { }
+            DEF _26 BooleanFilter { }
+            USE _23
           ]
         }
       }
@@ -1288,26 +1294,26 @@ function initialize ()
 "
 }
 
-DEF _29 BooleanFilter { }
+DEF _27 BooleanFilter { }
 
-ROUTE ViewpointPositionScript.position_changed TO _12.set_position
-ROUTE ViewpointPositionScript.orientation_changed TO _12.set_orientation
-ROUTE _27.toggle_changed TO _28.set_boolean
-ROUTE _25.touchTime TO _26.set_triggerTime
-ROUTE _26.triggerTrue TO _27.set_boolean
-ROUTE _22.isActive TO _11.set_bind
-ROUTE _13.generatedTime TO ViewpointPositionScript.set_triggerTime
-ROUTE _22.isActive TO _12.set_bind
-ROUTE EnterWorldScript.entered TO _29.set_boolean
-ROUTE _29.inputNegate TO _27.set_toggle
-ROUTE _22.isActive TO Walk.set_bind
-ROUTE _28.inputTrue TO _9.set_boolean
-ROUTE _28.inputFalse TO _23.set_boolean
-ROUTE _9.triggerTime TO _13.set_triggerTime
-ROUTE _22.isActive TO _14.set_enabled
-ROUTE _22.isActive TO _15.set_enabled
-ROUTE _16.enterTime TO _21.set_resetTime
-ROUTE _24.value_changed TO _8.set_order
-ROUTE _23.triggerTime TO _24.set_triggerTime
-ROUTE _10.value_changed TO _8.set_order
-ROUTE _9.triggerTime TO _10.set_triggerTime
+ROUTE ViewpointPositionScript.position_changed TO _11.set_position
+ROUTE ViewpointPositionScript.orientation_changed TO _11.set_orientation
+ROUTE _25.toggle_changed TO _26.set_boolean
+ROUTE _23.touchTime TO _24.set_triggerTime
+ROUTE _24.triggerTrue TO _25.set_boolean
+ROUTE _20.isActive TO _10.set_bind
+ROUTE _12.generatedTime TO ViewpointPositionScript.set_triggerTime
+ROUTE _20.isActive TO _11.set_bind
+ROUTE EnterWorldScript.entered TO _27.set_boolean
+ROUTE _27.inputNegate TO _25.set_toggle
+ROUTE _20.isActive TO Walk.set_bind
+ROUTE _26.inputTrue TO _8.set_boolean
+ROUTE _26.inputFalse TO _21.set_boolean
+ROUTE _8.triggerTime TO _12.set_triggerTime
+ROUTE _20.isActive TO _13.set_enabled
+ROUTE _20.isActive TO _14.set_enabled
+ROUTE _15.enterTime TO _19.set_resetTime
+ROUTE _22.value_changed TO _7.set_order
+ROUTE _21.triggerTime TO _22.set_triggerTime
+ROUTE _9.value_changed TO _7.set_order
+ROUTE _8.triggerTime TO _9.set_triggerTime

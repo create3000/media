@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 20 Dec 2015 16:23:08 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 04:18:13 GMT'/>
   </head>
@@ -50,7 +52,7 @@ function initialize ()
               translation='0 0 0.15'>
             <Shape>
               <Appearance>
-                <Material DEF='Metal27_2'
+                <Material DEF='Metal27_1'
                     ambientIntensity='0'
                     diffuseColor='0 0 0'
                     shininess='0'
@@ -64,7 +66,7 @@ function initialize ()
         <Transform DEF='Lights'
             translation='0 0 0.15'>
           <Group DEF='ColorAnimation'>
-            <TimeSensor DEF='_3'
+            <TimeSensor DEF='_2'
                 cycleInterval='30'
                 loop='true'/>
             <ColorInterpolator DEF='Light1ColorInterpolator'
@@ -200,7 +202,7 @@ function get_intensity (value)
             <Rectangle2D/>
           </Shape>
         </Transform>
-        <Transform DEF='Text_4'
+        <Transform DEF='Text_1'
             translation='0 -0.0191083 0'>
           <Shape>
             <Appearance>
@@ -213,7 +215,7 @@ function get_intensity (value)
             <Text
                 string='"An Interactive X3D Experience"'
                 solid='true'>
-              <FontStyle DEF='_5'
+              <FontStyle DEF='_3'
                   family='"CharlotteSansBoldPlain.otf", "SERIF"'
                   size='0.08'
                   justify='"MIDDLE", "MIDDLE"'/>
@@ -222,7 +224,7 @@ function get_intensity (value)
         </Transform>
         <Transform DEF='Disk2D'
             translation='-0.15 -0.259941 0'>
-          <Shape DEF='_6'>
+          <Shape DEF='_4'>
             <Appearance>
               <Material
                   ambientIntensity='0'
@@ -233,11 +235,11 @@ function get_intensity (value)
             <Disk2D
                 outerRadius='0.14'/>
           </Shape>
-          <Transform DEF='Text_7'
+          <Transform DEF='Text_2'
               translation='0 -0.00799999 0'>
             <Shape>
               <Appearance>
-                <Material DEF='_8'
+                <Material DEF='_5'
                     ambientIntensity='0'
                     diffuseColor='0 0 0'
                     shininess='0'/>
@@ -245,29 +247,29 @@ function get_intensity (value)
               <Text
                   string='"JOIN"'
                   solid='true'>
-                <FontStyle USE='_5'/>
+                <FontStyle USE='_3'/>
               </Text>
             </Shape>
           </Transform>
         </Transform>
-        <Transform DEF='Disk2D_9'
+        <Transform DEF='Disk2D_1'
             translation='0.15 -0.259941 0'>
-          <Shape USE='_6'/>
-          <Transform DEF='Text_10'
+          <Shape USE='_4'/>
+          <Transform DEF='Text_3'
               translation='0 0.00100001 0'>
             <Shape>
               <Appearance>
-                <Material USE='_8'/>
+                <Material USE='_5'/>
               </Appearance>
               <Text
                   string='"US"'
                   solid='true'>
-                <FontStyle USE='_5'/>
+                <FontStyle USE='_3'/>
               </Text>
             </Shape>
           </Transform>
         </Transform>
-        <Transform DEF='Text_11'
+        <Transform DEF='Text_4'
             translation='0 -0.617834 0'>
           <Shape>
             <Appearance>
@@ -298,7 +300,7 @@ function get_intensity (value)
     <ROUTE fromNode='Light1' fromField='color_changed' toNode='Light6' toField='set_color'/>
     <ROUTE fromNode='Light1' fromField='color_changed' toNode='Light7' toField='set_color'/>
     <ROUTE fromNode='Light1' fromField='color_changed' toNode='Light8' toField='set_color'/>
-    <ROUTE fromNode='_3' fromField='fraction_changed' toNode='Light1ColorInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='_2' fromField='fraction_changed' toNode='Light1ColorInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='Light1ColorInterpolator' fromField='value_changed' toNode='Light1' toField='set_color'/>
   </Scene>
 </X3D>

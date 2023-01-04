@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,20 +33,20 @@
       ],
       "component": [
         {
-          "@name": "Interpolation",
-          "@level": 4
-        },
-        {
           "@name": "Layering",
           "@level": 1
         },
         {
           "@name": "NURBS",
+          "@level": 4
+        },
+        {
+          "@name": "Scripting",
           "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -120,7 +120,7 @@
                               {
                                 "-appearance": { "Appearance":
                                   {
-                                    "@DEF": "_2",
+                                    "@DEF": "_1",
                                     "-material": { "Material":
                                       {
                                         "IS": {
@@ -137,10 +137,10 @@
                                 },
                                 "-geometry": { "Text":
                                   {
-                                    "@DEF": "_3",
+                                    "@DEF": "_2",
                                     "-fontStyle": { "FontStyle":
                                       {
-                                        "@DEF": "_4",
+                                        "@DEF": "_3",
                                         "@family": [ "TYPEWRITER" ],
                                         "@justify": [ "BEGIN", "MIDDLE" ]
                                       }
@@ -168,12 +168,12 @@
                               {
                                 "-appearance": { "Appearance":
                                   {
-                                    "@USE": "_2"
+                                    "@USE": "_1"
                                   }
                                 },
                                 "-geometry": { "Sphere":
                                   {
-                                    "@DEF": "_5",
+                                    "@DEF": "_4",
                                     "@radius": 0.5
                                   }
                                 }
@@ -235,7 +235,7 @@
                         "-children": [
                           { "Sphere":
                             {
-                              "@USE": "_5"
+                              "@USE": "_4"
                             }
                           }
                         ]
@@ -259,7 +259,7 @@
                         "-children": [
                           { "FontStyle":
                             {
-                              "@USE": "_4"
+                              "@USE": "_3"
                             }
                           }
                         ]
@@ -289,7 +289,8 @@
 "\t\tx = s / 2 * xOffset;",
 "",
 "\tviewpointPosition_changed = new SFVec3f (x, 0, z);",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -319,7 +320,7 @@
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_3",
+                    "@fromNode": "_2",
                     "@fromField": "textBounds",
                     "@toNode": "SizeTextScript",
                     "@toField": "set_textBounds"
@@ -377,7 +378,7 @@
                     "-children": [
                       { "Viewpoint":
                         {
-                          "@DEF": "_6",
+                          "@DEF": "_5",
                           "@description": "Animation",
                           "IS": {
                             "connect": [
@@ -391,7 +392,7 @@
                       },
                       { "Group":
                         {
-                          "@DEF": "_7"
+                          "@DEF": "_6"
                         }
                       },
                       { "Switch":
@@ -415,8 +416,8 @@
                                     "@vertexCount": [ 2 ],
                                     "-coord": { "CoordinateDouble":
                                       {
-                                        "@DEF": "_8",
-                                        "@point": [ 0, -nan, 0, 0, nan, 0 ]
+                                        "@DEF": "_7",
+                                        "@point": [ 0, "NaN", 0, 0, "NaN", 0 ]
                                       }
                                     }
                                   }
@@ -431,14 +432,14 @@
                 },
                 { "TimeSensor":
                   {
-                    "@DEF": "_9",
+                    "@DEF": "_8",
                     "@cycleInterval": 0,
                     "@loop": true
                   }
                 },
                 { "SplinePositionInterpolator":
                   {
-                    "@DEF": "_10"
+                    "@DEF": "_9"
                   }
                 },
                 { "Script":
@@ -483,7 +484,7 @@
                         "-children": [
                           { "TimeSensor":
                             {
-                              "@USE": "_9"
+                              "@USE": "_8"
                             }
                           }
                         ]
@@ -495,7 +496,7 @@
                         "-children": [
                           { "Viewpoint":
                             {
-                              "@USE": "_6"
+                              "@USE": "_5"
                             }
                           }
                         ]
@@ -507,7 +508,7 @@
                         "-children": [
                           { "Group":
                             {
-                              "@USE": "_7"
+                              "@USE": "_6"
                             }
                           }
                         ]
@@ -519,7 +520,7 @@
                         "-children": [
                           { "CoordinateDouble":
                             {
-                              "@USE": "_8"
+                              "@USE": "_7"
                             }
                           }
                         ]
@@ -546,7 +547,7 @@
                                   "-children": [
                                     { "SplinePositionInterpolator":
                                       {
-                                        "@USE": "_10"
+                                        "@USE": "_9"
                                       }
                                     }
                                   ]
@@ -558,7 +559,7 @@
                                   "-children": [
                                     { "Group":
                                       {
-                                        "@USE": "_7"
+                                        "@USE": "_6"
                                       }
                                     }
                                   ]
@@ -587,7 +588,8 @@
 "\tinterpolator .key .push (1);",
 "\tinterpolator .keyValue .push (interpolator .keyValue [interpolator .keyValue .length - 1]);",
 "\tinterpolator .keyVelocity .push (new SFVec3f ());",
-"}"
+"}",
+""
                               ]
                             }
                           }
@@ -654,7 +656,8 @@
 "",
 "\tlineCoord .point [0] = new SFVec3d (0, -y, 0);",
 "\tlineCoord .point [1] = new SFVec3d (0,  y, 0);",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -688,17 +691,17 @@
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_9",
+                    "@fromNode": "_8",
                     "@fromField": "fraction_changed",
-                    "@toNode": "_10",
+                    "@toNode": "_9",
                     "@toField": "set_fraction"
                   }
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_10",
+                    "@fromNode": "_9",
                     "@fromField": "value_changed",
-                    "@toNode": "_6",
+                    "@toNode": "_5",
                     "@toField": "position"
                   }
                 }
@@ -738,7 +741,8 @@
 "function set_startTime (value, time)",
 "{",
 "\tstring_changed [0] = \"Logarithmic Depth Buffer: \" + Browser .getRenderingProperty (\"LogarithmicDepthBuffer\");",
-"}"
+"}",
+""
             ]
           }
         },
@@ -754,7 +758,7 @@
                     { "NavigationInfo":
                       {
                         "@type": [ "EXAMINE" ],
-                        "@avatarSize": [ 1e-05, 1.6, 0.75 ],
+                        "@avatarSize": [ 0.00001, 1.6, 0.75 ],
                         "@visibilityLimit": 1e+24
                       }
                     },
@@ -780,7 +784,7 @@
                           },
                           {
                             "@name": "size",
-                            "@value": [ 1e-06, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23 ]
+                            "@value": [ 0.000001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23 ]
                           }
                         ]
                       }
@@ -810,7 +814,7 @@
                               },
                               "-geometry": { "Text":
                                 {
-                                  "@DEF": "_11",
+                                  "@DEF": "_10",
                                   "@string": [ "Logarithmic Depth Buffer: false" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
@@ -836,7 +840,7 @@
           {
             "@fromNode": "LogarithmicDepthBufferScript",
             "@fromField": "string_changed",
-            "@toNode": "_11",
+            "@toNode": "_10",
             "@toField": "string"
           }
         }

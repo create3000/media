@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Shape' level='3'/>
-    <component name='Time' level='2'/>
-    <unit category='angle' name='degree' conversionFactor='0.017453292519943'/>
-    <meta name='comment' content='World of Sunrise X3D Editor'/>
+    <component name='Scripting' level='1'/>
+    <component name='Sound' level='3'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0, https://create3000.github.io/Sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Sound/AudioClip/AudioClip.x3d'/>
-    <meta name='modified' content='Sun, 9 Jan 2022 22:08:38 +0100'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d'/>
+    <meta name='modified' content='Sun, 06 Jan 2019 14:22:33 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='SpectrumAnalyser'>
@@ -153,7 +153,8 @@ function build ()
 			coord .point [i] = points [x] [z];
 		}
 	}
-}]]>
+}
+]]>
         </Script>
         <ROUTE fromNode='_2' fromField='cycleTime' toNode='SpectrumAnalyserScript' toField='set_time'/>
       </ProtoBody>
@@ -164,15 +165,14 @@ function build ()
     <Viewpoint
         description='Initial View'
         position='38.7029 15.4779 3.39527'
-        orientation='-0.516074 0.821774 0.241566 59.3317'
+        orientation='-0.516074493430328 0.82177441225875 0.241565586513097 59.3316865883849'
         centerOfRotation='16.3446 -3.2586 -15.2548'/>
     <Script DEF='AudioScript'
         directOutput='true'>
       <field accessType='inputOnly' type='SFBool' name='set_active'/>
       <field accessType='initializeOnly' type='MFString' name='files' value='"assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don&apos;t Pay My Bills.mp3", "assets/audio/03. Crockett&apos;s Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3"'/>
       <field accessType='initializeOnly' type='SFNode' name='source'>
-        <AudioClip DEF='AudioClip'
-            url='"undefined"'/>
+        <AudioClip DEF='AudioClip'/>
       </field>
       <field accessType='initializeOnly' type='SFNode' name='self'>
         <Script USE='AudioScript' containerField='self'/>
@@ -211,7 +211,6 @@ function set_active (value, time)
         <fieldValue name='yScale' value='8'/>
         <fieldValue name='source'>
           <AudioClip USE='AudioClip'/>
-
         </fieldValue>
       </ProtoInstance>
     </Transform>

@@ -1,16 +1,13 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 08 Mar 2015 05:54:30 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Lighting/PointLight/PointLight.O.x3d"
 META "modified" "Wed, 06 Jun 2018 13:03:36 GMT"
 META "title" "Beethoven"
@@ -93,10 +90,10 @@ Transform {
                 color 0 1 0
                 attenuation 0.07 0.16 0.88
               }
-              DEF Sphere_6 Transform {
+              DEF Sphere_1 Transform {
                 children Shape {
                   appearance Appearance {
-                    material DEF _7 Material {
+                    material DEF _6 Material {
                       emissiveColor 0 1 0
                     }
                   }
@@ -108,14 +105,14 @@ Transform {
           DEF BlueLight Transform {
             translation -1.6247 -2.40012 1.65397
             children [
-              DEF _8 PointLight {
+              DEF _7 PointLight {
                 color 0 0 1
                 attenuation 0.07 0.16 0.88
               }
-              DEF Sphere_9 Transform {
+              DEF Sphere_2 Transform {
                 children Shape {
                   appearance Appearance {
-                    material DEF _10 Material {
+                    material DEF _8 Material {
                       emissiveColor 0 0 1
                     }
                   }
@@ -127,14 +124,14 @@ Transform {
           DEF PinkLight Transform {
             translation 1.35914 0.199608 1.47597
             children [
-              DEF _11 PointLight {
+              DEF _9 PointLight {
                 color 1 0 1
                 attenuation 0.07 0.16 0.88
               }
-              DEF Sphere_12 Transform {
+              DEF Sphere_3 Transform {
                 children Shape {
                   appearance Appearance {
-                    material DEF _13 Material {
+                    material DEF _10 Material {
                       emissiveColor 1 0 1
                     }
                   }
@@ -147,6 +144,7 @@ Transform {
       }
       DEF Beethoven Transform {
         children Inline {
+          global TRUE
           url "beethoven.x3dz"
         }
       }
@@ -163,6 +161,6 @@ ROUTE BlueLightTranslationInterpolator.value_changed TO BlueLight.set_translatio
 ROUTE _1.fraction_changed TO PinkLightTranslationInterpolator.set_fraction
 ROUTE PinkLightTranslationInterpolator.value_changed TO PinkLight.set_translation
 ROUTE _2.color_changed TO _3.set_emissiveColor
-ROUTE _11.color_changed TO _13.set_emissiveColor
-ROUTE _8.color_changed TO _10.set_emissiveColor
-ROUTE _5.color_changed TO _7.set_emissiveColor
+ROUTE _9.color_changed TO _10.set_emissiveColor
+ROUTE _7.color_changed TO _8.set_emissiveColor
+ROUTE _5.color_changed TO _6.set_emissiveColor

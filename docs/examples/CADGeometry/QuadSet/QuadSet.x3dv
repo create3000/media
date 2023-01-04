@@ -1,29 +1,26 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT CADGeometry : 1
-COMPONENT Grouping : 3
+COMPONENT CADGeometry : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 17 Jun 2018 23:30:11 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.10, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CADGeometry/QuadSet/QuadSet.O.x3d"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "modified" "Wed, 23 Jan 2019 12:28:58 GMT"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer -1
   order [ 0, 1, 2 ]
   layers [
     DEF Squares Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         Viewpoint {
           description "Initial View"
@@ -115,7 +112,7 @@ function set_time ()
 			s = squares [i],
 			e = (s .elapsedTime += dt),
 			f = e / s .duration;
-			
+
 		if (f > 1)
 		{
 			s .elapsedTime = 0;
@@ -169,11 +166,11 @@ function squareColor (colors, x, y)
 	var
 		c = bilinearColor (colors, x, y),
 		h = c .getHSV ();
-	
+
 	h [2] *= Math .random ();
-	
+
 	c .setHSV (h [0], h [1], h [2]);
-	
+
 	return c;
 }
 
@@ -187,17 +184,17 @@ function bilinearColor (colors, x, y)
 		bilinear (colors [0] .g, colors [1] .g, colors [2] .g, colors [3] .g, x, y),
 		bilinear (colors [0] .b, colors [1] .b, colors [2] .b, colors [3] .b, x, y)
 	);
-	
+
 	var
 		h = c .getHSV (),
 		r = new SFColor ();
-		
+
 	r .setHSV (
 		h [0],
 		h [1],
 		stretch (h [2])
 	);
-		
+
 	return  r;
 }
 
@@ -234,7 +231,7 @@ function randomColor (i)
       ]
     }
     DEF X_ITE Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         DEF Browser Transform {
           children Shape {

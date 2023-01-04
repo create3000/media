@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,27 +33,19 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
           "@name": "RigidBodyPhysics",
-          "@level": 1
+          "@level": 2
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "Scripting",
+          "@level": 1
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -86,7 +78,7 @@
               { "CollidableShape":
                 {
                   "@DEF": "Ball",
-                  "@translation": [ -1.92031e-06, -0.251985, -2.34233e-06 ],
+                  "@translation": [ -0.00000192031, -0.251985, -0.00000234233 ],
                   "-shape": { "Shape":
                     {
                       "-appearance": { "Appearance":
@@ -181,9 +173,9 @@
             "-bodies": [
               { "RigidBody":
                 {
-                  "@DEF": "Ball_2",
-                  "@position": [ -1.92031e-06, -0.251985, -2.34233e-06 ],
-                  "@linearVelocity": [ -4.04398e-06, -1.46553, -4.93573e-06 ],
+                  "@DEF": "Ball_1",
+                  "@position": [ -0.00000192031, -0.251985, -0.00000234233 ],
+                  "@linearVelocity": [ -0.00000404398, -1.46553, -0.00000493573 ],
                   "@angularVelocity": [ -1.98016e-10, 2.95806e-10, 0.000388671 ],
                   "-geometry": [
                     { "CollidableShape":
@@ -196,7 +188,7 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Floor_3",
+                  "@DEF": "Floor_1",
                   "@fixed": true,
                   "@linearVelocity": [ 0, 0.1, 0 ],
                   "-geometry": [
@@ -210,7 +202,7 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Ceiling_4",
+                  "@DEF": "Ceiling_1",
                   "@fixed": true,
                   "-geometry": [
                     { "CollidableOffset":
@@ -236,7 +228,7 @@
                 "-children": [
                   { "RigidBody":
                     {
-                      "@USE": "Ball_2"
+                      "@USE": "Ball_1"
                     }
                   }
                 ]
@@ -251,7 +243,8 @@
 "\tball .orientation     = new SFRotation (0, 0, 1, 0);",
 "\tball .linearVelocity  = new SFVec3f (0, 0, 0);",
 "\tball .angularVelocity = new SFVec3f (0, 0, 0);",
-"}"
+"}",
+""
             ]
           }
         }

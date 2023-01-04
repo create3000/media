@@ -1,18 +1,20 @@
-#X3D V3.3 utf8 Titania V4.5.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
+COMPONENT EventUtilities : 1
 COMPONENT Followers : 1
-COMPONENT Grouping : 3
-COMPONENT Interpolation : 4
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
 COMPONENT Layout : 2
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 08 Jul 2018 09:58:21 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.5.7, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ScalarChaser/ScalarChaser.O.x3d"
 META "modified" "Sun, 23 Jun 2019 13:23:54 GMT"
 
@@ -116,8 +118,7 @@ function set_pointSize (value, time)
   ROUTE PointSizeInterpolator.value_changed TO PointSizeScript.set_pointSize
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 DEF EnterWorldScript Script {
   outputOnly SFBool initialized
@@ -148,7 +149,7 @@ LayerSet {
         Viewpoint {
           position 0 0 3.35629
         }
-        DEF Earth_8 Transform {
+        DEF Earth_1 Transform {
           children Shape {
             appearance Appearance {
               material Material {
@@ -176,11 +177,12 @@ LayerSet {
           }
         }
         DEF Cities Inline {
+          global TRUE
           url "assets/cities.x3dz"
         }
       ]
     }
-    DEF HUD_9 LayoutLayer {
+    DEF HUD_1 LayoutLayer {
       layout Layout { }
       children [
         DEF Years LayoutGroup {
@@ -227,25 +229,25 @@ LayerSet {
             DEF Year1995 Transform {
               translation -9 -36 0
               children [
-                DEF _10 Year {
+                DEF _8 Year {
                   enabled TRUE
                   string "1995"
                 }
-                DEF _11 TouchSensor { }
+                DEF _9 TouchSensor { }
                 DEF EnableYear BooleanFilter { }
                 DEF DisableOthers BooleanFilter { }
-                DEF _12 TimeTrigger { }
+                DEF _10 TimeTrigger { }
                 DEF Cities1995 SFFloat { }
               ]
             }
             DEF Year2000 Transform {
               translation 84 -36 0
               children [
-                DEF _13 Year { }
-                DEF _14 TouchSensor { }
-                DEF _15 BooleanFilter { }
-                DEF _16 BooleanFilter { }
-                DEF _17 TimeTrigger { }
+                DEF _11 Year { }
+                DEF _12 TouchSensor { }
+                DEF _13 BooleanFilter { }
+                DEF _14 BooleanFilter { }
+                DEF _15 TimeTrigger { }
                 DEF Cities2000 SFFloat {
                   keyValue 0.5
                 }
@@ -254,13 +256,13 @@ LayerSet {
             DEF Year2005 Transform {
               translation 159 -36 0
               children [
-                DEF _18 Year {
+                DEF _16 Year {
                   string "2005"
                 }
-                DEF _19 TouchSensor { }
-                DEF _20 BooleanFilter { }
-                DEF _21 BooleanFilter { }
-                DEF _22 TimeTrigger { }
+                DEF _17 TouchSensor { }
+                DEF _18 BooleanFilter { }
+                DEF _19 BooleanFilter { }
+                DEF _20 TimeTrigger { }
                 DEF Cities2005 SFFloat {
                   keyValue 1
                 }
@@ -296,7 +298,7 @@ LayerSet {
                 }
               }
             }
-            DEF X3D-Experiment_23 Transform {
+            DEF X3D-Experiment_1 Transform {
               translation -15.8876 -9.44926 0
               scale 1 0.999998 1
               children Shape {
@@ -315,7 +317,7 @@ LayerSet {
             }
           ]
         }
-        DEF Inspired_24 LayoutGroup {
+        DEF Inspired_1 LayoutGroup {
           layout Layout {
             align [ "RIGHT", "BOTTOM" ]
             offsetUnits [ "PIXEL", "PIXEL" ]
@@ -372,30 +374,29 @@ LayerSet {
 
 IMPORT Cities.PointInterpolator
 
-ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction
-
-ROUTE _14.isOver TO _15.set_boolean
-ROUTE _19.isOver TO _20.set_boolean
-ROUTE _11.isOver TO EnableYear.set_boolean
+ROUTE _12.isOver TO _13.set_boolean
+ROUTE _17.isOver TO _18.set_boolean
+ROUTE _9.isOver TO EnableYear.set_boolean
 ROUTE EnableYear.inputTrue TO DisableOthers.set_boolean
-ROUTE _15.inputTrue TO _16.set_boolean
-ROUTE _20.inputTrue TO _21.set_boolean
-ROUTE EnableYear.inputTrue TO _12.set_boolean
-ROUTE _17.triggerTime TO Cities2000.set_triggerTime
-ROUTE _12.triggerTime TO Cities1995.set_triggerTime
-ROUTE _15.inputTrue TO _17.set_boolean
-ROUTE _22.triggerTime TO Cities2005.set_triggerTime
-ROUTE _20.inputTrue TO _22.set_boolean
+ROUTE _13.inputTrue TO _14.set_boolean
+ROUTE _18.inputTrue TO _19.set_boolean
+ROUTE EnableYear.inputTrue TO _10.set_boolean
+ROUTE _15.triggerTime TO Cities2000.set_triggerTime
+ROUTE _10.triggerTime TO Cities1995.set_triggerTime
+ROUTE _13.inputTrue TO _15.set_boolean
+ROUTE _20.triggerTime TO Cities2005.set_triggerTime
+ROUTE _18.inputTrue TO _20.set_boolean
 ROUTE Cities2005.value_changed TO AnimateCities.set_destination
 ROUTE Cities2000.value_changed TO AnimateCities.set_destination
 ROUTE Cities1995.value_changed TO AnimateCities.set_destination
 ROUTE EnterWorldScript.initialized TO EnableYear.set_boolean
-ROUTE _20.inputTrue TO _18.set_enabled
-ROUTE _16.inputNegate TO _18.set_enabled
-ROUTE DisableOthers.inputNegate TO _18.set_enabled
-ROUTE _21.inputNegate TO _10.set_enabled
-ROUTE _16.inputNegate TO _10.set_enabled
-ROUTE EnableYear.inputTrue TO _10.set_enabled
-ROUTE _21.inputNegate TO _13.set_enabled
-ROUTE DisableOthers.inputNegate TO _13.set_enabled
-ROUTE _15.inputTrue TO _13.set_enabled
+ROUTE _18.inputTrue TO _16.set_enabled
+ROUTE _14.inputNegate TO _16.set_enabled
+ROUTE DisableOthers.inputNegate TO _16.set_enabled
+ROUTE _19.inputNegate TO _8.set_enabled
+ROUTE _14.inputNegate TO _8.set_enabled
+ROUTE EnableYear.inputTrue TO _8.set_enabled
+ROUTE _19.inputNegate TO _11.set_enabled
+ROUTE DisableOthers.inputNegate TO _11.set_enabled
+ROUTE _13.inputTrue TO _11.set_enabled
+ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction

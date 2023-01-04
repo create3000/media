@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='EnvironmentalSensor' level='3'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Sound' level='3'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
   </head>
   <Scene>
     <ProtoDeclare name='BooleanSwitch'>
@@ -56,7 +61,7 @@ function set_whichChoice (value)
         activeLayer='-1'
         order='1, 2, 3'>
       <Layer DEF='Skyline'
-          isPickable='false'>
+          pickable='false'>
         <Transform DEF='skyline'
             translation='0.0653244 0.0312421 0'
             scale='1.94963 1.94963 1.94963'>
@@ -88,7 +93,7 @@ function set_whichChoice (value)
             size='1 1 1'/>
       </Layer>
       <Layer DEF='Plants'
-          isPickable='false'>
+          pickable='false'>
         <Transform DEF='plants'
             scale='2.62712 2.62712 2.62712'>
           <Shape>
@@ -126,291 +131,291 @@ function set_whichChoice (value)
           <Group>
             <ProtoInstance name='BooleanSwitch' DEF='_3'>
               <fieldValue name='children'>
-                <Transform DEF='Text_4'
+                <Transform DEF='Text_1'
                     translation='-6.2 1.6 0'>
                   <Shape>
-                    <Appearance DEF='_5'>
+                    <Appearance DEF='_4'>
                       <Material
                           diffuseColor='1 0.905882 0.67451'/>
                     </Appearance>
-                    <Text DEF='_6'
+                    <Text DEF='_5'
                         string='"New Game"'
                         solid='true'>
-                      <FontStyle DEF='_7'
+                      <FontStyle DEF='_6'
                           family='"BDFazer.otf"'
                           size='0.6'/>
                     </Text>
                   </Shape>
                 </Transform>
-                <Group DEF='_8'>
-                  <Transform DEF='Text_9'
+                <Group DEF='_7'>
+                  <Transform DEF='Text_2'
                       translation='-6.2 1.6 0'>
                     <Shape>
                       <Appearance USE='_2'/>
-                      <Text USE='_6'/>
+                      <Text USE='_5'/>
                     </Shape>
                   </Transform>
                   <Transform DEF='border'
                       translation='-2.623 1.78 0'
                       scale='50 50 50'>
-                    <Shape DEF='_10'>
+                    <Shape DEF='_8'>
                       <Appearance>
                         <Material/>
-                        <ImageTexture DEF='_11'
+                        <ImageTexture DEF='_9'
                             url='"border.png", "file:///home/holger/Projekte/Library/Components/Layering/LayerSet/border.png"'
                             repeatS='false'
                             repeatT='false'/>
                       </Appearance>
-                      <Rectangle2D DEF='_12'
+                      <Rectangle2D DEF='_10'
                           size='0.158905 0.0219927'/>
                     </Shape>
                   </Transform>
                 </Group>
               </fieldValue>
             </ProtoInstance>
-            <Transform DEF='border_13'
+            <Transform DEF='border_1'
                 translation='-2.623 1.78 0'
                 scale='50 50 50'>
-              <Shape DEF='_14'>
+              <Shape DEF='_11'>
                 <Appearance>
                   <Material
                       transparency='1'/>
                 </Appearance>
-                <Rectangle2D USE='_12'/>
+                <Rectangle2D USE='_10'/>
               </Shape>
             </Transform>
-            <TouchSensor DEF='_15'/>
+            <TouchSensor DEF='_12'/>
           </Group>
           <Group>
-            <ProtoInstance name='BooleanSwitch' DEF='_16'>
+            <ProtoInstance name='BooleanSwitch' DEF='_13'>
               <fieldValue name='children'>
-                <Transform DEF='Text_17'
+                <Transform DEF='Text_3'
                     translation='-6.19108 0.8 0'>
                   <Shape>
-                    <Appearance USE='_5'/>
-                    <Text DEF='_18'
+                    <Appearance USE='_4'/>
+                    <Text DEF='_14'
                         string='"Continue Game"'
                         solid='true'>
-                      <FontStyle USE='_7'/>
+                      <FontStyle USE='_6'/>
+                    </Text>
+                  </Shape>
+                </Transform>
+                <Group DEF='_15'>
+                  <Transform DEF='Text_4'
+                      translation='-6.19108 0.8 0'>
+                    <Shape>
+                      <Appearance USE='_2'/>
+                      <Text USE='_14'/>
+                    </Shape>
+                  </Transform>
+                  <Transform DEF='border_2'
+                      translation='-2.623 0.98 0'
+                      scale='50 50 50'>
+                    <Shape USE='_8'/>
+                  </Transform>
+                </Group>
+              </fieldValue>
+            </ProtoInstance>
+            <Transform DEF='border_3'
+                translation='-2.623 0.98 0'
+                scale='50 50 50'>
+              <Shape USE='_11'/>
+            </Transform>
+            <TouchSensor DEF='_16'/>
+          </Group>
+          <Group>
+            <ProtoInstance name='BooleanSwitch' DEF='_17'>
+              <fieldValue name='children'>
+                <Transform DEF='Text_5'
+                    translation='-6.19108 0 0'>
+                  <Shape>
+                    <Appearance USE='_4'/>
+                    <Text DEF='_18'
+                        string='"Load"'
+                        solid='true'>
+                      <FontStyle USE='_6'/>
                     </Text>
                   </Shape>
                 </Transform>
                 <Group DEF='_19'>
-                  <Transform DEF='Text_20'
-                      translation='-6.19108 0.8 0'>
+                  <Transform DEF='Text_6'
+                      translation='-6.19108 0 0'>
                     <Shape>
                       <Appearance USE='_2'/>
                       <Text USE='_18'/>
                     </Shape>
                   </Transform>
-                  <Transform DEF='border_21'
-                      translation='-2.623 0.98 0'
+                  <Transform DEF='border_4'
+                      translation='-2.623 0.18 0'
                       scale='50 50 50'>
-                    <Shape USE='_10'/>
+                    <Shape USE='_8'/>
                   </Transform>
                 </Group>
               </fieldValue>
             </ProtoInstance>
-            <Transform DEF='border_22'
-                translation='-2.623 0.98 0'
+            <Transform DEF='border_5'
+                translation='-2.623 0.18 0'
                 scale='50 50 50'>
-              <Shape USE='_14'/>
+              <Shape USE='_11'/>
             </Transform>
-            <TouchSensor DEF='_23'/>
+            <TouchSensor DEF='_20'/>
           </Group>
           <Group>
-            <ProtoInstance name='BooleanSwitch' DEF='_24'>
+            <ProtoInstance name='BooleanSwitch' DEF='_21'>
               <fieldValue name='children'>
-                <Transform DEF='Text_25'
-                    translation='-6.19108 0 0'>
+                <Transform DEF='Text_7'
+                    translation='-6.2 -0.8 0'>
                   <Shape>
-                    <Appearance USE='_5'/>
-                    <Text DEF='_26'
-                        string='"Load"'
+                    <Appearance USE='_4'/>
+                    <Text DEF='_22'
+                        string='"Downloadable Content"'
                         solid='true'>
-                      <FontStyle USE='_7'/>
+                      <FontStyle USE='_6'/>
+                    </Text>
+                  </Shape>
+                </Transform>
+                <Group DEF='_23'>
+                  <Transform DEF='Text_8'
+                      translation='-6.2 -0.8 0'>
+                    <Shape>
+                      <Appearance USE='_2'/>
+                      <Text USE='_22'/>
+                    </Shape>
+                  </Transform>
+                  <Transform DEF='border_6'
+                      translation='-2.623 -0.62 0'
+                      scale='50 50 50'>
+                    <Shape USE='_8'/>
+                  </Transform>
+                </Group>
+              </fieldValue>
+            </ProtoInstance>
+            <Transform DEF='border_7'
+                translation='-2.623 -0.62 0'
+                scale='50 50 50'>
+              <Shape USE='_11'/>
+            </Transform>
+            <TouchSensor DEF='_24'/>
+          </Group>
+          <Group>
+            <ProtoInstance name='BooleanSwitch' DEF='_25'>
+              <fieldValue name='children'>
+                <Transform DEF='Text_9'
+                    translation='-6.19108 -1.6 0'>
+                  <Shape>
+                    <Appearance USE='_4'/>
+                    <Text DEF='_26'
+                        string='"Options"'
+                        solid='true'>
+                      <FontStyle USE='_6'/>
                     </Text>
                   </Shape>
                 </Transform>
                 <Group DEF='_27'>
-                  <Transform DEF='Text_28'
-                      translation='-6.19108 0 0'>
+                  <Transform DEF='Text_10'
+                      translation='-6.19108 -1.6 0'>
                     <Shape>
                       <Appearance USE='_2'/>
                       <Text USE='_26'/>
                     </Shape>
                   </Transform>
-                  <Transform DEF='border_29'
-                      translation='-2.623 0.18 0'
+                  <Transform DEF='border_8'
+                      translation='-2.623 -1.42 0'
                       scale='50 50 50'>
-                    <Shape USE='_10'/>
+                    <Shape USE='_8'/>
                   </Transform>
                 </Group>
               </fieldValue>
             </ProtoInstance>
-            <Transform DEF='border_30'
-                translation='-2.623 0.18 0'
+            <Transform DEF='border_9'
+                translation='-2.623 -1.42 0'
                 scale='50 50 50'>
-              <Shape USE='_14'/>
+              <Shape USE='_11'/>
             </Transform>
-            <TouchSensor DEF='_31'/>
+            <TouchSensor DEF='_28'/>
           </Group>
           <Group>
-            <ProtoInstance name='BooleanSwitch' DEF='_32'>
+            <ProtoInstance name='BooleanSwitch' DEF='_29'>
               <fieldValue name='children'>
-                <Transform DEF='Text_33'
-                    translation='-6.2 -0.8 0'>
+                <Transform DEF='Text_11'
+                    translation='-6.19108 -2.4 0'>
                   <Shape>
-                    <Appearance USE='_5'/>
-                    <Text DEF='_34'
-                        string='"Downloadable Content"'
+                    <Appearance USE='_4'/>
+                    <Text DEF='_30'
+                        string='"Credits"'
                         solid='true'>
-                      <FontStyle USE='_7'/>
+                      <FontStyle USE='_6'/>
+                    </Text>
+                  </Shape>
+                </Transform>
+                <Group DEF='_31'>
+                  <Transform DEF='Text_12'
+                      translation='-6.19108 -2.4 0'>
+                    <Shape>
+                      <Appearance USE='_2'/>
+                      <Text USE='_30'/>
+                    </Shape>
+                  </Transform>
+                  <Transform DEF='border_10'
+                      translation='-2.623 -2.22 0'
+                      scale='50 50 50'>
+                    <Shape USE='_8'/>
+                  </Transform>
+                </Group>
+              </fieldValue>
+            </ProtoInstance>
+            <Transform DEF='border_11'
+                translation='-2.623 -2.22 0'
+                scale='50 50 50'>
+              <Shape USE='_11'/>
+            </Transform>
+            <TouchSensor DEF='_32'/>
+          </Group>
+          <Group>
+            <ProtoInstance name='BooleanSwitch' DEF='_33'>
+              <fieldValue name='children'>
+                <Transform DEF='Text_13'
+                    translation='-6.19108 -3.2 0'>
+                  <Shape>
+                    <Appearance USE='_4'/>
+                    <Text DEF='_34'
+                        string='"Exit Game"'
+                        solid='true'>
+                      <FontStyle USE='_6'/>
                     </Text>
                   </Shape>
                 </Transform>
                 <Group DEF='_35'>
-                  <Transform DEF='Text_36'
-                      translation='-6.2 -0.8 0'>
-                    <Shape>
-                      <Appearance USE='_2'/>
-                      <Text USE='_34'/>
-                    </Shape>
-                  </Transform>
-                  <Transform DEF='border_37'
-                      translation='-2.623 -0.62 0'
-                      scale='50 50 50'>
-                    <Shape USE='_10'/>
-                  </Transform>
-                </Group>
-              </fieldValue>
-            </ProtoInstance>
-            <Transform DEF='border_38'
-                translation='-2.623 -0.62 0'
-                scale='50 50 50'>
-              <Shape USE='_14'/>
-            </Transform>
-            <TouchSensor DEF='_39'/>
-          </Group>
-          <Group>
-            <ProtoInstance name='BooleanSwitch' DEF='_40'>
-              <fieldValue name='children'>
-                <Transform DEF='Text_41'
-                    translation='-6.19108 -1.6 0'>
-                  <Shape>
-                    <Appearance USE='_5'/>
-                    <Text DEF='_42'
-                        string='"Options"'
-                        solid='true'>
-                      <FontStyle USE='_7'/>
-                    </Text>
-                  </Shape>
-                </Transform>
-                <Group DEF='_43'>
-                  <Transform DEF='Text_44'
-                      translation='-6.19108 -1.6 0'>
-                    <Shape>
-                      <Appearance USE='_2'/>
-                      <Text USE='_42'/>
-                    </Shape>
-                  </Transform>
-                  <Transform DEF='border_45'
-                      translation='-2.623 -1.42 0'
-                      scale='50 50 50'>
-                    <Shape USE='_10'/>
-                  </Transform>
-                </Group>
-              </fieldValue>
-            </ProtoInstance>
-            <Transform DEF='border_46'
-                translation='-2.623 -1.42 0'
-                scale='50 50 50'>
-              <Shape USE='_14'/>
-            </Transform>
-            <TouchSensor DEF='_47'/>
-          </Group>
-          <Group>
-            <ProtoInstance name='BooleanSwitch' DEF='_48'>
-              <fieldValue name='children'>
-                <Transform DEF='Text_49'
-                    translation='-6.19108 -2.4 0'>
-                  <Shape>
-                    <Appearance USE='_5'/>
-                    <Text DEF='_50'
-                        string='"Credits"'
-                        solid='true'>
-                      <FontStyle USE='_7'/>
-                    </Text>
-                  </Shape>
-                </Transform>
-                <Group DEF='_51'>
-                  <Transform DEF='Text_52'
-                      translation='-6.19108 -2.4 0'>
-                    <Shape>
-                      <Appearance USE='_2'/>
-                      <Text USE='_50'/>
-                    </Shape>
-                  </Transform>
-                  <Transform DEF='border_53'
-                      translation='-2.623 -2.22 0'
-                      scale='50 50 50'>
-                    <Shape USE='_10'/>
-                  </Transform>
-                </Group>
-              </fieldValue>
-            </ProtoInstance>
-            <Transform DEF='border_54'
-                translation='-2.623 -2.22 0'
-                scale='50 50 50'>
-              <Shape USE='_14'/>
-            </Transform>
-            <TouchSensor DEF='_55'/>
-          </Group>
-          <Group>
-            <ProtoInstance name='BooleanSwitch' DEF='_56'>
-              <fieldValue name='children'>
-                <Transform DEF='Text_57'
-                    translation='-6.19108 -3.2 0'>
-                  <Shape>
-                    <Appearance USE='_5'/>
-                    <Text DEF='_58'
-                        string='"Exit Game"'
-                        solid='true'>
-                      <FontStyle USE='_7'/>
-                    </Text>
-                  </Shape>
-                </Transform>
-                <Group DEF='_59'>
-                  <Transform DEF='Text_60'
+                  <Transform DEF='Text_14'
                       translation='-6.19108 -3.2 0'>
                     <Shape>
                       <Appearance>
-                        <Material DEF='_61'
+                        <Material DEF='_36'
                             diffuseColor='1 0.0562664 0'/>
                       </Appearance>
-                      <Text USE='_58'/>
+                      <Text USE='_34'/>
                     </Shape>
                   </Transform>
-                  <Transform DEF='border_62'
+                  <Transform DEF='border_12'
                       translation='-2.623 -3.02 0'
                       scale='50 50 50'>
                     <Shape>
                       <Appearance>
-                        <Material USE='_61'/>
-                        <ImageTexture USE='_11'/>
+                        <Material USE='_36'/>
+                        <ImageTexture USE='_9'/>
                       </Appearance>
-                      <Rectangle2D USE='_12'/>
+                      <Rectangle2D USE='_10'/>
                     </Shape>
                   </Transform>
                 </Group>
               </fieldValue>
             </ProtoInstance>
-            <Transform DEF='border_63'
+            <Transform DEF='border_13'
                 translation='-2.623 -3.02 0'
                 scale='50 50 50'>
-              <Shape USE='_14'/>
+              <Shape USE='_11'/>
             </Transform>
-            <TouchSensor DEF='_64'/>
+            <TouchSensor DEF='_37'/>
           </Group>
         </Group>
         <Sound
@@ -419,30 +424,30 @@ function set_whichChoice (value)
             minFront='100'
             maxBack='100'
             maxFront='100'>
-          <AudioClip DEF='_65'
+          <AudioClip DEF='_38'
               url='"click01.mp3"'
               startTime='1505710882.20402'/>
         </Sound>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='_15' fromField='isOver' toNode='_3' toField='set_whichChoice'/>
-    <ROUTE fromNode='_23' fromField='isOver' toNode='_16' toField='set_whichChoice'/>
-    <ROUTE fromNode='_31' fromField='isOver' toNode='_24' toField='set_whichChoice'/>
-    <ROUTE fromNode='_39' fromField='isOver' toNode='_32' toField='set_whichChoice'/>
-    <ROUTE fromNode='_47' fromField='isOver' toNode='_40' toField='set_whichChoice'/>
-    <ROUTE fromNode='_55' fromField='isOver' toNode='_48' toField='set_whichChoice'/>
-    <ROUTE fromNode='_64' fromField='isOver' toNode='_56' toField='set_whichChoice'/>
+    <ROUTE fromNode='_12' fromField='isOver' toNode='_3' toField='set_whichChoice'/>
+    <ROUTE fromNode='_16' fromField='isOver' toNode='_13' toField='set_whichChoice'/>
+    <ROUTE fromNode='_20' fromField='isOver' toNode='_17' toField='set_whichChoice'/>
+    <ROUTE fromNode='_24' fromField='isOver' toNode='_21' toField='set_whichChoice'/>
+    <ROUTE fromNode='_28' fromField='isOver' toNode='_25' toField='set_whichChoice'/>
+    <ROUTE fromNode='_32' fromField='isOver' toNode='_29' toField='set_whichChoice'/>
+    <ROUTE fromNode='_37' fromField='isOver' toNode='_33' toField='set_whichChoice'/>
     <ROUTE fromNode='SkylineAnimationTimer' fromField='fraction_changed' toNode='skylineScaleInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='skylineScaleInterpolator' fromField='value_changed' toNode='skyline' toField='set_scale'/>
     <ROUTE fromNode='SkylineAnimationTimer' fromField='fraction_changed' toNode='skylineTranslationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='skylineTranslationInterpolator' fromField='value_changed' toNode='skyline' toField='set_translation'/>
-    <ROUTE fromNode='_64' fromField='touchTime' toNode='_65' toField='set_startTime'/>
-    <ROUTE fromNode='_55' fromField='touchTime' toNode='_65' toField='set_startTime'/>
-    <ROUTE fromNode='_47' fromField='touchTime' toNode='_65' toField='set_startTime'/>
-    <ROUTE fromNode='_39' fromField='touchTime' toNode='_65' toField='set_startTime'/>
-    <ROUTE fromNode='_31' fromField='touchTime' toNode='_65' toField='set_startTime'/>
-    <ROUTE fromNode='_23' fromField='touchTime' toNode='_65' toField='set_startTime'/>
-    <ROUTE fromNode='_15' fromField='touchTime' toNode='_65' toField='set_startTime'/>
+    <ROUTE fromNode='_37' fromField='touchTime' toNode='_38' toField='set_startTime'/>
+    <ROUTE fromNode='_32' fromField='touchTime' toNode='_38' toField='set_startTime'/>
+    <ROUTE fromNode='_28' fromField='touchTime' toNode='_38' toField='set_startTime'/>
+    <ROUTE fromNode='_24' fromField='touchTime' toNode='_38' toField='set_startTime'/>
+    <ROUTE fromNode='_20' fromField='touchTime' toNode='_38' toField='set_startTime'/>
+    <ROUTE fromNode='_16' fromField='touchTime' toNode='_38' toField='set_startTime'/>
+    <ROUTE fromNode='_12' fromField='touchTime' toNode='_38' toField='set_startTime'/>
     <ROUTE fromNode='_1' fromField='enterTime' toNode='SkylineAnimationTimer' toField='set_startTime'/>
     <ROUTE fromNode='_1' fromField='exitTime' toNode='SkylineAnimationTimer' toField='set_stopTime'/>
   </Scene>

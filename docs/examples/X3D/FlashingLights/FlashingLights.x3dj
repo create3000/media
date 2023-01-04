@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,16 +33,24 @@
       ],
       "component": [
         {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
           "@name": "Layering",
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "PointingDeviceSensor",
+          "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -71,7 +79,8 @@
 "{",
 "\tBrowser .setBrowserOption (\"Shading\",          \"PHONG\");",
 "\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
-"}"
+"}",
+""
                         ]
                       }
                     },
@@ -130,7 +139,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@DEF": "Metal27_2",
+                                            "@DEF": "Metal27_1",
                                             "@ambientIntensity": 0,
                                             "@diffuseColor": [ 0, 0, 0 ],
                                             "@shininess": 0,
@@ -168,7 +177,7 @@
                               "-children": [
                                 { "TimeSensor":
                                   {
-                                    "@DEF": "_3",
+                                    "@DEF": "_2",
                                     "@cycleInterval": 30,
                                     "@loop": true
                                   }
@@ -402,7 +411,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_4",
+                        "@DEF": "Text_1",
                         "@translation": [ 0, -0.0191083, 0 ],
                         "-children": [
                           { "Shape":
@@ -425,7 +434,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@DEF": "_5",
+                                      "@DEF": "_3",
                                       "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
                                       "@size": 0.08,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
@@ -445,7 +454,7 @@
                         "-children": [
                           { "Shape":
                             {
-                              "@DEF": "_6",
+                              "@DEF": "_4",
                               "-appearance": { "Appearance":
                                 {
                                   "-material": { "Material":
@@ -467,7 +476,7 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_7",
+                              "@DEF": "Text_2",
                               "@translation": [ 0, -0.00799999, 0 ],
                               "-children": [
                                 { "Shape":
@@ -476,7 +485,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@DEF": "_8",
+                                            "@DEF": "_5",
                                             "@ambientIntensity": 0,
                                             "@diffuseColor": [ 0, 0, 0 ],
                                             "@shininess": 0
@@ -490,7 +499,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@USE": "_5"
+                                            "@USE": "_3"
                                           }
                                         }
                                       }
@@ -505,17 +514,17 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Disk2D_9",
+                        "@DEF": "Disk2D_1",
                         "@translation": [ 0.15, -0.259941, 0 ],
                         "-children": [
                           { "Shape":
                             {
-                              "@USE": "_6"
+                              "@USE": "_4"
                             }
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_10",
+                              "@DEF": "Text_3",
                               "@translation": [ 0, 0.00100001, 0 ],
                               "-children": [
                                 { "Shape":
@@ -524,7 +533,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@USE": "_8"
+                                            "@USE": "_5"
                                           }
                                         }
                                       }
@@ -535,7 +544,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@USE": "_5"
+                                            "@USE": "_3"
                                           }
                                         }
                                       }
@@ -550,7 +559,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_11",
+                        "@DEF": "Text_4",
                         "@translation": [ 0, -0.617834, 0 ],
                         "-children": [
                           { "Shape":
@@ -665,7 +674,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
+            "@fromNode": "_2",
             "@fromField": "fraction_changed",
             "@toNode": "Light1ColorInterpolator",
             "@toField": "set_fraction"

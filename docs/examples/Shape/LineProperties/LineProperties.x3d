@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Grouping' level='3'/>
-    <component name='Time' level='2'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Mon, 15 Apr 2019 01:44:57 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.5.0, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shape/LineProperties/LineProperties.O.x3d'/>
     <meta name='modified' content='Mon, 15 Apr 2019 02:42:45 GMT'/>
   </head>
@@ -32,7 +30,7 @@
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 1 0 1.5707963267949, 0 1 0 3.14159253438051, 0 1 0 4.7123888611754, 0 0 1 0'/>
       </Group>
-      <Transform DEF='_3'
+      <Transform DEF='_1'
           rotation='0 1 0 0.462843733150726'>
         <Transform DEF='Box'
             rotation='0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265'
@@ -45,7 +43,7 @@
               <Material
                   emissiveColor='1 1 0'/>
             </Appearance>
-            <IndexedLineSet DEF='_4'
+            <IndexedLineSet DEF='_2'
                 coordIndex='0, 1, 2, 3, 0, -1, 5, 4, 7, 6, 5, -1, 2, 6, -1, 7, 3, -1, 5, 1, -1, 0, 4, -1'>
               <Coordinate
                   point='-1 -1 1, 1 -1 1, 1 1 1, -1 1 1, -1 -1 -1, 1 -1 -1, 1 1 -1, -1 1 -1'/>
@@ -53,9 +51,9 @@
           </Shape>
         </Transform>
       </Transform>
-      <Transform DEF='_5'
+      <Transform DEF='_3'
           rotation='0 -1 0 0.462843733150726'>
-        <Transform DEF='Box_6'
+        <Transform DEF='Box_1'
             rotation='0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265'
             scale='1.75736 1.75736 1.75736'
             scaleOrientation='-0.329043930035858 0.566697417302696 -0.755370193566712 0.67555490580333'>
@@ -67,13 +65,13 @@
               <Material
                   emissiveColor='1 0.5 0'/>
             </Appearance>
-            <IndexedLineSet USE='_4'/>
+            <IndexedLineSet USE='_2'/>
           </Shape>
         </Transform>
       </Transform>
-      <Transform DEF='_7'
+      <Transform DEF='_4'
           rotation='0 1 0 0.462843733150726'>
-        <Transform DEF='Box_8'
+        <Transform DEF='Box_2'
             rotation='0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265'
             scale='2.82844 2.82844 2.82844'
             scaleOrientation='0.111350277667656 0.40117999342139 0.909206097945757 0.731417893085076'>
@@ -85,16 +83,16 @@
               <Material
                   emissiveColor='1 0 0'/>
             </Appearance>
-            <IndexedLineSet USE='_4'/>
+            <IndexedLineSet USE='_2'/>
           </Shape>
         </Transform>
       </Transform>
     </Transform>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_3' toField='set_rotation'/>
+    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_1' toField='set_rotation'/>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator_1' toField='set_fraction'/>
-    <ROUTE fromNode='RotationInterpolator_1' fromField='value_changed' toNode='_5' toField='set_rotation'/>
+    <ROUTE fromNode='RotationInterpolator_1' fromField='value_changed' toNode='_3' toField='set_rotation'/>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator_2' toField='set_fraction'/>
-    <ROUTE fromNode='RotationInterpolator_2' fromField='value_changed' toNode='_7' toField='set_rotation'/>
+    <ROUTE fromNode='RotationInterpolator_2' fromField='value_changed' toNode='_4' toField='set_rotation'/>
   </Scene>
 </X3D>

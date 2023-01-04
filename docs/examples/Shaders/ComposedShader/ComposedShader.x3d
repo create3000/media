@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Interchange' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Shaders' level='1'/>
     <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Wed, 06 Dec 2017 01:50:04 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Shaders/ComposedShader/ComposedShader.x3d'/>
-    <meta name='modified' content='Thu, 10 Nov 2022 10:44:31 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Shaders/ComposedShader/ComposedShader.O.x3d'/>
+    <meta name='modified' content='Thu, 10 Nov 2022 10:40:56 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
@@ -218,20 +218,8 @@ main ()
         orientation='0.99991517384209 -0.012669170765548 -0.0030227855452985 5.8147171274952'
         centerOfRotation='-0.02 0 0'/>
     <Transform DEF='Box'
-        rotation='0 1 0 0.39094541979014'>
+        rotation='0 -1 0 0.47815060001555'>
       <Group DEF='Animation'>
-        <MetadataSet DEF='Animation_1'
-            name='Animation'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='duration' containerField='value'
-              name='duration'
-              reference='http://titania.create3000.de'
-              value='120'/>
-          <MetadataInteger DEF='frameRate' containerField='value'
-              name='frameRate'
-              reference='http://titania.create3000.de'
-              value='10'/>
-        </MetadataSet>
         <TimeSensor DEF='AnimationTimer'
             cycleInterval='12'
             loop='true'
@@ -239,28 +227,7 @@ main ()
             stopTime='1512868952.01575'/>
         <OrientationInterpolator DEF='BoxRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
-            keyValue='0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.1415925343805, 0 1 0 1.5707964460042, 0 0 1 0'>
-          <MetadataSet DEF='Interpolator'
-              name='Interpolator'
-              reference='http://titania.create3000.de'>
-            <MetadataInteger DEF='key' containerField='value'
-                name='key'
-                reference='http://titania.create3000.de'
-                value='0, 30, 60, 90, 120'/>
-            <MetadataDouble DEF='keyValue' containerField='value'
-                name='keyValue'
-                reference='http://titania.create3000.de'
-                value='0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.1415925343805, 0, 1, 0, 1.5707964460042, 0, 0, 1, 0'/>
-            <MetadataString DEF='keyType' containerField='value'
-                name='keyType'
-                reference='http://titania.create3000.de'
-                value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
-            <MetadataInteger DEF='keySize' containerField='value'
-                name='keySize'
-                reference='http://titania.create3000.de'
-                value='1'/>
-          </MetadataSet>
-        </OrientationInterpolator>
+            keyValue='0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.1415925343805, 0 1 0 1.5707964460042, 0 0 1 0'/>
       </Group>
       <Shape>
         <Appearance>

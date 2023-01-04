@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.17, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -34,7 +34,15 @@
       "component": [
         {
           "@name": "CubeMapTexturing",
-          "@level": 1
+          "@level": 3
+        },
+        {
+          "@name": "EnvironmentalSensor",
+          "@level": 3
+        },
+        {
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layering",
@@ -42,6 +50,14 @@
         },
         {
           "@name": "Layout",
+          "@level": 2
+        },
+        {
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
           "@level": 1
         },
         {
@@ -49,8 +65,8 @@
           "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ],
       "unit": [
@@ -99,7 +115,7 @@
               { "LayoutLayer":
                 {
                   "@DEF": "Backgound",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-layout": { "Layout":
                     {
                       "@size": [ 1 ]
@@ -153,7 +169,7 @@
               { "Layer":
                 {
                   "@DEF": "Water",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "ViewpointGroup":
                       {
@@ -221,7 +237,7 @@
                                         "@coordIndex": [ 0, 1, 2, 3, -1, 5, 4, 7, 6, -1, 4, 5, 1, 0, -1, 4, 0, 3, 7, -1, 1, 5, 6, 2, -1 ],
                                         "-texCoord": { "TextureCoordinate":
                                           {
-                                            "@point": [ 0, 0, 1, 0, 0.999869, 0.499728, -0.000131071, 0.499728, -4.94719e-06, 0.99993, 0.999995, 0.99993, 1, 0, 0, 0 ]
+                                            "@point": [ 0, 0, 1, 0, 0.999869, 0.499728, -0.000131071, 0.499728, -0.00000494719, 0.99993, 0.999995, 0.99993, 1, 0, 0, 0 ]
                                           }
                                         },
                                         "-coord": { "Coordinate":
@@ -238,7 +254,7 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Box_2",
+                              "@DEF": "Box_1",
                               "@translation": [ 30, -11.25, 30 ],
                               "@scale": [ 32.5, 16.25, 32.5 ],
                               "-children": [
@@ -274,11 +290,11 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Rectangle2D_3",
+                              "@DEF": "Rectangle2D_1",
                               "@translation": [ 30.0042, 5.00002, 61.25 ],
                               "@rotation": [ -0.577351935847832, 0.577345935848499, 0.577352935847721, 119.999707654404 ],
                               "@scale": [ 1.25, 30.0042, 1.25 ],
-                              "@scaleOrientation": [ 1.37573999999847e-06, -0.999999999998891, 5.70145999999368e-07, 44.9801662983043 ],
+                              "@scaleOrientation": [ 0.00000137573999999847, -0.999999999998891, 5.70145999999368e-7, 44.9801662983043 ],
                               "-children": [
                                 { "Shape":
                                   {
@@ -293,7 +309,78 @@
                                         "@coordIndex": [ 0, 1, 2, 3, -1 ],
                                         "-texCoord": { "TextureCoordinate":
                                           {
-                                            "@point": [ 0, 0, 0.0419023, 2.36034e-05, 0.0419097, 0.999995, 7.40585e-06, 0.999975 ]
+                                            "@point": [ 0, 0, 0.0419023, 0.0000236034, 0.0419097, 0.999995, 0.00000740585, 0.999975 ]
+                                          }
+                                        },
+                                        "-coord": { "Coordinate":
+                                          {
+                                            "@point": [ -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Rectangle2D_2",
+                              "@translation": [ 30, 5, -1.25 ],
+                              "@rotation": [ -0.577351935847832, 0.577345935848499, 0.577352935847721, 119.999707654404 ],
+                              "@scale": [ 1.25, 30.0042, 1.25 ],
+                              "@scaleOrientation": [ 3.78907999999885e-7, 0.999999999999697, 6.79481999999794e-7, 31.7060519880519 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "@USE": "_1"
+                                      }
+                                    },
+                                    "-geometry": { "IndexedFaceSet":
+                                      {
+                                        "@texCoordIndex": [ 0, 1, 2, 3, -1 ],
+                                        "@coordIndex": [ 0, 1, 2, 3, -1 ],
+                                        "-texCoord": { "TextureCoordinate":
+                                          {
+                                            "@point": [ 0, 0, 0.0419023, 0.0000236034, 0.0419097, 0.999995, 0.00000740585, 0.999975 ]
+                                          }
+                                        },
+                                        "-coord": { "Coordinate":
+                                          {
+                                            "@point": [ -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "Rectangle2D_3",
+                              "@translation": [ 61.25, 5, 30 ],
+                              "@rotation": [ 0.99999999999273, 0.00000380629999997233, 2.27044999998349e-7, 270.000058419654 ],
+                              "@scale": [ 1.25, 32.5084, 1.25 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "@USE": "_1"
+                                      }
+                                    },
+                                    "-geometry": { "IndexedFaceSet":
+                                      {
+                                        "@texCoordIndex": [ 0, 1, 2, 3, -1 ],
+                                        "@coordIndex": [ 0, 1, 2, 3, -1 ],
+                                        "-texCoord": { "TextureCoordinate":
+                                          {
+                                            "@point": [ 0, 0, 0.0419023, 0.0000236034, 0.0418615, 1.08298, -0.0000407547, 1.08296 ]
                                           }
                                         },
                                         "-coord": { "Coordinate":
@@ -311,79 +398,8 @@
                           { "Transform":
                             {
                               "@DEF": "Rectangle2D_4",
-                              "@translation": [ 30, 5, -1.25 ],
-                              "@rotation": [ -0.577351935847832, 0.577345935848499, 0.577352935847721, 119.999707654404 ],
-                              "@scale": [ 1.25, 30.0042, 1.25 ],
-                              "@scaleOrientation": [ 3.78907999999885e-07, 0.999999999999697, 6.79481999999794e-07, 31.7060519880519 ],
-                              "-children": [
-                                { "Shape":
-                                  {
-                                    "-appearance": { "Appearance":
-                                      {
-                                        "@USE": "_1"
-                                      }
-                                    },
-                                    "-geometry": { "IndexedFaceSet":
-                                      {
-                                        "@texCoordIndex": [ 0, 1, 2, 3, -1 ],
-                                        "@coordIndex": [ 0, 1, 2, 3, -1 ],
-                                        "-texCoord": { "TextureCoordinate":
-                                          {
-                                            "@point": [ 0, 0, 0.0419023, 2.36034e-05, 0.0419097, 0.999995, 7.40585e-06, 0.999975 ]
-                                          }
-                                        },
-                                        "-coord": { "Coordinate":
-                                          {
-                                            "@point": [ -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 ]
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          { "Transform":
-                            {
-                              "@DEF": "Rectangle2D_5",
-                              "@translation": [ 61.25, 5, 30 ],
-                              "@rotation": [ 0.99999999999273, 3.80629999997233e-06, 2.27044999998349e-07, 270.000058419654 ],
-                              "@scale": [ 1.25, 32.5084, 1.25 ],
-                              "-children": [
-                                { "Shape":
-                                  {
-                                    "-appearance": { "Appearance":
-                                      {
-                                        "@USE": "_1"
-                                      }
-                                    },
-                                    "-geometry": { "IndexedFaceSet":
-                                      {
-                                        "@texCoordIndex": [ 0, 1, 2, 3, -1 ],
-                                        "@coordIndex": [ 0, 1, 2, 3, -1 ],
-                                        "-texCoord": { "TextureCoordinate":
-                                          {
-                                            "@point": [ 0, 0, 0.0419023, 2.36034e-05, 0.0418615, 1.08298, -4.07547e-05, 1.08296 ]
-                                          }
-                                        },
-                                        "-coord": { "Coordinate":
-                                          {
-                                            "@point": [ -1, -1, 0, 1, -1, 0, 1, 1, 0, -1, 1, 0 ]
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          { "Transform":
-                            {
-                              "@DEF": "Rectangle2D_6",
                               "@translation": [ -1.24988, 5, 30.008 ],
-                              "@rotation": [ 0.99999999999273, 3.80629999997233e-06, 2.27044999998349e-07, 270.000058419654 ],
+                              "@rotation": [ 0.99999999999273, 0.00000380629999997233, 2.27044999998349e-7, 270.000058419654 ],
                               "@scale": [ 1.25, 32.5084, 1.25 ],
                               "-children": [
                                 { "Shape":
@@ -399,7 +415,7 @@
                                         "@coordIndex": [ 0, 1, 2, 3, -1 ],
                                         "-texCoord": { "TextureCoordinate":
                                           {
-                                            "@point": [ 0, 0, 0.0419023, 2.36034e-05, 0.0418615, 1.08298, -4.07547e-05, 1.08296 ]
+                                            "@point": [ 0, 0, 0.0419023, 0.0000236034, 0.0418615, 1.08298, -0.0000407547, 1.08296 ]
                                           }
                                         },
                                         "-coord": { "Coordinate":
@@ -419,7 +435,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Water_7",
+                        "@DEF": "Water_1",
                         "-children": [
                           { "TimeSensor":
                             {
@@ -430,7 +446,7 @@
                           },
                           { "ProximitySensor":
                             {
-                              "@DEF": "_8",
+                              "@DEF": "_2",
                               "@size": [ 1000, 1000, 1000 ]
                             }
                           },
@@ -438,44 +454,44 @@
                             {
                               "-appearance": { "Appearance":
                                 {
-                                  "@DEF": "_9",
+                                  "@DEF": "_3",
                                   "-material": { "Material":
                                     {
-                                      "@DEF": "_10"
+                                      "@DEF": "_4"
                                     }
                                   },
                                   "-texture": { "ComposedCubeMapTexture":
                                     {
-                                      "@DEF": "_11",
-                                      "-front": { "ImageTexture":
+                                      "@DEF": "_5",
+                                      "-frontTexture": { "ImageTexture":
                                         {
-                                          "@DEF": "_12",
+                                          "@DEF": "_6",
                                           "@url": [ "assets/WideOcean/WideOcean-front.jpg" ]
                                         }
                                       },
-                                      "-back": { "ImageTexture":
+                                      "-backTexture": { "ImageTexture":
                                         {
                                           "@url": [ "assets/WideOcean/WideOcean-back.jpg" ]
                                         }
                                       },
-                                      "-left": { "ImageTexture":
+                                      "-leftTexture": { "ImageTexture":
                                         {
                                           "@url": [ "assets/WideOcean/WideOcean-left.jpg" ]
                                         }
                                       },
-                                      "-right": { "ImageTexture":
+                                      "-rightTexture": { "ImageTexture":
                                         {
                                           "@url": [ "assets/WideOcean/WideOcean-right.jpg" ]
                                         }
                                       },
-                                      "-top": { "ImageTexture":
-                                        {
-                                          "@url": [ "assets/WideOcean/WideOcean-top.jpg" ]
-                                        }
-                                      },
-                                      "-bottom": { "ImageTexture":
+                                      "-bottomTexture": { "ImageTexture":
                                         {
                                           "@url": [ "assets/WideOcean/WideOcean-bottom.jpg" ]
+                                        }
+                                      },
+                                      "-topTexture": { "ImageTexture":
+                                        {
+                                          "@url": [ "assets/WideOcean/WideOcean-top.jpg" ]
                                         }
                                       }
                                     }
@@ -489,14 +505,14 @@
                                           { "ShaderPart":
                                             {
                                               "@DEF": "WaterVertex",
-                                              "@url": [ "data:text/plain,\n\nprecision mediump float;\n\nuniform mat3 x3d_NormalMatrix;\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Vertex;\n\n#define WAVE_MAX 8\n\nuniform float set_time;\nuniform vec3  position;\nuniform float amplitude [WAVE_MAX];\nuniform float frequency [WAVE_MAX];\nuniform float speed [WAVE_MAX];\nuniform vec2  direction [WAVE_MAX];\n\nvarying vec3 texCoord;\n\n#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\nvarying float depth;\n#endif\n\nvec2 offset [WAVE_MAX];\n\nfloat hash (in float n)\n{\n\treturn fract (sin (n) * 43758.5453123);\n}\n\nfloat nnoise (in vec2 x)\n{\n\tvec2 p = floor (x);\n\tvec2 f = fract (x);\n\n\tf = f * f * (3.0 - 2.0 * f);\n\n\tfloat n   = p.x + p.y * 57.0;\n\tfloat res = mix (mix (hash (n +  0.0), hash (n +  1.0), f.x),\n\t                 mix (hash (n + 57.0), hash (n + 58.0), f.x), f.y);\n\n\treturn res * 2.0 - 1.0;\n}\n\nfloat\ngetHeight (in int i, in vec2 vertex, in vec2 offset)\n{\n\treturn amplitude [i] * nnoise ((vertex - offset) * frequency [i]);\n}\n\nfloat\ngetWaveHeight (in vec2 vertex)\n{\n\tfloat height = 0.0;\n\n\tfor (int i = 0; i < WAVE_MAX; ++ i)\n\t{\n\t\tif (amplitude [i] == 0.0)\n\t\t\tcontinue;\n\n\t\theight += getHeight (i, vertex, offset [i]);\n\t}\n\n\treturn height;\n}\n\n#define DISTANCE_MIN 0.01\n\nconst vec2 delta = vec2 (DISTANCE_MIN, -DISTANCE_MIN);\n\nvec3\ngetWaveNormal (in vec2 pos)\n{\n\tvec2 p1 = pos + delta .xx;\n\tvec2 p2 = pos + delta .yy;\n\tvec2 p3 = pos + delta .yx;\n\tvec2 p4 = pos + delta .xy;\n\n\tvec3 n1 = vec3 (p1.x, getWaveHeight (p1), p1.y);\n\tvec3 n2 = vec3 (p2.x, getWaveHeight (p2), p2.y);\n\tvec3 n3 = vec3 (p3.x, getWaveHeight (p3), p3.y);\n\tvec3 n4 = vec3 (p4.x, getWaveHeight (p4), p4.y);\n   \n   vec3 n = cross (n1 - n2, n3 - n4);\n   \n   return normalize (n);\n}\n\nvoid\nmain ()\n{\n\tfor (int i = 0; i < WAVE_MAX; ++ i)\n\t\toffset [i] = normalize (direction [i]) * set_time * speed [i];\n\t\n\tvec4 vertex = x3d_Vertex;\n\tvec2 pos    = vec2 (vertex .x, vertex .z);\n\tvertex .y   = getWaveHeight (pos);\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;\n\n\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\n\tdepth = 1.0 + gl_Position .w;\n\t#endif\n\n\tvec3 eye    = position - vertex .xyz / vertex .w;\n\tvec3 normal = getWaveNormal (pos);\n\ttexCoord    = -reflect (eye, normal);\n}" ]
+                                              "@url": [ "data:text/plain,\n\nprecision highp float;\nprecision highp int;\n\nuniform mat3 x3d_NormalMatrix;\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Vertex;\n\n#define WAVE_MAX 8\n\nuniform float set_time;\nuniform vec3  position;\nuniform float amplitude [WAVE_MAX];\nuniform float frequency [WAVE_MAX];\nuniform float speed [WAVE_MAX];\nuniform vec2  direction [WAVE_MAX];\n\nvarying vec3 texCoord;\n\n#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\nvarying float depth;\n#endif\n\nvec2 offset [WAVE_MAX];\n\nfloat hash (in float n)\n{\n\treturn fract (sin (n) * 43758.5453123);\n}\n\nfloat nnoise (in vec2 x)\n{\n\tvec2 p = floor (x);\n\tvec2 f = fract (x);\n\n\tf = f * f * (3.0 - 2.0 * f);\n\n\tfloat n   = p.x + p.y * 57.0;\n\tfloat res = mix (mix (hash (n +  0.0), hash (n +  1.0), f.x),\n\t                 mix (hash (n + 57.0), hash (n + 58.0), f.x), f.y);\n\n\treturn res * 2.0 - 1.0;\n}\n\nfloat\ngetHeight (in int i, in vec2 vertex, in vec2 offset)\n{\n\treturn amplitude [i] * nnoise ((vertex - offset) * frequency [i]);\n}\n\nfloat\ngetWaveHeight (in vec2 vertex)\n{\n\tfloat height = 0.0;\n\n\tfor (int i = 0; i < WAVE_MAX; ++ i)\n\t{\n\t\tif (amplitude [i] == 0.0)\n\t\t\tcontinue;\n\n\t\theight += getHeight (i, vertex, offset [i]);\n\t}\n\n\treturn height;\n}\n\n#define DISTANCE_MIN 0.01\n\nconst vec2 delta = vec2 (DISTANCE_MIN, -DISTANCE_MIN);\n\nvec3\ngetWaveNormal (in vec2 pos)\n{\n\tvec2 p1 = pos + delta .xx;\n\tvec2 p2 = pos + delta .yy;\n\tvec2 p3 = pos + delta .yx;\n\tvec2 p4 = pos + delta .xy;\n\n\tvec3 n1 = vec3 (p1.x, getWaveHeight (p1), p1.y);\n\tvec3 n2 = vec3 (p2.x, getWaveHeight (p2), p2.y);\n\tvec3 n3 = vec3 (p3.x, getWaveHeight (p3), p3.y);\n\tvec3 n4 = vec3 (p4.x, getWaveHeight (p4), p4.y);\n\n   vec3 n = cross (n1 - n2, n3 - n4);\n\n   return normalize (n);\n}\n\nvoid\nmain ()\n{\n\tfor (int i = 0; i < WAVE_MAX; ++ i)\n\t\toffset [i] = normalize (direction [i]) * set_time * speed [i];\n\n\tvec4 vertex = x3d_Vertex;\n\tvec2 pos    = vec2 (vertex .x, vertex .z);\n\tvertex .y   = getWaveHeight (pos);\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;\n\n\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\n\tdepth = 1.0 + gl_Position .w;\n\t#endif\n\n\tvec3 eye    = position - vertex .xyz / vertex .w;\n\tvec3 normal = getWaveNormal (pos);\n\ttexCoord    = -reflect (eye, normal);\n}" ]
                                             }
                                           },
                                           { "ShaderPart":
                                             {
                                               "@DEF": "WaterFragment",
                                               "@type": "FRAGMENT",
-                                              "@url": [ "data:text/plain,\n\n#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\n#extension GL_EXT_frag_depth : enable\n#endif\n\nprecision mediump float;\n\nuniform x3d_MaterialParameters x3d_Material;\nuniform samplerCube x3d_TextureCube [x3d_MaxTextures];\n\nvarying vec3 texCoord;\n\n#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\nuniform float x3d_LogarithmicFarFactor;\nvarying float depth;\n#endif\n\nvoid\nmain ()\n{\n\tvec3 color   = vec3 (textureCube (x3d_TextureCube [0], texCoord));\n\tgl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);\n\n\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\n\t//http://outerra.blogspot.com/2013/07/logarithmic-depth-buffer-optimizations.html\n\tgl_FragDepthEXT = log2 (depth) * x3d_LogarithmicFarFactor * 0.5;\n\t#endif\n}\n" ]
+                                              "@url": [ "data:text/plain,\n\n#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\n#extension GL_EXT_frag_depth : enable\n#endif\n\nprecision highp float;\nprecision highp int;\n\nuniform x3d_MaterialParameters x3d_Material;\nuniform samplerCube x3d_TextureCube [x3d_MaxTextures];\n\nvarying vec3 texCoord;\n\n#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\nuniform float x3d_LogarithmicFarFactor;\nvarying float depth;\n#endif\n\nvoid\nmain ()\n{\n\tvec3 color   = vec3 (textureCube (x3d_TextureCube [0], texCoord));\n\tgl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);\n\n\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER\n\t//http://outerra.blogspot.com/2013/07/logarithmic-depth-buffer-optimizations.html\n\tgl_FragDepthEXT = log2 (depth) * x3d_LogarithmicFarFactor * 0.5;\n\t#endif\n}\n" ]
                                             }
                                           }
                                         ],
@@ -617,7 +633,7 @@
                           { "Transform":
                             {
                               "@DEF": "Sunset",
-                              "@translation": [ -1.575, -0.35, -1.28614e-06 ],
+                              "@translation": [ -1.575, -0.35, -0.00000128614 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -626,7 +642,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@DEF": "_13",
+                                            "@DEF": "_7",
                                             "@url": [ "assets/Sunset/Sunset-front.jpg" ]
                                           }
                                         }
@@ -640,13 +656,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_14",
+                                    "@DEF": "_8",
                                     "@description": "Sunset"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_15",
+                                    "@DEF": "_9",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -654,34 +670,35 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "-front": { "ImageTexture":
+                                              "@DEF": "_10",
+                                              "-frontTexture": { "ImageTexture":
                                                 {
-                                                  "@USE": "_13"
+                                                  "@USE": "_7"
                                                 }
                                               },
-                                              "-back": { "ImageTexture":
+                                              "-backTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Sunset/Sunset-back.jpg" ]
                                                 }
                                               },
-                                              "-left": { "ImageTexture":
+                                              "-leftTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Sunset/Sunset-left.jpg" ]
                                                 }
                                               },
-                                              "-right": { "ImageTexture":
+                                              "-rightTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Sunset/Sunset-right.jpg" ]
                                                 }
                                               },
-                                              "-top": { "ImageTexture":
-                                                {
-                                                  "@url": [ "assets/Sunset/Sunset-top.jpg" ]
-                                                }
-                                              },
-                                              "-bottom": { "ImageTexture":
+                                              "-bottomTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Sunset/Sunset-bottom.jpg" ]
+                                                }
+                                              },
+                                              "-topTexture": { "ImageTexture":
+                                                {
+                                                  "@url": [ "assets/Sunset/Sunset-top.jpg" ]
                                                 }
                                               }
                                             }
@@ -697,7 +714,7 @@
                           { "Transform":
                             {
                               "@DEF": "CloudySky",
-                              "@translation": [ -1.575, 0.65, 2.38855e-06 ],
+                              "@translation": [ -1.575, 0.65, 0.00000238855 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -706,7 +723,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@DEF": "_16",
+                                            "@DEF": "_11",
                                             "@url": [ "assets/CloudySky/CloudySky-front.jpg" ]
                                           }
                                         }
@@ -720,13 +737,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_17",
+                                    "@DEF": "_12",
                                     "@description": "Cloudy Sky"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_18",
+                                    "@DEF": "_13",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -734,34 +751,35 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "-front": { "ImageTexture":
+                                              "@DEF": "_14",
+                                              "-frontTexture": { "ImageTexture":
                                                 {
-                                                  "@USE": "_16"
+                                                  "@USE": "_11"
                                                 }
                                               },
-                                              "-back": { "ImageTexture":
+                                              "-backTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/CloudySky/CloudySky-back.jpg" ]
                                                 }
                                               },
-                                              "-left": { "ImageTexture":
+                                              "-leftTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/CloudySky/CloudySky-left.jpg" ]
                                                 }
                                               },
-                                              "-right": { "ImageTexture":
+                                              "-rightTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/CloudySky/CloudySky-right.jpg" ]
                                                 }
                                               },
-                                              "-top": { "ImageTexture":
-                                                {
-                                                  "@url": [ "assets/CloudySky/CloudySky-top.jpg" ]
-                                                }
-                                              },
-                                              "-bottom": { "ImageTexture":
+                                              "-bottomTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/CloudySky/CloudySky-bottom.jpg" ]
+                                                }
+                                              },
+                                              "-topTexture": { "ImageTexture":
+                                                {
+                                                  "@url": [ "assets/CloudySky/CloudySky-top.jpg" ]
                                                 }
                                               }
                                             }
@@ -777,7 +795,7 @@
                           { "Transform":
                             {
                               "@DEF": "LostValley",
-                              "@translation": [ -1.575, 0.4, 1.46988e-06 ],
+                              "@translation": [ -1.575, 0.4, 0.00000146988 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -786,7 +804,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@DEF": "_19",
+                                            "@DEF": "_15",
                                             "@url": [ "assets/LostValley/LostValley-front.jpg" ]
                                           }
                                         }
@@ -800,13 +818,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_20",
+                                    "@DEF": "_16",
                                     "@description": "Lost Valley"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_21",
+                                    "@DEF": "_17",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -814,34 +832,35 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "-front": { "ImageTexture":
+                                              "@DEF": "_18",
+                                              "-frontTexture": { "ImageTexture":
                                                 {
-                                                  "@USE": "_19"
+                                                  "@USE": "_15"
                                                 }
                                               },
-                                              "-back": { "ImageTexture":
+                                              "-backTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/LostValley/LostValley-back.jpg" ]
                                                 }
                                               },
-                                              "-left": { "ImageTexture":
+                                              "-leftTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/LostValley/LostValley-left.jpg" ]
                                                 }
                                               },
-                                              "-right": { "ImageTexture":
+                                              "-rightTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/LostValley/LostValley-right.jpg" ]
                                                 }
                                               },
-                                              "-top": { "ImageTexture":
-                                                {
-                                                  "@url": [ "assets/LostValley/LostValley-top.jpg" ]
-                                                }
-                                              },
-                                              "-bottom": { "ImageTexture":
+                                              "-bottomTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/LostValley/LostValley-bottom.jpg" ]
+                                                }
+                                              },
+                                              "-topTexture": { "ImageTexture":
+                                                {
+                                                  "@url": [ "assets/LostValley/LostValley-top.jpg" ]
                                                 }
                                               }
                                             }
@@ -857,7 +876,7 @@
                           { "Transform":
                             {
                               "@DEF": "WideOcean",
-                              "@translation": [ -1.575, 0.15, 5.51205e-07 ],
+                              "@translation": [ -1.575, 0.15, 5.51205e-7 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -866,7 +885,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@USE": "_12"
+                                            "@USE": "_6"
                                           }
                                         }
                                       }
@@ -879,13 +898,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_22",
+                                    "@DEF": "_19",
                                     "@description": "Wide Ocean"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_23",
+                                    "@DEF": "_20",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -893,7 +912,7 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@USE": "_11"
+                                              "@USE": "_5"
                                             }
                                           }
                                         ]
@@ -907,7 +926,7 @@
                           { "Transform":
                             {
                               "@DEF": "ViolentDays",
-                              "@translation": [ -1.575, -0.85, -3.12349e-06 ],
+                              "@translation": [ -1.575, -0.85, -0.00000312349 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -916,7 +935,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@DEF": "_24",
+                                            "@DEF": "_21",
                                             "@url": [ "assets/ViolentDays/ViolentDays-front.jpg" ]
                                           }
                                         }
@@ -930,13 +949,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_25",
+                                    "@DEF": "_22",
                                     "@description": "Violent Days"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_26",
+                                    "@DEF": "_23",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -944,34 +963,35 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "-front": { "ImageTexture":
+                                              "@DEF": "_24",
+                                              "-frontTexture": { "ImageTexture":
                                                 {
-                                                  "@USE": "_24"
+                                                  "@USE": "_21"
                                                 }
                                               },
-                                              "-back": { "ImageTexture":
+                                              "-backTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/ViolentDays/ViolentDays-back.jpg" ]
                                                 }
                                               },
-                                              "-left": { "ImageTexture":
+                                              "-leftTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/ViolentDays/ViolentDays-left.jpg" ]
                                                 }
                                               },
-                                              "-right": { "ImageTexture":
+                                              "-rightTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/ViolentDays/ViolentDays-right.jpg" ]
                                                 }
                                               },
-                                              "-top": { "ImageTexture":
-                                                {
-                                                  "@url": [ "assets/ViolentDays/ViolentDays-top.jpg" ]
-                                                }
-                                              },
-                                              "-bottom": { "ImageTexture":
+                                              "-bottomTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/ViolentDays/ViolentDays-bottom.jpg" ]
+                                                }
+                                              },
+                                              "-topTexture": { "ImageTexture":
+                                                {
+                                                  "@url": [ "assets/ViolentDays/ViolentDays-top.jpg" ]
                                                 }
                                               }
                                             }
@@ -987,7 +1007,7 @@
                           { "Transform":
                             {
                               "@DEF": "NightSky",
-                              "@translation": [ -1.575, -0.1, -3.6747e-07 ],
+                              "@translation": [ -1.575, -0.1, -3.6747e-7 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -996,7 +1016,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@DEF": "_27",
+                                            "@DEF": "_25",
                                             "@url": [ "assets/NightSky/NightSky-front.jpg" ]
                                           }
                                         }
@@ -1010,13 +1030,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_28",
+                                    "@DEF": "_26",
                                     "@description": "Night Sky"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_29",
+                                    "@DEF": "_27",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -1024,34 +1044,35 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "-front": { "ImageTexture":
+                                              "@DEF": "_28",
+                                              "-frontTexture": { "ImageTexture":
                                                 {
-                                                  "@USE": "_27"
+                                                  "@USE": "_25"
                                                 }
                                               },
-                                              "-back": { "ImageTexture":
+                                              "-backTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/NightSky/NightSky-back.jpg" ]
                                                 }
                                               },
-                                              "-left": { "ImageTexture":
+                                              "-leftTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/NightSky/NightSky-left.jpg" ]
                                                 }
                                               },
-                                              "-right": { "ImageTexture":
+                                              "-rightTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/NightSky/NightSky-right.jpg" ]
                                                 }
                                               },
-                                              "-top": { "ImageTexture":
-                                                {
-                                                  "@url": [ "assets/NightSky/NightSky-top.jpg" ]
-                                                }
-                                              },
-                                              "-bottom": { "ImageTexture":
+                                              "-bottomTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/NightSky/NightSky-bottom.jpg" ]
+                                                }
+                                              },
+                                              "-topTexture": { "ImageTexture":
+                                                {
+                                                  "@url": [ "assets/NightSky/NightSky-top.jpg" ]
                                                 }
                                               }
                                             }
@@ -1067,7 +1088,7 @@
                           { "Transform":
                             {
                               "@DEF": "Interstellar",
-                              "@translation": [ -1.575, -0.6, -2.20482e-06 ],
+                              "@translation": [ -1.575, -0.6, -0.00000220482 ],
                               "@scale": [ 0.1, 0.10535, 0.10535 ],
                               "-children": [
                                 { "Shape":
@@ -1076,7 +1097,7 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@DEF": "_30",
+                                            "@DEF": "_29",
                                             "@url": [ "assets/Interstellar/Interstellar-front.jpg" ]
                                           }
                                         }
@@ -1090,13 +1111,13 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_31",
+                                    "@DEF": "_30",
                                     "@description": "Interstellar"
                                   }
                                 },
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_32",
+                                    "@DEF": "_31",
                                     "@name": "SFNode",
                                     "fieldValue": [
                                       {
@@ -1104,34 +1125,35 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "-front": { "ImageTexture":
+                                              "@DEF": "_32",
+                                              "-frontTexture": { "ImageTexture":
                                                 {
-                                                  "@USE": "_30"
+                                                  "@USE": "_29"
                                                 }
                                               },
-                                              "-back": { "ImageTexture":
+                                              "-backTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Interstellar/Interstellar-back.jpg" ]
                                                 }
                                               },
-                                              "-left": { "ImageTexture":
+                                              "-leftTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Interstellar/Interstellar-left.jpg" ]
                                                 }
                                               },
-                                              "-right": { "ImageTexture":
+                                              "-rightTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Interstellar/Interstellar-right.jpg" ]
                                                 }
                                               },
-                                              "-top": { "ImageTexture":
-                                                {
-                                                  "@url": [ "assets/Interstellar/Interstellar-top.jpg" ]
-                                                }
-                                              },
-                                              "-bottom": { "ImageTexture":
+                                              "-bottomTexture": { "ImageTexture":
                                                 {
                                                   "@url": [ "assets/Interstellar/Interstellar-bottom.jpg" ]
+                                                }
+                                              },
+                                              "-topTexture": { "ImageTexture":
+                                                {
+                                                  "@url": [ "assets/Interstellar/Interstellar-top.jpg" ]
                                                 }
                                               }
                                             }
@@ -1193,7 +1215,7 @@
                         "-children": [
                           { "Transform":
                             {
-                              "@DEF": "Header_34",
+                              "@DEF": "Header_1",
                               "@translation": [ 1.6905, 0.857504, -1 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
@@ -1260,14 +1282,14 @@
                                 { "Transform":
                                   {
                                     "@DEF": "InvisiblePlane",
-                                    "@translation": [ 1.48177, 0.781966, 2.87349e-06 ],
+                                    "@translation": [ 1.48177, 0.781966, 0.00000287349 ],
                                     "@scale": [ 0.245, 0.040588, 0.040588 ],
                                     "-children": [
                                       { "Shape":
                                         {
                                           "-appearance": { "Appearance":
                                             {
-                                              "@DEF": "_35",
+                                              "@DEF": "_34",
                                               "-material": { "Material":
                                                 {
                                                   "@ambientIntensity": 0,
@@ -1308,7 +1330,7 @@
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "Text_36",
+                                    "@DEF": "Text_1",
                                     "@translation": [ 1.6905, 0.661504, -1 ],
                                     "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                                     "-children": [
@@ -1338,15 +1360,15 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "InvisiblePlane_37",
-                                    "@translation": [ 1.48177, 0.68352, 2.51173e-06 ],
+                                    "@DEF": "InvisiblePlane_1",
+                                    "@translation": [ 1.48177, 0.68352, 0.00000251173 ],
                                     "@scale": [ 0.245, 0.040588, 0.040588 ],
                                     "-children": [
                                       { "Shape":
                                         {
                                           "-appearance": { "Appearance":
                                             {
-                                              "@USE": "_35"
+                                              "@USE": "_34"
                                             }
                                           },
                                           "-geometry": { "IndexedFaceSet":
@@ -1379,7 +1401,7 @@
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "Text_38",
+                                    "@DEF": "Text_2",
                                     "@translation": [ 1.6905, 0.563504, -1 ],
                                     "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                                     "-children": [
@@ -1409,15 +1431,15 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "InvisiblePlane_39",
-                                    "@translation": [ 1.48177, 0.582484, 2.14045e-06 ],
+                                    "@DEF": "InvisiblePlane_2",
+                                    "@translation": [ 1.48177, 0.582484, 0.00000214045 ],
                                     "@scale": [ 0.245, 0.040588, 0.040588 ],
                                     "-children": [
                                       { "Shape":
                                         {
                                           "-appearance": { "Appearance":
                                             {
-                                              "@USE": "_35"
+                                              "@USE": "_34"
                                             }
                                           },
                                           "-geometry": { "IndexedFaceSet":
@@ -1449,7 +1471,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Header_40",
+                        "@DEF": "Header_2",
                         "@translation": [ 1.675, -0.449996, -1 ],
                         "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                         "-children": [
@@ -1486,7 +1508,7 @@
                           { "Transform":
                             {
                               "@DEF": "AmplitudeSlider",
-                              "@translation": [ 0.125, -0.523, -2.02108e-06 ],
+                              "@translation": [ 0.125, -0.523, -0.00000202108 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
@@ -1521,7 +1543,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_41",
+                                          "@DEF": "Rectangle2D_5",
                                           "@translation": [ 0.276139, 0, 0 ],
                                           "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                           "-children": [
@@ -1543,7 +1565,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_42",
+                                          "@DEF": "_35",
                                           "@offset": [ 0.276139, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
@@ -1560,7 +1582,7 @@
                                           "-children": [
                                             { "TimeSensor":
                                               {
-                                                "@DEF": "_43",
+                                                "@DEF": "_36",
                                                 "@cycleInterval": 6.8,
                                                 "@loop": true,
                                                 "@resumeTime": 1451028223.75739,
@@ -1581,6 +1603,7 @@
                                       { "Script":
                                         {
                                           "@DEF": "AmplitudeScript",
+                                          "@description": "",
                                           "field": [
                                             {
                                               "@accessType": "inputOnly",
@@ -1652,7 +1675,8 @@
 "",
 "\tfor (var i = 0, length = keyValue .length; i < length; ++ i)",
 "\t\tvalue_changed [i] = keyValue [i] * value;",
-"}"
+"}",
+""
                                           ]
                                         }
                                       }
@@ -1661,7 +1685,7 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Rectangle2D_44",
+                                    "@DEF": "Rectangle2D_6",
                                     "@translation": [ -0.075, 0, 0 ],
                                     "@scale": [ 0.025, 0.0247567, 0.0247567 ],
                                     "-children": [
@@ -1680,7 +1704,7 @@
                                       },
                                       { "TouchSensor":
                                         {
-                                          "@DEF": "_45",
+                                          "@DEF": "_37",
                                           "@description": "Toggle Animation"
                                         }
                                       },
@@ -1701,7 +1725,7 @@
                                               "-children": [
                                                 { "TimeSensor":
                                                   {
-                                                    "@USE": "_43"
+                                                    "@USE": "_36"
                                                   }
                                                 }
                                               ]
@@ -1734,7 +1758,7 @@
                           { "Transform":
                             {
                               "@DEF": "AmplitudeText",
-                              "@translation": [ 1.675, -0.55, -2.02108e-06 ],
+                              "@translation": [ 1.675, -0.55, -0.00000202108 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -1746,7 +1770,7 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_46",
+                                        "@DEF": "_38",
                                         "@string": [ "amplitude 0.55" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
@@ -1765,12 +1789,12 @@
                           { "Transform":
                             {
                               "@DEF": "FequencySlider",
-                              "@translation": [ 0.125, -0.623, -2.38855e-06 ],
+                              "@translation": [ 0.125, -0.623, -0.00000238855 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "IndexedLineSet_47",
+                                    "@DEF": "IndexedLineSet_1",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -1800,7 +1824,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_48",
+                                          "@DEF": "Rectangle2D_7",
                                           "@translation": [ 0.601538, 0, 0 ],
                                           "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                           "-children": [
@@ -1822,7 +1846,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_49",
+                                          "@DEF": "_39",
                                           "@offset": [ 0.601538, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
@@ -1833,6 +1857,7 @@
                                 { "Script":
                                   {
                                     "@DEF": "FequencyScript",
+                                    "@description": "",
                                     "field": [
                                       {
                                         "@accessType": "inputOnly",
@@ -1904,7 +1929,8 @@
 "",
 "\tfor (var i = 0, length = keyValue .length; i < length; ++ i)",
 "\t\tvalue_changed [i] = keyValue [i] * value;",
-"}"
+"}",
+""
                                     ]
                                   }
                                 },
@@ -1913,7 +1939,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_50",
+                                          "@DEF": "Rectangle2D_8",
                                           "@translation": [ -0.075, 0, 0 ],
                                           "@scale": [ 0.025, 0.0247567, 0.0247567 ],
                                           "-children": [
@@ -1932,7 +1958,7 @@
                                             },
                                             { "TouchSensor":
                                               {
-                                                "@DEF": "_51",
+                                                "@DEF": "_40",
                                                 "@description": "Toggle Animation"
                                               }
                                             },
@@ -1994,7 +2020,7 @@
                           { "Transform":
                             {
                               "@DEF": "FequencyText",
-                              "@translation": [ 1.675, -0.65, -2.38855e-06 ],
+                              "@translation": [ 1.675, -0.65, -0.00000238855 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -2006,7 +2032,7 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_52",
+                                        "@DEF": "_41",
                                         "@string": [ "frequency 1.20" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
@@ -2025,7 +2051,7 @@
                           { "Transform":
                             {
                               "@DEF": "SpeedText",
-                              "@translation": [ 1.675, -0.75, -2.75602e-06 ],
+                              "@translation": [ 1.675, -0.75, -0.00000275602 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -2037,7 +2063,7 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_53",
+                                        "@DEF": "_42",
                                         "@string": [ "speed 1.75" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
@@ -2056,12 +2082,12 @@
                           { "Transform":
                             {
                               "@DEF": "SpeedSlider",
-                              "@translation": [ 0.225, -0.723, -2.75602e-06 ],
+                              "@translation": [ 0.225, -0.723, -0.00000275602 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "IndexedLineSet_54",
+                                    "@DEF": "IndexedLineSet_2",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -2091,7 +2117,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_55",
+                                          "@DEF": "Rectangle2D_9",
                                           "@translation": [ 0.437943, 0, 0 ],
                                           "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                           "-children": [
@@ -2113,7 +2139,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_56",
+                                          "@DEF": "_43",
                                           "@offset": [ 0.437943, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
@@ -2124,6 +2150,7 @@
                                 { "Script":
                                   {
                                     "@DEF": "SpeedScript",
+                                    "@description": "",
                                     "field": [
                                       {
                                         "@accessType": "inputOnly",
@@ -2195,7 +2222,8 @@
 "",
 "\tfor (var i = 0, length = keyValue .length; i < length; ++ i)",
 "\t\tvalue_changed [i] = keyValue [i] * value;",
-"}"
+"}",
+""
                                     ]
                                   }
                                 },
@@ -2204,7 +2232,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_57",
+                                          "@DEF": "Rectangle2D_10",
                                           "@translation": [ -0.075, 0, 0 ],
                                           "@scale": [ 0.025, 0.0247567, 0.0247567 ],
                                           "-children": [
@@ -2223,7 +2251,7 @@
                                             },
                                             { "TouchSensor":
                                               {
-                                                "@DEF": "_58",
+                                                "@DEF": "_44",
                                                 "@description": "Toggle Animation"
                                               }
                                             },
@@ -2285,7 +2313,7 @@
                           { "Transform":
                             {
                               "@DEF": "DirectionsText",
-                              "@translation": [ 1.675, -0.85, -3.12349e-06 ],
+                              "@translation": [ 1.675, -0.85, -0.00000312349 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -2314,8 +2342,8 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Rectangle2D_59",
-                              "@translation": [ 1.3, -0.825, -3.03163e-06 ],
+                              "@DEF": "Rectangle2D_11",
+                              "@translation": [ 1.3, -0.825, -0.00000303163 ],
                               "@scale": [ 0.025, 0.0247567, 0.0247567 ],
                               "-children": [
                                 { "Shape":
@@ -2333,7 +2361,7 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_60",
+                                    "@DEF": "_45",
                                     "@description": "Toggle Animation"
                                   }
                                 },
@@ -2377,7 +2405,7 @@
                           { "Transform":
                             {
                               "@DEF": "TransparencyText",
-                              "@translation": [ 1.675, -0.95, -3.49096e-06 ],
+                              "@translation": [ 1.675, -0.95, -0.00000349096 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -2389,7 +2417,7 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_61",
+                                        "@DEF": "_46",
                                         "@string": [ "transparency 0.00" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
@@ -2408,12 +2436,12 @@
                           { "Transform":
                             {
                               "@DEF": "TransparancySlider",
-                              "@translation": [ 0.025, -0.923, -3.49096e-06 ],
+                              "@translation": [ 0.025, -0.923, -0.00000349096 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "IndexedLineSet_62",
+                                    "@DEF": "IndexedLineSet_3",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -2443,7 +2471,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_63",
+                                          "@DEF": "Rectangle2D_12",
                                           "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                           "-children": [
                                             { "Shape":
@@ -2464,7 +2492,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_64",
+                                          "@DEF": "_47",
                                           "@maxPosition": [ 1, 0 ]
                                         }
                                       }
@@ -2474,6 +2502,7 @@
                                 { "Script":
                                   {
                                     "@DEF": "TransparencyScript",
+                                    "@description": "",
                                     "field": [
                                       {
                                         "@accessType": "inputOnly",
@@ -2536,7 +2565,8 @@
 "\tcurrentValue       = rounded;",
 "\tstring_changed [0] = description + \" \" + rounded;",
 "\tvalue_changed      = value;",
-"}"
+"}",
+""
                                     ]
                                   }
                                 },
@@ -2545,7 +2575,7 @@
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Rectangle2D_65",
+                                          "@DEF": "Rectangle2D_13",
                                           "@translation": [ -0.075, 0, 0 ],
                                           "@scale": [ 0.025, 0.0247567, 0.0247567 ],
                                           "-children": [
@@ -2564,7 +2594,7 @@
                                             },
                                             { "TouchSensor":
                                               {
-                                                "@DEF": "_66",
+                                                "@DEF": "_48",
                                                 "@description": "Toggle Animation"
                                               }
                                             },
@@ -2634,7 +2664,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_8",
+            "@fromNode": "_2",
             "@fromField": "position_changed",
             "@toNode": "CobwebWaterShader",
             "@toField": "position"
@@ -2642,7 +2672,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_42",
+            "@fromNode": "_35",
             "@fromField": "translation_changed",
             "@toNode": "AmplitudeScript",
             "@toField": "set_translation"
@@ -2660,13 +2690,13 @@
           {
             "@fromNode": "pointSizeScriptSet_translationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_42",
+            "@toNode": "_35",
             "@toField": "offset"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_43",
+            "@fromNode": "_36",
             "@fromField": "fraction_changed",
             "@toNode": "pointSizeScriptSet_translationInterpolator",
             "@toField": "set_fraction"
@@ -2674,9 +2704,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_42",
+            "@fromNode": "_35",
             "@fromField": "translation_changed",
-            "@toNode": "Rectangle2D_41",
+            "@toNode": "Rectangle2D_5",
             "@toField": "translation"
           }
         },
@@ -2684,7 +2714,7 @@
           {
             "@fromNode": "pointSizeScriptSet_translationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "Rectangle2D_41",
+            "@toNode": "Rectangle2D_5",
             "@toField": "translation"
           }
         },
@@ -2692,13 +2722,13 @@
           {
             "@fromNode": "AmplitudeScript",
             "@fromField": "string_changed",
-            "@toNode": "_46",
+            "@toNode": "_38",
             "@toField": "string"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_45",
+            "@fromNode": "_37",
             "@fromField": "touchTime",
             "@toNode": "ToggleAmplitudeAnim",
             "@toField": "set_touchTime"
@@ -2714,7 +2744,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_49",
+            "@fromNode": "_39",
             "@fromField": "translation_changed",
             "@toNode": "FequencyScript",
             "@toField": "set_translation"
@@ -2722,15 +2752,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_49",
+            "@fromNode": "_39",
             "@fromField": "translation_changed",
-            "@toNode": "Rectangle2D_48",
+            "@toNode": "Rectangle2D_7",
             "@toField": "translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_51",
+            "@fromNode": "_40",
             "@fromField": "touchTime",
             "@toNode": "ToggleFequencyAnim",
             "@toField": "set_touchTime"
@@ -2740,7 +2770,7 @@
           {
             "@fromNode": "FequencyScript",
             "@fromField": "string_changed",
-            "@toNode": "_52",
+            "@toNode": "_41",
             "@toField": "string"
           }
         },
@@ -2754,7 +2784,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_56",
+            "@fromNode": "_43",
             "@fromField": "translation_changed",
             "@toNode": "SpeedScript",
             "@toField": "set_translation"
@@ -2762,15 +2792,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_56",
+            "@fromNode": "_43",
             "@fromField": "translation_changed",
-            "@toNode": "Rectangle2D_55",
+            "@toNode": "Rectangle2D_9",
             "@toField": "translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_58",
+            "@fromNode": "_44",
             "@fromField": "touchTime",
             "@toNode": "ToggleSpeedAnim",
             "@toField": "set_touchTime"
@@ -2780,7 +2810,7 @@
           {
             "@fromNode": "SpeedScript",
             "@fromField": "string_changed",
-            "@toNode": "_53",
+            "@toNode": "_42",
             "@toField": "string"
           }
         },
@@ -2794,15 +2824,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_64",
+            "@fromNode": "_47",
             "@fromField": "translation_changed",
-            "@toNode": "Rectangle2D_63",
+            "@toNode": "Rectangle2D_12",
             "@toField": "translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_64",
+            "@fromNode": "_47",
             "@fromField": "translation_changed",
             "@toNode": "TransparencyScript",
             "@toField": "set_translation"
@@ -2810,7 +2840,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_66",
+            "@fromNode": "_48",
             "@fromField": "touchTime",
             "@toNode": "ToggleTransparencyAnim",
             "@toField": "set_touchTime"
@@ -2820,7 +2850,7 @@
           {
             "@fromNode": "TransparencyScript",
             "@fromField": "string_changed",
-            "@toNode": "_61",
+            "@toNode": "_46",
             "@toField": "string"
           }
         },
@@ -2834,7 +2864,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_60",
+            "@fromNode": "_45",
             "@fromField": "touchTime",
             "@toNode": "DirectionsScript",
             "@toField": "set_triggerTime"
@@ -2844,23 +2874,87 @@
           {
             "@fromNode": "TransparencyScript",
             "@fromField": "value_changed",
-            "@toNode": "_10",
+            "@toNode": "_4",
             "@toField": "transparency"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_17",
+            "@fromNode": "_12",
             "@fromField": "touchTime",
-            "@toNode": "_18",
+            "@toNode": "_13",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_18",
+            "@fromNode": "_13",
             "@fromField": "value_changed",
+            "@toNode": "_3",
+            "@toField": "texture"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_19",
+            "@fromField": "touchTime",
+            "@toNode": "_20",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_20",
+            "@fromField": "value_changed",
+            "@toNode": "_3",
+            "@toField": "texture"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_30",
+            "@fromField": "touchTime",
+            "@toNode": "_31",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_31",
+            "@fromField": "value_changed",
+            "@toNode": "_3",
+            "@toField": "texture"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_26",
+            "@fromField": "touchTime",
+            "@toNode": "_27",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_27",
+            "@fromField": "value_changed",
+            "@toNode": "_3",
+            "@toField": "texture"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_8",
+            "@fromField": "touchTime",
             "@toNode": "_9",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_9",
+            "@fromField": "value_changed",
+            "@toNode": "_3",
             "@toField": "texture"
           }
         },
@@ -2876,87 +2970,23 @@
           {
             "@fromNode": "_23",
             "@fromField": "value_changed",
-            "@toNode": "_9",
+            "@toNode": "_3",
             "@toField": "texture"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_31",
+            "@fromNode": "_16",
             "@fromField": "touchTime",
-            "@toNode": "_32",
+            "@toNode": "_17",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_32",
+            "@fromNode": "_17",
             "@fromField": "value_changed",
-            "@toNode": "_9",
-            "@toField": "texture"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_28",
-            "@fromField": "touchTime",
-            "@toNode": "_29",
-            "@toField": "set_triggerTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_29",
-            "@fromField": "value_changed",
-            "@toNode": "_9",
-            "@toField": "texture"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_14",
-            "@fromField": "touchTime",
-            "@toNode": "_15",
-            "@toField": "set_triggerTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_15",
-            "@fromField": "value_changed",
-            "@toNode": "_9",
-            "@toField": "texture"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_25",
-            "@fromField": "touchTime",
-            "@toNode": "_26",
-            "@toField": "set_triggerTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_26",
-            "@fromField": "value_changed",
-            "@toNode": "_9",
-            "@toField": "texture"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_20",
-            "@fromField": "touchTime",
-            "@toNode": "_21",
-            "@toField": "set_triggerTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_21",
-            "@fromField": "value_changed",
-            "@toNode": "_9",
+            "@toNode": "_3",
             "@toField": "texture"
           }
         },

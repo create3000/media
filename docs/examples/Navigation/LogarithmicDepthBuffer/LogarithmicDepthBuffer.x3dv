@@ -1,16 +1,16 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT Interpolation : 4
 COMPONENT Layering : 1
-COMPONENT NURBS : 1
-COMPONENT Time : 2
+COMPONENT NURBS : 4
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Navigation/LogarithmicDepthBuffer/LogarithmicDepthBuffer.O.x3d"
 META "modified" "Sun, 17 Nov 2019 07:54:42 GMT"
 
@@ -31,14 +31,14 @@ PROTO SizeText [
       DEF Text_1 Transform {
         translation 1 0 0
         children Shape {
-          appearance DEF _2 Appearance {
+          appearance DEF _1 Appearance {
             material Material {
               diffuseColor IS color
             }
           }
-          geometry DEF _3 Text {
+          geometry DEF _2 Text {
             string IS string
-            fontStyle DEF _4 FontStyle {
+            fontStyle DEF _3 FontStyle {
               family "TYPEWRITER"
               justify [ "BEGIN", "MIDDLE" ]
             }
@@ -47,8 +47,8 @@ PROTO SizeText [
       }
       DEF Sphere Transform {
         children Shape {
-          appearance USE _2
-          geometry DEF _5 Sphere {
+          appearance USE _1
+          geometry DEF _4 Sphere {
             radius 0.5
           }
         }
@@ -63,9 +63,9 @@ PROTO SizeText [
     inputOnly      SFVec2f  set_textBounds
     inputOutput    SFDouble size IS size
     outputOnly     SFVec3f  viewpointPosition_changed IS viewpointPosition_changed
-    initializeOnly SFNode   sphere USE _5
+    initializeOnly SFNode   sphere USE _4
     initializeOnly SFNode   text USE Text_1
-    initializeOnly SFNode   fontStyle USE _4
+    initializeOnly SFNode   fontStyle USE _3
 
     url "ecmascript:
 
@@ -95,7 +95,7 @@ function eventsProcessed ()
     directOutput TRUE
   }
 
-  ROUTE _3.textBounds TO SizeTextScript.set_textBounds
+  ROUTE _2.textBounds TO SizeTextScript.set_textBounds
 }
 
 PROTO Sizes [
@@ -109,11 +109,11 @@ PROTO Sizes [
 {
   Group {
     children [
-      DEF _6 Viewpoint {
+      DEF _5 Viewpoint {
         description "Animation"
         fieldOfView IS fieldOfView
       }
-      DEF _7 Group { }
+      DEF _6 Group { }
       Switch {
         children DEF Line Shape {
           appearance Appearance {
@@ -124,8 +124,8 @@ PROTO Sizes [
           }
           geometry LineSet {
             vertexCount 2
-            coord DEF _8 CoordinateDouble {
-              point [ 0 -nan 0, 0 nan 0 ]
+            coord DEF _7 CoordinateDouble {
+              point [ 0 NaN 0, 0 NaN 0 ]
             }
           }
         }
@@ -133,12 +133,12 @@ PROTO Sizes [
     ]
   }
 
-  DEF _9 TimeSensor {
+  DEF _8 TimeSensor {
     cycleInterval 0
     loop TRUE
   }
 
-  DEF _10 SplinePositionInterpolator { }
+  DEF _9 SplinePositionInterpolator { }
 
   DEF SizesScript Script {
     inputOutput    SFTime   textInterval IS textInterval
@@ -147,14 +147,14 @@ PROTO Sizes [
     inputOutput    SFFloat  fieldOfView IS fieldOfView
     inputOutput    MFString string IS string
     inputOutput    MFDouble size IS size
-    initializeOnly SFNode   timeSensor USE _9
-    initializeOnly SFNode   viewpoint USE _6
-    initializeOnly SFNode   group USE _7
-    initializeOnly SFNode   lineCoord USE _8
+    initializeOnly SFNode   timeSensor USE _8
+    initializeOnly SFNode   viewpoint USE _5
+    initializeOnly SFNode   group USE _6
+    initializeOnly SFNode   lineCoord USE _7
     initializeOnly SFNode   script DEF ViewpointScript Script {
       inputOnly      SFVec3f set_viewpointPosition
-      initializeOnly SFNode  interpolator USE _10
-      initializeOnly SFNode  group USE _7
+      initializeOnly SFNode  interpolator USE _9
+      initializeOnly SFNode  group USE _6
 
       url "ecmascript:
 
@@ -247,12 +247,11 @@ function eventsProcessed ()
     directOutput TRUE
   }
 
-  ROUTE _9.fraction_changed TO _10.set_fraction
-  ROUTE _10.value_changed TO _6.set_position
+  ROUTE _8.fraction_changed TO _9.set_fraction
+  ROUTE _9.value_changed TO _5.set_position
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 DEF LogarithmicDepthBufferScript Script {
   inputOutput SFTime   startTime 0
@@ -282,7 +281,7 @@ LayerSet {
       children [
         NavigationInfo {
           type "EXAMINE"
-          avatarSize [ 1e-05, 1.6, 0.75 ]
+          avatarSize [ 0.00001, 1.6, 0.75 ]
           visibilityLimit 1e+24
         }
         Sizes {
@@ -290,7 +289,7 @@ LayerSet {
           xOffset 1.35
           displaySize 0.111111
           string [ "microscopic (1 μm)", "minuscule (1 mm)", "tiny (1 cm)", "small (1 dm)", "child-sized (1 m)", "tree-sized (10 m)", "building-sized (100 m)", "medium (1 km)", "city-sized (10 km)", "moon-sized (3,400 km)", "planet-sized (12,000 km)", "sun-sized (1,400,000 km)", "solar system (50 Au)", "gargantuan (1 ly)", "ludicrous (1 pc)", "mind boggling (1,000 ly)", "galaxy-sized (120,000 ly)", "ooops (100,000,000 ly)" ]
-          size [ 1e-06, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23 ]
+          size [ 0.000001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 3400000, 12000000, 1400000000, 7479893535000, 9.4607304725808e+15, 3.08567758149137e+16, 9.4607304725808e+18, 1.1352876567097e+21, 9.4607304725808e+23 ]
         }
       ]
     }
@@ -302,7 +301,7 @@ LayerSet {
           appearance Appearance {
             material Material { }
           }
-          geometry DEF _11 Text {
+          geometry DEF _10 Text {
             string "Logarithmic Depth Buffer: false"
             solid TRUE
             fontStyle FontStyle {
@@ -316,4 +315,4 @@ LayerSet {
   ]
 }
 
-ROUTE LogarithmicDepthBufferScript.string_changed TO _11.set_string
+ROUTE LogarithmicDepthBufferScript.string_changed TO _10.set_string

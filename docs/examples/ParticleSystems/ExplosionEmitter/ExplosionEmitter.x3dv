@@ -1,23 +1,20 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT ParticleSystems : 1
-COMPONENT Rendering : 4
+COMPONENT ParticleSystems : 3
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Mon, 11 Dec 2017 02:55:45 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/ExplosionEmitter/ExplosionEmitter.O.x3d"
 META "modified" "Thu, 07 Nov 2019 12:56:53 GMT"
 META "titania-add-metadata" "true"
 
-WorldInfo {
-}
+WorldInfo { }
 
 DEF Summer Background {
   skyAngle [ 45.8366, 74.4845, 80.2141, 90.0002 ]
@@ -60,7 +57,7 @@ DEF BlackSmoke_1 ParticleSystem {
     color [ 0.234 0.0408855 0.0219557 1, 1 0.0892731 0 1, 0.0437445 0.0437445 0.0437445 1, 0.0437445 0.0437445 0.0437445 0.913024, 0.0437445 0.0437445 0.0437445 0 ]
   }
   appearance Appearance {
-    lineProperties DEF _2 LineProperties {
+    lineProperties DEF _1 LineProperties {
       linewidthScaleFactor 16
     }
     material Material {
@@ -108,5 +105,6 @@ DEF Lava ParticleSystem {
 }
 
 DEF Vulcano Inline {
+  global TRUE
   url "vulcano.x3dz"
 }

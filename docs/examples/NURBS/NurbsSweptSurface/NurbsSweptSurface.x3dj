@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,28 +33,24 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
           "@name": "Layering",
           "@level": 1
         },
         {
           "@name": "Layout",
-          "@level": 1
+          "@level": 2
         },
         {
           "@name": "NURBS",
-          "@level": 3
-        },
-        {
-          "@name": "Shape",
           "@level": 4
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -212,7 +208,8 @@
 "\t\t\t",
 "\t\tcontrolPoint .point .push (new SFVec3d (x, y, z));",
 "\t}",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -276,7 +273,7 @@
                   {
                     "@DEF": "BoxRotationInterpolator",
                     "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
-                    "@keyValue": [ 0, 0, 1, 0, -3.06559318185163e-18, 3.67320512848233e-06, -0.999999999993254, 1.5707963267949, 4.21656770439807e-15, 3.67320512426576e-06, -0.999999999993254, 3.14159253438725, -1.20024808346484e-13, -3.67320524850646e-06, 0.999999999993254, 1.57079638639955, 0, 0, 1, 0 ]
+                    "@keyValue": [ 0, 0, 1, 0, -3.06559318185163e-18, 0.00000367320512848233, -0.999999999993254, 1.5707963267949, 4.21656770439807e-15, 0.00000367320512426576, -0.999999999993254, 3.14159253438725, -1.20024808346484e-13, -0.00000367320524850646, 0.999999999993254, 1.57079638639955, 0, 0, 1, 0 ]
                   }
                 },
                 { "Script":
@@ -358,7 +355,8 @@
 "\t}",
 "\t",
 "\tset_fraction (0, 0);",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -413,7 +411,7 @@
               { "Layer":
                 {
                   "@DEF": "TubeLines",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Background":
                       {
@@ -484,7 +482,7 @@
               { "LayoutLayer":
                 {
                   "@DEF": "Colors",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {

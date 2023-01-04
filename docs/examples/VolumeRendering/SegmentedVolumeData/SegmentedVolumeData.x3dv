@@ -1,24 +1,18 @@
-#X3D V3.3 utf8 Titania V4.6.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
 COMPONENT Texturing3D : 2
-COMPONENT VolumeRendering : 2
+COMPONENT VolumeRendering : 4
 
 META "comment" "World of Titania"
 META "created" "29 February 2011"
 META "creator" "Andrew Wood, Nicholas Polys: Virginia Tech"
 META "description" "Volume rendering of a segmented brain dataset, rendered with opacity map and tone map render styles"
-META "generator" "Titania V4.6.3, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/SegmentedVolumeData/SegmentedVolumeData.O.x3d"
 META "license" "../license.html"
 META "modified" "Tue, 22 Oct 2019 09:43:00 GMT"
-META "reference" "SegmentedVentricles.x3d"
-META "reference" "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles.nrrd"
-META "reference" "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
-META "reference" "Run the download target in the Ant build.xml file to install reference nrrd files locally."
-META "reference" "build.xml"
 META "reference" "Volume Data obtained from http://www.volvis.org"
 META "title" "SegmentedVentricles.x3d"
 
@@ -43,7 +37,7 @@ Group {
       scale 0.0651042 0.0651042 0.0651042
       children SegmentedVolumeData {
         dimensions 2.304 2.304 1.116
-        segmentIdentifiers DEF _1 ImageTexture3D {
+        segmentIdentifiers ImageTexture3D {
           url [ "datasets/nrrd/mri_ventricles_segment.nrrd", "http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles_segment.nrrd", "https://savage.nps.edu/Savage/VolumeRendering/datasets/nrrd/.nrrd" ]
         }
         renderStyle [

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
-    <component name='RigidBodyPhysics' level='1'/>
-    <component name='Shape' level='4'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <component name='RigidBodyPhysics' level='2'/>
+    <component name='Scripting' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Fri, 18 May 2018 03:17:41 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollisionCollection/CollisionCollection.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:46:10 GMT'/>
   </head>
@@ -28,7 +26,7 @@
         centerOfRotation='6.66134e-16 -3.55271e-15 1.77636e-15'/>
     <Group DEF='Collidables'>
       <CollidableShape DEF='Ball'
-          translation='-1.92031e-06 -0.251985 -2.34233e-06'>
+          translation='-0.00000192031 -0.251985 -0.00000234233'>
         <Shape containerField='shape'>
           <Appearance>
             <Material DEF='Tropical22'
@@ -71,18 +69,18 @@
           minBounceSpeed='0'>
         <CollidableShape USE='Ball' containerField='collidables'/>
       </CollisionCollection>
-      <RigidBody DEF='Ball_2'
-          position='-1.92031e-06 -0.251985 -2.34233e-06'
-          linearVelocity='-4.04398e-06 -1.46553 -4.93573e-06'
+      <RigidBody DEF='Ball_1'
+          position='-0.00000192031 -0.251985 -0.00000234233'
+          linearVelocity='-0.00000404398 -1.46553 -0.00000493573'
           angularVelocity='-1.98016e-10 2.95806e-10 0.000388671'>
         <CollidableShape USE='Ball' containerField='geometry'/>
       </RigidBody>
-      <RigidBody DEF='Floor_3'
+      <RigidBody DEF='Floor_1'
           fixed='true'
           linearVelocity='0 0.1 0'>
         <CollidableOffset USE='Floor' containerField='geometry'/>
       </RigidBody>
-      <RigidBody DEF='Ceiling_4'
+      <RigidBody DEF='Ceiling_1'
           fixed='true'>
         <CollidableOffset USE='Ceiling' containerField='geometry'/>
       </RigidBody>
@@ -90,7 +88,7 @@
     <Script DEF='EnterWorldScript'
         directOutput='true'>
       <field accessType='initializeOnly' type='SFNode' name='ball'>
-        <RigidBody USE='Ball_2' containerField='ball'/>
+        <RigidBody USE='Ball_1' containerField='ball'/>
       </field>
 <![CDATA[ecmascript:
 

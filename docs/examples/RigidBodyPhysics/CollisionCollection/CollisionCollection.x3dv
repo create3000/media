@@ -1,23 +1,20 @@
-#X3D V3.3 utf8 Titania V4.4.5
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
-COMPONENT RigidBodyPhysics : 1
-COMPONENT Shape : 4
+COMPONENT RigidBodyPhysics : 2
+COMPONENT Scripting : 1
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Fri, 18 May 2018 03:17:41 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollisionCollection/CollisionCollection.O.x3d"
 META "modified" "Mon, 07 Jan 2019 03:46:10 GMT"
 
-WorldInfo {
-}
+WorldInfo { }
 
 Background {
   skyAngle 90.0002
@@ -36,7 +33,7 @@ Viewpoint {
 DEF Collidables Group {
   children [
     DEF Ball CollidableShape {
-      translation -1.92031e-06 -0.251985 -2.34233e-06
+      translation -0.00000192031 -0.251985 -0.00000234233
       shape Shape {
         appearance Appearance {
           material DEF Tropical22 Material {
@@ -86,18 +83,18 @@ RigidBodyCollection {
     collidables USE Ball
   }
   bodies [
-    DEF Ball_2 RigidBody {
-      position -1.92031e-06 -0.251985 -2.34233e-06
-      linearVelocity -4.04398e-06 -1.46553 -4.93573e-06
+    DEF Ball_1 RigidBody {
+      position -0.00000192031 -0.251985 -0.00000234233
+      linearVelocity -0.00000404398 -1.46553 -0.00000493573
       angularVelocity -1.98016e-10 2.95806e-10 0.000388671
       geometry USE Ball
     }
-    DEF Floor_3 RigidBody {
+    DEF Floor_1 RigidBody {
       fixed TRUE
       linearVelocity 0 0.1 0
       geometry USE Floor
     }
-    DEF Ceiling_4 RigidBody {
+    DEF Ceiling_1 RigidBody {
       fixed TRUE
       geometry USE Ceiling
     }
@@ -105,7 +102,7 @@ RigidBodyCollection {
 }
 
 DEF EnterWorldScript Script {
-  initializeOnly SFNode ball USE Ball_2
+  initializeOnly SFNode ball USE Ball_1
 
   url "ecmascript:
 

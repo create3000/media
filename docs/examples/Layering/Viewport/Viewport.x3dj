@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.3, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,8 +37,8 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layering",
@@ -46,15 +46,11 @@
         },
         {
           "@name": "Layout",
-          "@level": 1
+          "@level": 2
         },
         {
           "@name": "ParticleSystems",
-          "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
+          "@level": 3
         }
       ]
     },
@@ -71,7 +67,7 @@
               { "Layer":
                 {
                   "@DEF": "Background",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Background":
                       {
@@ -92,14 +88,14 @@
                   },
                   "-viewport": { "Viewport":
                     {
-                      "@DEF": "_2",
+                      "@DEF": "_1",
                       "@clipBoundary": [ 0, 1, 0.177, 0.822 ]
                     }
                   },
                   "-children": [
                     { "Background":
                       {
-                        "@DEF": "Gray_3",
+                        "@DEF": "Gray_1",
                         "@skyColor": [ 0.2, 0.2, 0.2 ]
                       }
                     },
@@ -137,10 +133,10 @@
               { "Layer":
                 {
                   "@DEF": "Particles",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-viewport": { "Viewport":
                     {
-                      "@USE": "_2"
+                      "@USE": "_1"
                     }
                   },
                   "-children": [

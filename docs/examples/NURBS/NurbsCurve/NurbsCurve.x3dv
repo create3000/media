@@ -1,18 +1,18 @@
-#X3D V3.3 utf8 Titania V4.6.0
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Layout : 1
-COMPONENT NURBS : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Layout : 2
+COMPONENT NURBS : 4
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsCurve/NurbsCurve.O.x3d"
 META "modified" "Sat, 26 Jan 2019 01:49:04 GMT"
 
@@ -91,7 +91,7 @@ PROTO MachineLearning [
 
   DEF BoxRotationInterpolator OrientationInterpolator {
     key [ 0, 0.25, 0.5, 0.75, 1 ]
-    keyValue [ 0 0 1 0, -3.06559318185163e-18 3.67320512848233e-06 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 3.67320512426576e-06 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -3.67320524850646e-06 0.999999999993254 1.57079638639955, 0 0 1 0 ]
+    keyValue [ 0 0 1 0, -3.06559318185163e-18 0.00000367320512848233 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 0.00000367320512426576 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -0.00000367320524850646 0.999999999993254 1.57079638639955, 0 0 1 0 ]
   }
 
   DEF MachineLearningScript Script {
@@ -138,15 +138,14 @@ function eventsProcessed ()
   ROUTE BoxRotationInterpolator.value_changed TO _2.set_rotation
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer 1
   order [ 1, 2 ]
   layers [
     DEF Curves Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         Background {
           skyColor 0.0980392 0.0980392 0.0980392
@@ -171,7 +170,7 @@ LayerSet {
       ]
     }
     DEF MachineLearning LayoutLayer {
-      isPickable FALSE
+      pickable FALSE
       children [
         DEF Text Transform {
           children Shape {
@@ -189,7 +188,7 @@ LayerSet {
             }
           }
         }
-        DEF Text_6 Transform {
+        DEF Text_1 Transform {
           translation 0 -0.417991 0
           children Shape {
             appearance Appearance {

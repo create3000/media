@@ -1,25 +1,19 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
-COMPONENT RigidBodyPhysics : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT RigidBodyPhysics : 2
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "1 January 2008"
 META "creator" "Alan Hudson and Justin Couch"
 META "description" "Example scene for RigidBodyPhysics component"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/SliderJoint/SliderJoint.O.x3d"
 META "license" "../license.html"
 META "modified" "Sun, 27 Jan 2019 15:45:23 GMT"
-META "reference" "http://www.xj3d.org/extensions/index.html#Physics"
-META "reference" "originals/ball_bounce.x3dv"
 META "reference" "http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html"
 META "titania-add-metadata" "true"
 META "title" "BallBounce.x3d"
@@ -102,7 +96,7 @@ DEF Ground_1 Group {
         }
       }
     }
-    DEF Box_2 CollidableShape {
+    DEF Box_1 CollidableShape {
       translation 0 1 0
       shape Shape {
         appearance Appearance {
@@ -128,28 +122,28 @@ DEF Ground_1 Group {
   ]
 }
 
-DEF _3 RigidBodyCollection {
+DEF _1 RigidBodyCollection {
   bodies [
-    DEF Ground_4 RigidBody {
+    DEF Ground_2 RigidBody {
       fixed TRUE
       geometry USE Ground
     }
-    DEF Slider_5 RigidBody {
+    DEF Slider_1 RigidBody {
       fixed TRUE
       position 0 1 0
       geometry USE Slider
     }
-    DEF Box_6 RigidBody {
+    DEF Box_2 RigidBody {
       position 0 1 0
-      geometry USE Box_2
+      geometry USE Box_1
     }
   ]
   joints SliderJoint {
     axis 1 0 0
     minSeparation -1.5
     maxSeparation 1.5
-    body1 USE Slider_5
-    body2 USE Box_6
+    body1 USE Slider_1
+    body2 USE Box_2
   }
 }
 

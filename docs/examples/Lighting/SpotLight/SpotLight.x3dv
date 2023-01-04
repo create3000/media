@@ -1,13 +1,15 @@
-#X3D V3.3 utf8 X_ITE V6.1.0
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
+
+COMPONENT Scripting : 1
 
 META "comment" "World of Sunrise X3D Editor"
 META "created" "Sat, 10 Feb 2018 02:42:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.3, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Lighting/SpotLight/SpotLight.x3dv"
-META "modified" "Thu, 27 Oct 2022 08:26:39 GMT"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Lighting/SpotLight/SpotLight.O.x3d"
+META "modified" "Thu, 27 Oct 2022 08:25:59 GMT"
 
 WorldInfo {
   title "SpotLight Example"
@@ -50,10 +52,8 @@ DEF Lights Transform {
 }
 
 DEF Models Inline {
-  url [
-    "models.x3d",
-    "file:///home/holger/Schreibtisch/SpotLight/models.x3d"
-  ]
+  global TRUE
+  url [ "models.x3d", "file:///home/holger/Schreibtisch/SpotLight/models.x3d" ]
 }
 
 DEF PhongScript Script {

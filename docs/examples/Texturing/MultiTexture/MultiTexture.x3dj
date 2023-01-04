@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.5, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -29,24 +29,6 @@
         {
           "@name": "modified",
           "@content": "Mon, 08 Apr 2019 07:16:10 GMT"
-        }
-      ],
-      "component": [
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
-          "@name": "Interpolation",
-          "@level": 4
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
         }
       ]
     },
@@ -143,6 +125,7 @@
         { "Inline":
           {
             "@DEF": "Starfield",
+            "@global": true,
             "@url": [ "assets/starfield.x3d" ]
           }
         },

@@ -1,16 +1,16 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT Grouping : 3
-COMPONENT Interpolation : 4
+COMPONENT Geometry2D : 2
 COMPONENT Layout : 2
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
 
 META "comment" "World of Titania"
 META "created" "Fri, 22 Sep 2017 06:52:58 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d"
 META "modified" "Thu, 07 Nov 2019 12:59:27 GMT"
 
@@ -68,12 +68,12 @@ DEF Grid Group {
       majorLineColor 0 0 0
       majorLineTransparency 0.4
       numberOffset -0.1 0 0.14
-      numberAppearance Appearance {
+      numberAppearance DEF _1 Appearance {
         material Material {
           diffuseColor 0 0 0
         }
       }
-      numberFontStyle ScreenFontStyle {
+      numberFontStyle DEF _2 ScreenFontStyle {
         justify [ "END", "BEGIN" ]
       }
     }
@@ -319,7 +319,7 @@ function set_y (value, time)
     }
     Shape {
       appearance Appearance {
-        lineProperties DEF _1 LineProperties {
+        lineProperties DEF _3 LineProperties {
           linewidthScaleFactor 3
         }
         material Material {
@@ -343,7 +343,7 @@ DEF PointTypeSwitch Switch {
         DEF PointsScript Script {
           inputOnly      MFFloat set_x
           inputOnly      MFFloat set_y
-          initializeOnly SFNode  points DEF _2 Polypoint2D {
+          initializeOnly SFNode  points DEF _4 Polypoint2D {
             point [ -20 -10, -5 5, 10 -5, 20 10 ]
           }
           initializeOnly SFNode  xInterpolator USE XInterpolator
@@ -379,7 +379,7 @@ function eventsProcessed ()
               emissiveColor 1 0.75 0.5
             }
           }
-          geometry USE _2
+          geometry USE _4
         }
         Shape {
           appearance Appearance {
@@ -391,7 +391,7 @@ function eventsProcessed ()
               emissiveColor 1 0.5 0
             }
           }
-          geometry USE _2
+          geometry USE _4
         }
       ]
     }
@@ -401,13 +401,13 @@ function eventsProcessed ()
           inputOnly      MFFloat set_x
           inputOnly      MFFloat set_y
           inputOnly      MFFloat set_velocity
-          initializeOnly SFNode  lines DEF _3 LineSet {
+          initializeOnly SFNode  lines DEF _5 LineSet {
             vertexCount [ 2, 2, 2, 2 ]
             coord Coordinate {
               point [ -20 -10 0, -20 -10 0, -5 5 0, -5 5 0, 10 -5 0, 10 -5 0, 20 10 0, 20 10 0 ]
             }
           }
-          initializeOnly SFNode  points DEF _4 Polypoint2D {
+          initializeOnly SFNode  points DEF _6 Polypoint2D {
             point [ -20 -10, -5 5, 10 -5, 20 10 ]
           }
           initializeOnly SFNode  xInterpolator USE XInterpolator
@@ -454,11 +454,11 @@ function eventsProcessed ()
             lineProperties LineProperties {
               linewidthScaleFactor 2
             }
-            material DEF _5 Material {
+            material DEF _7 Material {
               emissiveColor 0.117647 0.564706 1
             }
           }
-          geometry USE _3
+          geometry USE _5
         }
         Shape {
           appearance Appearance {
@@ -466,9 +466,9 @@ function eventsProcessed ()
               pointSizeScaleFactor 8
               pointSizeMaxValue 8
             }
-            material USE _5
+            material USE _7
           }
-          geometry USE _2
+          geometry USE _4
         }
         Shape {
           appearance Appearance {
@@ -480,7 +480,7 @@ function eventsProcessed ()
               emissiveColor 0.429132 0.718372 1
             }
           }
-          geometry USE _4
+          geometry USE _6
         }
         Shape {
           appearance Appearance {
@@ -488,9 +488,9 @@ function eventsProcessed ()
               pointSizeScaleFactor 8
               pointSizeMaxValue 8
             }
-            material USE _5
+            material USE _7
           }
-          geometry USE _4
+          geometry USE _6
         }
       ]
     }

@@ -1,16 +1,17 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
 COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Mon, 21 Dec 2015 03:16:01 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/Circles/Circles.O.x3d"
 META "modified" "Sun, 27 Jan 2019 16:10:20 GMT"
 
@@ -21,8 +22,7 @@ EXTERNPROTO MFNode [
 ]
 "MFNode.x3d#MFNode"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   order [ 0, 1, 2, 3 ]
@@ -1389,7 +1389,7 @@ function random (min, max)
       ]
     }
     DEF Text Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         DEF _6 NavigationInfo {
           type "NONE"
@@ -1410,7 +1410,7 @@ function random (min, max)
             geometry Rectangle2D { }
           }
         }
-        DEF Text_8 Transform {
+        DEF Text_1 Transform {
           translation 0 -0.0191083 0
           children Shape {
             appearance Appearance {
@@ -1424,7 +1424,7 @@ function random (min, max)
             geometry Text {
               string "An Interactive X3D Experience"
               solid TRUE
-              fontStyle DEF _9 FontStyle {
+              fontStyle DEF _8 FontStyle {
                 family [ "CharlotteSansBoldPlain.otf", "SERIF" ]
                 size 0.08
                 justify [ "MIDDLE", "MIDDLE" ]
@@ -1432,7 +1432,7 @@ function random (min, max)
             }
           }
         }
-        DEF Text_10 Transform {
+        DEF Text_2 Transform {
           translation 0 -0.617834 0
           children Shape {
             appearance Appearance {
@@ -1467,14 +1467,14 @@ function random (min, max)
               appearance Appearance {
                 texture USE _3
               }
-              geometry DEF _11 Disk2D {
+              geometry DEF _9 Disk2D {
                 outerRadius 0.14
               }
             }
-            DEF Text_12 Transform {
+            DEF Text_3 Transform {
               children Shape {
                 appearance Appearance {
-                  material DEF _13 Material {
+                  material DEF _10 Material {
                     ambientIntensity 0
                     diffuseColor 0 0 0
                     shininess 0
@@ -1483,18 +1483,18 @@ function random (min, max)
                 geometry Text {
                   string "FRESH"
                   solid TRUE
-                  fontStyle USE _9
+                  fontStyle USE _8
                 }
               }
             }
-            DEF _14 MFNode {
+            DEF _11 MFNode {
               keyValue [
                 USE _1
                 USE _3
                 USE _2
               ]
             }
-            DEF _15 TouchSensor { }
+            DEF _12 TouchSensor { }
           ]
         }
         DEF Warm Transform {
@@ -1504,9 +1504,9 @@ function random (min, max)
               appearance Appearance {
                 texture USE _1
               }
-              geometry USE _11
+              geometry USE _9
             }
-            DEF Text_16 Transform {
+            DEF Text_4 Transform {
               children Shape {
                 appearance Appearance {
                   material Material {
@@ -1526,14 +1526,14 @@ function random (min, max)
                 }
               }
             }
-            DEF _17 MFNode {
+            DEF _13 MFNode {
               keyValue [
                 USE _3
                 USE _1
                 USE _2
               ]
             }
-            DEF _18 TouchSensor { }
+            DEF _14 TouchSensor { }
           ]
         }
         DEF Cool Transform {
@@ -1543,29 +1543,29 @@ function random (min, max)
               appearance Appearance {
                 texture USE _2
               }
-              geometry USE _11
+              geometry USE _9
             }
-            DEF Text_19 Transform {
+            DEF Text_5 Transform {
               children Shape {
                 appearance Appearance {
-                  material USE _13
+                  material USE _10
                 }
                 geometry Text {
                   string "COOL"
                   solid TRUE
-                  fontStyle USE _9
+                  fontStyle USE _8
                 }
               }
             }
             USE _2
-            DEF _20 MFNode {
+            DEF _15 MFNode {
               keyValue [
                 USE _3
                 USE _2
                 USE _1
               ]
             }
-            DEF _21 TouchSensor { }
+            DEF _16 TouchSensor { }
           ]
         }
       ]
@@ -1575,9 +1575,9 @@ function random (min, max)
 
 ROUTE _5.time TO CirclesScript.set_time
 ROUTE _4.hitPoint_changed TO CirclesScript.set_hitPoint
-ROUTE _15.touchTime TO _14.set_triggerTime
-ROUTE _14.value_changed TO CirclesScript.set_textures
-ROUTE _18.touchTime TO _17.set_triggerTime
-ROUTE _17.value_changed TO CirclesScript.set_textures
-ROUTE _21.touchTime TO _20.set_triggerTime
-ROUTE _20.value_changed TO CirclesScript.set_textures
+ROUTE _12.touchTime TO _11.set_triggerTime
+ROUTE _11.value_changed TO CirclesScript.set_textures
+ROUTE _14.touchTime TO _13.set_triggerTime
+ROUTE _13.value_changed TO CirclesScript.set_textures
+ROUTE _16.touchTime TO _15.set_triggerTime
+ROUTE _15.value_changed TO CirclesScript.set_textures

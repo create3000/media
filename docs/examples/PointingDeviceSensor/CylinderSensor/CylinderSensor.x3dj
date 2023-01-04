@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.0.2, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,23 +33,27 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
           "@name": "Geometry2D",
           "@level": 2
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -136,16 +140,16 @@
                 { "CylinderSensor":
                   {
                     "@DEF": "CylinderTouch",
-                    "@diskAngle": 9.69914e+08,
+                    "@diskAngle": 9.69914e+8,
                     "IS": {
                       "connect": [
                         {
-                          "@nodeField": "enabled",
-                          "@protoField": "enabled"
-                        },
-                        {
                           "@nodeField": "description",
                           "@protoField": "description"
+                        },
+                        {
+                          "@nodeField": "enabled",
+                          "@protoField": "enabled"
                         },
                         {
                           "@nodeField": "axisRotation",
@@ -306,7 +310,8 @@
 "\t\tif (sensor .autoOffset)",
 "\t\t\toffset = value;",
 "\t}",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -494,7 +499,8 @@
 "function set_length (length)",
 "{",
 "\ttext .length = new MFFloat (length);",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -584,7 +590,7 @@
               },
               { "Transform":
                 {
-                  "@DEF": "Number_2",
+                  "@DEF": "Number_1",
                   "@translation": [ 2, 0, 0 ],
                   "@scale": [ 0.5, 0.5, 0.5 ],
                   "-children": [
@@ -601,7 +607,7 @@
                         },
                         "-geometry": { "ProtoInstance":
                           {
-                            "@DEF": "_3",
+                            "@DEF": "_2",
                             "@name": "Number",
                             "fieldValue": [
                               {
@@ -613,7 +619,7 @@
                                 "-children": [
                                   { "FontStyle":
                                     {
-                                      "@DEF": "_4",
+                                      "@DEF": "_3",
                                       "@family": [ "TYPEWRITER" ],
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
                                     }
@@ -643,7 +649,7 @@
           {
             "@fromNode": "DiskSensor",
             "@fromField": "value_changed",
-            "@toNode": "_3",
+            "@toNode": "_2",
             "@toField": "value"
           }
         }

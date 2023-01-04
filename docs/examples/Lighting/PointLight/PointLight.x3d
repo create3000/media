@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 08 Mar 2015 05:54:30 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.0, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Lighting/PointLight/PointLight.O.x3d'/>
     <meta name='modified' content='Wed, 06 Jun 2018 13:03:36 GMT'/>
     <meta name='title' content='Beethoven'/>
@@ -69,10 +66,10 @@
             <PointLight DEF='_5'
                 color='0 1 0'
                 attenuation='0.07 0.16 0.88'/>
-            <Transform DEF='Sphere_6'>
+            <Transform DEF='Sphere_1'>
               <Shape>
                 <Appearance>
-                  <Material DEF='_7'
+                  <Material DEF='_6'
                       emissiveColor='0 1 0'/>
                 </Appearance>
                 <Sphere USE='_4'/>
@@ -81,13 +78,13 @@
           </Transform>
           <Transform DEF='BlueLight'
               translation='-1.6247 -2.40012 1.65397'>
-            <PointLight DEF='_8'
+            <PointLight DEF='_7'
                 color='0 0 1'
                 attenuation='0.07 0.16 0.88'/>
-            <Transform DEF='Sphere_9'>
+            <Transform DEF='Sphere_2'>
               <Shape>
                 <Appearance>
-                  <Material DEF='_10'
+                  <Material DEF='_8'
                       emissiveColor='0 0 1'/>
                 </Appearance>
                 <Sphere USE='_4'/>
@@ -96,13 +93,13 @@
           </Transform>
           <Transform DEF='PinkLight'
               translation='1.35914 0.199608 1.47597'>
-            <PointLight DEF='_11'
+            <PointLight DEF='_9'
                 color='1 0 1'
                 attenuation='0.07 0.16 0.88'/>
-            <Transform DEF='Sphere_12'>
+            <Transform DEF='Sphere_3'>
               <Shape>
                 <Appearance>
-                  <Material DEF='_13'
+                  <Material DEF='_10'
                       emissiveColor='1 0 1'/>
                 </Appearance>
                 <Sphere USE='_4'/>
@@ -112,6 +109,7 @@
         </Transform>
         <Transform DEF='Beethoven'>
           <Inline
+              global='true'
               url='"beethoven.x3dz"'/>
         </Transform>
       </Transform>
@@ -125,8 +123,8 @@
     <ROUTE fromNode='_1' fromField='fraction_changed' toNode='PinkLightTranslationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='PinkLightTranslationInterpolator' fromField='value_changed' toNode='PinkLight' toField='set_translation'/>
     <ROUTE fromNode='_2' fromField='color_changed' toNode='_3' toField='set_emissiveColor'/>
-    <ROUTE fromNode='_11' fromField='color_changed' toNode='_13' toField='set_emissiveColor'/>
-    <ROUTE fromNode='_8' fromField='color_changed' toNode='_10' toField='set_emissiveColor'/>
-    <ROUTE fromNode='_5' fromField='color_changed' toNode='_7' toField='set_emissiveColor'/>
+    <ROUTE fromNode='_9' fromField='color_changed' toNode='_10' toField='set_emissiveColor'/>
+    <ROUTE fromNode='_7' fromField='color_changed' toNode='_8' toField='set_emissiveColor'/>
+    <ROUTE fromNode='_5' fromField='color_changed' toNode='_6' toField='set_emissiveColor'/>
   </Scene>
 </X3D>

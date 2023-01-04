@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,8 +37,8 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
+          "@name": "EventUtilities",
+          "@level": 1
         },
         {
           "@name": "Geometry2D",
@@ -49,8 +49,8 @@
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "PointingDeviceSensor",
+          "@level": 1
         }
       ]
     },
@@ -129,7 +129,7 @@
               { "Layer":
                 {
                   "@DEF": "Background",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Background":
                       {
@@ -145,7 +145,7 @@
               { "Layer":
                 {
                   "@DEF": "Model",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Viewpoint":
                       {
@@ -159,6 +159,7 @@
                           { "Inline":
                             {
                               "@DEF": "Beethoven",
+                              "@global": true,
                               "@url": [ "assets/beethoven.x3d" ]
                             }
                           }
@@ -245,7 +246,7 @@
                               },
                               { "Transform":
                                 {
-                                  "@DEF": "RoundedRectangle2D_4",
+                                  "@DEF": "RoundedRectangle2D_1",
                                   "@translation": [ 0, -3.55158, 0 ],
                                   "-children": [
                                     { "Shape":
@@ -275,18 +276,18 @@
                     },
                     { "TouchSensor":
                       {
-                        "@DEF": "_5",
+                        "@DEF": "_4",
                         "@description": "Toggle Load"
                       }
                     },
                     { "BooleanTrigger":
                       {
-                        "@DEF": "_6"
+                        "@DEF": "_5"
                       }
                     },
                     { "BooleanToggle":
                       {
-                        "@DEF": "_7",
+                        "@DEF": "_6",
                         "@toggle": true
                       }
                     }
@@ -298,23 +299,23 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_6",
+            "@fromNode": "_5",
             "@fromField": "triggerTrue",
-            "@toNode": "_7",
+            "@toNode": "_6",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_5",
+            "@fromNode": "_4",
             "@fromField": "touchTime",
-            "@toNode": "_6",
+            "@toNode": "_5",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_7",
+            "@fromNode": "_6",
             "@fromField": "toggle",
             "@toNode": "Beethoven",
             "@toField": "load"
@@ -322,7 +323,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_7",
+            "@fromNode": "_6",
             "@fromField": "toggle",
             "@toNode": "_1",
             "@toField": "whichChoice"

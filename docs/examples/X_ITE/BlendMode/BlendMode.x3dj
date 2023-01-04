@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.5, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,32 +37,20 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
           "@name": "Layering",
           "@level": 1
         },
         {
           "@name": "ParticleSystems",
-          "@level": 2
+          "@level": 3
         },
         {
           "@name": "Shaders",
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         },
         {
           "@name": "X_ITE",
@@ -152,7 +140,7 @@
               { "Layer":
                 {
                   "@DEF": "Background",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -201,7 +189,7 @@
               { "Layer":
                 {
                   "@DEF": "Scene",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Viewpoint":
                       {
@@ -324,7 +312,7 @@
                     },
                     { "ParticleSystem":
                       {
-                        "@DEF": "Fire_3",
+                        "@DEF": "Fire_1",
                         "@geometryType": "SPRITE",
                         "@maxParticles": 151,
                         "@particleLifetime": 8.31,
@@ -364,7 +352,7 @@
                                     { "ShaderPart":
                                       {
                                         "@DEF": "VertexShader",
-                                        "@url": [ "data:x-shader/x-vertes,\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Color;\nattribute vec4 x3d_TexCoord0;\nattribute vec4 x3d_Vertex;\n\nattribute float x3d_ParticleElapsedTime;\nattribute vec4  x3d_ParticlePosition;\n\nvarying vec4 color;\nvarying vec4 texCoord;\n\n#define PI 3.1415\n\nmat4\ngetXZRotation (in float a)\n{\n\tfloat s = sin (a);\n\tfloat c = cos (a);\n\t\n\treturn mat4 ( c,  0.0 ,  s, 0.0,\n\t             0.0, 1.0, 0.0, 0.0,\n\t             -s,  0.0,   c, 0.0,\n\t             0.0, 0.0, 0.0, 1.0);\n}\n\nvoid\nmain ()\n{\n\tfloat s = 1.0 - x3d_ParticleElapsedTime;\n\tmat4  r = getXZRotation (x3d_ParticleElapsedTime * 2.0 * PI / 2.0);\n\tvec4  p = x3d_ParticlePosition * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);\n\tvec4  v = (x3d_Vertex - x3d_ParticlePosition) * s + r * p;\n\n\tcolor    = x3d_Color;\n\ttexCoord = x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;\n}\n" ]
+                                        "@url": [ "data:x-shader/x-vertes,\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Color;\nattribute vec4 x3d_TexCoord0;\nattribute vec4 x3d_Vertex;\n\nattribute vec4 x3d_Particle;\nattribute mat4 x3d_ParticleMatrix;\n\nvarying vec4 color;\nvarying vec4 texCoord;\n\n#define PI 3.1415\n\nmat4\ngetXZRotation (in float a)\n{\n\tfloat s = sin (a);\n\tfloat c = cos (a);\n\n\treturn mat4 (  c, 0.0 ,  s, 0.0,\n\t             0.0, 1.0, 0.0, 0.0,\n\t              -s, 0.0,   c, 0.0,\n\t             0.0, 0.0, 0.0, 1.0);\n}\n\nvoid\nmain ()\n{\n  float e = x3d_Particle [2] / x3d_Particle [1];\n\tfloat s = 1.0 - e;\n\tmat4  r = getXZRotation (e * 2.0 * PI / 2.0);\n\tvec4  p = x3d_ParticleMatrix [3] * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);\n\tvec4  v = vec4 (x3d_Vertex .xyz * s, 0.0) + r * p;\n\n\tcolor    = x3d_Color;\n\ttexCoord = x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;\n}\n" ]
                                       }
                                     },
                                     { "ShaderPart":
@@ -393,11 +381,11 @@
               { "Layer":
                 {
                   "@DEF": "HUD",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Fire_4",
+                        "@DEF": "Fire_2",
                         "@translation": [ -6.80942, 3.70732, 0 ],
                         "@scale": [ 1.48791, 1.48791, 1.48791 ],
                         "-children": [
@@ -405,7 +393,7 @@
                             {
                               "-appearance": { "Appearance":
                                 {
-                                  "@DEF": "_5",
+                                  "@DEF": "_3",
                                   "-material": { "Material":
                                     {
                                       "@diffuseColor": [ 0.564706, 0.933333, 0.564706 ]
@@ -419,7 +407,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@DEF": "_6",
+                                      "@DEF": "_4",
                                       "@family": [ "assets/MinskaBoldITCTT.otf" ],
                                       "@justify": [ "BEGIN", "BEGIN" ]
                                     }
@@ -453,7 +441,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@USE": "_6"
+                                      "@USE": "_4"
                                     }
                                   }
                                 }
@@ -472,7 +460,7 @@
                             {
                               "-appearance": { "Appearance":
                                 {
-                                  "@USE": "_5"
+                                  "@USE": "_3"
                                 }
                               },
                               "-geometry": { "Text":

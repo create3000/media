@@ -1,14 +1,14 @@
-#X3D V3.3 utf8 Titania V4.5.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Fri, 21 Dec 2018 04:34:14 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d"
 META "modified" "Mon, 07 Jan 2019 04:02:09 GMT"
 
@@ -22,8 +22,7 @@ EXTERNPROTO ArcOpen2D [
 ]
 [ "assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D" ]
 
-WorldInfo {
-}
+WorldInfo { }
 
 NavigationInfo {
   type "NONE"
@@ -81,13 +80,13 @@ function fill (value)
 
 DEF Clock Group {
   children [
-    DEF Seconds_2 Shape {
-      appearance DEF _3 Appearance {
+    DEF Seconds_1 Shape {
+      appearance DEF _2 Appearance {
         material UnlitMaterial {
           emissiveColor 0 1 0.995191
         }
       }
-      geometry DEF _4 ArcOpen2D {
+      geometry DEF _3 ArcOpen2D {
         dimension 64
         startAngle 0.733038
         innerRadius 9
@@ -95,18 +94,18 @@ DEF Clock Group {
         solid TRUE
       }
     }
-    DEF Minutes_5 Shape {
-      appearance USE _3
-      geometry DEF _6 ArcOpen2D {
+    DEF Minutes_1 Shape {
+      appearance USE _2
+      geometry DEF _4 ArcOpen2D {
         dimension 64
         startAngle 1.34739
         innerRadius 10.3
         outerRadius 11.3
       }
     }
-    DEF Hours_7 Shape {
-      appearance USE _3
-      geometry DEF _8 ArcOpen2D {
+    DEF Hours_1 Shape {
+      appearance USE _2
+      geometry DEF _5 ArcOpen2D {
         dimension 64
         startAngle -1.06581
         innerRadius 11.6
@@ -114,9 +113,9 @@ DEF Clock Group {
         solid TRUE
       }
     }
-    DEF Text_9 Shape {
-      appearance USE _3
-      geometry DEF _10 Text {
+    DEF Text_1 Shape {
+      appearance USE _2
+      geometry DEF _6 Text {
         string "05:02:08"
         solid TRUE
         fontStyle FontStyle {
@@ -129,7 +128,7 @@ DEF Clock Group {
     DEF LocalTime Transform {
       translation 0 -2.67569 0
       children Shape {
-        appearance USE _3
+        appearance USE _2
         geometry Text {
           string "Local Time"
           solid TRUE
@@ -141,10 +140,10 @@ DEF Clock Group {
         }
       }
     }
-    DEF Minutes5_11 Group {
+    DEF Minutes5_1 Group {
       children [
         Shape {
-          appearance USE _3
+          appearance USE _2
           geometry ArcOpen2D {
             dimension 64
             startAngle 1.0472
@@ -153,7 +152,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _3
+          appearance USE _2
           geometry ArcOpen2D {
             dimension 64
             endAngle 0.523599
@@ -162,7 +161,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _3
+          appearance USE _2
           geometry ArcOpen2D {
             dimension 64
             startAngle -1.0472
@@ -172,7 +171,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _3
+          appearance USE _2
           geometry ArcOpen2D {
             dimension 64
             startAngle -2.0944
@@ -182,7 +181,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _3
+          appearance USE _2
           geometry ArcOpen2D {
             dimension 64
             startAngle -3.14159
@@ -192,7 +191,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _3
+          appearance USE _2
           geometry ArcOpen2D {
             dimension 64
             startAngle -4.18879
@@ -206,8 +205,8 @@ DEF Clock Group {
   ]
 }
 
-ROUTE ClockScript.string_changed TO _10.set_string
+ROUTE ClockScript.string_changed TO _6.set_string
 ROUTE _1.cycleTime TO ClockScript.set_time
-ROUTE ClockScript.seconds_changed TO _4.set_startAngle
-ROUTE ClockScript.minutes_changed TO _6.set_startAngle
-ROUTE ClockScript.hours_changed TO _8.set_startAngle
+ROUTE ClockScript.seconds_changed TO _3.set_startAngle
+ROUTE ClockScript.minutes_changed TO _4.set_startAngle
+ROUTE ClockScript.hours_changed TO _5.set_startAngle

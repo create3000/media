@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Layout' level='1'/>
-    <component name='ParticleSystems' level='2'/>
-    <component name='Shape' level='4'/>
+    <component name='Layout' level='2'/>
+    <component name='ParticleSystems' level='3'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 03 Dec 2017 04:29:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.0.2, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Layering/Viewport/Viewport.O.x3d'/>
     <meta name='modified' content='Sun, 03 Dec 2017 05:32:31 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
@@ -20,16 +20,16 @@
     <LayerSet
         order='1, 2, 3, 4'>
       <Layer DEF='Background'
-          isPickable='false'>
+          pickable='false'>
         <Background DEF='White'
             skyColor='1 1 1'/>
       </Layer>
       <LayoutLayer DEF='Stars'
-          isPickable='false'>
+          pickable='false'>
         <Layout/>
         <Viewport DEF='_1'
             clipBoundary='0, 1, 0.177, 0.822'/>
-        <Background DEF='Gray_2'
+        <Background DEF='Gray_1'
             skyColor='0.2 0.2 0.2'/>
         <Transform DEF='stars'>
           <Shape>
@@ -45,7 +45,7 @@
         </Transform>
       </LayoutLayer>
       <Layer DEF='Particles'
-          isPickable='false'>
+          pickable='false'>
         <Viewport USE='_1'/>
         <Transform DEF='Surface'>
           <Shape>
@@ -53,7 +53,7 @@
               <Material
                   transparency='1'/>
             </Appearance>
-            <IndexedFaceSet DEF='_3'
+            <IndexedFaceSet DEF='_2'
                 coordIndex='3, 2, 1, 0, -1'>
               <Coordinate
                   point='-13.4377 2.82143 5.06955, 13.4373 2.82144 5.06957, 13.4378 2.82144 -20.9484, -13.4371 2.82143 -20.9484'/>
@@ -66,7 +66,7 @@
             particleSize='0.2 0.2'>
           <SurfaceEmitter
               speed='0.5'>
-            <IndexedFaceSet USE='_3' containerField='surface'/>
+            <IndexedFaceSet USE='_2' containerField='surface'/>
           </SurfaceEmitter>
           <Appearance>
             <ImageTexture
@@ -75,7 +75,7 @@
         </ParticleSystem>
       </Layer>
       <LayoutLayer
-          isPickable='false'>
+          pickable='false'>
         <Transform DEF='Text'>
           <Shape>
             <Appearance>
@@ -91,7 +91,7 @@
             </Text>
           </Shape>
         </Transform>
-        <Transform DEF='Text_4'
+        <Transform DEF='Text_1'
             translation='0 -0.269567 0'>
           <Shape>
             <Appearance>

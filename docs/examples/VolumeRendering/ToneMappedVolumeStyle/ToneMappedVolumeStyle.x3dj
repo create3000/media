@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "World of Sunrise X3D Editor"
         },
         {
           "@name": "created",
@@ -16,7 +16,7 @@
         },
         {
           "@name": "creator",
-          "@content": "Andrew Wood, Nicholas Polys: Virginia Tech"
+          "@content": "Holger Seelig"
         },
         {
           "@name": "description",
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.3, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/VolumeRendering/ToneMappedVolumeStyle/ToneMappedVolumeStyle.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/VolumeRendering/ToneMappedVolumeStyle/ToneMappedVolumeStyle.O.x3d"
         },
         {
           "@name": "license",
@@ -36,27 +36,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Tue, 22 Oct 2019 10:24:05 GMT"
-        },
-        {
-          "@name": "reference",
-          "@content": "BasicInternals.x3d"
-        },
-        {
-          "@name": "reference",
-          "@content": "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/internals.nrrd"
-        },
-        {
-          "@name": "reference",
-          "@content": "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
-        },
-        {
-          "@name": "reference",
-          "@content": "Run the download target in the Ant build.xml file to install reference nrrd files locally."
-        },
-        {
-          "@name": "reference",
-          "@content": "build.xml"
+          "@content": "Fri, 04 Nov 2022 22:55:22 GMT"
         },
         {
           "@name": "reference",
@@ -69,16 +49,12 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
           "@name": "Texturing3D",
           "@level": 2
         },
         {
           "@name": "VolumeRendering",
-          "@level": 2
+          "@level": 4
         }
       ]
     },
@@ -86,7 +62,7 @@
       "-children": [
         { "WorldInfo":
           {
-            "@title": "ToneMappedVolumeStyle.O"
+            "@title": "ToneMappedVolumeStyle"
           }
         },
         { "Group":
@@ -106,16 +82,17 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_1",
-                  "@rotation": [ -0.805985460535052, -0.355718235953516, -0.473129975816603, 1.52136144419423 ],
+                  "@rotation": [ -0.80598546053505, -0.35571823595352, -0.4731299758166, 1.5213614441942 ],
                   "@scale": [ 0.000292969, 0.000292969, 0.000292969 ],
-                  "@scaleOrientation": [ 0.154149716984712, -0.62367421699242, -0.766334349884189, 0.966643571835713 ],
+                  "@scaleOrientation": [ 0.15414971698471, -0.62367421699242, -0.76633434988419, 0.96664357183571 ],
                   "-children": [
                     { "VolumeData":
                       {
                         "@dimensions": [ 512, 512, 452 ],
                         "-renderStyle": { "ToneMappedVolumeStyle":
                           {
+                            "@coolColor": [ 0, 0, 1, 1 ],
+                            "@warmColor": [ 1, 1, 0, 1 ]
                           }
                         },
                         "-voxels": { "ImageTexture3D":

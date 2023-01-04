@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -41,12 +41,16 @@
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "PointingDeviceSensor",
+          "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -95,7 +99,8 @@
 "function initialize ()",
 "{",
 "\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
-"}"
+"}",
+""
                         ]
                       }
                     },
@@ -2782,7 +2787,7 @@
               { "Layer":
                 {
                   "@DEF": "Text",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "NavigationInfo":
                       {
@@ -2826,7 +2831,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_8",
+                        "@DEF": "Text_1",
                         "@translation": [ 0, -0.0191083, 0 ],
                         "-children": [
                           { "Shape":
@@ -2849,7 +2854,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@DEF": "_9",
+                                      "@DEF": "_8",
                                       "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
                                       "@size": 0.08,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
@@ -2864,7 +2869,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_10",
+                        "@DEF": "Text_2",
                         "@translation": [ 0, -0.617834, 0 ],
                         "-children": [
                           { "Shape":
@@ -2933,7 +2938,7 @@
                               },
                               "-geometry": { "Disk2D":
                                 {
-                                  "@DEF": "_11",
+                                  "@DEF": "_9",
                                   "@outerRadius": 0.14
                                 }
                               }
@@ -2941,7 +2946,7 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_12",
+                              "@DEF": "Text_3",
                               "-children": [
                                 { "Shape":
                                   {
@@ -2949,7 +2954,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@DEF": "_13",
+                                            "@DEF": "_10",
                                             "@ambientIntensity": 0,
                                             "@diffuseColor": [ 0, 0, 0 ],
                                             "@shininess": 0
@@ -2963,7 +2968,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@USE": "_9"
+                                            "@USE": "_8"
                                           }
                                         }
                                       }
@@ -2975,7 +2980,7 @@
                           },
                           { "ProtoInstance":
                             {
-                              "@DEF": "_14",
+                              "@DEF": "_11",
                               "@name": "MFNode",
                               "fieldValue": [
                                 {
@@ -3003,7 +3008,7 @@
                           },
                           { "TouchSensor":
                             {
-                              "@DEF": "_15"
+                              "@DEF": "_12"
                             }
                           }
                         ]
@@ -3027,14 +3032,14 @@
                               },
                               "-geometry": { "Disk2D":
                                 {
-                                  "@USE": "_11"
+                                  "@USE": "_9"
                                 }
                               }
                             }
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_16",
+                              "@DEF": "Text_4",
                               "-children": [
                                 { "Shape":
                                   {
@@ -3069,7 +3074,7 @@
                           },
                           { "ProtoInstance":
                             {
-                              "@DEF": "_17",
+                              "@DEF": "_13",
                               "@name": "MFNode",
                               "fieldValue": [
                                 {
@@ -3097,7 +3102,7 @@
                           },
                           { "TouchSensor":
                             {
-                              "@DEF": "_18"
+                              "@DEF": "_14"
                             }
                           }
                         ]
@@ -3121,14 +3126,14 @@
                               },
                               "-geometry": { "Disk2D":
                                 {
-                                  "@USE": "_11"
+                                  "@USE": "_9"
                                 }
                               }
                             }
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_19",
+                              "@DEF": "Text_5",
                               "-children": [
                                 { "Shape":
                                   {
@@ -3136,7 +3141,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@USE": "_13"
+                                            "@USE": "_10"
                                           }
                                         }
                                       }
@@ -3147,7 +3152,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@USE": "_9"
+                                            "@USE": "_8"
                                           }
                                         }
                                       }
@@ -3164,7 +3169,7 @@
                           },
                           { "ProtoInstance":
                             {
-                              "@DEF": "_20",
+                              "@DEF": "_15",
                               "@name": "MFNode",
                               "fieldValue": [
                                 {
@@ -3192,7 +3197,7 @@
                           },
                           { "TouchSensor":
                             {
-                              "@DEF": "_21"
+                              "@DEF": "_16"
                             }
                           }
                         ]
@@ -3222,15 +3227,31 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_12",
             "@fromField": "touchTime",
-            "@toNode": "_14",
+            "@toNode": "_11",
             "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_11",
+            "@fromField": "value_changed",
+            "@toNode": "CirclesScript",
+            "@toField": "textures"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "_14",
+            "@fromField": "touchTime",
+            "@toNode": "_13",
+            "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_13",
             "@fromField": "value_changed",
             "@toNode": "CirclesScript",
             "@toField": "textures"
@@ -3238,31 +3259,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_18",
+            "@fromNode": "_16",
             "@fromField": "touchTime",
-            "@toNode": "_17",
+            "@toNode": "_15",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_17",
-            "@fromField": "value_changed",
-            "@toNode": "CirclesScript",
-            "@toField": "textures"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_21",
-            "@fromField": "touchTime",
-            "@toNode": "_20",
-            "@toField": "set_triggerTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_20",
+            "@fromNode": "_15",
             "@fromField": "value_changed",
             "@toNode": "CirclesScript",
             "@toField": "textures"

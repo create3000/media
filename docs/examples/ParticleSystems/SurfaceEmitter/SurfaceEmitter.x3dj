@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.0.2, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,8 +37,8 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layering",
@@ -46,15 +46,15 @@
         },
         {
           "@name": "Layout",
-          "@level": 1
-        },
-        {
-          "@name": "ParticleSystems",
           "@level": 2
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "ParticleSystems",
+          "@level": 3
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -71,7 +71,7 @@
               { "Layer":
                 {
                   "@DEF": "Background",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Background":
                       {
@@ -85,7 +85,7 @@
               { "LayoutLayer":
                 {
                   "@DEF": "Stars",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-layout": { "Layout":
                     {
                     }
@@ -99,7 +99,7 @@
                   "-children": [
                     { "Background":
                       {
-                        "@DEF": "Gray_2",
+                        "@DEF": "Gray_1",
                         "@skyColor": [ 0.2, 0.2, 0.2 ]
                       }
                     },
@@ -136,7 +136,7 @@
               { "Layer":
                 {
                   "@DEF": "Particles",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-viewport": { "Viewport":
                     {
                       "@USE": "_1"
@@ -160,7 +160,7 @@
                               },
                               "-geometry": { "IndexedFaceSet":
                                 {
-                                  "@DEF": "_3",
+                                  "@DEF": "_2",
                                   "@coordIndex": [ 3, 2, 1, 0, -1 ],
                                   "-coord": { "Coordinate":
                                     {
@@ -184,7 +184,7 @@
                             "@speed": 0.5,
                             "-surface": { "IndexedFaceSet":
                               {
-                                "@USE": "_3"
+                                "@USE": "_2"
                               }
                             }
                           }
@@ -205,7 +205,7 @@
               },
               { "LayoutLayer":
                 {
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -241,7 +241,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_4",
+                        "@DEF": "Text_1",
                         "@translation": [ 0, -0.269567, 0 ],
                         "-children": [
                           { "Shape":

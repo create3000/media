@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
     <component name='Layering' level='1'/>
-    <component name='ParticleSystems' level='2'/>
+    <component name='ParticleSystems' level='3'/>
     <component name='Shaders' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='Text' level='1'/>
     <component name='X_ITE' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Tue, 19 Dec 2017 00:35:26 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.4.5, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X_ITE/BlendMode/BlendMode.O.x3d'/>
     <meta name='modified' content='Sun, 07 Apr 2019 14:46:49 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
@@ -38,7 +35,7 @@
         activeLayer='2'
         order='1, 2, 3'>
       <Layer DEF='Background'
-          isPickable='false'>
+          pickable='false'>
         <Transform DEF='_1'
             rotation='-0.998960144229723 0.0452369564793854 0.00567873304653588 1.48458083528778'
             scale='0.999999 1 1'
@@ -61,7 +58,7 @@
         </Transform>
       </Layer>
       <Layer DEF='Scene'
-          isPickable='false'>
+          pickable='false'>
         <Viewpoint
             description='Initial View'
             position='2.61467 6.08253 4.95477'
@@ -104,7 +101,7 @@
             </Transform>
           </Transform>
         </Transform>
-        <ParticleSystem DEF='Fire_3'
+        <ParticleSystem DEF='Fire_1'
             geometryType='SPRITE'
             maxParticles='151'
             particleLifetime='8.31'
@@ -201,19 +198,19 @@ main ()
         </ParticleSystem>
       </Layer>
       <Layer DEF='HUD'
-          isPickable='false'>
-        <Transform DEF='Fire_4'
+          pickable='false'>
+        <Transform DEF='Fire_2'
             translation='-6.80942 3.70732 0'
             scale='1.48791 1.48791 1.48791'>
           <Shape>
-            <Appearance DEF='_5'>
+            <Appearance DEF='_3'>
               <Material
                   diffuseColor='0.564706 0.933333 0.564706'/>
             </Appearance>
             <Text
                 string='"Fire"'
                 solid='true'>
-              <FontStyle DEF='_6'
+              <FontStyle DEF='_4'
                   family='"assets/MinskaBoldITCTT.otf"'
                   justify='"BEGIN", "BEGIN"'/>
             </Text>
@@ -229,14 +226,14 @@ main ()
             <Text
                 string='"Flow"'
                 solid='true'>
-              <FontStyle USE='_6'/>
+              <FontStyle USE='_4'/>
             </Text>
           </Shape>
         </Transform>
         <Transform DEF='Text'
             translation='6.79705 -3.47612 0'>
           <Shape>
-            <Appearance USE='_5'/>
+            <Appearance USE='_3'/>
             <Text
                 string='"in-browser", "flaming-fast", "gpu-accelerated", "deep-learning"'
                 solid='true'>

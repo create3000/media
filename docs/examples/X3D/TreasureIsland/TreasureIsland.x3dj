@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V1.2.0, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "modified",
@@ -29,6 +29,12 @@
         {
           "@name": "title",
           "@content": "Treasure Island"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -43,7 +49,8 @@
 "function initialize ()",
 "{",
 "  Browser .loadURL (new MFString (\"stage/index.wrl\"), new MFString ());",
-"}"
+"}",
+""
             ]
           }
         }

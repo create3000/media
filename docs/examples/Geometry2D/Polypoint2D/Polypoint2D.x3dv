@@ -1,18 +1,17 @@
-#X3D V3.3 utf8 Sunrise X3D Browser V1.0
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
 COMPONENT Followers : 1
-COMPONENT Shape : 5
-COMPONENT Time : 2
+COMPONENT Geometry2D : 2
+COMPONENT Scripting : 1
 
 META "comment" "World of Sunrise X3D Editor"
 META "created" "Mon, 08 Jan 2018 16:52:18 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0, https://create3000.github.io/Sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geometry2D/Polypoint2D/Polypoint2D.x3dv"
-META "modified" "Sat, 22 Jan 2022 18:47:48 +0100"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geometry2D/Polypoint2D/Polypoint2D.O.x3d"
+META "modified" "Sat, 22 Jan 2022 18:47:19 +0100"
 META "titania-add-metadata" "true"
 
 PROTO RandomPoints [
@@ -65,10 +64,6 @@ function random (min, max)
   ROUTE RandomPointsScript.point_changed TO _1.set_destination
 }
 
-WorldInfo {
-  title "Polypoint2D.O.x3d"
-}
-
 NavigationInfo {
   type "EXAMINE"
   transitionType "ANIMATE"
@@ -76,15 +71,9 @@ NavigationInfo {
 
 Background {
   skyAngle 1.5708
-  skyColor [
-    0.1 0.1 0.1,
-    0.3 0.3 0.3
-  ]
+  skyColor [ 0.1 0.1 0.1, 0.3 0.3 0.3 ]
   groundAngle 1.5708
-  groundColor [
-    0.1 0.1 0.1,
-    0.3 0.3 0.3
-  ]
+  groundColor [ 0.1 0.1 0.1, 0.3 0.3 0.3 ]
 }
 
 Viewpoint {

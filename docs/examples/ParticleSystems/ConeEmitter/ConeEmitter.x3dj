@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,19 +37,23 @@
       ],
       "component": [
         {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
           "@name": "Layering",
           "@level": 1
         },
         {
           "@name": "ParticleSystems",
-          "@level": 1
+          "@level": 3
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -77,7 +81,7 @@
                     { "Transform":
                       {
                         "@translation": [ 5, 2, 0 ],
-                        "@rotation": [ 7.65439307679969e-08, -3.95215014160716e-06, 0.999999999992187, 20.941018239943 ],
+                        "@rotation": [ 7.65439307679969e-8, -0.00000395215014160716, 0.999999999992187, 20.941018239943 ],
                         "-children": [
                           { "ParticleSystem":
                             {
@@ -174,7 +178,7 @@
                     { "Transform":
                       {
                         "@DEF": "spaceship23",
-                        "@rotation": [ 5.36450974666047e-08, -3.94289724537112e-06, 0.999999999992225, 20.9410204722861 ],
+                        "@rotation": [ 5.36450974666047e-8, -0.00000394289724537112, 0.999999999992225, 20.9410204722861 ],
                         "@scale": [ 4.43, 4.43, 4.43 ],
                         "@scaleOrientation": [ 0.0113057075592245, -0.0631929853746116, 0.997937286394305, 11.5811085059366 ],
                         "-children": [

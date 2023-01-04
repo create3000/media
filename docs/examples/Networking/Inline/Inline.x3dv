@@ -1,16 +1,16 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
+COMPONENT EventUtilities : 1
 COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 4
+COMPONENT PointingDeviceSensor : 1
 
 META "comment" "World of Titania"
 META "created" "Tue, 28 Nov 2017 11:47:53 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/Inline/Inline.O.x3d"
 META "modified" "Sun, 27 Jan 2019 15:39:28 GMT"
 META "titania-add-metadata" "true"
@@ -32,15 +32,14 @@ EXTERNPROTO RoundedRectangle2D [
 ]
 "assets/RoundedRectangle2D.x3d#RoundedRectangle2D"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer 2
   order [ 0, 1, 2, 3 ]
   layers [
     DEF Background Layer {
-      isPickable FALSE
+      pickable FALSE
       children Background {
         skyAngle [ 1.09223, 1.5708 ]
         skyColor [ 0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3 ]
@@ -49,7 +48,7 @@ LayerSet {
       }
     }
     DEF Model Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         Viewpoint {
           description "Inital View"
@@ -57,6 +56,7 @@ LayerSet {
         }
         Transform {
           children DEF Beethoven Inline {
+            global TRUE
             url "assets/beethoven.x3d"
           }
         }
@@ -95,7 +95,7 @@ LayerSet {
                 }
               ]
             }
-            DEF RoundedRectangle2D_4 Transform {
+            DEF RoundedRectangle2D_1 Transform {
               translation 0 -3.55158 0
               children [
                 USE _2
@@ -107,11 +107,11 @@ LayerSet {
             }
           ]
         }
-        DEF _5 TouchSensor {
+        DEF _4 TouchSensor {
           description "Toggle Load"
         }
-        DEF _6 BooleanTrigger { }
-        DEF _7 BooleanToggle {
+        DEF _5 BooleanTrigger { }
+        DEF _6 BooleanToggle {
           toggle TRUE
         }
       ]
@@ -119,7 +119,7 @@ LayerSet {
   ]
 }
 
-ROUTE _6.triggerTrue TO _7.set_boolean
-ROUTE _5.touchTime TO _6.set_triggerTime
-ROUTE _7.toggle_changed TO Beethoven.set_load
-ROUTE _7.toggle_changed TO _1.set_whichChoice
+ROUTE _5.triggerTrue TO _6.set_boolean
+ROUTE _4.touchTime TO _5.set_triggerTime
+ROUTE _6.toggle_changed TO Beethoven.set_load
+ROUTE _6.toggle_changed TO _1.set_whichChoice

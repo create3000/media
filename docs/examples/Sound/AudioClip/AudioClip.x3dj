@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.8, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,19 +33,19 @@
       ],
       "component": [
         {
-          "@name": "Shape",
-          "@level": 3
+          "@name": "Scripting",
+          "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Sound",
+          "@level": 3
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -272,7 +272,8 @@
 "\t\t\tcoord .point [i] = points [x] [z];",
 "\t\t}",
 "\t}",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -332,18 +333,14 @@
             "field": [
               {
                 "@accessType": "inputOnly",
-                "@type": "MFNode",
-                "@name": "set_audio"
-              },
-              {
-                "@accessType": "inputOnly",
                 "@type": "SFBool",
                 "@name": "set_active"
               },
               {
                 "@accessType": "initializeOnly",
                 "@type": "MFString",
-                "@name": "files"
+                "@name": "files",
+                "@value": [ "assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don't Pay My Bills.mp3", "assets/audio/03. Crockett's Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3" ]
               },
               {
                 "@accessType": "initializeOnly",
@@ -373,18 +370,11 @@
             "#sourceText": [
 "ecmascript:",
 "",
-"var track = 0;",
+"let track = 0;",
 "",
 "function initialize ()",
 "{",
-"\tBrowser .createX3DFromURL (new MFString (\"assets/audio.php\"), self, \"set_audio\")",
-"}",
-"",
-"function set_audio (value, time)",
-"{",
-"\tfiles = value [0] .files;",
-"",
-"\tset_active (false, time);",
+"\tset_active (false, 0);",
 "}",
 "",
 "function set_active (value, time)",
@@ -392,7 +382,7 @@
 "\tif (value)",
 "\t\treturn;",
 "",
-"\tvar url = files [track ++ % files .length];",
+"\tconst url = files [track ++ % files .length];",
 "",
 "\tsource .url       = new MFString (url);",
 "\tsource .startTime = time;",

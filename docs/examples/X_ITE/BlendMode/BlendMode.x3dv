@@ -1,20 +1,17 @@
-#X3D V3.3 utf8 Titania V4.5.0
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
 COMPONENT Layering : 1
-COMPONENT ParticleSystems : 2
+COMPONENT ParticleSystems : 3
 COMPONENT Shaders : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Text : 1
 COMPONENT X_ITE : 1
 
 META "comment" "World of Titania"
 META "created" "Tue, 19 Dec 2017 00:35:26 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.5, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X_ITE/BlendMode/BlendMode.O.x3d"
 META "modified" "Sun, 07 Apr 2019 14:46:49 GMT"
 META "titania-add-metadata" "true"
@@ -33,17 +30,16 @@ EXTERNPROTO Rotor [
   outputOnly  SFTime     cycleTime
   outputOnly  SFRotation rotation_changed
 ]
-[ "assets/Rotor.x3d#Rotor" ]
+"assets/Rotor.x3d#Rotor"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer 2
   order [ 1, 2, 3 ]
   layers [
     DEF Background Layer {
-      isPickable FALSE
+      pickable FALSE
       children DEF _1 Transform {
         rotation -0.998960144229723 0.0452369564793854 0.00567873304653588 1.48458083528778
         scale 0.999999 1 1
@@ -73,7 +69,7 @@ LayerSet {
       }
     }
     DEF Scene Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         Viewpoint {
           description "Initial View"
@@ -122,7 +118,7 @@ LayerSet {
             }
           ]
         }
-        DEF Fire_3 ParticleSystem {
+        DEF Fire_1 ParticleSystem {
           geometryType "SPRITE"
           maxParticles 151
           particleLifetime 8.31
@@ -226,13 +222,13 @@ main ()
       ]
     }
     DEF HUD Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
-        DEF Fire_4 Transform {
+        DEF Fire_2 Transform {
           translation -6.80942 3.70732 0
           scale 1.48791 1.48791 1.48791
           children Shape {
-            appearance DEF _5 Appearance {
+            appearance DEF _3 Appearance {
               material Material {
                 diffuseColor 0.564706 0.933333 0.564706
               }
@@ -240,7 +236,7 @@ main ()
             geometry Text {
               string "Fire"
               solid TRUE
-              fontStyle DEF _6 FontStyle {
+              fontStyle DEF _4 FontStyle {
                 family "assets/MinskaBoldITCTT.otf"
                 justify [ "BEGIN", "BEGIN" ]
               }
@@ -258,14 +254,14 @@ main ()
             geometry Text {
               string "Flow"
               solid TRUE
-              fontStyle USE _6
+              fontStyle USE _4
             }
           }
         }
         DEF Text Transform {
           translation 6.79705 -3.47612 0
           children Shape {
-            appearance USE _5
+            appearance USE _3
             geometry Text {
               string [ "in-browser", "flaming-fast", "gpu-accelerated", "deep-learning" ]
               solid TRUE

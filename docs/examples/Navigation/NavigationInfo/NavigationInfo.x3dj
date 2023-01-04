@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "World of Sunrise X3D Editor"
         },
         {
           "@name": "created",
@@ -20,44 +20,32 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.3, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Navigation/NavigationInfo/NavigationInfo.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Navigation/NavigationInfo/NavigationInfo.O.x3d"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 11 Mar 2019 16:48:19 GMT"
+          "@content": "Thu, 27 Oct 2022 08:58:42 GMT"
         }
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
           "@name": "ParticleSystems",
+          "@level": 3
+        },
+        {
+          "@name": "Scripting",
           "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -156,7 +144,7 @@
           {
             "@description": "Initial View",
             "@position": [ -18.7554, 2.99533, 1.63847 ],
-            "@orientation": [ -7.81108432587867e-16, -1, -6.61248690345936e-16, 80.1883798254191 ],
+            "@orientation": [ -7.8110843258787e-16, -1, -6.6124869034594e-16, 80.188379825419 ],
             "@centerOfRotation": [ -2.35664, 2.99533, -1.19751 ]
           }
         },
@@ -197,11 +185,10 @@
                 {
                   "@DEF": "_3",
                   "@global": false,
-                  "@color": [ 1, 0.790776, 0 ],
+                  "@color": [ 1, 0.138418, 0 ],
                   "@intensity": 0.451456,
-                  "@location": [ -1.04113, 5.52, -5.4 ],
+                  "@location": [ 9.64836, 5.52, -5.4 ],
                   "@shadows": true,
-                  "@shadowIntensity": 1,
                   "@shadowMapSize": 2048
                 }
               },
@@ -212,20 +199,20 @@
                   "@ambientIntensity": 0.13835,
                   "@location": [ 0, 15.55, 0 ],
                   "@shadows": true,
-                  "@shadowIntensity": 1,
                   "@shadowMapSize": 2048
                 }
               },
               { "Inline":
                 {
                   "@DEF": "Sponza",
+                  "@global": true,
                   "@url": [ "sponza.x3d" ]
                 }
               },
               { "LoadSensor":
                 {
                   "@DEF": "_4",
-                  "-watchList": [
+                  "-children": [
                     { "Inline":
                       {
                         "@USE": "Sponza"
@@ -239,7 +226,6 @@
         },
         { "ParticleSystem":
           {
-            "@DEF": "_5",
             "@geometryType": "SPRITE",
             "@maxParticles": 70,
             "@particleLifetime": 0.73,
@@ -247,8 +233,8 @@
             "@particleSize": [ 0.5, 0.5 ],
             "-emitter": { "PointEmitter":
               {
-                "@DEF": "_6",
-                "@position": [ -1.04113, 5.52, -5.4 ],
+                "@DEF": "_5",
+                "@position": [ 9.64836, 5.52, -5.4 ],
                 "@direction": [ 0, 0, 0 ],
                 "@speed": 0.68
               }
@@ -257,8 +243,8 @@
               {
                 "-material": { "Material":
                   {
-                    "@DEF": "_7",
-                    "@emissiveColor": [ 1, 0.790776, 0 ]
+                    "@DEF": "_6",
+                    "@emissiveColor": [ 1, 0.138418, 0 ]
                   }
                 },
                 "-texture": { "ImageTexture":
@@ -276,6 +262,20 @@
           {
             "@type": [ "WALK", "EXAMINE" ],
             "@headlight": false
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "PhongScript",
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"   Browser .setBrowserOption (\"Shading\", \"PHONG\");",
+"}",
+""
+            ]
           }
         },
         { "ROUTE":
@@ -314,7 +314,7 @@
           {
             "@fromNode": "_3",
             "@fromField": "location",
-            "@toNode": "_6",
+            "@toNode": "_5",
             "@toField": "position"
           }
         },
@@ -322,7 +322,7 @@
           {
             "@fromNode": "_3",
             "@fromField": "color",
-            "@toNode": "_7",
+            "@toNode": "_6",
             "@toField": "emissiveColor"
           }
         },

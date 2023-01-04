@@ -1,17 +1,15 @@
-#X3D V3.3 utf8 Titania V4.6.7
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Grouping : 3
-COMPONENT ParticleSystems : 1
+COMPONENT ParticleSystems : 3
 COMPONENT Picking : 3
-COMPONENT Time : 2
+COMPONENT Scripting : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PrimitivePickSensor/PrimitivePickSensor.O.x3d"
 META "modified" "Thu, 07 Nov 2019 12:34:43 GMT"
 
@@ -72,8 +70,7 @@ function set_active (value, time)
   ROUTE _2.isActive TO BulletScript.set_active
 }
 
-WorldInfo {
-}
+WorldInfo { }
 
 Viewpoint {
   description "Initial view"
@@ -114,6 +111,7 @@ function set_color (value, time)
 
 DEF RocketShip Transform {
   children Inline {
+    global TRUE
     url "assets/rocket-ship.x3dz"
   }
 }

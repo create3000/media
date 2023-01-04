@@ -1,12 +1,17 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
+COMPONENT EnvironmentalSensor : 3
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Sound : 3
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 
 PROTO BooleanSwitch [
   inputOutput    SFBool  whichChoice FALSE
@@ -51,7 +56,7 @@ LayerSet {
   order [ 1, 2, 3 ]
   layers [
     DEF Skyline Layer {
-      isPickable FALSE
+      pickable FALSE
       children [
         DEF skyline Transform {
           translation 0.0653244 0.0312421 0
@@ -95,7 +100,7 @@ LayerSet {
       ]
     }
     DEF Plants Layer {
-      isPickable FALSE
+      pickable FALSE
       children DEF plants Transform {
         scale 2.62712 2.62712 2.62712
         children Shape {
@@ -140,46 +145,46 @@ LayerSet {
               children [
                 DEF _3 BooleanSwitch {
                   children [
-                    DEF Text_4 Transform {
+                    DEF Text_1 Transform {
                       translation -6.2 1.6 0
                       children Shape {
-                        appearance DEF _5 Appearance {
+                        appearance DEF _4 Appearance {
                           material Material {
                             diffuseColor 1 0.905882 0.67451
                           }
                         }
-                        geometry DEF _6 Text {
+                        geometry DEF _5 Text {
                           string "New Game"
                           solid TRUE
-                          fontStyle DEF _7 FontStyle {
+                          fontStyle DEF _6 FontStyle {
                             family "BDFazer.otf"
                             size 0.6
                           }
                         }
                       }
                     }
-                    DEF _8 Group {
+                    DEF _7 Group {
                       children [
-                        DEF Text_9 Transform {
+                        DEF Text_2 Transform {
                           translation -6.2 1.6 0
                           children Shape {
                             appearance USE _2
-                            geometry USE _6
+                            geometry USE _5
                           }
                         }
                         DEF border Transform {
                           translation -2.623 1.78 0
                           scale 50 50 50
-                          children DEF _10 Shape {
+                          children DEF _8 Shape {
                             appearance Appearance {
                               material Material { }
-                              texture DEF _11 ImageTexture {
+                              texture DEF _9 ImageTexture {
                                 url [ "border.png", "file:///home/holger/Projekte/Library/Components/Layering/LayerSet/border.png" ]
                                 repeatS FALSE
                                 repeatT FALSE
                               }
                             }
-                            geometry DEF _12 Rectangle2D {
+                            geometry DEF _10 Rectangle2D {
                               size 0.158905 0.0219927
                             }
                           }
@@ -188,275 +193,275 @@ LayerSet {
                     }
                   ]
                 }
-                DEF border_13 Transform {
+                DEF border_1 Transform {
                   translation -2.623 1.78 0
                   scale 50 50 50
-                  children DEF _14 Shape {
+                  children DEF _11 Shape {
                     appearance Appearance {
                       material Material {
                         transparency 1
                       }
                     }
-                    geometry USE _12
+                    geometry USE _10
                   }
                 }
-                DEF _15 TouchSensor { }
+                DEF _12 TouchSensor { }
               ]
             }
             Group {
               children [
-                DEF _16 BooleanSwitch {
+                DEF _13 BooleanSwitch {
                   children [
-                    DEF Text_17 Transform {
+                    DEF Text_3 Transform {
                       translation -6.19108 0.8 0
                       children Shape {
-                        appearance USE _5
-                        geometry DEF _18 Text {
+                        appearance USE _4
+                        geometry DEF _14 Text {
                           string "Continue Game"
                           solid TRUE
-                          fontStyle USE _7
+                          fontStyle USE _6
+                        }
+                      }
+                    }
+                    DEF _15 Group {
+                      children [
+                        DEF Text_4 Transform {
+                          translation -6.19108 0.8 0
+                          children Shape {
+                            appearance USE _2
+                            geometry USE _14
+                          }
+                        }
+                        DEF border_2 Transform {
+                          translation -2.623 0.98 0
+                          scale 50 50 50
+                          children USE _8
+                        }
+                      ]
+                    }
+                  ]
+                }
+                DEF border_3 Transform {
+                  translation -2.623 0.98 0
+                  scale 50 50 50
+                  children USE _11
+                }
+                DEF _16 TouchSensor { }
+              ]
+            }
+            Group {
+              children [
+                DEF _17 BooleanSwitch {
+                  children [
+                    DEF Text_5 Transform {
+                      translation -6.19108 0 0
+                      children Shape {
+                        appearance USE _4
+                        geometry DEF _18 Text {
+                          string "Load"
+                          solid TRUE
+                          fontStyle USE _6
                         }
                       }
                     }
                     DEF _19 Group {
                       children [
-                        DEF Text_20 Transform {
-                          translation -6.19108 0.8 0
+                        DEF Text_6 Transform {
+                          translation -6.19108 0 0
                           children Shape {
                             appearance USE _2
                             geometry USE _18
                           }
                         }
-                        DEF border_21 Transform {
-                          translation -2.623 0.98 0
+                        DEF border_4 Transform {
+                          translation -2.623 0.18 0
                           scale 50 50 50
-                          children USE _10
+                          children USE _8
                         }
                       ]
                     }
                   ]
                 }
-                DEF border_22 Transform {
-                  translation -2.623 0.98 0
+                DEF border_5 Transform {
+                  translation -2.623 0.18 0
                   scale 50 50 50
-                  children USE _14
+                  children USE _11
                 }
-                DEF _23 TouchSensor { }
+                DEF _20 TouchSensor { }
               ]
             }
             Group {
               children [
-                DEF _24 BooleanSwitch {
+                DEF _21 BooleanSwitch {
                   children [
-                    DEF Text_25 Transform {
-                      translation -6.19108 0 0
+                    DEF Text_7 Transform {
+                      translation -6.2 -0.8 0
                       children Shape {
-                        appearance USE _5
-                        geometry DEF _26 Text {
-                          string "Load"
+                        appearance USE _4
+                        geometry DEF _22 Text {
+                          string "Downloadable Content"
                           solid TRUE
-                          fontStyle USE _7
+                          fontStyle USE _6
+                        }
+                      }
+                    }
+                    DEF _23 Group {
+                      children [
+                        DEF Text_8 Transform {
+                          translation -6.2 -0.8 0
+                          children Shape {
+                            appearance USE _2
+                            geometry USE _22
+                          }
+                        }
+                        DEF border_6 Transform {
+                          translation -2.623 -0.62 0
+                          scale 50 50 50
+                          children USE _8
+                        }
+                      ]
+                    }
+                  ]
+                }
+                DEF border_7 Transform {
+                  translation -2.623 -0.62 0
+                  scale 50 50 50
+                  children USE _11
+                }
+                DEF _24 TouchSensor { }
+              ]
+            }
+            Group {
+              children [
+                DEF _25 BooleanSwitch {
+                  children [
+                    DEF Text_9 Transform {
+                      translation -6.19108 -1.6 0
+                      children Shape {
+                        appearance USE _4
+                        geometry DEF _26 Text {
+                          string "Options"
+                          solid TRUE
+                          fontStyle USE _6
                         }
                       }
                     }
                     DEF _27 Group {
                       children [
-                        DEF Text_28 Transform {
-                          translation -6.19108 0 0
+                        DEF Text_10 Transform {
+                          translation -6.19108 -1.6 0
                           children Shape {
                             appearance USE _2
                             geometry USE _26
                           }
                         }
-                        DEF border_29 Transform {
-                          translation -2.623 0.18 0
+                        DEF border_8 Transform {
+                          translation -2.623 -1.42 0
                           scale 50 50 50
-                          children USE _10
+                          children USE _8
                         }
                       ]
                     }
                   ]
                 }
-                DEF border_30 Transform {
-                  translation -2.623 0.18 0
+                DEF border_9 Transform {
+                  translation -2.623 -1.42 0
                   scale 50 50 50
-                  children USE _14
+                  children USE _11
                 }
-                DEF _31 TouchSensor { }
+                DEF _28 TouchSensor { }
               ]
             }
             Group {
               children [
-                DEF _32 BooleanSwitch {
+                DEF _29 BooleanSwitch {
                   children [
-                    DEF Text_33 Transform {
-                      translation -6.2 -0.8 0
+                    DEF Text_11 Transform {
+                      translation -6.19108 -2.4 0
                       children Shape {
-                        appearance USE _5
-                        geometry DEF _34 Text {
-                          string "Downloadable Content"
+                        appearance USE _4
+                        geometry DEF _30 Text {
+                          string "Credits"
                           solid TRUE
-                          fontStyle USE _7
+                          fontStyle USE _6
+                        }
+                      }
+                    }
+                    DEF _31 Group {
+                      children [
+                        DEF Text_12 Transform {
+                          translation -6.19108 -2.4 0
+                          children Shape {
+                            appearance USE _2
+                            geometry USE _30
+                          }
+                        }
+                        DEF border_10 Transform {
+                          translation -2.623 -2.22 0
+                          scale 50 50 50
+                          children USE _8
+                        }
+                      ]
+                    }
+                  ]
+                }
+                DEF border_11 Transform {
+                  translation -2.623 -2.22 0
+                  scale 50 50 50
+                  children USE _11
+                }
+                DEF _32 TouchSensor { }
+              ]
+            }
+            Group {
+              children [
+                DEF _33 BooleanSwitch {
+                  children [
+                    DEF Text_13 Transform {
+                      translation -6.19108 -3.2 0
+                      children Shape {
+                        appearance USE _4
+                        geometry DEF _34 Text {
+                          string "Exit Game"
+                          solid TRUE
+                          fontStyle USE _6
                         }
                       }
                     }
                     DEF _35 Group {
                       children [
-                        DEF Text_36 Transform {
-                          translation -6.2 -0.8 0
-                          children Shape {
-                            appearance USE _2
-                            geometry USE _34
-                          }
-                        }
-                        DEF border_37 Transform {
-                          translation -2.623 -0.62 0
-                          scale 50 50 50
-                          children USE _10
-                        }
-                      ]
-                    }
-                  ]
-                }
-                DEF border_38 Transform {
-                  translation -2.623 -0.62 0
-                  scale 50 50 50
-                  children USE _14
-                }
-                DEF _39 TouchSensor { }
-              ]
-            }
-            Group {
-              children [
-                DEF _40 BooleanSwitch {
-                  children [
-                    DEF Text_41 Transform {
-                      translation -6.19108 -1.6 0
-                      children Shape {
-                        appearance USE _5
-                        geometry DEF _42 Text {
-                          string "Options"
-                          solid TRUE
-                          fontStyle USE _7
-                        }
-                      }
-                    }
-                    DEF _43 Group {
-                      children [
-                        DEF Text_44 Transform {
-                          translation -6.19108 -1.6 0
-                          children Shape {
-                            appearance USE _2
-                            geometry USE _42
-                          }
-                        }
-                        DEF border_45 Transform {
-                          translation -2.623 -1.42 0
-                          scale 50 50 50
-                          children USE _10
-                        }
-                      ]
-                    }
-                  ]
-                }
-                DEF border_46 Transform {
-                  translation -2.623 -1.42 0
-                  scale 50 50 50
-                  children USE _14
-                }
-                DEF _47 TouchSensor { }
-              ]
-            }
-            Group {
-              children [
-                DEF _48 BooleanSwitch {
-                  children [
-                    DEF Text_49 Transform {
-                      translation -6.19108 -2.4 0
-                      children Shape {
-                        appearance USE _5
-                        geometry DEF _50 Text {
-                          string "Credits"
-                          solid TRUE
-                          fontStyle USE _7
-                        }
-                      }
-                    }
-                    DEF _51 Group {
-                      children [
-                        DEF Text_52 Transform {
-                          translation -6.19108 -2.4 0
-                          children Shape {
-                            appearance USE _2
-                            geometry USE _50
-                          }
-                        }
-                        DEF border_53 Transform {
-                          translation -2.623 -2.22 0
-                          scale 50 50 50
-                          children USE _10
-                        }
-                      ]
-                    }
-                  ]
-                }
-                DEF border_54 Transform {
-                  translation -2.623 -2.22 0
-                  scale 50 50 50
-                  children USE _14
-                }
-                DEF _55 TouchSensor { }
-              ]
-            }
-            Group {
-              children [
-                DEF _56 BooleanSwitch {
-                  children [
-                    DEF Text_57 Transform {
-                      translation -6.19108 -3.2 0
-                      children Shape {
-                        appearance USE _5
-                        geometry DEF _58 Text {
-                          string "Exit Game"
-                          solid TRUE
-                          fontStyle USE _7
-                        }
-                      }
-                    }
-                    DEF _59 Group {
-                      children [
-                        DEF Text_60 Transform {
+                        DEF Text_14 Transform {
                           translation -6.19108 -3.2 0
                           children Shape {
                             appearance Appearance {
-                              material DEF _61 Material {
+                              material DEF _36 Material {
                                 diffuseColor 1 0.0562664 0
                               }
                             }
-                            geometry USE _58
+                            geometry USE _34
                           }
                         }
-                        DEF border_62 Transform {
+                        DEF border_12 Transform {
                           translation -2.623 -3.02 0
                           scale 50 50 50
                           children Shape {
                             appearance Appearance {
-                              material USE _61
-                              texture USE _11
+                              material USE _36
+                              texture USE _9
                             }
-                            geometry USE _12
+                            geometry USE _10
                           }
                         }
                       ]
                     }
                   ]
                 }
-                DEF border_63 Transform {
+                DEF border_13 Transform {
                   translation -2.623 -3.02 0
                   scale 50 50 50
-                  children USE _14
+                  children USE _11
                 }
-                DEF _64 TouchSensor { }
+                DEF _37 TouchSensor { }
               ]
             }
           ]
@@ -467,7 +472,7 @@ LayerSet {
           minFront 100
           maxBack 100
           maxFront 100
-          source DEF _65 AudioClip {
+          source DEF _38 AudioClip {
             url "click01.mp3"
             startTime 1505710882.20402
           }
@@ -477,23 +482,23 @@ LayerSet {
   ]
 }
 
-ROUTE _15.isOver TO _3.set_whichChoice
-ROUTE _23.isOver TO _16.set_whichChoice
-ROUTE _31.isOver TO _24.set_whichChoice
-ROUTE _39.isOver TO _32.set_whichChoice
-ROUTE _47.isOver TO _40.set_whichChoice
-ROUTE _55.isOver TO _48.set_whichChoice
-ROUTE _64.isOver TO _56.set_whichChoice
+ROUTE _12.isOver TO _3.set_whichChoice
+ROUTE _16.isOver TO _13.set_whichChoice
+ROUTE _20.isOver TO _17.set_whichChoice
+ROUTE _24.isOver TO _21.set_whichChoice
+ROUTE _28.isOver TO _25.set_whichChoice
+ROUTE _32.isOver TO _29.set_whichChoice
+ROUTE _37.isOver TO _33.set_whichChoice
 ROUTE SkylineAnimationTimer.fraction_changed TO skylineScaleInterpolator.set_fraction
 ROUTE skylineScaleInterpolator.value_changed TO skyline.set_scale
 ROUTE SkylineAnimationTimer.fraction_changed TO skylineTranslationInterpolator.set_fraction
 ROUTE skylineTranslationInterpolator.value_changed TO skyline.set_translation
-ROUTE _64.touchTime TO _65.set_startTime
-ROUTE _55.touchTime TO _65.set_startTime
-ROUTE _47.touchTime TO _65.set_startTime
-ROUTE _39.touchTime TO _65.set_startTime
-ROUTE _31.touchTime TO _65.set_startTime
-ROUTE _23.touchTime TO _65.set_startTime
-ROUTE _15.touchTime TO _65.set_startTime
+ROUTE _37.touchTime TO _38.set_startTime
+ROUTE _32.touchTime TO _38.set_startTime
+ROUTE _28.touchTime TO _38.set_startTime
+ROUTE _24.touchTime TO _38.set_startTime
+ROUTE _20.touchTime TO _38.set_startTime
+ROUTE _16.touchTime TO _38.set_startTime
+ROUTE _12.touchTime TO _38.set_startTime
 ROUTE _1.enterTime TO SkylineAnimationTimer.set_startTime
 ROUTE _1.exitTime TO SkylineAnimationTimer.set_stopTime

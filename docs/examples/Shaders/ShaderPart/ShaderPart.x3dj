@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,8 +37,8 @@
       ],
       "component": [
         {
-          "@name": "Interpolation",
-          "@level": 4
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layering",
@@ -46,19 +46,11 @@
         },
         {
           "@name": "Layout",
-          "@level": 1
+          "@level": 2
         },
         {
           "@name": "Shaders",
           "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
         }
       ]
     },
@@ -111,14 +103,14 @@
                                           { "ShaderPart":
                                             {
                                               "@DEF": "VertexShader",
-                                              "@url": [ "data:x-shader/x-vertex,\n\nprecision lowp float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Vertex;\n\nvoid\nmain ()\n{\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;\n}\n" ]
+                                              "@url": [ "data:x-shader/x-vertex,\n\nprecision highp float;\nprecision highp int;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Vertex;\n\nvoid\nmain ()\n{\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;\n}\n" ]
                                             }
                                           },
                                           { "ShaderPart":
                                             {
                                               "@DEF": "FragmentShader",
                                               "@type": "FRAGMENT",
-                                              "@url": [ "data:x-shader/x-fragment,\n\nprecision lowp float;\n\nuniform float time;\n\nuniform ivec4 x3d_Viewport;\n\nfloat\ncubefield (vec3 pos)\n{\n\tvec3  cellpos = pos - floor (pos);\n\tvec3  signvec = 2.0 * step (0.5, cellpos) - 1.0;\n\tfloat sign    = signvec .x * signvec .y * signvec .z;\n\tvec3  subpos  = abs (abs (cellpos - 0.5) - 0.25);\n\n\treturn sign * (max (max (subpos .x, subpos .y), subpos .z) - 0.25);\n}\n\nfloat\nsphere (vec3 pos, vec3 center, float r)\n{\n\treturn length (pos - center) - r;\n}\n\nfloat\ntorus (vec3 pos, float r, float R)\n{\n\treturn length (vec2 (length (pos .xy) -R, pos .z)) - r;\n}\n\nfloat\ndistfunc (vec3 pos)\n{\n\tfloat sin_a = sin (time);\n\tfloat cos_a = cos (time);\n\n\tvec3 rotpos = mat3 (\n\t\tvec3 (cos(time * 1.63), 0, -sin (time * 1.63)),\n\t\tvec3 (0.0, 1.0, 0.0),\n\t\tvec3 (sin (time * 1.63), 0, cos (time * 1.63))\n\t) * mat3 (\n\t\tvec3 (cos( time * 1.2), -sin (time * 1.2), 0),\n\t\tvec3 (sin (time * 1.2), cos( time * 1.2), 0),\n\t\tvec3 (0.0, 0.0, 1.0)\n\t) * (pos - vec3 (sin_a, cos_a, -4.0));\n\n\treturn mix (\n\t\tcubefield (pos),\n\t\ttorus (rotpos, 0.5, 1.0),\n\t\t(sin (time / 2.0) + 1.5) / 2.5\n\t);\n}\n\nvoid\nmain ()\n{\n\tvec2 size = vec2 (x3d_Viewport [2], x3d_Viewport [3]);\n\n\tfloat x = (2.0 * gl_FragCoord .x - size .x) / max (size .x, size .y);\n\tfloat y = (2.0 * gl_FragCoord .y - size .y) / max (size .x, size .y);\n\t\n\tvec3 ray_dir  = normalize (vec3 (x, y, -1.0 /*+sqrt(x*x+y*y)*/));\n\tvec3 ray_orig = vec3 (0.0, 0.0, 0.0);\n\n\tfloat offs = 0.0;\n\tfloat i    = 0.0;\n\t\n\tfor (float j = 0.0; j < 64.0; j++)\n\t{\n\t\tfloat dist = distfunc (ray_orig + ray_dir * offs);\n\t\t\n\t\toffs += dist;\n\t\ti     = j;\n\n\t\tif (abs (dist) < 0.00001)\n\t\t\tbreak;\n\t\telse if (offs > 100.0)\n\t\t\tbreak;\n\t}\n\n\tfloat c = i / 64.0;\n\n\tgl_FragColor = vec4 (c * c * c, c * c, c, 1.0);\n}\n\n" ]
+                                              "@url": [ "data:x-shader/x-fragment,\n\nprecision highp float;\nprecision highp int;\n\nuniform float time;\n\nuniform ivec4 x3d_Viewport;\n\nfloat\ncubefield (vec3 pos)\n{\n\tvec3  cellpos = pos - floor (pos);\n\tvec3  signvec = 2.0 * step (0.5, cellpos) - 1.0;\n\tfloat sign    = signvec .x * signvec .y * signvec .z;\n\tvec3  subpos  = abs (abs (cellpos - 0.5) - 0.25);\n\n\treturn sign * (max (max (subpos .x, subpos .y), subpos .z) - 0.25);\n}\n\nfloat\nsphere (vec3 pos, vec3 center, float r)\n{\n\treturn length (pos - center) - r;\n}\n\nfloat\ntorus (vec3 pos, float r, float R)\n{\n\treturn length (vec2 (length (pos .xy) -R, pos .z)) - r;\n}\n\nfloat\ndistfunc (vec3 pos)\n{\n\tfloat sin_a = sin (time);\n\tfloat cos_a = cos (time);\n\n\tvec3 rotpos = mat3 (\n\t\tvec3 (cos(time * 1.63), 0, -sin (time * 1.63)),\n\t\tvec3 (0.0, 1.0, 0.0),\n\t\tvec3 (sin (time * 1.63), 0, cos (time * 1.63))\n\t) * mat3 (\n\t\tvec3 (cos( time * 1.2), -sin (time * 1.2), 0),\n\t\tvec3 (sin (time * 1.2), cos( time * 1.2), 0),\n\t\tvec3 (0.0, 0.0, 1.0)\n\t) * (pos - vec3 (sin_a, cos_a, -4.0));\n\n\treturn mix (\n\t\tcubefield (pos),\n\t\ttorus (rotpos, 0.5, 1.0),\n\t\t(sin (time / 2.0) + 1.5) / 2.5\n\t);\n}\n\nvoid\nmain ()\n{\n\tvec2 size = vec2 (x3d_Viewport [2], x3d_Viewport [3]);\n\n\tfloat x = (2.0 * gl_FragCoord .x - size .x) / max (size .x, size .y);\n\tfloat y = (2.0 * gl_FragCoord .y - size .y) / max (size .x, size .y);\n\t\n\tvec3 ray_dir  = normalize (vec3 (x, y, -1.0 /*+sqrt(x*x+y*y)*/));\n\tvec3 ray_orig = vec3 (0.0, 0.0, 0.0);\n\n\tfloat offs = 0.0;\n\tfloat i    = 0.0;\n\t\n\tfor (float j = 0.0; j < 64.0; j++)\n\t{\n\t\tfloat dist = distfunc (ray_orig + ray_dir * offs);\n\t\t\n\t\toffs += dist;\n\t\ti     = j;\n\n\t\tif (abs (dist) < 0.00001)\n\t\t\tbreak;\n\t\telse if (offs > 100.0)\n\t\t\tbreak;\n\t}\n\n\tfloat c = i / 64.0;\n\n\tgl_FragColor = vec4 (c * c * c, c * c, c, 1.0);\n}\n\n" ]
                                             }
                                           }
                                         ],

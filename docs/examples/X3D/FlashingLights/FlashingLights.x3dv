@@ -1,20 +1,21 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
 META "comment" "World of Titania"
 META "created" "Sun, 20 Dec 2015 16:23:08 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d"
 META "modified" "Mon, 07 Jan 2019 04:18:13 GMT"
 
-WorldInfo {
-}
+WorldInfo { }
 
 LayerSet {
   activeLayer -1
@@ -58,7 +59,7 @@ function initialize ()
               translation 0 0 0.15
               children Shape {
                 appearance Appearance {
-                  material DEF Metal27_2 Material {
+                  material DEF Metal27_1 Material {
                     ambientIntensity 0
                     diffuseColor 0 0 0
                     shininess 0
@@ -76,7 +77,7 @@ function initialize ()
           children [
             DEF ColorAnimation Group {
               children [
-                DEF _3 TimeSensor {
+                DEF _2 TimeSensor {
                   cycleInterval 30
                   loop TRUE
                 }
@@ -230,7 +231,7 @@ function get_intensity (value)
             geometry Rectangle2D { }
           }
         }
-        DEF Text_4 Transform {
+        DEF Text_1 Transform {
           translation 0 -0.0191083 0
           children Shape {
             appearance Appearance {
@@ -244,7 +245,7 @@ function get_intensity (value)
             geometry Text {
               string "An Interactive X3D Experience"
               solid TRUE
-              fontStyle DEF _5 FontStyle {
+              fontStyle DEF _3 FontStyle {
                 family [ "CharlotteSansBoldPlain.otf", "SERIF" ]
                 size 0.08
                 justify [ "MIDDLE", "MIDDLE" ]
@@ -255,7 +256,7 @@ function get_intensity (value)
         DEF Disk2D Transform {
           translation -0.15 -0.259941 0
           children [
-            DEF _6 Shape {
+            DEF _4 Shape {
               appearance Appearance {
                 material Material {
                   ambientIntensity 0
@@ -268,11 +269,11 @@ function get_intensity (value)
                 outerRadius 0.14
               }
             }
-            DEF Text_7 Transform {
+            DEF Text_2 Transform {
               translation 0 -0.00799999 0
               children Shape {
                 appearance Appearance {
-                  material DEF _8 Material {
+                  material DEF _5 Material {
                     ambientIntensity 0
                     diffuseColor 0 0 0
                     shininess 0
@@ -281,32 +282,32 @@ function get_intensity (value)
                 geometry Text {
                   string "JOIN"
                   solid TRUE
-                  fontStyle USE _5
+                  fontStyle USE _3
                 }
               }
             }
           ]
         }
-        DEF Disk2D_9 Transform {
+        DEF Disk2D_1 Transform {
           translation 0.15 -0.259941 0
           children [
-            USE _6
-            DEF Text_10 Transform {
+            USE _4
+            DEF Text_3 Transform {
               translation 0 0.00100001 0
               children Shape {
                 appearance Appearance {
-                  material USE _8
+                  material USE _5
                 }
                 geometry Text {
                   string "US"
                   solid TRUE
-                  fontStyle USE _5
+                  fontStyle USE _3
                 }
               }
             }
           ]
         }
-        DEF Text_11 Transform {
+        DEF Text_4 Transform {
           translation 0 -0.617834 0
           children Shape {
             appearance Appearance {
@@ -342,5 +343,5 @@ ROUTE Light1.color_changed TO Light5.set_color
 ROUTE Light1.color_changed TO Light6.set_color
 ROUTE Light1.color_changed TO Light7.set_color
 ROUTE Light1.color_changed TO Light8.set_color
-ROUTE _3.fraction_changed TO Light1ColorInterpolator.set_fraction
+ROUTE _2.fraction_changed TO Light1ColorInterpolator.set_fraction
 ROUTE Light1ColorInterpolator.value_changed TO Light1.set_color

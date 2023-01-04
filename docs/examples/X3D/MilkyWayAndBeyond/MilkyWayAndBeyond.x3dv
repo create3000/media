@@ -1,20 +1,20 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT EnvironmentalEffects : 3
-COMPONENT Interpolation : 4
+COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Layout : 1
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Layout : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Text : 1
 
-UNIT angle degree 0.0174532925199432958
+UNIT angle degree 0.017453292519943295
 
 META "comment" "World of Titania"
 META "created" "Mon, 04 Apr 2016 01:15:14 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/MilkyWayAndBeyond/MilkyWayAndBeyond.O.x3d"
 META "modified" "Sun, 27 Jan 2019 16:06:52 GMT"
 
@@ -40,15 +40,14 @@ EXTERNPROTO FloatArrayInterpolator [
 ]
 "FloatArrayInterpolator.x3d#FloatArrayInterpolator"
 
-WorldInfo {
-}
+WorldInfo { }
 
 DEF _1 LayerSet {
   activeLayer -1
   order [ 1, 2, 3, 4, 5 ]
   layers [
     DEF Background Layer {
-      isPickable FALSE
+      pickable FALSE
       children Background {
         skyAngle [ 71.4645, 90.0002 ]
         skyColor [ 0 0 0, 0.145147 0.145147 0.145147, 0.368 0.368 0.368 ]
@@ -89,10 +88,10 @@ DEF _1 LayerSet {
             }
           }
         }
-        DEF Rectangle2D_2 Transform {
+        DEF Rectangle2D_1 Transform {
           children Shape {
             appearance Appearance {
-              material DEF _3 Material {
+              material DEF _2 Material {
                 diffuseColor 0.493057 0.802707 1
               }
             }
@@ -108,10 +107,10 @@ DEF _1 LayerSet {
             }
           }
         }
-        DEF Rectangle2D_4 Transform {
+        DEF Rectangle2D_2 Transform {
           children Shape {
             appearance Appearance {
-              material DEF _5 Material {
+              material DEF _3 Material {
                 diffuseColor 0.133844 0.400708 0.711178
               }
               texture ImageTexture {
@@ -126,7 +125,7 @@ DEF _1 LayerSet {
               texCoordIndex [ 0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1 ]
               coordIndex [ 0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1 ]
               texCoord TextureCoordinate {
-                point [ 0.387728 2.96516e-08, 1 2.96516e-08, 1 0.0447725, 0.387728 0.0447725, 0.159191 2.96516e-08, 0.378079 2.96516e-08, 0.378079 0.0447725, 0.159191 0.0447725, 0 0, 0.159191 0, 0.159191 0.089545, 0 0.089545 ]
+                point [ 0.387728 2.96516e-8, 1 2.96516e-8, 1 0.0447725, 0.387728 0.0447725, 0.159191 2.96516e-8, 0.378079 2.96516e-8, 0.378079 0.0447725, 0.159191 0.0447725, 0 0, 0.159191 0, 0.159191 0.089545, 0 0.089545 ]
               }
               coord Coordinate {
                 point [ -0.115302 0.269869 0, 0.500082 0.269869 0, 0.500082 0.314869 0, -0.115302 0.314869 0, -0.345 0.269869 0, -0.125 0.269869 0, -0.125 0.314869 0, -0.345 0.314869 0, -0.505 0.269869 0, -0.345 0.269869 0, -0.345 0.359869 0, -0.505 0.359869 0 ]
@@ -134,44 +133,44 @@ DEF _1 LayerSet {
             }
           }
         }
-        DEF Rectangle2D_6 Transform {
+        DEF Rectangle2D_3 Transform {
           translation -0.235 0.245 0
           scale 0.11 0.01 0.353753
           children Shape {
             appearance Appearance {
-              material DEF _7 Material {
+              material DEF _4 Material {
                 diffuseColor 1 1 1
               }
             }
             geometry Rectangle2D { }
           }
         }
-        DEF Rectangle2D_8 Transform {
+        DEF Rectangle2D_4 Transform {
           translation 0.19239 0.245 0
           scale 0.307692 0.01 0.353753
           children Shape {
             appearance Appearance {
-              material USE _7
+              material USE _4
             }
             geometry Rectangle2D { }
           }
         }
-        DEF Rectangle2D_9 Transform {
+        DEF Rectangle2D_5 Transform {
           translation -0.425 -0.433806 0
           scale 0.08 0.06 0.353754
           children Shape {
             appearance Appearance {
-              material USE _5
+              material USE _3
             }
             geometry Rectangle2D { }
           }
         }
-        DEF Rectangle2D_10 Transform {
+        DEF Rectangle2D_6 Transform {
           translation -0.425 0 0
           scale 0.08 0.255 0.353753
           children Shape {
             appearance Appearance {
-              material USE _7
+              material USE _4
             }
             geometry IndexedFaceSet {
               colorIndex [ 0, 0, 0, 0, -1, 0, 1, 1, 0, -1 ]
@@ -227,7 +226,7 @@ DEF _1 LayerSet {
             sizeUnits [ "FRACTION", "FRACTION" ]
             scaleMode [ "PIXEL", "PIXEL" ]
           }
-          children DEF Text_11 Transform {
+          children DEF Text_1 Transform {
             translation 0 0 1
             children Shape {
               appearance Appearance {
@@ -257,7 +256,7 @@ DEF _1 LayerSet {
             sizeUnits [ "FRACTION", "FRACTION" ]
             scaleMode [ "PIXEL", "PIXEL" ]
           }
-          children DEF Text_12 Transform {
+          children DEF Text_2 Transform {
             translation 0 0 1
             children Shape {
               appearance Appearance {
@@ -288,7 +287,7 @@ DEF _1 LayerSet {
             sizeUnits [ "FRACTION", "FRACTION" ]
             scaleMode [ "PIXEL", "PIXEL" ]
           }
-          children DEF Text_13 Transform {
+          children DEF Text_3 Transform {
             translation 0 0 1
             children Shape {
               appearance Appearance {
@@ -312,12 +311,12 @@ DEF _1 LayerSet {
         }
         DEF HomeButton Group {
           children [
-            DEF Rectangle2D_14 Transform {
+            DEF Rectangle2D_7 Transform {
               translation -0.425 -0.314165 0
               scale 0.08 0.045 0.353753
               children Shape {
                 appearance Appearance {
-                  material USE _3
+                  material USE _2
                 }
                 geometry Rectangle2D { }
               }
@@ -330,7 +329,7 @@ DEF _1 LayerSet {
                 sizeUnits [ "FRACTION", "FRACTION" ]
                 scaleMode [ "PIXEL", "PIXEL" ]
               }
-              children DEF Text_15 Transform {
+              children DEF Text_4 Transform {
                 translation 0 0 1
                 children Shape {
                   appearance Appearance {
@@ -352,13 +351,13 @@ DEF _1 LayerSet {
                 }
               }
             }
-            DEF _16 TouchSensor { }
+            DEF _5 TouchSensor { }
           ]
         }
       ]
     }
     DEF Galaxy Layer {
-      viewport DEF _17 Viewport {
+      viewport DEF _6 Viewport {
         clipBoundary [ 0.695109, 1, 0.304912, 0.726974 ]
       }
       children [
@@ -369,11 +368,12 @@ DEF _1 LayerSet {
           translation 0.0190885 -0.0138826 -0.00390446
           scale 1.86766 1.86766 1.86766
           children Inline {
+            global TRUE
             url "pulsarpos.x3d"
           }
         }
         DEF ResizeButton Transform {
-          translation 3.81477e-13 -1.03854e-07 2.38402
+          translation 3.81477e-13 -1.03854e-7 2.38402
           scale 9.75756 9.75756 9.75756
           scaleOrientation 0 0 -1 44.9999961509023
           children [
@@ -385,7 +385,7 @@ DEF _1 LayerSet {
               }
               geometry Rectangle2D { }
             }
-            DEF _18 TouchSensor { }
+            DEF _7 TouchSensor { }
             DEF GalaxyToggleScript Script {
               inputOnly      SFTime set_time
               inputOutput    SFTime resetTime 0
@@ -426,7 +426,7 @@ function set_time (value, time)
                 USE Background
                 USE Layout
                 DEF Pulsars Layer {
-                  viewport DEF _19 Viewport {
+                  viewport DEF _8 Viewport {
                     clipBoundary [ 0.697, 1, 0, 0.29 ]
                   }
                   children [
@@ -435,11 +435,12 @@ function set_time (value, time)
                     }
                     Transform {
                       children Inline {
+                        global TRUE
                         url "pulsars.x3d"
                       }
                     }
-                    DEF ResizeButton_20 Transform {
-                      translation 0 -1.73635e-07 2.91311
+                    DEF ResizeButton_1 Transform {
+                      translation 0 -1.73635e-7 2.91311
                       scale 8.8919 8.8919 8.8919
                       scaleOrientation -0.516855678645447 0.066477445823548 -0.853487525772188 57.1484129626132
                       children [
@@ -451,7 +452,7 @@ function set_time (value, time)
                           }
                           geometry Rectangle2D { }
                         }
-                        DEF _21 TouchSensor { }
+                        DEF _9 TouchSensor { }
                         DEF PulsarsToggleScript Script {
                           inputOnly      SFTime set_time
                           inputOutput    SFTime resetTime 0
@@ -487,13 +488,13 @@ function set_time (value, time)
 		triggerFalse = time;
 }"
                         }
-                        DEF Layers_22 MFNode {
+                        DEF Layers_1 MFNode {
                           keyValue [
                             USE Background
                             USE Layout
                             USE Galaxy
                             DEF Universe Layer {
-                              viewport DEF _23 Viewport {
+                              viewport DEF _10 Viewport {
                                 clipBoundary [ 0.165, 0.688, 0, 0.726 ]
                               }
                               children [
@@ -503,18 +504,19 @@ function set_time (value, time)
                                 Background {
                                   skyColor 0.085 0.085 0.085
                                 }
-                                DEF _24 Transform {
+                                DEF _11 Transform {
                                   translation 0.00704333 0.0134851 0.0105878
                                   scale 11.1125 11.1125 11.1125
                                   children Inline {
+                                    global TRUE
                                     url "universe.x3d"
                                   }
                                 }
-                                DEF ResizeButton_25 Transform {
+                                DEF ResizeButton_2 Transform {
                                   translation 0 4 0
-                                  rotation -0.999999999993254 -3.67320644183592e-06 -3.87957778337562e-13 89.9999945280246
+                                  rotation -0.999999999993254 -0.00000367320644183592 -3.87957778337562e-13 89.9999945280246
                                   scale 5.37823 5.37822 5.37822
-                                  scaleOrientation -0.999999999996086 1.22935148054597e-06 2.51317855295013e-06 45.0000000002237
+                                  scaleOrientation -0.999999999996086 0.00000122935148054597 0.00000251317855295013 45.0000000002237
                                   children [
                                     Shape {
                                       appearance Appearance {
@@ -524,7 +526,7 @@ function set_time (value, time)
                                       }
                                       geometry Rectangle2D { }
                                     }
-                                    DEF _26 TouchSensor { }
+                                    DEF _12 TouchSensor { }
                                     DEF UniverseToggleScript Script {
                                       inputOnly      SFTime set_time
                                       inputOutput    SFTime resetTime 0
@@ -560,7 +562,7 @@ function set_time (value, time)
 		triggerFalse = time;
 }"
                                     }
-                                    DEF Layers_27 MFNode {
+                                    DEF Layers_2 MFNode {
                                       keyValue [
                                         USE Background
                                         USE Layout
@@ -577,27 +579,27 @@ function set_time (value, time)
                                     }
                                     Group {
                                       children [
-                                        DEF _28 TimeSensor {
+                                        DEF _13 TimeSensor {
                                           cycleInterval 2
                                           startTime 1506562816.92316
                                         }
-                                        DEF _29 EaseInEaseOut {
+                                        DEF _14 EaseInEaseOut {
                                           key [ 0, 1 ]
                                           easeInEaseOut [ 0 1, 1 0 ]
                                         }
-                                        DEF _30 FloatArrayInterpolator {
+                                        DEF _15 FloatArrayInterpolator {
                                           key [ 0, 1 ]
                                           keyValue [ 0.165, 0.688, 0, 0.726, 0.165, 1, 0, 1 ]
                                         }
-                                        DEF _31 TimeSensor {
+                                        DEF _16 TimeSensor {
                                           cycleInterval 2
                                           startTime 1506562819.46883
                                         }
-                                        DEF _32 EaseInEaseOut {
+                                        DEF _17 EaseInEaseOut {
                                           key [ 0, 1 ]
                                           easeInEaseOut [ 0 1, 1 0 ]
                                         }
-                                        DEF _33 FloatArrayInterpolator {
+                                        DEF _18 FloatArrayInterpolator {
                                           key [ 0, 1 ]
                                           keyValue [ 0.165, 1, 0, 1, 0.165, 0.688, 0, 0.726 ]
                                         }
@@ -610,35 +612,35 @@ function set_time (value, time)
                             USE Pulsars
                           ]
                         }
-                        DEF NormalSize_34 MFFloat {
+                        DEF NormalSize_1 MFFloat {
                           keyValue [ 0.697, 1, 0, 0.29 ]
                         }
-                        DEF FullScreen_35 MFFloat {
+                        DEF FullScreen_1 MFFloat {
                           keyValue [ 0.165, 1, 0, 1 ]
                         }
                         Group {
                           children [
-                            DEF _36 TimeSensor {
+                            DEF _19 TimeSensor {
                               cycleInterval 2
                               startTime 1506563747.81161
                             }
-                            DEF _37 EaseInEaseOut {
+                            DEF _20 EaseInEaseOut {
                               key [ 0, 1 ]
                               easeInEaseOut [ 0 1, 1 0 ]
                             }
-                            DEF _38 FloatArrayInterpolator {
+                            DEF _21 FloatArrayInterpolator {
                               key [ 0, 1 ]
                               keyValue [ 0.697, 1, 0, 0.29, 0.165, 1, 0, 1 ]
                             }
-                            DEF _39 TimeSensor {
+                            DEF _22 TimeSensor {
                               cycleInterval 2
                               startTime 1506563750.33323
                             }
-                            DEF _40 EaseInEaseOut {
+                            DEF _23 EaseInEaseOut {
                               key [ 0, 1 ]
                               easeInEaseOut [ 0 1, 1 0 ]
                             }
-                            DEF _41 FloatArrayInterpolator {
+                            DEF _24 FloatArrayInterpolator {
                               key [ 0, 1 ]
                               keyValue [ 0.165, 1, 0, 1, 0.697, 1, 0, 0.29 ]
                             }
@@ -652,35 +654,35 @@ function set_time (value, time)
                 USE Galaxy
               ]
             }
-            DEF NormalSize_42 MFFloat {
+            DEF NormalSize_2 MFFloat {
               keyValue [ 0.697, 1, 0.306, 0.726 ]
             }
-            DEF FullScreen_43 MFFloat {
+            DEF FullScreen_2 MFFloat {
               keyValue [ 0.165, 1, 0, 1 ]
             }
             Group {
               children [
-                DEF _44 TimeSensor {
+                DEF _25 TimeSensor {
                   cycleInterval 2
                   startTime 1506562822.0172
                 }
-                DEF _45 EaseInEaseOut {
+                DEF _26 EaseInEaseOut {
                   key [ 0, 1 ]
                   easeInEaseOut [ 0 1, 1 0 ]
                 }
-                DEF _46 FloatArrayInterpolator {
+                DEF _27 FloatArrayInterpolator {
                   key [ 0, 1 ]
                   keyValue [ 0.697, 1, 0.306, 0.726, 0.165, 1, 0, 1 ]
                 }
-                DEF _47 TimeSensor {
+                DEF _28 TimeSensor {
                   cycleInterval 2
                   startTime 1506562824.97054
                 }
-                DEF _48 EaseInEaseOut {
+                DEF _29 EaseInEaseOut {
                   key [ 0, 1 ]
                   easeInEaseOut [ 0 1, 1 0 ]
                 }
-                DEF _49 FloatArrayInterpolator {
+                DEF _30 FloatArrayInterpolator {
                   key [ 0, 1 ]
                   keyValue [ 0.165, 1, 0, 1, 0.697, 1, 0.306, 0.726 ]
                 }
@@ -695,51 +697,51 @@ function set_time (value, time)
   ]
 }
 
-ROUTE _26.touchTime TO UniverseToggleScript.set_time
-ROUTE UniverseToggleScript.triggerTrue TO _28.set_startTime
+ROUTE _12.touchTime TO UniverseToggleScript.set_time
+ROUTE UniverseToggleScript.triggerTrue TO _13.set_startTime
+ROUTE _13.fraction_changed TO _14.set_fraction
+ROUTE _16.fraction_changed TO _17.set_fraction
+ROUTE UniverseToggleScript.triggerFalse TO _16.set_startTime
+ROUTE _25.fraction_changed TO _26.set_fraction
 ROUTE _28.fraction_changed TO _29.set_fraction
-ROUTE _31.fraction_changed TO _32.set_fraction
-ROUTE UniverseToggleScript.triggerFalse TO _31.set_startTime
-ROUTE _44.fraction_changed TO _45.set_fraction
-ROUTE _47.fraction_changed TO _48.set_fraction
-ROUTE GalaxyToggleScript.triggerFalse TO _47.set_startTime
-ROUTE GalaxyToggleScript.triggerTrue TO _44.set_startTime
-ROUTE _18.touchTime TO GalaxyToggleScript.set_time
-ROUTE _39.fraction_changed TO _40.set_fraction
-ROUTE _36.fraction_changed TO _37.set_fraction
-ROUTE PulsarsToggleScript.triggerFalse TO _39.set_startTime
-ROUTE PulsarsToggleScript.triggerTrue TO _36.set_startTime
-ROUTE _21.touchTime TO PulsarsToggleScript.set_time
-ROUTE _36.isActive TO PulsarsToggleScript.set_active
-ROUTE _39.isActive TO PulsarsToggleScript.set_active
-ROUTE _28.isActive TO UniverseToggleScript.set_active
-ROUTE _31.isActive TO UniverseToggleScript.set_active
-ROUTE _44.isActive TO GalaxyToggleScript.set_active
-ROUTE _47.isActive TO GalaxyToggleScript.set_active
-ROUTE _16.touchTime TO GalaxyToggleScript.set_resetTime
-ROUTE _16.touchTime TO PulsarsToggleScript.set_resetTime
-ROUTE _16.touchTime TO UniverseToggleScript.set_resetTime
-ROUTE _40.modifiedFraction_changed TO _41.set_fraction
-ROUTE _41.value_changed TO _19.set_clipBoundary
-ROUTE _45.modifiedFraction_changed TO _46.set_fraction
-ROUTE _46.value_changed TO _17.set_clipBoundary
-ROUTE _48.modifiedFraction_changed TO _49.set_fraction
-ROUTE _49.value_changed TO _17.set_clipBoundary
+ROUTE GalaxyToggleScript.triggerFalse TO _28.set_startTime
+ROUTE GalaxyToggleScript.triggerTrue TO _25.set_startTime
+ROUTE _7.touchTime TO GalaxyToggleScript.set_time
+ROUTE _22.fraction_changed TO _23.set_fraction
+ROUTE _19.fraction_changed TO _20.set_fraction
+ROUTE PulsarsToggleScript.triggerFalse TO _22.set_startTime
+ROUTE PulsarsToggleScript.triggerTrue TO _19.set_startTime
+ROUTE _9.touchTime TO PulsarsToggleScript.set_time
+ROUTE _19.isActive TO PulsarsToggleScript.set_active
+ROUTE _22.isActive TO PulsarsToggleScript.set_active
+ROUTE _13.isActive TO UniverseToggleScript.set_active
+ROUTE _16.isActive TO UniverseToggleScript.set_active
+ROUTE _25.isActive TO GalaxyToggleScript.set_active
+ROUTE _28.isActive TO GalaxyToggleScript.set_active
+ROUTE _5.touchTime TO GalaxyToggleScript.set_resetTime
+ROUTE _5.touchTime TO PulsarsToggleScript.set_resetTime
+ROUTE _5.touchTime TO UniverseToggleScript.set_resetTime
+ROUTE _23.modifiedFraction_changed TO _24.set_fraction
+ROUTE _24.value_changed TO _8.set_clipBoundary
+ROUTE _26.modifiedFraction_changed TO _27.set_fraction
+ROUTE _27.value_changed TO _6.set_clipBoundary
 ROUTE _29.modifiedFraction_changed TO _30.set_fraction
-ROUTE _30.value_changed TO _23.set_clipBoundary
-ROUTE _32.modifiedFraction_changed TO _33.set_fraction
-ROUTE _33.value_changed TO _23.set_clipBoundary
-ROUTE _37.modifiedFraction_changed TO _38.set_fraction
-ROUTE _38.value_changed TO _19.set_clipBoundary
-ROUTE NormalSize_42.value_changed TO _17.set_clipBoundary
-ROUTE FullScreen_43.value_changed TO _17.set_clipBoundary
-ROUTE NormalSize.value_changed TO _23.set_clipBoundary
-ROUTE FullScreen.value_changed TO _23.set_clipBoundary
-ROUTE NormalSize_34.value_changed TO _19.set_clipBoundary
-ROUTE FullScreen_35.value_changed TO _19.set_clipBoundary
+ROUTE _30.value_changed TO _6.set_clipBoundary
+ROUTE _14.modifiedFraction_changed TO _15.set_fraction
+ROUTE _15.value_changed TO _10.set_clipBoundary
+ROUTE _17.modifiedFraction_changed TO _18.set_fraction
+ROUTE _18.value_changed TO _10.set_clipBoundary
+ROUTE _20.modifiedFraction_changed TO _21.set_fraction
+ROUTE _21.value_changed TO _8.set_clipBoundary
+ROUTE NormalSize_2.value_changed TO _6.set_clipBoundary
+ROUTE FullScreen_2.value_changed TO _6.set_clipBoundary
+ROUTE NormalSize.value_changed TO _10.set_clipBoundary
+ROUTE FullScreen.value_changed TO _10.set_clipBoundary
+ROUTE NormalSize_1.value_changed TO _8.set_clipBoundary
+ROUTE FullScreen_1.value_changed TO _8.set_clipBoundary
 ROUTE GalaxyToggleScript.triggerTrue TO Layers.set_triggerTime
 ROUTE Layers.value_changed TO _1.set_layers
-ROUTE UniverseToggleScript.triggerTrue TO Layers_27.set_triggerTime
-ROUTE Layers_27.value_changed TO _1.set_layers
-ROUTE PulsarsToggleScript.triggerTrue TO Layers_22.set_triggerTime
-ROUTE Layers_22.value_changed TO _1.set_layers
+ROUTE UniverseToggleScript.triggerTrue TO Layers_2.set_triggerTime
+ROUTE Layers_2.value_changed TO _1.set_layers
+ROUTE PulsarsToggleScript.triggerTrue TO Layers_1.set_triggerTime
+ROUTE Layers_1.value_changed TO _1.set_layers

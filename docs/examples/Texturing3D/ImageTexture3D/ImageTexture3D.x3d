@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='CADGeometry' level='2'/>
+    <component name='EnvironmentalSensor' level='3'/>
+    <component name='Geometry2D' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <component name='Texturing3D' level='3'/>
+    <component name='Texturing3D' level='2'/>
     <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Sun, 27 Oct 2019 05:58:52 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.x3d'/>
-    <meta name='modified' content='Wed, 09 Nov 2022 21:17:13 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d'/>
+    <meta name='modified' content='Wed, 09 Nov 2022 21:17:04 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Volume'>
@@ -171,43 +175,7 @@ function set_dimension ()
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo
-        title='DCM1'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'/>
-        </MetadataSet>
-        <MetadataSet DEF='Prototype' containerField='value'
-            name='Prototype'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='path' containerField='value'
-              name='path'
-              reference='http://titania.create3000.de'
-              value='"Volume"'/>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
+        title='DCM1'/>
     <Background DEF='Gray'
         skyColor='0.2 0.2 0.2'/>
     <Viewpoint

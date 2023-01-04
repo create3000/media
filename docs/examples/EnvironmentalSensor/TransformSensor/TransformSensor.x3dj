@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.0, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,15 +33,7 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
           "@name": "EnvironmentalSensor",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
           "@level": 3
         },
         {
@@ -50,22 +42,22 @@
         },
         {
           "@name": "Layout",
+          "@level": 2
+        },
+        {
+          "@name": "Scripting",
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -104,13 +96,14 @@
                     { "Inline":
                       {
                         "@DEF": "RaceTrack",
+                        "@global": true,
                         "@url": [ "assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d" ]
                       }
                     },
                     { "Transform":
                       {
                         "@DEF": "CarRed",
-                        "@translation": [ -3.41998e-06, 1.27034, 19.3074 ],
+                        "@translation": [ -0.00000341998, 1.27034, 19.3074 ],
                         "@rotation": [ 7.01098813588437e-17, 1, 5.23547981568597e-17, 163.501318485902 ],
                         "@scale": [ 2.12352, 2.12352, 2.12352 ],
                         "@scaleOrientation": [ 3.9267146445042e-16, 1, 5.03693766912935e-16, 90 ],
@@ -131,7 +124,7 @@
                                   {
                                     "@DEF": "Murcielago640TranslationInterpolator",
                                     "@key": [ 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1 ],
-                                    "@keyValue": [ -3.41998e-06, 1.27034, 19.3074, -3.41998e-06, 1.27034, 19.3074, 2.81904e-06, 1.27034, -33.0293, 2.81904e-06, 1.27034, -33.0293, 2.81904e-06, 1.27034, -33.0293, -3.41998e-06, 1.27034, 19.3074, -3.41998e-06, 1.27034, 19.3074 ]
+                                    "@keyValue": [ -0.00000341998, 1.27034, 19.3074, -0.00000341998, 1.27034, 19.3074, 0.00000281904, 1.27034, -33.0293, 0.00000281904, 1.27034, -33.0293, 0.00000281904, 1.27034, -33.0293, -0.00000341998, 1.27034, 19.3074, -0.00000341998, 1.27034, 19.3074 ]
                                   }
                                 },
                                 { "OrientationInterpolator":
@@ -146,6 +139,7 @@
                           },
                           { "Inline":
                             {
+                              "@global": true,
                               "@url": [ "assets/Murcielago640.x3d" ]
                             }
                           }
@@ -155,7 +149,7 @@
                     { "Transform":
                       {
                         "@DEF": "CarYellow",
-                        "@translation": [ -9.38979e-07, 1.27034, 4.61112 ],
+                        "@translation": [ -9.38979e-7, 1.27034, 4.61112 ],
                         "@rotation": [ 0, 1, 0, 269.999985628564 ],
                         "@scale": [ 2.12352, 2.12352, 2.12352 ],
                         "@center": [ 0, 0, 11.4343 ],
@@ -177,7 +171,7 @@
                                   {
                                     "@DEF": "CarYellowTranslationInterpolator",
                                     "@key": [ 0, 0.171429, 0.328571, 0.5, 0.671429, 0.828571, 1 ],
-                                    "@keyValue": [ -7.96401e-06, 1.27034, 14.9697, -4.59149e-06, 1.27034, 14.8243, 1.43998e-05, 1.27034, -38.2793, 1.43998e-05, 1.27034, -38.2793, 1.43998e-05, 1.27034, -38.2793, -7.24219e-06, 1.27034, 15.6481, -7.96401e-06, 1.27034, 14.9697 ]
+                                    "@keyValue": [ -0.00000796401, 1.27034, 14.9697, -0.00000459149, 1.27034, 14.8243, 0.0000143998, 1.27034, -38.2793, 0.0000143998, 1.27034, -38.2793, 0.0000143998, 1.27034, -38.2793, -0.00000724219, 1.27034, 15.6481, -0.00000796401, 1.27034, 14.9697 ]
                                   }
                                 },
                                 { "OrientationInterpolator":
@@ -192,6 +186,7 @@
                           },
                           { "Inline":
                             {
+                              "@global": true,
                               "@url": [ "assets/Murcielago640-yellow.x3d" ]
                             }
                           }
@@ -270,7 +265,7 @@
               { "LayoutLayer":
                 {
                   "@DEF": "HUD",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -368,7 +363,7 @@
                           },
                           { "Script":
                             {
-                              "@DEF": "LapScript_4",
+                              "@DEF": "LapScript_1",
                               "field": [
                                 {
                                   "@accessType": "outputOnly",
@@ -525,7 +520,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "LapScript_4",
+            "@fromNode": "LapScript_1",
             "@fromField": "string_changed",
             "@toNode": "_3",
             "@toField": "string"
@@ -535,7 +530,7 @@
           {
             "@fromNode": "YellowSensor",
             "@fromField": "enterTime",
-            "@toNode": "LapScript_4",
+            "@toNode": "LapScript_1",
             "@toField": "set_enterTime"
           }
         }

@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "World of Sunrise X3D Editor"
         },
         {
           "@name": "created",
@@ -20,28 +20,24 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ProjectiveTextureMapping/TextureProjector/TextureProjector.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/ProjectiveTextureMapping/TextureProjector/TextureProjector.O.x3d"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 19 Nov 2019 09:44:16 GMT"
+          "@content": "Thu, 27 Oct 2022 09:07:14 GMT"
         }
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "ProjectiveTextureMapping",
+          "@name": "Scripting",
           "@level": 1
         },
         {
-          "@name": "Time",
+          "@name": "TextureProjector",
           "@level": 2
         }
       ],
@@ -49,7 +45,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -73,7 +69,7 @@
           {
             "@description": "Initial View",
             "@position": [ 4.92483, 11.204, 12.6703 ],
-            "@orientation": [ -0.860288420179846, 0.483613112051608, 0.161313954623356, 42.3856469763045 ],
+            "@orientation": [ -0.86028842017985, 0.48361311205161, 0.16131395462336, 42.385646976304 ],
             "@centerOfRotation": [ 0, 1, 0 ]
           }
         },
@@ -82,7 +78,6 @@
             "@ambientIntensity": 0.976471,
             "@direction": [ 0.23366, -0.759333, 0.607302 ],
             "@shadows": true,
-            "@shadowIntensity": 1,
             "@shadowMapSize": 2048
           }
         },
@@ -92,7 +87,6 @@
             "@ambientIntensity": 1,
             "@direction": [ -0.705585, -0.626565, -0.331009 ],
             "@shadows": true,
-            "@shadowIntensity": 1,
             "@shadowMapSize": 2048
           }
         },
@@ -318,14 +312,14 @@
               },
               { "TextureProjector":
                 {
-                  "@DEF": "_3",
+                  "@DEF": "_1",
                   "@location": [ 0, 5, 0 ],
-                  "@direction": [ 0.44978, -0.597501, 0.625925 ],
-                  "@upVector": [ -0, -0, -1 ],
+                  "@direction": [ -0.217234, -0.664186, 0.646298 ],
+                  "@upVector": [ 0, 0, -1 ],
                   "@farDistance": 20,
                   "-texture": { "ImageTexture":
                     {
-                      "@DEF": "_4",
+                      "@DEF": "_2",
                       "@url": [ "assets/texture.png" ],
                       "@repeatS": false,
                       "@repeatT": false,
@@ -347,6 +341,20 @@
             ]
           }
         },
+        { "Script":
+          {
+            "@DEF": "PhongScript",
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"   Browser .setBrowserOption (\"Shading\", \"PHONG\");",
+"}",
+""
+            ]
+          }
+        },
         { "ROUTE":
           {
             "@fromNode": "AnimationTimer",
@@ -359,7 +367,7 @@
           {
             "@fromNode": "DirectionInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_3",
+            "@toNode": "_1",
             "@toField": "direction"
           }
         }

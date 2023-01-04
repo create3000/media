@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.4, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -37,27 +37,43 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
+          "@name": "EnvironmentalSensor",
           "@level": 3
+        },
+        {
+          "@name": "EventUtilities",
+          "@level": 1
+        },
+        {
+          "@name": "Geometry2D",
+          "@level": 2
         },
         {
           "@name": "Layering",
           "@level": 1
         },
         {
-          "@name": "Shape",
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Sound",
           "@level": 3
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Text",
+          "@level": 1
         }
       ],
       "unit": [
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199432958
+          "@conversionFactor": 0.0174532925199433
         }
       ]
     },
@@ -266,7 +282,8 @@
 "function random (min, max)",
 "{",
 "\treturn Math .random () * (max - min) + min;",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -346,6 +363,7 @@
                 { "Inline":
                   {
                     "@DEF": "_1",
+                    "@global": true,
                     "IS": {
                       "connect": [
                         {
@@ -359,7 +377,7 @@
                 { "LoadSensor":
                   {
                     "@DEF": "_2",
-                    "-watchList": [
+                    "-children": [
                       { "Inline":
                         {
                           "@USE": "_1"
@@ -645,7 +663,8 @@
 "function getIndex (x, y)",
 "{",
 "\treturn maze .width * y + x;",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -1190,7 +1209,8 @@
 "function getIndex (x, y)",
 "{",
 "\treturn maze .width * y + x;",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -1434,7 +1454,8 @@
 "function eventsProcessed ()",
 "{",
 "\t",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -1492,7 +1513,7 @@
               "-children": [
                 { "Collision":
                   {
-                    "@DEF": "Group_7",
+                    "@DEF": "Group_1",
                     "@enabled": false
                   }
                 },
@@ -1548,7 +1569,7 @@
                         "-children": [
                           { "Collision":
                             {
-                              "@USE": "Group_7"
+                              "@USE": "Group_1"
                             }
                           }
                         ]
@@ -1668,6 +1689,7 @@
 "{",
 "\treturn maze .width * y + x;",
 "}",
+"",
 ""
                     ],
                     "IS": {
@@ -1749,7 +1771,8 @@
 "",
 "\ttimer .stopTime  = value;",
 "\ttimer .startTime = value;",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -1775,23 +1798,23 @@
         },
         { "LayerSet":
           {
-            "@DEF": "_8",
+            "@DEF": "_7",
             "@activeLayer": 1,
             "@order": [ 2, 3 ],
             "-layers": [
               { "Layer":
                 {
                   "@DEF": "Playground",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "TimeTrigger":
                       {
-                        "@DEF": "_9"
+                        "@DEF": "_8"
                       }
                     },
                     { "ProtoInstance":
                       {
-                        "@DEF": "_10",
+                        "@DEF": "_9",
                         "@name": "MFInt32",
                         "fieldValue": [
                           {
@@ -1817,7 +1840,7 @@
                     },
                     { "Background":
                       {
-                        "@DEF": "_11",
+                        "@DEF": "_10",
                         "@skyAngle": [ 76.5191, 90.0002 ],
                         "@skyColor": [ 0.045, 0.045, 0.045, 0.195, 0.195, 0.195, 0.185, 0.185, 0.185 ],
                         "@groundAngle": [ 60.5651, 90.0002 ],
@@ -1828,15 +1851,14 @@
                       {
                         "@intensity": 0.656934,
                         "@ambientIntensity": 0.382716,
-                        "@direction": [ 0.65147, 2.93442e-08, -0.758675 ]
+                        "@direction": [ 0.65147, 2.93442e-8, -0.758675 ]
                       }
                     },
                     { "DirectionalLight":
                       {
                         "@ambientIntensity": 0.302469,
-                        "@direction": [ -3.52397e-06, -0.860529, 0.509401 ],
-                        "@shadows": true,
-                        "@shadowIntensity": 1
+                        "@direction": [ -0.00000352397, -0.860529, 0.509401 ],
+                        "@shadows": true
                       }
                     },
                     { "Group":
@@ -1853,7 +1875,7 @@
                           },
                           { "Viewpoint":
                             {
-                              "@DEF": "_12",
+                              "@DEF": "_11",
                               "@description": "Maze",
                               "@position": [ 12, 2, -28 ],
                               "@orientation": [ 0, 1, 0, 90 ],
@@ -1893,7 +1915,7 @@
                                   "-children": [
                                     { "ProtoInstance":
                                       {
-                                        "@DEF": "_13",
+                                        "@DEF": "_12",
                                         "@name": "Maze",
                                         "fieldValue": [
                                           {
@@ -1965,7 +1987,8 @@
 "function getIndex (x, y)",
 "{",
 "\treturn maze .width * y + x;",
-"}"
+"}",
+""
                               ]
                             }
                           }
@@ -1991,7 +2014,7 @@
                               { "ProtoInstance":
                                 {
                                   "@name": "Maze",
-                                  "@USE": "_13"
+                                  "@USE": "_12"
                                 }
                               }
                             ]
@@ -2026,7 +2049,7 @@
                               { "ProtoInstance":
                                 {
                                   "@name": "Maze",
-                                  "@USE": "_13"
+                                  "@USE": "_12"
                                 }
                               }
                             ]
@@ -2036,7 +2059,7 @@
                     },
                     { "LoadSensor":
                       {
-                        "-watchList": [
+                        "-children": [
                           { "ProtoInstance":
                             {
                               "@name": "MazeGeometry",
@@ -2052,6 +2075,7 @@
                           { "Inline":
                             {
                               "@DEF": "Globe1",
+                              "@global": true,
                               "@url": [ "globe1.x3d" ]
                             }
                           }
@@ -2071,6 +2095,59 @@
                                 {
                                   "@name": "collidables",
                                   "-children": [
+                                    { "ProtoInstance":
+                                      {
+                                        "@DEF": "_13",
+                                        "@name": "Globe",
+                                        "fieldValue": [
+                                          {
+                                            "@name": "enabled",
+                                            "@value": true
+                                          },
+                                          {
+                                            "@name": "cycleInterval",
+                                            "@value": 4
+                                          },
+                                          {
+                                            "@name": "radius",
+                                            "@value": 2
+                                          },
+                                          {
+                                            "@name": "mazeElementSize",
+                                            "@value": [ 4, 2, 4 ]
+                                          },
+                                          {
+                                            "@name": "startTime",
+                                            "@value": 1508046433.07247
+                                          },
+                                          {
+                                            "@name": "stopTime",
+                                            "@value": 1508046433.07247
+                                          },
+                                          {
+                                            "@name": "maze",
+                                            "-children": [
+                                              { "ProtoInstance":
+                                                {
+                                                  "@name": "Maze",
+                                                  "@USE": "_12"
+                                                }
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "@name": "children",
+                                            "-children": [
+                                              { "Inline":
+                                                {
+                                                  "@USE": "Globe1"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    },
                                     { "ProtoInstance":
                                       {
                                         "@DEF": "_14",
@@ -2094,59 +2171,6 @@
                                           },
                                           {
                                             "@name": "startTime",
-                                            "@value": 1508046433.07247
-                                          },
-                                          {
-                                            "@name": "stopTime",
-                                            "@value": 1508046433.07247
-                                          },
-                                          {
-                                            "@name": "maze",
-                                            "-children": [
-                                              { "ProtoInstance":
-                                                {
-                                                  "@name": "Maze",
-                                                  "@USE": "_13"
-                                                }
-                                              }
-                                            ]
-                                          },
-                                          {
-                                            "@name": "children",
-                                            "-children": [
-                                              { "Inline":
-                                                {
-                                                  "@USE": "Globe1"
-                                                }
-                                              }
-                                            ]
-                                          }
-                                        ]
-                                      }
-                                    },
-                                    { "ProtoInstance":
-                                      {
-                                        "@DEF": "_15",
-                                        "@name": "Globe",
-                                        "fieldValue": [
-                                          {
-                                            "@name": "enabled",
-                                            "@value": true
-                                          },
-                                          {
-                                            "@name": "cycleInterval",
-                                            "@value": 4
-                                          },
-                                          {
-                                            "@name": "radius",
-                                            "@value": 2
-                                          },
-                                          {
-                                            "@name": "mazeElementSize",
-                                            "@value": [ 4, 2, 4 ]
-                                          },
-                                          {
-                                            "@name": "startTime",
                                             "@value": 1507984705.53519
                                           },
                                           {
@@ -2159,7 +2183,7 @@
                                               { "ProtoInstance":
                                                 {
                                                   "@name": "Maze",
-                                                  "@USE": "_13"
+                                                  "@USE": "_12"
                                                 }
                                               }
                                             ]
@@ -2185,13 +2209,13 @@
                           { "ProtoInstance":
                             {
                               "@name": "Globe",
-                              "@USE": "_14"
+                              "@USE": "_13"
                             }
                           },
                           { "ProtoInstance":
                             {
                               "@name": "Globe",
-                              "@USE": "_15"
+                              "@USE": "_14"
                             }
                           }
                         ]
@@ -2199,7 +2223,7 @@
                     },
                     { "ProtoInstance":
                       {
-                        "@DEF": "_16",
+                        "@DEF": "_15",
                         "@name": "BonusMap",
                         "fieldValue": [
                           {
@@ -2216,7 +2240,7 @@
                               { "ProtoInstance":
                                 {
                                   "@name": "Maze",
-                                  "@USE": "_13"
+                                  "@USE": "_12"
                                 }
                               }
                             ]
@@ -2226,13 +2250,15 @@
                             "-children": [
                               { "Inline":
                                 {
-                                  "@DEF": "_17",
+                                  "@DEF": "_16",
+                                  "@global": true,
                                   "@url": [ "bonus-mint.x3d" ]
                                 }
                               },
                               { "Inline":
                                 {
-                                  "@DEF": "_18",
+                                  "@DEF": "_17",
+                                  "@global": true,
                                   "@url": [ "bonus-blue.x3d" ]
                                 }
                               }
@@ -2243,7 +2269,7 @@
                     },
                     { "Group":
                       {
-                        "@DEF": "BonusSound_19",
+                        "@DEF": "BonusSound_1",
                         "-children": [
                           { "Sound":
                             {
@@ -2255,7 +2281,7 @@
                               "@maxFront": 60,
                               "-source": { "AudioClip":
                                 {
-                                  "@DEF": "_20",
+                                  "@DEF": "_18",
                                   "@url": [ "star-collect.mp3" ],
                                   "@startTime": 1546835705.23872,
                                   "@pauseTime": 1510042948.99191,
@@ -2266,7 +2292,7 @@
                           },
                           { "ProtoInstance":
                             {
-                              "@DEF": "_21",
+                              "@DEF": "_19",
                               "@name": "TimeControler",
                               "fieldValue": [
                                 {
@@ -2278,7 +2304,7 @@
                                   "-children": [
                                     { "AudioClip":
                                       {
-                                        "@USE": "_20"
+                                        "@USE": "_18"
                                       }
                                     }
                                   ]
@@ -2291,7 +2317,7 @@
                     },
                     { "VisibilitySensor":
                       {
-                        "@DEF": "_22",
+                        "@DEF": "_20",
                         "@size": [ -1, -1, -1 ]
                       }
                     }
@@ -2304,12 +2330,12 @@
                   "-children": [
                     { "TimeTrigger":
                       {
-                        "@DEF": "_23"
+                        "@DEF": "_21"
                       }
                     },
                     { "ProtoInstance":
                       {
-                        "@DEF": "_24",
+                        "@DEF": "_22",
                         "@name": "MFInt32",
                         "fieldValue": [
                           {
@@ -2457,7 +2483,7 @@
                           },
                           { "TouchSensor":
                             {
-                              "@DEF": "_25"
+                              "@DEF": "_23"
                             }
                           }
                         ]
@@ -2497,22 +2523,22 @@
                                 },
                                 { "BooleanTrigger":
                                   {
-                                    "@DEF": "_26"
+                                    "@DEF": "_24"
                                   }
                                 },
                                 { "BooleanToggle":
                                   {
-                                    "@DEF": "_27"
+                                    "@DEF": "_25"
                                   }
                                 },
                                 { "BooleanFilter":
                                   {
-                                    "@DEF": "_28"
+                                    "@DEF": "_26"
                                   }
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@USE": "_25"
+                                    "@USE": "_23"
                                   }
                                 }
                               ]
@@ -2545,20 +2571,21 @@
 "\tBrowser .setBrowserOption (\"Shading\", \"PHONG\");",
 "",
 "\tentered = true;",
-"}"
+"}",
+""
             ]
           }
         },
         { "BooleanFilter":
           {
-            "@DEF": "_29"
+            "@DEF": "_27"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "ViewpointPositionScript",
             "@fromField": "position_changed",
-            "@toNode": "_12",
+            "@toNode": "_11",
             "@toField": "position"
           }
         },
@@ -2566,45 +2593,45 @@
           {
             "@fromNode": "ViewpointPositionScript",
             "@fromField": "orientation_changed",
-            "@toNode": "_12",
+            "@toNode": "_11",
             "@toField": "orientation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_27",
+            "@fromNode": "_25",
             "@fromField": "toggle",
-            "@toNode": "_28",
+            "@toNode": "_26",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_25",
+            "@fromNode": "_23",
             "@fromField": "touchTime",
-            "@toNode": "_26",
+            "@toNode": "_24",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_26",
+            "@fromNode": "_24",
             "@fromField": "triggerTrue",
-            "@toNode": "_27",
+            "@toNode": "_25",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
+            "@fromNode": "_20",
             "@fromField": "isActive",
-            "@toNode": "_11",
+            "@toNode": "_10",
             "@toField": "set_bind"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_13",
+            "@fromNode": "_12",
             "@fromField": "generatedTime",
             "@toNode": "ViewpointPositionScript",
             "@toField": "set_triggerTime"
@@ -2612,9 +2639,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
+            "@fromNode": "_20",
             "@fromField": "isActive",
-            "@toNode": "_12",
+            "@toNode": "_11",
             "@toField": "set_bind"
           }
         },
@@ -2622,21 +2649,21 @@
           {
             "@fromNode": "EnterWorldScript",
             "@fromField": "entered",
-            "@toNode": "_29",
+            "@toNode": "_27",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_29",
+            "@fromNode": "_27",
             "@fromField": "inputNegate",
-            "@toNode": "_27",
+            "@toNode": "_25",
             "@toField": "toggle"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
+            "@fromNode": "_20",
             "@fromField": "isActive",
             "@toNode": "Walk",
             "@toField": "set_bind"
@@ -2644,31 +2671,39 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_28",
+            "@fromNode": "_26",
             "@fromField": "inputTrue",
-            "@toNode": "_9",
+            "@toNode": "_8",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_28",
+            "@fromNode": "_26",
             "@fromField": "inputFalse",
-            "@toNode": "_23",
+            "@toNode": "_21",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_9",
+            "@fromNode": "_8",
             "@fromField": "triggerTime",
-            "@toNode": "_13",
+            "@toNode": "_12",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
+            "@fromNode": "_20",
+            "@fromField": "isActive",
+            "@toNode": "_13",
+            "@toField": "enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_20",
             "@fromField": "isActive",
             "@toNode": "_14",
             "@toField": "enabled"
@@ -2676,49 +2711,41 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
-            "@fromField": "isActive",
-            "@toNode": "_15",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_16",
+            "@fromNode": "_15",
             "@fromField": "enterTime",
-            "@toNode": "_21",
+            "@toNode": "_19",
             "@toField": "resetTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_24",
+            "@fromNode": "_22",
             "@fromField": "value_changed",
-            "@toNode": "_8",
+            "@toNode": "_7",
             "@toField": "order"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_23",
+            "@fromNode": "_21",
             "@fromField": "triggerTime",
-            "@toNode": "_24",
+            "@toNode": "_22",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_10",
+            "@fromNode": "_9",
             "@fromField": "value_changed",
-            "@toNode": "_8",
+            "@toNode": "_7",
             "@toField": "order"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_9",
+            "@fromNode": "_8",
             "@fromField": "triggerTime",
-            "@toNode": "_10",
+            "@toNode": "_9",
             "@toField": "set_triggerTime"
           }
         }

@@ -1,79 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Geospatial' level='2'/>
     <component name='Layout' level='2'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Tue, 12 Aug 2014 04:27:36 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geospatial/GeoViewpoint/GeoViewpoint.x3d'/>
-    <meta name='modified' content='Thu, 10 Nov 2022 21:45:02 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geospatial/GeoViewpoint/GeoViewpoint.O.x3d'/>
+    <meta name='modified' content='Thu, 10 Nov 2022 21:44:53 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
-    <WorldInfo>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
-            name='NavigationInfo'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
-              name='type'
-              reference='http://titania.create3000.de'
-              value='"EXAMINE"'/>
-        </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
-            name='Viewpoint'
-            reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
-              name='position'
-              reference='http://titania.create3000.de'
-              value='16113113, 9048258, 7648308'/>
-          <MetadataDouble DEF='orientation' containerField='value'
-              name='orientation'
-              reference='http://titania.create3000.de'
-              value='0.29846283422145, 0.54143282415765, 0.78598373616327, 2.2341131789901'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
-              name='centerOfRotation'
-              reference='http://titania.create3000.de'
-              value='0, 0, 0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <Appearance DEF='_1' containerField='value'>
-              <PointProperties
-                  pointSizeScaleFactor='10'
-                  pointSizeMaxValue='10'/>
-              <Material
-                  emissiveColor='1 0.502179 0'/>
-            </Appearance>
-          </MetadataSet>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-        </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
+    <WorldInfo/>
     <NavigationInfo
         avatarSize='10000, 1.6, 0.75'
         visibilityLimit='1e+8'/>
@@ -151,7 +92,7 @@
           centerOfRotation='-134687642.22724 -152229936.34392 -6277396.3133062'/>
     </Transform>
     <Transform DEF='Earth'
-        scale='6.37814e+6 6.37814e+6 6.35675e+6'>
+        scale='6378140 6378140 6356750'>
       <Shape DEF='Axes'>
         <IndexedLineSet
             colorPerVertex='false'
@@ -174,11 +115,18 @@
         </Shape>
       </Transform>
       <Inline DEF='Coasts'
+          global='true'
           url='"assets/coasts.x3d"'/>
     </Transform>
     <Transform DEF='Points'>
       <Shape>
-        <Appearance USE='_1'/>
+        <Appearance DEF='_1'>
+          <PointProperties
+              pointSizeScaleFactor='10'
+              pointSizeMaxValue='10'/>
+          <Material
+              emissiveColor='1 0.502179 0'/>
+        </Appearance>
         <PointSet>
           <GeoCoordinate
               point='0 0 0, 90 0 0, -90 0 0, 51 0 0, 51.31 12.37 0, -1.33 36.84 0, 39.992 -72.994 0, -22 -42.97 0, -37.01 143.98 0, 35.007 138.999 0, 37.45 -122.1834 0'>

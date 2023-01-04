@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.0.2, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -34,27 +34,11 @@
       "component": [
         {
           "@name": "CubeMapTexturing",
-          "@level": 1
-        },
-        {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
           "@level": 3
         },
         {
           "@name": "ParticleSystems",
-          "@level": 1
-        },
-        {
-          "@name": "Shape",
-          "@level": 4
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@level": 3
         }
       ]
     },
@@ -66,13 +50,23 @@
             "field": [
               {
                 "@accessType": "inputOutput",
-                "@type": "SFFloat",
-                "@name": "refraction"
+                "@type": "SFVec3f",
+                "@name": "chromaticDispersion"
               },
               {
                 "@accessType": "inputOutput",
                 "@type": "SFFloat",
-                "@name": "reflection"
+                "@name": "bias"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "scale"
+              },
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFFloat",
+                "@name": "power"
               },
               {
                 "@accessType": "inputOutput",
@@ -247,34 +241,35 @@
                           "-children": [
                             { "ComposedCubeMapTexture":
                               {
-                                "-front": { "ImageTexture":
+                                "@DEF": "_8",
+                                "-frontTexture": { "ImageTexture":
                                   {
                                     "@USE": "_1"
                                   }
                                 },
-                                "-back": { "ImageTexture":
+                                "-backTexture": { "ImageTexture":
                                   {
                                     "@USE": "_3"
                                   }
                                 },
-                                "-left": { "ImageTexture":
+                                "-leftTexture": { "ImageTexture":
                                   {
                                     "@USE": "_4"
                                   }
                                 },
-                                "-right": { "ImageTexture":
+                                "-rightTexture": { "ImageTexture":
                                   {
                                     "@USE": "_5"
                                   }
                                 },
-                                "-top": { "ImageTexture":
-                                  {
-                                    "@USE": "_6"
-                                  }
-                                },
-                                "-bottom": { "ImageTexture":
+                                "-bottomTexture": { "ImageTexture":
                                   {
                                     "@USE": "_7"
+                                  }
+                                },
+                                "-topTexture": { "ImageTexture":
+                                  {
+                                    "@USE": "_6"
                                   }
                                 }
                               }

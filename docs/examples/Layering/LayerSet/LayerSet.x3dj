@@ -1,28 +1,48 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
           "@content": "World of Titania"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         }
       ],
       "component": [
+        {
+          "@name": "EnvironmentalSensor",
+          "@level": 3
+        },
+        {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
         {
           "@name": "Layering",
           "@level": 1
         },
         {
-          "@name": "Shape",
-          "@level": 4
+          "@name": "PointingDeviceSensor",
+          "@level": 1
         },
         {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Sound",
+          "@level": 3
+        },
+        {
+          "@name": "Text",
+          "@level": 1
         }
       ]
     },
@@ -131,7 +151,8 @@
 "function set_whichChoice (value)",
 "{",
 "\tgroup .whichChoice = value",
-"}"
+"}",
+""
                     ],
                     "IS": {
                       "connect": [
@@ -155,7 +176,7 @@
               { "Layer":
                 {
                   "@DEF": "Skyline",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -228,7 +249,7 @@
               { "Layer":
                 {
                   "@DEF": "Plants",
-                  "@isPickable": false,
+                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -323,14 +344,14 @@
                                         "-children": [
                                           { "Transform":
                                             {
-                                              "@DEF": "Text_4",
+                                              "@DEF": "Text_1",
                                               "@translation": [ -6.2, 1.6, 0 ],
                                               "-children": [
                                                 { "Shape":
                                                   {
                                                     "-appearance": { "Appearance":
                                                       {
-                                                        "@DEF": "_5",
+                                                        "@DEF": "_4",
                                                         "-material": { "Material":
                                                           {
                                                             "@diffuseColor": [ 1, 0.905882, 0.67451 ]
@@ -340,12 +361,12 @@
                                                     },
                                                     "-geometry": { "Text":
                                                       {
-                                                        "@DEF": "_6",
+                                                        "@DEF": "_5",
                                                         "@string": [ "New Game" ],
                                                         "@solid": true,
                                                         "-fontStyle": { "FontStyle":
                                                           {
-                                                            "@DEF": "_7",
+                                                            "@DEF": "_6",
                                                             "@family": [ "BDFazer.otf" ],
                                                             "@size": 0.6
                                                           }
@@ -359,11 +380,11 @@
                                           },
                                           { "Group":
                                             {
-                                              "@DEF": "_8",
+                                              "@DEF": "_7",
                                               "-children": [
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "Text_9",
+                                                    "@DEF": "Text_2",
                                                     "@translation": [ -6.2, 1.6, 0 ],
                                                     "-children": [
                                                       { "Shape":
@@ -375,7 +396,7 @@
                                                           },
                                                           "-geometry": { "Text":
                                                             {
-                                                              "@USE": "_6"
+                                                              "@USE": "_5"
                                                             }
                                                           }
                                                         }
@@ -391,7 +412,7 @@
                                                     "-children": [
                                                       { "Shape":
                                                         {
-                                                          "@DEF": "_10",
+                                                          "@DEF": "_8",
                                                           "-appearance": { "Appearance":
                                                             {
                                                               "-material": { "Material":
@@ -400,7 +421,7 @@
                                                               },
                                                               "-texture": { "ImageTexture":
                                                                 {
-                                                                  "@DEF": "_11",
+                                                                  "@DEF": "_9",
                                                                   "@url": [ "border.png", "file:///home/holger/Projekte/Library/Components/Layering/LayerSet/border.png" ],
                                                                   "@repeatS": false,
                                                                   "@repeatT": false
@@ -410,7 +431,7 @@
                                                           },
                                                           "-geometry": { "Rectangle2D":
                                                             {
-                                                              "@DEF": "_12",
+                                                              "@DEF": "_10",
                                                               "@size": [ 0.158905, 0.0219927 ]
                                                             }
                                                           }
@@ -429,13 +450,13 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "border_13",
+                                    "@DEF": "border_1",
                                     "@translation": [ -2.623, 1.78, 0 ],
                                     "@scale": [ 50, 50, 50 ],
                                     "-children": [
                                       { "Shape":
                                         {
-                                          "@DEF": "_14",
+                                          "@DEF": "_11",
                                           "-appearance": { "Appearance":
                                             {
                                               "-material": { "Material":
@@ -447,7 +468,7 @@
                                           },
                                           "-geometry": { "Rectangle2D":
                                             {
-                                              "@USE": "_12"
+                                              "@USE": "_10"
                                             }
                                           }
                                         }
@@ -457,7 +478,7 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_15"
+                                    "@DEF": "_12"
                                   }
                                 }
                               ]
@@ -468,7 +489,7 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_16",
+                                    "@DEF": "_13",
                                     "@name": "BooleanSwitch",
                                     "fieldValue": [
                                       {
@@ -476,24 +497,134 @@
                                         "-children": [
                                           { "Transform":
                                             {
-                                              "@DEF": "Text_17",
+                                              "@DEF": "Text_3",
                                               "@translation": [ -6.19108, 0.8, 0 ],
                                               "-children": [
                                                 { "Shape":
                                                   {
                                                     "-appearance": { "Appearance":
                                                       {
-                                                        "@USE": "_5"
+                                                        "@USE": "_4"
+                                                      }
+                                                    },
+                                                    "-geometry": { "Text":
+                                                      {
+                                                        "@DEF": "_14",
+                                                        "@string": [ "Continue Game" ],
+                                                        "@solid": true,
+                                                        "-fontStyle": { "FontStyle":
+                                                          {
+                                                            "@USE": "_6"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          { "Group":
+                                            {
+                                              "@DEF": "_15",
+                                              "-children": [
+                                                { "Transform":
+                                                  {
+                                                    "@DEF": "Text_4",
+                                                    "@translation": [ -6.19108, 0.8, 0 ],
+                                                    "-children": [
+                                                      { "Shape":
+                                                        {
+                                                          "-appearance": { "Appearance":
+                                                            {
+                                                              "@USE": "_2"
+                                                            }
+                                                          },
+                                                          "-geometry": { "Text":
+                                                            {
+                                                              "@USE": "_14"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                { "Transform":
+                                                  {
+                                                    "@DEF": "border_2",
+                                                    "@translation": [ -2.623, 0.98, 0 ],
+                                                    "@scale": [ 50, 50, 50 ],
+                                                    "-children": [
+                                                      { "Shape":
+                                                        {
+                                                          "@USE": "_8"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "border_3",
+                                    "@translation": [ -2.623, 0.98, 0 ],
+                                    "@scale": [ 50, 50, 50 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "@USE": "_11"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "TouchSensor":
+                                  {
+                                    "@DEF": "_16"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Group":
+                            {
+                              "-children": [
+                                { "ProtoInstance":
+                                  {
+                                    "@DEF": "_17",
+                                    "@name": "BooleanSwitch",
+                                    "fieldValue": [
+                                      {
+                                        "@name": "children",
+                                        "-children": [
+                                          { "Transform":
+                                            {
+                                              "@DEF": "Text_5",
+                                              "@translation": [ -6.19108, 0, 0 ],
+                                              "-children": [
+                                                { "Shape":
+                                                  {
+                                                    "-appearance": { "Appearance":
+                                                      {
+                                                        "@USE": "_4"
                                                       }
                                                     },
                                                     "-geometry": { "Text":
                                                       {
                                                         "@DEF": "_18",
-                                                        "@string": [ "Continue Game" ],
+                                                        "@string": [ "Load" ],
                                                         "@solid": true,
                                                         "-fontStyle": { "FontStyle":
                                                           {
-                                                            "@USE": "_7"
+                                                            "@USE": "_6"
                                                           }
                                                         }
                                                       }
@@ -509,8 +640,8 @@
                                               "-children": [
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "Text_20",
-                                                    "@translation": [ -6.19108, 0.8, 0 ],
+                                                    "@DEF": "Text_6",
+                                                    "@translation": [ -6.19108, 0, 0 ],
                                                     "-children": [
                                                       { "Shape":
                                                         {
@@ -531,13 +662,13 @@
                                                 },
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "border_21",
-                                                    "@translation": [ -2.623, 0.98, 0 ],
+                                                    "@DEF": "border_4",
+                                                    "@translation": [ -2.623, 0.18, 0 ],
                                                     "@scale": [ 50, 50, 50 ],
                                                     "-children": [
                                                       { "Shape":
                                                         {
-                                                          "@USE": "_10"
+                                                          "@USE": "_8"
                                                         }
                                                       }
                                                     ]
@@ -553,13 +684,13 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "border_22",
-                                    "@translation": [ -2.623, 0.98, 0 ],
+                                    "@DEF": "border_5",
+                                    "@translation": [ -2.623, 0.18, 0 ],
                                     "@scale": [ 50, 50, 50 ],
                                     "-children": [
                                       { "Shape":
                                         {
-                                          "@USE": "_14"
+                                          "@USE": "_11"
                                         }
                                       }
                                     ]
@@ -567,7 +698,7 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_23"
+                                    "@DEF": "_20"
                                   }
                                 }
                               ]
@@ -578,7 +709,7 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_24",
+                                    "@DEF": "_21",
                                     "@name": "BooleanSwitch",
                                     "fieldValue": [
                                       {
@@ -586,24 +717,134 @@
                                         "-children": [
                                           { "Transform":
                                             {
-                                              "@DEF": "Text_25",
-                                              "@translation": [ -6.19108, 0, 0 ],
+                                              "@DEF": "Text_7",
+                                              "@translation": [ -6.2, -0.8, 0 ],
                                               "-children": [
                                                 { "Shape":
                                                   {
                                                     "-appearance": { "Appearance":
                                                       {
-                                                        "@USE": "_5"
+                                                        "@USE": "_4"
+                                                      }
+                                                    },
+                                                    "-geometry": { "Text":
+                                                      {
+                                                        "@DEF": "_22",
+                                                        "@string": [ "Downloadable Content" ],
+                                                        "@solid": true,
+                                                        "-fontStyle": { "FontStyle":
+                                                          {
+                                                            "@USE": "_6"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          { "Group":
+                                            {
+                                              "@DEF": "_23",
+                                              "-children": [
+                                                { "Transform":
+                                                  {
+                                                    "@DEF": "Text_8",
+                                                    "@translation": [ -6.2, -0.8, 0 ],
+                                                    "-children": [
+                                                      { "Shape":
+                                                        {
+                                                          "-appearance": { "Appearance":
+                                                            {
+                                                              "@USE": "_2"
+                                                            }
+                                                          },
+                                                          "-geometry": { "Text":
+                                                            {
+                                                              "@USE": "_22"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                { "Transform":
+                                                  {
+                                                    "@DEF": "border_6",
+                                                    "@translation": [ -2.623, -0.62, 0 ],
+                                                    "@scale": [ 50, 50, 50 ],
+                                                    "-children": [
+                                                      { "Shape":
+                                                        {
+                                                          "@USE": "_8"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "border_7",
+                                    "@translation": [ -2.623, -0.62, 0 ],
+                                    "@scale": [ 50, 50, 50 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "@USE": "_11"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "TouchSensor":
+                                  {
+                                    "@DEF": "_24"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Group":
+                            {
+                              "-children": [
+                                { "ProtoInstance":
+                                  {
+                                    "@DEF": "_25",
+                                    "@name": "BooleanSwitch",
+                                    "fieldValue": [
+                                      {
+                                        "@name": "children",
+                                        "-children": [
+                                          { "Transform":
+                                            {
+                                              "@DEF": "Text_9",
+                                              "@translation": [ -6.19108, -1.6, 0 ],
+                                              "-children": [
+                                                { "Shape":
+                                                  {
+                                                    "-appearance": { "Appearance":
+                                                      {
+                                                        "@USE": "_4"
                                                       }
                                                     },
                                                     "-geometry": { "Text":
                                                       {
                                                         "@DEF": "_26",
-                                                        "@string": [ "Load" ],
+                                                        "@string": [ "Options" ],
                                                         "@solid": true,
                                                         "-fontStyle": { "FontStyle":
                                                           {
-                                                            "@USE": "_7"
+                                                            "@USE": "_6"
                                                           }
                                                         }
                                                       }
@@ -619,8 +860,8 @@
                                               "-children": [
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "Text_28",
-                                                    "@translation": [ -6.19108, 0, 0 ],
+                                                    "@DEF": "Text_10",
+                                                    "@translation": [ -6.19108, -1.6, 0 ],
                                                     "-children": [
                                                       { "Shape":
                                                         {
@@ -641,13 +882,13 @@
                                                 },
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "border_29",
-                                                    "@translation": [ -2.623, 0.18, 0 ],
+                                                    "@DEF": "border_8",
+                                                    "@translation": [ -2.623, -1.42, 0 ],
                                                     "@scale": [ 50, 50, 50 ],
                                                     "-children": [
                                                       { "Shape":
                                                         {
-                                                          "@USE": "_10"
+                                                          "@USE": "_8"
                                                         }
                                                       }
                                                     ]
@@ -663,13 +904,13 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "border_30",
-                                    "@translation": [ -2.623, 0.18, 0 ],
+                                    "@DEF": "border_9",
+                                    "@translation": [ -2.623, -1.42, 0 ],
                                     "@scale": [ 50, 50, 50 ],
                                     "-children": [
                                       { "Shape":
                                         {
-                                          "@USE": "_14"
+                                          "@USE": "_11"
                                         }
                                       }
                                     ]
@@ -677,7 +918,7 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_31"
+                                    "@DEF": "_28"
                                   }
                                 }
                               ]
@@ -688,7 +929,7 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_32",
+                                    "@DEF": "_29",
                                     "@name": "BooleanSwitch",
                                     "fieldValue": [
                                       {
@@ -696,24 +937,134 @@
                                         "-children": [
                                           { "Transform":
                                             {
-                                              "@DEF": "Text_33",
-                                              "@translation": [ -6.2, -0.8, 0 ],
+                                              "@DEF": "Text_11",
+                                              "@translation": [ -6.19108, -2.4, 0 ],
                                               "-children": [
                                                 { "Shape":
                                                   {
                                                     "-appearance": { "Appearance":
                                                       {
-                                                        "@USE": "_5"
+                                                        "@USE": "_4"
+                                                      }
+                                                    },
+                                                    "-geometry": { "Text":
+                                                      {
+                                                        "@DEF": "_30",
+                                                        "@string": [ "Credits" ],
+                                                        "@solid": true,
+                                                        "-fontStyle": { "FontStyle":
+                                                          {
+                                                            "@USE": "_6"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          { "Group":
+                                            {
+                                              "@DEF": "_31",
+                                              "-children": [
+                                                { "Transform":
+                                                  {
+                                                    "@DEF": "Text_12",
+                                                    "@translation": [ -6.19108, -2.4, 0 ],
+                                                    "-children": [
+                                                      { "Shape":
+                                                        {
+                                                          "-appearance": { "Appearance":
+                                                            {
+                                                              "@USE": "_2"
+                                                            }
+                                                          },
+                                                          "-geometry": { "Text":
+                                                            {
+                                                              "@USE": "_30"
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                },
+                                                { "Transform":
+                                                  {
+                                                    "@DEF": "border_10",
+                                                    "@translation": [ -2.623, -2.22, 0 ],
+                                                    "@scale": [ 50, 50, 50 ],
+                                                    "-children": [
+                                                      { "Shape":
+                                                        {
+                                                          "@USE": "_8"
+                                                        }
+                                                      }
+                                                    ]
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "border_11",
+                                    "@translation": [ -2.623, -2.22, 0 ],
+                                    "@scale": [ 50, 50, 50 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "@USE": "_11"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "TouchSensor":
+                                  {
+                                    "@DEF": "_32"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Group":
+                            {
+                              "-children": [
+                                { "ProtoInstance":
+                                  {
+                                    "@DEF": "_33",
+                                    "@name": "BooleanSwitch",
+                                    "fieldValue": [
+                                      {
+                                        "@name": "children",
+                                        "-children": [
+                                          { "Transform":
+                                            {
+                                              "@DEF": "Text_13",
+                                              "@translation": [ -6.19108, -3.2, 0 ],
+                                              "-children": [
+                                                { "Shape":
+                                                  {
+                                                    "-appearance": { "Appearance":
+                                                      {
+                                                        "@USE": "_4"
                                                       }
                                                     },
                                                     "-geometry": { "Text":
                                                       {
                                                         "@DEF": "_34",
-                                                        "@string": [ "Downloadable Content" ],
+                                                        "@string": [ "Exit Game" ],
                                                         "@solid": true,
                                                         "-fontStyle": { "FontStyle":
                                                           {
-                                                            "@USE": "_7"
+                                                            "@USE": "_6"
                                                           }
                                                         }
                                                       }
@@ -729,14 +1080,19 @@
                                               "-children": [
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "Text_36",
-                                                    "@translation": [ -6.2, -0.8, 0 ],
+                                                    "@DEF": "Text_14",
+                                                    "@translation": [ -6.19108, -3.2, 0 ],
                                                     "-children": [
                                                       { "Shape":
                                                         {
                                                           "-appearance": { "Appearance":
                                                             {
-                                                              "@USE": "_2"
+                                                              "-material": { "Material":
+                                                                {
+                                                                  "@DEF": "_36",
+                                                                  "@diffuseColor": [ 1, 0.0562664, 0 ]
+                                                                }
+                                                              }
                                                             }
                                                           },
                                                           "-geometry": { "Text":
@@ -751,342 +1107,7 @@
                                                 },
                                                 { "Transform":
                                                   {
-                                                    "@DEF": "border_37",
-                                                    "@translation": [ -2.623, -0.62, 0 ],
-                                                    "@scale": [ 50, 50, 50 ],
-                                                    "-children": [
-                                                      { "Shape":
-                                                        {
-                                                          "@USE": "_10"
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                },
-                                { "Transform":
-                                  {
-                                    "@DEF": "border_38",
-                                    "@translation": [ -2.623, -0.62, 0 ],
-                                    "@scale": [ 50, 50, 50 ],
-                                    "-children": [
-                                      { "Shape":
-                                        {
-                                          "@USE": "_14"
-                                        }
-                                      }
-                                    ]
-                                  }
-                                },
-                                { "TouchSensor":
-                                  {
-                                    "@DEF": "_39"
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          { "Group":
-                            {
-                              "-children": [
-                                { "ProtoInstance":
-                                  {
-                                    "@DEF": "_40",
-                                    "@name": "BooleanSwitch",
-                                    "fieldValue": [
-                                      {
-                                        "@name": "children",
-                                        "-children": [
-                                          { "Transform":
-                                            {
-                                              "@DEF": "Text_41",
-                                              "@translation": [ -6.19108, -1.6, 0 ],
-                                              "-children": [
-                                                { "Shape":
-                                                  {
-                                                    "-appearance": { "Appearance":
-                                                      {
-                                                        "@USE": "_5"
-                                                      }
-                                                    },
-                                                    "-geometry": { "Text":
-                                                      {
-                                                        "@DEF": "_42",
-                                                        "@string": [ "Options" ],
-                                                        "@solid": true,
-                                                        "-fontStyle": { "FontStyle":
-                                                          {
-                                                            "@USE": "_7"
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          { "Group":
-                                            {
-                                              "@DEF": "_43",
-                                              "-children": [
-                                                { "Transform":
-                                                  {
-                                                    "@DEF": "Text_44",
-                                                    "@translation": [ -6.19108, -1.6, 0 ],
-                                                    "-children": [
-                                                      { "Shape":
-                                                        {
-                                                          "-appearance": { "Appearance":
-                                                            {
-                                                              "@USE": "_2"
-                                                            }
-                                                          },
-                                                          "-geometry": { "Text":
-                                                            {
-                                                              "@USE": "_42"
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                },
-                                                { "Transform":
-                                                  {
-                                                    "@DEF": "border_45",
-                                                    "@translation": [ -2.623, -1.42, 0 ],
-                                                    "@scale": [ 50, 50, 50 ],
-                                                    "-children": [
-                                                      { "Shape":
-                                                        {
-                                                          "@USE": "_10"
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                },
-                                { "Transform":
-                                  {
-                                    "@DEF": "border_46",
-                                    "@translation": [ -2.623, -1.42, 0 ],
-                                    "@scale": [ 50, 50, 50 ],
-                                    "-children": [
-                                      { "Shape":
-                                        {
-                                          "@USE": "_14"
-                                        }
-                                      }
-                                    ]
-                                  }
-                                },
-                                { "TouchSensor":
-                                  {
-                                    "@DEF": "_47"
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          { "Group":
-                            {
-                              "-children": [
-                                { "ProtoInstance":
-                                  {
-                                    "@DEF": "_48",
-                                    "@name": "BooleanSwitch",
-                                    "fieldValue": [
-                                      {
-                                        "@name": "children",
-                                        "-children": [
-                                          { "Transform":
-                                            {
-                                              "@DEF": "Text_49",
-                                              "@translation": [ -6.19108, -2.4, 0 ],
-                                              "-children": [
-                                                { "Shape":
-                                                  {
-                                                    "-appearance": { "Appearance":
-                                                      {
-                                                        "@USE": "_5"
-                                                      }
-                                                    },
-                                                    "-geometry": { "Text":
-                                                      {
-                                                        "@DEF": "_50",
-                                                        "@string": [ "Credits" ],
-                                                        "@solid": true,
-                                                        "-fontStyle": { "FontStyle":
-                                                          {
-                                                            "@USE": "_7"
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          { "Group":
-                                            {
-                                              "@DEF": "_51",
-                                              "-children": [
-                                                { "Transform":
-                                                  {
-                                                    "@DEF": "Text_52",
-                                                    "@translation": [ -6.19108, -2.4, 0 ],
-                                                    "-children": [
-                                                      { "Shape":
-                                                        {
-                                                          "-appearance": { "Appearance":
-                                                            {
-                                                              "@USE": "_2"
-                                                            }
-                                                          },
-                                                          "-geometry": { "Text":
-                                                            {
-                                                              "@USE": "_50"
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                },
-                                                { "Transform":
-                                                  {
-                                                    "@DEF": "border_53",
-                                                    "@translation": [ -2.623, -2.22, 0 ],
-                                                    "@scale": [ 50, 50, 50 ],
-                                                    "-children": [
-                                                      { "Shape":
-                                                        {
-                                                          "@USE": "_10"
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                },
-                                { "Transform":
-                                  {
-                                    "@DEF": "border_54",
-                                    "@translation": [ -2.623, -2.22, 0 ],
-                                    "@scale": [ 50, 50, 50 ],
-                                    "-children": [
-                                      { "Shape":
-                                        {
-                                          "@USE": "_14"
-                                        }
-                                      }
-                                    ]
-                                  }
-                                },
-                                { "TouchSensor":
-                                  {
-                                    "@DEF": "_55"
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          { "Group":
-                            {
-                              "-children": [
-                                { "ProtoInstance":
-                                  {
-                                    "@DEF": "_56",
-                                    "@name": "BooleanSwitch",
-                                    "fieldValue": [
-                                      {
-                                        "@name": "children",
-                                        "-children": [
-                                          { "Transform":
-                                            {
-                                              "@DEF": "Text_57",
-                                              "@translation": [ -6.19108, -3.2, 0 ],
-                                              "-children": [
-                                                { "Shape":
-                                                  {
-                                                    "-appearance": { "Appearance":
-                                                      {
-                                                        "@USE": "_5"
-                                                      }
-                                                    },
-                                                    "-geometry": { "Text":
-                                                      {
-                                                        "@DEF": "_58",
-                                                        "@string": [ "Exit Game" ],
-                                                        "@solid": true,
-                                                        "-fontStyle": { "FontStyle":
-                                                          {
-                                                            "@USE": "_7"
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          },
-                                          { "Group":
-                                            {
-                                              "@DEF": "_59",
-                                              "-children": [
-                                                { "Transform":
-                                                  {
-                                                    "@DEF": "Text_60",
-                                                    "@translation": [ -6.19108, -3.2, 0 ],
-                                                    "-children": [
-                                                      { "Shape":
-                                                        {
-                                                          "-appearance": { "Appearance":
-                                                            {
-                                                              "-material": { "Material":
-                                                                {
-                                                                  "@DEF": "_61",
-                                                                  "@diffuseColor": [ 1, 0.0562664, 0 ]
-                                                                }
-                                                              }
-                                                            }
-                                                          },
-                                                          "-geometry": { "Text":
-                                                            {
-                                                              "@USE": "_58"
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    ]
-                                                  }
-                                                },
-                                                { "Transform":
-                                                  {
-                                                    "@DEF": "border_62",
+                                                    "@DEF": "border_12",
                                                     "@translation": [ -2.623, -3.02, 0 ],
                                                     "@scale": [ 50, 50, 50 ],
                                                     "-children": [
@@ -1096,19 +1117,19 @@
                                                             {
                                                               "-material": { "Material":
                                                                 {
-                                                                  "@USE": "_61"
+                                                                  "@USE": "_36"
                                                                 }
                                                               },
                                                               "-texture": { "ImageTexture":
                                                                 {
-                                                                  "@USE": "_11"
+                                                                  "@USE": "_9"
                                                                 }
                                                               }
                                                             }
                                                           },
                                                           "-geometry": { "Rectangle2D":
                                                             {
-                                                              "@USE": "_12"
+                                                              "@USE": "_10"
                                                             }
                                                           }
                                                         }
@@ -1126,13 +1147,13 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "border_63",
+                                    "@DEF": "border_13",
                                     "@translation": [ -2.623, -3.02, 0 ],
                                     "@scale": [ 50, 50, 50 ],
                                     "-children": [
                                       { "Shape":
                                         {
-                                          "@USE": "_14"
+                                          "@USE": "_11"
                                         }
                                       }
                                     ]
@@ -1140,7 +1161,7 @@
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_64"
+                                    "@DEF": "_37"
                                   }
                                 }
                               ]
@@ -1158,7 +1179,7 @@
                         "@maxFront": 100,
                         "-source": { "AudioClip":
                           {
-                            "@DEF": "_65",
+                            "@DEF": "_38",
                             "@url": [ "click01.mp3" ],
                             "@startTime": 1505710882.20402
                           }
@@ -1173,7 +1194,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_12",
             "@fromField": "isOver",
             "@toNode": "_3",
             "@toField": "whichChoice"
@@ -1181,49 +1202,49 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_23",
+            "@fromNode": "_16",
             "@fromField": "isOver",
-            "@toNode": "_16",
+            "@toNode": "_13",
             "@toField": "whichChoice"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_31",
+            "@fromNode": "_20",
             "@fromField": "isOver",
-            "@toNode": "_24",
+            "@toNode": "_17",
             "@toField": "whichChoice"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_39",
+            "@fromNode": "_24",
             "@fromField": "isOver",
-            "@toNode": "_32",
+            "@toNode": "_21",
             "@toField": "whichChoice"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_47",
+            "@fromNode": "_28",
             "@fromField": "isOver",
-            "@toNode": "_40",
+            "@toNode": "_25",
             "@toField": "whichChoice"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_55",
+            "@fromNode": "_32",
             "@fromField": "isOver",
-            "@toNode": "_48",
+            "@toNode": "_29",
             "@toField": "whichChoice"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_64",
+            "@fromNode": "_37",
             "@fromField": "isOver",
-            "@toNode": "_56",
+            "@toNode": "_33",
             "@toField": "whichChoice"
           }
         },
@@ -1261,57 +1282,57 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_64",
+            "@fromNode": "_37",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_55",
+            "@fromNode": "_32",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_47",
+            "@fromNode": "_28",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_39",
+            "@fromNode": "_24",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_31",
+            "@fromNode": "_20",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_23",
+            "@fromNode": "_16",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_12",
             "@fromField": "touchTime",
-            "@toNode": "_65",
+            "@toNode": "_38",
             "@toField": "startTime"
           }
         },

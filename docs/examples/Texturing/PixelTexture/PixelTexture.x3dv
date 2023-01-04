@@ -1,16 +1,13 @@
-#X3D V3.3 utf8 Titania V4.4.3
+#X3D V4.0 utf8 X_ITE V8.4.1
 
-PROFILE Immersive
+PROFILE Interchange
 
-COMPONENT Grouping : 3
-COMPONENT Interpolation : 4
-COMPONENT Shape : 4
-COMPONENT Time : 2
+COMPONENT Scripting : 1
 
 META "comment" "World of Titania"
 META "created" "Mon, 27 Nov 2017 03:13:31 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
+META "generator" "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d"
 META "modified" "Mon, 07 Jan 2019 03:59:38 GMT"
 
@@ -51,7 +48,7 @@ PROTO Canvas [
   }
 
   DEF _1 PixelTexture {
-    image 8 8 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+    image 8 8 3 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0
     repeatS IS repeatS
     repeatT IS repeatT
   }
@@ -362,7 +359,7 @@ Transform {
     Group {
       children [
         DEF UnnamedAnimation3 Group {
-          children DEF Time_6 TimeSensor {
+          children DEF Time_1 TimeSensor {
             cycleInterval 20
             loop TRUE
             startTime 1
@@ -370,15 +367,15 @@ Transform {
         }
         Group {
           children [
-            DEF _7 ScalarInterpolator {
+            DEF _6 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 1, -1 ]
             }
-            DEF _8 ScalarInterpolator {
+            DEF _7 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 0.74, 0.74 ]
             }
-            DEF _9 Script {
+            DEF _8 Script {
               outputOnly     SFVec2f vec
               inputOnly      SFFloat xIn
               inputOnly      SFFloat yIn
@@ -394,22 +391,22 @@ Transform {
     Group {
       children [
         DEF scale Group {
-          children DEF Time_10 TimeSensor {
+          children DEF Time_2 TimeSensor {
             cycleInterval 10
             stopTime 1
           }
         }
         Group {
           children [
-            DEF _11 ScalarInterpolator {
+            DEF _9 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 0.1, 5 ]
             }
-            DEF _12 ScalarInterpolator {
+            DEF _10 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 0.2, 5 ]
             }
-            DEF _13 Script {
+            DEF _11 Script {
               outputOnly     SFVec2f vec
               inputOnly      SFFloat xIn
               inputOnly      SFFloat yIn
@@ -439,7 +436,7 @@ Transform {
     Shape {
       appearance Appearance {
         texture USE _5
-        textureTransform DEF _14 TextureTransform {
+        textureTransform DEF _12 TextureTransform {
           translation -0.175203 0.74
           rotation 0.636027
           scale 1.40365 1.47705
@@ -461,15 +458,15 @@ Transform {
 }
 
 ROUTE _3.time TO DiscoScript.set_time
-ROUTE Time_6.fraction_changed TO _7.set_fraction
-ROUTE Time_6.fraction_changed TO _8.set_fraction
-ROUTE _7.value_changed TO _9.xIn
-ROUTE _8.value_changed TO _9.yIn
-ROUTE DiscoScript.scaleF TO _11.set_fraction
-ROUTE DiscoScript.scaleF TO _12.set_fraction
-ROUTE _11.value_changed TO _13.xIn
-ROUTE _12.value_changed TO _13.yIn
+ROUTE Time_1.fraction_changed TO _6.set_fraction
+ROUTE Time_1.fraction_changed TO _7.set_fraction
+ROUTE _6.value_changed TO _8.xIn
+ROUTE _7.value_changed TO _8.yIn
+ROUTE DiscoScript.scaleF TO _9.set_fraction
+ROUTE DiscoScript.scaleF TO _10.set_fraction
+ROUTE _9.value_changed TO _11.xIn
+ROUTE _10.value_changed TO _11.yIn
 ROUTE DiscoScript.rotateF TO UnnamedShapeRotationInterp.set_fraction
-ROUTE _9.vec TO _14.set_translation
-ROUTE UnnamedShapeRotationInterp.value_changed TO _14.set_rotation
-ROUTE _13.vec TO _14.set_scale
+ROUTE _8.vec TO _12.set_translation
+ROUTE UnnamedShapeRotationInterp.value_changed TO _12.set_rotation
+ROUTE _11.vec TO _12.set_scale

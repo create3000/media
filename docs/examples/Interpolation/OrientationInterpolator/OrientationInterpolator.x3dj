@@ -1,9 +1,9 @@
 { "X3D": {
     "encoding": "UTF-8",
-    "@profile": "Immersive",
+    "@profile": "Interchange",
     "@version": "3.3",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-3.3.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-3.3-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.2, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.6, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "identifier",
@@ -33,16 +33,8 @@
       ],
       "component": [
         {
-          "@name": "EnvironmentalEffects",
-          "@level": 3
-        },
-        {
-          "@name": "Grouping",
-          "@level": 3
-        },
-        {
-          "@name": "Time",
-          "@level": 2
+          "@name": "Scripting",
+          "@level": 1
         }
       ]
     },
@@ -72,6 +64,7 @@
         { "Inline":
           {
             "@DEF": "Murcielage640",
+            "@global": true,
             "@url": [ "assets/murcielage640.x3d" ]
           }
         },
@@ -83,7 +76,7 @@
               { "Transform":
                 {
                   "@DEF": "TireFR",
-                  "@rotation": [ 6.43072793063183e-14, -3.67320545502221e-06, 0.999999999993254, 2.66955868547619 ],
+                  "@rotation": [ 6.43072793063183e-14, -0.00000367320545502221, 0.999999999993254, 2.66955868547619 ],
                   "-children": [
                     { "Group":
                       {
@@ -102,7 +95,7 @@
                             {
                               "@DEF": "TireFRRotationInterpolator",
                               "@key": [ 0, 0.0833333, 0.166667, 0.25, 0.5, 0.75, 1 ],
-                              "@keyValue": [ 0, 0, 1, 0, 3.23277830604065e-13, -3.67320545873355e-06, 0.999999999993254, 0.523598808882131, 3.23277830604065e-13, -3.67320545873355e-06, 0.999999999993254, 1.04719761776426, 3.23277830604065e-13, -3.67320545873355e-06, 0.999999999993254, 1.5707964266464, -1.76969154518659e-14, -3.673205453847e-06, 0.999999999993254, 3.14159278324361, -5.75959294770675e-19, 3.67320512848233e-06, -0.999999999993254, 1.5707963267949, 0, 0, 1, 0 ]
+                              "@keyValue": [ 0, 0, 1, 0, 3.23277830604065e-13, -0.00000367320545873355, 0.999999999993254, 0.523598808882131, 3.23277830604065e-13, -0.00000367320545873355, 0.999999999993254, 1.04719761776426, 3.23277830604065e-13, -0.00000367320545873355, 0.999999999993254, 1.5707964266464, -1.76969154518659e-14, -0.000003673205453847, 0.999999999993254, 3.14159278324361, -5.75959294770675e-19, 0.00000367320512848233, -0.999999999993254, 1.5707963267949, 0, 0, 1, 0 ]
                             }
                           }
                         ]
@@ -111,6 +104,7 @@
                     { "Inline":
                       {
                         "@DEF": "tire",
+                        "@global": true,
                         "@url": [ "assets/tire.x3d" ]
                       }
                     }
@@ -122,7 +116,7 @@
         },
         { "Transform":
           {
-            "@DEF": "TireFrontRight_2",
+            "@DEF": "TireFrontRight_1",
             "@translation": [ 1.40498, 0.212669, -1.0491 ],
             "-children": [
               { "Transform":
@@ -135,7 +129,7 @@
         },
         { "Transform":
           {
-            "@DEF": "TireFrontRight_3",
+            "@DEF": "TireFrontRight_2",
             "@translation": [ 1.40498, 0.212669, 1.05601 ],
             "@rotation": [ 0, 0, 1, 3.14159265358979 ],
             "@scale": [ -1, -1, -1 ],
@@ -150,7 +144,7 @@
         },
         { "Transform":
           {
-            "@DEF": "TireFrontRight_4",
+            "@DEF": "TireFrontRight_3",
             "@translation": [ -1.27764, 0.212669, 0.988662 ],
             "@rotation": [ 0, 0, 1, 3.14159265358979 ],
             "@scale": [ -1, -1, -1 ],
@@ -172,7 +166,8 @@
 "function initialize ()",
 "{",
 "\tBrowser .setBrowserOption (\"Shading\", \"PHONG\");",
-"}"
+"}",
+""
             ]
           }
         },
