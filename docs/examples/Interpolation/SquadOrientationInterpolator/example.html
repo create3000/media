@@ -187,15 +187,12 @@ X3D (function ()
 
       for (const name of names)
       {
-        for (const values of metadata .get (name))
+        for (const value of metadata .get (name))
         {
-          for (const value of values)
-          {
-            const tr = $("<tr>") .appendTo (tbody);
+          const tr = $("<tr>") .appendTo (tbody);
 
-            $("<td>") .text (name)  .appendTo (tr);
-            $("<td>") .text (value) .appendTo (tr);
-          }
+          $("<td>") .text (name)  .appendTo (tr);
+          $("<td>") .text (value) .appendTo (tr);
         }
       }
 
@@ -307,7 +304,7 @@ function (error)
     </header>
     <main>
       <div>
-        <x3d-canvas id="browser" class="browser" src="SquadOrientationInterpolator.x3d">
+        <x3d-canvas id="browser" class="browser" url='"SquadOrientationInterpolator.x3d", "https://create3000.github.io/media/examples/Interpolation/SquadOrientationInterpolator/SquadOrientationInterpolator.x3d"'>
           <p class="fallback">Sorry!<br/>
             <br/>
             Your browser may not support all features required by <a href="https://github.com/create3000/x_ite/wiki">X_ITE!</a>

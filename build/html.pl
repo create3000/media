@@ -9,12 +9,14 @@ use Cwd;
 
 $cwd      = cwd ();
 $examples = "$cwd/docs/examples";
+$media    = "https://create3000.github.io/media/examples";
 
 sub example {
    $folder = shift;
    chomp $folder;
 
-   $base = basename $folder;
+   $base      = basename $folder;
+   $component = basename dirname $folder;
 
    say $base;
 
@@ -24,6 +26,7 @@ sub example {
    $html = `cat $cwd/example-template.html`;
    $html =~ s/BASE/$base/sgo;
    $html =~ s/FILE_NAME/$base.$x3d/sgo;
+   $html =~ s|URL|$media/$component/$base/$base.$x3d|sgo;
 
    open FILE, ">", "$folder/example.html";
    print FILE $html;
