@@ -179,27 +179,24 @@ X3D (function ()
     $(".meta-data-button") .click (function ()
     {
       var
-        Browser = X3D .getBrowser ("#browser"),
+        Browser      = X3D .getBrowser ("#browser"),
         currentScene = Browser .currentScene,
         metadata     = currentScene .getMetaDatas (),
-        names        = [ ],
-        tbody        = $(".meta-data-table tbody");
+        names        = [... metadata .keys ()] .sort (),
+        tbody        = $(".meta-data-table tbody") .empty ();
 
-      for (var name in metadata)
-        names .push (name);
-
-      names .sort ();
-
-      tbody .empty ();
-
-      for (var i = 0; i < names .length; ++ i)
+      for (const name of names)
       {
-        var
-          name = names [i],
-          tr   = $("<tr>") .appendTo (tbody);
+        for (const values of metadata .get (name))
+        {
+          for (const value of values)
+          {
+            const tr = $("<tr>") .appendTo (tbody);
 
-        $("<td>") .text (name) .appendTo (tr);
-        $("<td>") .text (metadata [name]) .appendTo (tr);
+            $("<td>") .text (name)  .appendTo (tr);
+            $("<td>") .text (value) .appendTo (tr);
+          }
+        }
       }
 
       $.featherlight ($(".meta-data"));

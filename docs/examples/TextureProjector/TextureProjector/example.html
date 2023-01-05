@@ -179,27 +179,24 @@ X3D (function ()
     $(".meta-data-button") .click (function ()
     {
       var
-        Browser = X3D .getBrowser ("#browser"),
+        Browser      = X3D .getBrowser ("#browser"),
         currentScene = Browser .currentScene,
         metadata     = currentScene .getMetaDatas (),
-        names        = [ ],
-        tbody        = $(".meta-data-table tbody");
+        names        = [... metadata .keys ()] .sort (),
+        tbody        = $(".meta-data-table tbody") .empty ();
 
-      for (var name in metadata)
-        names .push (name);
-
-      names .sort ();
-
-      tbody .empty ();
-
-      for (var i = 0; i < names .length; ++ i)
+      for (const name of names)
       {
-        var
-          name = names [i],
-          tr   = $("<tr>") .appendTo (tbody);
+        for (const values of metadata .get (name))
+        {
+          for (const value of values)
+          {
+            const tr = $("<tr>") .appendTo (tbody);
 
-        $("<td>") .text (name) .appendTo (tr);
-        $("<td>") .text (metadata [name]) .appendTo (tr);
+            $("<td>") .text (name)  .appendTo (tr);
+            $("<td>") .text (value) .appendTo (tr);
+          }
+        }
       }
 
       $.featherlight ($(".meta-data"));
@@ -263,12 +260,12 @@ function (error)
   <div class="page">
     <header>
       <div>
-        <h2>TextureProjectorPerspective</h2>
-        <p>Example HTML page for TextureProjectorPerspective</p>
+        <h2>TextureProjector</h2>
+        <p>Example HTML page for TextureProjector</p>
         <table class="buttons">
           <tr>
             <td>
-              <a class="download-button" href="TextureProjectorPerspective.zip" title="Download Original X3D Scene">
+              <a class="download-button" href="TextureProjector.zip" title="Download Original X3D Scene">
                 <img alt="Download Original X3D Scene"
                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4QkbAjcFeC1QvQAAAFtJREFUGJVjYKAQNDAwMPyH0iiAiRRTSFKMDPqh1qPjfly2rEFTuJmBgYEZl+mcDAwMR6EKTzEwMHCjK4CZAgOiDAwM26A0ihpGJIWMePzzH6bgPx5FKICkoAMAvmQW/hjXrhcAAAAASUVORK5CYII="/> Download
               </a>
@@ -310,7 +307,7 @@ function (error)
     </header>
     <main>
       <div>
-        <x3d-canvas id="browser" class="browser" src="TextureProjectorPerspective.x3d">
+        <x3d-canvas id="browser" class="browser" src="TextureProjector.x3d">
           <p class="fallback">Sorry!<br/>
             <br/>
             Your browser may not support all features required by <a href="https://github.com/create3000/x_ite/wiki">X_ITE!</a>
