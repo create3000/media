@@ -1,0 +1,229 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Interchange",
+    "@version": "4.0",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "comment",
+          "@content": "Rise and Shine"
+        },
+        {
+          "@name": "created",
+          "@content": "Thu, 09 May 2019 11:59:27 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTextureAtlas/ImageTextureAtlas.x3dj"
+        },
+        {
+          "@name": "modified",
+          "@content": "Sat, 21 Jan 2023 23:32:57 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Texturing3D",
+          "@level": 2
+        },
+        {
+          "@name": "VolumeRendering",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "Background":
+          {
+            "@skyColor": [
+              0.4, 0.4, 0.4
+            ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View",
+            "@position": [ 1.010983, 0.9100397, 1.821797 ],
+            "@orientation": [ -0.619788931308824, 0.768191635198068, 0.16044716338653, 0.650078158107127 ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "VisibleClipPlane",
+            "-children": [
+              { "PlaneSensor":
+                {
+                  "@DEF": "PlaneSensor",
+                  "@axisRotation": [ 0, 1, 0, 1.5708 ],
+                  "@offset": [ 0.00000291112, 0, 0.799866 ],
+                  "@maxPosition": [ -1, 0 ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "Rectangle2D",
+                  "@translation": [ 0.00000291112, 0, 0.799866 ],
+                  "@scale": [ 0.5, 0.5, 1 ],
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-material": { "Material":
+                              {
+                                "@transparency": 1
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "Rectangle2D":
+                          {
+                          }
+                        }
+                      }
+                    },
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-material": { "Material":
+                              {
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "IndexedLineSet":
+                          {
+                            "@coordIndex": [
+                              0,
+                              1,
+                              2,
+                              3,
+                              0
+                            ],
+                            "-coord": { "Coordinate":
+                              {
+                                "@point": [
+                                  -1, -1, 0,
+                                  1, -1, 0,
+                                  1, 1, 0,
+                                  -1, 1, 0
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "Script":
+                {
+                  "@DEF": "ClipPlaneScript",
+                  "field": [
+                    {
+                      "@accessType": "inputOnly",
+                      "@type": "SFVec3f",
+                      "@name": "set_translation"
+                    },
+                    {
+                      "@accessType": "outputOnly",
+                      "@type": "SFVec4f",
+                      "@name": "plane_changed"
+                    }
+                  ],
+                  "#sourceText": [
+                    "vrmlscript:",
+                    "function set_translation (value)",
+                    "{",
+                    "\tvar distanceFromOrigin = new SFVec3f (0, 0, -1) .dot (value);",
+                    "",
+                    "\tplane_changed = new SFVec4f (0,0,-1, -distanceFromOrigin);",
+                    "}",
+                    ""
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Volume_1",
+            "-children": [
+              { "VolumeData":
+                {
+                  "@DEF": "Volume",
+                  "-voxels": { "ImageTextureAtlas":
+                    {
+                      "@url": [
+                        "assets/scan1.png"
+                      ],
+                      "@slicesOverX": 10,
+                      "@slicesOverY": 10,
+                      "@numberOfSlices": 97
+                    }
+                  }
+                }
+              },
+              { "ClipPlane":
+                {
+                  "@DEF": "_1",
+                  "@plane": [ 0, 0, -1, 0.799866 ]
+                }
+              }
+            ]
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ClipPlaneScript",
+            "@fromField": "plane_changed",
+            "@toNode": "_1",
+            "@toField": "plane"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "PlaneSensor",
+            "@fromField": "translation_changed",
+            "@toNode": "ClipPlaneScript",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "PlaneSensor",
+            "@fromField": "translation_changed",
+            "@toNode": "Rectangle2D",
+            "@toField": "translation"
+          }
+        }
+      ]
+    }
+  }
+}
