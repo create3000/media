@@ -61,14 +61,18 @@ div.color {
 
 /* Tabby */
 
-html {
-	--tab-panel-color: rgba(0,0,0,0.5);
-	--tab-hover: rgba(255,255,255,0.05);
+@media (prefers-color-scheme: dark) {
+	html:not([data-mode]), html[data-mode=dark] {
+	 	--tab-panel-color: rgba(0,0,0,0.5);
+		--tab-hover: rgba(255,255,255,0.05);
+	}
 }
 
-html[data-mode=light] {
-	--tab-panel-color: rgba(0,0,0,0.05);
-	--tab-hover: rgba(0,0,0,0.05);
+@media (prefers-color-scheme: light) {
+	html:not([data-mode]), html[data-mode=light] {
+	 	--tab-panel-color: rgba(0,0,0,0.05);
+		--tab-hover: rgba(0,0,0,0.05);
+	}
 }
 
 [role=tablist],
