@@ -143,7 +143,7 @@ function generatePoints (earthquakes)
 
 	var list = jQuery ("<ul></ul>")
 		.addClass ("link-list")
-		.css ({"overflow": "scroll", "height": "250px"})
+		.css ({"overflow": "scroll", "height": "450px"})
 		.appendTo (locations);
 
 	earthquakes .forEach (function (earthquake)
