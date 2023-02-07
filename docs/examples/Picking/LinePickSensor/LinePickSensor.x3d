@@ -7,15 +7,14 @@
     <component name='KeyDeviceSensor' level='2'/>
     <component name='Layering' level='1'/>
     <component name='Picking' level='3'/>
+    <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 25 Mar 2019 17:22:57 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.4.4, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/LinePickSensor/LinePickSensor.O.x3d'/>
-    <meta name='modified' content='Wed, 27 Mar 2019 08:08:03 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.8, https://github.com/create3000/x3d-tidy#readme'/>
-    <meta name='converted' content='Sat, 21 Jan 2023 03:25:24 GMT'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Picking/LinePickSensor/LinePickSensor.x3d'/>
+    <meta name='modified' content='Tue, 07 Feb 2023 23:48:26 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"assets/Grid.x3dv"'>
@@ -626,7 +625,135 @@ function mul (sp, dp)
         <ROUTE fromNode='_22' fromField='fraction_changed' toNode='_25' toField='set_fraction'/>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
+    <WorldInfo>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='AngleGrid' containerField='value'
+            name='AngleGrid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Grid' containerField='value'
+            name='Grid'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='enabled_1' containerField='value'
+              name='enabled'
+              reference='http://titania.create3000.de'
+              value='false'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'/>
+        </MetadataSet>
+        <MetadataSet DEF='BrowserPanel' containerField='value'
+            name='BrowserPanel'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='type_1' containerField='value'
+              name='type'
+              reference='http://titania.create3000.de'
+              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
+          <MetadataSet DEF='viewpoints' containerField='value'
+              name='viewpoints'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
+                name='PerspectiveViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_1' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='5.87788534164429, 6.46984958648682, 13.8524446487427'/>
+              <MetadataDouble DEF='orientation_1' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='-0.704047470544228, 0.695566759758789, 0.14319232500011, 0.568941725493014'/>
+              <MetadataDouble DEF='centerOfRotation_1' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1'/>
+            </MetadataSet>
+            <MetadataSet DEF='TopViewpoint' containerField='value'
+                name='TopViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_2' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='-13.0127920923721, 10000, -0.0333796299677483'/>
+              <MetadataDouble DEF='orientation_2' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='1, 0, 0, 4.71238898038469'/>
+              <MetadataDouble DEF='centerOfRotation_2' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-13.0448533449866, 0, 0.0603523850288983'/>
+              <MetadataDouble DEF='fieldOfViewScale_1' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='3.04268875789895'/>
+            </MetadataSet>
+            <MetadataSet DEF='FrontViewpoint' containerField='value'
+                name='FrontViewpoint'
+                reference='http://titania.create3000.de'>
+              <MetadataDouble DEF='position_3' containerField='value'
+                  name='position'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 10000'/>
+              <MetadataDouble DEF='orientation_3' containerField='value'
+                  name='orientation'
+                  reference='http://titania.create3000.de'
+                  value='0, 0, 1, 0'/>
+              <MetadataDouble DEF='centerOfRotation_3' containerField='value'
+                  name='centerOfRotation'
+                  reference='http://titania.create3000.de'
+                  value='-0.00884759203065143, 0.0177734813359099, 0'/>
+              <MetadataDouble DEF='fieldOfViewScale_2' containerField='value'
+                  name='fieldOfViewScale'
+                  reference='http://titania.create3000.de'
+                  value='1.212467484375'/>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+          <MetadataDouble DEF='browserRatio' containerField='value'
+              name='browserRatio'
+              reference='http://titania.create3000.de'
+              value='1.777777'/>
+        </MetadataSet>
+        <MetadataSet DEF='Prototype' containerField='value'
+            name='Prototype'
+            reference='http://titania.create3000.de'>
+          <MetadataString DEF='path' containerField='value'
+              name='path'
+              reference='http://titania.create3000.de'
+              value='"Boxes"'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
     <LayerSet
         activeLayer='1'
         order='0, 1, 2'>
@@ -643,6 +770,50 @@ function mul (sp, dp)
         </ProtoInstance>
         <ProtoInstance name='Boxes' DEF='_26'/>
       </Layer>
+      <Layer DEF='HUD'>
+        <MetadataSet DEF='Titania_1'
+            name='Titania'
+            reference='http://titania.create3000.de'>
+          <MetadataSet DEF='BrowserPanel_1' containerField='value'
+              name='BrowserPanel'
+              reference='http://titania.create3000.de'>
+            <MetadataSet DEF='viewpoints_1' containerField='value'
+                name='viewpoints'
+                reference='http://titania.create3000.de'>
+              <MetadataSet DEF='PerspectiveViewpoint_1' containerField='value'
+                  name='PerspectiveViewpoint'
+                  reference='http://titania.create3000.de'>
+                <MetadataDouble DEF='position' containerField='value'
+                    name='position'
+                    reference='http://titania.create3000.de'
+                    value='8.48219013214111, 12, 8.48219013214111'/>
+                <MetadataDouble DEF='orientation' containerField='value'
+                    name='orientation'
+                    reference='http://titania.create3000.de'
+                    value='0.678598156250032, -0.678598556661039, -0.281084580209608, 5.18712872208587'/>
+                <MetadataDouble DEF='centerOfRotation' containerField='value'
+                    name='centerOfRotation'
+                    reference='http://titania.create3000.de'
+                    value='0, 0, 0'/>
+                <MetadataDouble DEF='fieldOfViewScale_3' containerField='value'
+                    name='fieldOfViewScale'
+                    reference='http://titania.create3000.de'
+                    value='1'/>
+              </MetadataSet>
+            </MetadataSet>
+          </MetadataSet>
+        </MetadataSet>
+        <Transform
+            translation='3.76064 -4.90329 -0.337701'
+            rotation='-0.00126509114601783 0.9971230567103 0.0757892427795689 3.25612772412662'
+            scaleOrientation='0.000440693355169946 0.999506315435646 -0.0314154610642181 0.0622081042341181'>
+          <Inline
+              global='true'
+              url='"assets/revolver.x3dz"'/>
+        </Transform>
+        <TouchSensor DEF='_27'/>
+      </Layer>
     </LayerSet>
+    <ROUTE fromNode='_27' fromField='touchTime' toNode='_26' toField='set_triggerShot'/>
   </Scene>
 </X3D>
