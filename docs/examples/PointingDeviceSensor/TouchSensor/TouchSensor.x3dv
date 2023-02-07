@@ -1,0 +1,134 @@
+#X3D V4.0 utf8 X_ITE V8.5.3
+
+PROFILE Interchange
+
+COMPONENT Scripting : 1
+
+UNIT angle degree 0.017453292519943295
+
+META "created" "Tue, 07 Feb 2023 21:26:14 GMT"
+META "comment" "Rise and Shine"
+META "creator" "Holger Seelig"
+META "generator" "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.x3dv"
+META "modified" "Tue, 07 Feb 2023 22:15:14 GMT"
+
+PROTO PointingObjects [ ]
+{
+  DEF _1 Group { }
+
+  DEF _2 TimeSensor {
+    cycleInterval 10
+    loop TRUE
+  }
+
+  DEF _3 OrientationInterpolator {
+    key [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+    ]
+    keyValue [
+      0 0 1 0,
+      0 1 0 90,
+      0 1 0 180,
+      0 1 0 270,
+      0 1 0 0
+    ]
+  }
+
+  DEF Script Script {
+    inputOnly      SFBool set_over
+    initializeOnly SFNode group USE _1
+    initializeOnly SFNode texture PixelTexture {
+      image 2 2 1
+        0x32 0x96
+        0x96 0x32
+    }
+    initializeOnly MFNode geometries [
+      Box { }
+      Cone { }
+      Sphere { }
+    ]
+    initializeOnly SFNode interpolator USE _3
+    initializeOnly MFNode touchSensors [ ]
+    initializeOnly MFNode materials [ ]
+
+    url "ecmascript:
+
+function initialize ()
+{
+   // Add code here.
+
+   for (let i = 0; i < 350; ++ i)
+      createNode ();
+}
+
+function createNode ()
+{
+   const
+      scene       = Browser .currentScene,
+      self        = scene .getNamedNode (\"Script\"),
+      transform   = scene .createNode (\"Transform\"),
+      shape       = scene .createNode (\"Shape\"),
+      appearance  = scene .createNode (\"Appearance\"),
+      material    = scene .createNode (\"Material\"),
+      touchSensor = scene .createNode (\"TouchSensor\");
+
+   material .diffuseColor = new SFColor (Math .random (), Math .random (), Math .random ());
+
+   appearance .material = material;
+   appearance .texture  = texture;
+
+   shape .appearance = appearance;
+   shape .geometry   = geometries [Math .floor (Math .random () * 3)];
+
+   transform .translation = new SFVec3f (random (), random (), random ());
+   transform .children .push (shape, touchSensor);
+
+   scene .addRoute (interpolator, \"value_changed\", transform, \"set_rotation\");
+
+   scene .addRoute (touchSensor, \"isOver\", self, \"set_over\");
+   
+   group .children .push (transform);
+   touchSensors .push (touchSensor);
+   materials .push (material);
+}
+
+function random (min = -16, max = 16)
+{
+   return min + Math .random () * (max - min)
+}
+
+let lastIndex = -1;
+
+function set_over (value, time)
+{
+   const index = touchSensors .findIndex (s => s .isOver);
+
+   if (lastIndex > -1)
+      materials [lastIndex] .emissiveColor = new SFColor (0, 0, 0);
+
+   if (index > -1)
+      materials [index] .emissiveColor = new SFColor (1, 1, 0);
+
+   lastIndex = index;
+}
+"
+  }
+
+  ROUTE _2.fraction_changed TO _3.set_fraction
+}
+
+DEF White Background {
+  skyColor 1 1 1
+}
+
+Viewpoint {
+  description "Initial View"
+  position 0 0 30
+}
+
+PointingObjects { }

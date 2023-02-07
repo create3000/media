@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Scripting' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
+    <meta name='created' content='Tue, 07 Feb 2023 21:26:14 GMT'/>
+    <meta name='comment' content='Rise and Shine'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.x3d'/>
+    <meta name='modified' content='Tue, 07 Feb 2023 22:14:56 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='PointingObjects'>
+      <ProtoBody>
+        <Group DEF='_1'/>
+        <TimeSensor DEF='_2'
+            cycleInterval='10'
+            loop='true'/>
+        <OrientationInterpolator DEF='_3'
+            key='0, 0.25, 0.5, 0.75, 1'
+            keyValue='0 0 1 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0'/>
+        <Script DEF='Script'>
+          <field accessType='inputOnly' type='SFBool' name='set_over'/>
+          <field accessType='initializeOnly' type='SFNode' name='group'>
+            <Group USE='_1' containerField='group'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='texture'>
+            <PixelTexture
+                image='2 2 1
+                  0x32 0x96
+                  0x96 0x32'/>
+          </field>
+          <field accessType='initializeOnly' type='MFNode' name='geometries'>
+            <Box containerField='geometries'/>
+            <Cone containerField='geometries'/>
+            <Sphere containerField='geometries'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='interpolator'>
+            <OrientationInterpolator USE='_3' containerField='interpolator'/>
+          </field>
+          <field accessType='initializeOnly' type='MFNode' name='touchSensors'/>
+          <field accessType='initializeOnly' type='MFNode' name='materials'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   // Add code here.
+
+   for (let i = 0; i < 350; ++ i)
+      createNode ();
+}
+
+function createNode ()
+{
+   const
+      scene       = Browser .currentScene,
+      self        = scene .getNamedNode ("Script"),
+      transform   = scene .createNode ("Transform"),
+      shape       = scene .createNode ("Shape"),
+      appearance  = scene .createNode ("Appearance"),
+      material    = scene .createNode ("Material"),
+      touchSensor = scene .createNode ("TouchSensor");
+
+   material .diffuseColor = new SFColor (Math .random (), Math .random (), Math .random ());
+
+   appearance .material = material;
+   appearance .texture  = texture;
+
+   shape .appearance = appearance;
+   shape .geometry   = geometries [Math .floor (Math .random () * 3)];
+
+   transform .translation = new SFVec3f (random (), random (), random ());
+   transform .children .push (shape, touchSensor);
+
+   scene .addRoute (interpolator, "value_changed", transform, "set_rotation");
+
+   scene .addRoute (touchSensor, "isOver", self, "set_over");
+   
+   group .children .push (transform);
+   touchSensors .push (touchSensor);
+   materials .push (material);
+}
+
+function random (min = -16, max = 16)
+{
+   return min + Math .random () * (max - min)
+}
+
+let lastIndex = -1;
+
+function set_over (value, time)
+{
+   const index = touchSensors .findIndex (s => s .isOver);
+
+   if (lastIndex > -1)
+      materials [lastIndex] .emissiveColor = new SFColor (0, 0, 0);
+
+   if (index > -1)
+      materials [index] .emissiveColor = new SFColor (1, 1, 0);
+
+   lastIndex = index;
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_2' fromField='fraction_changed' toNode='_3' toField='set_fraction'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <Background DEF='White'
+        skyColor='1 1 1'/>
+    <Viewpoint
+        description='Initial View'
+        position='0 0 30'/>
+    <ProtoInstance name='PointingObjects'/>
+  </Scene>
+</X3D>
