@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.5.3
+#X3D V4.0 utf8 X_ITE V8.5.5
 
 PROFILE Interchange
 
@@ -10,8 +10,10 @@ META "created" "Tue, 07 Feb 2023 21:26:14 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
 META "generator" "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.x3dv"
-META "modified" "Tue, 07 Feb 2023 22:15:14 GMT"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.O.x3d"
+META "modified" "Tue, 07 Feb 2023 22:14:27 GMT"
+META "converter" "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
+META "converted" "Wed, 08 Feb 2023 17:37:26 GMT"
 
 PROTO PointingObjects [ ]
 {
@@ -23,29 +25,15 @@ PROTO PointingObjects [ ]
   }
 
   DEF _3 OrientationInterpolator {
-    key [
-      0,
-      0.25,
-      0.5,
-      0.75,
-      1
-    ]
-    keyValue [
-      0 0 1 0,
-      0 1 0 90,
-      0 1 0 180,
-      0 1 0 270,
-      0 1 0 0
-    ]
+    key [ 0, 0.25, 0.5, 0.75, 1 ]
+    keyValue [ 0 0 1 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0 ]
   }
 
   DEF Script Script {
     inputOnly      SFBool set_over
     initializeOnly SFNode group USE _1
     initializeOnly SFNode texture PixelTexture {
-      image 2 2 1
-        0x32 0x96
-        0x96 0x32
+      image 2 2 1 0x32 0x96 0x96 0x32
     }
     initializeOnly MFNode geometries [
       Box { }

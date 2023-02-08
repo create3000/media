@@ -1,9 +1,10 @@
-#X3D V4.0 utf8 X_ITE V8.4.3
+#X3D V4.0 utf8 X_ITE V8.5.5
 
 PROFILE Interchange
 
 COMPONENT KeyDeviceSensor : 2
 COMPONENT Scripting : 1
+COMPONENT Sound : 3
 COMPONENT Text : 1
 
 META "comment" "World of Titania"
@@ -12,8 +13,8 @@ META "creator" "Holger Seelig"
 META "generator" "Titania V4.3.5, http://titania.create3000.de"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/KeyDeviceSensor/KeySensor/KeySensor.O.x3d"
 META "modified" "Sat, 15 Dec 2018 02:34:30 GMT"
-META "converter" "x3d-tidy V1.0.8, https://github.com/create3000/x3d-tidy#readme"
-META "converted" "Sat, 21 Jan 2023 03:21:28 GMT"
+META "converter" "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
+META "converted" "Wed, 08 Feb 2023 17:31:56 GMT"
 
 WorldInfo { }
 
@@ -365,8 +366,70 @@ function set_active (value, time)
 
 DEF _5 KeySensor { }
 
+DEF SpaceInvadersScript Script {
+  inputOnly  SFInt32  set_actionKey
+  inputOnly  SFString set_key
+  outputOnly SFVec3f  translation_changed
+  outputOnly SFTime   fire
+
+  url "ecmascript:
+
+function initialize ()
+{
+	translation_changed = new SFVec3f ();
+}
+
+function set_actionKey (value, time)
+{
+	switch (value)
+	{
+		case 19: // left
+		{
+			translation_changed .x  = Math .max (-6, translation_changed .x - 0.1);
+			break;
+		}
+		case 20: // right
+		{
+			translation_changed .x  = Math .min (6, translation_changed .x + 0.1);
+			break;
+		}
+	}
+}
+
+function set_key (value, time)
+{
+	if (value == \" \")
+	{
+		fire = time;
+	}
+}
+"
+}
+
+DEF weapon Sound {
+  intensity 0.848943
+  minBack 20
+  minFront 20
+  maxBack 30
+  maxFront 30
+  source DEF _6 AudioClip {
+    description "Weapon"
+    url "assets/weapon.mp3"
+  }
+}
+
+Inline {
+  global TRUE
+  url "assets/starfield.x3d"
+}
+
+ROUTE _5.actionKeyPress TO SpaceInvadersScript.set_actionKey
+ROUTE SpaceInvadersScript.translation_changed TO Pad.set_translation
 ROUTE _3.fraction_changed TO _4.set_fraction
 ROUTE _4.value_changed TO Weapon.set_translation
 ROUTE _3.isActive TO WeaponScript.set_active
 ROUTE WeaponScript.whichChoice_changed TO _1.set_whichChoice
+ROUTE _5.keyPress TO SpaceInvadersScript.set_key
+ROUTE SpaceInvadersScript.fire TO _3.set_startTime
 ROUTE _2.cycleTime TO _3.set_startTime
+ROUTE _3.isActive TO _6.set_loop

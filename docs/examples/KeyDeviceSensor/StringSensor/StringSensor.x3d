@@ -3,6 +3,8 @@
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='KeyDeviceSensor' level='2'/>
+    <component name='Scripting' level='1'/>
+    <component name='Sound' level='3'/>
     <component name='Text' level='1'/>
     <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Thu, 13 Dec 2018 13:18:33 GMT'/>
@@ -10,8 +12,8 @@
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/KeyDeviceSensor/StringSensor/StringSensor.O.x3d'/>
     <meta name='modified' content='Thu, 07 Nov 2019 12:42:43 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.8, https://github.com/create3000/x3d-tidy#readme'/>
-    <meta name='converted' content='Sat, 21 Jan 2023 03:21:42 GMT'/>
+    <meta name='converter' content='x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme'/>
+    <meta name='converted' content='Wed, 08 Feb 2023 17:31:58 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -68,5 +70,168 @@
       </Shape>
     </Transform>
     <StringSensor DEF='_4'/>
+    <Script DEF='ScoreScript'>
+      <field accessType='inputOnly' type='SFString' name='set_enteredText'/>
+      <field accessType='inputOnly' type='SFString' name='set_finalText'/>
+      <field accessType='outputOnly' type='MFString' name='name_changed'/>
+      <field accessType='outputOnly' type='MFString' name='score_changed'/>
+      <field accessType='outputOnly' type='MFString' name='names_changed'/>
+      <field accessType='outputOnly' type='MFString' name='scores_changed'/>
+      <field accessType='initializeOnly' type='MFString' name='names' value='"nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug"'/>
+      <field accessType='initializeOnly' type='MFString' name='scores' value='"64954", "90797", "76015", "75371", "59181", "93368"'/>
+      <field accessType='initializeOnly' type='SFNode' name='sound'>
+        <AudioClip DEF='_5' containerField='sound'
+            description='screws'
+            url='"assets/screws.mp3"'
+            pauseTime='1544722794.88013'/>
+      </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	set_enteredText ("", 0);
+	set_score ();
+	
+	names_changed  = names;
+	scores_changed = scores;
+}
+
+function set_enteredText (value, time)
+{
+	name_changed [0] = value;
+	sound .stopTime  = time;
+	sound .startTime = time;
+}
+
+function set_finalText (value, time)
+{
+	if (value .match (/^\s*$/))
+		return;
+
+	names  .unshift (value);
+	scores .unshift (score_changed [0]);
+
+	names  .length = Math .min (7, names .length);
+	scores .length = Math .min (7, scores .length);
+	
+	names_changed  = names;
+	scores_changed = scores;
+
+	set_enteredText ("", 0);
+	set_score ();
+}
+
+function set_score ()
+{
+	score_changed [0] = random (50000, 100000);
+}
+
+function random (min, max)
+{
+	return Math .floor (Math .random () * (max - min) + min);
+}]]>
+    </Script>
+    <Transform DEF='Name'
+        translation='0 1.74394 0'>
+      <Shape>
+        <Appearance DEF='_6'>
+          <Material USE='_3'/>
+        </Appearance>
+        <Text DEF='_7'
+            string='""'
+            solid='true'>
+          <FontStyle
+              family='"assets/ATComputer.otf"'
+              size='0.4'
+              justify='"MIDDLE"'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Transform DEF='Score'
+        translation='0 1.16039 0'>
+      <Shape>
+        <Appearance USE='_6'/>
+        <Text DEF='_8'
+            string='"74499"'
+            solid='true'>
+          <FontStyle
+              family='"assets/ATComputer.otf"'
+              size='0.4'
+              justify='"MIDDLE"'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Transform DEF='PlayersText'
+        translation='-6 0.608401 0'>
+      <Shape>
+        <Appearance USE='_6'/>
+        <Text
+            string='"Players"'
+            solid='true'>
+          <FontStyle
+              family='"assets/ATComputer.otf"'
+              size='0.4'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Transform DEF='ScoresText'
+        translation='6 0.608401 0'>
+      <Shape>
+        <Appearance USE='_6'/>
+        <Text
+            string='"Scores"'
+            solid='true'>
+          <FontStyle
+              family='"assets/ATComputer.otf"'
+              size='0.4'
+              justify='"END"'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Transform DEF='Names'
+        translation='-6 0 0'>
+      <Shape>
+        <Appearance USE='_1'/>
+        <Text DEF='_9'
+            string='"nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug"'
+            solid='true'>
+          <FontStyle
+              family='"assets/ATComputer.otf"'
+              size='0.4'
+              spacing='1.2'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Transform DEF='Scores'
+        translation='6 0 0'>
+      <Shape>
+        <Appearance USE='_1'/>
+        <Text DEF='_10'
+            string='"64954", "90797", "76015", "75371", "59181", "93368"'
+            solid='true'>
+          <FontStyle
+              family='"assets/ATComputer.otf"'
+              size='0.4'
+              spacing='1.2'
+              justify='"END"'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Inline DEF='StarField'
+        global='true'
+        url='"assets/starfield.x3d"'/>
+    <Sound DEF='screws'
+        minBack='20'
+        minFront='20'
+        maxBack='30'
+        maxFront='30'>
+      <AudioClip USE='_5'/>
+    </Sound>
+    <ROUTE fromNode='_4' fromField='enteredText' toNode='ScoreScript' toField='set_enteredText'/>
+    <ROUTE fromNode='_4' fromField='finalText' toNode='ScoreScript' toField='set_finalText'/>
+    <ROUTE fromNode='ScoreScript' fromField='name_changed' toNode='_7' toField='set_string'/>
+    <ROUTE fromNode='ScoreScript' fromField='score_changed' toNode='_8' toField='set_string'/>
+    <ROUTE fromNode='ScoreScript' fromField='names_changed' toNode='_9' toField='set_string'/>
+    <ROUTE fromNode='ScoreScript' fromField='scores_changed' toNode='_10' toField='set_string'/>
   </Scene>
 </X3D>

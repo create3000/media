@@ -32,17 +32,25 @@
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.8, https://github.com/create3000/x3d-tidy#readme"
+          "@content": "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
         },
         {
           "@name": "converted",
-          "@content": "Sat, 21 Jan 2023 03:21:43 GMT"
+          "@content": "Wed, 08 Feb 2023 17:32:18 GMT"
         }
       ],
       "component": [
         {
           "@name": "KeyDeviceSensor",
           "@level": 2
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Sound",
+          "@level": 3
         },
         {
           "@name": "Text",
@@ -170,6 +178,375 @@
         { "StringSensor":
           {
             "@DEF": "_4"
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "ScoreScript",
+            "field": [
+              {
+                "@accessType": "inputOnly",
+                "@type": "SFString",
+                "@name": "set_enteredText"
+              },
+              {
+                "@accessType": "inputOnly",
+                "@type": "SFString",
+                "@name": "set_finalText"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "name_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "score_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "names_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "scores_changed"
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "MFString",
+                "@name": "names",
+                "@value": [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ]
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "MFString",
+                "@name": "scores",
+                "@value": [ "64954", "90797", "76015", "75371", "59181", "93368" ]
+              },
+              {
+                "@accessType": "initializeOnly",
+                "@type": "SFNode",
+                "@name": "sound",
+                "-children": [
+                  { "AudioClip":
+                    {
+                      "@DEF": "_5",
+                      "@description": "screws",
+                      "@url": [ "assets/screws.mp3" ],
+                      "@pauseTime": 1544722794.88013
+                    }
+                  }
+                ]
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tset_enteredText (\"\", 0);",
+"\tset_score ();",
+"\t",
+"\tnames_changed  = names;",
+"\tscores_changed = scores;",
+"}",
+"",
+"function set_enteredText (value, time)",
+"{",
+"\tname_changed [0] = value;",
+"\tsound .stopTime  = time;",
+"\tsound .startTime = time;",
+"}",
+"",
+"function set_finalText (value, time)",
+"{",
+"\tif (value .match (/^\\s*$/))",
+"\t\treturn;",
+"",
+"\tnames  .unshift (value);",
+"\tscores .unshift (score_changed [0]);",
+"",
+"\tnames  .length = Math .min (7, names .length);",
+"\tscores .length = Math .min (7, scores .length);",
+"\t",
+"\tnames_changed  = names;",
+"\tscores_changed = scores;",
+"",
+"\tset_enteredText (\"\", 0);",
+"\tset_score ();",
+"}",
+"",
+"function set_score ()",
+"{",
+"\tscore_changed [0] = random (50000, 100000);",
+"}",
+"",
+"function random (min, max)",
+"{",
+"\treturn Math .floor (Math .random () * (max - min) + min);",
+"}"
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Name",
+            "@translation": [ 0, 1.74394, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@DEF": "_6",
+                      "-material": { "Material":
+                        {
+                          "@USE": "_3"
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@DEF": "_7",
+                      "@string": [ "" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/ATComputer.otf" ],
+                          "@size": 0.4,
+                          "@justify": [ "MIDDLE" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Score",
+            "@translation": [ 0, 1.16039, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_6"
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@DEF": "_8",
+                      "@string": [ "74499" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/ATComputer.otf" ],
+                          "@size": 0.4,
+                          "@justify": [ "MIDDLE" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "PlayersText",
+            "@translation": [ -6, 0.608401, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_6"
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@string": [ "Players" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/ATComputer.otf" ],
+                          "@size": 0.4
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "ScoresText",
+            "@translation": [ 6, 0.608401, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_6"
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@string": [ "Scores" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/ATComputer.otf" ],
+                          "@size": 0.4,
+                          "@justify": [ "END" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Names",
+            "@translation": [ -6, 0, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_1"
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@DEF": "_9",
+                      "@string": [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/ATComputer.otf" ],
+                          "@size": 0.4,
+                          "@spacing": 1.2
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Scores",
+            "@translation": [ 6, 0, 0 ],
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_1"
+                    }
+                  },
+                  "-geometry": { "Text":
+                    {
+                      "@DEF": "_10",
+                      "@string": [ "64954", "90797", "76015", "75371", "59181", "93368" ],
+                      "@solid": true,
+                      "-fontStyle": { "FontStyle":
+                        {
+                          "@family": [ "assets/ATComputer.otf" ],
+                          "@size": 0.4,
+                          "@spacing": 1.2,
+                          "@justify": [ "END" ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Inline":
+          {
+            "@DEF": "StarField",
+            "@global": true,
+            "@url": [ "assets/starfield.x3d" ]
+          }
+        },
+        { "Sound":
+          {
+            "@DEF": "screws",
+            "@minBack": 20,
+            "@minFront": 20,
+            "@maxBack": 30,
+            "@maxFront": 30,
+            "-source": { "AudioClip":
+              {
+                "@USE": "_5"
+              }
+            }
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_4",
+            "@fromField": "enteredText",
+            "@toNode": "ScoreScript",
+            "@toField": "set_enteredText"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_4",
+            "@fromField": "finalText",
+            "@toNode": "ScoreScript",
+            "@toField": "set_finalText"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ScoreScript",
+            "@fromField": "name_changed",
+            "@toNode": "_7",
+            "@toField": "string"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ScoreScript",
+            "@fromField": "score_changed",
+            "@toNode": "_8",
+            "@toField": "string"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ScoreScript",
+            "@fromField": "names_changed",
+            "@toNode": "_9",
+            "@toField": "string"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ScoreScript",
+            "@fromField": "scores_changed",
+            "@toNode": "_10",
+            "@toField": "string"
           }
         }
       ]
