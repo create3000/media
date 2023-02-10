@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Grouping' level='3'/>
-    <component name='Interpolation' level='4'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layout' level='2'/>
-    <component name='Time' level='2'/>
-    <meta name='comment' content='World of Titania'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Fri, 22 Sep 2017 06:52:58 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:59:27 GMT'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d'/>
+    <meta name='modified' content='Fri, 10 Feb 2023 23:47:20 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
@@ -77,49 +77,240 @@
     <Viewpoint
         description='Initial View'
         position='0 0 28.9553'/>
-    <Group DEF='Grid'>
-      <ProtoInstance name='Grid'>
-        <fieldValue name='rotation' value='1 0 0 1.5707963'/>
-        <fieldValue name='dimension' value='60, 0, 30'/>
-        <fieldValue name='planeOffset' value='0 -0.001 0'/>
-        <fieldValue name='planeColor' value='1 1 1'/>
-        <fieldValue name='planeTransparency' value='0'/>
-        <fieldValue name='lineColor' value='0 0 0'/>
-        <fieldValue name='majorLineColor' value='0 0 0'/>
-        <fieldValue name='majorLineTransparency' value='0.4'/>
-        <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
-        <fieldValue name='numberAppearance'>
-          <Appearance DEF='_2' containerField='numberAppearance'>
-            <Material
-                diffuseColor='0 0 0'/>
-          </Appearance>
-        </fieldValue>
-        <fieldValue name='numberFontStyle'>
-          <ScreenFontStyle DEF='_3' containerField='numberFontStyle'
-              justify='"END", "BEGIN"'/>
-        </fieldValue>
-      </ProtoInstance>
-      <TouchSensor DEF='Touch'/>
-      <Script DEF='PickingScript'
+    <ProtoInstance name='Grid'>
+      <fieldValue name='rotation' value='1 0 0 1.5707963'/>
+      <fieldValue name='dimension' value='60, 0, 30'/>
+      <fieldValue name='planeOffset' value='0 -0.001 0'/>
+      <fieldValue name='planeColor' value='1 1 1'/>
+      <fieldValue name='planeTransparency' value='0'/>
+      <fieldValue name='lineColor' value='0 0 0'/>
+      <fieldValue name='majorLineColor' value='0 0 0'/>
+      <fieldValue name='majorLineTransparency' value='0.4'/>
+      <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
+      <fieldValue name='numberAppearance'>
+        <Appearance DEF='_2' containerField='numberAppearance'>
+          <Material
+              diffuseColor='0 0 0'/>
+        </Appearance>
+      </fieldValue>
+      <fieldValue name='numberFontStyle'>
+        <ScreenFontStyle DEF='_3' containerField='numberFontStyle'
+            justify='"END", "BEGIN"'/>
+      </fieldValue>
+    </ProtoInstance>
+    <Group DEF='LineTrail'>
+      <TimeSensor DEF='Timer'
+          cycleInterval='10'
+          loop='true'/>
+      <ScalarInterpolator DEF='XInterpolator'
+          key='0, 0.375, 0.75, 1'
+          keyValue='-20, -5, 10, 20'/>
+      <SplineScalarInterpolator DEF='YInterpolator'
+          key='-20, -5, 10, 20'
+          keyValue='-10, 5, -5, 10'
+          keyVelocity='0, 0, 0, 0'/>
+      <Script DEF='TrailScript'
           directOutput='true'>
-        <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
-        <field accessType='inputOnly' type='SFVec3f' name='set_hitPoint'/>
-        <field accessType='inputOutput' type='SFInt32' name='pointType'/>
-        <field accessType='inputOutput' type='SFBool' name='active'/>
-        <field accessType='outputOnly' type='SFTime' name='doubleClickTime'/>
-        <field accessType='initializeOnly' type='SFTime' name='doubleClickInterval' value='0.3'/>
-        <field accessType='initializeOnly' type='SFFloat' name='pointSize' value='0.5'/>
+        <field accessType='inputOnly' type='SFFloat' name='set_y'/>
+        <field accessType='outputOnly' type='SFVec3f' name='point_changed'/>
         <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator DEF='XInterpolator' containerField='xInterpolator'
-              key='0, 0.375, 0.75, 1'
-              keyValue='-20, -5, 10, 20'/>
+          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <SplineScalarInterpolator DEF='YInterpolator' containerField='yInterpolator'
-              key='-20, -5, 10, 20'
-              keyValue='-10, 5, -5, 10'
-              keyVelocity='0, 0, 0, 0'/>
+          <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
         </field>
+<![CDATA[ecmascript:
+
+function set_y (value, time)
+{
+	point_changed .x = xInterpolator .value_changed;
+	point_changed .y = yInterpolator .value_changed;
+}
+]]>
+      </Script>
+      <Shape>
+        <Appearance>
+          <LineProperties USE='_1'/>
+          <Material
+              emissiveColor='0.552941 0.270588 0.14902'/>
+        </Appearance>
+        <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
+          <fieldValue name='resetTime' value='1676072840.376001'/>
+          <fieldValue name='point' value='-19.07199 -9.834865 0'/>
+          <fieldValue name='dimension' value='1000'/>
+        </ProtoInstance>
+      </Shape>
+    </Group>
+    <Switch DEF='PointTypeSwitch'
+        whichChoice='0'>
+      <Transform DEF='Points'>
+        <Script DEF='PointsScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='MFFloat' name='set_x'/>
+          <field accessType='inputOnly' type='MFFloat' name='set_y'/>
+          <field accessType='initializeOnly' type='SFNode' name='points'>
+            <Polypoint2D DEF='_4' containerField='points'
+                point='-20 -10, -5 5, 10 -5, 20 10'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
+            <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
+            <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+          </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
+	{
+		points .point [i] .x = xInterpolator .keyValue [i];
+		points .point [i] .y = yInterpolator .keyValue [i];
+	}
+
+	points .point .length = i;
+}
+]]>
+        </Script>
+        <Shape>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='20'
+                pointSizeMaxValue='20'/>
+            <Material
+                emissiveColor='1 0.75 0.5'/>
+          </Appearance>
+          <Polypoint2D USE='_4'/>
+        </Shape>
+        <Shape>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='8'
+                pointSizeMaxValue='8'/>
+            <Material
+                emissiveColor='1 0.5 0'/>
+          </Appearance>
+          <Polypoint2D USE='_4'/>
+        </Shape>
+      </Transform>
+      <Transform DEF='KeyVelocity'>
+        <Script DEF='KeyVelocityScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='MFFloat' name='set_x'/>
+          <field accessType='inputOnly' type='MFFloat' name='set_y'/>
+          <field accessType='inputOnly' type='MFFloat' name='set_velocity'/>
+          <field accessType='initializeOnly' type='SFNode' name='lines'>
+            <LineSet DEF='_5' containerField='lines'
+                vertexCount='2, 2, 2, 2'>
+              <Coordinate
+                  point='-20 -10 0, -20 -10 0, -5 5 0, -5 5 0, 10 -5 0, 10 -5 0, 20 10 0, 20 10 0'/>
+            </LineSet>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='points'>
+            <Polypoint2D DEF='_6' containerField='points'
+                point='-20 -10, -5 5, 10 -5, 20 10'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
+            <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
+            <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+          </field>
+<![CDATA[ecmascript:
+
+var velocityScale = 0.5;
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
+	{
+		var
+			x = xInterpolator .keyValue [i],
+			y = yInterpolator .keyValue [i],
+			v = y + yInterpolator .keyVelocity [i] * velocityScale;
+
+		lines .vertexCount [i] = 2;
+
+		lines .coord .point [i * 2 + 0] .x = x;
+		lines .coord .point [i * 2 + 0] .y = y;
+		lines .coord .point [i * 2 + 1] .x = x;
+		lines .coord .point [i * 2 + 1] .y = v;
+
+		points .point [i] .x = x;
+		points .point [i] .y = v;
+	}
+
+	lines .vertexCount .length  = i;
+	lines .coord .point .length = i * 2;
+	points .point .length       = i;
+}
+]]>
+        </Script>
+        <Shape>
+          <Appearance>
+            <LineProperties
+                linewidthScaleFactor='2'/>
+            <Material DEF='_7'
+                emissiveColor='0.117647 0.564706 1'/>
+          </Appearance>
+          <LineSet USE='_5'/>
+        </Shape>
+        <Shape>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='8'
+                pointSizeMaxValue='8'/>
+            <Material USE='_7'/>
+          </Appearance>
+          <Polypoint2D USE='_4'/>
+        </Shape>
+        <Shape>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='20'
+                pointSizeMaxValue='20'/>
+            <Material
+                emissiveColor='0.429132 0.718372 1'/>
+          </Appearance>
+          <Polypoint2D USE='_6'/>
+        </Shape>
+        <Shape>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='8'
+                pointSizeMaxValue='8'/>
+            <Material USE='_7'/>
+          </Appearance>
+          <Polypoint2D USE='_6'/>
+        </Shape>
+      </Transform>
+    </Switch>
+    <TouchSensor DEF='Touch'/>
+    <Script DEF='PickingScript'
+        directOutput='true'>
+      <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
+      <field accessType='inputOnly' type='SFVec3f' name='set_hitPoint'/>
+      <field accessType='inputOutput' type='SFInt32' name='pointType'/>
+      <field accessType='inputOutput' type='SFBool' name='active'/>
+      <field accessType='outputOnly' type='SFTime' name='doubleClickTime'/>
+      <field accessType='initializeOnly' type='SFTime' name='doubleClickInterval' value='0.3'/>
+      <field accessType='initializeOnly' type='SFFloat' name='pointSize' value='0.5'/>
+      <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
+        <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+      </field>
+      <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
+        <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+      </field>
 <![CDATA[ecmascript:
 
 var
@@ -312,200 +503,7 @@ function setXInterpolatorKey ()
 	}
 }
 ]]>
-      </Script>
-    </Group>
-    <Group DEF='LineTrail'>
-      <TimeSensor DEF='Timer'
-          cycleInterval='10'
-          loop='true'/>
-      <ScalarInterpolator USE='XInterpolator'/>
-      <SplineScalarInterpolator USE='YInterpolator'/>
-      <Script DEF='TrailScript'
-          directOutput='true'>
-        <field accessType='inputOnly' type='SFFloat' name='set_y'/>
-        <field accessType='outputOnly' type='SFVec3f' name='point_changed'/>
-        <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
-        </field>
-        <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
-        </field>
-<![CDATA[ecmascript:
-
-function set_y (value, time)
-{
-	point_changed .x = xInterpolator .value_changed;
-	point_changed .y = yInterpolator .value_changed;
-}
-]]>
-      </Script>
-      <Shape>
-        <Appearance>
-          <LineProperties USE='_1'/>
-          <Material
-              emissiveColor='0.552941 0.270588 0.14902'/>
-        </Appearance>
-        <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1573131560.01003'/>
-          <fieldValue name='point' value='10.2644 -4.96909 0'/>
-          <fieldValue name='dimension' value='1000'/>
-        </ProtoInstance>
-      </Shape>
-    </Group>
-    <Switch DEF='PointTypeSwitch'
-        whichChoice='0'>
-      <Transform DEF='Points'>
-        <Script DEF='PointsScript'
-            directOutput='true'>
-          <field accessType='inputOnly' type='MFFloat' name='set_x'/>
-          <field accessType='inputOnly' type='MFFloat' name='set_y'/>
-          <field accessType='initializeOnly' type='SFNode' name='points'>
-            <Polypoint2D DEF='_4' containerField='points'
-                point='-20 -10, -5 5, 10 -5, 20 10'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-            <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-            <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
-          </field>
-<![CDATA[ecmascript:
-
-function initialize ()
-{
-	eventsProcessed ();
-}
-
-function eventsProcessed ()
-{
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		points .point [i] .x = xInterpolator .keyValue [i];
-		points .point [i] .y = yInterpolator .keyValue [i];
-	}
-
-	points .point .length = i;
-}
-]]>
-        </Script>
-        <Shape>
-          <Appearance>
-            <PointProperties
-                pointSizeScaleFactor='20'
-                pointSizeMaxValue='20'/>
-            <Material
-                emissiveColor='1 0.75 0.5'/>
-          </Appearance>
-          <Polypoint2D USE='_4'/>
-        </Shape>
-        <Shape>
-          <Appearance>
-            <PointProperties
-                pointSizeScaleFactor='8'
-                pointSizeMaxValue='8'/>
-            <Material
-                emissiveColor='1 0.5 0'/>
-          </Appearance>
-          <Polypoint2D USE='_4'/>
-        </Shape>
-      </Transform>
-      <Transform DEF='KeyVelocity'>
-        <Script DEF='KeyVelocityScript'
-            directOutput='true'>
-          <field accessType='inputOnly' type='MFFloat' name='set_x'/>
-          <field accessType='inputOnly' type='MFFloat' name='set_y'/>
-          <field accessType='inputOnly' type='MFFloat' name='set_velocity'/>
-          <field accessType='initializeOnly' type='SFNode' name='lines'>
-            <LineSet DEF='_5' containerField='lines'
-                vertexCount='2, 2, 2, 2'>
-              <Coordinate
-                  point='-20 -10 0, -20 -10 0, -5 5 0, -5 5 0, 10 -5 0, 10 -5 0, 20 10 0, 20 10 0'/>
-            </LineSet>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='points'>
-            <Polypoint2D DEF='_6' containerField='points'
-                point='-20 -10, -5 5, 10 -5, 20 10'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-            <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-            <SplineScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
-          </field>
-<![CDATA[ecmascript:
-
-var velocityScale = 0.5;
-
-function initialize ()
-{
-	eventsProcessed ();
-}
-
-function eventsProcessed ()
-{
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		var
-			x = xInterpolator .keyValue [i],
-			y = yInterpolator .keyValue [i],
-			v = y + yInterpolator .keyVelocity [i] * velocityScale;
-
-		lines .vertexCount [i] = 2;
-
-		lines .coord .point [i * 2 + 0] .x = x;
-		lines .coord .point [i * 2 + 0] .y = y;
-		lines .coord .point [i * 2 + 1] .x = x;
-		lines .coord .point [i * 2 + 1] .y = v;
-
-		points .point [i] .x = x;
-		points .point [i] .y = v;
-	}
-
-	lines .vertexCount .length  = i;
-	lines .coord .point .length = i * 2;
-	points .point .length       = i;
-}
-]]>
-        </Script>
-        <Shape>
-          <Appearance>
-            <LineProperties
-                linewidthScaleFactor='2'/>
-            <Material DEF='_7'
-                emissiveColor='0.117647 0.564706 1'/>
-          </Appearance>
-          <LineSet USE='_5'/>
-        </Shape>
-        <Shape>
-          <Appearance>
-            <PointProperties
-                pointSizeScaleFactor='8'
-                pointSizeMaxValue='8'/>
-            <Material USE='_7'/>
-          </Appearance>
-          <Polypoint2D USE='_4'/>
-        </Shape>
-        <Shape>
-          <Appearance>
-            <PointProperties
-                pointSizeScaleFactor='20'
-                pointSizeMaxValue='20'/>
-            <Material
-                emissiveColor='0.429132 0.718372 1'/>
-          </Appearance>
-          <Polypoint2D USE='_6'/>
-        </Shape>
-        <Shape>
-          <Appearance>
-            <PointProperties
-                pointSizeScaleFactor='8'
-                pointSizeMaxValue='8'/>
-            <Material USE='_7'/>
-          </Appearance>
-          <Polypoint2D USE='_6'/>
-        </Shape>
-      </Transform>
-    </Switch>
+    </Script>
     <ROUTE fromNode='XInterpolator' fromField='value_changed' toNode='YInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='Timer' fromField='fraction_changed' toNode='XInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='YInterpolator' fromField='value_changed' toNode='TrailScript' toField='set_y'/>

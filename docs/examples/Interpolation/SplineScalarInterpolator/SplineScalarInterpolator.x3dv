@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.5.5
+#X3D V4.0 utf8 X_ITE V8.5.3
 
 PROFILE Interchange
 
@@ -7,14 +7,12 @@ COMPONENT Layout : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Fri, 22 Sep 2017 06:52:58 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:59:27 GMT"
-META "converter" "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
-META "converted" "Wed, 08 Feb 2023 17:31:29 GMT"
+META "generator" "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.x3dv"
+META "modified" "Fri, 10 Feb 2023 23:48:20 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -45,6 +43,46 @@ EXTERNPROTO LineTrail [
 "LineTrail.x3d#LineTrail"
 
 WorldInfo {
+  metadata DEF Titania MetadataSet {
+    name "Titania"
+    reference "http://titania.create3000.de"
+    value [
+      DEF Selection MetadataSet {
+        name "Selection"
+        reference "http://titania.create3000.de"
+        value [
+          DEF selectGeometry MetadataBoolean {
+            name "selectGeometry"
+            reference "http://titania.create3000.de"
+            value FALSE
+          }
+          DEF nodes MetadataSet {
+            name "nodes"
+            reference "http://titania.create3000.de"
+            value DEF _1 LineProperties {
+              linewidthScaleFactor 3
+            }
+          }
+        ]
+      }
+      DEF Page MetadataSet {
+        name "Page"
+        reference "http://titania.create3000.de"
+        value [
+          DEF activeView MetadataInteger {
+            name "activeView"
+            reference "http://titania.create3000.de"
+            value 1
+          }
+          DEF multiView MetadataInteger {
+            name "multiView"
+            reference "http://titania.create3000.de"
+            value 0
+          }
+        ]
+      }
+    ]
+  }
   title "SplineScalarInterpolator.O"
 }
 
@@ -58,47 +96,305 @@ Viewpoint {
   position 0 0 28.9553
 }
 
-DEF Grid Group {
-  children [
-    Grid {
-      rotation 1 0 0 1.5707963
-      dimension [ 60, 0, 30 ]
-      planeOffset 0 -0.001 0
-      planeColor 1 1 1
-      planeTransparency 0
-      lineColor 0 0 0
-      majorLineColor 0 0 0
-      majorLineTransparency 0.4
-      numberOffset -0.1 0 0.14
-      numberAppearance DEF _1 Appearance {
-        material Material {
-          diffuseColor 0 0 0
-        }
-      }
-      numberFontStyle DEF _2 ScreenFontStyle {
-        justify [ "END", "BEGIN" ]
-      }
+Grid {
+  rotation 1 0 0 1.5707963
+  dimension [
+    60,
+    0,
+    30
+  ]
+  planeOffset 0 -0.001 0
+  planeColor 1 1 1
+  planeTransparency 0
+  lineColor 0 0 0
+  majorLineColor 0 0 0
+  majorLineTransparency 0.4
+  numberOffset -0.1 0 0.14
+  numberAppearance DEF _2 Appearance {
+    material Material {
+      diffuseColor 0 0 0
     }
-    DEF Touch TouchSensor { }
-    DEF PickingScript Script {
-      inputOnly      SFTime  set_touchTime
-      inputOnly      SFVec3f set_hitPoint
-      inputOutput    SFInt32 pointType 0
-      inputOutput    SFBool  active FALSE
-      outputOnly     SFTime  doubleClickTime
-      initializeOnly SFTime  doubleClickInterval 0.3
-      initializeOnly SFFloat pointSize 0.5
-      initializeOnly SFNode  xInterpolator DEF XInterpolator ScalarInterpolator {
-        key [ 0, 0.375, 0.75, 1 ]
-        keyValue [ -20, -5, 10, 20 ]
-      }
-      initializeOnly SFNode  yInterpolator DEF YInterpolator SplineScalarInterpolator {
-        key [ -20, -5, 10, 20 ]
-        keyValue [ -10, 5, -5, 10 ]
-        keyVelocity [ 0, 0, 0, 0 ]
-      }
+  }
+  numberFontStyle DEF _3 ScreenFontStyle {
+    justify [
+      "END",
+      "BEGIN"
+    ]
+  }
+}
+
+DEF LineTrail Group {
+  children [
+    DEF Timer TimeSensor {
+      cycleInterval 10
+      loop TRUE
+    }
+    DEF XInterpolator ScalarInterpolator {
+      key [
+        0,
+        0.375,
+        0.75,
+        1
+      ]
+      keyValue [
+        -20,
+        -5,
+        10,
+        20
+      ]
+    }
+    DEF YInterpolator SplineScalarInterpolator {
+      key [
+        -20,
+        -5,
+        10,
+        20
+      ]
+      keyValue [
+        -10,
+        5,
+        -5,
+        10
+      ]
+      keyVelocity [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+    DEF TrailScript Script {
+      inputOnly      SFFloat set_y
+      outputOnly     SFVec3f point_changed
+      initializeOnly SFNode  xInterpolator USE XInterpolator
+      initializeOnly SFNode  yInterpolator USE YInterpolator
 
       url "ecmascript:
+
+function set_y (value, time)
+{
+	point_changed .x = xInterpolator .value_changed;
+	point_changed .y = yInterpolator .value_changed;
+}
+"
+      directOutput TRUE
+    }
+    Shape {
+      appearance Appearance {
+        lineProperties USE _1
+        material Material {
+          emissiveColor 0.552941 0.270588 0.14902
+        }
+      }
+      geometry DEF Trail LineTrail {
+        resetTime 1676072890.372001
+        point 19.864 9.991753 0
+        dimension 1000
+      }
+    }
+  ]
+}
+
+DEF PointTypeSwitch Switch {
+  whichChoice 0
+  children [
+    DEF Points Transform {
+      children [
+        DEF PointsScript Script {
+          inputOnly      MFFloat set_x
+          inputOnly      MFFloat set_y
+          initializeOnly SFNode  points DEF _4 Polypoint2D {
+            point [
+              -20 -10,
+              -5 5,
+              10 -5,
+              20 10
+            ]
+          }
+          initializeOnly SFNode  xInterpolator USE XInterpolator
+          initializeOnly SFNode  yInterpolator USE YInterpolator
+
+          url "ecmascript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
+	{
+		points .point [i] .x = xInterpolator .keyValue [i];
+		points .point [i] .y = yInterpolator .keyValue [i];
+	}
+
+	points .point .length = i;
+}
+"
+          directOutput TRUE
+        }
+        Shape {
+          appearance Appearance {
+            pointProperties PointProperties {
+              pointSizeScaleFactor 20
+              pointSizeMaxValue 20
+            }
+            material Material {
+              emissiveColor 1 0.75 0.5
+            }
+          }
+          geometry USE _4
+        }
+        Shape {
+          appearance Appearance {
+            pointProperties PointProperties {
+              pointSizeScaleFactor 8
+              pointSizeMaxValue 8
+            }
+            material Material {
+              emissiveColor 1 0.5 0
+            }
+          }
+          geometry USE _4
+        }
+      ]
+    }
+    DEF KeyVelocity Transform {
+      children [
+        DEF KeyVelocityScript Script {
+          inputOnly      MFFloat set_x
+          inputOnly      MFFloat set_y
+          inputOnly      MFFloat set_velocity
+          initializeOnly SFNode  lines DEF _5 LineSet {
+            vertexCount [
+              2,
+              2,
+              2,
+              2
+            ]
+            coord Coordinate {
+              point [
+                -20 -10 0,
+                -20 -10 0,
+                -5 5 0,
+                -5 5 0,
+                10 -5 0,
+                10 -5 0,
+                20 10 0,
+                20 10 0
+              ]
+            }
+          }
+          initializeOnly SFNode  points DEF _6 Polypoint2D {
+            point [
+              -20 -10,
+              -5 5,
+              10 -5,
+              20 10
+            ]
+          }
+          initializeOnly SFNode  xInterpolator USE XInterpolator
+          initializeOnly SFNode  yInterpolator USE YInterpolator
+
+          url "ecmascript:
+
+var velocityScale = 0.5;
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
+	{
+		var
+			x = xInterpolator .keyValue [i],
+			y = yInterpolator .keyValue [i],
+			v = y + yInterpolator .keyVelocity [i] * velocityScale;
+
+		lines .vertexCount [i] = 2;
+
+		lines .coord .point [i * 2 + 0] .x = x;
+		lines .coord .point [i * 2 + 0] .y = y;
+		lines .coord .point [i * 2 + 1] .x = x;
+		lines .coord .point [i * 2 + 1] .y = v;
+
+		points .point [i] .x = x;
+		points .point [i] .y = v;
+	}
+
+	lines .vertexCount .length  = i;
+	lines .coord .point .length = i * 2;
+	points .point .length       = i;
+}
+"
+          directOutput TRUE
+        }
+        Shape {
+          appearance Appearance {
+            lineProperties LineProperties {
+              linewidthScaleFactor 2
+            }
+            material DEF _7 Material {
+              emissiveColor 0.117647 0.564706 1
+            }
+          }
+          geometry USE _5
+        }
+        Shape {
+          appearance Appearance {
+            pointProperties PointProperties {
+              pointSizeScaleFactor 8
+              pointSizeMaxValue 8
+            }
+            material USE _7
+          }
+          geometry USE _4
+        }
+        Shape {
+          appearance Appearance {
+            pointProperties PointProperties {
+              pointSizeScaleFactor 20
+              pointSizeMaxValue 20
+            }
+            material Material {
+              emissiveColor 0.429132 0.718372 1
+            }
+          }
+          geometry USE _6
+        }
+        Shape {
+          appearance Appearance {
+            pointProperties PointProperties {
+              pointSizeScaleFactor 8
+              pointSizeMaxValue 8
+            }
+            material USE _7
+          }
+          geometry USE _6
+        }
+      ]
+    }
+  ]
+}
+
+DEF Touch TouchSensor { }
+
+DEF PickingScript Script {
+  inputOnly      SFTime  set_touchTime
+  inputOnly      SFVec3f set_hitPoint
+  inputOutput    SFInt32 pointType 0
+  inputOutput    SFBool  active FALSE
+  outputOnly     SFTime  doubleClickTime
+  initializeOnly SFTime  doubleClickInterval 0.3
+  initializeOnly SFFloat pointSize 0.5
+  initializeOnly SFNode  xInterpolator USE XInterpolator
+  initializeOnly SFNode  yInterpolator USE YInterpolator
+
+  url "ecmascript:
 
 var
 	firstTime     = 0,
@@ -290,213 +586,7 @@ function setXInterpolatorKey ()
 	}
 }
 "
-      directOutput TRUE
-    }
-  ]
-}
-
-DEF LineTrail Group {
-  children [
-    DEF Timer TimeSensor {
-      cycleInterval 10
-      loop TRUE
-    }
-    USE XInterpolator
-    USE YInterpolator
-    DEF TrailScript Script {
-      inputOnly      SFFloat set_y
-      outputOnly     SFVec3f point_changed
-      initializeOnly SFNode  xInterpolator USE XInterpolator
-      initializeOnly SFNode  yInterpolator USE YInterpolator
-
-      url "ecmascript:
-
-function set_y (value, time)
-{
-	point_changed .x = xInterpolator .value_changed;
-	point_changed .y = yInterpolator .value_changed;
-}
-"
-      directOutput TRUE
-    }
-    Shape {
-      appearance Appearance {
-        lineProperties DEF _3 LineProperties {
-          linewidthScaleFactor 3
-        }
-        material Material {
-          emissiveColor 0.552941 0.270588 0.14902
-        }
-      }
-      geometry DEF Trail LineTrail {
-        resetTime 1573131560.01003
-        point 10.2644 -4.96909 0
-        dimension 1000
-      }
-    }
-  ]
-}
-
-DEF PointTypeSwitch Switch {
-  whichChoice 0
-  children [
-    DEF Points Transform {
-      children [
-        DEF PointsScript Script {
-          inputOnly      MFFloat set_x
-          inputOnly      MFFloat set_y
-          initializeOnly SFNode  points DEF _4 Polypoint2D {
-            point [ -20 -10, -5 5, 10 -5, 20 10 ]
-          }
-          initializeOnly SFNode  xInterpolator USE XInterpolator
-          initializeOnly SFNode  yInterpolator USE YInterpolator
-
-          url "ecmascript:
-
-function initialize ()
-{
-	eventsProcessed ();
-}
-
-function eventsProcessed ()
-{
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		points .point [i] .x = xInterpolator .keyValue [i];
-		points .point [i] .y = yInterpolator .keyValue [i];
-	}
-
-	points .point .length = i;
-}
-"
-          directOutput TRUE
-        }
-        Shape {
-          appearance Appearance {
-            pointProperties PointProperties {
-              pointSizeScaleFactor 20
-              pointSizeMaxValue 20
-            }
-            material Material {
-              emissiveColor 1 0.75 0.5
-            }
-          }
-          geometry USE _4
-        }
-        Shape {
-          appearance Appearance {
-            pointProperties PointProperties {
-              pointSizeScaleFactor 8
-              pointSizeMaxValue 8
-            }
-            material Material {
-              emissiveColor 1 0.5 0
-            }
-          }
-          geometry USE _4
-        }
-      ]
-    }
-    DEF KeyVelocity Transform {
-      children [
-        DEF KeyVelocityScript Script {
-          inputOnly      MFFloat set_x
-          inputOnly      MFFloat set_y
-          inputOnly      MFFloat set_velocity
-          initializeOnly SFNode  lines DEF _5 LineSet {
-            vertexCount [ 2, 2, 2, 2 ]
-            coord Coordinate {
-              point [ -20 -10 0, -20 -10 0, -5 5 0, -5 5 0, 10 -5 0, 10 -5 0, 20 10 0, 20 10 0 ]
-            }
-          }
-          initializeOnly SFNode  points DEF _6 Polypoint2D {
-            point [ -20 -10, -5 5, 10 -5, 20 10 ]
-          }
-          initializeOnly SFNode  xInterpolator USE XInterpolator
-          initializeOnly SFNode  yInterpolator USE YInterpolator
-
-          url "ecmascript:
-
-var velocityScale = 0.5;
-
-function initialize ()
-{
-	eventsProcessed ();
-}
-
-function eventsProcessed ()
-{
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		var
-			x = xInterpolator .keyValue [i],
-			y = yInterpolator .keyValue [i],
-			v = y + yInterpolator .keyVelocity [i] * velocityScale;
-
-		lines .vertexCount [i] = 2;
-
-		lines .coord .point [i * 2 + 0] .x = x;
-		lines .coord .point [i * 2 + 0] .y = y;
-		lines .coord .point [i * 2 + 1] .x = x;
-		lines .coord .point [i * 2 + 1] .y = v;
-
-		points .point [i] .x = x;
-		points .point [i] .y = v;
-	}
-
-	lines .vertexCount .length  = i;
-	lines .coord .point .length = i * 2;
-	points .point .length       = i;
-}
-"
-          directOutput TRUE
-        }
-        Shape {
-          appearance Appearance {
-            lineProperties LineProperties {
-              linewidthScaleFactor 2
-            }
-            material DEF _7 Material {
-              emissiveColor 0.117647 0.564706 1
-            }
-          }
-          geometry USE _5
-        }
-        Shape {
-          appearance Appearance {
-            pointProperties PointProperties {
-              pointSizeScaleFactor 8
-              pointSizeMaxValue 8
-            }
-            material USE _7
-          }
-          geometry USE _4
-        }
-        Shape {
-          appearance Appearance {
-            pointProperties PointProperties {
-              pointSizeScaleFactor 20
-              pointSizeMaxValue 20
-            }
-            material Material {
-              emissiveColor 0.429132 0.718372 1
-            }
-          }
-          geometry USE _6
-        }
-        Shape {
-          appearance Appearance {
-            pointProperties PointProperties {
-              pointSizeScaleFactor 8
-              pointSizeMaxValue 8
-            }
-            material USE _7
-          }
-          geometry USE _6
-        }
-      ]
-    }
-  ]
+  directOutput TRUE
 }
 
 ROUTE XInterpolator.value_changed TO YInterpolator.set_fraction

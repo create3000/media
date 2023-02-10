@@ -7,14 +7,12 @@
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 22 Nov 2017 08:26:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/ScalarInterpolator/ScalarInterpolator.O.x3d'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 13:00:27 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme'/>
-    <meta name='converted' content='Wed, 08 Feb 2023 17:31:24 GMT'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.x3d'/>
+    <meta name='modified' content='Fri, 10 Feb 2023 23:48:31 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
@@ -42,53 +40,176 @@
       <field accessType='inputOutput' type='SFInt32' name='dimension'/>
     </ExternProtoDeclare>
     <WorldInfo
-        title='ScalarInterpolator.O'/>
+        title='ScalarInterpolator.O'>
+      <MetadataSet DEF='Titania'
+          name='Titania'
+          reference='http://titania.create3000.de'>
+        <MetadataSet DEF='Page' containerField='value'
+            name='Page'
+            reference='http://titania.create3000.de'>
+          <MetadataInteger DEF='activeView' containerField='value'
+              name='activeView'
+              reference='http://titania.create3000.de'
+              value='1'/>
+          <MetadataInteger DEF='multiView' containerField='value'
+              name='multiView'
+              reference='http://titania.create3000.de'
+              value='0'/>
+        </MetadataSet>
+        <MetadataSet DEF='Selection' containerField='value'
+            name='Selection'
+            reference='http://titania.create3000.de'>
+          <MetadataBoolean DEF='selectGeometry' containerField='value'
+              name='selectGeometry'
+              reference='http://titania.create3000.de'
+              value='false'/>
+          <MetadataSet DEF='nodes' containerField='value'
+              name='nodes'
+              reference='http://titania.create3000.de'>
+            <LineProperties DEF='_1' containerField='value'
+                linewidthScaleFactor='3'/>
+          </MetadataSet>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
     <NavigationInfo
         type='"NONE"'/>
     <Viewpoint
         description='Initial View'
         position='0 0 28.9553'/>
-    <Group DEF='Grid'>
-      <ProtoInstance name='Grid'>
-        <fieldValue name='rotation' value='1 0 0 90'/>
-        <fieldValue name='dimension' value='60, 0, 30'/>
-        <fieldValue name='planeOffset' value='0 -0.002 0'/>
-        <fieldValue name='planeColor' value='1 1 1'/>
-        <fieldValue name='planeTransparency' value='0'/>
-        <fieldValue name='lineColor' value='0 0 0'/>
-        <fieldValue name='majorLineColor' value='0 0 0'/>
-        <fieldValue name='majorLineTransparency' value='0.4'/>
-        <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
-        <fieldValue name='numberAppearance'>
-          <Appearance DEF='_1' containerField='numberAppearance'>
-            <Material
-                diffuseColor='0 0 0'/>
-          </Appearance>
-        </fieldValue>
-        <fieldValue name='numberFontStyle'>
-          <ScreenFontStyle DEF='_2' containerField='numberFontStyle'
-              justify='"END", "BEGIN"'/>
-        </fieldValue>
-      </ProtoInstance>
-      <TouchSensor DEF='Touch'/>
-      <Script DEF='PickingScript'
+    <ProtoInstance name='Grid'>
+      <fieldValue name='rotation' value='1 0 0 90'/>
+      <fieldValue name='dimension' value='60, 0, 30'/>
+      <fieldValue name='planeOffset' value='0 -0.002 0'/>
+      <fieldValue name='planeColor' value='1 1 1'/>
+      <fieldValue name='planeTransparency' value='0'/>
+      <fieldValue name='lineColor' value='0 0 0'/>
+      <fieldValue name='majorLineColor' value='0 0 0'/>
+      <fieldValue name='majorLineTransparency' value='0.4'/>
+      <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
+      <fieldValue name='numberAppearance'>
+        <Appearance DEF='_2' containerField='numberAppearance'>
+          <Material
+              diffuseColor='0 0 0'/>
+        </Appearance>
+      </fieldValue>
+      <fieldValue name='numberFontStyle'>
+        <ScreenFontStyle DEF='_3' containerField='numberFontStyle'
+            justify='"END", "BEGIN"'/>
+      </fieldValue>
+    </ProtoInstance>
+    <Group DEF='LineTrail'>
+      <TimeSensor DEF='Timer'
+          cycleInterval='10'
+          loop='true'/>
+      <ScalarInterpolator DEF='XInterpolator'
+          key='0, 0.375, 0.75, 1'
+          keyValue='-20, -5, 10, 20'/>
+      <ScalarInterpolator DEF='XInterpolator_1'
+          key='-20, -5, 10, 20'
+          keyValue='-10, 5, -5, 10'/>
+      <Script DEF='TrailScript'
           directOutput='true'>
-        <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
-        <field accessType='inputOnly' type='SFVec3f' name='set_hitPoint'/>
-        <field accessType='inputOutput' type='SFBool' name='active'/>
-        <field accessType='outputOnly' type='SFTime' name='doubleClickTime'/>
-        <field accessType='initializeOnly' type='SFTime' name='doubleClickInterval' value='0.3'/>
-        <field accessType='initializeOnly' type='SFFloat' name='pointSize' value='0.5'/>
+        <field accessType='inputOnly' type='SFFloat' name='set_y'/>
+        <field accessType='outputOnly' type='SFVec3f' name='point_changed'/>
         <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator DEF='XInterpolator' containerField='xInterpolator'
-              key='0, 0.375, 0.75, 1'
-              keyValue='-20, -5, 10, 20'/>
+          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator DEF='XInterpolator_1' containerField='yInterpolator'
-              key='-20, -5, 10, 20'
-              keyValue='-10, 5, -5, 10'/>
+          <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
         </field>
+<![CDATA[ecmascript:
+
+function set_y (value, time)
+{
+	point_changed .x = xInterpolator .value_changed;
+	point_changed .y = yInterpolator .value_changed;
+}
+]]>
+      </Script>
+      <Shape>
+        <Appearance>
+          <LineProperties USE='_1'/>
+          <Material
+              emissiveColor='0.552941 0.270588 0.14902'/>
+        </Appearance>
+        <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
+          <fieldValue name='resetTime' value='1676072910.312001'/>
+          <fieldValue name='point' value='-16.092 -6.091995 0'/>
+          <fieldValue name='dimension' value='1000'/>
+        </ProtoInstance>
+      </Shape>
+    </Group>
+    <Transform DEF='Points'>
+      <Script DEF='PointsScript'
+          directOutput='true'>
+        <field accessType='inputOnly' type='MFFloat' name='set_x'/>
+        <field accessType='inputOnly' type='MFFloat' name='set_y'/>
+        <field accessType='initializeOnly' type='SFNode' name='points'>
+          <Polypoint2D DEF='_4' containerField='points'
+              point='-20 -10, -5 5, 10 -5, 20 10'/>
+        </field>
+        <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
+          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+        </field>
+        <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
+          <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
+        </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+	eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
+	{
+		points .point [i] .x = xInterpolator .keyValue [i];
+		points .point [i] .y = yInterpolator .keyValue [i];
+	}
+
+	points .point .length = i;
+}
+]]>
+      </Script>
+      <Shape>
+        <Appearance>
+          <PointProperties
+              pointSizeScaleFactor='20'
+              pointSizeMaxValue='20'/>
+          <Material
+              emissiveColor='1 0.75 0.5'/>
+        </Appearance>
+        <Polypoint2D USE='_4'/>
+      </Shape>
+      <Shape>
+        <Appearance>
+          <PointProperties
+              pointSizeScaleFactor='8'
+              pointSizeMaxValue='8'/>
+          <Material
+              emissiveColor='1 0.5 0'/>
+        </Appearance>
+        <Polypoint2D USE='_4'/>
+      </Shape>
+    </Transform>
+    <TouchSensor DEF='Touch'/>
+    <Script DEF='PickingScript'
+        directOutput='true'>
+      <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
+      <field accessType='inputOnly' type='SFVec3f' name='set_hitPoint'/>
+      <field accessType='inputOutput' type='SFBool' name='active'/>
+      <field accessType='outputOnly' type='SFTime' name='doubleClickTime'/>
+      <field accessType='initializeOnly' type='SFTime' name='doubleClickInterval' value='0.3'/>
+      <field accessType='initializeOnly' type='SFFloat' name='pointSize' value='0.5'/>
+      <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
+        <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+      </field>
+      <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
+        <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
+      </field>
 <![CDATA[ecmascript:
 
 var
@@ -256,102 +377,7 @@ function setXInterpolatorKey ()
 	}
 }
 ]]>
-      </Script>
-    </Group>
-    <Group DEF='LineTrail'>
-      <TimeSensor DEF='Timer'
-          cycleInterval='10'
-          loop='true'/>
-      <ScalarInterpolator USE='XInterpolator'/>
-      <ScalarInterpolator USE='XInterpolator_1'/>
-      <Script DEF='TrailScript'
-          directOutput='true'>
-        <field accessType='inputOnly' type='SFFloat' name='set_y'/>
-        <field accessType='outputOnly' type='SFVec3f' name='point_changed'/>
-        <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
-        </field>
-        <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
-        </field>
-<![CDATA[ecmascript:
-
-function set_y (value, time)
-{
-	point_changed .x = xInterpolator .value_changed;
-	point_changed .y = yInterpolator .value_changed;
-}
-]]>
-      </Script>
-      <Shape>
-        <Appearance>
-          <LineProperties DEF='_3'
-              linewidthScaleFactor='3'/>
-          <Material
-              emissiveColor='0.552941 0.270588 0.14902'/>
-        </Appearance>
-        <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1573131620.015'/>
-          <fieldValue name='point' value='9.51179 -4.67453 0'/>
-          <fieldValue name='dimension' value='1000'/>
-        </ProtoInstance>
-      </Shape>
-    </Group>
-    <Transform DEF='Points'>
-      <Script DEF='PointsScript'
-          directOutput='true'>
-        <field accessType='inputOnly' type='MFFloat' name='set_x'/>
-        <field accessType='inputOnly' type='MFFloat' name='set_y'/>
-        <field accessType='initializeOnly' type='SFNode' name='points'>
-          <Polypoint2D DEF='_4' containerField='points'
-              point='-20 -10, -5 5, 10 -5, 20 10'/>
-        </field>
-        <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
-        </field>
-        <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
-        </field>
-<![CDATA[ecmascript:
-
-function initialize ()
-{
-	eventsProcessed ();
-}
-
-function eventsProcessed ()
-{
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		points .point [i] .x = xInterpolator .keyValue [i];
-		points .point [i] .y = yInterpolator .keyValue [i];
-	}
-
-	points .point .length = i;
-}
-]]>
-      </Script>
-      <Shape>
-        <Appearance>
-          <PointProperties
-              pointSizeScaleFactor='20'
-              pointSizeMaxValue='20'/>
-          <Material
-              emissiveColor='1 0.75 0.5'/>
-        </Appearance>
-        <Polypoint2D USE='_4'/>
-      </Shape>
-      <Shape>
-        <Appearance>
-          <PointProperties
-              pointSizeScaleFactor='8'
-              pointSizeMaxValue='8'/>
-          <Material
-              emissiveColor='1 0.5 0'/>
-        </Appearance>
-        <Polypoint2D USE='_4'/>
-      </Shape>
-    </Transform>
+    </Script>
     <ROUTE fromNode='XInterpolator' fromField='value_changed' toNode='XInterpolator_1' toField='set_fraction'/>
     <ROUTE fromNode='Timer' fromField='fraction_changed' toNode='XInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='XInterpolator_1' fromField='value_changed' toNode='TrailScript' toField='set_y'/>
