@@ -1221,7 +1221,7 @@ function initialize ()
 			appearance = currentScene .createNode ("Appearance"),
 			material   = currentScene .createNode ("Material"),
 			disk       = currentScene .createNode ("Disk2D");
-		
+
 		group .children [i]     = transform;
 		transform .children [0] = shape;
 		shape .appearance       = appearance;
@@ -1240,7 +1240,7 @@ function initialize ()
 function set_hitPoint (value)
 {
 	value .z = 0;
-	
+
 	var group = Browser .currentScene .getNamedNode ("Circles");
 
 	for (var i = 0; i < numCircles; ++ i)
@@ -1249,9 +1249,9 @@ function set_hitPoint (value)
 			transform = group .children [i],
 			direction = transform .translation .subtract (value),
 			distance  = direction .length ();
-			
+
 		direction = direction .normalize () .multiply (1 / (Math .pow (distance * 50, 2)));
-		
+
 		transform .translation = transform .translation .add (direction);
 	}
 }
@@ -1259,17 +1259,17 @@ function set_hitPoint (value)
 function set_time ()
 {
 	var group = Browser .currentScene .getNamedNode ("Circles");
-	
+
 	for (var i = 0; i < numCircles; ++ i)
 	{
 		var
 			dt        = 1 / Browser .currentFrameRate,
 			transform = group .children [i],
 			material  = transform .children [0] .appearance .material;
-		
+
 		material .transparency += dt / numCircles * 4;
 		transform .rotation     = new SFRotation (zAxis, material .transparency * Math .PI * 2 * 8);
-		
+
 		if (material .transparency > 1)
 		{
 			material .transparency = dt > 1 ? Math .random (): 0;
@@ -1277,7 +1277,7 @@ function set_time ()
 		}
 	}
 }
-	
+
 function place (transform)
 {
 	var appearance = transform .children [0] .appearance;
@@ -1288,7 +1288,7 @@ function place (transform)
 	transform .scale .x       = random (0.05, 0.2);
 	transform .scale .y       = transform .scale .x;
 
-	appearance .texture = textures [Math .round (Math .random () * 2)];
+	appearance .material .emissiveTexture = textures [Math .round (Math .random () * 2)];
 }
 
 function random (min, max)
