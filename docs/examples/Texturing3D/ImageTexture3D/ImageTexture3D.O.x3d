@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='CADGeometry' level='2'/>
+    <component name='EnvironmentalSensor' level='3'/>
+    <component name='Geometry2D' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <component name='Texturing3D' level='3'/>
-    <meta name='comment' content='World of Sunrise X3D Editor'/>
+    <component name='Texturing3D' level='2'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 27 Oct 2019 05:58:52 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d'/>
-    <meta name='modified' content='Wed, 09 Nov 2022 21:17:04 GMT'/>
+    <meta name='modified' content='Mon, 13 Feb 2023 15:37:49 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Volume'>
@@ -212,9 +216,9 @@ function set_dimension ()
         skyColor='0.2 0.2 0.2'/>
     <Viewpoint
         description='Scan'
-        position='0.83541 0.877791 1.8987'
-        orientation='-0.64975770662982 0.74313547213655 0.15988931398796 0.63953452290137'
-        centerOfRotation='0.158101 0.219243 0.605812'/>
+        position='0.781256 0.7843533 1.579175'
+        orientation='-0.66443355304581 0.731018866357883 0.155368821247235 0.619183687649953'
+        centerOfRotation='9.128939e-9 1.328216e-8 2.662298e-8'/>
     <Transform DEF='Volume_1'>
       <ProtoInstance name='Volume' DEF='Volume'>
         <fieldValue name='voxels'>
@@ -267,8 +271,8 @@ function set_translation (value)
 ]]>
       </Script>
     </Transform>
+    <ROUTE fromNode='ClipPlaneScript' fromField='plane_changed' toNode='_6' toField='set_plane'/>
     <ROUTE fromNode='PlaneSensor' fromField='translation_changed' toNode='Rectangle2D' toField='set_translation'/>
     <ROUTE fromNode='PlaneSensor' fromField='translation_changed' toNode='ClipPlaneScript' toField='set_translation'/>
-    <ROUTE fromNode='ClipPlaneScript' fromField='plane_changed' toNode='_6' toField='set_plane'/>
   </Scene>
 </X3D>
