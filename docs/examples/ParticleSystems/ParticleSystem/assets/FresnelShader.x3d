@@ -125,9 +125,9 @@ main ()
   vec4 ref = texture (cubMapTexture, t);
   vec4 ret = vec4 (1.0);
 
-  ret .r = texture (cubMapTexture, tr) .r;
-  ret .g = texture (cubMapTexture, tg) .g;
-  ret .b = texture (cubMapTexture, tb) .b;
+  ret .r = texture (cubMapTexture, tr * vec3 (1, 1, -1)) .r;
+  ret .g = texture (cubMapTexture, tg * vec3 (1, 1, -1)) .g;
+  ret .b = texture (cubMapTexture, tb * vec3 (1, 1, -1)) .b;
 
   x3d_FragColor = mix (ref, ret, rfac);
 }
