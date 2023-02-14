@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Interchange' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='Shaders' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Wed, 06 Dec 2017 14:14:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/ParticleSystems/ParticleSystem/assets/FresnelShader.x3d'/>
-    <meta name='modified' content='Tue, 14 Feb 2023 20:22:25 GMT'/>
+    <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/ParticleSystem/FresnelShader.x3d'/>
+    <meta name='modified' content='Mon, 21 Jan 2019 09:10:40 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='FresnelShader'>
       <ProtoInterface>
-        <field accessType='inputOutput' type='SFVec3f' name='chromaticDispersion' value='0.98 1 1.033'/>
-        <field accessType='inputOutput' type='SFFloat' name='bias' value='0.5'/>
-        <field accessType='inputOutput' type='SFFloat' name='scale' value='0.5'/>
-        <field accessType='inputOutput' type='SFFloat' name='power' value='2'/>
+        <field name='chromaticDispersion' accessType='inputOutput' type='SFVec3f' value='0.98 1 1.033'/>
+        <field name='bias' accessType='inputOutput' type='SFFloat' value='0.5'/>
+        <field name='scale' accessType='inputOutput' type='SFFloat' value='0.5'/>
+        <field name='power' accessType='inputOutput' type='SFFloat' value='2'/>
         <field accessType='inputOutput' type='SFNode' name='cubeMapTexture'/>
       </ProtoInterface>
       <ProtoBody>
         <ComposedShader DEF='FresnelShader'
             language='GLSL'>
-          <field accessType='inputOutput' type='SFVec3f' name='chromaticDispersion'/>
-          <field accessType='inputOutput' type='SFFloat' name='bias'/>
-          <field accessType='inputOutput' type='SFFloat' name='scale'/>
-          <field accessType='inputOutput' type='SFFloat' name='power'/>
+          <field name='chromaticDispersion' accessType='inputOutput' type='SFVec3f' value='0.98 1 1.033'/>
+          <field name='bias' accessType='inputOutput' type='SFFloat' value='0.5'/>
+          <field name='scale' accessType='inputOutput' type='SFFloat' value='0.5'/>
+          <field name='power' accessType='inputOutput' type='SFFloat' value='2'/>
           <field accessType='inputOutput' type='SFNode' name='cubMapTexture'/>
           <IS>
             <connect nodeField='chromaticDispersion' protoField='chromaticDispersion'/>
@@ -125,9 +125,9 @@ main ()
   vec4 ref = texture (cubMapTexture, t);
   vec4 ret = vec4 (1.0);
 
-  ret .r = texture (cubMapTexture, tr * vec3 (1, -1, -1)) .r;
-  ret .g = texture (cubMapTexture, tg * vec3 (1, -1, -1)) .g;
-  ret .b = texture (cubMapTexture, tb * vec3 (1, -1, -1)) .b;
+  ret .r = texture (cubMapTexture, tr) .r;
+  ret .g = texture (cubMapTexture, tg) .g;
+  ret .b = texture (cubMapTexture, tb) .b;
 
   x3d_FragColor = mix (ref, ret, rfac);
 }

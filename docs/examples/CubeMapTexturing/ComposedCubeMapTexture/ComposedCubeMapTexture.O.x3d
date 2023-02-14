@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
-    <component name='CubeMapTexturing' level='3'/>
+    <component name='CubeMapTexturing' level='1'/>
+    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Grouping' level='3'/>
     <component name='Shaders' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <component name='Shape' level='4'/>
+    <component name='Time' level='2'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sat, 30 Apr 2016 02:18:39 GMT'/>
-    <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/CubeMapTexturing/ComposedCubeMapTexture/ComposedCubeMapTexture.O.x3d'/>
-    <meta name='modified' content='Tue, 14 Feb 2023 20:15:33 GMT'/>
+    <meta name='creator' content='holger'/>
+    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CubeMapTexturing/ComposedCubeMapTexture/ComposedCubeMapTexture.O.x3d'/>
+    <meta name='modified' content='Sun, 27 Jan 2019 15:59:48 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
@@ -69,7 +73,7 @@ main ()
 	vRefract [1]       = refract (I, worldNormal, refraction * 0.99);
 	vRefract [2]       = refract (I, worldNormal, refraction * 0.98);
 	vReflectionFactor  = pow (1.0 + dot (I, worldNormal), 1.0 - reflection);
-	
+
 	vN = normalize (x3d_NormalMatrix * x3d_Normal);
 	v  = position .xyz;
 
@@ -103,9 +107,9 @@ getTextureColor ()
 	vec4 reflectedColor = textureCube (cubMapTexture, vec3 (vReflect .xy, -vReflect .z));
 	vec4 refractedColor = vec4 (1.0);
 
-	refractedColor .r = textureCube (cubMapTexture, vRefract [0] * vec3 (1, -1, -1)) .r;
-	refractedColor .g = textureCube (cubMapTexture, vRefract [1] * vec3 (1, -1, -1)) .g;
-	refractedColor .b = textureCube (cubMapTexture, vRefract [2] * vec3 (1, -1, -1)) .b;
+	refractedColor .r = textureCube (cubMapTexture, vec3 (vRefract [0] .xy, -vRefract [0] .z)) .r;
+	refractedColor .g = textureCube (cubMapTexture, vec3 (vRefract [1] .xy, -vRefract [1] .z)) .g;
+	refractedColor .b = textureCube (cubMapTexture, vec3 (vRefract [2] .xy, -vRefract [2] .z)) .b;
 
 	return mix (refractedColor, reflectedColor, clamp (vReflectionFactor, 0.0, 1.0));
 }
@@ -114,7 +118,7 @@ float
 getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
 {
 	float spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));
-	
+
 	if (spotAngle >= cutOffAngle)
 		return 0.0;
 	else if (spotAngle <= beamWidth)
@@ -133,7 +137,7 @@ getMaterialColor (in x3d_MaterialParameters material)
   float dV = length (v);
 
   // Calculate diffuseFactor & alpha
-  
+
   float alpha = 1.0 - material .transparency;
 
   alpha *= textureColor .a;
@@ -201,7 +205,7 @@ main ()
                       specularColor='0 0.192168 0.357'
                       shininess='0.073718'/>
                   <ComposedCubeMapTexture DEF='_2'>
-                    <ImageTexture DEF='_3' containerField='frontTexture'
+                    <ImageTexture DEF='_3' containerField='front'
                         url='"assets/WideOcean/WideOcean-front.jpg"'>
                       <TextureProperties DEF='_4'
                           minificationFilter='DEFAULT'
@@ -211,24 +215,24 @@ main ()
                           boundaryModeR='CLAMP_TO_EDGE'
                           textureCompression='DEFAULT'/>
                     </ImageTexture>
-                    <ImageTexture DEF='_5' containerField='backTexture'
+                    <ImageTexture DEF='_5' containerField='back'
                         url='"assets/WideOcean/WideOcean-back.jpg"'>
                       <TextureProperties USE='_4'/>
                     </ImageTexture>
-                    <ImageTexture DEF='_6' containerField='leftTexture'
+                    <ImageTexture DEF='_6' containerField='left'
                         url='"assets/WideOcean/WideOcean-left.jpg"'>
                       <TextureProperties USE='_4'/>
                     </ImageTexture>
-                    <ImageTexture DEF='_7' containerField='rightTexture'
+                    <ImageTexture DEF='_7' containerField='right'
                         url='"assets/WideOcean/WideOcean-right.jpg"'>
                       <TextureProperties USE='_4'/>
                     </ImageTexture>
-                    <ImageTexture DEF='_8' containerField='bottomTexture'
-                        url='"assets/WideOcean/WideOcean-bottom.jpg"'>
+                    <ImageTexture DEF='_8' containerField='top'
+                        url='"assets/WideOcean/WideOcean-top.jpg"'>
                       <TextureProperties USE='_4'/>
                     </ImageTexture>
-                    <ImageTexture DEF='_9' containerField='topTexture'
-                        url='"assets/WideOcean/WideOcean-top.jpg"'>
+                    <ImageTexture DEF='_9' containerField='bottom'
+                        url='"assets/WideOcean/WideOcean-bottom.jpg"'>
                       <TextureProperties USE='_4'/>
                     </ImageTexture>
                   </ComposedCubeMapTexture>
@@ -275,11 +279,11 @@ main ()
       <ImageTexture USE='_5' containerField='backTexture'/>
       <ImageTexture USE='_6' containerField='leftTexture'/>
       <ImageTexture USE='_7' containerField='rightTexture'/>
-      <ImageTexture USE='_9' containerField='topTexture'/>
-      <ImageTexture USE='_8' containerField='bottomTexture'/>
+      <ImageTexture USE='_8' containerField='topTexture'/>
+      <ImageTexture USE='_9' containerField='bottomTexture'/>
     </TextureBackground>
     <Transform DEF='_10'
-        rotation='0 -1 0 3.78810340565769'>
+        rotation='0 -1 0 2.16262637828138'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
             cycleInterval='40'
