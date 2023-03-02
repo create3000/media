@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.5.5
+#X3D V4.0 utf8 X_ITE V8.6.8
 
 PROFILE Interchange
 
@@ -10,14 +10,14 @@ COMPONENT Scripting : 1
 COMPONENT Shaders : 1
 COMPONENT Texturing3D : 2
 
-META "comment" "World of Sunrise X3D Editor"
+META "comment" "Rise and Shine"
 META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
+META "generator" "Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/"
 META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
-META "modified" "Wed, 09 Nov 2022 21:17:04 GMT"
-META "converter" "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
-META "converted" "Wed, 08 Feb 2023 17:43:15 GMT"
+META "modified" "Mon, 13 Feb 2023 15:37:49 GMT"
+META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Thu, 02 Mar 2023 16:03:27 GMT"
 
 PROTO Volume [
   inputOutput SFVec3f dimensions 1 1 1
@@ -185,9 +185,9 @@ DEF Gray Background {
 
 Viewpoint {
   description "Scan"
-  position 0.83541 0.877791 1.8987
-  orientation -0.64975770662982 0.74313547213655 0.15988931398796 0.63953452290137
-  centerOfRotation 0.158101 0.219243 0.605812
+  position 0.781256 0.7843533 1.579175
+  orientation -0.66443355304581 0.731018866357883 0.155368821247235 0.619183687649953
+  centerOfRotation 9.128939e-9 1.328216e-8 2.662298e-8
 }
 
 DEF Volume_1 Transform {
@@ -255,6 +255,6 @@ function set_translation (value)
   ]
 }
 
+ROUTE ClipPlaneScript.plane_changed TO _6.set_plane
 ROUTE PlaneSensor.translation_changed TO Rectangle2D.set_translation
 ROUTE PlaneSensor.translation_changed TO ClipPlaneScript.set_translation
-ROUTE ClipPlaneScript.plane_changed TO _6.set_plane

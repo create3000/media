@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Sunrise X3D Editor"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
+          "@content": "Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/"
         },
         {
           "@name": "identifier",
@@ -28,15 +28,15 @@
         },
         {
           "@name": "modified",
-          "@content": "Wed, 09 Nov 2022 21:17:04 GMT"
+          "@content": "Mon, 13 Feb 2023 15:37:49 GMT"
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
+          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "converted",
-          "@content": "Wed, 08 Feb 2023 17:43:16 GMT"
+          "@content": "Thu, 02 Mar 2023 16:03:30 GMT"
         }
       ],
       "component": [
@@ -284,9 +284,9 @@
         { "Viewpoint":
           {
             "@description": "Scan",
-            "@position": [ 0.83541, 0.877791, 1.8987 ],
-            "@orientation": [ -0.64975770662982, 0.74313547213655, 0.15988931398796, 0.63953452290137 ],
-            "@centerOfRotation": [ 0.158101, 0.219243, 0.605812 ]
+            "@position": [ 0.781256, 0.7843533, 1.579175 ],
+            "@orientation": [ -0.66443355304581, 0.731018866357883, 0.155368821247235, 0.619183687649953 ],
+            "@centerOfRotation": [ 9.128939e-9, 1.328216e-8, 2.662298e-8 ]
           }
         },
         { "Transform":
@@ -424,6 +424,14 @@
         },
         { "ROUTE":
           {
+            "@fromNode": "ClipPlaneScript",
+            "@fromField": "plane_changed",
+            "@toNode": "_6",
+            "@toField": "plane"
+          }
+        },
+        { "ROUTE":
+          {
             "@fromNode": "PlaneSensor",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D",
@@ -436,14 +444,6 @@
             "@fromField": "translation_changed",
             "@toNode": "ClipPlaneScript",
             "@toField": "set_translation"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ClipPlaneScript",
-            "@fromField": "plane_changed",
-            "@toNode": "_6",
-            "@toField": "plane"
           }
         }
       ]

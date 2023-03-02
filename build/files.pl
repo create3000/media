@@ -35,9 +35,9 @@ sub example {
 
    say $base;
 
-   add sub { system "npx ../x3d-tidy            -r -m -i '$orig' -o '$x3d'  2>/dev/null" };
-   add sub { system "npx ../x3d-tidy -s COMPACT -r -m -i '$orig' -o '$x3dv' 2>/dev/null" };
-   add sub { system "npx ../x3d-tidy -s COMPACT -r -m -i '$orig' -o '$x3dj' 2>/dev/null" };
+   add sub { system "npx x3d-tidy            -r -m -i '$orig' -o '$x3d'  " };
+   add sub { system "npx x3d-tidy -s COMPACT -r -m -i '$orig' -o '$x3dv' " };
+   add sub { system "npx x3d-tidy -s COMPACT -r -m -i '$orig' -o '$x3dj' " };
 }
 
 example $_ foreach sort `find $examples -maxdepth 2 -mindepth 2 -type d`;

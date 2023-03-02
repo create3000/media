@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.5.3
+#X3D V4.0 utf8 X_ITE V8.6.8
 
 PROFILE Interchange
 
@@ -13,8 +13,10 @@ META "comment" "Rise and Shine"
 META "created" "Wed, 22 Nov 2017 08:26:49 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.x3dv"
-META "modified" "Fri, 10 Feb 2023 23:48:52 GMT"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.O.x3d"
+META "modified" "Fri, 10 Feb 2023 23:51:36 GMT"
+META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Thu, 02 Mar 2023 15:52:22 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -45,46 +47,6 @@ EXTERNPROTO LineTrail [
 "LineTrail.x3d#LineTrail"
 
 WorldInfo {
-  metadata DEF Titania MetadataSet {
-    name "Titania"
-    reference "http://titania.create3000.de"
-    value [
-      DEF Page MetadataSet {
-        name "Page"
-        reference "http://titania.create3000.de"
-        value [
-          DEF activeView MetadataInteger {
-            name "activeView"
-            reference "http://titania.create3000.de"
-            value 1
-          }
-          DEF multiView MetadataInteger {
-            name "multiView"
-            reference "http://titania.create3000.de"
-            value 0
-          }
-        ]
-      }
-      DEF Selection MetadataSet {
-        name "Selection"
-        reference "http://titania.create3000.de"
-        value [
-          DEF selectGeometry MetadataBoolean {
-            name "selectGeometry"
-            reference "http://titania.create3000.de"
-            value FALSE
-          }
-          DEF nodes MetadataSet {
-            name "nodes"
-            reference "http://titania.create3000.de"
-            value DEF _1 LineProperties {
-              linewidthScaleFactor 3
-            }
-          }
-        ]
-      }
-    ]
-  }
   title "ScalarInterpolator.O"
 }
 
@@ -99,11 +61,7 @@ Viewpoint {
 
 Grid {
   rotation 1 0 0 90
-  dimension [
-    60,
-    0,
-    30
-  ]
+  dimension [ 60, 0, 30 ]
   planeOffset 0 -0.002 0
   planeColor 1 1 1
   planeTransparency 0
@@ -111,16 +69,13 @@ Grid {
   majorLineColor 0 0 0
   majorLineTransparency 0.4
   numberOffset -0.1 0 0.14
-  numberAppearance DEF _2 Appearance {
+  numberAppearance DEF _1 Appearance {
     material Material {
       diffuseColor 0 0 0
     }
   }
-  numberFontStyle DEF _3 ScreenFontStyle {
-    justify [
-      "END",
-      "BEGIN"
-    ]
+  numberFontStyle DEF _2 ScreenFontStyle {
+    justify [ "END", "BEGIN" ]
   }
 }
 
@@ -131,38 +86,18 @@ DEF LineTrail Group {
       loop TRUE
     }
     DEF XInterpolator ScalarInterpolator {
-      key [
-        0,
-        0.375,
-        0.75,
-        1
-      ]
-      keyValue [
-        -20,
-        -5,
-        10,
-        20
-      ]
+      key [ 0, 0.375, 0.75, 1 ]
+      keyValue [ -20, -5, 10, 20 ]
     }
-    DEF XInterpolator_1 ScalarInterpolator {
-      key [
-        -20,
-        -5,
-        10,
-        20
-      ]
-      keyValue [
-        -10,
-        5,
-        -5,
-        10
-      ]
+    DEF YInterpolator ScalarInterpolator {
+      key [ -20, -5, 10, 20 ]
+      keyValue [ -10, 5, -5, 10 ]
     }
     DEF TrailScript Script {
       inputOnly      SFFloat set_y
       outputOnly     SFVec3f point_changed
       initializeOnly SFNode  xInterpolator USE XInterpolator
-      initializeOnly SFNode  yInterpolator USE XInterpolator_1
+      initializeOnly SFNode  yInterpolator USE YInterpolator
 
       url "ecmascript:
 
@@ -176,14 +111,16 @@ function set_y (value, time)
     }
     Shape {
       appearance Appearance {
-        lineProperties USE _1
+        lineProperties DEF _3 LineProperties {
+          linewidthScaleFactor 3
+        }
         material Material {
           emissiveColor 0.552941 0.270588 0.14902
         }
       }
       geometry DEF Trail LineTrail {
-        resetTime 1676072930.311001
-        point -10.1 -0.09999561 0
+        resetTime 1676073090.3630009
+        point 4.208 -1.138667 0
         dimension 1000
       }
     }
@@ -196,15 +133,10 @@ DEF Points Transform {
       inputOnly      MFFloat set_x
       inputOnly      MFFloat set_y
       initializeOnly SFNode  points DEF _4 Polypoint2D {
-        point [
-          -20 -10,
-          -5 5,
-          10 -5,
-          20 10
-        ]
+        point [ -20 -10, -5 5, 10 -5, 20 10 ]
       }
       initializeOnly SFNode  xInterpolator USE XInterpolator
-      initializeOnly SFNode  yInterpolator USE XInterpolator_1
+      initializeOnly SFNode  yInterpolator USE YInterpolator
 
       url "ecmascript:
 
@@ -263,7 +195,7 @@ DEF PickingScript Script {
   initializeOnly SFTime  doubleClickInterval 0.3
   initializeOnly SFFloat pointSize 0.5
   initializeOnly SFNode  xInterpolator USE XInterpolator
-  initializeOnly SFNode  yInterpolator USE XInterpolator_1
+  initializeOnly SFNode  yInterpolator USE YInterpolator
 
   url "ecmascript:
 
@@ -435,14 +367,14 @@ function setXInterpolatorKey ()
   directOutput TRUE
 }
 
-ROUTE XInterpolator.value_changed TO XInterpolator_1.set_fraction
+ROUTE XInterpolator.value_changed TO YInterpolator.set_fraction
 ROUTE Timer.fraction_changed TO XInterpolator.set_fraction
-ROUTE XInterpolator_1.value_changed TO TrailScript.set_y
+ROUTE YInterpolator.value_changed TO TrailScript.set_y
 ROUTE TrailScript.point_changed TO Trail.set_point
 ROUTE Timer.cycleTime TO Trail.set_resetTime
-ROUTE XInterpolator.keyValue_changed TO XInterpolator_1.set_key
+ROUTE XInterpolator.keyValue_changed TO YInterpolator.set_key
 ROUTE XInterpolator.keyValue_changed TO PointsScript.set_x
-ROUTE XInterpolator_1.keyValue_changed TO PointsScript.set_y
+ROUTE YInterpolator.keyValue_changed TO PointsScript.set_y
 ROUTE Touch.isActive TO PickingScript.set_active
 ROUTE Touch.hitPoint_changed TO PickingScript.set_hitPoint
 ROUTE Touch.touchTime TO PickingScript.set_touchTime

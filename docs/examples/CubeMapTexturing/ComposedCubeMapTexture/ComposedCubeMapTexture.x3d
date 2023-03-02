@@ -11,8 +11,8 @@
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CubeMapTexturing/ComposedCubeMapTexture/ComposedCubeMapTexture.O.x3d'/>
     <meta name='modified' content='Sun, 27 Jan 2019 15:59:48 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
-    <meta name='converter' content='x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme'/>
-    <meta name='converted' content='Wed, 08 Feb 2023 17:22:39 GMT'/>
+    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='converted' content='Thu, 02 Mar 2023 15:44:37 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Dolphin' url='"assets/Dolphin.x3d#Dolphin"'>
@@ -71,7 +71,7 @@ main ()
 	vRefract [1]       = refract (I, worldNormal, refraction * 0.99);
 	vRefract [2]       = refract (I, worldNormal, refraction * 0.98);
 	vReflectionFactor  = pow (1.0 + dot (I, worldNormal), 1.0 - reflection);
-	
+
 	vN = normalize (x3d_NormalMatrix * x3d_Normal);
 	v  = position .xyz;
 
@@ -116,7 +116,7 @@ float
 getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
 {
 	float spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));
-	
+
 	if (spotAngle >= cutOffAngle)
 		return 0.0;
 	else if (spotAngle <= beamWidth)
@@ -135,7 +135,7 @@ getMaterialColor (in x3d_MaterialParameters material)
   float dV = length (v);
 
   // Calculate diffuseFactor & alpha
-  
+
   float alpha = 1.0 - material .transparency;
 
   alpha *= textureColor .a;

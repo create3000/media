@@ -32,11 +32,11 @@
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.9, https://github.com/create3000/x3d-tidy#readme"
+          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "converted",
-          "@content": "Wed, 08 Feb 2023 17:45:59 GMT"
+          "@content": "Thu, 02 Mar 2023 16:06:10 GMT"
         }
       ],
       "component": [
@@ -2712,7 +2712,7 @@
 "\t\t\tappearance = currentScene .createNode (\"Appearance\"),",
 "\t\t\tmaterial   = currentScene .createNode (\"Material\"),",
 "\t\t\tdisk       = currentScene .createNode (\"Disk2D\");",
-"\t\t",
+"",
 "\t\tgroup .children [i]     = transform;",
 "\t\ttransform .children [0] = shape;",
 "\t\tshape .appearance       = appearance;",
@@ -2731,7 +2731,7 @@
 "function set_hitPoint (value)",
 "{",
 "\tvalue .z = 0;",
-"\t",
+"",
 "\tvar group = Browser .currentScene .getNamedNode (\"Circles\");",
 "",
 "\tfor (var i = 0; i < numCircles; ++ i)",
@@ -2740,9 +2740,9 @@
 "\t\t\ttransform = group .children [i],",
 "\t\t\tdirection = transform .translation .subtract (value),",
 "\t\t\tdistance  = direction .length ();",
-"\t\t\t",
+"",
 "\t\tdirection = direction .normalize () .multiply (1 / (Math .pow (distance * 50, 2)));",
-"\t\t",
+"",
 "\t\ttransform .translation = transform .translation .add (direction);",
 "\t}",
 "}",
@@ -2750,17 +2750,17 @@
 "function set_time ()",
 "{",
 "\tvar group = Browser .currentScene .getNamedNode (\"Circles\");",
-"\t",
+"",
 "\tfor (var i = 0; i < numCircles; ++ i)",
 "\t{",
 "\t\tvar",
 "\t\t\tdt        = 1 / Browser .currentFrameRate,",
 "\t\t\ttransform = group .children [i],",
 "\t\t\tmaterial  = transform .children [0] .appearance .material;",
-"\t\t",
+"",
 "\t\tmaterial .transparency += dt / numCircles * 4;",
 "\t\ttransform .rotation     = new SFRotation (zAxis, material .transparency * Math .PI * 2 * 8);",
-"\t\t",
+"",
 "\t\tif (material .transparency > 1)",
 "\t\t{",
 "\t\t\tmaterial .transparency = dt > 1 ? Math .random (): 0;",
@@ -2768,7 +2768,7 @@
 "\t\t}",
 "\t}",
 "}",
-"\t",
+"",
 "function place (transform)",
 "{",
 "\tvar appearance = transform .children [0] .appearance;",

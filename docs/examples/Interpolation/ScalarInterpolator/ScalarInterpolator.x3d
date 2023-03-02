@@ -11,8 +11,10 @@
     <meta name='created' content='Wed, 22 Nov 2017 08:26:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.x3d'/>
-    <meta name='modified' content='Fri, 10 Feb 2023 23:48:31 GMT'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.O.x3d'/>
+    <meta name='modified' content='Fri, 10 Feb 2023 23:51:36 GMT'/>
+    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='converted' content='Thu, 02 Mar 2023 15:52:22 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
@@ -40,38 +42,7 @@
       <field accessType='inputOutput' type='SFInt32' name='dimension'/>
     </ExternProtoDeclare>
     <WorldInfo
-        title='ScalarInterpolator.O'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <LineProperties DEF='_1' containerField='value'
-                linewidthScaleFactor='3'/>
-          </MetadataSet>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
+        title='ScalarInterpolator.O'/>
     <NavigationInfo
         type='"NONE"'/>
     <Viewpoint
@@ -88,13 +59,13 @@
       <fieldValue name='majorLineTransparency' value='0.4'/>
       <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
       <fieldValue name='numberAppearance'>
-        <Appearance DEF='_2' containerField='numberAppearance'>
+        <Appearance DEF='_1' containerField='numberAppearance'>
           <Material
               diffuseColor='0 0 0'/>
         </Appearance>
       </fieldValue>
       <fieldValue name='numberFontStyle'>
-        <ScreenFontStyle DEF='_3' containerField='numberFontStyle'
+        <ScreenFontStyle DEF='_2' containerField='numberFontStyle'
             justify='"END", "BEGIN"'/>
       </fieldValue>
     </ProtoInstance>
@@ -105,7 +76,7 @@
       <ScalarInterpolator DEF='XInterpolator'
           key='0, 0.375, 0.75, 1'
           keyValue='-20, -5, 10, 20'/>
-      <ScalarInterpolator DEF='XInterpolator_1'
+      <ScalarInterpolator DEF='YInterpolator'
           key='-20, -5, 10, 20'
           keyValue='-10, 5, -5, 10'/>
       <Script DEF='TrailScript'
@@ -116,7 +87,7 @@
           <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
+          <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
         </field>
 <![CDATA[ecmascript:
 
@@ -129,13 +100,14 @@ function set_y (value, time)
       </Script>
       <Shape>
         <Appearance>
-          <LineProperties USE='_1'/>
+          <LineProperties DEF='_3'
+              linewidthScaleFactor='3'/>
           <Material
               emissiveColor='0.552941 0.270588 0.14902'/>
         </Appearance>
         <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1676072910.312001'/>
-          <fieldValue name='point' value='-16.092 -6.091995 0'/>
+          <fieldValue name='resetTime' value='1676073090.3630009'/>
+          <fieldValue name='point' value='4.208 -1.138667 0'/>
           <fieldValue name='dimension' value='1000'/>
         </ProtoInstance>
       </Shape>
@@ -153,7 +125,7 @@ function set_y (value, time)
           <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
+          <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
         </field>
 <![CDATA[ecmascript:
 
@@ -208,7 +180,7 @@ function eventsProcessed ()
         <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
       </field>
       <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-        <ScalarInterpolator USE='XInterpolator_1' containerField='yInterpolator'/>
+        <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
       </field>
 <![CDATA[ecmascript:
 
@@ -378,14 +350,14 @@ function setXInterpolatorKey ()
 }
 ]]>
     </Script>
-    <ROUTE fromNode='XInterpolator' fromField='value_changed' toNode='XInterpolator_1' toField='set_fraction'/>
+    <ROUTE fromNode='XInterpolator' fromField='value_changed' toNode='YInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='Timer' fromField='fraction_changed' toNode='XInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='XInterpolator_1' fromField='value_changed' toNode='TrailScript' toField='set_y'/>
+    <ROUTE fromNode='YInterpolator' fromField='value_changed' toNode='TrailScript' toField='set_y'/>
     <ROUTE fromNode='TrailScript' fromField='point_changed' toNode='Trail' toField='set_point'/>
     <ROUTE fromNode='Timer' fromField='cycleTime' toNode='Trail' toField='set_resetTime'/>
-    <ROUTE fromNode='XInterpolator' fromField='keyValue_changed' toNode='XInterpolator_1' toField='set_key'/>
+    <ROUTE fromNode='XInterpolator' fromField='keyValue_changed' toNode='YInterpolator' toField='set_key'/>
     <ROUTE fromNode='XInterpolator' fromField='keyValue_changed' toNode='PointsScript' toField='set_x'/>
-    <ROUTE fromNode='XInterpolator_1' fromField='keyValue_changed' toNode='PointsScript' toField='set_y'/>
+    <ROUTE fromNode='YInterpolator' fromField='keyValue_changed' toNode='PointsScript' toField='set_y'/>
     <ROUTE fromNode='Touch' fromField='isActive' toNode='PickingScript' toField='set_active'/>
     <ROUTE fromNode='Touch' fromField='hitPoint_changed' toNode='PickingScript' toField='set_hitPoint'/>
     <ROUTE fromNode='Touch' fromField='touchTime' toNode='PickingScript' toField='set_touchTime'/>
