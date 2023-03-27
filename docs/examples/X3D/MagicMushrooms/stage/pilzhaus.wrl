@@ -25,53 +25,6 @@ EXTERNPROTO SFFloat2SFInt32 [
 ]
 "SFFloat2SFInt32_proto.wrl"
 
-WorldInfo {
-  metadata DEF Titania MetadataSet {
-    name "Titania"
-    reference "http://titania.create3000.de"
-    value [
-      DEF Page MetadataSet {
-        name "Page"
-        reference "http://titania.create3000.de"
-        value [
-          DEF activeView MetadataInteger {
-            name "activeView"
-            reference "http://titania.create3000.de"
-            value 1
-          }
-          DEF multiView MetadataInteger {
-            name "multiView"
-            reference "http://titania.create3000.de"
-            value 0
-          }
-        ]
-      }
-      DEF Selection MetadataSet {
-        name "Selection"
-        reference "http://titania.create3000.de"
-        value [
-          DEF selectGeometry MetadataBoolean {
-            name "selectGeometry"
-            reference "http://titania.create3000.de"
-            value FALSE
-          }
-          DEF nodes MetadataSet {
-            name "nodes"
-            reference "http://titania.create3000.de"
-            value DEF Light1 PointLight {
-              ambientIntensity 0.58
-              attenuation 0.5 0 0
-              location -25.2659 148.231 -17.3406
-              radius 1000
-            }
-          }
-        ]
-      }
-    ]
-  }
-  title "pilzhaus"
-}
-
 Group {
   children [
     WorldInfo {
@@ -530,10 +483,10 @@ function set_startTime(value, time)
                         eventIn    SFTime triggerIn
 
                         url "vrmlscript:function triggerIn(value, time) {
-                                                                        
-         // fire off a single round                                     
-         startTime = value;                                             
-         firstTime = FALSE;                                             
+
+         // fire off a single round
+         startTime = value;
+         firstTime = FALSE;
        }"
                       }
                       DEF enterWorldTimeSensor_9 TimeSensor {
@@ -26449,10 +26402,10 @@ function set_startTime(value, time)
                 eventIn    SFTime triggerIn
 
                 url "vrmlscript:function triggerIn(value, time) {
-                                                                        
-         // fire off a single round                                     
-         startTime = value;                                             
-         firstTime = FALSE;                                             
+
+         // fire off a single round
+         startTime = value;
+         firstTime = FALSE;
        }"
               }
               DEF Schmetterling Transform {
@@ -26473,10 +26426,10 @@ function set_startTime(value, time)
                     eventIn    SFTime triggerIn
 
                     url "vrmlscript:function triggerIn(value, time) {
-                                                                        
-         // fire off a single round                                     
-         startTime = value;                                             
-         firstTime = FALSE;                                             
+
+         // fire off a single round
+         startTime = value;
+         firstTime = FALSE;
        }"
                   }
                   DEF SM-Parent Transform {
