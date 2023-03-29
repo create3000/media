@@ -2,16 +2,15 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='created' content='Tue, 07 Feb 2023 21:26:14 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.O.x3d'/>
-    <meta name='modified' content='Tue, 07 Feb 2023 22:14:27 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Thu, 02 Mar 2023 15:58:02 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.0.13, https://create3000.github.io/sunrize/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.x3d'/>
+    <meta name='modified' content='Wed, 29 Mar 2023 20:00:58 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='PointingObjects'>
@@ -23,10 +22,11 @@
         <OrientationInterpolator DEF='_3'
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0'/>
+        <TouchSensor DEF='Dummy'/>
         <Script DEF='Script'>
           <field accessType='inputOnly' type='SFBool' name='set_over'/>
           <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Group USE='_1' containerField='group'/>
+            <Group USE='_1'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='texture'>
             <PixelTexture
@@ -35,12 +35,12 @@
                   0x96 0x32'/>
           </field>
           <field accessType='initializeOnly' type='MFNode' name='geometries'>
-            <Box containerField='geometries'/>
-            <Cone containerField='geometries'/>
-            <Sphere containerField='geometries'/>
+            <Box/>
+            <Cone/>
+            <Sphere/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='interpolator'>
-            <OrientationInterpolator USE='_3' containerField='interpolator'/>
+            <OrientationInterpolator USE='_3'/>
           </field>
           <field accessType='initializeOnly' type='MFNode' name='touchSensors'/>
           <field accessType='initializeOnly' type='MFNode' name='materials'/>
