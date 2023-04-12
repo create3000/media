@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.7, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.0.17, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ScalarChaser/ScalarChaser.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/ScalarChaser/ScalarChaser.x3dj"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 23 Jun 2019 13:23:54 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Thu, 02 Mar 2023 15:47:53 GMT"
+          "@content": "Wed, 12 Apr 2023 21:42:43 GMT"
         }
       ],
       "component": [
@@ -96,7 +88,9 @@
                 "@name": "value_changed"
               }
             ],
-            "@url": [ "assets/SFFloat.x3d#SFFloat" ]
+            "@url": [
+              "assets/SFFloat.x3d#SFFloat"
+            ]
           }
         },
         { "ProtoDeclare":
@@ -113,7 +107,9 @@
                   "@accessType": "inputOutput",
                   "@type": "MFString",
                   "@name": "string",
-                  "@value": [ "2000" ]
+                  "@value": [
+                    "2000"
+                  ]
                 }
               ]
             },
@@ -157,8 +153,14 @@
                         "-fontStyle": { "ScreenFontStyle":
                           {
                             "@DEF": "_2",
-                            "@family": [ "assets/georgia.ttf", "SERIF" ],
-                            "@justify": [ "MIDDLE", "MIDDLE" ]
+                            "@family": [
+                              "assets/georgia.ttf",
+                              "SERIF"
+                            ],
+                            "@justify": [
+                              "MIDDLE",
+                              "MIDDLE"
+                            ]
                           }
                         },
                         "IS": {
@@ -192,6 +194,35 @@
                 { "Group":
                   {
                     "@DEF": "Animation",
+                    "-metadata": { "MetadataSet":
+                      {
+                        "@DEF": "Animation_1",
+                        "@name": "Animation",
+                        "@reference": "http://titania.create3000.de",
+                        "-value": [
+                          { "MetadataInteger":
+                            {
+                              "@DEF": "duration_1",
+                              "@name": "duration",
+                              "@reference": "http://titania.create3000.de",
+                              "@value": [
+                                5
+                              ]
+                            }
+                          },
+                          { "MetadataInteger":
+                            {
+                              "@DEF": "frameRate_1",
+                              "@name": "frameRate",
+                              "@reference": "http://titania.create3000.de",
+                              "@value": [
+                                10
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
                     "-children": [
                       { "TimeSensor":
                         {
@@ -203,15 +234,147 @@
                       { "ScalarInterpolator":
                         {
                           "@DEF": "TransparencyInterpolator",
-                          "@key": [ 0, 0.2, 0.4, 0.6, 0.8, 1 ],
-                          "@keyValue": [ 0.6, 0.5376, 0.3888, 0.2112, 0.0624, 0 ]
+                          "-metadata": { "MetadataSet":
+                            {
+                              "@DEF": "Interpolator_1",
+                              "@name": "Interpolator",
+                              "@reference": "http://titania.create3000.de",
+                              "-value": [
+                                { "MetadataInteger":
+                                  {
+                                    "@DEF": "key_1",
+                                    "@name": "key",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      0,
+                                      5
+                                    ]
+                                  }
+                                },
+                                { "MetadataDouble":
+                                  {
+                                    "@DEF": "keyValue_1",
+                                    "@name": "keyValue",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      0.600000023841858,
+                                      0
+                                    ]
+                                  }
+                                },
+                                { "MetadataString":
+                                  {
+                                    "@DEF": "keyType_1",
+                                    "@name": "keyType",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      "SPLINE",
+                                      "SPLINE"
+                                    ]
+                                  }
+                                },
+                                { "MetadataInteger":
+                                  {
+                                    "@DEF": "keySize_1",
+                                    "@name": "keySize",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      1
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "@key": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1
+                          ],
+                          "@keyValue": [
+                            0.6,
+                            0.5376,
+                            0.3888,
+                            0.2112,
+                            0.0624,
+                            0
+                          ]
                         }
                       },
                       { "ScalarInterpolator":
                         {
                           "@DEF": "PointSizeInterpolator",
-                          "@key": [ 0, 0.2, 0.4, 0.6, 0.8, 1 ],
-                          "@keyValue": [ 12, 12.728, 14.464, 16.536, 18.272, 19 ]
+                          "-metadata": { "MetadataSet":
+                            {
+                              "@DEF": "Interpolator",
+                              "@name": "Interpolator",
+                              "@reference": "http://titania.create3000.de",
+                              "-value": [
+                                { "MetadataInteger":
+                                  {
+                                    "@DEF": "key",
+                                    "@name": "key",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      0,
+                                      5
+                                    ]
+                                  }
+                                },
+                                { "MetadataDouble":
+                                  {
+                                    "@DEF": "keyValue",
+                                    "@name": "keyValue",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      12,
+                                      19
+                                    ]
+                                  }
+                                },
+                                { "MetadataString":
+                                  {
+                                    "@DEF": "keyType",
+                                    "@name": "keyType",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      "SPLINE",
+                                      "SPLINE"
+                                    ]
+                                  }
+                                },
+                                { "MetadataInteger":
+                                  {
+                                    "@DEF": "keySize",
+                                    "@name": "keySize",
+                                    "@reference": "http://titania.create3000.de",
+                                    "@value": [
+                                      1
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "@key": [
+                            0,
+                            0.2,
+                            0.4,
+                            0.6,
+                            0.8,
+                            1
+                          ],
+                          "@keyValue": [
+                            12,
+                            12.728,
+                            14.464,
+                            16.536,
+                            18.272,
+                            19
+                          ]
                         }
                       }
                     ]
@@ -256,54 +419,6 @@
                     "@duration": 0.4
                   }
                 },
-                { "Script":
-                  {
-                    "@DEF": "PointSizeScript",
-                    "field": [
-                      {
-                        "@accessType": "inputOnly",
-                        "@type": "SFFloat",
-                        "@name": "set_pointSize"
-                      },
-                      {
-                        "@accessType": "initializeOnly",
-                        "@type": "SFNode",
-                        "@name": "fontStyle",
-                        "-children": [
-                          { "ScreenFontStyle":
-                            {
-                              "@USE": "_2"
-                            }
-                          }
-                        ]
-                      }
-                    ],
-                    "#sourceText": [
-"ecmascript:",
-"",
-"function set_pointSize (value, time)",
-"{",
-"\tfontStyle .pointSize = value;",
-"}"
-                    ]
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "To0",
-                    "@fromField": "value_changed",
-                    "@toNode": "_7",
-                    "@toField": "set_destination"
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "To1",
-                    "@fromField": "value_changed",
-                    "@toNode": "_7",
-                    "@toField": "set_destination"
-                  }
-                },
                 { "ROUTE":
                   {
                     "@fromNode": "_6",
@@ -338,26 +453,10 @@
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_7",
-                    "@fromField": "value_changed",
-                    "@toNode": "PointSizeInterpolator",
-                    "@toField": "set_fraction"
-                  }
-                },
-                { "ROUTE":
-                  {
                     "@fromNode": "TransparencyInterpolator",
                     "@fromField": "value_changed",
                     "@toNode": "_1",
                     "@toField": "transparency"
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "_7",
-                    "@fromField": "value_changed",
-                    "@toNode": "TransparencyInterpolator",
-                    "@toField": "set_fraction"
                   }
                 },
                 { "ROUTE":
@@ -388,16 +487,44 @@
                   {
                     "@fromNode": "PointSizeInterpolator",
                     "@fromField": "value_changed",
-                    "@toNode": "PointSizeScript",
-                    "@toField": "set_pointSize"
+                    "@toNode": "_2",
+                    "@toField": "pointSize"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_7",
+                    "@fromField": "value_changed",
+                    "@toNode": "TransparencyInterpolator",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "_7",
+                    "@fromField": "value_changed",
+                    "@toNode": "PointSizeInterpolator",
+                    "@toField": "set_fraction"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "To1",
+                    "@fromField": "value_changed",
+                    "@toNode": "_7",
+                    "@toField": "set_destination"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "To0",
+                    "@fromField": "value_changed",
+                    "@toNode": "_7",
+                    "@toField": "set_destination"
                   }
                 }
               ]
             }
-          }
-        },
-        { "WorldInfo":
-          {
           }
         },
         { "Script":
@@ -411,28 +538,32 @@
               }
             ],
             "#sourceText": [
-"ecmascript:",
-"",
-"function initialize ()",
-"{",
-"\ttry",
-"\t{",
-"\t\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
-"\t\tBrowser .setBrowserOption (\"StraightenHorizon\", true);",
-"\t}",
-"\tcatch (error)",
-"\t{ }",
-"\t",
-"\tinitialized = true;",
-"}",
-""
+              "ecmascript:",
+              "",
+              "function initialize ()",
+              "{",
+              "\ttry",
+              "\t{",
+              "\t\tBrowser .setBrowserOption (\"PrimitiveQuality\", \"HIGH\");",
+              "\t\tBrowser .setBrowserOption (\"StraightenHorizon\", true);",
+              "\t}",
+              "\tcatch (error)",
+              "\t{ }",
+              "\t",
+              "\tinitialized = true;",
+              "}",
+              ""
             ]
           }
         },
         { "LayerSet":
           {
             "@activeLayer": 1,
-            "@order": [ 0, 1, 2 ],
+            "@order": [
+              0,
+              1,
+              2
+            ],
             "-layers": [
               { "Layer":
                 {
@@ -458,7 +589,9 @@
                                   },
                                   "-texture": { "ImageTexture":
                                     {
-                                      "@url": [ "assets/world.jpg" ]
+                                      "@url": [
+                                        "assets/world.jpg"
+                                      ]
                                     }
                                   }
                                 }
@@ -487,7 +620,9 @@
                                       {
                                         "-texture": { "ImageTexture":
                                           {
-                                            "@url": [ "assets/athmosphere.png" ]
+                                            "@url": [
+                                              "assets/athmosphere.png"
+                                            ]
                                           }
                                         }
                                       }
@@ -508,7 +643,9 @@
                       {
                         "@DEF": "Cities",
                         "@global": true,
-                        "@url": [ "assets/cities.x3dz" ]
+                        "@url": [
+                          "assets/cities.x3dz"
+                        ]
                       }
                     }
                   ]
@@ -517,6 +654,71 @@
               { "LayoutLayer":
                 {
                   "@DEF": "HUD_1",
+                  "-metadata": { "MetadataSet":
+                    {
+                      "@DEF": "Titania_1",
+                      "@name": "Titania",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataSet":
+                          {
+                            "@DEF": "Grid_1",
+                            "@name": "Grid",
+                            "@reference": "http://titania.create3000.de",
+                            "-value": [
+                              { "MetadataBoolean":
+                                {
+                                  "@DEF": "enabled_1",
+                                  "@name": "enabled",
+                                  "@reference": "http://titania.create3000.de",
+                                  "@value": [
+                                    false
+                                  ]
+                                }
+                              },
+                              { "MetadataDouble":
+                                {
+                                  "@DEF": "rotation",
+                                  "@name": "rotation",
+                                  "@reference": "http://titania.create3000.de",
+                                  "@value": [
+                                    1,
+                                    0,
+                                    0,
+                                    1.5707963267949
+                                  ]
+                                }
+                              },
+                              { "MetadataInteger":
+                                {
+                                  "@DEF": "dimension",
+                                  "@name": "dimension",
+                                  "@reference": "http://titania.create3000.de",
+                                  "@value": [
+                                    96,
+                                    10,
+                                    54
+                                  ]
+                                }
+                              },
+                              { "MetadataFloat":
+                                {
+                                  "@DEF": "scale",
+                                  "@name": "scale",
+                                  "@reference": "http://titania.create3000.de",
+                                  "@value": [
+                                    10,
+                                    10,
+                                    10
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
                   "-layout": { "Layout":
                     {
                     }
@@ -527,11 +729,26 @@
                         "@DEF": "Years",
                         "-layout": { "Layout":
                           {
-                            "@align": [ "LEFT", "TOP" ],
-                            "@offsetUnits": [ "PIXEL", "PIXEL" ],
-                            "@sizeUnits": [ "PIXEL", "PIXEL" ],
-                            "@size": [ 200, 100 ],
-                            "@scaleMode": [ "PIXEL", "PIXEL" ]
+                            "@align": [
+                              "LEFT",
+                              "TOP"
+                            ],
+                            "@offsetUnits": [
+                              "PIXEL",
+                              "PIXEL"
+                            ],
+                            "@sizeUnits": [
+                              "PIXEL",
+                              "PIXEL"
+                            ],
+                            "@size": [
+                              200,
+                              100
+                            ],
+                            "@scaleMode": [
+                              "PIXEL",
+                              "PIXEL"
+                            ]
                           }
                         },
                         "-children": [
@@ -544,11 +761,16 @@
                                   {
                                     "-geometry": { "Text":
                                       {
-                                        "@string": [ "World Population " ],
+                                        "@string": [
+                                          "World Population "
+                                        ],
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/georgia.ttf", "SERIF" ],
+                                            "@family": [
+                                              "assets/georgia.ttf",
+                                              "SERIF"
+                                            ],
                                             "@pointSize": 15
                                           }
                                         }
@@ -580,10 +802,15 @@
                                     },
                                     "-geometry": { "LineSet":
                                       {
-                                        "@vertexCount": [ 2 ],
+                                        "@vertexCount": [
+                                          2
+                                        ],
                                         "-coord": { "Coordinate":
                                           {
-                                            "@point": [ -1, 0, 0, 1, 0, 0 ]
+                                            "@point": [
+                                              -1, 0, 0,
+                                              1, 0, 0
+                                            ]
                                           }
                                         }
                                       }
@@ -600,7 +827,7 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_8",
+                                    "@DEF": "_1",
                                     "@name": "Year",
                                     "fieldValue": [
                                       {
@@ -609,14 +836,16 @@
                                       },
                                       {
                                         "@name": "string",
-                                        "@value": [ "1995" ]
+                                        "@value": [
+                                          "1995"
+                                        ]
                                       }
                                     ]
                                   }
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_9"
+                                    "@DEF": "_2"
                                   }
                                 },
                                 { "BooleanFilter":
@@ -631,7 +860,7 @@
                                 },
                                 { "TimeTrigger":
                                   {
-                                    "@DEF": "_10"
+                                    "@DEF": "_3"
                                   }
                                 },
                                 { "ProtoInstance":
@@ -650,28 +879,28 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_11",
+                                    "@DEF": "_4",
                                     "@name": "Year"
                                   }
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_12"
+                                    "@DEF": "_5"
                                   }
                                 },
                                 { "BooleanFilter":
                                   {
-                                    "@DEF": "_13"
+                                    "@DEF": "_6"
                                   }
                                 },
                                 { "BooleanFilter":
                                   {
-                                    "@DEF": "_14"
+                                    "@DEF": "_7"
                                   }
                                 },
                                 { "TimeTrigger":
                                   {
-                                    "@DEF": "_15"
+                                    "@DEF": "_8"
                                   }
                                 },
                                 { "ProtoInstance":
@@ -696,34 +925,36 @@
                               "-children": [
                                 { "ProtoInstance":
                                   {
-                                    "@DEF": "_16",
+                                    "@DEF": "_9",
                                     "@name": "Year",
                                     "fieldValue": [
                                       {
                                         "@name": "string",
-                                        "@value": [ "2005" ]
+                                        "@value": [
+                                          "2005"
+                                        ]
                                       }
                                     ]
                                   }
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@DEF": "_17"
+                                    "@DEF": "_10"
                                   }
                                 },
                                 { "BooleanFilter":
                                   {
-                                    "@DEF": "_18"
+                                    "@DEF": "_11"
                                   }
                                 },
                                 { "BooleanFilter":
                                   {
-                                    "@DEF": "_19"
+                                    "@DEF": "_12"
                                   }
                                 },
                                 { "TimeTrigger":
                                   {
-                                    "@DEF": "_20"
+                                    "@DEF": "_13"
                                   }
                                 },
                                 { "ProtoInstance":
@@ -755,11 +986,26 @@
                         "@DEF": "X3D-Experiment",
                         "-layout": { "Layout":
                           {
-                            "@align": [ "LEFT", "BOTTOM" ],
-                            "@offsetUnits": [ "PIXEL", "PIXEL" ],
-                            "@sizeUnits": [ "PIXEL", "PIXEL" ],
-                            "@size": [ 100, 100 ],
-                            "@scaleMode": [ "PIXEL", "PIXEL" ]
+                            "@align": [
+                              "LEFT",
+                              "BOTTOM"
+                            ],
+                            "@offsetUnits": [
+                              "PIXEL",
+                              "PIXEL"
+                            ],
+                            "@sizeUnits": [
+                              "PIXEL",
+                              "PIXEL"
+                            ],
+                            "@size": [
+                              100,
+                              100
+                            ],
+                            "@scaleMode": [
+                              "PIXEL",
+                              "PIXEL"
+                            ]
                           }
                         },
                         "-children": [
@@ -780,11 +1026,16 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@string": [ "This is a" ],
+                                        "@string": [
+                                          "This is a"
+                                        ],
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                            "@family": [
+                                              "assets/DejaVuSans.ttf",
+                                              "SANS"
+                                            ],
                                             "@pointSize": 8
                                           }
                                         }
@@ -813,11 +1064,17 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@string": [ "X3D", "Experiment" ],
+                                        "@string": [
+                                          "X3D",
+                                          "Experiment"
+                                        ],
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                            "@family": [
+                                              "assets/DejaVuSans.ttf",
+                                              "SANS"
+                                            ],
                                             "@pointSize": 15
                                           }
                                         }
@@ -836,11 +1093,26 @@
                         "@DEF": "Inspired_1",
                         "-layout": { "Layout":
                           {
-                            "@align": [ "RIGHT", "BOTTOM" ],
-                            "@offsetUnits": [ "PIXEL", "PIXEL" ],
-                            "@sizeUnits": [ "PIXEL", "PIXEL" ],
-                            "@size": [ 200, 100 ],
-                            "@scaleMode": [ "PIXEL", "PIXEL" ]
+                            "@align": [
+                              "RIGHT",
+                              "BOTTOM"
+                            ],
+                            "@offsetUnits": [
+                              "PIXEL",
+                              "PIXEL"
+                            ],
+                            "@sizeUnits": [
+                              "PIXEL",
+                              "PIXEL"
+                            ],
+                            "@size": [
+                              200,
+                              100
+                            ],
+                            "@scaleMode": [
+                              "PIXEL",
+                              "PIXEL"
+                            ]
                           }
                         },
                         "-children": [
@@ -862,11 +1134,16 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@string": [ "X3D Globe" ],
+                                        "@string": [
+                                          "X3D Globe"
+                                        ],
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                            "@family": [
+                                              "assets/DejaVuSans.ttf",
+                                              "SANS"
+                                            ],
                                             "@style": "BOLD",
                                             "@pointSize": 10
                                           }
@@ -881,8 +1158,12 @@
                           { "Anchor":
                             {
                               "@DEF": "Inspired",
-                              "@url": [ "http://globe.chromeexperiments.com/" ],
-                              "@parameter": [ "target=_blank" ],
+                              "@url": [
+                                "http://globe.chromeexperiments.com/"
+                              ],
+                              "@parameter": [
+                                "target=_blank"
+                              ],
                               "-children": [
                                 { "Transform":
                                   {
@@ -900,11 +1181,16 @@
                                           },
                                           "-geometry": { "Text":
                                             {
-                                              "@string": [ " •     Inspired by Chrome WebGL Gobe" ],
+                                              "@string": [
+                                                " •     Inspired by Chrome WebGL Gobe"
+                                              ],
                                               "@solid": true,
                                               "-fontStyle": { "ScreenFontStyle":
                                                 {
-                                                  "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                                  "@family": [
+                                                    "assets/DejaVuSans.ttf",
+                                                    "SANS"
+                                                  ],
                                                   "@pointSize": 10
                                                 }
                                               }
@@ -935,23 +1221,23 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_12",
+            "@fromNode": "_5",
             "@fromField": "isOver",
-            "@toNode": "_13",
+            "@toNode": "_6",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_17",
+            "@fromNode": "_10",
             "@fromField": "isOver",
-            "@toNode": "_18",
+            "@toNode": "_11",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_9",
+            "@fromNode": "_2",
             "@fromField": "isOver",
             "@toNode": "EnableYear",
             "@toField": "set_boolean"
@@ -967,17 +1253,17 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_13",
+            "@fromNode": "_6",
             "@fromField": "inputTrue",
-            "@toNode": "_14",
+            "@toNode": "_7",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_18",
+            "@fromNode": "_11",
             "@fromField": "inputTrue",
-            "@toNode": "_19",
+            "@toNode": "_12",
             "@toField": "set_boolean"
           }
         },
@@ -985,13 +1271,13 @@
           {
             "@fromNode": "EnableYear",
             "@fromField": "inputTrue",
-            "@toNode": "_10",
+            "@toNode": "_3",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_8",
             "@fromField": "triggerTime",
             "@toNode": "Cities2000",
             "@toField": "set_triggerTime"
@@ -999,7 +1285,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_10",
+            "@fromNode": "_3",
             "@fromField": "triggerTime",
             "@toNode": "Cities1995",
             "@toField": "set_triggerTime"
@@ -1007,15 +1293,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_13",
+            "@fromNode": "_6",
             "@fromField": "inputTrue",
-            "@toNode": "_15",
+            "@toNode": "_8",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_13",
             "@fromField": "triggerTime",
             "@toNode": "Cities2005",
             "@toField": "set_triggerTime"
@@ -1023,9 +1309,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_18",
+            "@fromNode": "_11",
             "@fromField": "inputTrue",
-            "@toNode": "_20",
+            "@toNode": "_13",
             "@toField": "set_boolean"
           }
         },
@@ -1055,25 +1341,17 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "EnterWorldScript",
-            "@fromField": "initialized",
-            "@toNode": "EnableYear",
-            "@toField": "set_boolean"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_18",
+            "@fromNode": "_11",
             "@fromField": "inputTrue",
-            "@toNode": "_16",
+            "@toNode": "_9",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_14",
+            "@fromNode": "_7",
             "@fromField": "inputNegate",
-            "@toNode": "_16",
+            "@toNode": "_9",
             "@toField": "enabled"
           }
         },
@@ -1081,23 +1359,23 @@
           {
             "@fromNode": "DisableOthers",
             "@fromField": "inputNegate",
-            "@toNode": "_16",
+            "@toNode": "_9",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_19",
+            "@fromNode": "_12",
             "@fromField": "inputNegate",
-            "@toNode": "_8",
+            "@toNode": "_1",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_14",
+            "@fromNode": "_7",
             "@fromField": "inputNegate",
-            "@toNode": "_8",
+            "@toNode": "_1",
             "@toField": "enabled"
           }
         },
@@ -1105,15 +1383,15 @@
           {
             "@fromNode": "EnableYear",
             "@fromField": "inputTrue",
-            "@toNode": "_8",
+            "@toNode": "_1",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_19",
+            "@fromNode": "_12",
             "@fromField": "inputNegate",
-            "@toNode": "_11",
+            "@toNode": "_4",
             "@toField": "enabled"
           }
         },
@@ -1121,16 +1399,24 @@
           {
             "@fromNode": "DisableOthers",
             "@fromField": "inputNegate",
-            "@toNode": "_11",
+            "@toNode": "_4",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_13",
+            "@fromNode": "_6",
             "@fromField": "inputTrue",
-            "@toNode": "_11",
+            "@toNode": "_4",
             "@toField": "enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "EnterWorldScript",
+            "@fromField": "initialized",
+            "@toNode": "EnableYear",
+            "@toField": "set_boolean"
           }
         },
         { "ROUTE":

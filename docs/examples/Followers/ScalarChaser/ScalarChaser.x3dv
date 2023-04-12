@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V8.6.17
 
 PROFILE Interchange
 
@@ -11,14 +11,12 @@ COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 08 Jul 2018 09:58:21 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.5.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ScalarChaser/ScalarChaser.O.x3d"
-META "modified" "Sun, 23 Jun 2019 13:23:54 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Thu, 02 Mar 2023 15:47:50 GMT"
+META "generator" "Sunrize X3D Editor V1.0.17, https://create3000.github.io/sunrize/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/ScalarChaser/ScalarChaser.x3dv"
+META "modified" "Wed, 12 Apr 2023 21:42:52 GMT"
 
 EXTERNPROTO SFFloat [
   inputOnly   SFTime  set_triggerTime
@@ -50,8 +48,14 @@ PROTO Year [
       string IS string
       solid TRUE
       fontStyle DEF _2 ScreenFontStyle {
-        family [ "assets/georgia.ttf", "SERIF" ]
-        justify [ "MIDDLE", "MIDDLE" ]
+        family [
+          "assets/georgia.ttf",
+          "SERIF"
+        ]
+        justify [
+          "MIDDLE",
+          "MIDDLE"
+        ]
       }
     }
   }
@@ -61,18 +65,132 @@ PROTO Year [
   }
 
   DEF Animation Group {
+    metadata DEF Animation_1 MetadataSet {
+      name "Animation"
+      reference "http://titania.create3000.de"
+      value [
+        DEF duration_1 MetadataInteger {
+          name "duration"
+          reference "http://titania.create3000.de"
+          value 5
+        }
+        DEF frameRate_1 MetadataInteger {
+          name "frameRate"
+          reference "http://titania.create3000.de"
+          value 10
+        }
+      ]
+    }
     children [
       DEF AnimationTimer TimeSensor {
         cycleInterval 0.5
         stopTime 1
       }
       DEF TransparencyInterpolator ScalarInterpolator {
-        key [ 0, 0.2, 0.4, 0.6, 0.8, 1 ]
-        keyValue [ 0.6, 0.5376, 0.3888, 0.2112, 0.0624, 0 ]
+        metadata DEF Interpolator_1 MetadataSet {
+          name "Interpolator"
+          reference "http://titania.create3000.de"
+          value [
+            DEF key_1 MetadataInteger {
+              name "key"
+              reference "http://titania.create3000.de"
+              value [
+                0,
+                5
+              ]
+            }
+            DEF keyValue_1 MetadataDouble {
+              name "keyValue"
+              reference "http://titania.create3000.de"
+              value [
+                0.600000023841858,
+                0
+              ]
+            }
+            DEF keyType_1 MetadataString {
+              name "keyType"
+              reference "http://titania.create3000.de"
+              value [
+                "SPLINE",
+                "SPLINE"
+              ]
+            }
+            DEF keySize_1 MetadataInteger {
+              name "keySize"
+              reference "http://titania.create3000.de"
+              value 1
+            }
+          ]
+        }
+        key [
+          0,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          1
+        ]
+        keyValue [
+          0.6,
+          0.5376,
+          0.3888,
+          0.2112,
+          0.0624,
+          0
+        ]
       }
       DEF PointSizeInterpolator ScalarInterpolator {
-        key [ 0, 0.2, 0.4, 0.6, 0.8, 1 ]
-        keyValue [ 12, 12.728, 14.464, 16.536, 18.272, 19 ]
+        metadata DEF Interpolator MetadataSet {
+          name "Interpolator"
+          reference "http://titania.create3000.de"
+          value [
+            DEF key MetadataInteger {
+              name "key"
+              reference "http://titania.create3000.de"
+              value [
+                0,
+                5
+              ]
+            }
+            DEF keyValue MetadataDouble {
+              name "keyValue"
+              reference "http://titania.create3000.de"
+              value [
+                12,
+                19
+              ]
+            }
+            DEF keyType MetadataString {
+              name "keyType"
+              reference "http://titania.create3000.de"
+              value [
+                "SPLINE",
+                "SPLINE"
+              ]
+            }
+            DEF keySize MetadataInteger {
+              name "keySize"
+              reference "http://titania.create3000.de"
+              value 1
+            }
+          ]
+        }
+        key [
+          0,
+          0.2,
+          0.4,
+          0.6,
+          0.8,
+          1
+        ]
+        keyValue [
+          12,
+          12.728,
+          14.464,
+          16.536,
+          18.272,
+          19
+        ]
       }
     ]
   }
@@ -93,34 +211,20 @@ PROTO Year [
     duration 0.4
   }
 
-  DEF PointSizeScript Script {
-    inputOnly      SFFloat set_pointSize
-    initializeOnly SFNode  fontStyle USE _2
-
-    url "ecmascript:
-
-function set_pointSize (value, time)
-{
-	fontStyle .pointSize = value;
-}"
-  }
-
-  ROUTE To0.value_changed TO _7.set_destination
-  ROUTE To1.value_changed TO _7.set_destination
   ROUTE _6.triggerTime TO To1.set_triggerTime
   ROUTE _5.triggerTime TO To0.set_triggerTime
   ROUTE _4.inputTrue TO _6.set_boolean
   ROUTE _4.inputFalse TO _5.set_boolean
-  ROUTE _7.value_changed TO PointSizeInterpolator.set_fraction
   ROUTE TransparencyInterpolator.value_changed TO _1.set_transparency
-  ROUTE _7.value_changed TO TransparencyInterpolator.set_fraction
   ROUTE AnimationTimer.fraction_changed TO PointSizeInterpolator.set_fraction
   ROUTE AnimationTimer.fraction_changed TO TransparencyInterpolator.set_fraction
   ROUTE _3.enabled_changed TO _4.set_boolean
-  ROUTE PointSizeInterpolator.value_changed TO PointSizeScript.set_pointSize
+  ROUTE PointSizeInterpolator.value_changed TO _2.set_pointSize
+  ROUTE _7.value_changed TO TransparencyInterpolator.set_fraction
+  ROUTE _7.value_changed TO PointSizeInterpolator.set_fraction
+  ROUTE To1.value_changed TO _7.set_destination
+  ROUTE To0.value_changed TO _7.set_destination
 }
-
-WorldInfo { }
 
 DEF EnterWorldScript Script {
   outputOnly SFBool initialized
@@ -144,7 +248,11 @@ function initialize ()
 
 LayerSet {
   activeLayer 1
-  order [ 0, 1, 2 ]
+  order [
+    0,
+    1,
+    2
+  ]
   layers [
     DEF Earth Layer {
       children [
@@ -185,15 +293,73 @@ LayerSet {
       ]
     }
     DEF HUD_1 LayoutLayer {
+      metadata DEF Titania_1 MetadataSet {
+        name "Titania"
+        reference "http://titania.create3000.de"
+        value DEF Grid_1 MetadataSet {
+          name "Grid"
+          reference "http://titania.create3000.de"
+          value [
+            DEF enabled_1 MetadataBoolean {
+              name "enabled"
+              reference "http://titania.create3000.de"
+              value FALSE
+            }
+            DEF rotation MetadataDouble {
+              name "rotation"
+              reference "http://titania.create3000.de"
+              value [
+                1,
+                0,
+                0,
+                1.5707963267949
+              ]
+            }
+            DEF dimension MetadataInteger {
+              name "dimension"
+              reference "http://titania.create3000.de"
+              value [
+                96,
+                10,
+                54
+              ]
+            }
+            DEF scale MetadataFloat {
+              name "scale"
+              reference "http://titania.create3000.de"
+              value [
+                10,
+                10,
+                10
+              ]
+            }
+          ]
+        }
+      }
       layout Layout { }
       children [
         DEF Years LayoutGroup {
           layout Layout {
-            align [ "LEFT", "TOP" ]
-            offsetUnits [ "PIXEL", "PIXEL" ]
-            sizeUnits [ "PIXEL", "PIXEL" ]
-            size [ 200, 100 ]
-            scaleMode [ "PIXEL", "PIXEL" ]
+            align [
+              "LEFT",
+              "TOP"
+            ]
+            offsetUnits [
+              "PIXEL",
+              "PIXEL"
+            ]
+            sizeUnits [
+              "PIXEL",
+              "PIXEL"
+            ]
+            size [
+              200,
+              100
+            ]
+            scaleMode [
+              "PIXEL",
+              "PIXEL"
+            ]
           }
           children [
             DEF WorldPopulation Transform {
@@ -203,7 +369,10 @@ LayerSet {
                   string "World Population "
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/georgia.ttf", "SERIF" ]
+                    family [
+                      "assets/georgia.ttf",
+                      "SERIF"
+                    ]
                     pointSize 15
                   }
                 }
@@ -223,7 +392,10 @@ LayerSet {
                 geometry LineSet {
                   vertexCount 2
                   coord Coordinate {
-                    point [ -1 0 0, 1 0 0 ]
+                    point [
+                      -1 0 0,
+                      1 0 0
+                    ]
                   }
                 }
               }
@@ -231,25 +403,25 @@ LayerSet {
             DEF Year1995 Transform {
               translation -9 -36 0
               children [
-                DEF _8 Year {
+                DEF _1 Year {
                   enabled TRUE
                   string "1995"
                 }
-                DEF _9 TouchSensor { }
+                DEF _2 TouchSensor { }
                 DEF EnableYear BooleanFilter { }
                 DEF DisableOthers BooleanFilter { }
-                DEF _10 TimeTrigger { }
+                DEF _3 TimeTrigger { }
                 DEF Cities1995 SFFloat { }
               ]
             }
             DEF Year2000 Transform {
               translation 84 -36 0
               children [
-                DEF _11 Year { }
-                DEF _12 TouchSensor { }
-                DEF _13 BooleanFilter { }
-                DEF _14 BooleanFilter { }
-                DEF _15 TimeTrigger { }
+                DEF _4 Year { }
+                DEF _5 TouchSensor { }
+                DEF _6 BooleanFilter { }
+                DEF _7 BooleanFilter { }
+                DEF _8 TimeTrigger { }
                 DEF Cities2000 SFFloat {
                   keyValue 0.5
                 }
@@ -258,13 +430,13 @@ LayerSet {
             DEF Year2005 Transform {
               translation 159 -36 0
               children [
-                DEF _16 Year {
+                DEF _9 Year {
                   string "2005"
                 }
-                DEF _17 TouchSensor { }
-                DEF _18 BooleanFilter { }
-                DEF _19 BooleanFilter { }
-                DEF _20 TimeTrigger { }
+                DEF _10 TouchSensor { }
+                DEF _11 BooleanFilter { }
+                DEF _12 BooleanFilter { }
+                DEF _13 TimeTrigger { }
                 DEF Cities2005 SFFloat {
                   keyValue 1
                 }
@@ -277,11 +449,26 @@ LayerSet {
         }
         DEF X3D-Experiment LayoutGroup {
           layout Layout {
-            align [ "LEFT", "BOTTOM" ]
-            offsetUnits [ "PIXEL", "PIXEL" ]
-            sizeUnits [ "PIXEL", "PIXEL" ]
-            size [ 100, 100 ]
-            scaleMode [ "PIXEL", "PIXEL" ]
+            align [
+              "LEFT",
+              "BOTTOM"
+            ]
+            offsetUnits [
+              "PIXEL",
+              "PIXEL"
+            ]
+            sizeUnits [
+              "PIXEL",
+              "PIXEL"
+            ]
+            size [
+              100,
+              100
+            ]
+            scaleMode [
+              "PIXEL",
+              "PIXEL"
+            ]
           }
           children [
             DEF This-is-a Transform {
@@ -294,7 +481,10 @@ LayerSet {
                   string "This is a"
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/DejaVuSans.ttf", "SANS" ]
+                    family [
+                      "assets/DejaVuSans.ttf",
+                      "SANS"
+                    ]
                     pointSize 8
                   }
                 }
@@ -308,10 +498,16 @@ LayerSet {
                   material Material { }
                 }
                 geometry Text {
-                  string [ "X3D", "Experiment" ]
+                  string [
+                    "X3D",
+                    "Experiment"
+                  ]
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/DejaVuSans.ttf", "SANS" ]
+                    family [
+                      "assets/DejaVuSans.ttf",
+                      "SANS"
+                    ]
                     pointSize 15
                   }
                 }
@@ -321,11 +517,26 @@ LayerSet {
         }
         DEF Inspired_1 LayoutGroup {
           layout Layout {
-            align [ "RIGHT", "BOTTOM" ]
-            offsetUnits [ "PIXEL", "PIXEL" ]
-            sizeUnits [ "PIXEL", "PIXEL" ]
-            size [ 200, 100 ]
-            scaleMode [ "PIXEL", "PIXEL" ]
+            align [
+              "RIGHT",
+              "BOTTOM"
+            ]
+            offsetUnits [
+              "PIXEL",
+              "PIXEL"
+            ]
+            sizeUnits [
+              "PIXEL",
+              "PIXEL"
+            ]
+            size [
+              200,
+              100
+            ]
+            scaleMode [
+              "PIXEL",
+              "PIXEL"
+            ]
           }
           children [
             DEF X3D-Globe Transform {
@@ -340,7 +551,10 @@ LayerSet {
                   string "X3D Globe"
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/DejaVuSans.ttf", "SANS" ]
+                    family [
+                      "assets/DejaVuSans.ttf",
+                      "SANS"
+                    ]
                     style "BOLD"
                     pointSize 10
                   }
@@ -360,7 +574,10 @@ LayerSet {
                     string " •     Inspired by Chrome WebGL Gobe"
                     solid TRUE
                     fontStyle ScreenFontStyle {
-                      family [ "assets/DejaVuSans.ttf", "SANS" ]
+                      family [
+                        "assets/DejaVuSans.ttf",
+                        "SANS"
+                      ]
                       pointSize 10
                     }
                   }
@@ -376,29 +593,29 @@ LayerSet {
 
 IMPORT Cities.PointInterpolator
 
-ROUTE _12.isOver TO _13.set_boolean
-ROUTE _17.isOver TO _18.set_boolean
-ROUTE _9.isOver TO EnableYear.set_boolean
+ROUTE _5.isOver TO _6.set_boolean
+ROUTE _10.isOver TO _11.set_boolean
+ROUTE _2.isOver TO EnableYear.set_boolean
 ROUTE EnableYear.inputTrue TO DisableOthers.set_boolean
-ROUTE _13.inputTrue TO _14.set_boolean
-ROUTE _18.inputTrue TO _19.set_boolean
-ROUTE EnableYear.inputTrue TO _10.set_boolean
-ROUTE _15.triggerTime TO Cities2000.set_triggerTime
-ROUTE _10.triggerTime TO Cities1995.set_triggerTime
-ROUTE _13.inputTrue TO _15.set_boolean
-ROUTE _20.triggerTime TO Cities2005.set_triggerTime
-ROUTE _18.inputTrue TO _20.set_boolean
+ROUTE _6.inputTrue TO _7.set_boolean
+ROUTE _11.inputTrue TO _12.set_boolean
+ROUTE EnableYear.inputTrue TO _3.set_boolean
+ROUTE _8.triggerTime TO Cities2000.set_triggerTime
+ROUTE _3.triggerTime TO Cities1995.set_triggerTime
+ROUTE _6.inputTrue TO _8.set_boolean
+ROUTE _13.triggerTime TO Cities2005.set_triggerTime
+ROUTE _11.inputTrue TO _13.set_boolean
 ROUTE Cities2005.value_changed TO AnimateCities.set_destination
 ROUTE Cities2000.value_changed TO AnimateCities.set_destination
 ROUTE Cities1995.value_changed TO AnimateCities.set_destination
+ROUTE _11.inputTrue TO _9.set_enabled
+ROUTE _7.inputNegate TO _9.set_enabled
+ROUTE DisableOthers.inputNegate TO _9.set_enabled
+ROUTE _12.inputNegate TO _1.set_enabled
+ROUTE _7.inputNegate TO _1.set_enabled
+ROUTE EnableYear.inputTrue TO _1.set_enabled
+ROUTE _12.inputNegate TO _4.set_enabled
+ROUTE DisableOthers.inputNegate TO _4.set_enabled
+ROUTE _6.inputTrue TO _4.set_enabled
 ROUTE EnterWorldScript.initialized TO EnableYear.set_boolean
-ROUTE _18.inputTrue TO _16.set_enabled
-ROUTE _14.inputNegate TO _16.set_enabled
-ROUTE DisableOthers.inputNegate TO _16.set_enabled
-ROUTE _19.inputNegate TO _8.set_enabled
-ROUTE _14.inputNegate TO _8.set_enabled
-ROUTE EnableYear.inputTrue TO _8.set_enabled
-ROUTE _19.inputNegate TO _11.set_enabled
-ROUTE DisableOthers.inputNegate TO _11.set_enabled
-ROUTE _13.inputTrue TO _11.set_enabled
 ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction
