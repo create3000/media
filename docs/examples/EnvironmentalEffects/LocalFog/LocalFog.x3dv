@@ -2,19 +2,20 @@
 
 PROFILE Interchange
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 04 Feb 2019 10:59:00 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/EnvironmentalEffects/LocalFog/LocalFog.O.x3d"
-META "modified" "Sat, 09 Feb 2019 23:37:21 GMT"
+META "generator" "Sunrize X3D Editor V1.0.36, https://create3000.github.io/sunrize/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/EnvironmentalEffects/LocalFog/LocalFog.O.x3d"
+META "modified" "Mon, 29 May 2023 17:45:25 GMT"
 META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Thu, 02 Mar 2023 15:45:34 GMT"
+META "converted" "Mon, 29 May 2023 17:48:41 GMT"
 
 WorldInfo { }
 
 NavigationInfo {
   type "WALK"
+  headlight FALSE
 }
 
 Viewpoint {
@@ -34,8 +35,14 @@ Fog {
   visibilityRange 49.04
 }
 
+DirectionalLight {
+  direction 0 -1 -1
+  shadows TRUE
+}
+
 DEF Island Transform {
   children Shape {
+    castShadow FALSE
     appearance Appearance {
       material Material { }
       texture ImageTexture {
@@ -51,7 +58,7 @@ DEF Island Transform {
   }
 }
 
-Transform {
+DEF Trees Transform {
   translation 26.2793 3.97363 42.0146
   children [
     DEF GreenTree Transform {
@@ -100,7 +107,7 @@ Transform {
         }
       }
     }
-    DEF Cylinder Transform {
+    DEF GreenTree_1 Transform {
       translation -2.53493 1.48746 -1
       scale 0.193624 0.616903 0.175434
       children Shape {

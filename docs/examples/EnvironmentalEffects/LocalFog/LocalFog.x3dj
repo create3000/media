@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.0, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.0.36, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/EnvironmentalEffects/LocalFog/LocalFog.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/EnvironmentalEffects/LocalFog/LocalFog.O.x3d"
         },
         {
           "@name": "modified",
-          "@content": "Sat, 09 Feb 2019 23:37:21 GMT"
+          "@content": "Mon, 29 May 2023 17:45:25 GMT"
         },
         {
           "@name": "converter",
@@ -36,7 +36,7 @@
         },
         {
           "@name": "converted",
-          "@content": "Thu, 02 Mar 2023 15:45:34 GMT"
+          "@content": "Mon, 29 May 2023 17:48:40 GMT"
         }
       ]
     },
@@ -48,7 +48,8 @@
         },
         { "NavigationInfo":
           {
-            "@type": [ "WALK" ]
+            "@type": [ "WALK" ],
+            "@headlight": false
           }
         },
         { "Viewpoint":
@@ -71,12 +72,19 @@
             "@visibilityRange": 49.04
           }
         },
+        { "DirectionalLight":
+          {
+            "@direction": [ 0, -1, -1 ],
+            "@shadows": true
+          }
+        },
         { "Transform":
           {
             "@DEF": "Island",
             "-children": [
               { "Shape":
                 {
+                  "@castShadow": false,
                   "-appearance": { "Appearance":
                     {
                       "-material": { "Material":
@@ -105,6 +113,7 @@
         },
         { "Transform":
           {
+            "@DEF": "Trees",
             "@translation": [ 26.2793, 3.97363, 42.0146 ],
             "-children": [
               { "Transform":
@@ -195,7 +204,7 @@
               },
               { "Transform":
                 {
-                  "@DEF": "Cylinder",
+                  "@DEF": "GreenTree_1",
                   "@translation": [ -2.53493, 1.48746, -1 ],
                   "@scale": [ 0.193624, 0.616903, 0.175434 ],
                   "-children": [
