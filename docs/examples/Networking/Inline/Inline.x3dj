@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,19 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.0.39, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Networking/Inline/Inline.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Networking/Inline/Inline.x3dj"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 27 Jan 2019 15:39:28 GMT"
+          "@content": "Sat, 10 Jun 2023 00:04:47 GMT"
         },
         {
           "@name": "titania-add-metadata",
           "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:58:53 GMT"
         }
       ],
       "component": [
@@ -58,6 +50,14 @@
         },
         {
           "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        },
+        {
+          "@name": "Text",
           "@level": 1
         }
       ]
@@ -99,7 +99,9 @@
                 "@name": "children"
               }
             ],
-            "@url": [ "assets/BooleanSwitch.x3d#BooleanSwitch" ]
+            "@url": [
+              "assets/BooleanSwitch.x3d#BooleanSwitch"
+            ]
           }
         },
         { "ExternProtoDeclare":
@@ -122,17 +124,380 @@
                 "@name": "solid"
               }
             ],
-            "@url": [ "assets/RoundedRectangle2D.x3d#RoundedRectangle2D" ]
+            "@url": [
+              "assets/RoundedRectangle2D.x3d#RoundedRectangle2D"
+            ]
           }
         },
         { "WorldInfo":
           {
+            "-metadata": { "MetadataSet":
+              {
+                "@DEF": "Titania",
+                "@name": "Titania",
+                "@reference": "http://titania.create3000.de",
+                "-value": [
+                  { "MetadataSet":
+                    {
+                      "@DEF": "AngleGrid",
+                      "@name": "AngleGrid",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataBoolean":
+                          {
+                            "@DEF": "enabled",
+                            "@name": "enabled",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              false
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "MetadataSet":
+                    {
+                      "@DEF": "Grid",
+                      "@name": "Grid",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataBoolean":
+                          {
+                            "@DEF": "enabled_1",
+                            "@name": "enabled",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              true
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "MetadataSet":
+                    {
+                      "@DEF": "Selection",
+                      "@name": "Selection",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataBoolean":
+                          {
+                            "@DEF": "selectGeometry",
+                            "@name": "selectGeometry",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              false
+                            ]
+                          }
+                        },
+                        { "MetadataSet":
+                          {
+                            "@DEF": "nodes",
+                            "@name": "nodes",
+                            "@reference": "http://titania.create3000.de"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "MetadataSet":
+                    {
+                      "@DEF": "BrowserPanel",
+                      "@name": "BrowserPanel",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataInteger":
+                          {
+                            "@DEF": "layerNumber",
+                            "@name": "layerNumber",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              -1,
+                              0,
+                              0,
+                              0,
+                              0,
+                              -1,
+                              -1,
+                              -1
+                            ]
+                          }
+                        },
+                        { "MetadataString":
+                          {
+                            "@DEF": "type_1",
+                            "@name": "type",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              "TOP_VIEW",
+                              "MAIN_VIEW",
+                              "PERSPECTIVE_VIEW",
+                              "FRONT_VIEW"
+                            ]
+                          }
+                        },
+                        { "MetadataSet":
+                          {
+                            "@DEF": "viewpoints",
+                            "@name": "viewpoints",
+                            "@reference": "http://titania.create3000.de",
+                            "-value": [
+                              { "MetadataSet":
+                                {
+                                  "@DEF": "PerspectiveViewpoint",
+                                  "@name": "PerspectiveViewpoint",
+                                  "@reference": "http://titania.create3000.de",
+                                  "-value": [
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "position_1",
+                                        "@name": "position",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          5.87788534164429,
+                                          6.46984958648682,
+                                          13.8524446487427
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "orientation_1",
+                                        "@name": "orientation",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          -0.704047462871212,
+                                          0.695566762376517,
+                                          0.143192350010952,
+                                          0.568941727555854
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "centerOfRotation_1",
+                                        "@name": "centerOfRotation",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          0,
+                                          0,
+                                          0
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "fieldOfViewScale",
+                                        "@name": "fieldOfViewScale",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          1
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              { "MetadataSet":
+                                {
+                                  "@DEF": "TopViewpoint",
+                                  "@name": "TopViewpoint",
+                                  "@reference": "http://titania.create3000.de",
+                                  "-value": [
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "position_2",
+                                        "@name": "position",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          -0.0320612526145463,
+                                          10.8662109375,
+                                          0.0937320149966475
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "orientation_2",
+                                        "@name": "orientation",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          1,
+                                          0,
+                                          0,
+                                          4.71238898038469
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "centerOfRotation_2",
+                                        "@name": "centerOfRotation",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          -0.0320612526145463,
+                                          0,
+                                          0.0937320149966475
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "fieldOfViewScale_1",
+                                        "@name": "fieldOfViewScale",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          1.21023944190259
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              },
+                              { "MetadataSet":
+                                {
+                                  "@DEF": "FrontViewpoint",
+                                  "@name": "FrontViewpoint",
+                                  "@reference": "http://titania.create3000.de",
+                                  "-value": [
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "position_3",
+                                        "@name": "position",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          -0.00884759203065143,
+                                          0.0177734813359099,
+                                          10000
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "orientation_3",
+                                        "@name": "orientation",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          0,
+                                          0,
+                                          1,
+                                          0
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "centerOfRotation_3",
+                                        "@name": "centerOfRotation",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          -0.00884759203065143,
+                                          0.0177734813359099,
+                                          0
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataDouble":
+                                      {
+                                        "@DEF": "fieldOfViewScale_2",
+                                        "@name": "fieldOfViewScale",
+                                        "@reference": "http://titania.create3000.de",
+                                        "@value": [
+                                          1.212467484375
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "MetadataSet":
+                    {
+                      "@DEF": "Page",
+                      "@name": "Page",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataInteger":
+                          {
+                            "@DEF": "activeView",
+                            "@name": "activeView",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              3
+                            ]
+                          }
+                        },
+                        { "MetadataInteger":
+                          {
+                            "@DEF": "multiView",
+                            "@name": "multiView",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              1
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "MetadataSet":
+                    {
+                      "@DEF": "LayerSet",
+                      "@name": "LayerSet",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataInteger":
+                          {
+                            "@DEF": "activeLayer",
+                            "@name": "activeLayer",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              3
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  { "MetadataSet":
+                    {
+                      "@DEF": "Prototype",
+                      "@name": "Prototype",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataString":
+                          {
+                            "@DEF": "path",
+                            "@name": "path",
+                            "@reference": "http://titania.create3000.de",
+                            "@value": [
+                              "RoundedRectangle2D"
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
           }
         },
         { "LayerSet":
           {
             "@activeLayer": 2,
-            "@order": [ 0, 1, 2, 3 ],
+            "@order": [
+              0,
+              1,
+              2,
+              3
+            ],
             "-layers": [
               { "Layer":
                 {
@@ -141,10 +506,24 @@
                   "-children": [
                     { "Background":
                       {
-                        "@skyAngle": [ 1.09223, 1.5708 ],
-                        "@skyColor": [ 0.2, 0.2, 0.2, 0.2, 0.2, 0.2, 0.3, 0.3, 0.3 ],
-                        "@groundAngle": [ 1.1248, 1.5708 ],
-                        "@groundColor": [ 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.3, 0.3, 0.3 ]
+                        "@skyAngle": [
+                          1.09223,
+                          1.5708
+                        ],
+                        "@skyColor": [
+                          0.2, 0.2, 0.2,
+                          0.2, 0.2, 0.2,
+                          0.3, 0.3, 0.3
+                        ],
+                        "@groundAngle": [
+                          1.1248,
+                          1.5708
+                        ],
+                        "@groundColor": [
+                          0.4, 0.4, 0.4,
+                          0.4, 0.4, 0.4,
+                          0.3, 0.3, 0.3
+                        ]
                       }
                     }
                   ]
@@ -153,6 +532,164 @@
               { "Layer":
                 {
                   "@DEF": "Model",
+                  "-metadata": { "MetadataSet":
+                    {
+                      "@DEF": "Titania_1",
+                      "@name": "Titania",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataSet":
+                          {
+                            "@DEF": "Grid_1",
+                            "@name": "Grid",
+                            "@reference": "http://titania.create3000.de",
+                            "-value": [
+                              { "MetadataBoolean":
+                                {
+                                  "@DEF": "enabled_2",
+                                  "@name": "enabled",
+                                  "@reference": "http://titania.create3000.de",
+                                  "@value": [
+                                    true
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        },
+                        { "MetadataSet":
+                          {
+                            "@DEF": "BrowserPanel_1",
+                            "@name": "BrowserPanel",
+                            "@reference": "http://titania.create3000.de",
+                            "-value": [
+                              { "MetadataSet":
+                                {
+                                  "@DEF": "viewpoints_1",
+                                  "@name": "viewpoints",
+                                  "@reference": "http://titania.create3000.de",
+                                  "-value": [
+                                    { "MetadataSet":
+                                      {
+                                        "@DEF": "FrontViewpoint_1",
+                                        "@name": "FrontViewpoint",
+                                        "@reference": "http://titania.create3000.de",
+                                        "-value": [
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "position",
+                                              "@name": "position",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                1.19957449421572,
+                                                0.169090081073281,
+                                                10000
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "orientation",
+                                              "@name": "orientation",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0,
+                                                0,
+                                                1,
+                                                0
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "centerOfRotation",
+                                              "@name": "centerOfRotation",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                1.19957449421572,
+                                                0.169090081073281,
+                                                0
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "fieldOfViewScale_3",
+                                              "@name": "fieldOfViewScale",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                1.439039418935
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    { "MetadataSet":
+                                      {
+                                        "@DEF": "PerspectiveViewpoint_1",
+                                        "@name": "PerspectiveViewpoint",
+                                        "@reference": "http://titania.create3000.de",
+                                        "-value": [
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "position_4",
+                                              "@name": "position",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                8.48219013214111,
+                                                12,
+                                                8.48219013214111
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "orientation_4",
+                                              "@name": "orientation",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0.678598156250032,
+                                                -0.678598556661039,
+                                                -0.281084580209608,
+                                                5.18712872208587
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "centerOfRotation_4",
+                                              "@name": "centerOfRotation",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0,
+                                                0,
+                                                0
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "fieldOfViewScale_4",
+                                              "@name": "fieldOfViewScale",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                1
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  },
                   "@pickable": false,
                   "-children": [
                     { "Viewpoint":
@@ -168,7 +705,9 @@
                             {
                               "@DEF": "Beethoven",
                               "@global": true,
-                              "@url": [ "assets/beethoven.x3d" ]
+                              "@url": [
+                                "assets/beethoven.x3d"
+                              ]
                             }
                           }
                         ]
@@ -180,95 +719,75 @@
               { "Layer":
                 {
                   "@DEF": "HUD",
-                  "-children": [
-                    { "ProtoInstance":
-                      {
-                        "@DEF": "_1",
-                        "@name": "BooleanSwitch",
-                        "fieldValue": [
+                  "-metadata": { "MetadataSet":
+                    {
+                      "@DEF": "Titania_2",
+                      "@name": "Titania",
+                      "@reference": "http://titania.create3000.de",
+                      "-value": [
+                        { "MetadataSet":
                           {
-                            "@name": "whichChoice",
-                            "@value": true
-                          },
-                          {
-                            "@name": "children",
-                            "-children": [
-                              { "Transform":
+                            "@DEF": "BrowserPanel_2",
+                            "@name": "BrowserPanel",
+                            "@reference": "http://titania.create3000.de",
+                            "-value": [
+                              { "MetadataSet":
                                 {
-                                  "@DEF": "RoundedRectangle2D",
-                                  "@translation": [ 0, -3.55158, 0 ],
-                                  "-children": [
-                                    { "Shape":
+                                  "@DEF": "viewpoints_2",
+                                  "@name": "viewpoints",
+                                  "@reference": "http://titania.create3000.de",
+                                  "-value": [
+                                    { "MetadataSet":
                                       {
-                                        "@DEF": "_2",
-                                        "-appearance": { "Appearance":
-                                          {
-                                            "-material": { "Material":
-                                              {
-                                                "@diffuseColor": [ 0, 0, 0 ]
-                                              }
-                                            }
-                                          }
-                                        },
-                                        "-geometry": { "ProtoInstance":
-                                          {
-                                            "@name": "RoundedRectangle2D",
-                                            "fieldValue": [
-                                              {
-                                                "@name": "size",
-                                                "@value": [ 0.7, 0.4 ]
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      }
-                                    },
-                                    { "Transform":
-                                      {
-                                        "@translation": [ -0.13, 0, 0 ],
-                                        "-children": [
-                                          { "Shape":
+                                        "@DEF": "FrontViewpoint_2",
+                                        "@name": "FrontViewpoint",
+                                        "@reference": "http://titania.create3000.de",
+                                        "-value": [
+                                          { "MetadataDouble":
                                             {
-                                              "@DEF": "_3",
-                                              "-appearance": { "Appearance":
-                                                {
-                                                  "-material": { "Material":
-                                                    {
-                                                      "@diffuseColor": [ 0.667, 0.667, 0.667 ]
-                                                    }
-                                                  }
-                                                }
-                                              },
-                                              "-geometry": { "Disk2D":
-                                                {
-                                                  "@outerRadius": 0.15
-                                                }
-                                              }
+                                              "@DEF": "position_5",
+                                              "@name": "position",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0.231673088301565,
+                                                -3.15959419319253,
+                                                10.8662109375
+                                              ]
                                             }
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "Transform":
-                                {
-                                  "@DEF": "RoundedRectangle2D_1",
-                                  "@translation": [ 0, -3.55158, 0 ],
-                                  "-children": [
-                                    { "Shape":
-                                      {
-                                        "@USE": "_2"
-                                      }
-                                    },
-                                    { "Transform":
-                                      {
-                                        "@translation": [ 0.13, 0, 0 ],
-                                        "-children": [
-                                          { "Shape":
+                                          },
+                                          { "MetadataDouble":
                                             {
-                                              "@USE": "_3"
+                                              "@DEF": "orientation_5",
+                                              "@name": "orientation",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0,
+                                                0,
+                                                1,
+                                                0
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "centerOfRotation_5",
+                                              "@name": "centerOfRotation",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0.231673088301565,
+                                                -3.15959419319253,
+                                                0
+                                              ]
+                                            }
+                                          },
+                                          { "MetadataDouble":
+                                            {
+                                              "@DEF": "fieldOfViewScale_5",
+                                              "@name": "fieldOfViewScale",
+                                              "@reference": "http://titania.create3000.de",
+                                              "@value": [
+                                                0.203532124507175
+                                              ]
                                             }
                                           }
                                         ]
@@ -279,24 +798,239 @@
                               }
                             ]
                           }
+                        }
+                      ]
+                    }
+                  },
+                  "-children": [
+                    { "Group":
+                      {
+                        "@DEF": "Button",
+                        "-children": [
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_1",
+                              "@name": "BooleanSwitch",
+                              "fieldValue": [
+                                {
+                                  "@name": "whichChoice",
+                                  "@value": true
+                                },
+                                {
+                                  "@name": "bboxSize",
+                                  "@value": [ -1, -1, -1 ]
+                                },
+                                {
+                                  "@name": "children",
+                                  "-children": [
+                                    { "Transform":
+                                      {
+                                        "@DEF": "RoundedRectangle2D",
+                                        "@translation": [ 0, -3.55158, 0 ],
+                                        "-children": [
+                                          { "Shape":
+                                            {
+                                              "@DEF": "_2",
+                                              "-appearance": { "Appearance":
+                                                {
+                                                  "-material": { "Material":
+                                                    {
+                                                      "@diffuseColor": [ 0, 0, 0 ]
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "-geometry": { "ProtoInstance":
+                                                {
+                                                  "@name": "RoundedRectangle2D",
+                                                  "fieldValue": [
+                                                    {
+                                                      "@name": "cornerRadius",
+                                                      "@value": 1
+                                                    },
+                                                    {
+                                                      "@name": "size",
+                                                      "@value": [ 0.7, 0.4 ]
+                                                    },
+                                                    {
+                                                      "@name": "solid",
+                                                      "@value": true
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          { "Transform":
+                                            {
+                                              "@translation": [ -0.13, 0, 0 ],
+                                              "-children": [
+                                                { "Shape":
+                                                  {
+                                                    "@DEF": "_3",
+                                                    "-appearance": { "Appearance":
+                                                      {
+                                                        "-material": { "Material":
+                                                          {
+                                                            "@diffuseColor": [ 0.667, 0.667, 0.667 ]
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    "-geometry": { "Disk2D":
+                                                      {
+                                                        "@outerRadius": 0.15
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    { "Transform":
+                                      {
+                                        "@DEF": "RoundedRectangle2D_1",
+                                        "@translation": [ 0, -3.55158, 0 ],
+                                        "-children": [
+                                          { "Shape":
+                                            {
+                                              "@USE": "_2"
+                                            }
+                                          },
+                                          { "Transform":
+                                            {
+                                              "@translation": [ 0.13, 0, 0 ],
+                                              "-children": [
+                                                { "Shape":
+                                                  {
+                                                    "@USE": "_3"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_4",
+                              "@description": "Toggle Load"
+                            }
+                          },
+                          { "BooleanTrigger":
+                            {
+                              "@DEF": "_5"
+                            }
+                          },
+                          { "BooleanToggle":
+                            {
+                              "@DEF": "_6",
+                              "@toggle": true
+                            }
+                          }
                         ]
                       }
                     },
-                    { "TouchSensor":
+                    { "Group":
                       {
-                        "@DEF": "_4",
-                        "@description": "Toggle Load"
-                      }
-                    },
-                    { "BooleanTrigger":
-                      {
-                        "@DEF": "_5"
-                      }
-                    },
-                    { "BooleanToggle":
-                      {
-                        "@DEF": "_6",
-                        "@toggle": true
+                        "@DEF": "LoadTime",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@DEF": "Text",
+                              "@translation": [ 0, -4, 0 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-geometry": { "Text":
+                                      {
+                                        "@DEF": "_7",
+                                        "@string": [
+                                          "1,079 ms"
+                                        ],
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [
+                                              "TYPEWRITER"
+                                            ],
+                                            "@style": "BOLD",
+                                            "@size": 0.25,
+                                            "@justify": [
+                                              "MIDDLE"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "LoadSensor":
+                            {
+                              "@DEF": "_8",
+                              "-children": [
+                                { "Inline":
+                                  {
+                                    "@USE": "Beethoven"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Script":
+                            {
+                              "@DEF": "LoadTimeScript",
+                              "field": [
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFBool",
+                                  "@name": "set_active"
+                                },
+                                {
+                                  "@accessType": "outputOnly",
+                                  "@type": "MFString",
+                                  "@name": "string_changed"
+                                }
+                              ],
+                              "#sourceText": [
+                                "ecmascript:",
+                                "",
+                                "let startTime = 0;",
+                                "",
+                                "function initialize ()",
+                                "{",
+                                "   string_changed [0] = \"0 ms\"",
+                                "}",
+                                "",
+                                "function set_active (value, time)",
+                                "{",
+                                "   if (value)",
+                                "   {",
+                                "      startTime = Date .now ()",
+                                "   }",
+                                "   else",
+                                "   {",
+                                "      const loadTime = Math .floor (Date .now () - startTime)",
+                                "",
+                                "      string_changed [0] = `${loadTime .toLocaleString (\"en\")} ms`",
+                                "   }",
+                                "}",
+                                ""
+                              ]
+                            }
+                          }
+                        ]
                       }
                     }
                   ]
@@ -335,6 +1069,22 @@
             "@fromField": "toggle",
             "@toNode": "_1",
             "@toField": "whichChoice"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_8",
+            "@fromField": "isActive",
+            "@toNode": "LoadTimeScript",
+            "@toField": "set_active"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "LoadTimeScript",
+            "@fromField": "string_changed",
+            "@toNode": "_7",
+            "@toField": "string"
           }
         }
       ]
