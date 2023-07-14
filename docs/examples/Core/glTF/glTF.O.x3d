@@ -4,13 +4,14 @@
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='created' content='Fri, 14 Jul 2023 16:20:40 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.0.66, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Core/glTF/glTF.O.x3d'/>
-    <meta name='modified' content='Fri, 14 Jul 2023 18:23:33 GMT'/>
+    <meta name='modified' content='Fri, 14 Jul 2023 18:35:45 GMT'/>
   </head>
   <Scene>
     <Background DEF='White'
@@ -26,10 +27,10 @@
     <DirectionalLight
         direction='1 -1 -1'
         shadows='true'/>
-    <Group>
-      <Inline DEF='Bee'
+    <Group DEF='Bee_1'>
+      <Inline DEF='_1'
           url='"assets/animated_bee.glb"'/>
-      <TouchSensor DEF='_1'/>
+      <TouchSensor DEF='_2'/>
     </Group>
     <Transform DEF='Floor'
         translation='0 -3 0'
@@ -39,13 +40,55 @@
           castShadow='false'>
         <Appearance>
           <Material
-              diffuseColor='1 1 1'/>
+              diffuseColor='1 0.8627451 0.6509804'/>
         </Appearance>
         <Disk2D/>
       </Shape>
     </Transform>
-    <IMPORT inlineDEF='Bee' importedDEF='Timer1'/>
-    <IMPORT inlineDEF='Bee' importedDEF='Timer2'/>
-    <ROUTE fromNode='_1' fromField='touchTime' toNode='Timer2' toField='set_startTime'/>
+    <Script DEF='ToggleAnimScript'>
+      <field accessType='inputOutput' type='SFTime' name='toggle' value='1689359743.963002'/>
+      <field accessType='outputOnly' type='SFBool' name='loop1'/>
+      <field accessType='outputOnly' type='SFTime' name='startTime1'/>
+      <field accessType='outputOnly' type='SFTime' name='stopTime1'/>
+      <field accessType='outputOnly' type='SFBool' name='loop2'/>
+      <field accessType='outputOnly' type='SFTime' name='startTime2'/>
+      <field accessType='outputOnly' type='SFTime' name='stopTime2'/>
+<![CDATA[ecmascript:
+
+let anim = -1;
+
+function set_toggle (value, time)
+{
+   anim = (anim + 1) % 2;
+
+   switch (anim)
+   {
+      case 0:
+      {
+         loop1      = true;
+         startTime1 = time;
+         stopTime2  = time;
+         break;
+      }
+      case 1:
+      {
+         loop2      = true;
+         startTime2 = time;
+         stopTime1  = time;
+         break;
+      }
+   }
+}
+]]>
+    </Script>
+    <IMPORT inlineDEF='_1' importedDEF='Timer1'/>
+    <IMPORT inlineDEF='_1' importedDEF='Timer2'/>
+    <ROUTE fromNode='_2' fromField='touchTime' toNode='ToggleAnimScript' toField='set_toggle'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='loop1' toNode='Timer1' toField='set_loop'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='startTime1' toNode='Timer1' toField='set_startTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='stopTime1' toNode='Timer1' toField='set_stopTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='loop2' toNode='Timer2' toField='set_loop'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='startTime2' toNode='Timer2' toField='set_startTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='stopTime2' toNode='Timer2' toField='set_stopTime'/>
   </Scene>
 </X3D>
