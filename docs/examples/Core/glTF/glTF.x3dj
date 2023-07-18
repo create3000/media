@@ -1,0 +1,300 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Interchange",
+    "@version": "4.0",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "created",
+          "@content": "Fri, 14 Jul 2023 16:20:40 GMT"
+        },
+        {
+          "@name": "comment",
+          "@content": "Rise and Shine"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrize X3D Editor V1.0.66, https://create3000.github.io/sunrize/"
+        },
+        {
+          "@name": "identifier",
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Core/glTF/glTF.O.x3d"
+        },
+        {
+          "@name": "modified",
+          "@content": "Fri, 14 Jul 2023 19:08:58 GMT"
+        },
+        {
+          "@name": "converter",
+          "@content": "x3d-tidy V1.0.74, https://www.npmjs.com/package/x3d-tidy"
+        },
+        {
+          "@name": "converted",
+          "@content": "Tue, 18 Jul 2023 01:02:39 GMT"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Geometry2D",
+          "@level": 2
+        },
+        {
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.017453292519943295
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "Background":
+          {
+            "@DEF": "White",
+            "@skyColor": [ 1, 1, 1 ]
+          }
+        },
+        { "Viewpoint":
+          {
+            "@description": "Initial View",
+            "@position": [ -23.0535, 14.33363, 25.63033 ],
+            "@orientation": [ -0.236981361494747, -0.967026547854759, -0.0932710568622666, 44.2926372215252 ],
+            "@centerOfRotation": [ 0, 7.747685, 0.8800671 ],
+            "-navigationInfo": { "NavigationInfo":
+              {
+                "@headlight": false
+              }
+            }
+          }
+        },
+        { "DirectionalLight":
+          {
+            "@direction": [ 1, -1, -1 ],
+            "@shadows": true
+          }
+        },
+        { "Group":
+          {
+            "@DEF": "Bee_1",
+            "-children": [
+              { "Inline":
+                {
+                  "@DEF": "_1",
+                  "@url": [ "assets/animated_bee.glb" ]
+                }
+              },
+              { "LoadSensor":
+                {
+                  "@DEF": "_2",
+                  "-children": [
+                    { "Inline":
+                      {
+                        "@USE": "_1"
+                      }
+                    }
+                  ]
+                }
+              },
+              { "TouchSensor":
+                {
+                  "@DEF": "_3"
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Floor",
+            "@translation": [ 0, -3, 0 ],
+            "@rotation": [ 1, 0, 0, 90 ],
+            "@scale": [ 60, 60, 60 ],
+            "-children": [
+              { "Shape":
+                {
+                  "@castShadow": false,
+                  "-appearance": { "Appearance":
+                    {
+                      "-material": { "Material":
+                        {
+                          "@diffuseColor": [ 1, 0.8627451, 0.6509804 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Disk2D":
+                    {
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "ToggleAnimScript",
+            "field": [
+              {
+                "@accessType": "inputOutput",
+                "@type": "SFTime",
+                "@name": "toggle",
+                "@value": 1689642159.508
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFBool",
+                "@name": "loop1"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFTime",
+                "@name": "startTime1"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFTime",
+                "@name": "stopTime1"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFBool",
+                "@name": "loop2"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFTime",
+                "@name": "startTime2"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFTime",
+                "@name": "stopTime2"
+              }
+            ],
+            "#sourceText": [
+"ecmascript:",
+"",
+"let anim = -1;",
+"",
+"function set_toggle (value, time)",
+"{",
+"   anim = (anim + 1) % 2;",
+"",
+"   switch (anim)",
+"   {",
+"      case 0:",
+"      {",
+"         loop1      = true;",
+"         startTime1 = time;",
+"         stopTime2  = time;",
+"         break;",
+"      }",
+"      case 1:",
+"      {",
+"         loop2      = true;",
+"         startTime2 = time;",
+"         stopTime1  = time;",
+"         break;",
+"      }",
+"   }",
+"}",
+""
+            ]
+          }
+        },
+        { "IMPORT":
+          {
+            "@inlineDEF": "_1",
+            "@importedDEF": "Timer1"
+          }
+        },
+        { "IMPORT":
+          {
+            "@inlineDEF": "_1",
+            "@importedDEF": "Timer2"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_3",
+            "@fromField": "touchTime",
+            "@toNode": "ToggleAnimScript",
+            "@toField": "toggle"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_2",
+            "@fromField": "loadTime",
+            "@toNode": "ToggleAnimScript",
+            "@toField": "toggle"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "loop1",
+            "@toNode": "Timer1",
+            "@toField": "loop"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "startTime1",
+            "@toNode": "Timer1",
+            "@toField": "startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "stopTime1",
+            "@toNode": "Timer1",
+            "@toField": "stopTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "loop2",
+            "@toNode": "Timer2",
+            "@toField": "loop"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "startTime2",
+            "@toNode": "Timer2",
+            "@toField": "startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "stopTime2",
+            "@toNode": "Timer2",
+            "@toField": "stopTime"
+          }
+        }
+      ]
+    }
+  }
+}

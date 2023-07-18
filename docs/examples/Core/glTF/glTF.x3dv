@@ -1,0 +1,114 @@
+#X3D V4.0 utf8 X_ITE V8.10.1
+
+PROFILE Interchange
+
+COMPONENT Geometry2D : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+
+UNIT angle degree 0.017453292519943295
+
+META "created" "Fri, 14 Jul 2023 16:20:40 GMT"
+META "comment" "Rise and Shine"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.0.66, https://create3000.github.io/sunrize/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Core/glTF/glTF.O.x3d"
+META "modified" "Fri, 14 Jul 2023 19:08:58 GMT"
+META "converter" "x3d-tidy V1.0.74, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Tue, 18 Jul 2023 01:02:40 GMT"
+
+DEF White Background {
+  skyColor 1 1 1
+}
+
+Viewpoint {
+  description "Initial View"
+  position -23.0535 14.33363 25.63033
+  orientation -0.236981361494747 -0.967026547854759 -0.0932710568622666 44.2926372215252
+  centerOfRotation 0 7.747685 0.8800671
+  navigationInfo NavigationInfo {
+    headlight FALSE
+  }
+}
+
+DirectionalLight {
+  direction 1 -1 -1
+  shadows TRUE
+}
+
+DEF Bee_1 Group {
+  children [
+    DEF _1 Inline {
+      url "assets/animated_bee.glb"
+    }
+    DEF _2 LoadSensor {
+      children USE _1
+    }
+    DEF _3 TouchSensor { }
+  ]
+}
+
+DEF Floor Transform {
+  translation 0 -3 0
+  rotation 1 0 0 90
+  scale 60 60 60
+  children Shape {
+    castShadow FALSE
+    appearance Appearance {
+      material Material {
+        diffuseColor 1 0.8627451 0.6509804
+      }
+    }
+    geometry Disk2D { }
+  }
+}
+
+DEF ToggleAnimScript Script {
+  inputOutput SFTime toggle 1689642160.503002
+  outputOnly  SFBool loop1
+  outputOnly  SFTime startTime1
+  outputOnly  SFTime stopTime1
+  outputOnly  SFBool loop2
+  outputOnly  SFTime startTime2
+  outputOnly  SFTime stopTime2
+
+  url "ecmascript:
+
+let anim = -1;
+
+function set_toggle (value, time)
+{
+   anim = (anim + 1) % 2;
+
+   switch (anim)
+   {
+      case 0:
+      {
+         loop1      = true;
+         startTime1 = time;
+         stopTime2  = time;
+         break;
+      }
+      case 1:
+      {
+         loop2      = true;
+         startTime2 = time;
+         stopTime1  = time;
+         break;
+      }
+   }
+}
+"
+}
+
+IMPORT _1.Timer1
+IMPORT _1.Timer2
+
+ROUTE _3.touchTime TO ToggleAnimScript.set_toggle
+ROUTE _2.loadTime TO ToggleAnimScript.set_toggle
+ROUTE ToggleAnimScript.loop1 TO Timer1.set_loop
+ROUTE ToggleAnimScript.startTime1 TO Timer1.set_startTime
+ROUTE ToggleAnimScript.stopTime1 TO Timer1.set_stopTime
+ROUTE ToggleAnimScript.loop2 TO Timer2.set_loop
+ROUTE ToggleAnimScript.startTime2 TO Timer2.set_startTime
+ROUTE ToggleAnimScript.stopTime2 TO Timer2.set_stopTime
