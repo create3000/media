@@ -8,6 +8,7 @@ use File::Basename qw(basename dirname);
 use Cwd;
 use threads;
 use Thread::Semaphore;
+use List::MoreUtils qw(any);
 
 $cwd       = cwd ();
 $examples  = "$cwd/docs/examples";
@@ -40,6 +41,9 @@ sub example {
    add sub { system "npx x3d-tidy -s COMPACT -r -m -i '$orig' -o '$x3dj' " };
 }
 
-example $_ foreach sort `find $examples -maxdepth 2 -mindepth 2 -type d`;
+@files = sort `find $examples -maxdepth 2 -mindepth 2 -type d`;
+@files = grep { $s = $_; any { index ($s, $_) != -1 } @ARGV } @files if @ARGV;
+
+example $_ foreach @files;
 
 $_ -> join () foreach @threads;
