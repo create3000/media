@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Interpolation' level='4'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Layout' level='1'/>
-    <component name='Time' level='2'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
-    <meta name='comment' content='World of Titania'/>
+    <component name='Layout' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 02 Apr 2016 03:25:15 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.5.7, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/Currencies/Currencies.O.x3d'/>
-    <meta name='modified' content='Mon, 24 Jun 2019 07:39:29 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.0.81, https://create3000.github.io/sunrize/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/X3D/Currencies/Currencies.O.x3d'/>
+    <meta name='modified' content='Mon, 31 Jul 2023 21:52:37 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='RoundedExtrusion' url='"RoundedExtrusion.x3d#RoundedExtrusion", "file:///home/holger/Projekte/Cobweb/cobweb.js/examples/currencies/RoundedExtrusion.x3d#RoundedExtrusion"'>
@@ -30,122 +31,1210 @@
       <field accessType='inputOutput' type='SFFloat' name='cornerRadius'/>
       <field accessType='inputOutput' type='SFInt32' name='cornerDimension'/>
     </ExternProtoDeclare>
-    <WorldInfo>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='AngleGrid' containerField='value'
-            name='AngleGrid'
+    <WorldInfo
+        title='Currencies'/>
+    <LayerSet
+        order='0, 1'>
+      <LayoutLayer>
+        <MetadataSet DEF='Titania_1' containerField='metadata'
+            name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='false'/>
-        </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
-            name='Grid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_1' containerField='value'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='true'/>
-        </MetadataSet>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
-            name='NavigationInfo'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
-              name='type'
-              reference='http://titania.create3000.de'
-              value='"EXAMINE"'/>
-        </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
-            name='Viewpoint'
-            reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
-              name='position'
-              reference='http://titania.create3000.de'
-              value='0, 0, 10'/>
-          <MetadataDouble DEF='orientation' containerField='value'
-              name='orientation'
-              reference='http://titania.create3000.de'
-              value='0, 0, 1, 0'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
-              name='centerOfRotation'
-              reference='http://titania.create3000.de'
-              value='0, 0, 0'/>
-        </MetadataSet>
-        <MetadataSet DEF='LayerSet' containerField='value'
-            name='LayerSet'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeLayer' containerField='value'
-              name='activeLayer'
-              reference='http://titania.create3000.de'
-              value='1'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
+          <MetadataSet DEF='AngleGrid_1'
+              name='AngleGrid'
               reference='http://titania.create3000.de'>
-            <Script DEF='CurrenciesScript' containerField='value'
-                directOutput='true'>
-              <field accessType='inputOnly' type='SFTime' name='set_loadTime'/>
-              <field accessType='inputOnly' type='SFTime' name='set_USD'/>
-              <field accessType='inputOnly' type='SFTime' name='set_JPY'/>
-              <field accessType='inputOnly' type='SFTime' name='set_BGN'/>
-              <field accessType='inputOnly' type='SFTime' name='set_CZK'/>
-              <field accessType='inputOnly' type='SFTime' name='set_DKK'/>
-              <field accessType='inputOnly' type='SFTime' name='set_GBP'/>
-              <field accessType='inputOnly' type='SFTime' name='set_HUF'/>
-              <field accessType='inputOnly' type='SFTime' name='set_PLN'/>
-              <field accessType='inputOnly' type='SFTime' name='set_RON'/>
-              <field accessType='inputOnly' type='SFTime' name='set_SEK'/>
-              <field accessType='inputOnly' type='SFTime' name='set_CHF'/>
-              <field accessType='inputOnly' type='SFTime' name='set_NOK'/>
-              <field accessType='inputOnly' type='SFTime' name='set_HRK'/>
-              <field accessType='inputOnly' type='SFTime' name='set_RUB'/>
-              <field accessType='inputOnly' type='SFTime' name='set_TRY'/>
-              <field accessType='inputOnly' type='SFTime' name='set_AUD'/>
-              <field accessType='inputOnly' type='SFTime' name='set_BRL'/>
-              <field accessType='inputOnly' type='SFTime' name='set_CAD'/>
-              <field accessType='inputOnly' type='SFTime' name='set_CNY'/>
-              <field accessType='inputOnly' type='SFTime' name='set_HKD'/>
-              <field accessType='inputOnly' type='SFTime' name='set_IDR'/>
-              <field accessType='inputOnly' type='SFTime' name='set_ILS'/>
-              <field accessType='inputOnly' type='SFTime' name='set_INR'/>
-              <field accessType='inputOnly' type='SFTime' name='set_KRW'/>
-              <field accessType='inputOnly' type='SFTime' name='set_MXN'/>
-              <field accessType='inputOnly' type='SFTime' name='set_MYR'/>
-              <field accessType='inputOnly' type='SFTime' name='set_NZD'/>
-              <field accessType='inputOnly' type='SFTime' name='set_PHP'/>
-              <field accessType='inputOnly' type='SFTime' name='set_SGD'/>
-              <field accessType='inputOnly' type='SFTime' name='set_THB'/>
-              <field accessType='inputOnly' type='SFTime' name='set_ZAR'/>
-              <field accessType='inputOnly' type='SFTime' name='set_ISK'/>
-              <field accessType='inputOnly' type='SFString' name='set_currency'/>
-              <field accessType='outputOnly' type='MFString' name='text_changed'/>
-              <field accessType='initializeOnly' type='SFNode' name='timer'>
-                <TimeSensor DEF='_2' containerField='timer'
-                    cycleInterval='3'/>
-              </field>
-              <field accessType='initializeOnly' type='SFNode' name='easeInEaseOut'>
-                <EaseInEaseOut DEF='_3' containerField='easeInEaseOut'
-                    key='0, 1'
-                    easeInEaseOut='0 1, 1 0'/>
-              </field>
-              <field accessType='initializeOnly' type='SFNode' name='interpolator'>
-                <CoordinateInterpolator DEF='_4' containerField='interpolator'
-                    key='0, 1'
-                    keyValue='1 6 0, 2 6 0, 3 6 0, 4 6 0, 5 6 0, 6 6 0, 7 6 0, 8 6 0, 9 6 0, 10 6 0, 11 6 0, 12 6 0, 13 6 0, 14 6 0, 15 6 0, 16 6 0, 17 6 0, 18 6 0, 19 6 0, 20 6 0, 21 6 0, 22 6 0, 23 6 0, 24 6 0, 25 6 0, 26 6 0, 27 6 0, 28 6 0, 29 6 0, 30 6 0, 31 6 0, 32 6 0, 33 6 0, 34 6 0, 35 6 0, 36 6 0, 37 6 0, 38 6 0, 39 6 0, 40 6 0, 41 6 0, 42 6 0, 43 6 0, 44 6 0, 45 6 0, 46 6 0, 47 6 0, 48 6 0, 49 6 0, 50 6 0, 51 6 0, 52 6 0, 53 6 0, 54 6 0, 55 6 0, 56 6 0, 57 6 0, 58 6 0, 59 6 0, 60 6 0, 61 6 0, 62 6 0, 63 6 0, 64 6 0, 65 6 0, 66 6 0, 67 6 0, 68 6 0, 69 6 0, 70 6 0, 71 6 0, 72 6 0, 73 6 0, 74 6 0, 75 6 0, 76 6 0, 77 6 0, 78 6 0, 79 6 0, 80 6 0, 81 6 0, 82 6 0, 83 6 0, 84 6 0, 85 6 0, 86 6 0, 87 6 0, 88 6 0, 89 6 0, 90 6 0, 1 6 0, 2 6 0, 3 6 0, 4 6 0, 5 6 0, 6 6 0, 7 6 0, 8 6 0, 9 6 0, 10 6 0, 11 6 0, 12 6 0, 13 6 0, 14 6 0, 15 6 0, 16 6 0, 17 6 0, 18 6 0, 19 6 0, 20 6 0, 21 6 0, 22 6 0, 23 6 0, 24 6 0, 25 6 0, 26 6 0, 27 6 0, 28 6 0, 29 6 0, 30 6 0, 31 6 0, 32 6 0, 33 6 0, 34 6 0, 35 6 0, 36 6 0, 37 6 0, 38 6 0, 39 6 0, 40 6 0, 41 6 0, 42 6 0, 43 6 0, 44 6 0, 45 6 0, 46 6 0, 47 6 0, 48 6 0, 49 6 0, 50 6 0, 51 6 0, 52 6 0, 53 6 0, 54 6 0, 55 6 0, 56 6 0, 57 6 0, 58 6 0, 59 6 0, 60 6 0, 61 6 0, 62 6 0, 63 6 0, 64 6 0, 65 6 0, 66 6 0, 67 6 0, 68 6 0, 69 6 0, 70 6 0, 71 6 0, 72 6 0, 73 6 0, 74 6 0, 75 6 0, 76 6 0, 77 6 0, 78 6 0, 79 6 0, 80 6 0, 81 6 0, 82 6 0, 83 6 0, 84 6 0, 85 6 0, 86 6 0, 87 6 0, 88 6 0, 89 6 0, 90 6 0'/>
-              </field>
-              <field accessType='initializeOnly' type='SFNode' name='self'>
-                <Script USE='CurrenciesScript' containerField='self'/>
-              </field>
+            <MetadataBoolean DEF='enabled_1'
+                name='enabled'
+                reference='http://titania.create3000.de'
+                value='false'/>
+          </MetadataSet>
+          <MetadataSet DEF='Grid_1'
+              name='Grid'
+              reference='http://titania.create3000.de'>
+            <MetadataBoolean DEF='enabled_2'
+                name='enabled'
+                reference='http://titania.create3000.de'
+                value='true'/>
+            <MetadataFloat DEF='rotation'
+                name='rotation'
+                reference='http://titania.create3000.de'
+                value='1, 0, 0, 1.5708'/>
+            <MetadataFloat DEF='scale'
+                name='scale'
+                reference='http://titania.create3000.de'
+                value='0.03, 0.03, 0.03'/>
+            <MetadataInteger DEF='dimension'
+                name='dimension'
+                reference='http://titania.create3000.de'
+                value='110, 10, 66'/>
+          </MetadataSet>
+        </MetadataSet>
+        <Background
+            skyColor='0.1 0.1 0.1'/>
+        <Group DEF='Currencies'>
+          <Transform>
+            <Group>
+              <Transform DEF='Rectangle2D'
+                  translation='-1.57391 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material DEF='_1'
+                        transparency='1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_2'/>
+              <Transform DEF='Text'
+                  translation='-1.65 0.839941 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"USD"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_1'
+                  translation='-1.36032 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_3'/>
+              <Transform DEF='Text_1'
+                  translation='-1.41 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"JPY"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_2'
+                  translation='-1.09667 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_4'/>
+              <Transform DEF='Text_2'
+                  translation='-1.17 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"BGN"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_3'
+                  translation='-0.857332 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_5'/>
+              <Transform DEF='Text_3'
+                  translation='-0.93 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"CZK"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_4'
+                  translation='-0.584163 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_6'/>
+              <Transform DEF='Text_4'
+                  translation='-0.66 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"DKK"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_5'
+                  translation='-0.344679 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_7'/>
+              <Transform DEF='Text_5'
+                  translation='-0.42 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"GBP"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_6'
+                  translation='-0.100656 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_8'/>
+              <Transform DEF='Text_6'
+                  translation='-0.18 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"HUF"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_7'
+                  translation='0.133853 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_9'/>
+              <Transform DEF='Text_7'
+                  translation='0.06 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"PLN"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_8'
+                  translation='0.376664 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_10'/>
+              <Transform DEF='Text_8'
+                  translation='0.3 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"RON"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_9'
+                  translation='0.610603 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_11'/>
+              <Transform DEF='Text_9'
+                  translation='0.54 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"SEK"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_10'
+                  translation='0.85692 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_12'/>
+              <Transform DEF='Text_10'
+                  translation='0.78 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"CHF"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_11'
+                  translation='1.10186 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_13'/>
+              <Transform DEF='Text_11'
+                  translation='1.02 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"NOK"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_12'
+                  translation='1.35666 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_14'/>
+              <Transform DEF='Text_12'
+                  translation='1.27667 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"HRK"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+          </Transform>
+          <Transform
+              translation='0 -0.12 -4.34399e-7'>
+            <Group>
+              <Transform DEF='Rectangle2D_13'
+                  translation='-1.57505 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_15'/>
+              <Transform DEF='Text_13'
+                  translation='-1.65 0.839941 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"RUB"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_14'
+                  translation='-1.33672 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_16'/>
+              <Transform DEF='Text_14'
+                  translation='-1.41 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"TRY"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_15'
+                  translation='-1.09667 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_17'/>
+              <Transform DEF='Text_15'
+                  translation='-1.17 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"AUD"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_16'
+                  translation='-0.860761 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_18'/>
+              <Transform DEF='Text_16'
+                  translation='-0.93 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"BRL"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_17'
+                  translation='-0.584392 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_19'/>
+              <Transform DEF='Text_17'
+                  translation='-0.66 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"CAD"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_18'
+                  translation='-0.3442 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_20'/>
+              <Transform DEF='Text_18'
+                  translation='-0.42 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"CNY"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_19'
+                  translation='-0.0992258 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_21'/>
+              <Transform DEF='Text_19'
+                  translation='-0.18 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"HKD"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_20'
+                  translation='0.125785 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_22'/>
+              <Transform DEF='Text_20'
+                  translation='0.06 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"IDR"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_21'
+                  translation='0.376664 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_23'/>
+              <Transform DEF='Text_21'
+                  translation='0.3 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"ILS"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_22'
+                  translation='0.616465 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_24'/>
+              <Transform DEF='Text_22'
+                  translation='0.54 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"INR"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_23'
+                  translation='0.856317 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_25'/>
+              <Transform DEF='Text_23'
+                  translation='0.78 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"KRW"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_24'
+                  translation='1.0993 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_26'/>
+              <Transform DEF='Text_24'
+                  translation='1.02 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"MXN"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_25'
+                  translation='1.35666 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_27'/>
+              <Transform DEF='Text_25'
+                  translation='1.27667 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"MYR"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+          </Transform>
+          <Transform
+              translation='0 -0.24 -8.68798e-7'>
+            <Group>
+              <Transform DEF='Rectangle2D_26'
+                  translation='-1.57483 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_28'/>
+              <Transform DEF='Text_26'
+                  translation='-1.65 0.839941 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"NZD"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_27'
+                  translation='-1.33334 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_29'/>
+              <Transform DEF='Text_27'
+                  translation='-1.41 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"PHP"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_28'
+                  translation='-1.09263 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_30'/>
+              <Transform DEF='Text_28'
+                  translation='-1.17 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"SGD"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_29'
+                  translation='-0.853337 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_31'/>
+              <Transform DEF='Text_29'
+                  translation='-0.93 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"THB"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_30'
+                  translation='-0.58667 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_32'/>
+              <Transform DEF='Text_30'
+                  translation='-0.66 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"ZAR"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+            <Group>
+              <Transform DEF='Rectangle2D_31'
+                  translation='-0.354599 0.855 3.09509e-6'
+                  scale='0.075 0.045 0.06'>
+                <Shape>
+                  <Appearance>
+                    <Material USE='_1'/>
+                  </Appearance>
+                  <Rectangle2D/>
+                </Shape>
+              </Transform>
+              <TouchSensor DEF='_33'/>
+              <Transform DEF='Text_31'
+                  translation='-0.42 0.84 3.04079e-6'
+                  scale='0.0619995 0.0638764 0.0638764'>
+                <Shape>
+                  <Appearance>
+                    <Material
+                        diffuseColor='0.598 0.598 0.598'/>
+                  </Appearance>
+                  <Text
+                      string='"ISK"'
+                      solid='true'>
+                    <FontStyle
+                        style='BOLD'/>
+                  </Text>
+                </Shape>
+              </Transform>
+            </Group>
+          </Transform>
+          <Transform DEF='Text_32'
+              translation='1.5 0.54 1.95479e-6'
+              scale='0.0389381 0.0401169 0.0401169'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='0.598 0.598 0.598'/>
+              </Appearance>
+              <Text
+                  string='"All currencies quoted against the euro (base currency)"'
+                  solid='true'>
+                <FontStyle
+                    family='"SANS"'
+                    style='BOLD'
+                    justify='"END"'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </Group>
+        <Group DEF='Sidebar'>
+          <Transform DEF='Rectangle2D_32'
+              translation='-1.275 0.401667 1.45403e-6'
+              scale='0.375 0.045 0.15'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Rococo35'
+                    ambientIntensity='0.0499912'
+                    diffuseColor='0.283314 0.28704 0.29'
+                    shininess='0.406061'/>
+                <ImageTexture
+                    url='"stripes.png"'/>
+                <TextureTransform
+                    rotation='12.5'
+                    scale='10 1'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+          <Transform DEF='Text_33'
+              translation='-1.65 0.21 7.60198e-7'
+              scale='0.0619995 0.0638764 0.0638764'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='0.598 0.598 0.598'/>
+              </Appearance>
+              <Text DEF='_34'
+                  string='"USD", "US dollar", "1.1023", "▲"'
+                  solid='true'>
+                <FontStyle
+                    style='BOLD'
+                    spacing='1.85'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='Rectangle2D_33'
+              translation='-1.275 -0.345 -1.26887e-6'
+              scale='0.375 0.045 0.15'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Rococo35_1'
+                    ambientIntensity='0.0499912'
+                    diffuseColor='0.283314 0.28704 0.29'
+                    shininess='0.406061'/>
+                <ImageTexture
+                    url='"stripes.png"'/>
+                <TextureTransform
+                    rotation='12.5'
+                    scale='10 1'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+          <Transform DEF='world'
+              translation='-1.275 -0.681094 -2.97715e-8'
+              scale='0.375 0.222656 0.807394'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Metal4'
+                    ambientIntensity='0.00714286'
+                    diffuseColor='0.314286 0.218111 0'
+                    specularColor='0.540816 0.480233 0'
+                    shininess='0.0306122'/>
+                <ImageTexture
+                    url='"world.png", "file:///home/holger/Projekte/Cobweb/cobweb.js/examples/currencies/world.png"'
+                    repeatS='false'
+                    repeatT='false'/>
+              </Appearance>
+              <Rectangle2D/>
+            </Shape>
+          </Transform>
+        </Group>
+        <Group DEF='Chart'>
+          <Group DEF='Axes'>
+            <Transform DEF='Cylinder'
+                translation='0.375001 -0.9 -3.93403e-8'
+                rotation='-3.71776508265364e-12 3.67320791671285e-6 -0.999999999993254 89.9999124967152'
+                scale='0.01 1.125 0.01'>
+              <Shape>
+                <Appearance DEF='_35'>
+                  <Material DEF='Metal21'
+                      ambientIntensity='0.0106351'
+                      diffuseColor='0 0 0.0425405'
+                      specularColor='0.632653 0.627312 0.609747'
+                      shininess='0.102041'/>
+                </Appearance>
+                <Cylinder/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Cylinder_1'
+                translation='-0.75 -0.218386 -1.83589e-8'
+                rotation='-5.11104834919853e-7 6.59092455550023e-7 0.999999999999652 0.0190757357293773'
+                scale='0.01 0.668386 0.01'
+                scaleOrientation='9.62006682503051e-14 1 -1.05653102986478e-13 90.0000000000002'>
+              <Shape>
+                <Appearance USE='_35'/>
+                <Cylinder/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Sphere'
+                translation='-0.75 -0.9 -3.93403e-8'
+                scale='0.02 0.02 0.02'>
+              <Shape>
+                <Appearance USE='_35'/>
+                <Sphere/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Cone'
+                translation='-0.75 0.45 1.96701e-8'
+                scale='0.02 0.02 0.02'>
+              <Shape>
+                <Appearance DEF='_36'>
+                  <Material DEF='Metal23'
+                      ambientIntensity='0.0106351'
+                      diffuseColor='0 0 0.0425405'
+                      specularColor='0.821429 0.814494 0.791687'
+                      shininess='0.0561224'/>
+                </Appearance>
+                <Cone DEF='_37'
+                    height='3'
+                    bottomRadius='1.22'/>
+              </Shape>
+            </Transform>
+            <Transform DEF='Cone_1'
+                translation='1.5 -0.9 -3.93403e-8'
+                rotation='0 0 1 269.999998079009'
+                scale='0.02 0.02 0.02'>
+              <Shape>
+                <Appearance USE='_36'/>
+                <Cone USE='_37'/>
+              </Shape>
+            </Transform>
+          </Group>
+          <Transform DEF='Extrusion'
+              translation='-0.75 -0.9 0'
+              scale='0.0249438 0.0249438 0.0249438'>
+            <Shape>
+              <Appearance>
+                <Material
+                    diffuseColor='1 0 0'/>
+              </Appearance>
+              <ProtoInstance name='RoundedExtrusion' DEF='_38' containerField='geometry'>
+                <fieldValue name='solid' value='false'/>
+                <fieldValue name='crossSection' value='-1 0, 1 0'/>
+                <fieldValue name='scale' value='0.3 0.3'/>
+                <fieldValue name='spine' value='1.40625 28.65734 0, 2.8125 30.60839 0, 4.21875 26.83217 0, 5.625 28.27972 0, 7.03125 23.37063 0, 8.4375 22.8042 0, 9.84375 21.54545 0, 11.25 19.15385 0, 12.65625 18.14685 0, 14.0625 18.46154 0, 15.46875 15.18881 0, 16.875 14.18182 0, 18.28125 13.86713 0, 19.6875 14.74825 0, 21.09375 12.04196 0, 22.5 12.41958 0, 23.90625 9.272727 0, 25.3125 10.27972 0, 26.71875 8.013986 0, 28.125 9.839161 0, 29.53125 6 0, 30.9375 6.881119 0, 32.34375 11.03496 0, 33.75 6.440559 0, 35.15625 6 0, 36.5625 8.13986 0, 37.96875 9.398602 0, 39.375 12.10489 0, 40.78125 11.16084 0, 42.1875 12.92308 0, 43.59375 13.93007 0, 45 14.55944 0, 46.40625 23.81119 0, 47.8125 21.04196 0, 49.21875 21.73427 0, 50.625 21.10489 0, 52.03125 25.00699 0, 53.4375 18.65035 0, 54.84375 20.79021 0, 56.25 22.86713 0, 57.65625 22.04895 0, 59.0625 22.04895 0, 60.46875 17.51748 0, 61.875 19.59441 0, 63.28125 19.34266 0, 64.6875 18.33566 0, 66.09375 19.59441 0, 67.5 18.9021 0, 68.90625 23.18182 0, 70.3125 25.25874 0, 71.71875 27.33566 0, 73.125 37.40559 0, 74.53125 39.86014 0, 75.9375 40.42657 0, 77.34375 42 0, 78.75 39.92308 0, 80.15625 38.34965 0, 81.5625 33.69231 0, 82.96875 31.99301 0, 84.375 29.16084 0, 85.78125 29.66434 0, 87.1875 33.81818 0, 88.59375 26.58042 0, 90 27.3986 0'/>
+                <fieldValue name='cornerDimension' value='8'/>
+              </ProtoInstance>
+            </Shape>
+          </Transform>
+        </Group>
+        <Script DEF='CurrenciesScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='SFTime' name='set_loadTime'/>
+          <field accessType='inputOnly' type='SFTime' name='set_USD'/>
+          <field accessType='inputOnly' type='SFTime' name='set_JPY'/>
+          <field accessType='inputOnly' type='SFTime' name='set_BGN'/>
+          <field accessType='inputOnly' type='SFTime' name='set_CZK'/>
+          <field accessType='inputOnly' type='SFTime' name='set_DKK'/>
+          <field accessType='inputOnly' type='SFTime' name='set_GBP'/>
+          <field accessType='inputOnly' type='SFTime' name='set_HUF'/>
+          <field accessType='inputOnly' type='SFTime' name='set_PLN'/>
+          <field accessType='inputOnly' type='SFTime' name='set_RON'/>
+          <field accessType='inputOnly' type='SFTime' name='set_SEK'/>
+          <field accessType='inputOnly' type='SFTime' name='set_CHF'/>
+          <field accessType='inputOnly' type='SFTime' name='set_NOK'/>
+          <field accessType='inputOnly' type='SFTime' name='set_HRK'/>
+          <field accessType='inputOnly' type='SFTime' name='set_RUB'/>
+          <field accessType='inputOnly' type='SFTime' name='set_TRY'/>
+          <field accessType='inputOnly' type='SFTime' name='set_AUD'/>
+          <field accessType='inputOnly' type='SFTime' name='set_BRL'/>
+          <field accessType='inputOnly' type='SFTime' name='set_CAD'/>
+          <field accessType='inputOnly' type='SFTime' name='set_CNY'/>
+          <field accessType='inputOnly' type='SFTime' name='set_HKD'/>
+          <field accessType='inputOnly' type='SFTime' name='set_IDR'/>
+          <field accessType='inputOnly' type='SFTime' name='set_ILS'/>
+          <field accessType='inputOnly' type='SFTime' name='set_INR'/>
+          <field accessType='inputOnly' type='SFTime' name='set_KRW'/>
+          <field accessType='inputOnly' type='SFTime' name='set_MXN'/>
+          <field accessType='inputOnly' type='SFTime' name='set_MYR'/>
+          <field accessType='inputOnly' type='SFTime' name='set_NZD'/>
+          <field accessType='inputOnly' type='SFTime' name='set_PHP'/>
+          <field accessType='inputOnly' type='SFTime' name='set_SGD'/>
+          <field accessType='inputOnly' type='SFTime' name='set_THB'/>
+          <field accessType='inputOnly' type='SFTime' name='set_ZAR'/>
+          <field accessType='inputOnly' type='SFTime' name='set_ISK'/>
+          <field accessType='inputOnly' type='SFString' name='set_currency'/>
+          <field accessType='outputOnly' type='MFString' name='text_changed'/>
+          <field accessType='initializeOnly' type='SFNode' name='timer'>
+            <TimeSensor DEF='_39'
+                cycleInterval='3'
+                startTime='1690840322.174'
+                stopTime='1690840322.174'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='easeInEaseOut'>
+            <EaseInEaseOut DEF='_40'
+                key='0, 1'
+                easeInEaseOut='0 1, 1 0'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='interpolator'>
+            <CoordinateInterpolator DEF='_41'
+                key='0, 1'
+                keyValue='1.40625 9.495536 0, 2.8125 11.82589 0, 4.21875 12.30804 0, 5.625 14.31696 0, 7.03125 16.88839 0, 8.4375 15.76339 0, 9.84375 14.87946 0, 11.25 15.72321 0, 12.65625 15 0, 14.0625 14.67857 0, 15.46875 14.07589 0, 16.875 16.00447 0, 18.28125 15.92411 0, 19.6875 15.84375 0, 21.09375 17.12947 0, 22.5 17.49107 0, 23.90625 15.84375 0, 25.3125 16.32589 0, 26.71875 14.19643 0, 28.125 16.00447 0, 29.53125 15.84375 0, 30.9375 15.28125 0, 32.34375 13.79464 0, 33.75 13.83482 0, 35.15625 15.12054 0, 36.5625 13.39286 0, 37.96875 13.03125 0, 39.375 13.91518 0, 40.78125 14.07589 0, 42.1875 14.63839 0, 43.59375 18.29464 0, 45 22.19197 0, 46.40625 23.71875 0, 47.8125 23.67857 0, 49.21875 21.95089 0, 50.625 21.30803 0, 52.03125 20.34375 0, 53.4375 22.59375 0, 54.84375 23.67857 0, 56.25 22.67411 0, 57.65625 23.39732 0, 59.0625 25.16518 0, 60.46875 23.87947 0, 61.875 23.79911 0, 63.28125 25.6875 0, 64.6875 29.42411 0, 66.09375 28.54018 0, 67.5 26.61161 0, 68.90625 32.91964 0, 70.3125 33.16071 0, 71.71875 35.00893 0, 73.125 33 0, 74.53125 35.00893 0, 75.9375 36.41518 0, 77.34375 36.33482 0, 78.75 39.75 0, 80.15625 40.43304 0, 81.5625 41.67857 0, 82.96875 42 0, 84.375 39.14732 0, 85.78125 39.83036 0, 87.1875 36.49554 0, 88.59375 36.53571 0, 90 37.86161 0, 1.40625 28.65734 0, 2.8125 30.60839 0, 4.21875 26.83217 0, 5.625 28.27972 0, 7.03125 23.37063 0, 8.4375 22.8042 0, 9.84375 21.54545 0, 11.25 19.15385 0, 12.65625 18.14685 0, 14.0625 18.46154 0, 15.46875 15.18881 0, 16.875 14.18182 0, 18.28125 13.86713 0, 19.6875 14.74825 0, 21.09375 12.04196 0, 22.5 12.41958 0, 23.90625 9.272727 0, 25.3125 10.27972 0, 26.71875 8.013986 0, 28.125 9.839161 0, 29.53125 6 0, 30.9375 6.881119 0, 32.34375 11.03496 0, 33.75 6.440559 0, 35.15625 6 0, 36.5625 8.13986 0, 37.96875 9.398602 0, 39.375 12.10489 0, 40.78125 11.16084 0, 42.1875 12.92308 0, 43.59375 13.93007 0, 45 14.55944 0, 46.40625 23.81119 0, 47.8125 21.04196 0, 49.21875 21.73427 0, 50.625 21.10489 0, 52.03125 25.00699 0, 53.4375 18.65035 0, 54.84375 20.79021 0, 56.25 22.86713 0, 57.65625 22.04895 0, 59.0625 22.04895 0, 60.46875 17.51748 0, 61.875 19.59441 0, 63.28125 19.34266 0, 64.6875 18.33566 0, 66.09375 19.59441 0, 67.5 18.9021 0, 68.90625 23.18182 0, 70.3125 25.25874 0, 71.71875 27.33566 0, 73.125 37.40559 0, 74.53125 39.86014 0, 75.9375 40.42657 0, 77.34375 42 0, 78.75 39.92308 0, 80.15625 38.34965 0, 81.5625 33.69231 0, 82.96875 31.99301 0, 84.375 29.16084 0, 85.78125 29.66434 0, 87.1875 33.81818 0, 88.59375 26.58042 0, 90 27.3986 0'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='self'>
+            <Script USE='CurrenciesScript'/>
+          </field>
 <![CDATA[ecmascript:
 
 var
@@ -203,30 +1292,15 @@ function initialize ()
 	set_loadTime ();
 }
 
-function set_loadTime ()
+async function set_loadTime ()
 {
-	if (typeof jQuery == "undefined")
-		return;
-	
-	var URL = Browser .currentScene .worldURL;
-	
-	URL = URL .replace (/[^\/]+$/, "eurofxref-hist-90d.xml");
+	const 
+		url      = new URL ("eurofxref-hist-90d.xml", Browser .currentScene .worldURL), // fallback, unused
+		response = await fetch ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml");
 
-	print (URL);
+	xml = new DOMParser () .parseFromString (await response .text (), "text/xml");
 
-	jQuery .ajax ({
-		url: URL,
-		dataType: "xml",
-		async: true,
-		cache: false,
-		global: false,
-		success: function (data, status, xhr)
-		{
-			xml = data;
-		
-			self .set_currency = currency;
-		},
-	});
+	self .set_currency = currency;
 }
 
 function set_USD (value, time) { set_currency ("USD", time); }
@@ -271,7 +1345,7 @@ function set_currency (value, time)
 
 	currency = value;
 	
-	if (! xml)
+	if (!xml)
 		return;
 
 	// Get new keyValues
@@ -367,1206 +1441,42 @@ function get_trend (last2, last1)
 	return "=";
 }
 ]]>
-            </Script>
-          </MetadataSet>
-        </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
-    <LayerSet
-        order='0, 1'>
-      <LayoutLayer>
-        <MetadataSet DEF='Titania_5'
-            name='Titania'
-            reference='http://titania.create3000.de'>
-          <MetadataSet DEF='AngleGrid_6' containerField='value'
-              name='AngleGrid'
-              reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_7' containerField='value'
-                name='enabled'
-                reference='http://titania.create3000.de'
-                value='false'/>
-          </MetadataSet>
-          <MetadataSet DEF='Grid_8' containerField='value'
-              name='Grid'
-              reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_9' containerField='value'
-                name='enabled'
-                reference='http://titania.create3000.de'
-                value='true'/>
-            <MetadataFloat DEF='rotation' containerField='value'
-                name='rotation'
-                reference='http://titania.create3000.de'
-                value='1, 0, 0, 1.5708'/>
-            <MetadataFloat DEF='scale' containerField='value'
-                name='scale'
-                reference='http://titania.create3000.de'
-                value='0.03, 0.03, 0.03'/>
-            <MetadataInteger DEF='dimension' containerField='value'
-                name='dimension'
-                reference='http://titania.create3000.de'
-                value='110, 10, 66'/>
-          </MetadataSet>
-        </MetadataSet>
-        <Background
-            skyColor='0.1 0.1 0.1'/>
-        <Group DEF='Currencies'>
-          <Transform>
-            <Group>
-              <Transform DEF='Rectangle2D'
-                  translation='-1.57391 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material DEF='_10'
-                        transparency='1'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_11'/>
-              <Transform DEF='Text'
-                  translation='-1.65 0.839941 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"USD"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_12'
-                  translation='-1.36032 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_13'/>
-              <Transform DEF='Text_14'
-                  translation='-1.41 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"JPY"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_15'
-                  translation='-1.09667 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_16'/>
-              <Transform DEF='Text_17'
-                  translation='-1.17 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"BGN"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_18'
-                  translation='-0.857332 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_19'/>
-              <Transform DEF='Text_20'
-                  translation='-0.93 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"CZK"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_21'
-                  translation='-0.584163 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_22'/>
-              <Transform DEF='Text_23'
-                  translation='-0.66 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"DKK"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_24'
-                  translation='-0.344679 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_25'/>
-              <Transform DEF='Text_26'
-                  translation='-0.42 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"GBP"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_27'
-                  translation='-0.100656 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_28'/>
-              <Transform DEF='Text_29'
-                  translation='-0.18 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"HUF"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_30'
-                  translation='0.133853 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_31'/>
-              <Transform DEF='Text_32'
-                  translation='0.06 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"PLN"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_33'
-                  translation='0.376664 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_34'/>
-              <Transform DEF='Text_35'
-                  translation='0.3 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"RON"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_36'
-                  translation='0.610603 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_37'/>
-              <Transform DEF='Text_38'
-                  translation='0.54 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"SEK"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_39'
-                  translation='0.85692 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_40'/>
-              <Transform DEF='Text_41'
-                  translation='0.78 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"CHF"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_42'
-                  translation='1.10186 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_43'/>
-              <Transform DEF='Text_44'
-                  translation='1.02 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"NOK"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_45'
-                  translation='1.35666 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_46'/>
-              <Transform DEF='Text_47'
-                  translation='1.27667 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"HRK"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-          </Transform>
-          <Transform
-              translation='0 -0.12 -4.34399e-07'>
-            <Group>
-              <Transform DEF='Rectangle2D_48'
-                  translation='-1.57505 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_49'/>
-              <Transform DEF='Text_50'
-                  translation='-1.65 0.839941 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"RUB"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_51'
-                  translation='-1.33672 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_52'/>
-              <Transform DEF='Text_53'
-                  translation='-1.41 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"TRY"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_54'
-                  translation='-1.09667 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_55'/>
-              <Transform DEF='Text_56'
-                  translation='-1.17 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"AUD"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_57'
-                  translation='-0.860761 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_58'/>
-              <Transform DEF='Text_59'
-                  translation='-0.93 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"BRL"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_60'
-                  translation='-0.584392 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_61'/>
-              <Transform DEF='Text_62'
-                  translation='-0.66 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"CAD"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_63'
-                  translation='-0.3442 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_64'/>
-              <Transform DEF='Text_65'
-                  translation='-0.42 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"CNY"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_66'
-                  translation='-0.0992258 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_67'/>
-              <Transform DEF='Text_68'
-                  translation='-0.18 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"HKD"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_69'
-                  translation='0.125785 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_70'/>
-              <Transform DEF='Text_71'
-                  translation='0.06 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"IDR"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_72'
-                  translation='0.376664 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_73'/>
-              <Transform DEF='Text_74'
-                  translation='0.3 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"ILS"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_75'
-                  translation='0.616465 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_76'/>
-              <Transform DEF='Text_77'
-                  translation='0.54 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"INR"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_78'
-                  translation='0.856317 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_79'/>
-              <Transform DEF='Text_80'
-                  translation='0.78 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"KRW"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_81'
-                  translation='1.0993 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_82'/>
-              <Transform DEF='Text_83'
-                  translation='1.02 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"MXN"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_84'
-                  translation='1.35666 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_85'/>
-              <Transform DEF='Text_86'
-                  translation='1.27667 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"MYR"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-          </Transform>
-          <Transform
-              translation='0 -0.24 -8.68798e-07'>
-            <Group>
-              <Transform DEF='Rectangle2D_87'
-                  translation='-1.57483 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_88'/>
-              <Transform DEF='Text_89'
-                  translation='-1.65 0.839941 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"NZD"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_90'
-                  translation='-1.33334 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_91'/>
-              <Transform DEF='Text_92'
-                  translation='-1.41 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"PHP"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_93'
-                  translation='-1.09263 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_94'/>
-              <Transform DEF='Text_95'
-                  translation='-1.17 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"SGD"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_96'
-                  translation='-0.853337 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_97'/>
-              <Transform DEF='Text_98'
-                  translation='-0.93 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"THB"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_99'
-                  translation='-0.58667 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_100'/>
-              <Transform DEF='Text_101'
-                  translation='-0.66 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"ZAR"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-            <Group>
-              <Transform DEF='Rectangle2D_102'
-                  translation='-0.354599 0.855 3.09509e-06'
-                  scale='0.075 0.045 0.06'>
-                <Shape>
-                  <Appearance>
-                    <Material USE='_10'/>
-                  </Appearance>
-                  <Rectangle2D/>
-                </Shape>
-              </Transform>
-              <TouchSensor DEF='_103'/>
-              <Transform DEF='Text_104'
-                  translation='-0.42 0.84 3.04079e-06'
-                  scale='0.0619995 0.0638764 0.0638764'>
-                <Shape>
-                  <Appearance>
-                    <Material
-                        diffuseColor='0.598 0.598 0.598'/>
-                  </Appearance>
-                  <Text
-                      string='"ISK"'
-                      solid='true'>
-                    <FontStyle
-                        style='BOLD'/>
-                  </Text>
-                </Shape>
-              </Transform>
-            </Group>
-          </Transform>
-          <Transform DEF='Text_105'
-              translation='1.5 0.54 1.95479e-06'
-              scale='0.0389381 0.0401169 0.0401169'>
-            <Shape>
-              <Appearance>
-                <Material
-                    diffuseColor='0.598 0.598 0.598'/>
-              </Appearance>
-              <Text
-                  string='"All currencies quoted against the euro (base currency)"'
-                  solid='true'>
-                <FontStyle
-                    family='"SANS"'
-                    style='BOLD'
-                    justify='"END"'/>
-              </Text>
-            </Shape>
-          </Transform>
-        </Group>
-        <Group DEF='Sidebar'>
-          <Transform DEF='Rectangle2D_106'
-              translation='-1.275 0.401667 1.45403e-06'
-              scale='0.375 0.045 0.15'>
-            <Shape>
-              <Appearance>
-                <Material DEF='Rococo35'
-                    ambientIntensity='0.0499912'
-                    diffuseColor='0.283314 0.28704 0.29'
-                    shininess='0.406061'/>
-                <ImageTexture
-                    url='"stripes.png"'/>
-                <TextureTransform
-                    rotation='12.5'
-                    scale='10 1'/>
-              </Appearance>
-              <Rectangle2D/>
-            </Shape>
-          </Transform>
-          <Transform DEF='Text_107'
-              translation='-1.65 0.21 7.60198e-07'
-              scale='0.0619995 0.0638764 0.0638764'>
-            <Shape>
-              <Appearance>
-                <Material
-                    diffuseColor='0.598 0.598 0.598'/>
-              </Appearance>
-              <Text DEF='_108'
-                  string='"USD", "US dollar", "N/A", "N/A"'
-                  solid='true'>
-                <FontStyle
-                    style='BOLD'
-                    spacing='1.85'/>
-              </Text>
-            </Shape>
-          </Transform>
-          <Transform DEF='Rectangle2D_109'
-              translation='-1.275 -0.345 -1.26887e-06'
-              scale='0.375 0.045 0.15'>
-            <Shape>
-              <Appearance>
-                <Material DEF='Rococo35_110'
-                    ambientIntensity='0.0499912'
-                    diffuseColor='0.283314 0.28704 0.29'
-                    shininess='0.406061'/>
-                <ImageTexture
-                    url='"stripes.png"'/>
-                <TextureTransform
-                    rotation='12.5'
-                    scale='10 1'/>
-              </Appearance>
-              <Rectangle2D/>
-            </Shape>
-          </Transform>
-          <Transform DEF='world'
-              translation='-1.275 -0.681094 -2.97715e-08'
-              scale='0.375 0.222656 0.807394'>
-            <Shape>
-              <Appearance>
-                <Material DEF='Metal4'
-                    ambientIntensity='0.00714286'
-                    diffuseColor='0.314286 0.218111 0'
-                    specularColor='0.540816 0.480233 0'
-                    shininess='0.0306122'/>
-                <ImageTexture
-                    url='"world.png", "file:///home/holger/Projekte/Cobweb/cobweb.js/examples/currencies/world.png"'
-                    repeatS='false'
-                    repeatT='false'/>
-              </Appearance>
-              <Rectangle2D/>
-            </Shape>
-          </Transform>
-        </Group>
-        <Group DEF='Chart'>
-          <Group DEF='Axes'>
-            <Transform DEF='Cylinder'
-                translation='0.375001 -0.9 -3.93403e-08'
-                rotation='-3.71776508265364e-12 3.67320791671285e-06 -0.999999999993254 89.9999124967152'
-                scale='0.01 1.125 0.01'>
-              <Shape>
-                <Appearance DEF='_111'>
-                  <Material DEF='Metal21'
-                      ambientIntensity='0.0106351'
-                      diffuseColor='0 0 0.0425405'
-                      specularColor='0.632653 0.627312 0.609747'
-                      shininess='0.102041'/>
-                </Appearance>
-                <Cylinder/>
-              </Shape>
-            </Transform>
-            <Transform DEF='Cylinder_112'
-                translation='-0.75 -0.218386 -1.83589e-08'
-                rotation='-5.11104834919853e-07 6.59092455550023e-07 0.999999999999652 0.0190757357293773'
-                scale='0.01 0.668386 0.01'
-                scaleOrientation='9.62006682503051e-14 1 -1.05653102986478e-13 90.0000000000002'>
-              <Shape>
-                <Appearance USE='_111'/>
-                <Cylinder/>
-              </Shape>
-            </Transform>
-            <Transform DEF='Sphere'
-                translation='-0.75 -0.9 -3.93403e-08'
-                scale='0.02 0.02 0.02'>
-              <Shape>
-                <Appearance USE='_111'/>
-                <Sphere/>
-              </Shape>
-            </Transform>
-            <Transform DEF='Cone'
-                translation='-0.75 0.45 1.96701e-08'
-                scale='0.02 0.02 0.02'>
-              <Shape>
-                <Appearance DEF='_113'>
-                  <Material DEF='Metal23'
-                      ambientIntensity='0.0106351'
-                      diffuseColor='0 0 0.0425405'
-                      specularColor='0.821429 0.814494 0.791687'
-                      shininess='0.0561224'/>
-                </Appearance>
-                <Cone DEF='_114'
-                    height='3'
-                    bottomRadius='1.22'/>
-              </Shape>
-            </Transform>
-            <Transform DEF='Cone_115'
-                translation='1.5 -0.9 -3.93403e-08'
-                rotation='0 0 1 269.999998079009'
-                scale='0.02 0.02 0.02'>
-              <Shape>
-                <Appearance USE='_113'/>
-                <Cone USE='_114'/>
-              </Shape>
-            </Transform>
-          </Group>
-          <Transform DEF='Extrusion'
-              translation='-0.75 -0.9 0'
-              scale='0.0249438 0.0249438 0.0249438'>
-            <Shape>
-              <Appearance>
-                <Material
-                    diffuseColor='1 0 0'/>
-              </Appearance>
-              <ProtoInstance name='RoundedExtrusion' DEF='_116' containerField='geometry'>
-                <fieldValue name='solid' value='false'/>
-                <fieldValue name='crossSection' value='-1 0, 1 0'/>
-                <fieldValue name='orientation' value=''/>
-                <fieldValue name='scale' value='0.3 0.3'/>
-                <fieldValue name='spine' value='1 6 0, 90 6 0'/>
-                <fieldValue name='cornerDimension' value='8'/>
-              </ProtoInstance>
-            </Shape>
-          </Transform>
-        </Group>
-        <Script USE='CurrenciesScript'/>
+        </Script>
         <Transform DEF='EuroSign'
             translation='1.41973 0.373394 0.270001'
-            rotation='0 0.999999999999981 0 347.790066361427'
+            rotation='0 1 0 60.696003540514'
             scale='0.208199 0.208199 0.208199'>
           <Group DEF='EuroSignAnimation'>
-            <MetadataSet DEF='Animation'
+            <MetadataSet DEF='Animation' containerField='metadata'
                 name='Animation'
                 reference='http://titania.create3000.de'>
-              <MetadataInteger DEF='duration' containerField='value'
+              <MetadataInteger DEF='duration'
                   name='duration'
                   reference='http://titania.create3000.de'
                   value='100'/>
-              <MetadataInteger DEF='framesPerSecond' containerField='value'
+              <MetadataInteger DEF='framesPerSecond'
                   name='framesPerSecond'
                   reference='http://titania.create3000.de'
                   value='10'/>
             </MetadataSet>
-            <TimeSensor DEF='_117'
+            <TimeSensor DEF='_42'
                 cycleInterval='10'
                 loop='true'/>
             <OrientationInterpolator DEF='EuroSignRotationInterpolator'
                 key='0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19, 0.2, 0.21, 0.22, 0.23, 0.24, 0.25, 0.26, 0.27, 0.28, 0.29, 0.3, 0.31, 0.32, 0.33, 0.34, 0.35, 0.36, 0.37, 0.38, 0.39, 0.4, 0.41, 0.42, 0.43, 0.44, 0.45, 0.46, 0.47, 0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54, 0.55, 0.56, 0.57, 0.58, 0.59, 0.6, 0.61, 0.62, 0.63, 0.64, 0.65, 0.66, 0.67, 0.68, 0.69, 0.7, 0.71, 0.72, 0.73, 0.74, 0.75, 0.76, 0.77, 0.78, 0.79, 0.8, 0.81, 0.82, 0.83, 0.84, 0.85, 0.86, 0.87, 0.88, 0.89, 0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99, 1'
                 keyValue='0 0 1 0, 0 1 0 3.59999999999984, 0 1 0 7.1999999999998, 0 1 0 10.8, 0 1 0 14.4000000000001, 0 1 0 17.9999999999999, 0 1 0 21.6, 0 1 0 25.1999999999999, 0 1 0 28.8, 0 1 0 32.3999999999998, 0 1 0 36, 0 1 0 39.5999999999999, 0 1 0 43.2, 0 1 0 46.8, 0 1 0 50.4, 0 1 0 54, 0 1 0 57.5999999999998, 0 1 0 61.2, 0 1 0 64.7999999999997, 0 1 0 68.3999999999999, 0 1 0 72.0000000000001, 0 1 0 75.5999999999998, 0 1 0 79.2000000000001, 0 1 0 82.8000000000003, 0 1 0 86.4, 0 1 0 90.0000000000002, 0 1 0 93.5999999999999, 0 1 0 97.2000000000001, 0 1 0 100.8, 0 1 0 104.4, 0 1 0 108, 0 1 0 111.6, 0 1 0 115.2, 0 1 0 118.8, 0 1 0 122.4, 0 1 0 126, 0 1 0 129.6, 0 1 0 133.2, 0 1 0 136.8, 0 1 0 140.4, 0 1 0 144, 0 1 0 147.6, 0 1 0 151.2, 0 1 0 154.8, 0 1 0 158.4, 0 1 0 162, 0 1 0 165.6, 0 1 0 169.2, 0 1 0 172.8, 0 1 0 176.4, 0 1 0 180, 0 1 0 183.6, 0 1 0 187.2, 0 1 0 190.8, 0 1 0 194.4, 0 1 0 198, 0 1 0 201.6, 0 1 0 205.2, 0 1 0 208.8, 0 1 0 212.4, 0 1 0 216, 0 1 0 219.6, 0 1 0 223.2, 0 1 0 226.8, 0 1 0 230.4, 0 1 0 234, 0 1 0 237.6, 0 1 0 241.2, 0 1 0 244.8, 0 1 0 248.4, 0 1 0 252, 0 1 0 255.6, 0 1 0 259.2, 0 1 0 262.8, 0 1 0 266.4, 0 1 0 270, 0 1 0 273.6, 0 1 0 277.2, 0 1 0 280.8, 0 1 0 284.4, 0 1 0 288, 0 1 0 291.6, 0 1 0 295.2, 0 1 0 298.8, 0 1 0 302.4, 0 1 0 306, 0 1 0 309.6, 0 1 0 313.2, 0 1 0 316.8, 0 1 0 320.4, 0 1 0 324, 0 1 0 327.6, 0 1 0 331.2, 0 1 0 334.8, 0 1 0 338.4, 0 1 0 342, 0 1 0 345.6, 0 1 0 349.2, 0 1 0 352.8, 0 1 0 356.4, 0 0 1 0'>
-              <MetadataSet DEF='Interpolator'
+              <MetadataSet DEF='Interpolator' containerField='metadata'
                   name='Interpolator'
                   reference='http://titania.create3000.de'>
-                <MetadataInteger DEF='key' containerField='value'
+                <MetadataInteger DEF='key'
                     name='key'
                     reference='http://titania.create3000.de'
                     value='0, 25, 50, 75, 100'/>
-                <MetadataDouble DEF='keyValue' containerField='value'
+                <MetadataDouble DEF='keyValue'
                     name='keyValue'
                     reference='http://titania.create3000.de'
                     value='0, 0, 1, 0, 0, 1, 0, 1.5707963267949, 0, 1, 0, 3.14159265358979, 0, 1, 0, 4.71238898038469, 0, 0, 1, 0'/>
-                <MetadataString DEF='keyType' containerField='value'
+                <MetadataString DEF='keyType'
                     name='keyType'
                     reference='http://titania.create3000.de'
                     value='"SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE"'/>
@@ -1591,43 +1501,43 @@ function get_trend (last2, last1)
         </Transform>
       </LayoutLayer>
     </LayerSet>
-    <ROUTE fromNode='_103' fromField='touchTime' toNode='CurrenciesScript' toField='set_ISK'/>
-    <ROUTE fromNode='_100' fromField='touchTime' toNode='CurrenciesScript' toField='set_ZAR'/>
-    <ROUTE fromNode='_97' fromField='touchTime' toNode='CurrenciesScript' toField='set_THB'/>
-    <ROUTE fromNode='_94' fromField='touchTime' toNode='CurrenciesScript' toField='set_SGD'/>
-    <ROUTE fromNode='_91' fromField='touchTime' toNode='CurrenciesScript' toField='set_PHP'/>
-    <ROUTE fromNode='_88' fromField='touchTime' toNode='CurrenciesScript' toField='set_NZD'/>
-    <ROUTE fromNode='_85' fromField='touchTime' toNode='CurrenciesScript' toField='set_MYR'/>
-    <ROUTE fromNode='_82' fromField='touchTime' toNode='CurrenciesScript' toField='set_MXN'/>
-    <ROUTE fromNode='_79' fromField='touchTime' toNode='CurrenciesScript' toField='set_KRW'/>
-    <ROUTE fromNode='_76' fromField='touchTime' toNode='CurrenciesScript' toField='set_INR'/>
-    <ROUTE fromNode='_73' fromField='touchTime' toNode='CurrenciesScript' toField='set_ILS'/>
-    <ROUTE fromNode='_70' fromField='touchTime' toNode='CurrenciesScript' toField='set_IDR'/>
-    <ROUTE fromNode='_67' fromField='touchTime' toNode='CurrenciesScript' toField='set_HKD'/>
-    <ROUTE fromNode='_64' fromField='touchTime' toNode='CurrenciesScript' toField='set_CNY'/>
-    <ROUTE fromNode='_61' fromField='touchTime' toNode='CurrenciesScript' toField='set_CAD'/>
-    <ROUTE fromNode='_58' fromField='touchTime' toNode='CurrenciesScript' toField='set_BRL'/>
-    <ROUTE fromNode='_55' fromField='touchTime' toNode='CurrenciesScript' toField='set_AUD'/>
-    <ROUTE fromNode='_52' fromField='touchTime' toNode='CurrenciesScript' toField='set_TRY'/>
-    <ROUTE fromNode='_49' fromField='touchTime' toNode='CurrenciesScript' toField='set_RUB'/>
-    <ROUTE fromNode='_46' fromField='touchTime' toNode='CurrenciesScript' toField='set_HRK'/>
-    <ROUTE fromNode='_43' fromField='touchTime' toNode='CurrenciesScript' toField='set_NOK'/>
-    <ROUTE fromNode='_40' fromField='touchTime' toNode='CurrenciesScript' toField='set_CHF'/>
-    <ROUTE fromNode='_37' fromField='touchTime' toNode='CurrenciesScript' toField='set_SEK'/>
-    <ROUTE fromNode='_34' fromField='touchTime' toNode='CurrenciesScript' toField='set_RON'/>
-    <ROUTE fromNode='_31' fromField='touchTime' toNode='CurrenciesScript' toField='set_PLN'/>
-    <ROUTE fromNode='_28' fromField='touchTime' toNode='CurrenciesScript' toField='set_HUF'/>
-    <ROUTE fromNode='_25' fromField='touchTime' toNode='CurrenciesScript' toField='set_GBP'/>
-    <ROUTE fromNode='_22' fromField='touchTime' toNode='CurrenciesScript' toField='set_DKK'/>
-    <ROUTE fromNode='_19' fromField='touchTime' toNode='CurrenciesScript' toField='set_CZK'/>
-    <ROUTE fromNode='_16' fromField='touchTime' toNode='CurrenciesScript' toField='set_BGN'/>
-    <ROUTE fromNode='_13' fromField='touchTime' toNode='CurrenciesScript' toField='set_JPY'/>
-    <ROUTE fromNode='_11' fromField='touchTime' toNode='CurrenciesScript' toField='set_USD'/>
-    <ROUTE fromNode='_2' fromField='fraction_changed' toNode='_3' toField='set_fraction'/>
-    <ROUTE fromNode='_3' fromField='modifiedFraction_changed' toNode='_4' toField='set_fraction'/>
-    <ROUTE fromNode='CurrenciesScript' fromField='text_changed' toNode='_108' toField='set_string'/>
-    <ROUTE fromNode='_117' fromField='fraction_changed' toNode='EuroSignRotationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='_33' fromField='touchTime' toNode='CurrenciesScript' toField='set_ISK'/>
+    <ROUTE fromNode='_32' fromField='touchTime' toNode='CurrenciesScript' toField='set_ZAR'/>
+    <ROUTE fromNode='_31' fromField='touchTime' toNode='CurrenciesScript' toField='set_THB'/>
+    <ROUTE fromNode='_30' fromField='touchTime' toNode='CurrenciesScript' toField='set_SGD'/>
+    <ROUTE fromNode='_29' fromField='touchTime' toNode='CurrenciesScript' toField='set_PHP'/>
+    <ROUTE fromNode='_28' fromField='touchTime' toNode='CurrenciesScript' toField='set_NZD'/>
+    <ROUTE fromNode='_27' fromField='touchTime' toNode='CurrenciesScript' toField='set_MYR'/>
+    <ROUTE fromNode='_26' fromField='touchTime' toNode='CurrenciesScript' toField='set_MXN'/>
+    <ROUTE fromNode='_25' fromField='touchTime' toNode='CurrenciesScript' toField='set_KRW'/>
+    <ROUTE fromNode='_24' fromField='touchTime' toNode='CurrenciesScript' toField='set_INR'/>
+    <ROUTE fromNode='_23' fromField='touchTime' toNode='CurrenciesScript' toField='set_ILS'/>
+    <ROUTE fromNode='_22' fromField='touchTime' toNode='CurrenciesScript' toField='set_IDR'/>
+    <ROUTE fromNode='_21' fromField='touchTime' toNode='CurrenciesScript' toField='set_HKD'/>
+    <ROUTE fromNode='_20' fromField='touchTime' toNode='CurrenciesScript' toField='set_CNY'/>
+    <ROUTE fromNode='_19' fromField='touchTime' toNode='CurrenciesScript' toField='set_CAD'/>
+    <ROUTE fromNode='_18' fromField='touchTime' toNode='CurrenciesScript' toField='set_BRL'/>
+    <ROUTE fromNode='_17' fromField='touchTime' toNode='CurrenciesScript' toField='set_AUD'/>
+    <ROUTE fromNode='_16' fromField='touchTime' toNode='CurrenciesScript' toField='set_TRY'/>
+    <ROUTE fromNode='_15' fromField='touchTime' toNode='CurrenciesScript' toField='set_RUB'/>
+    <ROUTE fromNode='_14' fromField='touchTime' toNode='CurrenciesScript' toField='set_HRK'/>
+    <ROUTE fromNode='_13' fromField='touchTime' toNode='CurrenciesScript' toField='set_NOK'/>
+    <ROUTE fromNode='_12' fromField='touchTime' toNode='CurrenciesScript' toField='set_CHF'/>
+    <ROUTE fromNode='_11' fromField='touchTime' toNode='CurrenciesScript' toField='set_SEK'/>
+    <ROUTE fromNode='_10' fromField='touchTime' toNode='CurrenciesScript' toField='set_RON'/>
+    <ROUTE fromNode='_9' fromField='touchTime' toNode='CurrenciesScript' toField='set_PLN'/>
+    <ROUTE fromNode='_8' fromField='touchTime' toNode='CurrenciesScript' toField='set_HUF'/>
+    <ROUTE fromNode='_7' fromField='touchTime' toNode='CurrenciesScript' toField='set_GBP'/>
+    <ROUTE fromNode='_6' fromField='touchTime' toNode='CurrenciesScript' toField='set_DKK'/>
+    <ROUTE fromNode='_5' fromField='touchTime' toNode='CurrenciesScript' toField='set_CZK'/>
+    <ROUTE fromNode='_4' fromField='touchTime' toNode='CurrenciesScript' toField='set_BGN'/>
+    <ROUTE fromNode='_3' fromField='touchTime' toNode='CurrenciesScript' toField='set_JPY'/>
+    <ROUTE fromNode='_2' fromField='touchTime' toNode='CurrenciesScript' toField='set_USD'/>
+    <ROUTE fromNode='_39' fromField='fraction_changed' toNode='_40' toField='set_fraction'/>
+    <ROUTE fromNode='_40' fromField='modifiedFraction_changed' toNode='_41' toField='set_fraction'/>
+    <ROUTE fromNode='CurrenciesScript' fromField='text_changed' toNode='_34' toField='set_string'/>
+    <ROUTE fromNode='_42' fromField='fraction_changed' toNode='EuroSignRotationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='EuroSignRotationInterpolator' fromField='value_changed' toNode='EuroSign' toField='set_rotation'/>
-    <ROUTE fromNode='_4' fromField='value_changed' toNode='_116' toField='set_spine'/>
+    <ROUTE fromNode='_41' fromField='value_changed' toNode='_38' toField='set_spine'/>
   </Scene>
 </X3D>
