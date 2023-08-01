@@ -36,6 +36,11 @@ Group {
     }
     DEF Home_1 Transform {
       children [
+        DEF enterWorldTimeSensor TimeSensor {
+          enabled FALSE
+          loop TRUE
+          startTime 1
+        }
         DEF Light1 PointLight {
           ambientIntensity 0.58
           attenuation 0.5 0 0
@@ -57,15 +62,12 @@ Group {
               transitionType "ANIMATE"
               transitionTime 6
             }
-            DEF VS VisibilitySensor {
-              size -1 -1 -1
-            }
             DEF _bind Script {
-              eventIn SFTime set_enterTime
-              eventOut SFBool bind_changed
+              eventOut   SFBool bind_changed
+              eventIn    SFTime set_startTime
 
               url "vrmlscript:
-function set_enterTime ()
+function set_startTime(value, time)
 {
 	bind_changed = TRUE;
 }
@@ -24396,6 +24398,7 @@ function set_enterTime ()
                     children DEF Time_28 TimeSensor {
                       cycleInterval 50
                       loop TRUE
+                      startTime 1539263775.71056
                     }
                   }
                   DEF SchmetterlingTranslationInterp PositionInterpolator {
@@ -26447,6 +26450,7 @@ function set_enterTime ()
                             children DEF Time_32 TimeSensor {
                               cycleInterval 3
                               loop TRUE
+                              startTime 1539263775.71056
                             }
                           }
                           DEF SM-ParentTranslationInterp PositionInterpolator {
@@ -28971,9 +28975,17 @@ function set_enterTime ()
         }
       ]
     }
+    Transform {
+      translation 0 100.5 0
+      scale 1487.58 1487.58 1487.58
+      children DEF _36 VisibilitySensor {
+        size -1 -1 -1
+      }
+    }
   ]
 }
 
+ROUTE _36.enterTime TO _bind.set_startTime
 ROUTE _bind.bind_changed TO Entry.set_bind
 ROUTE enterWorldTimeSensor_9.time TO enterWorldScript_8.triggerIn
 ROUTE enterWorldScript_8.firstTime TO enterWorldTimeSensor_9.set_enabled
@@ -28986,13 +28998,17 @@ ROUTE _13.value_changed TO _15.xIn
 ROUTE _14.value_changed TO _15.yIn
 ROUTE _15.vec TO _16.set_translation
 ROUTE enterWorldScript_29.firstTime TO enterWorldTimeSensor_27.set_enabled
+ROUTE _36.isActive TO Time_28.set_enabled
+ROUTE _36.enterTime TO Time_28.set_startTime
 ROUTE Time_28.fraction_changed TO SchmetterlingTranslationInterp.set_fraction
 ROUTE Time_28.fraction_changed TO SchmetterlingRotationInterp.set_fraction
 ROUTE schmetterling.isBound TO _fly.set_bind
 ROUTE enterWorldTimeSensor_27.time TO enterWorldScript_29.triggerIn
 ROUTE enterWorldScript_31.firstTime TO enterWorldTimeSensor_30.set_enabled
 ROUTE enterWorldTimeSensor_30.time TO enterWorldScript_31.triggerIn
+ROUTE _36.isActive TO Time_32.set_enabled
 ROUTE enterWorldScript_31.startTime TO Time_32.set_startTime
+ROUTE _36.enterTime TO Time_32.set_startTime
 ROUTE Time_32.fraction_changed TO SM-ParentTranslationInterp.set_fraction
 ROUTE Time_32.fraction_changed TO SM-ParentRotationInterp.set_fraction
 ROUTE enterWorldScript_31.startTime TO Time_33.set_startTime
@@ -29006,4 +29022,3 @@ ROUTE SchmetterlingTranslationInterp.value_changed TO Schmetterling_26.set_trans
 ROUTE SchmetterlingRotationInterp.value_changed TO Schmetterling_26.set_rotation
 ROUTE _bind.bind_changed TO _EntryNavInfo1.set_bind
 ROUTE _bind.bind_changed TO _2.set_bind
-ROUTE VS.enterTime TO _bind.set_enterTime
