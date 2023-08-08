@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.11.8
+#X3D V4.0 utf8 X_ITE V8.11.9
 
 PROFILE Interchange
 
@@ -10,18 +10,27 @@ META "generator" "Sunrize X3D Editor V1.0.83, https://create3000.github.io/sunri
 META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
 META "modified" "Tue, 08 Aug 2023 17:41:44 GMT"
 META "converter" "x3d-tidy V1.0.83, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Tue, 08 Aug 2023 17:43:36 GMT"
+META "converted" "Tue, 08 Aug 2023 18:01:34 GMT"
 
 WorldInfo {
   title "Star Flag of the United States"
-  info [ "version: 2.0", "generator: Sketchfab (OSG glTF plugin)" ]
+  info [
+    "version: 2.0",
+    "generator: Sketchfab (OSG glTF plugin)"
+  ]
 }
 
 Background {
   skyAngle 1.5708
-  skyColor [ 0.141 0.122878 0.0998179, 0.397224 0.34617 0.281206 ]
+  skyColor [
+    0.141 0.122878 0.0998179,
+    0.397224 0.34617 0.281206
+  ]
   groundAngle 1.45428
-  groundColor [ 0.141 0.122878 0.0998179, 0.397224 0.34617 0.281206 ]
+  groundColor [
+    0.141 0.122878 0.0998179,
+    0.397224 0.34617 0.281206
+  ]
 }
 
 Viewpoint {
@@ -34,8 +43,11 @@ DEF StarFlag Inline {
   url "assets/star-flag.gltf"
 }
 
-LoadSensor {
+DEF _1 LoadSensor {
   children USE StarFlag
 }
 
 IMPORT StarFlag.Timer1
+
+ROUTE _1.loadTime TO Timer1.set_startTime
+ROUTE _1.isLoaded TO Timer1.set_loop

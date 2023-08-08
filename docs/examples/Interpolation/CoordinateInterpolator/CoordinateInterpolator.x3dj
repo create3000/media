@@ -40,7 +40,7 @@
         },
         {
           "@name": "converted",
-          "@content": "Tue, 08 Aug 2023 17:43:34 GMT"
+          "@content": "Tue, 08 Aug 2023 18:01:43 GMT"
         }
       ]
     },
@@ -49,15 +49,28 @@
         { "WorldInfo":
           {
             "@title": "Star Flag of the United States",
-            "@info": [ "version: 2.0", "generator: Sketchfab (OSG glTF plugin)" ]
+            "@info": [
+              "version: 2.0",
+              "generator: Sketchfab (OSG glTF plugin)"
+            ]
           }
         },
         { "Background":
           {
-            "@skyAngle": [ 1.5708 ],
-            "@skyColor": [ 0.141, 0.122878, 0.0998179, 0.397224, 0.34617, 0.281206 ],
-            "@groundAngle": [ 1.45428 ],
-            "@groundColor": [ 0.141, 0.122878, 0.0998179, 0.397224, 0.34617, 0.281206 ]
+            "@skyAngle": [
+              1.5708
+            ],
+            "@skyColor": [
+              0.141, 0.122878, 0.0998179,
+              0.397224, 0.34617, 0.281206
+            ],
+            "@groundAngle": [
+              1.45428
+            ],
+            "@groundColor": [
+              0.141, 0.122878, 0.0998179,
+              0.397224, 0.34617, 0.281206
+            ]
           }
         },
         { "Viewpoint":
@@ -70,11 +83,14 @@
           {
             "@DEF": "StarFlag",
             "@global": true,
-            "@url": [ "assets/star-flag.gltf" ]
+            "@url": [
+              "assets/star-flag.gltf"
+            ]
           }
         },
         { "LoadSensor":
           {
+            "@DEF": "_1",
             "-children": [
               { "Inline":
                 {
@@ -88,6 +104,22 @@
           {
             "@inlineDEF": "StarFlag",
             "@importedDEF": "Timer1"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "loadTime",
+            "@toNode": "Timer1",
+            "@toField": "startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "isLoaded",
+            "@toNode": "Timer1",
+            "@toField": "loop"
           }
         }
       ]
