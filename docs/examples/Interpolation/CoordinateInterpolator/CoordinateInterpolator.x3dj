@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -23,28 +23,24 @@
           "@content": "Holger Seelig"
         },
         {
-          "@name": "creator",
-          "@content": "Holger Seelig"
-        },
-        {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.0.83, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
+          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 02:37:36 GMT"
+          "@content": "Tue, 08 Aug 2023 17:41:44 GMT"
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.83, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:54:54 GMT"
+          "@content": "Tue, 08 Aug 2023 17:43:34 GMT"
         }
       ]
     },
@@ -74,7 +70,24 @@
           {
             "@DEF": "StarFlag",
             "@global": true,
-            "@url": [ "assets/star-flag.x3d" ]
+            "@url": [ "assets/star-flag.gltf" ]
+          }
+        },
+        { "LoadSensor":
+          {
+            "-children": [
+              { "Inline":
+                {
+                  "@USE": "StarFlag"
+                }
+              }
+            ]
+          }
+        },
+        { "IMPORT":
+          {
+            "@inlineDEF": "StarFlag",
+            "@importedDEF": "Timer1"
           }
         }
       ]

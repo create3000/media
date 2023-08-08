@@ -2,16 +2,15 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 05 Feb 2018 07:19:25 GMT'/>
     <meta name='created' content='Sat, 10 Feb 2018 02:42:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 02:37:36 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:54:52 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.0.83, https://create3000.github.io/sunrize/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d'/>
+    <meta name='modified' content='Tue, 08 Aug 2023 17:41:44 GMT'/>
+    <meta name='converter' content='x3d-tidy V1.0.83, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='converted' content='Tue, 08 Aug 2023 17:43:36 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -27,6 +26,10 @@
         centerOfRotation='0.000165415 44.3815 3.10568'/>
     <Inline DEF='StarFlag'
         global='true'
-        url='"assets/star-flag.x3d"'/>
+        url='"assets/star-flag.gltf"'/>
+    <LoadSensor>
+      <Inline USE='StarFlag'/>
+    </LoadSensor>
+    <IMPORT inlineDEF='StarFlag' importedDEF='Timer1'/>
   </Scene>
 </X3D>

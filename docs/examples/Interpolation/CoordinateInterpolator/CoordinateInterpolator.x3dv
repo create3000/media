@@ -1,17 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V8.11.8
 
 PROFILE Interchange
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 05 Feb 2018 07:19:25 GMT"
 META "created" "Sat, 10 Feb 2018 02:42:59 GMT"
 META "creator" "Holger Seelig"
-META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
-META "modified" "Mon, 07 Jan 2019 02:37:36 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:54:55 GMT"
+META "generator" "Sunrize X3D Editor V1.0.83, https://create3000.github.io/sunrize/"
+META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
+META "modified" "Tue, 08 Aug 2023 17:41:44 GMT"
+META "converter" "x3d-tidy V1.0.83, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Tue, 08 Aug 2023 17:43:36 GMT"
 
 WorldInfo {
   title "Star Flag of the United States"
@@ -32,5 +31,11 @@ Viewpoint {
 
 DEF StarFlag Inline {
   global TRUE
-  url "assets/star-flag.x3d"
+  url "assets/star-flag.gltf"
 }
+
+LoadSensor {
+  children USE StarFlag
+}
+
+IMPORT StarFlag.Timer1
