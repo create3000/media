@@ -41,6 +41,8 @@ sub example {
    add sub { system "npx --yes x3d-tidy -s COMPACT -r -m -i '$orig' -o '$x3dj' " };
 }
 
+system "npx --yes x3d-tidy -h";
+
 @files = sort `find $examples -maxdepth 2 -mindepth 2 -type d`;
 @files = grep { $s = $_; any { index ($s, $_) != -1 } @ARGV } @files if @ARGV;
 
