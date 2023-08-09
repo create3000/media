@@ -9,8 +9,8 @@
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/ImageTexture/ImageTexture.O.x3d'/>
     <meta name='modified' content='Sun, 17 Nov 2019 09:11:03 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:06:34 GMT'/>
+    <meta name='converter' content='x3d-tidy V1.0.87, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='converted' content='Wed, 09 Aug 2023 12:17:35 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Image'>
@@ -57,7 +57,7 @@
             <IndexedFaceSet USE='_2'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='interpolator'>
-            <PositionInterpolator USE='_4' containerField='interpolator'/>
+            <PositionInterpolator USE='_4'/>
           </field>
 <![CDATA[ecmascript:
 
@@ -113,16 +113,16 @@ function random (min, max)
     </ProtoDeclare>
     <ProtoDeclare name='Images'>
       <ProtoBody>
-        <Group DEF='_5'/>
+        <Group DEF='_1'/>
         <Script DEF='ImagesScript'
             directOutput='true'>
           <field accessType='inputOnly' type='SFTime' name='set_time'/>
           <field accessType='initializeOnly' type='SFNode' name='timeSensor'>
-            <TimeSensor DEF='_6' containerField='timeSensor'
+            <TimeSensor DEF='_2'
                 cycleInterval='0.1'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Group USE='_5' containerField='group'/>
+            <Group USE='_1'/>
           </field>
 <![CDATA[ecmascript:
 
@@ -159,7 +159,7 @@ function set_time (value, time)
 }
 ]]>
         </Script>
-        <ROUTE fromNode='_6' fromField='cycleTime' toNode='ImagesScript' toField='set_time'/>
+        <ROUTE fromNode='_2' fromField='cycleTime' toNode='ImagesScript' toField='set_time'/>
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo/>

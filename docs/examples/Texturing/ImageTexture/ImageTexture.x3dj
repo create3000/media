@@ -1,7 +1,7 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
@@ -32,11 +32,11 @@
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.87, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:06:39 GMT"
+          "@content": "Wed, 09 Aug 2023 12:17:33 GMT"
         }
       ],
       "component": [
@@ -267,7 +267,7 @@
               "-children": [
                 { "Group":
                   {
-                    "@DEF": "_5"
+                    "@DEF": "_1"
                   }
                 },
                 { "Script":
@@ -287,7 +287,7 @@
                         "-children": [
                           { "TimeSensor":
                             {
-                              "@DEF": "_6",
+                              "@DEF": "_2",
                               "@cycleInterval": 0.1
                             }
                           }
@@ -300,7 +300,7 @@
                         "-children": [
                           { "Group":
                             {
-                              "@USE": "_5"
+                              "@USE": "_1"
                             }
                           }
                         ]
@@ -346,7 +346,7 @@
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_6",
+                    "@fromNode": "_2",
                     "@fromField": "cycleTime",
                     "@toNode": "ImagesScript",
                     "@toField": "set_time"
