@@ -57,7 +57,7 @@
           </IS>
 <![CDATA[ecmascript:
 
-if (typeof window !== "undefined")
+if (Browser .name === "X_ITE")
 {
 	var
 		context    = Browser .getAudioContext (),
@@ -65,7 +65,6 @@ if (typeof window !== "undefined")
 		analyser   = context .createAnalyser ();
 
   sourceNode .connect (analyser);
-	analyser .connect (context .destination);
 
 	analyser .fftSize = fftSize;
 

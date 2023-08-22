@@ -12,7 +12,7 @@
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d'/>
     <meta name='modified' content='Sun, 06 Jan 2019 14:22:33 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.91, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Tue, 22 Aug 2023 13:04:44 GMT'/>
+    <meta name='converted' content='Tue, 22 Aug 2023 15:51:30 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='SpectrumAnalyser'>
@@ -59,7 +59,7 @@
           </IS>
 <![CDATA[ecmascript:
 
-if (typeof window !== "undefined")
+if (Browser .name === "X_ITE")
 {
 	var
 		context    = Browser .getAudioContext (),
@@ -67,7 +67,6 @@ if (typeof window !== "undefined")
 		analyser   = context .createAnalyser ();
 
   sourceNode .connect (analyser);
-	analyser .connect (context .destination);
 
 	analyser .fftSize = fftSize;
 
