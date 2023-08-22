@@ -1,7 +1,7 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
@@ -32,11 +32,11 @@
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.91, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:06:02 GMT"
+          "@content": "Tue, 22 Aug 2023 13:04:46 GMT"
         }
       ],
       "component": [
@@ -53,7 +53,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -187,11 +187,11 @@
 "if (typeof window !== \"undefined\")",
 "{",
 "\tvar",
-"\t\tcontext  = new (window .AudioContext || window .webkitAudioContext) (),",
-"\t\tmedia    = context .createMediaElementSource (source .getValue () .getElement ()),",
-"\t\tanalyser = context .createAnalyser ();",
+"\t\tcontext    = Browser .getAudioContext (),",
+"\t\tsourceNode = source .getValue () .getSource (),",
+"\t\tanalyser   = context .createAnalyser ();",
 "",
-"\tmedia    .connect (analyser);",
+"  sourceNode .connect (analyser);",
 "\tanalyser .connect (context .destination);",
 "",
 "\tanalyser .fftSize = fftSize;",
@@ -250,7 +250,7 @@
 "\t\tpoints .push (point);",
 "",
 "\t\tanalyser .getByteFrequencyData (dataArray);",
-"\t\t",
+"",
 "\t\tfor (var i = 0; i < bufferLength; ++ i)",
 "\t\t{",
 "\t\t\tvar volume = dataArray [i] / 255;",
@@ -259,7 +259,7 @@
 "\t\t\tpoint [i] .x = samples - 1;",
 "\t\t\tpoint [i] .y = volume * yScale;",
 "\t\t}",
-"\t\t",
+"",
 "\t\tbuild ();",
 "\t}",
 "}",
@@ -357,7 +357,8 @@
                 "-children": [
                   { "AudioClip":
                     {
-                      "@DEF": "AudioClip"
+                      "@DEF": "AudioClip",
+                      "@url": [ "assets/audio/01. Calabi Yau Space.mp3" ]
                     }
                   }
                 ]

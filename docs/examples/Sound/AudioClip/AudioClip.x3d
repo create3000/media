@@ -11,8 +11,8 @@
     <meta name='generator' content='Titania V4.3.8, http://titania.create3000.de'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d'/>
     <meta name='modified' content='Sun, 06 Jan 2019 14:22:33 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:05:51 GMT'/>
+    <meta name='converter' content='x3d-tidy V1.0.91, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='converted' content='Tue, 22 Aug 2023 13:04:44 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='SpectrumAnalyser'>
@@ -62,11 +62,11 @@
 if (typeof window !== "undefined")
 {
 	var
-		context  = new (window .AudioContext || window .webkitAudioContext) (),
-		media    = context .createMediaElementSource (source .getValue () .getElement ()),
-		analyser = context .createAnalyser ();
+		context    = Browser .getAudioContext (),
+		sourceNode = source .getValue () .getSource (),
+		analyser   = context .createAnalyser ();
 
-	media    .connect (analyser);
+  sourceNode .connect (analyser);
 	analyser .connect (context .destination);
 
 	analyser .fftSize = fftSize;
@@ -125,7 +125,7 @@ function set_time (value, time)
 		points .push (point);
 
 		analyser .getByteFrequencyData (dataArray);
-		
+
 		for (var i = 0; i < bufferLength; ++ i)
 		{
 			var volume = dataArray [i] / 255;
@@ -134,7 +134,7 @@ function set_time (value, time)
 			point [i] .x = samples - 1;
 			point [i] .y = volume * yScale;
 		}
-		
+
 		build ();
 	}
 }
@@ -174,10 +174,11 @@ function build ()
       <field accessType='inputOnly' type='SFBool' name='set_active'/>
       <field accessType='initializeOnly' type='MFString' name='files' value='"assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don&apos;t Pay My Bills.mp3", "assets/audio/03. Crockett&apos;s Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3"'/>
       <field accessType='initializeOnly' type='SFNode' name='source'>
-        <AudioClip DEF='AudioClip'/>
+        <AudioClip DEF='AudioClip'
+            url='"assets/audio/01. Calabi Yau Space.mp3"'/>
       </field>
       <field accessType='initializeOnly' type='SFNode' name='self'>
-        <Script USE='AudioScript' containerField='self'/>
+        <Script USE='AudioScript'/>
       </field>
 <![CDATA[ecmascript:
 

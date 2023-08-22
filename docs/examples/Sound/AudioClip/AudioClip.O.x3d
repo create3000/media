@@ -60,11 +60,11 @@
 if (typeof window !== "undefined")
 {
 	var
-		context  = new (window .AudioContext || window .webkitAudioContext) (),
-		media    = context .createMediaElementSource (source .getValue () .getElement ()),
-		analyser = context .createAnalyser ();
+		context    = Browser .getAudioContext (),
+		sourceNode = source .getValue () .getSource (),
+		analyser   = context .createAnalyser ();
 
-	media    .connect (analyser);
+  sourceNode .connect (analyser);
 	analyser .connect (context .destination);
 
 	analyser .fftSize = fftSize;
@@ -123,7 +123,7 @@ function set_time (value, time)
 		points .push (point);
 
 		analyser .getByteFrequencyData (dataArray);
-		
+
 		for (var i = 0; i < bufferLength; ++ i)
 		{
 			var volume = dataArray [i] / 255;
@@ -132,7 +132,7 @@ function set_time (value, time)
 			point [i] .x = samples - 1;
 			point [i] .y = volume * yScale;
 		}
-		
+
 		build ();
 	}
 }

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V8.11.17
 
 PROFILE Interchange
 
@@ -13,8 +13,8 @@ META "creator" "Holger Seelig"
 META "generator" "Titania V4.3.8, http://titania.create3000.de"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d"
 META "modified" "Sun, 06 Jan 2019 14:22:33 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:05:57 GMT"
+META "converter" "x3d-tidy V1.0.91, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Tue, 22 Aug 2023 13:04:46 GMT"
 
 PROTO SpectrumAnalyser [
   inputOutput    SFTime  cycleInterval 1
@@ -56,11 +56,11 @@ PROTO SpectrumAnalyser [
 if (typeof window !== \"undefined\")
 {
 	var
-		context  = new (window .AudioContext || window .webkitAudioContext) (),
-		media    = context .createMediaElementSource (source .getValue () .getElement ()),
-		analyser = context .createAnalyser ();
+		context    = Browser .getAudioContext (),
+		sourceNode = source .getValue () .getSource (),
+		analyser   = context .createAnalyser ();
 
-	media    .connect (analyser);
+  sourceNode .connect (analyser);
 	analyser .connect (context .destination);
 
 	analyser .fftSize = fftSize;
@@ -119,7 +119,7 @@ function set_time (value, time)
 		points .push (point);
 
 		analyser .getByteFrequencyData (dataArray);
-		
+
 		for (var i = 0; i < bufferLength; ++ i)
 		{
 			var volume = dataArray [i] / 255;
@@ -128,7 +128,7 @@ function set_time (value, time)
 			point [i] .x = samples - 1;
 			point [i] .y = volume * yScale;
 		}
-		
+
 		build ();
 	}
 }
@@ -173,7 +173,9 @@ Viewpoint {
 DEF AudioScript Script {
   inputOnly      SFBool   set_active
   initializeOnly MFString files [ "assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don't Pay My Bills.mp3", "assets/audio/03. Crockett's Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3" ]
-  initializeOnly SFNode   source DEF AudioClip AudioClip { }
+  initializeOnly SFNode   source DEF AudioClip AudioClip {
+    url "assets/audio/01. Calabi Yau Space.mp3"
+  }
   initializeOnly SFNode   self USE AudioScript
 
   url "ecmascript:
