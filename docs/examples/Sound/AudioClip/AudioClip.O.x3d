@@ -10,7 +10,7 @@
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.0, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d'/>
-    <meta name='modified' content='Wed, 23 Aug 2023 23:40:49 GMT'/>
+    <meta name='modified' content='Thu, 24 Aug 2023 08:17:32 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='SpectrumAnalyser'>
@@ -284,9 +284,6 @@ function build ()
         <AudioClip DEF='AudioClip'
             url='"assets/audio/01. Calabi Yau Space.mp3"'/>
       </field>
-      <field accessType='initializeOnly' type='SFNode' name='self'>
-        <Script USE='AudioScript'/>
-      </field>
 <![CDATA[ecmascript:
 
 let track = 0;
@@ -313,26 +310,21 @@ function set_active (value, time)
         maxBack='100000'
         maxFront='100000'>
       <Analyser DEF='_1'
-          fftSize='64'
-          startTime='1692833978.742'>
+          fftSize='64'>
         <AudioClip USE='AudioClip' containerField='children'/>
       </Analyser>
     </Sound>
-    <LoadSensor DEF='_2'>
-      <AudioClip USE='AudioClip' containerField='children'/>
-    </LoadSensor>
     <Transform DEF='SpectrumAnalyser'
         scale='1 1 -1'>
-      <ProtoInstance name='SpectrumAnalyser' DEF='_3'>
+      <ProtoInstance name='SpectrumAnalyser' DEF='_2'>
         <fieldValue name='yScale' value='8'/>
         <fieldValue name='samples' value='32'/>
         <fieldValue name='frequencyBinCount' value='32'/>
-        <fieldValue name='byteFrequencyData' value='255, 246, 200, 181, 180, 169, 148, 138, 154, 148, 129, 115, 107, 108, 102, 105, 123, 133, 129, 116, 125, 137, 128, 110, 88, 94, 98, 88, 56, 0, 0, 0'/>
+        <fieldValue name='byteFrequencyData' value='184, 178, 149, 107, 48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0'/>
       </ProtoInstance>
     </Transform>
     <ROUTE fromNode='AudioClip' fromField='isActive' toNode='AudioScript' toField='set_active'/>
-    <ROUTE fromNode='_1' fromField='byteFrequencyData' toNode='_3' toField='set_byteFrequencyData'/>
-    <ROUTE fromNode='_1' fromField='frequencyBinCount' toNode='_3' toField='set_frequencyBinCount'/>
-    <ROUTE fromNode='_2' fromField='loadTime' toNode='_1' toField='set_startTime'/>
+    <ROUTE fromNode='_1' fromField='byteFrequencyData' toNode='_2' toField='set_byteFrequencyData'/>
+    <ROUTE fromNode='_1' fromField='frequencyBinCount' toNode='_2' toField='set_frequencyBinCount'/>
   </Scene>
 </X3D>
