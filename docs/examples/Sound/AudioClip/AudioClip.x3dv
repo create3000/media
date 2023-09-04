@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.11.17
+#X3D V4.0 utf8 X_ITE V8.12.0
 
 PROFILE Interchange
 
@@ -7,21 +7,20 @@ COMPONENT Sound : 3
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.8, http://titania.create3000.de"
+META "generator" "Sunrize X3D Editor V1.1.0, https://create3000.github.io/sunrize/"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Sound/AudioClip/AudioClip.O.x3d"
-META "modified" "Sun, 06 Jan 2019 14:22:33 GMT"
-META "converter" "x3d-tidy V1.0.91, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Tue, 22 Aug 2023 15:51:31 GMT"
+META "modified" "Thu, 24 Aug 2023 09:33:32 GMT"
+META "converter" "x3d-tidy V1.0.92, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Mon, 04 Sep 2023 10:20:42 GMT"
 
 PROTO SpectrumAnalyser [
-  inputOutput    SFTime  cycleInterval 1
-  inputOutput    SFFloat yScale 1
-  initializeOnly SFInt32 fftSize 64
-  initializeOnly SFInt32 samples 32
-  initializeOnly SFNode  source NULL
+  inputOutput SFFloat yScale 1
+  inputOutput SFInt32 samples 0
+  inputOutput SFInt32 frequencyBinCount 0
+  inputOutput MFInt32 byteFrequencyData [ ]
 ]
 {
   DEF LineSet Transform {
@@ -38,122 +37,97 @@ PROTO SpectrumAnalyser [
     }
   }
 
-  DEF _2 TimeSensor {
-    cycleInterval IS cycleInterval
-    loop TRUE
-  }
-
   DEF SpectrumAnalyserScript Script {
-    inputOnly      SFTime  set_time
     inputOutput    SFFloat yScale IS yScale
-    initializeOnly SFInt32 fftSize IS fftSize
-    initializeOnly SFInt32 samples IS samples
-    initializeOnly SFNode  source IS source
+    inputOutput    SFInt32 samples IS samples
+    inputOutput    SFInt32 frequencyBinCount IS frequencyBinCount
+    inputOutput    MFInt32 byteFrequencyData IS byteFrequencyData
     initializeOnly SFNode  geometry USE _1
 
     url "ecmascript:
 
-if (Browser .name === \"X_ITE\")
+const
+   colors = [ ],
+   points = [ ];
+
+function set_samples ()
 {
-	var
-		context    = Browser .getAudioContext (),
-		sourceNode = source .getValue () .getSource (),
-		analyser   = context .createAnalyser ();
-
-  sourceNode .connect (analyser);
-
-	analyser .fftSize = fftSize;
-
-	var
-		bufferLength = analyser .frequencyBinCount,
-		dataArray    = new Uint8Array (bufferLength);
-}
-else
-{
-	var bufferLength = 32;
+   set_frequencyBinCount ();
 }
 
-var
-	colors = [ ],
-	points = [ ];
-
-function initialize ()
+function set_frequencyBinCount ()
 {
-	for (var x = 0; x < samples; ++ x)
-	{
-		var
-			color = [ ],
-			point = [ ];
+   colors .length = 0;
+   points .length = 0;
 
-		colors .push (color);
-		points .push (point);
+   for (let s = 0; s < samples; ++ s)
+   {
+      const
+         color = [ ],
+         point = [ ];
 
-		for (var z = 0; z < bufferLength; ++ z)
-		{
-			color .push (new SFColor (1, 0, 0));
-			point .push (new SFVec3f (x, 0, z));
-		}
+      colors .push (color);
+      points .push (point);
 
-		geometry .vertexCount [x] = bufferLength;
-	}
+      for (let c = 0; c < frequencyBinCount; ++ c)
+      {
+         color .push (new SFColor (1, 0, 0));
+         point .push (new SFVec3f (s, 0, c));
+      }
 
-	build ();
+      geometry .vertexCount [s] = frequencyBinCount;
+   }
+
+   build ();
 }
 
-function set_time (value, time)
+function set_byteFrequencyData (value, time)
 {
-	if (analyser)
-	{
-		var
-			color = colors .shift (),
-			point = points .shift ();
+   const
+      color = colors .shift (),
+      point = points .shift ();
 
-		for (var x = 0; x < points .length; ++ x)
-		{
-			for (var z = 0; z < bufferLength; ++ z)
-				points [x] [z] .x = x;
-		}
+   for (let s = 0; s < points .length; ++ s)
+   {
+      for (let c = 0; c < frequencyBinCount; ++ c) 
+         points [s] [c] .x = s;
+   }
 
-		colors .push (color);
-		points .push (point);
+   colors .push (color);
+   points .push (point);
 
-		analyser .getByteFrequencyData (dataArray);
+   for (let c = 0; c < frequencyBinCount; ++ c)
+   {
+      const volume = byteFrequencyData [c] / 255;
 
-		for (var i = 0; i < bufferLength; ++ i)
-		{
-			var volume = dataArray [i] / 255;
+      color [c] .setHSV (0, volume, 1);
+      point [c] .x = samples - 1;
+      point [c] .y = volume * yScale;
+   }
 
-			color [i] .setHSV (0, volume, 1);
-			point [i] .x = samples - 1;
-			point [i] .y = volume * yScale;
-		}
-
-		build ();
-	}
+   build ();
 }
 
 function build ()
 {
-	var
-		color = geometry .color,
-		coord = geometry .coord;
+   const
+      color = geometry .color,
+      coord = geometry .coord;
 
-	for (var x = 0; x < samples; ++ x)
-	{
-		for (var z = 0; z < bufferLength; ++ z)
-		{
-			var i = x * bufferLength + z;
+   for (let s = 0; s < samples; ++ s)
+   {
+      for (let c = 0; c < frequencyBinCount; ++ c)
+      {
+         const i = s * frequencyBinCount + c;
 
-			color .color [i] = colors [x] [z];
-			coord .point [i] = points [x] [z];
-		}
-	}
+         color .color [i] = colors [s] [c];
+         coord .point [i] = points [s] [c];
+      }
+   }
 }
 "
     directOutput TRUE
   }
-
-  ROUTE _2.cycleTime TO SpectrumAnalyserScript.set_time
 }
 
 WorldInfo { }
@@ -175,7 +149,6 @@ DEF AudioScript Script {
   initializeOnly SFNode   source DEF AudioClip AudioClip {
     url "assets/audio/01. Calabi Yau Space.mp3"
   }
-  initializeOnly SFNode   self USE AudioScript
 
   url "ecmascript:
 
@@ -183,18 +156,18 @@ let track = 0;
 
 function initialize ()
 {
-	set_active (false, 0);
+   set_active (false, 0);
 }
 
 function set_active (value, time)
 {
-	if (value)
-		return;
+   if (value)
+      return;
 
-	const url = files [track ++ % files .length];
+   const url = files [track ++ % files .length];
 
-	source .url       = new MFString (url);
-	source .startTime = time;
+   source .url       = new MFString (url);
+   source .startTime = time;
 }"
   directOutput TRUE
 }
@@ -204,16 +177,22 @@ DEF Seven-Of-Nine Sound {
   minFront 100000
   maxBack 100000
   maxFront 100000
-  source USE AudioClip
+  children DEF _1 Analyser {
+    fftSize 64
+    children USE AudioClip
+  }
 }
 
 DEF SpectrumAnalyser Transform {
   scale 1 1 -1
-  children SpectrumAnalyser {
-    cycleInterval 0.033333333
+  children DEF _2 SpectrumAnalyser {
     yScale 8
-    source USE AudioClip
+    samples 32
+    frequencyBinCount 32
+    byteFrequencyData [ 255, 246, 201, 168, 172, 180, 166, 149, 138, 133, 124, 118, 117, 112, 95, 92, 85, 73, 72, 58, 53, 37, 35, 32, 8, 0, 0, 0, 0, 0, 0, 0 ]
   }
 }
 
 ROUTE AudioClip.isActive TO AudioScript.set_active
+ROUTE _1.byteFrequencyData TO _2.set_byteFrequencyData
+ROUTE _1.frequencyBinCount TO _2.set_frequencyBinCount

@@ -8,7 +8,7 @@
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.8, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "identifier",
@@ -28,15 +28,15 @@
         },
         {
           "@name": "modified",
-          "@content": "Sun, 06 Jan 2019 14:22:33 GMT"
+          "@content": "Thu, 24 Aug 2023 09:33:32 GMT"
         },
         {
           "@name": "converter",
-          "@content": "x3d-tidy V1.0.91, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.92, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "converted",
-          "@content": "Tue, 22 Aug 2023 15:51:33 GMT"
+          "@content": "Mon, 04 Sep 2023 10:20:42 GMT"
         }
       ],
       "component": [
@@ -66,32 +66,24 @@
               "field": [
                 {
                   "@accessType": "inputOutput",
-                  "@type": "SFTime",
-                  "@name": "cycleInterval",
-                  "@value": 1
-                },
-                {
-                  "@accessType": "inputOutput",
                   "@type": "SFFloat",
                   "@name": "yScale",
                   "@value": 1
                 },
                 {
-                  "@accessType": "initializeOnly",
+                  "@accessType": "inputOutput",
                   "@type": "SFInt32",
-                  "@name": "fftSize",
-                  "@value": 64
+                  "@name": "samples"
                 },
                 {
-                  "@accessType": "initializeOnly",
+                  "@accessType": "inputOutput",
                   "@type": "SFInt32",
-                  "@name": "samples",
-                  "@value": 32
+                  "@name": "frequencyBinCount"
                 },
                 {
-                  "@accessType": "initializeOnly",
-                  "@type": "SFNode",
-                  "@name": "source"
+                  "@accessType": "inputOutput",
+                  "@type": "MFInt32",
+                  "@name": "byteFrequencyData"
                 }
               ]
             },
@@ -124,49 +116,30 @@
                     ]
                   }
                 },
-                { "TimeSensor":
-                  {
-                    "@DEF": "_2",
-                    "@loop": true,
-                    "IS": {
-                      "connect": [
-                        {
-                          "@nodeField": "cycleInterval",
-                          "@protoField": "cycleInterval"
-                        }
-                      ]
-                    }
-                  }
-                },
                 { "Script":
                   {
                     "@DEF": "SpectrumAnalyserScript",
                     "@directOutput": true,
                     "field": [
                       {
-                        "@accessType": "inputOnly",
-                        "@type": "SFTime",
-                        "@name": "set_time"
-                      },
-                      {
                         "@accessType": "inputOutput",
                         "@type": "SFFloat",
                         "@name": "yScale"
                       },
                       {
-                        "@accessType": "initializeOnly",
-                        "@type": "SFInt32",
-                        "@name": "fftSize"
-                      },
-                      {
-                        "@accessType": "initializeOnly",
+                        "@accessType": "inputOutput",
                         "@type": "SFInt32",
                         "@name": "samples"
                       },
                       {
-                        "@accessType": "initializeOnly",
-                        "@type": "SFNode",
-                        "@name": "source"
+                        "@accessType": "inputOutput",
+                        "@type": "SFInt32",
+                        "@name": "frequencyBinCount"
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFInt32",
+                        "@name": "byteFrequencyData"
                       },
                       {
                         "@accessType": "initializeOnly",
@@ -184,101 +157,84 @@
                     "#sourceText": [
 "ecmascript:",
 "",
-"if (Browser .name === \"X_ITE\")",
+"const",
+"   colors = [ ],",
+"   points = [ ];",
+"",
+"function set_samples ()",
 "{",
-"\tvar",
-"\t\tcontext    = Browser .getAudioContext (),",
-"\t\tsourceNode = source .getValue () .getSource (),",
-"\t\tanalyser   = context .createAnalyser ();",
-"",
-"  sourceNode .connect (analyser);",
-"",
-"\tanalyser .fftSize = fftSize;",
-"",
-"\tvar",
-"\t\tbufferLength = analyser .frequencyBinCount,",
-"\t\tdataArray    = new Uint8Array (bufferLength);",
-"}",
-"else",
-"{",
-"\tvar bufferLength = 32;",
+"   set_frequencyBinCount ();",
 "}",
 "",
-"var",
-"\tcolors = [ ],",
-"\tpoints = [ ];",
-"",
-"function initialize ()",
+"function set_frequencyBinCount ()",
 "{",
-"\tfor (var x = 0; x < samples; ++ x)",
-"\t{",
-"\t\tvar",
-"\t\t\tcolor = [ ],",
-"\t\t\tpoint = [ ];",
+"   colors .length = 0;",
+"   points .length = 0;",
 "",
-"\t\tcolors .push (color);",
-"\t\tpoints .push (point);",
+"   for (let s = 0; s < samples; ++ s)",
+"   {",
+"      const",
+"         color = [ ],",
+"         point = [ ];",
 "",
-"\t\tfor (var z = 0; z < bufferLength; ++ z)",
-"\t\t{",
-"\t\t\tcolor .push (new SFColor (1, 0, 0));",
-"\t\t\tpoint .push (new SFVec3f (x, 0, z));",
-"\t\t}",
+"      colors .push (color);",
+"      points .push (point);",
 "",
-"\t\tgeometry .vertexCount [x] = bufferLength;",
-"\t}",
+"      for (let c = 0; c < frequencyBinCount; ++ c)",
+"      {",
+"         color .push (new SFColor (1, 0, 0));",
+"         point .push (new SFVec3f (s, 0, c));",
+"      }",
 "",
-"\tbuild ();",
+"      geometry .vertexCount [s] = frequencyBinCount;",
+"   }",
+"",
+"   build ();",
 "}",
 "",
-"function set_time (value, time)",
+"function set_byteFrequencyData (value, time)",
 "{",
-"\tif (analyser)",
-"\t{",
-"\t\tvar",
-"\t\t\tcolor = colors .shift (),",
-"\t\t\tpoint = points .shift ();",
+"   const",
+"      color = colors .shift (),",
+"      point = points .shift ();",
 "",
-"\t\tfor (var x = 0; x < points .length; ++ x)",
-"\t\t{",
-"\t\t\tfor (var z = 0; z < bufferLength; ++ z)",
-"\t\t\t\tpoints [x] [z] .x = x;",
-"\t\t}",
+"   for (let s = 0; s < points .length; ++ s)",
+"   {",
+"      for (let c = 0; c < frequencyBinCount; ++ c) ",
+"         points [s] [c] .x = s;",
+"   }",
 "",
-"\t\tcolors .push (color);",
-"\t\tpoints .push (point);",
+"   colors .push (color);",
+"   points .push (point);",
 "",
-"\t\tanalyser .getByteFrequencyData (dataArray);",
+"   for (let c = 0; c < frequencyBinCount; ++ c)",
+"   {",
+"      const volume = byteFrequencyData [c] / 255;",
 "",
-"\t\tfor (var i = 0; i < bufferLength; ++ i)",
-"\t\t{",
-"\t\t\tvar volume = dataArray [i] / 255;",
+"      color [c] .setHSV (0, volume, 1);",
+"      point [c] .x = samples - 1;",
+"      point [c] .y = volume * yScale;",
+"   }",
 "",
-"\t\t\tcolor [i] .setHSV (0, volume, 1);",
-"\t\t\tpoint [i] .x = samples - 1;",
-"\t\t\tpoint [i] .y = volume * yScale;",
-"\t\t}",
-"",
-"\t\tbuild ();",
-"\t}",
+"   build ();",
 "}",
 "",
 "function build ()",
 "{",
-"\tvar",
-"\t\tcolor = geometry .color,",
-"\t\tcoord = geometry .coord;",
+"   const",
+"      color = geometry .color,",
+"      coord = geometry .coord;",
 "",
-"\tfor (var x = 0; x < samples; ++ x)",
-"\t{",
-"\t\tfor (var z = 0; z < bufferLength; ++ z)",
-"\t\t{",
-"\t\t\tvar i = x * bufferLength + z;",
+"   for (let s = 0; s < samples; ++ s)",
+"   {",
+"      for (let c = 0; c < frequencyBinCount; ++ c)",
+"      {",
+"         const i = s * frequencyBinCount + c;",
 "",
-"\t\t\tcolor .color [i] = colors [x] [z];",
-"\t\t\tcoord .point [i] = points [x] [z];",
-"\t\t}",
-"\t}",
+"         color .color [i] = colors [s] [c];",
+"         coord .point [i] = points [s] [c];",
+"      }",
+"   }",
 "}",
 ""
                     ],
@@ -289,27 +245,19 @@
                           "@protoField": "yScale"
                         },
                         {
-                          "@nodeField": "fftSize",
-                          "@protoField": "fftSize"
-                        },
-                        {
                           "@nodeField": "samples",
                           "@protoField": "samples"
                         },
                         {
-                          "@nodeField": "source",
-                          "@protoField": "source"
+                          "@nodeField": "frequencyBinCount",
+                          "@protoField": "frequencyBinCount"
+                        },
+                        {
+                          "@nodeField": "byteFrequencyData",
+                          "@protoField": "byteFrequencyData"
                         }
                       ]
                     }
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "_2",
-                    "@fromField": "cycleTime",
-                    "@toNode": "SpectrumAnalyserScript",
-                    "@toField": "set_time"
                   }
                 }
               ]
@@ -361,18 +309,6 @@
                     }
                   }
                 ]
-              },
-              {
-                "@accessType": "initializeOnly",
-                "@type": "SFNode",
-                "@name": "self",
-                "-children": [
-                  { "Script":
-                    {
-                      "@USE": "AudioScript"
-                    }
-                  }
-                ]
               }
             ],
             "#sourceText": [
@@ -382,18 +318,18 @@
 "",
 "function initialize ()",
 "{",
-"\tset_active (false, 0);",
+"   set_active (false, 0);",
 "}",
 "",
 "function set_active (value, time)",
 "{",
-"\tif (value)",
-"\t\treturn;",
+"   if (value)",
+"      return;",
 "",
-"\tconst url = files [track ++ % files .length];",
+"   const url = files [track ++ % files .length];",
 "",
-"\tsource .url       = new MFString (url);",
-"\tsource .startTime = time;",
+"   source .url       = new MFString (url);",
+"   source .startTime = time;",
 "}"
             ]
           }
@@ -405,11 +341,21 @@
             "@minFront": 100000,
             "@maxBack": 100000,
             "@maxFront": 100000,
-            "-source": { "AudioClip":
-              {
-                "@USE": "AudioClip"
+            "-children": [
+              { "Analyser":
+                {
+                  "@DEF": "_1",
+                  "@fftSize": 64,
+                  "-children": [
+                    { "AudioClip":
+                      {
+                        "@USE": "AudioClip"
+                      }
+                    }
+                  ]
+                }
               }
-            }
+            ]
           }
         },
         { "Transform":
@@ -419,25 +365,24 @@
             "-children": [
               { "ProtoInstance":
                 {
+                  "@DEF": "_2",
                   "@name": "SpectrumAnalyser",
                   "fieldValue": [
-                    {
-                      "@name": "cycleInterval",
-                      "@value": 0.033333333
-                    },
                     {
                       "@name": "yScale",
                       "@value": 8
                     },
                     {
-                      "@name": "source",
-                      "-children": [
-                        { "AudioClip":
-                          {
-                            "@USE": "AudioClip"
-                          }
-                        }
-                      ]
+                      "@name": "samples",
+                      "@value": 32
+                    },
+                    {
+                      "@name": "frequencyBinCount",
+                      "@value": 32
+                    },
+                    {
+                      "@name": "byteFrequencyData",
+                      "@value": [ 255, 246, 201, 168, 172, 180, 166, 149, 138, 133, 124, 118, 117, 112, 95, 92, 85, 73, 72, 58, 53, 37, 35, 32, 8, 0, 0, 0, 0, 0, 0, 0 ]
                     }
                   ]
                 }
@@ -451,6 +396,22 @@
             "@fromField": "isActive",
             "@toNode": "AudioScript",
             "@toField": "set_active"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "byteFrequencyData",
+            "@toNode": "_2",
+            "@toField": "byteFrequencyData"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "frequencyBinCount",
+            "@toNode": "_2",
+            "@toField": "frequencyBinCount"
           }
         }
       ]
