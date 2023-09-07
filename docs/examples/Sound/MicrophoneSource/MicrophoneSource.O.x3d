@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Geometry2D' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Sound' level='3'/>
+    <component name='Text' level='1'/>
+    <meta name='created' content='Tue, 29 Aug 2023 10:39:02 GMT'/>
+    <meta name='comment' content='Rise and Shine'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.1, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 07 Sep 2023 10:51:18 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='AudioDisplay'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='MFFloat' name='input'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Shape>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='5'
+                pointSizeMinValue='5'
+                pointSizeMaxValue='5'/>
+            <UnlitMaterial/>
+          </Appearance>
+          <PointSet>
+            <Color DEF='_1'/>
+            <Coordinate DEF='_2'/>
+          </PointSet>
+        </Shape>
+        <Script DEF='Script'>
+          <field accessType='inputOutput' type='MFFloat' name='input'/>
+          <field accessType='initializeOnly' type='SFNode' name='color'>
+            <Color USE='_1'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='coord'>
+            <Coordinate USE='_2'/>
+          </field>
+          <IS>
+            <connect nodeField='input' protoField='input'/>
+          </IS>
+<![CDATA[ecmascript:
+
+const c = new SFColor ();
+
+function set_input ()
+{
+   const
+      colors = color .color, 
+      points = coord .point;
+
+   colors .length = input .length;
+   points .length = input .length;
+
+   for (const [i, value] of input .entries ())
+   {
+      c .setHSV (Math .abs (value) / 128, 1, 1);
+      colors [i] = c;
+
+      points [i] .x = (i - input .length / 2) / 10;
+      points [i] .y = value / 32 + 4;
+   }
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <AudioDestination DEF='_1'>
+      <Analyser DEF='_2'
+          fftSize='256'>
+        <MicrophoneSource DEF='_3'/>
+      </Analyser>
+    </AudioDestination>
+    <ProtoInstance name='AudioDisplay' DEF='_4'>
+      <fieldValue name='input' value='-80.74983, -78.3089, -80.57043, -85.77445, -91.01869, -94.34451, -94.68131, -95.64957, -97.44551, -96.23959, -96.37061, -99.08721, -99.99088, -101.9666, -100.1437, -101.7097, -102.7991, -103.3924, -106.0385, -104.9595, -107.3367, -107.2761, -107.0488, -104.8522, -105.2776, -103.3038, -103.4117, -104.0051, -101.4057, -101.8881, -104.2046, -107.1578, -105.8138, -106.8244, -110.1913, -109.5199, -107.6941, -105.7558, -104.8302, -101.9049, -103.7256, -110.3952, -107.1646, -107.9254, -112.6278, -111.1654, -110.1045, -110.6118, -112.0833, -112.3301, -108.5876, -107.8958, -107.3025, -107.4532, -109.3614, -107.9417, -106.3805, -108.9821, -109.1526, -106.8652, -105.161, -105.3925, -107.3888, -111.2985, -110.6999, -110.308, -112.0869, -115.588, -111.5686, -110.2755, -111.0593, -112.9767, -112.0579, -114.7397, -114.8272, -114.275, -115.4275, -112.2955, -112.6373, -114.8497, -115.3646, -112.9233, -113.9051, -113.817, -113.3342, -113.8573, -113.9809, -114.977, -114.7184, -114.0856, -114.6373, -115.751, -119.9492, -124.2808, -123.7531, -123.2481, -125.8452, -128.8068, -132.1529, -135.3342, -139.1484, -139.9622, -139.1773, -137.674, -135.6007, -137.5666, -138.0424, -138.7786, -138.7894, -139.9031, -142.5692, -141.315, -146.2635, -144.5825, -143.9265, -144.9894, -147.8155, -151.9591, -160.1363, -164.2207, -167.1575, -171.787, -176.0048, -178.2215, -181.8602, -186.4728, -190.1925, -189.9472'/>
+    </ProtoInstance>
+    <Transform DEF='OnOffButton'
+        translation='6.5 3 0'>
+      <Switch DEF='_5'
+          whichChoice='1'>
+        <Shape>
+          <Appearance>
+            <Material
+                diffuseColor='0.3568627 0.3568627 0.3568627'/>
+          </Appearance>
+          <Disk2D DEF='_6'
+              outerRadius='0.2'/>
+        </Shape>
+        <Shape>
+          <Appearance>
+            <Material
+                diffuseColor='0.8 0 0'/>
+          </Appearance>
+          <Disk2D USE='_6'/>
+        </Shape>
+      </Switch>
+      <TouchSensor DEF='_7'
+          description='Turn audio processing on/off.'/>
+      <Script DEF='ToggleScript'>
+        <field accessType='inputOnly' type='SFTime' name='set_triggerTime'/>
+        <field accessType='outputOnly' type='SFBool' name='enabled'/>
+        <field accessType='outputOnly' type='SFInt32' name='whichChoice'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   set_triggerTime ();
+}
+
+function set_triggerTime ()
+{
+   enabled     = !enabled;
+   whichChoice = enabled;
+}
+]]>
+      </Script>
+    </Transform>
+    <Transform DEF='OpenMicText'
+        translation='6 3 0'>
+      <Shape>
+        <Appearance>
+          <Material
+              diffuseColor='1 0.5607843 0.5294118'/>
+        </Appearance>
+        <Text
+            string='"Open MIC"'>
+          <FontStyle
+              family='"assets/DS-DIGIB.TTF"'
+              style='BOLD'
+              size='0.3'
+              justify='"END", "MIDDLE"'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <ROUTE fromNode='_2' fromField='floatFrequencyData' toNode='_4' toField='set_input'/>
+    <ROUTE fromNode='ToggleScript' fromField='enabled' toNode='_1' toField='set_enabled'/>
+    <ROUTE fromNode='ToggleScript' fromField='enabled' toNode='_3' toField='set_enabled'/>
+    <ROUTE fromNode='_7' fromField='touchTime' toNode='ToggleScript' toField='set_triggerTime'/>
+    <ROUTE fromNode='ToggleScript' fromField='whichChoice' toNode='_5' toField='set_whichChoice'/>
+    <ROUTE fromNode='ToggleScript' fromField='enabled' toNode='_2' toField='set_enabled'/>
+  </Scene>
+</X3D>

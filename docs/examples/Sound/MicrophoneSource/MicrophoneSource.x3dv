@@ -1,0 +1,156 @@
+#X3D V4.0 utf8 X_ITE V8.12.0
+
+PROFILE Interchange
+
+COMPONENT Geometry2D : 2
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Sound : 3
+COMPONENT Text : 1
+
+META "created" "Tue, 29 Aug 2023 10:39:02 GMT"
+META "comment" "Rise and Shine"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.1.1, https://create3000.github.io/sunrize/"
+META "modified" "Thu, 07 Sep 2023 10:51:18 GMT"
+META "converter" "x3d-tidy V1.0.92, https://www.npmjs.com/package/x3d-tidy"
+META "converted" "Thu, 07 Sep 2023 10:57:39 GMT"
+
+PROTO AudioDisplay [
+  inputOutput MFFloat input [ ]
+]
+{
+  Shape {
+    appearance Appearance {
+      pointProperties PointProperties {
+        pointSizeScaleFactor 5
+        pointSizeMinValue 5
+        pointSizeMaxValue 5
+      }
+      material UnlitMaterial { }
+    }
+    geometry PointSet {
+      color DEF _1 Color { }
+      coord DEF _2 Coordinate { }
+    }
+  }
+
+  DEF Script Script {
+    inputOutput    MFFloat input IS input
+    initializeOnly SFNode  color USE _1
+    initializeOnly SFNode  coord USE _2
+
+    url "ecmascript:
+
+const c = new SFColor ();
+
+function set_input ()
+{
+   const
+      colors = color .color, 
+      points = coord .point;
+
+   colors .length = input .length;
+   points .length = input .length;
+
+   for (const [i, value] of input .entries ())
+   {
+      c .setHSV (Math .abs (value) / 128, 1, 1);
+      colors [i] = c;
+
+      points [i] .x = (i - input .length / 2) / 10;
+      points [i] .y = value / 32 + 4;
+   }
+}
+"
+  }
+}
+
+DEF _1 AudioDestination {
+  children DEF _2 Analyser {
+    fftSize 256
+    children DEF _3 MicrophoneSource { }
+  }
+}
+
+DEF _4 AudioDisplay {
+  input [ -80.74983, -78.3089, -80.57043, -85.77445, -91.01869, -94.34451, -94.68131, -95.64957, -97.44551, -96.23959, -96.37061, -99.08721, -99.99088, -101.9666, -100.1437, -101.7097, -102.7991, -103.3924, -106.0385, -104.9595, -107.3367, -107.2761, -107.0488, -104.8522, -105.2776, -103.3038, -103.4117, -104.0051, -101.4057, -101.8881, -104.2046, -107.1578, -105.8138, -106.8244, -110.1913, -109.5199, -107.6941, -105.7558, -104.8302, -101.9049, -103.7256, -110.3952, -107.1646, -107.9254, -112.6278, -111.1654, -110.1045, -110.6118, -112.0833, -112.3301, -108.5876, -107.8958, -107.3025, -107.4532, -109.3614, -107.9417, -106.3805, -108.9821, -109.1526, -106.8652, -105.161, -105.3925, -107.3888, -111.2985, -110.6999, -110.308, -112.0869, -115.588, -111.5686, -110.2755, -111.0593, -112.9767, -112.0579, -114.7397, -114.8272, -114.275, -115.4275, -112.2955, -112.6373, -114.8497, -115.3646, -112.9233, -113.9051, -113.817, -113.3342, -113.8573, -113.9809, -114.977, -114.7184, -114.0856, -114.6373, -115.751, -119.9492, -124.2808, -123.7531, -123.2481, -125.8452, -128.8068, -132.1529, -135.3342, -139.1484, -139.9622, -139.1773, -137.674, -135.6007, -137.5666, -138.0424, -138.7786, -138.7894, -139.9031, -142.5692, -141.315, -146.2635, -144.5825, -143.9265, -144.9894, -147.8155, -151.9591, -160.1363, -164.2207, -167.1575, -171.787, -176.0048, -178.2215, -181.8602, -186.4728, -190.1925, -189.9472 ]
+}
+
+DEF OnOffButton Transform {
+  translation 6.5 3 0
+  children [
+    DEF _5 Switch {
+      whichChoice 1
+      children [
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.3568627 0.3568627 0.3568627
+            }
+          }
+          geometry DEF _6 Disk2D {
+            outerRadius 0.2
+          }
+        }
+        Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.8 0 0
+            }
+          }
+          geometry USE _6
+        }
+      ]
+    }
+    DEF _7 TouchSensor {
+      description "Turn audio processing on/off."
+    }
+    DEF ToggleScript Script {
+      inputOnly  SFTime  set_triggerTime
+      outputOnly SFBool  enabled
+      outputOnly SFInt32 whichChoice
+
+      url "ecmascript:
+
+function initialize ()
+{
+   set_triggerTime ();
+}
+
+function set_triggerTime ()
+{
+   enabled     = !enabled;
+   whichChoice = enabled;
+}
+"
+    }
+  ]
+}
+
+DEF OpenMicText Transform {
+  translation 6 3 0
+  children Shape {
+    appearance Appearance {
+      material Material {
+        diffuseColor 1 0.5607843 0.5294118
+      }
+    }
+    geometry Text {
+      string "Open MIC"
+      fontStyle FontStyle {
+        family "assets/DS-DIGIB.TTF"
+        style "BOLD"
+        size 0.3
+        justify [ "END", "MIDDLE" ]
+      }
+    }
+  }
+}
+
+ROUTE _2.floatFrequencyData TO _4.set_input
+ROUTE ToggleScript.enabled TO _1.set_enabled
+ROUTE ToggleScript.enabled TO _3.set_enabled
+ROUTE _7.touchTime TO ToggleScript.set_triggerTime
+ROUTE ToggleScript.whichChoice TO _5.set_whichChoice
+ROUTE ToggleScript.enabled TO _2.set_enabled
