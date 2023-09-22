@@ -9,9 +9,9 @@
     <meta name='created' content='Fri, 14 Jul 2023 16:20:40 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.0.66, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Core/glTF/glTF.O.x3d'/>
-    <meta name='modified' content='Fri, 14 Jul 2023 19:08:58 GMT'/>
+    <meta name='modified' content='Fri, 22 Sep 2023 10:50:45 GMT'/>
   </head>
   <Scene>
     <Background DEF='White'
@@ -27,14 +27,15 @@
     <DirectionalLight
         direction='1 -1 -1'
         shadows='true'/>
-    <Group DEF='Bee_1'>
+    <Transform DEF='Bee'
+        scale='3 3 3'>
       <Inline DEF='_1'
           url='"assets/animated_bee.glb"'/>
       <LoadSensor DEF='_2'>
         <Inline USE='_1'/>
       </LoadSensor>
       <TouchSensor DEF='_3'/>
-    </Group>
+    </Transform>
     <Transform DEF='Floor'
         translation='0 -3 0'
         rotation='1 0 0 90'
@@ -49,7 +50,7 @@
       </Shape>
     </Transform>
     <Script DEF='ToggleAnimScript'>
-      <field accessType='inputOutput' type='SFTime' name='toggle' value='1689359762.645002'/>
+      <field accessType='inputOutput' type='SFTime' name='toggle' value='1695379815.79'/>
       <field accessType='outputOnly' type='SFBool' name='loop1'/>
       <field accessType='outputOnly' type='SFTime' name='startTime1'/>
       <field accessType='outputOnly' type='SFTime' name='stopTime1'/>
@@ -87,12 +88,12 @@ function set_toggle (value, time)
     <IMPORT inlineDEF='_1' importedDEF='Timer1'/>
     <IMPORT inlineDEF='_1' importedDEF='Timer2'/>
     <ROUTE fromNode='_3' fromField='touchTime' toNode='ToggleAnimScript' toField='set_toggle'/>
+    <ROUTE fromNode='_2' fromField='loadTime' toNode='ToggleAnimScript' toField='set_toggle'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='loop1' toNode='Timer1' toField='set_loop'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='startTime1' toNode='Timer1' toField='set_startTime'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='stopTime1' toNode='Timer1' toField='set_stopTime'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='loop2' toNode='Timer2' toField='set_loop'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='startTime2' toNode='Timer2' toField='set_startTime'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='stopTime2' toNode='Timer2' toField='set_stopTime'/>
-    <ROUTE fromNode='_2' fromField='loadTime' toNode='ToggleAnimScript' toField='set_toggle'/>
   </Scene>
 </X3D>

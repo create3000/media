@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.0.66, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V1.0.94, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -28,15 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Fri, 14 Jul 2023 19:08:58 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.74, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Tue, 18 Jul 2023 01:02:39 GMT"
+          "@content": "Fri, 22 Sep 2023 10:52:51 GMT"
         }
       ],
       "component": [
@@ -88,9 +80,10 @@
             "@shadows": true
           }
         },
-        { "Group":
+        { "Transform":
           {
-            "@DEF": "Bee_1",
+            "@DEF": "Bee",
+            "@scale": [ 3, 3, 3 ],
             "-children": [
               { "Inline":
                 {
@@ -154,7 +147,7 @@
                 "@accessType": "inputOutput",
                 "@type": "SFTime",
                 "@name": "toggle",
-                "@value": 1689642159.508
+                "@value": 1695379815.79
               },
               {
                 "@accessType": "outputOnly",
@@ -187,7 +180,7 @@
                 "@name": "stopTime2"
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "let anim = -1;",
@@ -224,10 +217,58 @@
             "@importedDEF": "Timer1"
           }
         },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "loop1",
+            "@toNode": "Timer1",
+            "@toField": "set_loop"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "startTime1",
+            "@toNode": "Timer1",
+            "@toField": "set_startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "stopTime1",
+            "@toNode": "Timer1",
+            "@toField": "set_stopTime"
+          }
+        },
         { "IMPORT":
           {
             "@inlineDEF": "_1",
             "@importedDEF": "Timer2"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "loop2",
+            "@toNode": "Timer2",
+            "@toField": "set_loop"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "startTime2",
+            "@toNode": "Timer2",
+            "@toField": "set_startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "ToggleAnimScript",
+            "@fromField": "stopTime2",
+            "@toNode": "Timer2",
+            "@toField": "set_stopTime"
           }
         },
         { "ROUTE":
@@ -244,54 +285,6 @@
             "@fromField": "loadTime",
             "@toNode": "ToggleAnimScript",
             "@toField": "toggle"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ToggleAnimScript",
-            "@fromField": "loop1",
-            "@toNode": "Timer1",
-            "@toField": "loop"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ToggleAnimScript",
-            "@fromField": "startTime1",
-            "@toNode": "Timer1",
-            "@toField": "startTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ToggleAnimScript",
-            "@fromField": "stopTime1",
-            "@toNode": "Timer1",
-            "@toField": "stopTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ToggleAnimScript",
-            "@fromField": "loop2",
-            "@toNode": "Timer2",
-            "@toField": "loop"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ToggleAnimScript",
-            "@fromField": "startTime2",
-            "@toNode": "Timer2",
-            "@toField": "startTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "ToggleAnimScript",
-            "@fromField": "stopTime2",
-            "@toNode": "Timer2",
-            "@toField": "stopTime"
           }
         }
       ]

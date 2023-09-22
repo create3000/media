@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.10.1
+#X3D V4.0 utf8 X_ITE V8.12.1
 
 PROFILE Interchange
 
@@ -11,11 +11,9 @@ UNIT angle degree 0.017453292519943295
 META "created" "Fri, 14 Jul 2023 16:20:40 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.0.66, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.94, https://www.npmjs.com/package/x3d-tidy"
 META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Core/glTF/glTF.O.x3d"
-META "modified" "Fri, 14 Jul 2023 19:08:58 GMT"
-META "converter" "x3d-tidy V1.0.74, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Tue, 18 Jul 2023 01:02:40 GMT"
+META "modified" "Fri, 22 Sep 2023 10:52:51 GMT"
 
 DEF White Background {
   skyColor 1 1 1
@@ -36,7 +34,8 @@ DirectionalLight {
   shadows TRUE
 }
 
-DEF Bee_1 Group {
+DEF Bee Transform {
+  scale 3 3 3
   children [
     DEF _1 Inline {
       url "assets/animated_bee.glb"
@@ -64,7 +63,7 @@ DEF Floor Transform {
 }
 
 DEF ToggleAnimScript Script {
-  inputOutput SFTime toggle 1689642160.503002
+  inputOutput SFTime toggle 1695379815.79
   outputOnly  SFBool loop1
   outputOnly  SFTime startTime1
   outputOnly  SFTime stopTime1
@@ -102,13 +101,13 @@ function set_toggle (value, time)
 }
 
 IMPORT _1.Timer1
-IMPORT _1.Timer2
-
-ROUTE _3.touchTime TO ToggleAnimScript.set_toggle
-ROUTE _2.loadTime TO ToggleAnimScript.set_toggle
 ROUTE ToggleAnimScript.loop1 TO Timer1.set_loop
 ROUTE ToggleAnimScript.startTime1 TO Timer1.set_startTime
 ROUTE ToggleAnimScript.stopTime1 TO Timer1.set_stopTime
+IMPORT _1.Timer2
 ROUTE ToggleAnimScript.loop2 TO Timer2.set_loop
 ROUTE ToggleAnimScript.startTime2 TO Timer2.set_startTime
 ROUTE ToggleAnimScript.stopTime2 TO Timer2.set_stopTime
+
+ROUTE _3.touchTime TO ToggleAnimScript.set_toggle
+ROUTE _2.loadTime TO ToggleAnimScript.set_toggle
