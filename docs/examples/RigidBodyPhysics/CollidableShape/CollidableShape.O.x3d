@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
-    <component name='RigidBodyPhysics' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
-    <meta name='comment' content='World of Titania'/>
+    <component name='RigidBodyPhysics' level='2'/>
+    <component name='Scripting' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='1 January 2008'/>
-    <meta name='creator' content='Alan Hudson and Justin Couch'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
-    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.4, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollidableShape/CollidableShape.O.x3d'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 15:44:29 GMT'/>
+    <meta name='modified' content='Sun, 01 Oct 2023 09:27:40 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -28,37 +25,37 @@
   <Scene>
     <WorldInfo
         title='Ball'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
-          <MetadataString DEF='panels' containerField='value'
+          <MetadataString DEF='panels'
               name='panels'
               reference='http://titania.create3000.de'
               value='"BROWSER_PANEL", "BROWSER_PANEL", "BROWSER_PANEL", "BROWSER_PANEL"'/>
-          <MetadataDouble DEF='browserRatio' containerField='value'
+          <MetadataDouble DEF='browserRatio'
               name='browserRatio'
               reference='http://titania.create3000.de'
               value='1.777777'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
             <Script DEF='PrimitivesScript' containerField='value'
@@ -66,20 +63,20 @@
               <field accessType='inputOutput' type='SFInt32' name='numBodies' value='30'/>
               <field accessType='inputOnly' type='SFTime' name='set_time'/>
               <field accessType='initializeOnly' type='SFNode' name='collection'>
-                <RigidBodyCollection DEF='_1' containerField='collection'
+                <RigidBodyCollection DEF='_1'
                     iterations='5'>
                   <CollisionCollection
                       appliedParameters='"BOUNCE", "FRICTION_COEFFICIENT_2"'
                       bounce='0.6'
                       frictionCoefficients='0.5 0'/>
-                  <RigidBody
+                  <RigidBody DEF='_2'
                       fixed='true'>
                     <CollidableShape DEF='Ground' containerField='geometry'>
                       <Shape containerField='shape'>
-                        <Appearance>
+                        <Appearance DEF='_3'>
                           <Material DEF='Neon12'
                               ambientIntensity='0.341463'
-                              diffuseColor='0.248138 0.248138 0.248138'
+                              diffuseColor='1 1 1'
                               specularColor='0.661 0.661 0.661'
                               shininess='0.0284553'/>
                         </Appearance>
@@ -95,17 +92,11 @@
                       </Shape>
                     </CollidableShape>
                   </RigidBody>
-                  <RigidBody
+                  <RigidBody DEF='_4'
                       fixed='true'>
                     <CollidableShape DEF='Box_2' containerField='geometry'>
                       <Shape containerField='shape'>
-                        <Appearance>
-                          <Material DEF='Neon12_3'
-                              ambientIntensity='0.341463'
-                              diffuseColor='0.16 0.16 0.16'
-                              specularColor='0.661 0.661 0.661'
-                              shininess='0.0284553'/>
-                        </Appearance>
+                        <Appearance USE='_3'/>
                         <IndexedFaceSet
                             colorPerVertex='false'
                             colorIndex='0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0'
@@ -121,15 +112,12 @@
                       </Shape>
                     </CollidableShape>
                   </RigidBody>
-                  <RigidBody
-                      position='3.11381 0.268063 0.932841'
-                      orientation='-0.681947759502894 0.681953431509507 -0.264361099995485 150.384080815102'
-                      linearVelocity='1.28471 0.000101916 0.42473'
-                      angularVelocity='-0.0032339 17.0154 0.0251508'
-                      centerOfMass='0.486067 -0.793102 0.0127427'>
-                    <CollidableShape DEF='_4' containerField='geometry'
-                        translation='3.11381 0.268063 0.932841'
-                        rotation='-0.681947759502894 0.681953431509507 -0.264361099995485 150.384080815102'>
+                  <RigidBody DEF='_5'
+                      position='0 5 0'
+                      linearVelocity='-1.379216 -1.077583 -1.356423'
+                      centerOfMass='-0.8488156 0.8448355 -0.4657963'>
+                    <CollidableShape DEF='_6' containerField='geometry'
+                        translation='0 5 0'>
                       <Shape DEF='Box' containerField='shape'>
                         <Appearance>
                           <Material DEF='Santafe32'
@@ -138,7 +126,7 @@
                               specularColor='0.198631 0.0754031 0.138803'
                               emissiveColor='0.0106383 0.0106383 0.0106383'
                               shininess='0.0212766'/>
-                          <ImageTexture DEF='_5'
+                          <ImageTexture DEF='_7'
                               url='"assets/pattern.png"'
                               repeatS='false'
                               repeatT='false'/>
@@ -148,152 +136,54 @@
                       </Shape>
                     </CollidableShape>
                   </RigidBody>
-                  <RigidBody
-                      position='0.521994 0.651746 0.62277'
-                      orientation='0.962780228183078 0.190940982359961 0.19130003740048 239.88151610971'
-                      linearVelocity='0.403908 -0.00833062 0.22922'
-                      angularVelocity='84.3033 -0.209671 -153.823'
-                      centerOfMass='-0.549069 -0.733599 0.487949'>
-                    <CollidableShape DEF='_6' containerField='geometry'
-                        translation='0.521994 0.651746 0.62277'
-                        rotation='0.962780228183078 0.190940982359961 0.19130003740048 239.88151610971'>
-                      <Shape DEF='Cone' containerField='shape'>
-                        <Appearance>
-                          <Material DEF='Santafe9'
-                              ambientIntensity='0.177947'
-                              diffuseColor='0.340537 0.37498 0.685837'
-                              specularColor='0.237073 0.295337 0.295337'
-                              shininess='0.466321'/>
-                          <ImageTexture USE='_5'/>
-                        </Appearance>
-                        <Cone
-                            height='0.5'
-                            bottomRadius='0.25'/>
-                      </Shape>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='1.12941 0.809975 -0.0803498'
-                      orientation='-0.0476734620747855 -0.143534897533492 0.988496366481793 110.261364766748'
-                      linearVelocity='0.891078 -0.476913 0.613242'
-                      angularVelocity='87.578 -57.0741 -174.437'
-                      centerOfMass='-0.756389 -0.678443 -0.548839'>
-                    <CollidableShape DEF='_7' containerField='geometry'
-                        translation='1.12941 0.809975 -0.0803498'
-                        rotation='-0.0476734620747855 -0.143534897533492 0.988496366481793 110.261364766748'>
-                      <Shape DEF='Cylinder' containerField='shape'>
-                        <Appearance>
-                          <Material DEF='Santafe6'
-                              ambientIntensity='0.0450585'
-                              diffuseColor='0.191499 0.0265877 0.0665837'
-                              specularColor='0.367348 0.0557356 0.0557356'
-                              shininess='0.0585106'/>
-                          <ImageTexture USE='_5'/>
-                        </Appearance>
-                        <Cylinder
-                            height='0.5'
-                            radius='0.25'/>
-                      </Shape>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='-0.373253 0.747585 1.97687'
-                      orientation='0.382156609201704 0.819518163463704 0.427020298084054 62.1255908227802'
-                      linearVelocity='-0.216088 0.135639 0.443162'
-                      angularVelocity='101.565 66.2052 49.5238'
-                      centerOfMass='0.779303 0.572025 0.00962167'>
-                    <CollidableShape DEF='_8' containerField='geometry'
-                        translation='-0.373253 0.747585 1.97687'
-                        rotation='0.382156609201704 0.819518163463704 0.427020298084054 62.1255908227802'>
-                      <Shape DEF='Sphere' containerField='shape'>
-                        <Appearance>
-                          <Material DEF='Santafe29'
-                              ambientIntensity='0.204082'
-                              diffuseColor='0.795918 0.505869 0.0933146'
-                              specularColor='0.923469 0.428866 0.00636875'
-                              shininess='0.397959'/>
-                          <ImageTexture USE='_5'/>
-                        </Appearance>
-                        <Sphere
-                            radius='0.25'/>
-                      </Shape>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='-0.898481 0.857364 0.444717'
-                      orientation='0.161317304676402 0.948984364637549 -0.270934327328363 139.756983001434'
-                      linearVelocity='-0.954439 -0.357422 0.557959'
-                      angularVelocity='-93.431 352.399 65.659'
-                      centerOfMass='0.936612 0.0494663 -0.699552'>
-                    <CollidableShape DEF='_9' containerField='geometry'
-                        translation='-0.898481 0.857364 0.444717'
-                        rotation='0.161317304676402 0.948984364637549 -0.270934327328363 139.756983001434'>
-                      <Shape USE='Box' containerField='shape'/>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='-0.592892 2.33872 0.522488'
-                      orientation='-0.531549211943425 0.415884555885109 -0.737893966360354 9.47122750492214'
-                      linearVelocity='-0.741476 -8.16216 0.622144'
-                      angularVelocity='-9.05189 8.17953 -13.22'
-                      centerOfMass='0.753167 -0.165204 0.689921'>
-                    <CollidableShape DEF='_10' containerField='geometry'
-                        translation='-0.592892 2.33872 0.522488'
-                        rotation='-0.531549211943425 0.415884555885109 -0.737893966360354 9.47122750492214'>
-                      <Shape USE='Cone' containerField='shape'/>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='0.191002 2.88364 -0.466006'
-                      orientation='-0.11807069541653 0.646709403119323 0.753544895659486 12.5663842975163'
-                      linearVelocity='0.286433 -7.31948 -0.809351'
-                      angularVelocity='-4.81488 16.7446 18.2142'
-                      centerOfMass='0.652075 0.992385 -0.269645'>
-                    <CollidableShape DEF='_11' containerField='geometry'
-                        translation='0.191002 2.88364 -0.466006'
-                        rotation='-0.11807069541653 0.646709403119323 0.753544895659486 12.5663842975163'>
-                      <Shape USE='Cylinder' containerField='shape'/>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='-0.196173 4.29747 -0.0548038'
-                      linearVelocity='-0.723981 -4.25234 -0.202255'
-                      centerOfMass='0.17003 0.690501 0.830111'>
-                    <CollidableShape DEF='_12' containerField='geometry'
-                        translation='-0.196173 4.29747 -0.0548038'>
-                      <Shape USE='Sphere' containerField='shape'/>
-                    </CollidableShape>
-                  </RigidBody>
-                  <RigidBody
-                      position='0.0246046 4.98726 -0.0397003'
-                      linearVelocity='0.864277 -0.621876 -1.39454'
-                      centerOfMass='0.331398 -0.671647 -0.30676'>
-                    <CollidableShape DEF='_13' containerField='geometry'
-                        translation='0.0246046 4.98726 -0.0397003'>
-                      <Shape USE='Box' containerField='shape'/>
-                    </CollidableShape>
-                  </RigidBody>
                 </RigidBodyCollection>
               </field>
               <field accessType='initializeOnly' type='SFNode' name='primitives'>
-                <Group DEF='Primitives' containerField='primitives'>
-                  <CollidableShape USE='_4'/>
+                <Group DEF='Primitives'>
                   <CollidableShape USE='_6'/>
-                  <CollidableShape USE='_7'/>
-                  <CollidableShape USE='_8'/>
-                  <CollidableShape USE='_9'/>
-                  <CollidableShape USE='_10'/>
-                  <CollidableShape USE='_11'/>
-                  <CollidableShape USE='_12'/>
-                  <CollidableShape USE='_13'/>
                 </Group>
               </field>
               <field accessType='initializeOnly' type='SFNode' name='appearance'/>
               <field accessType='initializeOnly' type='MFNode' name='shapes'>
-                <Shape USE='Box' containerField='shapes'/>
-                <Shape USE='Cone' containerField='shapes'/>
-                <Shape USE='Cylinder' containerField='shapes'/>
-                <Shape USE='Sphere' containerField='shapes'/>
+                <Shape USE='Box'/>
+                <Shape DEF='Cone'>
+                  <Appearance>
+                    <Material DEF='Santafe9'
+                        ambientIntensity='0.177947'
+                        diffuseColor='0.340537 0.37498 0.685837'
+                        specularColor='0.237073 0.295337 0.295337'
+                        shininess='0.466321'/>
+                    <ImageTexture USE='_7'/>
+                  </Appearance>
+                  <Cone
+                      height='0.5'
+                      bottomRadius='0.25'/>
+                </Shape>
+                <Shape DEF='Cylinder'>
+                  <Appearance>
+                    <Material DEF='Santafe6'
+                        ambientIntensity='0.0450585'
+                        diffuseColor='0.191499 0.0265877 0.0665837'
+                        specularColor='0.367348 0.0557356 0.0557356'
+                        shininess='0.0585106'/>
+                    <ImageTexture USE='_7'/>
+                  </Appearance>
+                  <Cylinder
+                      height='0.5'
+                      radius='0.25'/>
+                </Shape>
+                <Shape DEF='Sphere'>
+                  <Appearance>
+                    <Material DEF='Santafe29'
+                        ambientIntensity='0.204082'
+                        diffuseColor='0.795918 0.505869 0.0933146'
+                        specularColor='0.923469 0.428866 0.00636875'
+                        shininess='0.397959'/>
+                    <ImageTexture USE='_7'/>
+                  </Appearance>
+                  <Sphere
+                      radius='0.25'/>
+                </Shape>
               </field>
 <![CDATA[ecmascript:
 
@@ -351,100 +241,100 @@ function random3 ()
             </Script>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='BrowserPanel' containerField='value'
+        <MetadataSet DEF='BrowserPanel'
             name='BrowserPanel'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='layerNumber' containerField='value'
+          <MetadataInteger DEF='layerNumber'
               name='layerNumber'
               reference='http://titania.create3000.de'
               value='-1, -1, 0, 0, 0, -1, -1, -1'/>
-          <MetadataSet DEF='viewpoints' containerField='value'
+          <MetadataSet DEF='viewpoints'
               name='viewpoints'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='FrontViewpoint' containerField='value'
+            <MetadataSet DEF='FrontViewpoint'
                 name='FrontViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position' containerField='value'
+              <MetadataDouble DEF='position'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='0.957580952988553, 1.1611438646829, 10000'/>
-              <MetadataDouble DEF='orientation' containerField='value'
+              <MetadataDouble DEF='orientation'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 1, 0'/>
-              <MetadataDouble DEF='centerOfRotation' containerField='value'
+              <MetadataDouble DEF='centerOfRotation'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0.957580952988553, 1.1611438646829, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='0.827849664068643'/>
             </MetadataSet>
-            <MetadataSet DEF='RightViewpoint' containerField='value'
+            <MetadataSet DEF='RightViewpoint'
                 name='RightViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_14' containerField='value'
+              <MetadataDouble DEF='position_14'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='10000, 1.40019544268759, -0.513201968570074'/>
-              <MetadataDouble DEF='orientation_15' containerField='value'
+              <MetadataDouble DEF='orientation_15'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0, 1, 0, 1.5707963267949'/>
-              <MetadataDouble DEF='centerOfRotation_16' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_16'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='-9.7280050444944e-16, 1.40019544268759, -0.513201968570074'/>
-              <MetadataDouble DEF='fieldOfViewScale_17' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_17'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='0.836180161152724'/>
             </MetadataSet>
-            <MetadataSet DEF='TopViewpoint' containerField='value'
+            <MetadataSet DEF='TopViewpoint'
                 name='TopViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_18' containerField='value'
+              <MetadataDouble DEF='position_18'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='0.909913261669596, 10000, 0.286319171964582'/>
-              <MetadataDouble DEF='orientation_19' containerField='value'
+              <MetadataDouble DEF='orientation_19'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='1, 0, 0, 4.71238898038469'/>
-              <MetadataDouble DEF='centerOfRotation_20' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_20'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0.909913261669596, 0, 0.286319171964582'/>
-              <MetadataDouble DEF='fieldOfViewScale_21' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_21'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='1.12194130140981'/>
             </MetadataSet>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='RouteGraph' containerField='value'
+        <MetadataSet DEF='RouteGraph'
             name='RouteGraph'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='pages' containerField='value'
+          <MetadataSet DEF='pages'
               name='pages'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='Page0' containerField='value'
+            <MetadataSet DEF='Page0'
                 name='Page0'
                 reference='http://titania.create3000.de'>
-              <MetadataString DEF='pageName' containerField='value'
+              <MetadataString DEF='pageName'
                   name='pageName'
                   reference='http://titania.create3000.de'
                   value='"Logic"'/>
-              <MetadataDouble DEF='scrollPosition' containerField='value'
+              <MetadataDouble DEF='scrollPosition'
                   name='scrollPosition'
                   reference='http://titania.create3000.de'
                   value='0, 0'/>
-              <MetadataDouble DEF='nodePositions' containerField='value'
+              <MetadataDouble DEF='nodePositions'
                   name='nodePositions'
                   reference='http://titania.create3000.de'
                   value='537, 18, 199, 51'/>
-              <MetadataSet DEF='nodes_22' containerField='value'
+              <MetadataSet DEF='nodes_22'
                   name='nodes'
                   reference='http://titania.create3000.de'>
                 <RigidBodyCollection USE='_1' containerField='value'/>
@@ -472,54 +362,54 @@ function random3 ()
             </MetadataSet>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
+        <MetadataSet DEF='Grid'
             name='Grid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
+          <MetadataBoolean DEF='enabled'
               name='enabled'
               reference='http://titania.create3000.de'
               value='true'/>
-          <MetadataInteger DEF='dimension' containerField='value'
+          <MetadataInteger DEF='dimension'
               name='dimension'
               reference='http://titania.create3000.de'
               value='12, 10, 12'/>
         </MetadataSet>
-        <MetadataSet DEF='RenderPanel' containerField='value'
+        <MetadataSet DEF='RenderPanel'
             name='RenderPanel'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='filename' containerField='value'
+          <MetadataString DEF='filename'
               name='filename'
               reference='http://titania.create3000.de'
               value='"", "file:///home/holger/CollidableShape.O.mp4", "", ""'/>
-          <MetadataString DEF='codec' containerField='value'
+          <MetadataString DEF='codec'
               name='codec'
               reference='http://titania.create3000.de'
               value='"", "PNG", "", ""'/>
-          <MetadataInteger DEF='duration' containerField='value'
+          <MetadataInteger DEF='duration'
               name='duration'
               reference='http://titania.create3000.de'
               value='-1, 1800, -1, -1'/>
-          <MetadataInteger DEF='frameRate' containerField='value'
+          <MetadataInteger DEF='frameRate'
               name='frameRate'
               reference='http://titania.create3000.de'
               value='-1, 30, -1, -1'/>
-          <MetadataInteger DEF='width' containerField='value'
+          <MetadataInteger DEF='width'
               name='width'
               reference='http://titania.create3000.de'
               value='-1, 1024, -1, -1'/>
-          <MetadataInteger DEF='height' containerField='value'
+          <MetadataInteger DEF='height'
               name='height'
               reference='http://titania.create3000.de'
               value='-1, 576, -1, -1'/>
-          <MetadataInteger DEF='antialiasing' containerField='value'
+          <MetadataInteger DEF='antialiasing'
               name='antialiasing'
               reference='http://titania.create3000.de'
               value='-1, 4, -1, -1'/>
         </MetadataSet>
-        <MetadataSet DEF='Prototype' containerField='value'
+        <MetadataSet DEF='Prototype'
             name='Prototype'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='path' containerField='value'
+          <MetadataString DEF='path'
               name='path'
               reference='http://titania.create3000.de'
               value='"MFNode"'/>
@@ -540,18 +430,17 @@ function random3 ()
     <DirectionalLight
         ambientIntensity='0.517564'
         direction='-0.576224 -0.484397 -0.658275'
-        shadows='true'
-        shadowIntensity='1'>
-      <MetadataSet DEF='DirectionalLight'
+        shadows='true'>
+      <MetadataSet DEF='DirectionalLight' containerField='metadata'
           name='DirectionalLight'
           reference='http://titania.create3000.de'>
-        <MetadataFloat DEF='location' containerField='value'
+        <MetadataFloat DEF='location'
             name='location'
             reference='http://titania.create3000.de'
             value='0, 2.27923, 0'/>
       </MetadataSet>
     </DirectionalLight>
-    <Group DEF='Ground_23'>
+    <Group>
       <CollidableShape USE='Ground'/>
       <CollidableShape USE='Box_2'/>
     </Group>

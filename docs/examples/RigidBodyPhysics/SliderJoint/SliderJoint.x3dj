@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -16,7 +16,7 @@
         },
         {
           "@name": "creator",
-          "@content": "Alan Hudson and Justin Couch"
+          "@content": "Holger Seelig"
         },
         {
           "@name": "description",
@@ -24,7 +24,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.96, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -36,7 +36,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Sun, 27 Jan 2019 15:45:23 GMT"
+          "@content": "Sun, 01 Oct 2023 09:29:44 GMT"
         },
         {
           "@name": "reference",
@@ -69,14 +69,6 @@
         {
           "@name": "warning",
           "@content": "under development"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:04:15 GMT"
         }
       ],
       "component": [
@@ -89,7 +81,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -127,7 +119,7 @@
         },
         { "Group":
           {
-            "@DEF": "Ground_1",
+            "@DEF": "Ground_15",
             "-children": [
               { "Group":
                 {
@@ -157,11 +149,12 @@
                     {
                       "-appearance": { "Appearance":
                         {
+                          "@DEF": "_1",
                           "-material": { "Material":
                             {
                               "@DEF": "Neon12",
                               "@ambientIntensity": 0.341463,
-                              "@diffuseColor": [ 0.248138, 0.248138, 0.248138 ],
+                              "@diffuseColor": [ 1, 1, 1 ],
                               "@specularColor": [ 0.661, 0.661, 0.661 ],
                               "@shininess": 0.0284553
                             }
@@ -193,6 +186,7 @@
                 {
                   "@DEF": "Slider",
                   "@translation": [ 0, 1, 0 ],
+                  "@rotation": [ 0, 0, 0.999999999999966, 2.30639988183983 ],
                   "-shape": { "Shape":
                     {
                       "-appearance": { "Appearance":
@@ -221,10 +215,7 @@
                     {
                       "-appearance": { "Appearance":
                         {
-                          "-material": { "Material":
-                            {
-                            }
-                          }
+                          "@USE": "_1"
                         }
                       },
                       "-geometry": { "IndexedFaceSet":
@@ -259,11 +250,11 @@
         },
         { "RigidBodyCollection":
           {
-            "@DEF": "_1",
+            "@DEF": "_2",
             "-bodies": [
               { "RigidBody":
                 {
-                  "@DEF": "Ground_2",
+                  "@DEF": "Ground_12",
                   "@fixed": true,
                   "-geometry": [
                     { "CollidableShape":
@@ -276,9 +267,10 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Slider_1",
+                  "@DEF": "Slider_13",
                   "@fixed": true,
                   "@position": [ 0, 1, 0 ],
+                  "@orientation": [ 0, 0, 0.999999999999966, 2.30639988183983 ],
                   "-geometry": [
                     { "CollidableShape":
                       {
@@ -290,7 +282,7 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Box_2",
+                  "@DEF": "Box_14",
                   "@position": [ 0, 1, 0 ],
                   "-geometry": [
                     { "CollidableShape":
@@ -310,12 +302,12 @@
                   "@maxSeparation": 1.5,
                   "-body1": { "RigidBody":
                     {
-                      "@USE": "Slider_1"
+                      "@USE": "Slider_13"
                     }
                   },
                   "-body2": { "RigidBody":
                     {
-                      "@USE": "Box_2"
+                      "@USE": "Box_14"
                     }
                   }
                 }

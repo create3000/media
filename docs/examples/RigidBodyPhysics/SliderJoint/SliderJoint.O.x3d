@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
-    <component name='RigidBodyPhysics' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
-    <meta name='comment' content='World of Titania'/>
+    <component name='RigidBodyPhysics' level='2'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='1 January 2008'/>
-    <meta name='creator' content='Alan Hudson and Justin Couch'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
-    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.4, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/SliderJoint/SliderJoint.O.x3d'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 15:45:23 GMT'/>
+    <meta name='modified' content='Sun, 01 Oct 2023 09:28:45 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -28,44 +24,48 @@
   <Scene>
     <WorldInfo
         title='Ball'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
-          <MetadataString DEF='panels' containerField='value'
+          <MetadataString DEF='panels'
               name='panels'
               reference='http://titania.create3000.de'
               value='"BROWSER_PANEL", "BROWSER_PANEL", "BROWSER_PANEL", "BROWSER_PANEL"'/>
-          <MetadataDouble DEF='browserRatio' containerField='value'
+          <MetadataDouble DEF='browserRatio'
               name='browserRatio'
               reference='http://titania.create3000.de'
               value='1.777777'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
             <CollidableShape DEF='Box_1' containerField='value'
                 translation='0 1 0'>
               <Shape containerField='shape'>
-                <Appearance>
-                  <Material/>
+                <Appearance DEF='_1'>
+                  <Material DEF='Neon12'
+                      ambientIntensity='0.341463'
+                      diffuseColor='1 1 1'
+                      specularColor='0.661 0.661 0.661'
+                      shininess='0.0284553'/>
                 </Appearance>
                 <IndexedFaceSet
                     colorPerVertex='false'
@@ -83,114 +83,108 @@
             </CollidableShape>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='BrowserPanel' containerField='value'
+        <MetadataSet DEF='BrowserPanel'
             name='BrowserPanel'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='layerNumber' containerField='value'
+          <MetadataInteger DEF='layerNumber'
               name='layerNumber'
               reference='http://titania.create3000.de'
               value='-1, -1, 0, 0, 0, -1, -1, -1'/>
-          <MetadataSet DEF='viewpoints' containerField='value'
+          <MetadataSet DEF='viewpoints'
               name='viewpoints'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='FrontViewpoint' containerField='value'
+            <MetadataSet DEF='FrontViewpoint'
                 name='FrontViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position' containerField='value'
+              <MetadataDouble DEF='position'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='0.957580952988553, 1.1611438646829, 10000'/>
-              <MetadataDouble DEF='orientation' containerField='value'
+              <MetadataDouble DEF='orientation'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 1, 0'/>
-              <MetadataDouble DEF='centerOfRotation' containerField='value'
+              <MetadataDouble DEF='centerOfRotation'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0.957580952988553, 1.1611438646829, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='0.827849664068643'/>
             </MetadataSet>
-            <MetadataSet DEF='RightViewpoint' containerField='value'
+            <MetadataSet DEF='RightViewpoint'
                 name='RightViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_2' containerField='value'
+              <MetadataDouble DEF='position_2'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='10000, 1.40019544268759, -0.513201968570074'/>
-              <MetadataDouble DEF='orientation_3' containerField='value'
+              <MetadataDouble DEF='orientation_3'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0, 1, 0, 1.5707963267949'/>
-              <MetadataDouble DEF='centerOfRotation_4' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_4'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='-9.7280050444944e-16, 1.40019544268759, -0.513201968570074'/>
-              <MetadataDouble DEF='fieldOfViewScale_5' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_5'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='0.836180161152724'/>
             </MetadataSet>
-            <MetadataSet DEF='TopViewpoint' containerField='value'
+            <MetadataSet DEF='TopViewpoint'
                 name='TopViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_6' containerField='value'
+              <MetadataDouble DEF='position_6'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='0.909913261669596, 10000, 0.286319171964582'/>
-              <MetadataDouble DEF='orientation_7' containerField='value'
+              <MetadataDouble DEF='orientation_7'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='1, 0, 0, 4.71238898038469'/>
-              <MetadataDouble DEF='centerOfRotation_8' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_8'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0.909913261669596, 0, 0.286319171964582'/>
-              <MetadataDouble DEF='fieldOfViewScale_9' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_9'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='1.12194130140981'/>
             </MetadataSet>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='RouteGraph' containerField='value'
+        <MetadataSet DEF='RouteGraph'
             name='RouteGraph'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='pages' containerField='value'
+          <MetadataSet DEF='pages'
               name='pages'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='Page0' containerField='value'
+            <MetadataSet DEF='Page0'
                 name='Page0'
                 reference='http://titania.create3000.de'>
-              <MetadataString DEF='pageName' containerField='value'
+              <MetadataString DEF='pageName'
                   name='pageName'
                   reference='http://titania.create3000.de'
                   value='"Logic"'/>
-              <MetadataDouble DEF='scrollPosition' containerField='value'
+              <MetadataDouble DEF='scrollPosition'
                   name='scrollPosition'
                   reference='http://titania.create3000.de'
                   value='0, 0'/>
-              <MetadataDouble DEF='nodePositions' containerField='value'
+              <MetadataDouble DEF='nodePositions'
                   name='nodePositions'
                   reference='http://titania.create3000.de'
                   value='537, 18, 199, 51'/>
-              <MetadataSet DEF='nodes_10' containerField='value'
+              <MetadataSet DEF='nodes_10'
                   name='nodes'
                   reference='http://titania.create3000.de'>
-                <RigidBodyCollection DEF='_11' containerField='value'>
+                <RigidBodyCollection DEF='_2' containerField='value'>
                   <RigidBody DEF='Ground_12'
                       fixed='true'>
                     <CollidableShape DEF='Ground' containerField='geometry'>
                       <Shape containerField='shape'>
-                        <Appearance>
-                          <Material DEF='Neon12'
-                              ambientIntensity='0.341463'
-                              diffuseColor='0.248138 0.248138 0.248138'
-                              specularColor='0.661 0.661 0.661'
-                              shininess='0.0284553'/>
-                        </Appearance>
+                        <Appearance USE='_1'/>
                         <IndexedFaceSet
                             colorPerVertex='false'
                             colorIndex='0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 2, 1, 4, 2, 0, 1, 0, 0, 4, 2, 4, 3, 4, 2, 4, 0, 1, 0, 0, 3, 4, 2, 2, 1, 1, 0, 0, 0, 4, 4, 2, 4, 4, 2, 3, 0, 1, 0, 3, 0, 2, 1, 5, 3, 4, 5, 3, 0, 2, 1, 5, 3, 4, 5, 3, 0, 1, 2, 5, 3, 4, 5, 3, 0, 2, 1, 5, 3, 4, 5, 3, 0, 3, 3, 6, 3, 3, 6, 6, 3, 3, 3, 3, 6, 3, 3, 6, 6, 3, 3, 3, 3'
@@ -205,9 +199,11 @@
                   </RigidBody>
                   <RigidBody DEF='Slider_13'
                       fixed='true'
-                      position='0 1 0'>
+                      position='0 1 0'
+                      orientation='0 0 1.00000000000055 0.6815997362133'>
                     <CollidableShape DEF='Slider' containerField='geometry'
-                        translation='0 1 0'>
+                        translation='0 1 0'
+                        rotation='0 0 1.00000000000055 0.6815997362133'>
                       <Shape containerField='shape'>
                         <Appearance>
                           <Material
@@ -254,46 +250,46 @@
             </MetadataSet>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
+        <MetadataSet DEF='Grid'
             name='Grid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
+          <MetadataBoolean DEF='enabled'
               name='enabled'
               reference='http://titania.create3000.de'
               value='true'/>
-          <MetadataInteger DEF='dimension' containerField='value'
+          <MetadataInteger DEF='dimension'
               name='dimension'
               reference='http://titania.create3000.de'
               value='12, 10, 12'/>
         </MetadataSet>
-        <MetadataSet DEF='RenderPanel' containerField='value'
+        <MetadataSet DEF='RenderPanel'
             name='RenderPanel'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='filename' containerField='value'
+          <MetadataString DEF='filename'
               name='filename'
               reference='http://titania.create3000.de'
               value='"", "file:///home/holger/CollidableShape.O.mp4", "", ""'/>
-          <MetadataString DEF='codec' containerField='value'
+          <MetadataString DEF='codec'
               name='codec'
               reference='http://titania.create3000.de'
               value='"", "PNG", "", ""'/>
-          <MetadataInteger DEF='duration' containerField='value'
+          <MetadataInteger DEF='duration'
               name='duration'
               reference='http://titania.create3000.de'
               value='-1, 1800, -1, -1'/>
-          <MetadataInteger DEF='frameRate' containerField='value'
+          <MetadataInteger DEF='frameRate'
               name='frameRate'
               reference='http://titania.create3000.de'
               value='-1, 30, -1, -1'/>
-          <MetadataInteger DEF='width' containerField='value'
+          <MetadataInteger DEF='width'
               name='width'
               reference='http://titania.create3000.de'
               value='-1, 1024, -1, -1'/>
-          <MetadataInteger DEF='height' containerField='value'
+          <MetadataInteger DEF='height'
               name='height'
               reference='http://titania.create3000.de'
               value='-1, 576, -1, -1'/>
-          <MetadataInteger DEF='antialiasing' containerField='value'
+          <MetadataInteger DEF='antialiasing'
               name='antialiasing'
               reference='http://titania.create3000.de'
               value='-1, 4, -1, -1'/>
@@ -313,10 +309,10 @@
         centerOfRotation='-0.0471507 -0.664379 0.433086'/>
     <DirectionalLight
         direction='-0.333952 -0.752192 -0.568052'>
-      <MetadataSet DEF='DirectionalLight'
+      <MetadataSet DEF='DirectionalLight' containerField='metadata'
           name='DirectionalLight'
           reference='http://titania.create3000.de'>
-        <MetadataFloat DEF='location' containerField='value'
+        <MetadataFloat DEF='location'
             name='location'
             reference='http://titania.create3000.de'
             value='0, 2.27923, 0'/>
@@ -324,14 +320,14 @@
     </DirectionalLight>
     <Group DEF='Ground_15'>
       <Group DEF='Animation'>
-        <MetadataSet DEF='Animation_16'
+        <MetadataSet DEF='Animation_16' containerField='metadata'
             name='Animation'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='duration_17' containerField='value'
+          <MetadataInteger DEF='duration_17'
               name='duration'
               reference='http://titania.create3000.de'
               value='300'/>
-          <MetadataInteger DEF='frameRate_18' containerField='value'
+          <MetadataInteger DEF='frameRate_18'
               name='frameRate'
               reference='http://titania.create3000.de'
               value='10'/>
@@ -342,22 +338,22 @@
         <OrientationInterpolator DEF='SliderRotationInterpolator'
             key='0, 0.25, 0.75, 1'
             keyValue='0 0 1 0, 0 0 1 18, 0 0 1 342, 0 0 1 0'>
-          <MetadataSet DEF='Interpolator'
+          <MetadataSet DEF='Interpolator' containerField='metadata'
               name='Interpolator'
               reference='http://titania.create3000.de'>
-            <MetadataInteger DEF='key' containerField='value'
+            <MetadataInteger DEF='key'
                 name='key'
                 reference='http://titania.create3000.de'
                 value='0, 75, 225, 300'/>
-            <MetadataDouble DEF='keyValue' containerField='value'
+            <MetadataDouble DEF='keyValue'
                 name='keyValue'
                 reference='http://titania.create3000.de'
                 value='0, 0, 1, 0, 0, 0, 1, 0.314159265358979, 0, 0, 1, 5.96902604182061, 0, 0, 1, 0'/>
-            <MetadataString DEF='keyType' containerField='value'
+            <MetadataString DEF='keyType'
                 name='keyType'
                 reference='http://titania.create3000.de'
                 value='"LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
-            <MetadataInteger DEF='keySize' containerField='value'
+            <MetadataInteger DEF='keySize'
                 name='keySize'
                 reference='http://titania.create3000.de'
                 value='1'/>
@@ -368,7 +364,7 @@
       <CollidableShape USE='Slider'/>
       <CollidableShape USE='Box_1'/>
     </Group>
-    <RigidBodyCollection USE='_11'/>
+    <RigidBodyCollection USE='_2'/>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='SliderRotationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='SliderRotationInterpolator' fromField='value_changed' toNode='Slider' toField='set_rotation'/>
   </Scene>

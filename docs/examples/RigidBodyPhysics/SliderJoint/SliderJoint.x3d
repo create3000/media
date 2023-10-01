@@ -4,14 +4,14 @@
   <head>
     <component name='RigidBodyPhysics' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='1 January 2008'/>
-    <meta name='creator' content='Alan Hudson and Justin Couch'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
-    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.96, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/SliderJoint/SliderJoint.O.x3d'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 15:45:23 GMT'/>
+    <meta name='modified' content='Sun, 01 Oct 2023 09:29:43 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -20,8 +20,6 @@
     <meta name='translated' content='26 December 2008'/>
     <meta name='translator' content='Don Brutzman'/>
     <meta name='warning' content='under development'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:04:02 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -39,7 +37,7 @@
         centerOfRotation='-0.0471507 -0.664379 0.433086'/>
     <DirectionalLight
         direction='-0.333952 -0.752192 -0.568052'/>
-    <Group DEF='Ground_1'>
+    <Group DEF='Ground_15'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
             cycleInterval='30'
@@ -50,10 +48,10 @@
       </Group>
       <CollidableShape DEF='Ground'>
         <Shape containerField='shape'>
-          <Appearance>
+          <Appearance DEF='_1'>
             <Material DEF='Neon12'
                 ambientIntensity='0.341463'
-                diffuseColor='0.248138 0.248138 0.248138'
+                diffuseColor='1 1 1'
                 specularColor='0.661 0.661 0.661'
                 shininess='0.0284553'/>
           </Appearance>
@@ -69,7 +67,8 @@
         </Shape>
       </CollidableShape>
       <CollidableShape DEF='Slider'
-          translation='0 1 0'>
+          translation='0 1 0'
+          rotation='0 0 0.999999999999951 3.19679993391052'>
         <Shape containerField='shape'>
           <Appearance>
             <Material
@@ -82,9 +81,7 @@
       <CollidableShape DEF='Box_1'
           translation='0 1 0'>
         <Shape containerField='shape'>
-          <Appearance>
-            <Material/>
-          </Appearance>
+          <Appearance USE='_1'/>
           <IndexedFaceSet
               colorPerVertex='false'
               colorIndex='0, 0, 2, 2, 1, 1'
@@ -100,17 +97,18 @@
         </Shape>
       </CollidableShape>
     </Group>
-    <RigidBodyCollection DEF='_1'>
-      <RigidBody DEF='Ground_2'
+    <RigidBodyCollection DEF='_2'>
+      <RigidBody DEF='Ground_12'
           fixed='true'>
         <CollidableShape USE='Ground' containerField='geometry'/>
       </RigidBody>
-      <RigidBody DEF='Slider_1'
+      <RigidBody DEF='Slider_13'
           fixed='true'
-          position='0 1 0'>
+          position='0 1 0'
+          orientation='0 0 0.999999999999951 3.19679993391052'>
         <CollidableShape USE='Slider' containerField='geometry'/>
       </RigidBody>
-      <RigidBody DEF='Box_2'
+      <RigidBody DEF='Box_14'
           position='0 1 0'>
         <CollidableShape USE='Box_1' containerField='geometry'/>
       </RigidBody>
@@ -118,8 +116,8 @@
           axis='1 0 0'
           minSeparation='-1.5'
           maxSeparation='1.5'>
-        <RigidBody USE='Slider_1' containerField='body1'/>
-        <RigidBody USE='Box_2' containerField='body2'/>
+        <RigidBody USE='Slider_13' containerField='body1'/>
+        <RigidBody USE='Box_14' containerField='body2'/>
       </SliderJoint>
     </RigidBodyCollection>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='SliderRotationInterpolator' toField='set_fraction'/>

@@ -5,14 +5,14 @@
     <component name='RigidBodyPhysics' level='2'/>
     <component name='Scripting' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='1 January 2008'/>
-    <meta name='creator' content='Alan Hudson and Justin Couch'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
-    <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.96, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollidableShape/CollidableShape.O.x3d'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 15:44:29 GMT'/>
+    <meta name='modified' content='Sun, 01 Oct 2023 09:30:12 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -21,8 +21,6 @@
     <meta name='translated' content='26 December 2008'/>
     <meta name='translator' content='Don Brutzman'/>
     <meta name='warning' content='under development'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:03:09 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -42,13 +40,13 @@
         ambientIntensity='0.517564'
         direction='-0.576224 -0.484397 -0.658275'
         shadows='true'/>
-    <Group DEF='Ground_1'>
+    <Group>
       <CollidableShape DEF='Ground'>
         <Shape containerField='shape'>
-          <Appearance>
+          <Appearance DEF='_1'>
             <Material DEF='Neon12'
                 ambientIntensity='0.341463'
-                diffuseColor='0.248138 0.248138 0.248138'
+                diffuseColor='1 1 1'
                 specularColor='0.661 0.661 0.661'
                 shininess='0.0284553'/>
           </Appearance>
@@ -63,15 +61,9 @@
           </IndexedFaceSet>
         </Shape>
       </CollidableShape>
-      <CollidableShape DEF='Box_1'>
+      <CollidableShape DEF='Box_2'>
         <Shape containerField='shape'>
-          <Appearance>
-            <Material DEF='Neon12_1'
-                ambientIntensity='0.341463'
-                diffuseColor='0.16 0.16 0.16'
-                specularColor='0.661 0.661 0.661'
-                shininess='0.0284553'/>
-          </Appearance>
+          <Appearance USE='_1'/>
           <IndexedFaceSet
               colorPerVertex='false'
               colorIndex='0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0'
@@ -88,9 +80,8 @@
       </CollidableShape>
     </Group>
     <Group DEF='Primitives'>
-      <CollidableShape DEF='_1'
-          translation='3.11381 0.268063 0.932841'
-          rotation='-0.681947759502894 0.681953431509507 -0.264361099995485 150.384080815102'>
+      <CollidableShape DEF='_2'
+          translation='0 5 0'>
         <Shape DEF='Box' containerField='shape'>
           <Appearance>
             <Material DEF='Santafe32'
@@ -99,7 +90,7 @@
                 specularColor='0.198631 0.0754031 0.138803'
                 emissiveColor='0.0106383 0.0106383 0.0106383'
                 shininess='0.0212766'/>
-            <ImageTexture DEF='_2'
+            <ImageTexture DEF='_3'
                 url='"assets/pattern.png"'
                 repeatS='false'
                 repeatT='false'/>
@@ -107,79 +98,6 @@
           <Box
               size='0.5 0.5 0.5'/>
         </Shape>
-      </CollidableShape>
-      <CollidableShape DEF='_3'
-          translation='0.521994 0.651746 0.62277'
-          rotation='0.962780228183078 0.190940982359961 0.19130003740048 239.88151610971'>
-        <Shape DEF='Cone' containerField='shape'>
-          <Appearance>
-            <Material DEF='Santafe9'
-                ambientIntensity='0.177947'
-                diffuseColor='0.340537 0.37498 0.685837'
-                specularColor='0.237073 0.295337 0.295337'
-                shininess='0.466321'/>
-            <ImageTexture USE='_2'/>
-          </Appearance>
-          <Cone
-              height='0.5'
-              bottomRadius='0.25'/>
-        </Shape>
-      </CollidableShape>
-      <CollidableShape DEF='_4'
-          translation='1.12941 0.809975 -0.0803498'
-          rotation='-0.0476734620747855 -0.143534897533492 0.988496366481793 110.261364766748'>
-        <Shape DEF='Cylinder' containerField='shape'>
-          <Appearance>
-            <Material DEF='Santafe6'
-                ambientIntensity='0.0450585'
-                diffuseColor='0.191499 0.0265877 0.0665837'
-                specularColor='0.367348 0.0557356 0.0557356'
-                shininess='0.0585106'/>
-            <ImageTexture USE='_2'/>
-          </Appearance>
-          <Cylinder
-              height='0.5'
-              radius='0.25'/>
-        </Shape>
-      </CollidableShape>
-      <CollidableShape DEF='_5'
-          translation='-0.373253 0.747585 1.97687'
-          rotation='0.382156609201704 0.819518163463704 0.427020298084054 62.1255908227802'>
-        <Shape DEF='Sphere' containerField='shape'>
-          <Appearance>
-            <Material DEF='Santafe29'
-                ambientIntensity='0.204082'
-                diffuseColor='0.795918 0.505869 0.0933146'
-                specularColor='0.923469 0.428866 0.00636875'
-                shininess='0.397959'/>
-            <ImageTexture USE='_2'/>
-          </Appearance>
-          <Sphere
-              radius='0.25'/>
-        </Shape>
-      </CollidableShape>
-      <CollidableShape DEF='_6'
-          translation='-0.898481 0.857364 0.444717'
-          rotation='0.161317304676402 0.948984364637549 -0.270934327328363 139.756983001434'>
-        <Shape USE='Box' containerField='shape'/>
-      </CollidableShape>
-      <CollidableShape DEF='_7'
-          translation='-0.592892 2.33872 0.522488'
-          rotation='-0.531549211943425 0.415884555885109 -0.737893966360354 9.47122750492214'>
-        <Shape USE='Cone' containerField='shape'/>
-      </CollidableShape>
-      <CollidableShape DEF='_8'
-          translation='0.191002 2.88364 -0.466006'
-          rotation='-0.11807069541653 0.646709403119323 0.753544895659486 12.5663842975163'>
-        <Shape USE='Cylinder' containerField='shape'/>
-      </CollidableShape>
-      <CollidableShape DEF='_9'
-          translation='-0.196173 4.29747 -0.0548038'>
-        <Shape USE='Sphere' containerField='shape'/>
-      </CollidableShape>
-      <CollidableShape DEF='_10'
-          translation='0.0246046 4.98726 -0.0397003'>
-        <Shape USE='Box' containerField='shape'/>
       </CollidableShape>
     </Group>
     <Group>
@@ -191,99 +109,72 @@
         <field accessType='inputOutput' type='SFInt32' name='numBodies' value='30'/>
         <field accessType='inputOnly' type='SFTime' name='set_time'/>
         <field accessType='initializeOnly' type='SFNode' name='collection'>
-          <RigidBodyCollection DEF='_11' containerField='collection'
+          <RigidBodyCollection DEF='_4'
               iterations='5'>
             <CollisionCollection
                 appliedParameters='"BOUNCE", "FRICTION_COEFFICIENT_2"'
                 bounce='0.6'
                 frictionCoefficients='0.5 0'/>
-            <RigidBody
+            <RigidBody DEF='_5'
                 fixed='true'>
               <CollidableShape USE='Ground' containerField='geometry'/>
             </RigidBody>
-            <RigidBody
+            <RigidBody DEF='_6'
                 fixed='true'>
-              <CollidableShape USE='Box_1' containerField='geometry'/>
+              <CollidableShape USE='Box_2' containerField='geometry'/>
             </RigidBody>
-            <RigidBody
-                position='3.11381 0.268063 0.932841'
-                orientation='-0.681947759502894 0.681953431509507 -0.264361099995485 150.384080815102'
-                linearVelocity='1.28471 0.000101916 0.42473'
-                angularVelocity='-0.0032339 17.0154 0.0251508'
-                centerOfMass='0.486067 -0.793102 0.0127427'>
-              <CollidableShape USE='_1' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='0.521994 0.651746 0.62277'
-                orientation='0.962780228183078 0.190940982359961 0.19130003740048 239.88151610971'
-                linearVelocity='0.403908 -0.00833062 0.22922'
-                angularVelocity='84.3033 -0.209671 -153.823'
-                centerOfMass='-0.549069 -0.733599 0.487949'>
-              <CollidableShape USE='_3' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='1.12941 0.809975 -0.0803498'
-                orientation='-0.0476734620747855 -0.143534897533492 0.988496366481793 110.261364766748'
-                linearVelocity='0.891078 -0.476913 0.613242'
-                angularVelocity='87.578 -57.0741 -174.437'
-                centerOfMass='-0.756389 -0.678443 -0.548839'>
-              <CollidableShape USE='_4' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='-0.373253 0.747585 1.97687'
-                orientation='0.382156609201704 0.819518163463704 0.427020298084054 62.1255908227802'
-                linearVelocity='-0.216088 0.135639 0.443162'
-                angularVelocity='101.565 66.2052 49.5238'
-                centerOfMass='0.779303 0.572025 0.00962167'>
-              <CollidableShape USE='_5' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='-0.898481 0.857364 0.444717'
-                orientation='0.161317304676402 0.948984364637549 -0.270934327328363 139.756983001434'
-                linearVelocity='-0.954439 -0.357422 0.557959'
-                angularVelocity='-93.431 352.399 65.659'
-                centerOfMass='0.936612 0.0494663 -0.699552'>
-              <CollidableShape USE='_6' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='-0.592892 2.33872 0.522488'
-                orientation='-0.531549211943425 0.415884555885109 -0.737893966360354 9.47122750492214'
-                linearVelocity='-0.741476 -8.16216 0.622144'
-                angularVelocity='-9.05189 8.17953 -13.22'
-                centerOfMass='0.753167 -0.165204 0.689921'>
-              <CollidableShape USE='_7' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='0.191002 2.88364 -0.466006'
-                orientation='-0.11807069541653 0.646709403119323 0.753544895659486 12.5663842975163'
-                linearVelocity='0.286433 -7.31948 -0.809351'
-                angularVelocity='-4.81488 16.7446 18.2142'
-                centerOfMass='0.652075 0.992385 -0.269645'>
-              <CollidableShape USE='_8' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='-0.196173 4.29747 -0.0548038'
-                linearVelocity='-0.723981 -4.25234 -0.202255'
-                centerOfMass='0.17003 0.690501 0.830111'>
-              <CollidableShape USE='_9' containerField='geometry'/>
-            </RigidBody>
-            <RigidBody
-                position='0.0246046 4.98726 -0.0397003'
-                linearVelocity='0.864277 -0.621876 -1.39454'
-                centerOfMass='0.331398 -0.671647 -0.30676'>
-              <CollidableShape USE='_10' containerField='geometry'/>
+            <RigidBody DEF='_7'
+                position='0 5 0'
+                linearVelocity='-1.379216 -1.077583 -1.356423'
+                centerOfMass='-0.8488156 0.8448355 -0.4657963'>
+              <CollidableShape USE='_2' containerField='geometry'/>
             </RigidBody>
           </RigidBodyCollection>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='primitives'>
-          <Group USE='Primitives' containerField='primitives'/>
+          <Group USE='Primitives'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='appearance'/>
         <field accessType='initializeOnly' type='MFNode' name='shapes'>
-          <Shape USE='Box' containerField='shapes'/>
-          <Shape USE='Cone' containerField='shapes'/>
-          <Shape USE='Cylinder' containerField='shapes'/>
-          <Shape USE='Sphere' containerField='shapes'/>
+          <Shape USE='Box'/>
+          <Shape DEF='Cone'>
+            <Appearance>
+              <Material DEF='Santafe9'
+                  ambientIntensity='0.177947'
+                  diffuseColor='0.340537 0.37498 0.685837'
+                  specularColor='0.237073 0.295337 0.295337'
+                  shininess='0.466321'/>
+              <ImageTexture USE='_3'/>
+            </Appearance>
+            <Cone
+                height='0.5'
+                bottomRadius='0.25'/>
+          </Shape>
+          <Shape DEF='Cylinder'>
+            <Appearance>
+              <Material DEF='Santafe6'
+                  ambientIntensity='0.0450585'
+                  diffuseColor='0.191499 0.0265877 0.0665837'
+                  specularColor='0.367348 0.0557356 0.0557356'
+                  shininess='0.0585106'/>
+              <ImageTexture USE='_3'/>
+            </Appearance>
+            <Cylinder
+                height='0.5'
+                radius='0.25'/>
+          </Shape>
+          <Shape DEF='Sphere'>
+            <Appearance>
+              <Material DEF='Santafe29'
+                  ambientIntensity='0.204082'
+                  diffuseColor='0.795918 0.505869 0.0933146'
+                  specularColor='0.923469 0.428866 0.00636875'
+                  shininess='0.397959'/>
+              <ImageTexture USE='_3'/>
+            </Appearance>
+            <Sphere
+                radius='0.25'/>
+          </Shape>
         </field>
 <![CDATA[ecmascript:
 

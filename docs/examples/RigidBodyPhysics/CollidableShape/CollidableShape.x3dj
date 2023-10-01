@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -16,7 +16,7 @@
         },
         {
           "@name": "creator",
-          "@content": "Alan Hudson and Justin Couch"
+          "@content": "Holger Seelig"
         },
         {
           "@name": "description",
@@ -24,7 +24,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.96, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -36,7 +36,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Sun, 27 Jan 2019 15:44:29 GMT"
+          "@content": "Sun, 01 Oct 2023 09:30:13 GMT"
         },
         {
           "@name": "reference",
@@ -69,14 +69,6 @@
         {
           "@name": "warning",
           "@content": "under development"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:03:27 GMT"
         }
       ],
       "component": [
@@ -93,7 +85,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -133,7 +125,6 @@
         },
         { "Group":
           {
-            "@DEF": "Ground_1",
             "-children": [
               { "CollidableShape":
                 {
@@ -142,11 +133,12 @@
                     {
                       "-appearance": { "Appearance":
                         {
+                          "@DEF": "_1",
                           "-material": { "Material":
                             {
                               "@DEF": "Neon12",
                               "@ambientIntensity": 0.341463,
-                              "@diffuseColor": [ 0.248138, 0.248138, 0.248138 ],
+                              "@diffuseColor": [ 1, 1, 1 ],
                               "@specularColor": [ 0.661, 0.661, 0.661 ],
                               "@shininess": 0.0284553
                             }
@@ -176,20 +168,12 @@
               },
               { "CollidableShape":
                 {
-                  "@DEF": "Box_1",
+                  "@DEF": "Box_2",
                   "-shape": { "Shape":
                     {
                       "-appearance": { "Appearance":
                         {
-                          "-material": { "Material":
-                            {
-                              "@DEF": "Neon12_1",
-                              "@ambientIntensity": 0.341463,
-                              "@diffuseColor": [ 0.16, 0.16, 0.16 ],
-                              "@specularColor": [ 0.661, 0.661, 0.661 ],
-                              "@shininess": 0.0284553
-                            }
-                          }
+                          "@USE": "_1"
                         }
                       },
                       "-geometry": { "IndexedFaceSet":
@@ -228,9 +212,8 @@
             "-children": [
               { "CollidableShape":
                 {
-                  "@DEF": "_1",
-                  "@translation": [ 3.11381, 0.268063, 0.932841 ],
-                  "@rotation": [ -0.681947759502894, 0.681953431509507, -0.264361099995485, 150.384080815102 ],
+                  "@DEF": "_2",
+                  "@translation": [ 0, 5, 0 ],
                   "-shape": { "Shape":
                     {
                       "@DEF": "Box",
@@ -248,7 +231,7 @@
                           },
                           "-texture": { "ImageTexture":
                             {
-                              "@DEF": "_2",
+                              "@DEF": "_3",
                               "@url": [ "assets/pattern.png" ],
                               "@repeatS": false,
                               "@repeatT": false
@@ -261,171 +244,6 @@
                           "@size": [ 0.5, 0.5, 0.5 ]
                         }
                       }
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_3",
-                  "@translation": [ 0.521994, 0.651746, 0.62277 ],
-                  "@rotation": [ 0.962780228183078, 0.190940982359961, 0.19130003740048, 239.88151610971 ],
-                  "-shape": { "Shape":
-                    {
-                      "@DEF": "Cone",
-                      "-appearance": { "Appearance":
-                        {
-                          "-material": { "Material":
-                            {
-                              "@DEF": "Santafe9",
-                              "@ambientIntensity": 0.177947,
-                              "@diffuseColor": [ 0.340537, 0.37498, 0.685837 ],
-                              "@specularColor": [ 0.237073, 0.295337, 0.295337 ],
-                              "@shininess": 0.466321
-                            }
-                          },
-                          "-texture": { "ImageTexture":
-                            {
-                              "@USE": "_2"
-                            }
-                          }
-                        }
-                      },
-                      "-geometry": { "Cone":
-                        {
-                          "@height": 0.5,
-                          "@bottomRadius": 0.25
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_4",
-                  "@translation": [ 1.12941, 0.809975, -0.0803498 ],
-                  "@rotation": [ -0.0476734620747855, -0.143534897533492, 0.988496366481793, 110.261364766748 ],
-                  "-shape": { "Shape":
-                    {
-                      "@DEF": "Cylinder",
-                      "-appearance": { "Appearance":
-                        {
-                          "-material": { "Material":
-                            {
-                              "@DEF": "Santafe6",
-                              "@ambientIntensity": 0.0450585,
-                              "@diffuseColor": [ 0.191499, 0.0265877, 0.0665837 ],
-                              "@specularColor": [ 0.367348, 0.0557356, 0.0557356 ],
-                              "@shininess": 0.0585106
-                            }
-                          },
-                          "-texture": { "ImageTexture":
-                            {
-                              "@USE": "_2"
-                            }
-                          }
-                        }
-                      },
-                      "-geometry": { "Cylinder":
-                        {
-                          "@height": 0.5,
-                          "@radius": 0.25
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_5",
-                  "@translation": [ -0.373253, 0.747585, 1.97687 ],
-                  "@rotation": [ 0.382156609201704, 0.819518163463704, 0.427020298084054, 62.1255908227802 ],
-                  "-shape": { "Shape":
-                    {
-                      "@DEF": "Sphere",
-                      "-appearance": { "Appearance":
-                        {
-                          "-material": { "Material":
-                            {
-                              "@DEF": "Santafe29",
-                              "@ambientIntensity": 0.204082,
-                              "@diffuseColor": [ 0.795918, 0.505869, 0.0933146 ],
-                              "@specularColor": [ 0.923469, 0.428866, 0.00636875 ],
-                              "@shininess": 0.397959
-                            }
-                          },
-                          "-texture": { "ImageTexture":
-                            {
-                              "@USE": "_2"
-                            }
-                          }
-                        }
-                      },
-                      "-geometry": { "Sphere":
-                        {
-                          "@radius": 0.25
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_6",
-                  "@translation": [ -0.898481, 0.857364, 0.444717 ],
-                  "@rotation": [ 0.161317304676402, 0.948984364637549, -0.270934327328363, 139.756983001434 ],
-                  "-shape": { "Shape":
-                    {
-                      "@USE": "Box"
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_7",
-                  "@translation": [ -0.592892, 2.33872, 0.522488 ],
-                  "@rotation": [ -0.531549211943425, 0.415884555885109, -0.737893966360354, 9.47122750492214 ],
-                  "-shape": { "Shape":
-                    {
-                      "@USE": "Cone"
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_8",
-                  "@translation": [ 0.191002, 2.88364, -0.466006 ],
-                  "@rotation": [ -0.11807069541653, 0.646709403119323, 0.753544895659486, 12.5663842975163 ],
-                  "-shape": { "Shape":
-                    {
-                      "@USE": "Cylinder"
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_9",
-                  "@translation": [ -0.196173, 4.29747, -0.0548038 ],
-                  "-shape": { "Shape":
-                    {
-                      "@USE": "Sphere"
-                    }
-                  }
-                }
-              },
-              { "CollidableShape":
-                {
-                  "@DEF": "_10",
-                  "@translation": [ 0.0246046, 4.98726, -0.0397003 ],
-                  "-shape": { "Shape":
-                    {
-                      "@USE": "Box"
                     }
                   }
                 }
@@ -466,7 +284,7 @@
                       "-children": [
                         { "RigidBodyCollection":
                           {
-                            "@DEF": "_11",
+                            "@DEF": "_4",
                             "@iterations": 5,
                             "-collider": { "CollisionCollection":
                               {
@@ -478,6 +296,7 @@
                             "-bodies": [
                               { "RigidBody":
                                 {
+                                  "@DEF": "_5",
                                   "@fixed": true,
                                   "-geometry": [
                                     { "CollidableShape":
@@ -490,11 +309,12 @@
                               },
                               { "RigidBody":
                                 {
+                                  "@DEF": "_6",
                                   "@fixed": true,
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "Box_1"
+                                        "@USE": "Box_2"
                                       }
                                     }
                                   ]
@@ -502,139 +322,14 @@
                               },
                               { "RigidBody":
                                 {
-                                  "@position": [ 3.11381, 0.268063, 0.932841 ],
-                                  "@orientation": [ -0.681947759502894, 0.681953431509507, -0.264361099995485, 150.384080815102 ],
-                                  "@linearVelocity": [ 1.28471, 0.000101916, 0.42473 ],
-                                  "@angularVelocity": [ -0.0032339, 17.0154, 0.0251508 ],
-                                  "@centerOfMass": [ 0.486067, -0.793102, 0.0127427 ],
+                                  "@DEF": "_7",
+                                  "@position": [ 0, 5, 0 ],
+                                  "@linearVelocity": [ -1.379216, -1.077583, -1.356423 ],
+                                  "@centerOfMass": [ -0.8488156, 0.8448355, -0.4657963 ],
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_1"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ 0.521994, 0.651746, 0.62277 ],
-                                  "@orientation": [ 0.962780228183078, 0.190940982359961, 0.19130003740048, 239.88151610971 ],
-                                  "@linearVelocity": [ 0.403908, -0.00833062, 0.22922 ],
-                                  "@angularVelocity": [ 84.3033, -0.209671, -153.823 ],
-                                  "@centerOfMass": [ -0.549069, -0.733599, 0.487949 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_3"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ 1.12941, 0.809975, -0.0803498 ],
-                                  "@orientation": [ -0.0476734620747855, -0.143534897533492, 0.988496366481793, 110.261364766748 ],
-                                  "@linearVelocity": [ 0.891078, -0.476913, 0.613242 ],
-                                  "@angularVelocity": [ 87.578, -57.0741, -174.437 ],
-                                  "@centerOfMass": [ -0.756389, -0.678443, -0.548839 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_4"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ -0.373253, 0.747585, 1.97687 ],
-                                  "@orientation": [ 0.382156609201704, 0.819518163463704, 0.427020298084054, 62.1255908227802 ],
-                                  "@linearVelocity": [ -0.216088, 0.135639, 0.443162 ],
-                                  "@angularVelocity": [ 101.565, 66.2052, 49.5238 ],
-                                  "@centerOfMass": [ 0.779303, 0.572025, 0.00962167 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_5"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ -0.898481, 0.857364, 0.444717 ],
-                                  "@orientation": [ 0.161317304676402, 0.948984364637549, -0.270934327328363, 139.756983001434 ],
-                                  "@linearVelocity": [ -0.954439, -0.357422, 0.557959 ],
-                                  "@angularVelocity": [ -93.431, 352.399, 65.659 ],
-                                  "@centerOfMass": [ 0.936612, 0.0494663, -0.699552 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_6"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ -0.592892, 2.33872, 0.522488 ],
-                                  "@orientation": [ -0.531549211943425, 0.415884555885109, -0.737893966360354, 9.47122750492214 ],
-                                  "@linearVelocity": [ -0.741476, -8.16216, 0.622144 ],
-                                  "@angularVelocity": [ -9.05189, 8.17953, -13.22 ],
-                                  "@centerOfMass": [ 0.753167, -0.165204, 0.689921 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_7"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ 0.191002, 2.88364, -0.466006 ],
-                                  "@orientation": [ -0.11807069541653, 0.646709403119323, 0.753544895659486, 12.5663842975163 ],
-                                  "@linearVelocity": [ 0.286433, -7.31948, -0.809351 ],
-                                  "@angularVelocity": [ -4.81488, 16.7446, 18.2142 ],
-                                  "@centerOfMass": [ 0.652075, 0.992385, -0.269645 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_8"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ -0.196173, 4.29747, -0.0548038 ],
-                                  "@linearVelocity": [ -0.723981, -4.25234, -0.202255 ],
-                                  "@centerOfMass": [ 0.17003, 0.690501, 0.830111 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_9"
-                                      }
-                                    }
-                                  ]
-                                }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ 0.0246046, 4.98726, -0.0397003 ],
-                                  "@linearVelocity": [ 0.864277, -0.621876, -1.39454 ],
-                                  "@centerOfMass": [ 0.331398, -0.671647, -0.30676 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@USE": "_10"
+                                        "@USE": "_2"
                                       }
                                     }
                                   ]
@@ -674,23 +369,94 @@
                         },
                         { "Shape":
                           {
-                            "@USE": "Cone"
+                            "@DEF": "Cone",
+                            "-appearance": { "Appearance":
+                              {
+                                "-material": { "Material":
+                                  {
+                                    "@DEF": "Santafe9",
+                                    "@ambientIntensity": 0.177947,
+                                    "@diffuseColor": [ 0.340537, 0.37498, 0.685837 ],
+                                    "@specularColor": [ 0.237073, 0.295337, 0.295337 ],
+                                    "@shininess": 0.466321
+                                  }
+                                },
+                                "-texture": { "ImageTexture":
+                                  {
+                                    "@USE": "_3"
+                                  }
+                                }
+                              }
+                            },
+                            "-geometry": { "Cone":
+                              {
+                                "@height": 0.5,
+                                "@bottomRadius": 0.25
+                              }
+                            }
                           }
                         },
                         { "Shape":
                           {
-                            "@USE": "Cylinder"
+                            "@DEF": "Cylinder",
+                            "-appearance": { "Appearance":
+                              {
+                                "-material": { "Material":
+                                  {
+                                    "@DEF": "Santafe6",
+                                    "@ambientIntensity": 0.0450585,
+                                    "@diffuseColor": [ 0.191499, 0.0265877, 0.0665837 ],
+                                    "@specularColor": [ 0.367348, 0.0557356, 0.0557356 ],
+                                    "@shininess": 0.0585106
+                                  }
+                                },
+                                "-texture": { "ImageTexture":
+                                  {
+                                    "@USE": "_3"
+                                  }
+                                }
+                              }
+                            },
+                            "-geometry": { "Cylinder":
+                              {
+                                "@height": 0.5,
+                                "@radius": 0.25
+                              }
+                            }
                           }
                         },
                         { "Shape":
                           {
-                            "@USE": "Sphere"
+                            "@DEF": "Sphere",
+                            "-appearance": { "Appearance":
+                              {
+                                "-material": { "Material":
+                                  {
+                                    "@DEF": "Santafe29",
+                                    "@ambientIntensity": 0.204082,
+                                    "@diffuseColor": [ 0.795918, 0.505869, 0.0933146 ],
+                                    "@specularColor": [ 0.923469, 0.428866, 0.00636875 ],
+                                    "@shininess": 0.397959
+                                  }
+                                },
+                                "-texture": { "ImageTexture":
+                                  {
+                                    "@USE": "_3"
+                                  }
+                                }
+                              }
+                            },
+                            "-geometry": { "Sphere":
+                              {
+                                "@radius": 0.25
+                              }
+                            }
                           }
                         }
                       ]
                     }
                   ],
-                  "#sourceText": [
+                  "#sourceCode": [
 "ecmascript:",
 "",
 "var",
