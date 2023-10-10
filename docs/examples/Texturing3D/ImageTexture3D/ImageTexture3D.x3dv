@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V8.12.5
 
 PROFILE Interchange
 
@@ -13,11 +13,9 @@ COMPONENT Texturing3D : 2
 META "comment" "Rise and Shine"
 META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/"
+META "generator" "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
 META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
-META "modified" "Mon, 13 Feb 2023 15:37:49 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:07:26 GMT"
+META "modified" "Tue, 10 Oct 2023 17:33:55 GMT"
 
 PROTO Volume [
   inputOutput SFVec3f dimensions 1 1 1
@@ -47,7 +45,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
-uniform mat4 x3d_TextureMatrix [1];
+uniform mat4 x3d_TextureTransformMatrix [1];
 
 in vec4 x3d_Vertex;
 in vec4 x3d_TexCoord0;
@@ -61,7 +59,7 @@ main ()
 	vec4 position = x3d_ModelViewMatrix * x3d_Vertex;
 
 	vertex   = position .xyz;
-	texCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;
+	texCoord = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;
 
 	gl_Position = x3d_ProjectionMatrix * position;
 }"
@@ -106,7 +104,7 @@ getTextureColor (in vec3 texCoord)
 		discard;
 
 	vec4 voxelColor = texture (x3d_Texture3D [0], texCoord);
-	
+
 	return voxelColor;
 }
 
@@ -151,7 +149,7 @@ function set_dimension ()
 		size1_2  = size / 2,
 		coord    = geometry .coord,
 		texCoord = geometry .texCoord;
-	
+
 	coord .point .length = 0;
 
 	for (var i = 0; i < NUM_PLANES; ++ i)
@@ -165,7 +163,7 @@ function set_dimension ()
 	}
 
 	texCoord .point = coord .point;
-	
+
 	textureTransform .scale = new SFVec3f (1 / dimensions .x, 1 / dimensions .y, 1 / dimensions .z);
 }
 "
@@ -193,11 +191,11 @@ Viewpoint {
 DEF Volume_1 Transform {
   children [
     DEF Volume Volume {
-      voxels DEF _5 ImageTexture3D {
+      voxels DEF _1 ImageTexture3D {
         url "datasets/dicom/IM00001.implicit_little_endian.dcm"
       }
     }
-    DEF _6 ClipPlane {
+    DEF _2 ClipPlane {
       plane 0 0 -1 0.643118
     }
   ]
@@ -207,16 +205,16 @@ DEF VisibleClipPlane Transform {
   children [
     DEF PlaneSensor PlaneSensor {
       axisRotation 0 1 0 1.5708
-      offset 0.00000233535 0 0.643118
+      offset 2.33535e-6 0 0.643118
       maxPosition -1 0
     }
     DEF Rectangle2D Transform {
-      translation 0.00000233535 0 0.643118
+      translation 2.33535e-6 0 0.643118
       scale 0.5 0.5 1
       children [
         Shape {
           appearance Appearance {
-            lineProperties DEF _7 LineProperties {
+            lineProperties DEF _3 LineProperties {
               linewidthScaleFactor 2
             }
             material Material {
@@ -227,7 +225,7 @@ DEF VisibleClipPlane Transform {
         }
         Shape {
           appearance Appearance {
-            lineProperties USE _7
+            lineProperties USE _3
             material Material { }
           }
           geometry IndexedLineSet {
@@ -255,6 +253,6 @@ function set_translation (value)
   ]
 }
 
-ROUTE ClipPlaneScript.plane_changed TO _6.set_plane
+ROUTE ClipPlaneScript.plane_changed TO _2.set_plane
 ROUTE PlaneSensor.translation_changed TO Rectangle2D.set_translation
 ROUTE PlaneSensor.translation_changed TO ClipPlaneScript.set_translation

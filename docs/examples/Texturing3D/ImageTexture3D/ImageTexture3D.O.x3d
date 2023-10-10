@@ -44,7 +44,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
-uniform mat4 x3d_TextureMatrix [1];
+uniform mat4 x3d_TextureTransformMatrix [1];
 
 in vec4 x3d_Vertex;
 in vec4 x3d_TexCoord0;
@@ -58,7 +58,7 @@ main ()
 	vec4 position = x3d_ModelViewMatrix * x3d_Vertex;
 
 	vertex   = position .xyz;
-	texCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;
+	texCoord = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;
 
 	gl_Position = x3d_ProjectionMatrix * position;
 }]]>
@@ -103,7 +103,7 @@ getTextureColor (in vec3 texCoord)
 		discard;
 
 	vec4 voxelColor = texture (x3d_Texture3D [0], texCoord);
-	
+
 	return voxelColor;
 }
 
@@ -151,7 +151,7 @@ function set_dimension ()
 		size1_2  = size / 2,
 		coord    = geometry .coord,
 		texCoord = geometry .texCoord;
-	
+
 	coord .point .length = 0;
 
 	for (var i = 0; i < NUM_PLANES; ++ i)
@@ -165,7 +165,7 @@ function set_dimension ()
 	}
 
 	texCoord .point = coord .point;
-	
+
 	textureTransform .scale = new SFVec3f (1 / dimensions .x, 1 / dimensions .y, 1 / dimensions .z);
 }
 ]]>

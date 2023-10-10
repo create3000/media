@@ -12,11 +12,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 27 Oct 2019 05:58:52 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/'/>
+    <meta name='generator' content='x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d'/>
-    <meta name='modified' content='Mon, 13 Feb 2023 15:37:49 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:07:20 GMT'/>
+    <meta name='modified' content='Tue, 10 Oct 2023 17:33:56 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Volume'>
@@ -46,7 +44,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
-uniform mat4 x3d_TextureMatrix [1];
+uniform mat4 x3d_TextureTransformMatrix [1];
 
 in vec4 x3d_Vertex;
 in vec4 x3d_TexCoord0;
@@ -60,7 +58,7 @@ main ()
 	vec4 position = x3d_ModelViewMatrix * x3d_Vertex;
 
 	vertex   = position .xyz;
-	texCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;
+	texCoord = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;
 
 	gl_Position = x3d_ProjectionMatrix * position;
 }]]>
@@ -105,7 +103,7 @@ getTextureColor (in vec3 texCoord)
 		discard;
 
 	vec4 voxelColor = texture (x3d_Texture3D [0], texCoord);
-	
+
 	return voxelColor;
 }
 
@@ -153,7 +151,7 @@ function set_dimension ()
 		size1_2  = size / 2,
 		coord    = geometry .coord,
 		texCoord = geometry .texCoord;
-	
+
 	coord .point .length = 0;
 
 	for (var i = 0; i < NUM_PLANES; ++ i)
@@ -167,7 +165,7 @@ function set_dimension ()
 	}
 
 	texCoord .point = coord .point;
-	
+
 	textureTransform .scale = new SFVec3f (1 / dimensions .x, 1 / dimensions .y, 1 / dimensions .z);
 }
 ]]>
@@ -188,24 +186,24 @@ function set_dimension ()
     <Transform DEF='Volume_1'>
       <ProtoInstance name='Volume' DEF='Volume'>
         <fieldValue name='voxels'>
-          <ImageTexture3D DEF='_5' containerField='voxels'
+          <ImageTexture3D DEF='_1'
               url='"datasets/dicom/IM00001.implicit_little_endian.dcm"'/>
         </fieldValue>
       </ProtoInstance>
-      <ClipPlane DEF='_6'
+      <ClipPlane DEF='_2'
           plane='0 0 -1 0.643118'/>
     </Transform>
     <Transform DEF='VisibleClipPlane'>
       <PlaneSensor DEF='PlaneSensor'
           axisRotation='0 1 0 1.5708'
-          offset='0.00000233535 0 0.643118'
+          offset='2.33535e-6 0 0.643118'
           maxPosition='-1 0'/>
       <Transform DEF='Rectangle2D'
-          translation='0.00000233535 0 0.643118'
+          translation='2.33535e-6 0 0.643118'
           scale='0.5 0.5 1'>
         <Shape>
           <Appearance>
-            <LineProperties DEF='_7'
+            <LineProperties DEF='_3'
                 linewidthScaleFactor='2'/>
             <Material
                 transparency='1'/>
@@ -214,7 +212,7 @@ function set_dimension ()
         </Shape>
         <Shape>
           <Appearance>
-            <LineProperties USE='_7'/>
+            <LineProperties USE='_3'/>
             <Material/>
           </Appearance>
           <IndexedLineSet
@@ -237,7 +235,7 @@ function set_translation (value)
 ]]>
       </Script>
     </Transform>
-    <ROUTE fromNode='ClipPlaneScript' fromField='plane_changed' toNode='_6' toField='set_plane'/>
+    <ROUTE fromNode='ClipPlaneScript' fromField='plane_changed' toNode='_2' toField='set_plane'/>
     <ROUTE fromNode='PlaneSensor' fromField='translation_changed' toNode='Rectangle2D' toField='set_translation'/>
     <ROUTE fromNode='PlaneSensor' fromField='translation_changed' toNode='ClipPlaneScript' toField='set_translation'/>
   </Scene>

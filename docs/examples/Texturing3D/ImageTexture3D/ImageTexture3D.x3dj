@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrise X3D Editor V1.0.9, https://create3000.github.io/sunrise/"
+          "@content": "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -28,15 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 13 Feb 2023 15:37:49 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:07:29 GMT"
+          "@content": "Tue, 10 Oct 2023 17:33:55 GMT"
         }
       ],
       "component": [
@@ -125,14 +117,89 @@
                                             { "ShaderPart":
                                               {
                                                 "@DEF": "VertexShader",
-                                                "@url": [ "data:x-shader/x-vertex,#version 300 es\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\nuniform mat4 x3d_TextureMatrix [1];\n\nin vec4 x3d_Vertex;\nin vec4 x3d_TexCoord0;\n\nout vec3 vertex;\nout vec4 texCoord;\n\nvoid\nmain ()\n{\n\tvec4 position = x3d_ModelViewMatrix * x3d_Vertex;\n\n\tvertex   = position .xyz;\n\ttexCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * position;\n}" ]
+                                                "#sourceCode": [
+"data:x-shader/x-vertex,#version 300 es",
+"",
+"precision mediump float;",
+"",
+"uniform mat4 x3d_ProjectionMatrix;",
+"uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_TextureTransformMatrix [1];",
+"",
+"in vec4 x3d_Vertex;",
+"in vec4 x3d_TexCoord0;",
+"",
+"out vec3 vertex;",
+"out vec4 texCoord;",
+"",
+"void",
+"main ()",
+"{",
+"\tvec4 position = x3d_ModelViewMatrix * x3d_Vertex;",
+"",
+"\tvertex   = position .xyz;",
+"\ttexCoord = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;",
+"",
+"\tgl_Position = x3d_ProjectionMatrix * position;",
+"}"
+                                                ]
                                               }
                                             },
                                             { "ShaderPart":
                                               {
                                                 "@DEF": "FragmentShader",
                                                 "@type": "FRAGMENT",
-                                                "@url": [ "data:x-shader/x-fragment,#version 300 es\n\nprecision mediump float;\nprecision mediump sampler3D;\n\nuniform sampler3D x3d_Texture3D [1];\nuniform vec4 x3d_ClipPlane [1];\n\nin vec3 vertex;\nin vec4 texCoord;\n\nout vec4 x3d_FragColor;\n\n#define NUM_CLIP_PLANES 1\n\nvoid\nclip ()\n{\n\tfor (int i = 0; i < NUM_CLIP_PLANES; ++ i)\n\t{\n\t\tif (dot (vertex, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)\n\t\t\tdiscard;\n\t}\n}\n\nvec4\ngetTextureColor (in vec3 texCoord)\n{\n\tif (texCoord .s < 0.0 || texCoord .s > 1.0)\n\t\tdiscard;\n\n\tif (texCoord .t < 0.0 || texCoord .t > 1.0)\n\t\tdiscard;\n\n\tif (texCoord .p < 0.0 || texCoord .p > 1.0)\n\t\tdiscard;\n\n\tvec4 voxelColor = texture (x3d_Texture3D [0], texCoord);\n\t\n\treturn voxelColor;\n}\n\nvoid\nmain ()\n{\n\tclip ();\n\n\tx3d_FragColor = getTextureColor (texCoord .stp / texCoord .q);\n}" ]
+                                                "#sourceCode": [
+"data:x-shader/x-fragment,#version 300 es",
+"",
+"precision mediump float;",
+"precision mediump sampler3D;",
+"",
+"uniform sampler3D x3d_Texture3D [1];",
+"uniform vec4 x3d_ClipPlane [1];",
+"",
+"in vec3 vertex;",
+"in vec4 texCoord;",
+"",
+"out vec4 x3d_FragColor;",
+"",
+"#define NUM_CLIP_PLANES 1",
+"",
+"void",
+"clip ()",
+"{",
+"\tfor (int i = 0; i < NUM_CLIP_PLANES; ++ i)",
+"\t{",
+"\t\tif (dot (vertex, x3d_ClipPlane [i] .xyz) - x3d_ClipPlane [i] .w < 0.0)",
+"\t\t\tdiscard;",
+"\t}",
+"}",
+"",
+"vec4",
+"getTextureColor (in vec3 texCoord)",
+"{",
+"\tif (texCoord .s < 0.0 || texCoord .s > 1.0)",
+"\t\tdiscard;",
+"",
+"\tif (texCoord .t < 0.0 || texCoord .t > 1.0)",
+"\t\tdiscard;",
+"",
+"\tif (texCoord .p < 0.0 || texCoord .p > 1.0)",
+"\t\tdiscard;",
+"",
+"\tvec4 voxelColor = texture (x3d_Texture3D [0], texCoord);",
+"",
+"\treturn voxelColor;",
+"}",
+"",
+"void",
+"main ()",
+"{",
+"\tclip ();",
+"",
+"\tx3d_FragColor = getTextureColor (texCoord .stp / texCoord .q);",
+"}"
+                                                ]
                                               }
                                             }
                                           ]
@@ -204,7 +271,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "vrmlscript:",
 "",
 "var NUM_PLANES = 200;",
@@ -221,7 +288,7 @@
 "\t\tsize1_2  = size / 2,",
 "\t\tcoord    = geometry .coord,",
 "\t\ttexCoord = geometry .texCoord;",
-"\t",
+"",
 "\tcoord .point .length = 0;",
 "",
 "\tfor (var i = 0; i < NUM_PLANES; ++ i)",
@@ -235,7 +302,7 @@
 "\t}",
 "",
 "\ttexCoord .point = coord .point;",
-"\t",
+"",
 "\ttextureTransform .scale = new SFVec3f (1 / dimensions .x, 1 / dimensions .y, 1 / dimensions .z);",
 "}",
 ""
@@ -303,7 +370,7 @@
                       "-children": [
                         { "ImageTexture3D":
                           {
-                            "@DEF": "_5",
+                            "@DEF": "_1",
                             "@url": [ "datasets/dicom/IM00001.implicit_little_endian.dcm" ]
                           }
                         }
@@ -314,7 +381,7 @@
               },
               { "ClipPlane":
                 {
-                  "@DEF": "_6",
+                  "@DEF": "_2",
                   "@plane": [ 0, 0, -1, 0.643118 ]
                 }
               }
@@ -329,14 +396,14 @@
                 {
                   "@DEF": "PlaneSensor",
                   "@axisRotation": [ 0, 1, 0, 1.5708 ],
-                  "@offset": [ 0.00000233535, 0, 0.643118 ],
+                  "@offset": [ 2.33535e-6, 0, 0.643118 ],
                   "@maxPosition": [ -1, 0 ]
                 }
               },
               { "Transform":
                 {
                   "@DEF": "Rectangle2D",
-                  "@translation": [ 0.00000233535, 0, 0.643118 ],
+                  "@translation": [ 2.33535e-6, 0, 0.643118 ],
                   "@scale": [ 0.5, 0.5, 1 ],
                   "-children": [
                     { "Shape":
@@ -345,7 +412,7 @@
                           {
                             "-lineProperties": { "LineProperties":
                               {
-                                "@DEF": "_7",
+                                "@DEF": "_3",
                                 "@linewidthScaleFactor": 2
                               }
                             },
@@ -368,7 +435,7 @@
                           {
                             "-lineProperties": { "LineProperties":
                               {
-                                "@USE": "_7"
+                                "@USE": "_3"
                               }
                             },
                             "-material": { "Material":
@@ -407,7 +474,7 @@
                       "@name": "plane_changed"
                     }
                   ],
-                  "#sourceText": [
+                  "#sourceCode": [
 "vrmlscript:",
 "function set_translation (value)",
 "{",
@@ -426,7 +493,7 @@
           {
             "@fromNode": "ClipPlaneScript",
             "@fromField": "plane_changed",
-            "@toNode": "_6",
+            "@toNode": "_2",
             "@toField": "plane"
           }
         },
