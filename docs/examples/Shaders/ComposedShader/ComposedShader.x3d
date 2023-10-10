@@ -42,7 +42,7 @@
 precision highp float;
 precision highp int;
 
-uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
+uniform mat4 x3d_TextureTransformMatrix [x3d_MaxTextures];
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 
@@ -66,7 +66,7 @@ main ()
 	vec4 p = x3d_ModelViewMatrix * x3d_Vertex;
 
 	vN = x3d_Normal;
-	t  = x3d_TextureMatrix [0] * x3d_TexCoord0;
+	t  = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;
 	C  = x3d_Color;
 	v  = p .xyz;
 
