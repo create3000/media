@@ -1,26 +1,17 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V8.12.5
 
 PROFILE Interchange
 
-COMPONENT Scripting : 1
 COMPONENT TextureProjector : 2
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Sunrise X3D Editor"
+META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.3, https://create3000.github.io/sunrise/"
+META "generator" "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
 META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/ProjectiveTextureMapping/TextureProjector/TextureProjector.O.x3d"
-META "modified" "Thu, 27 Oct 2022 09:07:14 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:06:29 GMT"
-
-WorldInfo { }
-
-NavigationInfo {
-  headlight FALSE
-}
+META "modified" "Thu, 12 Oct 2023 18:09:55 GMT"
 
 Background {
   skyColor 1 1 1
@@ -31,6 +22,9 @@ Viewpoint {
   position 4.92483 11.204 12.6703
   orientation -0.86028842017985 0.48361311205161 0.16131395462336 42.385646976304
   centerOfRotation 0 1 0
+  navigationInfo NavigationInfo {
+    headlight FALSE
+  }
 }
 
 DirectionalLight {
@@ -113,7 +107,7 @@ DEF Objects Group {
         geometry Sphere { }
       }
     }
-    DEF Box_2 Transform {
+    Transform {
       translation 5 1 0
       children Shape {
         appearance Appearance {
@@ -165,10 +159,11 @@ DEF Projector Group {
     }
     DEF _1 TextureProjector {
       location 0 5 0
-      direction -0.217234 -0.664186 0.646298
+      direction 0.737389 -0.6552973 0.1666978
       upVector 0 0 -1
-      farDistance 20
-      texture DEF _2 ImageTexture {
+      nearDistance 1
+      farDistance 40
+      texture ImageTexture {
         url "assets/texture.png"
         repeatS FALSE
         repeatT FALSE
@@ -184,16 +179,6 @@ DEF Projector Group {
       }
     }
   ]
-}
-
-DEF PhongScript Script {
-  url "ecmascript:
-
-function initialize ()
-{
-   Browser .setBrowserOption (\"Shading\", \"PHONG\");
-}
-"
 }
 
 ROUTE AnimationTimer.fraction_changed TO DirectionInterpolator.set_fraction

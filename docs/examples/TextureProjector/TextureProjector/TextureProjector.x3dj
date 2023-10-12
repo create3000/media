@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Sunrise X3D Editor"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrise X3D Editor V1.0.3, https://create3000.github.io/sunrise/"
+          "@content": "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -28,22 +28,10 @@
         },
         {
           "@name": "modified",
-          "@content": "Thu, 27 Oct 2022 09:07:14 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:06:38 GMT"
+          "@content": "Thu, 12 Oct 2023 18:09:55 GMT"
         }
       ],
       "component": [
-        {
-          "@name": "Scripting",
-          "@level": 1
-        },
         {
           "@name": "TextureProjector",
           "@level": 2
@@ -53,21 +41,12 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
-        { "NavigationInfo":
-          {
-            "@headlight": false
-          }
-        },
         { "Background":
           {
             "@skyColor": [ 1, 1, 1 ]
@@ -78,7 +57,12 @@
             "@description": "Initial View",
             "@position": [ 4.92483, 11.204, 12.6703 ],
             "@orientation": [ -0.86028842017985, 0.48361311205161, 0.16131395462336, 42.385646976304 ],
-            "@centerOfRotation": [ 0, 1, 0 ]
+            "@centerOfRotation": [ 0, 1, 0 ],
+            "-navigationInfo": { "NavigationInfo":
+              {
+                "@headlight": false
+              }
+            }
           }
         },
         { "DirectionalLight":
@@ -229,7 +213,6 @@
               },
               { "Transform":
                 {
-                  "@DEF": "Box_2",
                   "@translation": [ 5, 1, 0 ],
                   "-children": [
                     { "Shape":
@@ -322,12 +305,12 @@
                 {
                   "@DEF": "_1",
                   "@location": [ 0, 5, 0 ],
-                  "@direction": [ -0.217234, -0.664186, 0.646298 ],
+                  "@direction": [ 0.737556, -0.6569255, 0.1590679 ],
                   "@upVector": [ 0, 0, -1 ],
-                  "@farDistance": 20,
+                  "@nearDistance": 1,
+                  "@farDistance": 40,
                   "-texture": { "ImageTexture":
                     {
-                      "@DEF": "_2",
                       "@url": [ "assets/texture.png" ],
                       "@repeatS": false,
                       "@repeatT": false,
@@ -346,20 +329,6 @@
                   }
                 }
               }
-            ]
-          }
-        },
-        { "Script":
-          {
-            "@DEF": "PhongScript",
-            "#sourceText": [
-"ecmascript:",
-"",
-"function initialize ()",
-"{",
-"   Browser .setBrowserOption (\"Shading\", \"PHONG\");",
-"}",
-""
             ]
           }
         },

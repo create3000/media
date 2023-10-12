@@ -2,29 +2,26 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Scripting' level='1'/>
     <component name='TextureProjector' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
-    <meta name='comment' content='World of Sunrise X3D Editor'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.3, https://create3000.github.io/sunrise/'/>
+    <meta name='generator' content='x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/ProjectiveTextureMapping/TextureProjector/TextureProjector.O.x3d'/>
-    <meta name='modified' content='Thu, 27 Oct 2022 09:07:14 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:06:24 GMT'/>
+    <meta name='modified' content='Thu, 12 Oct 2023 18:09:55 GMT'/>
   </head>
   <Scene>
-    <WorldInfo/>
-    <NavigationInfo
-        headlight='false'/>
     <Background
         skyColor='1 1 1'/>
     <Viewpoint
         description='Initial View'
         position='4.92483 11.204 12.6703'
         orientation='-0.86028842017985 0.48361311205161 0.16131395462336 42.385646976304'
-        centerOfRotation='0 1 0'/>
+        centerOfRotation='0 1 0'>
+      <NavigationInfo containerField='navigationInfo'
+          headlight='false'/>
+    </Viewpoint>
     <DirectionalLight
         ambientIntensity='0.976471'
         direction='0.23366 -0.759333 0.607302'
@@ -93,7 +90,7 @@
           <Sphere/>
         </Shape>
       </Transform>
-      <Transform DEF='Box_2'
+      <Transform
           translation='5 1 0'>
         <Shape>
           <Appearance>
@@ -135,10 +132,11 @@
       </Group>
       <TextureProjector DEF='_1'
           location='0 5 0'
-          direction='-0.217234 -0.664186 0.646298'
+          direction='0.7337974 -0.6452573 0.217554'
           upVector='0 0 -1'
-          farDistance='20'>
-        <ImageTexture DEF='_2'
+          nearDistance='1'
+          farDistance='40'>
+        <ImageTexture
             url='"assets/texture.png"'
             repeatS='false'
             repeatT='false'>
@@ -153,15 +151,6 @@
         </ImageTexture>
       </TextureProjector>
     </Group>
-    <Script DEF='PhongScript'>
-<![CDATA[ecmascript:
-
-function initialize ()
-{
-   Browser .setBrowserOption ("Shading", "PHONG");
-}
-]]>
-    </Script>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='DirectionInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='DirectionInterpolator' fromField='value_changed' toNode='_1' toField='set_direction'/>
   </Scene>
