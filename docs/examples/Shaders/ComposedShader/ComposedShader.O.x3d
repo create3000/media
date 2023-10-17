@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Interchange' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Shaders' level='1'/>
-    <meta name='comment' content='World of Sunrise X3D Editor'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 06 Dec 2017 01:50:04 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.5, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Shaders/ComposedShader/ComposedShader.O.x3d'/>
-    <meta name='modified' content='Thu, 10 Nov 2022 10:40:56 GMT'/>
+    <meta name='modified' content='Tue, 17 Oct 2023 08:59:25 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
@@ -209,7 +209,6 @@ main ()
         </ComposedShader>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
     <Background DEF='Gray'
         skyColor='0.2 0.2 0.2'/>
     <Viewpoint
@@ -218,16 +217,16 @@ main ()
         orientation='0.99991517384209 -0.012669170765548 -0.0030227855452985 5.8147171274952'
         centerOfRotation='-0.02 0 0'/>
     <Transform DEF='Box'
-        rotation='0 -1 0 0.47815060001555'>
+        rotation='0 1 0 0.904647761315522'>
       <Group DEF='Animation'>
-        <MetadataSet DEF='Animation_1'
+        <MetadataSet DEF='Animation_1' containerField='metadata'
             name='Animation'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='duration' containerField='value'
+          <MetadataInteger DEF='duration'
               name='duration'
               reference='http://titania.create3000.de'
               value='120'/>
-          <MetadataInteger DEF='frameRate' containerField='value'
+          <MetadataInteger DEF='frameRate'
               name='frameRate'
               reference='http://titania.create3000.de'
               value='10'/>
@@ -240,22 +239,22 @@ main ()
         <OrientationInterpolator DEF='BoxRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.1415925343805, 0 1 0 1.5707964460042, 0 0 1 0'>
-          <MetadataSet DEF='Interpolator'
+          <MetadataSet DEF='Interpolator' containerField='metadata'
               name='Interpolator'
               reference='http://titania.create3000.de'>
-            <MetadataInteger DEF='key' containerField='value'
+            <MetadataInteger DEF='key'
                 name='key'
                 reference='http://titania.create3000.de'
                 value='0, 30, 60, 90, 120'/>
-            <MetadataDouble DEF='keyValue' containerField='value'
+            <MetadataDouble DEF='keyValue'
                 name='keyValue'
                 reference='http://titania.create3000.de'
                 value='0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.1415925343805, 0, 1, 0, 1.5707964460042, 0, 0, 1, 0'/>
-            <MetadataString DEF='keyType' containerField='value'
+            <MetadataString DEF='keyType'
                 name='keyType'
                 reference='http://titania.create3000.de'
                 value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
-            <MetadataInteger DEF='keySize' containerField='value'
+            <MetadataInteger DEF='keySize'
                 name='keySize'
                 reference='http://titania.create3000.de'
                 value='1'/>
@@ -274,7 +273,7 @@ main ()
             <fieldValue name='bumpMapWidth' value='256'/>
             <fieldValue name='bumpMapHeight' value='256'/>
             <fieldValue name='bumpMap'>
-              <ImageTexture DEF='_1' containerField='bumpMap'
+              <ImageTexture DEF='_1'
                   url='"depth.png"'
                   repeatS='false'
                   repeatT='false'/>
