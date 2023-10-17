@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Sunrise X3D Editor"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
+          "@content": "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -28,19 +28,11 @@
         },
         {
           "@name": "modified",
-          "@content": "Thu, 10 Nov 2022 10:40:56 GMT"
+          "@content": "Tue, 17 Oct 2023 21:24:33 GMT"
         },
         {
           "@name": "titania-add-metadata",
           "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:04:14 GMT"
         }
       ],
       "component": [
@@ -92,14 +84,185 @@
                       { "ShaderPart":
                         {
                           "@DEF": "VertexShader",
-                          "@url": [ "data:x-shader/x-vertex,\n\n// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-\n\nprecision highp float;\nprecision highp int;\n\nuniform mat4 x3d_TextureTransformMatrix [x3d_MaxTextures];\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nuniform float x3d_LinewidthScaleFactor;\n\nattribute vec4 x3d_Color;\nattribute vec4 x3d_TexCoord0;\nattribute vec3 x3d_Normal;\nattribute vec4 x3d_Vertex;\n\nvarying vec4 C;  // color\nvarying vec4 t;  // texCoord\nvarying vec3 vN; // normalized normal vector at this point on geometry\nvarying vec3 v;  // point on geometry\n\nvoid\nmain ()\n{\n\tgl_PointSize = x3d_LinewidthScaleFactor;\n\n\tvec4 p = x3d_ModelViewMatrix * x3d_Vertex;\n\n\tvN = x3d_Normal;\n\tt  = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;\n\tC  = x3d_Color;\n\tv  = p .xyz;\n\n\tgl_Position = x3d_ProjectionMatrix * p;\n}\n" ]
+                          "#sourceCode": [
+"data:x-shader/x-vertex,",
+"",
+"// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-",
+"",
+"precision highp float;",
+"precision highp int;",
+"",
+"uniform mat4 x3d_TextureTransformMatrix [x3d_MaxTextures];",
+"uniform mat4 x3d_ProjectionMatrix;",
+"uniform mat4 x3d_ModelViewMatrix;",
+"",
+"uniform float x3d_LinewidthScaleFactor;",
+"",
+"attribute vec4 x3d_Color;",
+"attribute vec4 x3d_TexCoord0;",
+"attribute vec3 x3d_Normal;",
+"attribute vec4 x3d_Vertex;",
+"",
+"varying vec4 C;  // color",
+"varying vec4 t;  // texCoord",
+"varying vec3 vN; // normalized normal vector at this point on geometry",
+"varying vec3 v;  // point on geometry",
+"",
+"void",
+"main ()",
+"{",
+"\tgl_PointSize = x3d_LinewidthScaleFactor;",
+"",
+"\tvec4 p = x3d_ModelViewMatrix * x3d_Vertex;",
+"",
+"\tvN = x3d_Normal;",
+"\tt  = x3d_TextureTransformMatrix [0] * x3d_TexCoord0;",
+"\tC  = x3d_Color;",
+"\tv  = p .xyz;",
+"",
+"\tgl_Position = x3d_ProjectionMatrix * p;",
+"}",
+""
+                          ]
                         }
                       },
                       { "ShaderPart":
                         {
                           "@DEF": "FragmentShader",
                           "@type": "FRAGMENT",
-                          "@url": [ "data:x-shader/x-fragment,\n\n// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-\n\nprecision highp float;\nprecision highp int;\n\nuniform x3d_LightSourceParameters x3d_LightSource [1];\nuniform x3d_MaterialParameters x3d_Material;\n\nuniform sampler2D x3d_Texture2D [1];\n\nuniform mat3 x3d_NormalMatrix;\n\nuniform float     heightScale;\nuniform int       bumpMapWidth;\nuniform int       bumpMapHeight;\nuniform sampler2D bumpMap;\n\nvarying vec4 C;  // color\nvarying vec4 t;  // texCoord\nvarying vec3 vN; // normalized normal vector at this point on geometry\nvarying vec3 v;  // point on geometry\n\nvec3\ngetNormal (in vec3 N)\n{\n\tvec2 texCoord = vec2 (t);\n\tvec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);\n\tvec3 g        = vec3 (0.0, 0.0, heightScale * texture2D (bumpMap, texCoord) .r);\n\tvec3 r        = vec3 (1.0, 0.0, heightScale * texture2D (bumpMap, texCoord + vec2 (s .x, 0)) .r);\n\tvec3 a        = vec3 (0.0, 1.0, heightScale * texture2D (bumpMap, texCoord + vec2 (0, s .y)) .r);\n\n\tvec3 n = cross (r - g, a - g);\n\tvec3 x = cross (vec3 (0.0, 1.0, 0.0), N);\n\n\tif (dot (x, x) == 0.0)\n\t\tx = vec3 (1.0, 0.0, 0.0);\n\n\tvec3 y = cross (N, x);\n\n\tn = normalize (n);\n\tx = normalize (x);\n\ty = normalize (y);\n\n\treturn x3d_NormalMatrix * mat3 (x, y, N) * n;\n}\n\nvec4\ngetTextureColor ()\n{\n  return texture2D (x3d_Texture2D [0], vec2 (t));\n}\n\nfloat\ngetSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)\n{\n\tfloat spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));\n\n\tif (spotAngle >= cutOffAngle)\n\t\treturn 0.0;\n\telse if (spotAngle <= beamWidth)\n\t\treturn 1.0;\n\n\treturn (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);\n}\n\nvec4\ngetMaterialColor (in x3d_MaterialParameters material)\n{\n  vec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));\n  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position\n  float dV = length (v);\n\n  // Calculate diffuseFactor & alpha\n\n  vec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);\n  float alpha         = 1.0 - material .transparency;\n\n  vec4 T = getTextureColor ();\n\n  diffuseFactor  = T .rgb * material .diffuseColor;\n  alpha         *= T .a;\n\n  vec3 ambientTerm = diffuseFactor * material .ambientIntensity;\n\n  // Apply light sources\n\n  vec3 finalColor = vec3 (0.0, 0.0, 0.0);\n\n  for (int i = 0; i < 1; ++ i)\n  {\n    x3d_LightSourceParameters light = x3d_LightSource [i];\n\n    vec3  vL = light .location - v;\n    float dL = length (vL);\n    bool  di = light .type == x3d_DirectionalLight;\n\n    if (di || dL <= light .radius)\n    {\n      vec3 d = light .direction;\n      vec3 c = light .attenuation;\n      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.\n      vec3 H = normalize (L + V);             // Specular term\n\n      float lightAngle     = dot (N, L);      // Angle between normal and light ray.\n      vec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);\n      float specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;\n      vec3  specularTerm   = material .specularColor * specularFactor;\n\n      float attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);\n      float spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;\n      float attenuationSpotFactor       = attenuationFactor * spotFactor;\n      vec3  ambientColor                = light .ambientIntensity * ambientTerm;\n      vec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);\n\n      finalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);\n    }\n  }\n\n  finalColor += material .emissiveColor;\n\n  return vec4 (finalColor, alpha);\n}\n\nvoid\nmain ()\n{\n\tgl_FragColor = getMaterialColor (x3d_Material);\n}\n" ]
+                          "#sourceCode": [
+"data:x-shader/x-fragment,",
+"",
+"// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-",
+"",
+"precision highp float;",
+"precision highp int;",
+"",
+"uniform x3d_LightSourceParameters x3d_LightSource [1];",
+"uniform x3d_MaterialParameters x3d_Material;",
+"",
+"uniform sampler2D x3d_Texture2D [1];",
+"",
+"uniform mat3 x3d_NormalMatrix;",
+"",
+"uniform float     heightScale;",
+"uniform int       bumpMapWidth;",
+"uniform int       bumpMapHeight;",
+"uniform sampler2D bumpMap;",
+"",
+"varying vec4 C;  // color",
+"varying vec4 t;  // texCoord",
+"varying vec3 vN; // normalized normal vector at this point on geometry",
+"varying vec3 v;  // point on geometry",
+"",
+"vec3",
+"getNormal (in vec3 N)",
+"{",
+"\tvec2 texCoord = vec2 (t);",
+"\tvec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);",
+"\tvec3 g        = vec3 (0.0, 0.0, heightScale * texture2D (bumpMap, texCoord) .r);",
+"\tvec3 r        = vec3 (1.0, 0.0, heightScale * texture2D (bumpMap, texCoord + vec2 (s .x, 0)) .r);",
+"\tvec3 a        = vec3 (0.0, 1.0, heightScale * texture2D (bumpMap, texCoord + vec2 (0, s .y)) .r);",
+"",
+"\tvec3 n = cross (r - g, a - g);",
+"\tvec3 x = cross (vec3 (0.0, 1.0, 0.0), N);",
+"",
+"\tif (dot (x, x) == 0.0)",
+"\t\tx = vec3 (1.0, 0.0, 0.0);",
+"",
+"\tvec3 y = cross (N, x);",
+"",
+"\tn = normalize (n);",
+"\tx = normalize (x);",
+"\ty = normalize (y);",
+"",
+"\treturn x3d_NormalMatrix * mat3 (x, y, N) * n;",
+"}",
+"",
+"vec4",
+"getTextureColor ()",
+"{",
+"  return texture2D (x3d_Texture2D [0], vec2 (t));",
+"}",
+"",
+"float",
+"getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)",
+"{",
+"\tfloat spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));",
+"",
+"\tif (spotAngle >= cutOffAngle)",
+"\t\treturn 0.0;",
+"\telse if (spotAngle <= beamWidth)",
+"\t\treturn 1.0;",
+"",
+"\treturn (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);",
+"}",
+"",
+"vec4",
+"getMaterialColor (in x3d_MaterialParameters material)",
+"{",
+"  vec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));",
+"  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position",
+"  float dV = length (v);",
+"",
+"  // Calculate diffuseFactor & alpha",
+"",
+"  vec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);",
+"  float alpha         = 1.0 - material .transparency;",
+"",
+"  vec4 T = getTextureColor ();",
+"",
+"  diffuseFactor  = T .rgb * material .diffuseColor;",
+"  alpha         *= T .a;",
+"",
+"  vec3 ambientTerm = diffuseFactor * material .ambientIntensity;",
+"",
+"  // Apply light sources",
+"",
+"  vec3 finalColor = vec3 (0.0, 0.0, 0.0);",
+"",
+"  for (int i = 0; i < 1; ++ i)",
+"  {",
+"    x3d_LightSourceParameters light = x3d_LightSource [i];",
+"",
+"    vec3  vL = light .location - v;",
+"    float dL = length (vL);",
+"    bool  di = light .type == x3d_DirectionalLight;",
+"",
+"    if (di || dL <= light .radius)",
+"    {",
+"      vec3 d = light .direction;",
+"      vec3 c = light .attenuation;",
+"      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.",
+"      vec3 H = normalize (L + V);             // Specular term",
+"",
+"      float lightAngle     = dot (N, L);      // Angle between normal and light ray.",
+"      vec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);",
+"      float specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;",
+"      vec3  specularTerm   = material .specularColor * specularFactor;",
+"",
+"      float attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);",
+"      float spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;",
+"      float attenuationSpotFactor       = attenuationFactor * spotFactor;",
+"      vec3  ambientColor                = light .ambientIntensity * ambientTerm;",
+"      vec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);",
+"",
+"      finalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);",
+"    }",
+"  }",
+"",
+"  finalColor += material .emissiveColor;",
+"",
+"  return vec4 (finalColor, alpha);",
+"}",
+"",
+"void",
+"main ()",
+"{",
+"\tgl_FragColor = getMaterialColor (x3d_Material);",
+"}",
+""
+                          ]
                         }
                       }
                     ],
@@ -151,10 +314,6 @@
             }
           }
         },
-        { "WorldInfo":
-          {
-          }
-        },
         { "Background":
           {
             "@DEF": "Gray",
@@ -172,7 +331,7 @@
         { "Transform":
           {
             "@DEF": "Box",
-            "@rotation": [ 0, -1, 0, 0.47815060001555 ],
+            "@rotation": [ 0, -1, 0, 0.547815269996304 ],
             "-children": [
               { "Group":
                 {

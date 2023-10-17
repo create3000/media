@@ -5,14 +5,12 @@
     <component name='Geometry2D' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 30 Jun 2018 20:23:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='generator' content='x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/PointSet/PointSet.O.x3d'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:44:33 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:02:28 GMT'/>
+    <meta name='modified' content='Tue, 17 Oct 2023 21:29:15 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='ParticleMap'>
@@ -187,29 +185,21 @@ function randomColor (i)
         <ROUTE fromNode='_3' fromField='time' toNode='ParticleMapScript' toField='set_time'/>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
-    <NavigationInfo
-        type='"NONE"'
-        headlight='false'/>
     <Viewpoint
         description='Initial View'
         position='265.5 148.5 362.124'
-        centerOfRotation='265.5 148.5 0'/>
+        centerOfRotation='265.5 148.5 0'>
+      <NavigationInfo containerField='navigationInfo'
+          type='"NONE"'
+          headlight='false'/>
+    </Viewpoint>
     <Transform DEF='Particles'>
       <Shape>
-        <Appearance DEF='_4'>
-          <PointProperties
-              pointSizeScaleFactor='2'
-              pointSizeMaxValue='2'/>
-          <Material
-              diffuseColor='0 0 0'
-              emissiveColor='0.844 0.844 0.844'/>
-        </Appearance>
-        <ProtoInstance name='ParticleMap' DEF='_5' containerField='geometry'>
+        <ProtoInstance name='ParticleMap' DEF='_1' containerField='geometry'>
           <fieldValue name='width' value='533.333'/>
           <fieldValue name='height' value='300'/>
           <fieldValue name='distance' value='5'/>
-          <fieldValue name='point' value='0.00994581 0.759183'/>
+          <fieldValue name='point' value='0.9918517 0.007642567'/>
         </ProtoInstance>
       </Shape>
     </Transform>
@@ -224,8 +214,8 @@ function randomColor (i)
         <Rectangle2D
             size='1.777 1'/>
       </Shape>
-      <TouchSensor DEF='_6'/>
+      <TouchSensor DEF='_2'/>
     </Transform>
-    <ROUTE fromNode='_6' fromField='hitTexCoord_changed' toNode='_5' toField='set_point'/>
+    <ROUTE fromNode='_2' fromField='hitTexCoord_changed' toNode='_1' toField='set_point'/>
   </Scene>
 </X3D>

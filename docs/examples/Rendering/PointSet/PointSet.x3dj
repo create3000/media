@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "identifier",
@@ -28,15 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Thu, 07 Nov 2019 12:44:33 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:02:50 GMT"
+          "@content": "Tue, 17 Oct 2023 21:29:15 GMT"
         }
       ],
       "component": [
@@ -165,7 +157,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -334,21 +326,17 @@
             }
           }
         },
-        { "WorldInfo":
-          {
-          }
-        },
-        { "NavigationInfo":
-          {
-            "@type": [ "NONE" ],
-            "@headlight": false
-          }
-        },
         { "Viewpoint":
           {
             "@description": "Initial View",
             "@position": [ 265.5, 148.5, 362.124 ],
-            "@centerOfRotation": [ 265.5, 148.5, 0 ]
+            "@centerOfRotation": [ 265.5, 148.5, 0 ],
+            "-navigationInfo": { "NavigationInfo":
+              {
+                "@type": [ "NONE" ],
+                "@headlight": false
+              }
+            }
           }
         },
         { "Transform":
@@ -357,26 +345,9 @@
             "-children": [
               { "Shape":
                 {
-                  "-appearance": { "Appearance":
-                    {
-                      "@DEF": "_4",
-                      "-pointProperties": { "PointProperties":
-                        {
-                          "@pointSizeScaleFactor": 2,
-                          "@pointSizeMaxValue": 2
-                        }
-                      },
-                      "-material": { "Material":
-                        {
-                          "@diffuseColor": [ 0, 0, 0 ],
-                          "@emissiveColor": [ 0.844, 0.844, 0.844 ]
-                        }
-                      }
-                    }
-                  },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_5",
+                      "@DEF": "_1",
                       "@name": "ParticleMap",
                       "fieldValue": [
                         {
@@ -393,7 +364,7 @@
                         },
                         {
                           "@name": "point",
-                          "@value": [ 0.00994581, 0.759183 ]
+                          "@value": [ 0.9918517, 0.007642567 ]
                         }
                       ]
                     }
@@ -429,7 +400,7 @@
               },
               { "TouchSensor":
                 {
-                  "@DEF": "_6"
+                  "@DEF": "_2"
                 }
               }
             ]
@@ -437,9 +408,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_6",
+            "@fromNode": "_2",
             "@fromField": "hitTexCoord_changed",
-            "@toNode": "_5",
+            "@toNode": "_1",
             "@toField": "point"
           }
         }
