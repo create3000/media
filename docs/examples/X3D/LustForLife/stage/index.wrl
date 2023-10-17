@@ -21,7 +21,7 @@ DEF horten Transform {
       eventIn  SFTime triggerIn
 
       url "vrmlscript:function triggerIn(value, time) {
-	bind_changed = TRUE;                                             
+	bind_changed = TRUE;
 }
 "
     }
@@ -8135,7 +8135,9 @@ function set_whichChoice(value, time)
 }
 "
                                 }
-                                DEF Light2 PointLight { }
+                                DEF Light2 PointLight {
+                                  radius 1000
+                                }
                               ]
                             }
                           ]
@@ -56075,10 +56077,10 @@ function time2(value, time)
 	whichChoice_changed = 1;
 }
 
-function time3(value, time) 					
-{												
-	whichChoice_changed = 2;					
-}												
+function time3(value, time)
+{
+	whichChoice_changed = 2;
+}
 
 function time4(value, time)
 {
@@ -57196,10 +57198,10 @@ function time2(value, time)
 	whichChoice_changed = 1;
 }
 
-function time3(value, time) 					
-{												
-	whichChoice_changed = 2;					
-}												
+function time3(value, time)
+{
+	whichChoice_changed = 2;
+}
 
 function time4(value, time)
 {
@@ -58856,7 +58858,7 @@ function touchTime(value, time)
                         url "vrmlscript:
 function set_translation(value, time)
 {
-	fraction_changed = (0.1 / (value.y + 0.005)) - 0.8; 
+	fraction_changed = (0.1 / (value.y + 0.005)) - 0.8;
 }
 "
                       }
