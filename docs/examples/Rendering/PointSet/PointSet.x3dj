@@ -8,7 +8,7 @@
       "meta": [
         {
           "@name": "comment",
-          "@content": "Rise and Shine"
+          "@content": "World of Titania"
         },
         {
           "@name": "created",
@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Tue, 17 Oct 2023 21:29:15 GMT"
+          "@content": "Tue, 17 Oct 2023 23:01:03 GMT"
         }
       ],
       "component": [
@@ -209,7 +209,7 @@
 "      if (d < THICKNESS)",
 "      {",
 "        var t = Math .atan2 (dy, dx);",
-"        ",
+"",
 "        p .vx += f * Math .cos (t);",
 "        p .vy += f * Math .sin (t);",
 "      }",
@@ -230,7 +230,7 @@
 "\tparticles .length    = 0;",
 "\tcolor .color .length = 0;",
 "\tcoord .point .length = 0;",
-"\t",
+"",
 "\tfor (var y = 0; y < height; y += distance)",
 "\t{",
 "\t\tfor (var x = 0; x < width; x += distance)",
@@ -253,9 +253,9 @@
 "\t\tbilinear (colors [0] .g, colors [1] .g, colors [2] .g, colors [3] .g, x, y),",
 "\t\tbilinear (colors [0] .b, colors [1] .b, colors [2] .b, colors [3] .b, x, y)",
 "\t);",
-"\t",
+"",
 "\tvar h = c .getHSV ();",
-"\t\t",
+"",
 "\tc .setHSV (",
 "\t\th [0],",
 "\t\th [1],",
@@ -326,17 +326,21 @@
             }
           }
         },
+        { "WorldInfo":
+          {
+          }
+        },
+        { "NavigationInfo":
+          {
+            "@type": [ "NONE" ],
+            "@headlight": false
+          }
+        },
         { "Viewpoint":
           {
             "@description": "Initial View",
             "@position": [ 265.5, 148.5, 362.124 ],
-            "@centerOfRotation": [ 265.5, 148.5, 0 ],
-            "-navigationInfo": { "NavigationInfo":
-              {
-                "@type": [ "NONE" ],
-                "@headlight": false
-              }
-            }
+            "@centerOfRotation": [ 265.5, 148.5, 0 ]
           }
         },
         { "Transform":
@@ -345,9 +349,26 @@
             "-children": [
               { "Shape":
                 {
-                  "-geometry": { "ProtoInstance":
+                  "-appearance": { "Appearance":
                     {
                       "@DEF": "_1",
+                      "-pointProperties": { "PointProperties":
+                        {
+                          "@pointSizeScaleFactor": 2,
+                          "@pointSizeMaxValue": 2
+                        }
+                      },
+                      "-material": { "Material":
+                        {
+                          "@diffuseColor": [ 0, 0, 0 ],
+                          "@emissiveColor": [ 0.844, 0.844, 0.844 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "ProtoInstance":
+                    {
+                      "@DEF": "_2",
                       "@name": "ParticleMap",
                       "fieldValue": [
                         {
@@ -364,7 +385,7 @@
                         },
                         {
                           "@name": "point",
-                          "@value": [ 0.9918517, 0.007642567 ]
+                          "@value": [ 0.00994581, 0.759183 ]
                         }
                       ]
                     }
@@ -400,7 +421,7 @@
               },
               { "TouchSensor":
                 {
-                  "@DEF": "_2"
+                  "@DEF": "_3"
                 }
               }
             ]
@@ -408,9 +429,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_2",
+            "@fromNode": "_3",
             "@fromField": "hitTexCoord_changed",
-            "@toNode": "_1",
+            "@toNode": "_2",
             "@toField": "point"
           }
         }

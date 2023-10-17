@@ -5,12 +5,12 @@
     <component name='Geometry2D' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sat, 30 Jun 2018 20:23:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/PointSet/PointSet.O.x3d'/>
-    <meta name='modified' content='Tue, 17 Oct 2023 21:29:15 GMT'/>
+    <meta name='modified' content='Tue, 17 Oct 2023 23:01:03 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='ParticleMap'>
@@ -99,7 +99,7 @@ function set_time (value, time)
       if (d < THICKNESS)
       {
         var t = Math .atan2 (dy, dx);
-        
+
         p .vx += f * Math .cos (t);
         p .vy += f * Math .sin (t);
       }
@@ -120,7 +120,7 @@ function build ()
 	particles .length    = 0;
 	color .color .length = 0;
 	coord .point .length = 0;
-	
+
 	for (var y = 0; y < height; y += distance)
 	{
 		for (var x = 0; x < width; x += distance)
@@ -143,9 +143,9 @@ function bilinearColor (x, y)
 		bilinear (colors [0] .g, colors [1] .g, colors [2] .g, colors [3] .g, x, y),
 		bilinear (colors [0] .b, colors [1] .b, colors [2] .b, colors [3] .b, x, y)
 	);
-	
+
 	var h = c .getHSV ();
-		
+
 	c .setHSV (
 		h [0],
 		h [1],
@@ -185,21 +185,29 @@ function randomColor (i)
         <ROUTE fromNode='_3' fromField='time' toNode='ParticleMapScript' toField='set_time'/>
       </ProtoBody>
     </ProtoDeclare>
+    <WorldInfo/>
+    <NavigationInfo
+        type='"NONE"'
+        headlight='false'/>
     <Viewpoint
         description='Initial View'
         position='265.5 148.5 362.124'
-        centerOfRotation='265.5 148.5 0'>
-      <NavigationInfo containerField='navigationInfo'
-          type='"NONE"'
-          headlight='false'/>
-    </Viewpoint>
+        centerOfRotation='265.5 148.5 0'/>
     <Transform DEF='Particles'>
       <Shape>
-        <ProtoInstance name='ParticleMap' DEF='_1' containerField='geometry'>
+        <Appearance DEF='_1'>
+          <PointProperties
+              pointSizeScaleFactor='2'
+              pointSizeMaxValue='2'/>
+          <Material
+              diffuseColor='0 0 0'
+              emissiveColor='0.844 0.844 0.844'/>
+        </Appearance>
+        <ProtoInstance name='ParticleMap' DEF='_2' containerField='geometry'>
           <fieldValue name='width' value='533.333'/>
           <fieldValue name='height' value='300'/>
           <fieldValue name='distance' value='5'/>
-          <fieldValue name='point' value='0.9918517 0.007642567'/>
+          <fieldValue name='point' value='0.00994581 0.759183'/>
         </ProtoInstance>
       </Shape>
     </Transform>
@@ -214,8 +222,8 @@ function randomColor (i)
         <Rectangle2D
             size='1.777 1'/>
       </Shape>
-      <TouchSensor DEF='_2'/>
+      <TouchSensor DEF='_3'/>
     </Transform>
-    <ROUTE fromNode='_2' fromField='hitTexCoord_changed' toNode='_1' toField='set_point'/>
+    <ROUTE fromNode='_3' fromField='hitTexCoord_changed' toNode='_2' toField='set_point'/>
   </Scene>
 </X3D>

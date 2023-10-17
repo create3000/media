@@ -6,12 +6,12 @@ COMPONENT Geometry2D : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 
-META "comment" "Rise and Shine"
+META "comment" "World of Titania"
 META "created" "Sat, 30 Jun 2018 20:23:59 GMT"
 META "creator" "Holger Seelig"
 META "generator" "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
 META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/PointSet/PointSet.O.x3d"
-META "modified" "Tue, 17 Oct 2023 21:29:15 GMT"
+META "modified" "Tue, 17 Oct 2023 23:01:03 GMT"
 
 PROTO ParticleMap [
   inputOutput SFFloat width 1
@@ -93,7 +93,7 @@ function set_time (value, time)
       if (d < THICKNESS)
       {
         var t = Math .atan2 (dy, dx);
-        
+
         p .vx += f * Math .cos (t);
         p .vy += f * Math .sin (t);
       }
@@ -114,7 +114,7 @@ function build ()
 	particles .length    = 0;
 	color .color .length = 0;
 	coord .point .length = 0;
-	
+
 	for (var y = 0; y < height; y += distance)
 	{
 		for (var x = 0; x < width; x += distance)
@@ -137,9 +137,9 @@ function bilinearColor (x, y)
 		bilinear (colors [0] .g, colors [1] .g, colors [2] .g, colors [3] .g, x, y),
 		bilinear (colors [0] .b, colors [1] .b, colors [2] .b, colors [3] .b, x, y)
 	);
-	
+
 	var h = c .getHSV ();
-		
+
 	c .setHSV (
 		h [0],
 		h [1],
@@ -181,23 +181,36 @@ function randomColor (i)
   ROUTE _3.time TO ParticleMapScript.set_time
 }
 
+WorldInfo { }
+
+NavigationInfo {
+  type "NONE"
+  headlight FALSE
+}
+
 Viewpoint {
   description "Initial View"
   position 265.5 148.5 362.124
   centerOfRotation 265.5 148.5 0
-  navigationInfo NavigationInfo {
-    type "NONE"
-    headlight FALSE
-  }
 }
 
 DEF Particles Transform {
   children Shape {
-    geometry DEF _1 ParticleMap {
+    appearance DEF _1 Appearance {
+      pointProperties PointProperties {
+        pointSizeScaleFactor 2
+        pointSizeMaxValue 2
+      }
+      material Material {
+        diffuseColor 0 0 0
+        emissiveColor 0.844 0.844 0.844
+      }
+    }
+    geometry DEF _2 ParticleMap {
       width 533.333
       height 300
       distance 5
-      point 0.9918517 0.007642567
+      point 0.00994581 0.759183
     }
   }
 }
@@ -216,8 +229,8 @@ DEF Rectangle2D Transform {
         size 1.777 1
       }
     }
-    DEF _2 TouchSensor { }
+    DEF _3 TouchSensor { }
   ]
 }
 
-ROUTE _2.hitTexCoord_changed TO _1.set_point
+ROUTE _3.hitTexCoord_changed TO _2.set_point
