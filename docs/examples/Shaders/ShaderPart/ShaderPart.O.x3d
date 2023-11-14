@@ -12,7 +12,6 @@
     <meta name='created' content='Sun, 10 Dec 2017 16:14:16 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.7, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shaders/ShaderPart/ShaderPart.O.x3d'/>
     <meta name='modified' content='Sat, 22 Dec 2018 12:01:23 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
@@ -111,17 +110,17 @@ main ()
 
 	float x = (2.0 * gl_FragCoord .x - size .x) / max (size .x, size .y);
 	float y = (2.0 * gl_FragCoord .y - size .y) / max (size .x, size .y);
-	
+
 	vec3 ray_dir  = normalize (vec3 (x, y, -1.0 /*+sqrt(x*x+y*y)*/));
 	vec3 ray_orig = vec3 (0.0, 0.0, 0.0);
 
 	float offs = 0.0;
 	float i    = 0.0;
-	
+
 	for (float j = 0.0; j < 64.0; j++)
 	{
 		float dist = distfunc (ray_orig + ray_dir * offs);
-		
+
 		offs += dist;
 		i     = j;
 

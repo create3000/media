@@ -9,7 +9,6 @@
     <meta name='created' content='Sun, 24 Sep 2017 02:55:29 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Grouping/Transform/Grid.x3d'/>
     <meta name='modified' content='Mon, 21 Jan 2019 08:40:49 GMT'/>
   </head>
   <Scene>
@@ -252,7 +251,7 @@ function eventsProcessed ()
 
 	generatePoints (true,  majorPoints .coord .point);
 	generatePoints (false, minorPoints .coord .point);
-	
+
 	// Numbers
 
 	generateNumbers (0, xNumbers);
@@ -280,7 +279,7 @@ function generateGrid (major, grid)
 		coordIndex [coordIndex .length] = p;
 		coordIndex [coordIndex .length] = p + 1;
 		coordIndex [coordIndex .length] = -1;
-			
+
 		p += 2;
 	}
 
@@ -296,7 +295,7 @@ function generateGrid (major, grid)
 		coordIndex [coordIndex .length] = p;
 		coordIndex [coordIndex .length] = p + 1;
 		coordIndex [coordIndex .length] = -1;
-		
+
 		p += 2;
 	}
 
@@ -328,7 +327,7 @@ function generateNumbers (axis, numbers)
 		currentScene = Browser .currentScene,
 		scale1_2     = dimension [axis] / 2,
 		rotation     = new SFRotation (-1, 0, 0, Math .PI / 2);
-	
+
 	numbers .children .length  = 0;
 	numbersSwitch .whichChoice = numbers;
 
@@ -339,17 +338,17 @@ function generateNumbers (axis, numbers)
 	{
 		if (! isMajorLine (i, axis))
 			continue;
-			
+
 		var p = -scale1_2 + i;
-		
+
 		if (p == 0)
 			continue;
-	
+
 		var
 			transform = currentScene .createNode ("Transform"),
 			shape     = currentScene .createNode ("Shape"),
 			text      = currentScene .createNode ("Text");
-		
+
 		numbers   .children .push (transform);
 		transform .children .push (shape);
 		shape     .appearance = numberAppearance;

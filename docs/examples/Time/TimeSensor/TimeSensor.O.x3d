@@ -8,7 +8,6 @@
     <meta name='created' content='Fri, 21 Dec 2018 04:34:14 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 04:02:09 GMT'/>
   </head>
   <Scene>
@@ -184,7 +183,7 @@ function set_time (value, time)
 	seconds_changed = zero - seconds * Math .PI * 2;
 	minutes_changed = zero - minutes * Math .PI * 2;
 	hours_changed   = zero - hours12 * Math .PI * 2;
-	
+
 	string_changed [0] = fill (hours24 * 24) + ":" + fill (minutes * 60) + ":" + fill (seconds * 60);
 }
 
@@ -194,7 +193,7 @@ function fill (value)
 
 	if (value < 10)
 		return "0" + value;
-		
+
 	return value .toString ();
 }
 ]]>

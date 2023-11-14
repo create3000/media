@@ -12,7 +12,6 @@
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsSweptSurface/NurbsSweptSurface.O.x3d'/>
     <meta name='modified' content='Sat, 26 Jan 2019 01:49:12 GMT'/>
   </head>
   <Scene>
@@ -81,7 +80,7 @@ function eventsProcessed ()
 		var
 			x = Math .sin (first + z * twist) * radius,
 			y = Math .cos (first + z * twist) * radius;
-			
+
 		controlPoint .point .push (new SFVec3d (x, y, z));
 	}
 }
@@ -143,22 +142,22 @@ function set_material (value, time)
 function build ()
 {
 	group .children .length = 0;
-	
+
 	for (var i = 0; i < lines; ++ i)
 	{
 		var line = Browser .currentScene .createProto ("TubeLine");
-		
+
 		// Scale a little to prevent z-fighting.
 		line .scale = new SFVec3f (1 + Math .random () * 0.1,
 		                           1 + Math .random () * 0.1,
 		                           1 + Math .random () * 0.1);
-		
+
 		if (material .length)
 			line .material = material [Math .floor (Math .random () * material .length)];
-		
+
 		group .children .push (line);
 	}
-	
+
 	set_fraction (0, 0);
 }
 ]]>

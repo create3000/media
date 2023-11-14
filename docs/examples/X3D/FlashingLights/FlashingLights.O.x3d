@@ -9,7 +9,6 @@
     <meta name='created' content='Sun, 20 Dec 2015 16:23:08 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 04:18:13 GMT'/>
   </head>
   <Scene>
@@ -91,7 +90,7 @@ function set_active (value)
 	var
 		touchSensor = Browser .currentScene .getNamedNode ("LightsTouch"),
 		self        = Browser .currentScene .getNamedNode ("LightsScript");
-	
+
 	if (touchSensor .isActive)
 		Browser .addRoute (touchSensor, "hitPoint_changed", self, "set_hitPoint");
 	else
@@ -103,7 +102,7 @@ function set_hitPoint (value, time)
 	if (time - startTime > 0.1)
 	{
 		lights [light] .location = value;
-	
+
 		startTime = time;
 
 		light = (light + 1) % 8;

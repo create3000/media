@@ -7,7 +7,6 @@
     <meta name='created' content='Sat, 23 Dec 2017 00:33:15 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/PointEmitter/Noise.x3d'/>
     <meta name='modified' content='Mon, 21 Jan 2019 09:11:33 GMT'/>
     <meta name='titania-add-metadata' content='true'/>
   </head>
@@ -117,10 +116,10 @@ function spline (x, nknots, knot)
 		/* Find the appropriate 4-point span of the spline. */
 		var x    = clamp(x, 0, 1) * nspans;
 		var span = Math.floor(x);
-		
+
 		if (span >= (nknots - 3))
 			span = (nknots - 3);
-		
+
 		x -= span;
 		i += span;
 

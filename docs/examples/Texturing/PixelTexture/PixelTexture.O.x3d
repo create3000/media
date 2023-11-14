@@ -10,7 +10,6 @@
     <meta name='created' content='Mon, 27 Nov 2017 03:13:31 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:59:38 GMT'/>
   </head>
   <Scene>
@@ -102,7 +101,7 @@
 <![CDATA[ecmascript:
 
 function set_array(value, time) {
-	// send out new picture 
+	// send out new picture
 	image_changed = new SFImage(data.size.x, data.size.y, data.components, value);
 }
 
@@ -379,15 +378,15 @@ function set_time (value, time)
 		if (time - colorTime > colorInterval)
 		{
 			colorTime = time;
-			
+
 			bgColor = Math .random () > blackLevel
 				? new SFColor (Math .random (), Math.random (), Math.random ())
 				: new SFColor (0, 0, 0);
-			
+
 			brush.bgColor = bgColor;
 			brush.clear   = time;
 		}
-	
+
 		canvas.set_hitTexCoord = new SFVec2f (Math.random (), Math.random ());
 
 		if (time - scaleTime > 19)
@@ -395,7 +394,7 @@ function set_time (value, time)
 			scaleTime = time;
 			scaleF    = Math .random ();
 		}
-		
+
 		if (time - rotateTime > 17)
 		{
 			rotateTime = time;

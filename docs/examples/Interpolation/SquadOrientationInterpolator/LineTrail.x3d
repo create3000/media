@@ -7,7 +7,6 @@
     <meta name='created' content='Sat, 25 Nov 2017 08:31:56 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Interpolation/SquadOrientationInterpolator/LineTrail.x3d'/>
     <meta name='modified' content='Mon, 21 Jan 2019 08:48:42 GMT'/>
   </head>
   <Scene>
@@ -67,7 +66,7 @@
             <connect nodeField='dimension' protoField='dimension'/>
           </IS>
 <![CDATA[vrmlscript:
-  
+
 function initialize ()
 { }
 
@@ -88,10 +87,10 @@ function set_time (value, time)
 	trail .coord .point .unshift (fields .point);
 
 	var length = trail .coord .point .length;
-	
+
 	if (length > dimension)
 		trail .coord .point .pop ();
-		
+
 	else
 		trail .coordIndex [length - 1] = length - 1;
 }

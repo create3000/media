@@ -8,7 +8,6 @@
     <meta name='created' content='Thu, 17 May 2018 17:06:06 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/BallJoint/BallJoint.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:44:54 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 18:02:54 GMT'/>
@@ -610,7 +609,7 @@ function initialize ()
 		var
 			x = i / numCollidables * length,
 			y = Math .sin (x / length * Math .PI) * -height;
-			
+
 		anchorPoints .push (new SFVec3f (x, y, 0));
 	}
 
@@ -621,11 +620,11 @@ function initialize ()
 			rigidBody       = scene .createNode ("RigidBody"),
 			position        = anchorPoints [i] .add (anchorPoints [i + 1]) .divide (2);
 			orientation     = new SFRotation (xAxis, anchorPoints [i + 1] .subtract (anchorPoints [i]));
-		
-		collidableShape .shape        = Math .floor (i / 3) % 2 ? shape1 : shape2;	
+
+		collidableShape .shape        = Math .floor (i / 3) % 2 ? shape1 : shape2;
 		rigidBody .position           = position;
 		rigidBody .orientation        = orientation;
-			
+
 		collidables .children .push (collidableShape);
 		rigidBody .geometry .push (collidableShape);
 		collection  .bodies .push (rigidBody);
@@ -633,15 +632,15 @@ function initialize ()
 
 	collection  .bodies [0] .fixed                               = true;
 	collection  .bodies [collection  .bodies .length - 1] .fixed = true;
-	
+
 	for (var i = 0; i < numCollidables - 1; ++ i)
 	{
 		var joint = scene .createNode ("BallJoint");
-	
+
 		joint .anchorPoint = anchorPoints [i + 1];
 		joint .body1       = collection .bodies [i];
 		joint .body2       = collection .bodies [i + 1];
-				
+
 		collection .joints .push (joint);
 	}
 }
@@ -649,7 +648,7 @@ function initialize ()
 function set_time (value, time)
 {
 	var force = new SFVec3f (0, 0, (Math .random () * wind * 2) - wind);
-	
+
 	for (var i = 0; i < collection .bodies .length; ++ i)
 		collection .bodies [i] .forces [0] = force;
 }

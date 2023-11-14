@@ -11,7 +11,6 @@
     <meta name='created' content='Wed, 22 Nov 2017 08:26:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.O.x3d'/>
     <meta name='modified' content='Fri, 10 Feb 2023 23:51:36 GMT'/>
   </head>
   <Scene>
@@ -282,7 +281,7 @@ function pick (hitPoint)
 		pointIndex = i;
 		break;
 	}
-	
+
 	return pointIndex;
 }
 
@@ -292,7 +291,7 @@ function addPoint ()
 
 	xInterpolator .keyValue .splice (pointIndex, 0, hitPoint .x);
 	yInterpolator .keyValue .splice (pointIndex, 0, hitPoint .y);
-	
+
 	setXInterpolatorKey ();
 }
 
@@ -302,7 +301,7 @@ function removePoint ()
 
 	xInterpolator .keyValue .splice (pointIndex, 1);
 	yInterpolator .keyValue .splice (pointIndex, 1);
-	
+
 	setXInterpolatorKey ();
 }
 
@@ -313,7 +312,7 @@ function getAddPointIndex ()
 		if (xInterpolator .keyValue [i] > hitPoint .x)
 			break;
 	}
-	
+
 	return i;
 }
 
@@ -347,10 +346,10 @@ function setXInterpolatorKey ()
 		{
 			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
 				                       yInterpolator .keyValue [i - 1]);
-				                       
+
 			var point1 = new SFVec2f (xInterpolator .keyValue [i],
 				                       yInterpolator .keyValue [i]);
-				                      
+
 			totalLength += point1 .subtract (point0) .length ();
 		}
 
@@ -360,12 +359,12 @@ function setXInterpolatorKey ()
 		{
 			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
 				                       yInterpolator .keyValue [i - 1]);
-				                       
+
 			var point1 = new SFVec2f (xInterpolator .keyValue [i],
 				                       yInterpolator .keyValue [i]);
-				                      
+
 			lengthSoFar += point1 .subtract (point0) .length ();
-			
+
 			xInterpolator .key [i] = lengthSoFar / totalLength;
 		}
 

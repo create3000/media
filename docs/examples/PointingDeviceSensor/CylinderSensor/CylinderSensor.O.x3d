@@ -10,7 +10,6 @@
     <meta name='created' content='Mon, 27 Nov 2017 02:44:02 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.0.2, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/PointingDeviceSensor/CylinderSensor/CylinderSensor.x3d'/>
     <meta name='modified' content='Mon, 27 Nov 2017 02:53:33 GMT'/>
   </head>
   <Scene>
@@ -109,7 +108,7 @@ function set_rotation (rotation)
 		if (value != value_changed)
 		{
 			var axis = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));
-			
+
 			rotation_changed = new SFRotation (axis, -value / factor);
 			value_changed    = value;
 		}
