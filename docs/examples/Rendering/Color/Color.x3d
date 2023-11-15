@@ -4,11 +4,13 @@
   <head>
     <component name='CADGeometry' level='2'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Fri, 22 Sep 2017 00:56:36 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/Color/Color.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:23:10 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 18:01:40 GMT'/>
   </head>
@@ -114,7 +116,7 @@ function build ()
 					.multVec (size)
 					.add (start)
 					.add (o);
-
+				
 				color .color .push (c);
 				coord .point .push (new SFVec3f (p .x, p .y, 0));
 			}
@@ -212,7 +214,7 @@ function set_randomize (value, time)
 
 	if (index1 < 0 && index2 < 0)
 		return;
-
+	
 	if (index1 < 0)
 	{
 		if (moveToLeftSide)
@@ -225,7 +227,7 @@ function set_randomize (value, time)
 	{
 		if (moveToRightSide)
 			swapRectangle (swapIndex2, swapIndex1);
-
+			
 		return;
 	}
 
@@ -254,7 +256,7 @@ function swapRectangle (emptyIndex, swapIndex)
 		coord .point [index * 4 + i] .x = p .x;
 		coord .point [index * 4 + i] .y = p .y;
 	}
-
+	
 	swapMatrix [emptyIndex]	= swapMatrix [swapIndex];
 	swapMatrix [swapIndex]	= -1;
 }
@@ -266,7 +268,7 @@ function swapColor (i, index1, index2)
 	var
 		i1 = index1 * 4 + i,
 		i2 = index2 * 4 + i;
-
+	
 	auxColor .assign (color .color [i1]);
 
 	color .color [i1] = color .color [i2];
@@ -288,10 +290,10 @@ function getSecondRandomSwapIndex (swapIndex1)
 
 	sx += Math .round (swapVariation * rx);
 	sy += Math .round ((swapHeight - height) / 2 * ry);
-
+	
 	if (sx < 0 || sx > swapWidth)
 		return -1;
-
+	
 	return getSwapIndex (sx, sy);
 }
 

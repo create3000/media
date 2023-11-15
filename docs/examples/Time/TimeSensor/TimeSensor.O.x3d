@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='Shape' level='4'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Fri, 21 Dec 2018 04:34:14 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 04:02:09 GMT'/>
   </head>
   <Scene>
@@ -183,7 +184,7 @@ function set_time (value, time)
 	seconds_changed = zero - seconds * Math .PI * 2;
 	minutes_changed = zero - minutes * Math .PI * 2;
 	hours_changed   = zero - hours12 * Math .PI * 2;
-
+	
 	string_changed [0] = fill (hours24 * 24) + ":" + fill (minutes * 60) + ":" + fill (seconds * 60);
 }
 
@@ -193,7 +194,7 @@ function fill (value)
 
 	if (value < 10)
 		return "0" + value;
-
+		
 	return value .toString ();
 }
 ]]>

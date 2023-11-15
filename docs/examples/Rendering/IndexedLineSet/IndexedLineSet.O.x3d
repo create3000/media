@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='Grouping' level='3'/>
     <component name='Shape' level='3'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Tue, 03 Jul 2018 02:20:51 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/IndexedLineSet/IndexedLineSet.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:31:39 GMT'/>
   </head>
   <Scene>
@@ -91,7 +92,7 @@ function set_active (value, time)
 	if (value)
 	{
 		trackPoint = cloth .getClosestPoint (touch .trackPoint_changed);
-
+		
 		trackPoint .inv_mass = 0;
 	}
 	else
@@ -114,7 +115,7 @@ function set_time (value, time)
 		point = coord .point;
 
 	cloth .update ();
-
+	
 	for (var y = 0; y < yDimension; ++ y)
 	{
 		for (var x = 0; x < xDimension; ++ x)
@@ -178,7 +179,7 @@ function build ()
 			point .push (new SFVec3f (x * spacing .x, y * spacing .y, 0));
 		}
 	}
-
+	
 	for (var y = 0; y < yDimension; ++ y)
 	{
 		for (var x = 0; x < xDimension; ++ x)
@@ -211,7 +212,7 @@ function build ()
 					               getIndex (x1, y1),
 					               getIndex (x2, y1),
 					               -1);
-
+					               
 				facesIndex .push (getIndex (x1, y1),
 					               getIndex (x2, y1),
 					               getIndex (x1, y2),
@@ -224,7 +225,7 @@ function build ()
 
 	lines .set_coordIndex = linesIndex;
 	faces .index          = facesIndex;
-
+	
 	cloth = new Cloth (width, height, xDimension, yDimension);
 }
 
@@ -248,33 +249,33 @@ Point.prototype = {
 	{
 		this .current = p;
 	},
-
+	
 	setPrevious: function (p)
 	{
 		this .previous = p;
 	},
-
+	
 	getCurrent: function ()
 	{
 		return this .current;
 	},
-
+	
 	getPrevious: function ()
 	{
 		return this .previous;
 	},
-
+	
 	move: function ()
 	{
 		if (this .inv_mass === 0)
 			return;
-
+			
 		var new_pos = this .current .multiply (1.99) .subtract (this .previous .multiply (0.99)) .add (this.force);
-
+		
 		this .previous = this .current;
 		this .current = new_pos;
 	},
-
+	
 };
 
 var Constraint = function (p1, p2, rl)
@@ -285,24 +286,24 @@ var Constraint = function (p1, p2, rl)
 	this .squared_rest_length = this .rest_length * this .rest_length;
 };
 
-Constraint.prototype = {
+Constraint.prototype = {	
 	satisfy: function ()
 	{
 		var p1    = this .p1 .getCurrent ();
 		var p2    = this .p2 .getCurrent ();
 		var delta = p2 .subtract (p1);
-
+		
 		var p1_im = this .p1.inv_mass;
 		var p2_im = this .p2.inv_mass;
-
+		
 		var d    = delta .dot (delta);
 		var diff = (d - this .squared_rest_length) / ((this .squared_rest_length + d) * (p1_im + p2_im));
-
+		
 		if (p1_im !== 0)
 		{
 			this .p1 .setCurrent (p1 .add (delta .multiply (p1_im * diff)));
 		}
-
+		
 		if (p2_im !== 0)
 		{
 			this .p2 .setCurrent (p2 .subtract (delta .multiply (p2_im * diff)));
@@ -311,7 +312,7 @@ Constraint.prototype = {
 };
 
 var Cloth = function(width, height, xDimension, yDimension){
-
+	
 	var
 		spacing = new SFVec2f (width / xDimension, height / yDimension),
 		max_dim = Math .max (width, height),
@@ -320,26 +321,26 @@ var Cloth = function(width, height, xDimension, yDimension){
 	this .num_iterations = 2;
 	this .points         = [ ];
 	this .constraints    = [ ];
-
+	
 	this .xDimension = xDimension;
 	this .yDimension = yDimension;
 
 	var constraint;
-
+	
 	for (var i = 0, y = 0; i < yDimension; ++ i, y += spacing .y)
 	{
 		this .points [i] = [ ];
-
+		
 		for (var j = 0, x = 0; j < xDimension; ++ j, x += spacing .x)
 		{
 			this .points [i] [j] = new Point (x, y, 0);
-
+			
 			//add a vertical constraint
 			if (i > 0)
 			{
 				this .constraints .push (new Constraint (this .points [i - 1] [j], this .points [i] [j]));
 			}
-
+			
 			//add a new horizontal constraints
 			if (j > 0)
 			{
@@ -364,14 +365,14 @@ Cloth.prototype = {
 			num_y = this .yDimension,
 			num_c = this .num_constraints,
 			num_i = this .num_iterations;
-
+			
 		//move each point with a pull from gravity
 		for (var i = 0; i < num_y; ++ i)
 		{
 			for (var j = 0; j < num_x; ++ j)
 				this .points [i] [j] .move ();
 		}
-
+		
 		//make sure all the constraints are satisfied.
 		for (var j = 0; j < num_i; ++ j)
 		{
@@ -379,7 +380,7 @@ Cloth.prototype = {
 				this .constraints [i] .satisfy ();
 		}
 	},
-
+	
 	getClosestPoint: function (pos)
 	{
 		var
@@ -387,13 +388,13 @@ Cloth.prototype = {
 			min_point = null,
 			num_x     = this.xDimension,
 			num_y     = this.yDimension;
-
+		
 		for (var y = 0; y < num_y; ++ y)
 		{
 			for (var x = 0; x < num_x; ++ x)
 			{
 				var dist = pos .subtract (this .points [y] [x] .getCurrent ()) .length();
-
+				
 				if (dist < min_dist)
 				{
 					min_dist  = dist;

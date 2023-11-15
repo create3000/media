@@ -5,10 +5,11 @@
     <component name='Followers' level='1'/>
     <component name='Picking' level='3'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sat, 23 Mar 2019 14:58:44 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PointPickSensor/PointPickSensor.O.x3d'/>
     <meta name='modified' content='Thu, 07 Nov 2019 12:36:21 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 18:00:31 GMT'/>
@@ -139,7 +140,7 @@ function set_points (value, time)
 	for (var i = 0, length = points .length; i < length; ++ i)
 	{
 		points [i] .color *= 0.99;
-	}
+	}	
 
 	for (var i = 0, length = points .length; i < length; ++ i)
 	{
@@ -152,16 +153,16 @@ function set_points (value, time)
 	for (var i = 0, length = value .length; i < length; ++ i)
 	{
 		var p = value [i];
-
+		
 		points .push ({ point: new SFVec3f (p .x, p .y, p .z), color: 1 });
 	}
-
+	
 	for (var i = 0, length = points .length; i < length; ++ i)
 	{
 		point [i] = points [i] .point;
 		color [i] = new SFColor (1, 1 - points [i] .color, 1 - points [i] .color);
 	}
-
+	
 	point .length = length;
 	color .length = length;
 }

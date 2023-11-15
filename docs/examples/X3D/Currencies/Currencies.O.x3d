@@ -12,7 +12,8 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 02 Apr 2016 03:25:15 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.0.81, https://create3000.github.io/sunrize/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/X3D/Currencies/Currencies.O.x3d'/>
     <meta name='modified' content='Mon, 31 Jul 2023 22:06:23 GMT'/>
   </head>
   <Scene>
@@ -1257,7 +1258,7 @@ var currencies = {
 	CHF: "Swiss franc",
 	NOK: "Norwegian krone",
 	HRK: "Croatian kuna",
-
+	
 	RUB: "Russian rouble",
 	TRY: "Turkish lira",
 	AUD: "Australian dollar",
@@ -1271,7 +1272,7 @@ var currencies = {
 	KRW: "South Korean won",
 	MXN: "Mexican peso",
 	MYR: "Malaysian ringgit",
-
+	
 	NZD: "New Zealand dollar",
 	PHP: "Philippine peso",
 	SGD: "Singapore dollar",
@@ -1295,7 +1296,7 @@ async function set_loadTime ()
 {
 	// https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml
 
-	const
+	const 
 		url      = new URL ("eurofxref-hist-90d.xml", Browser .currentScene .worldURL), // fallback, unused
 		response = await fetch (url);
 
@@ -1345,58 +1346,58 @@ function set_currency (value, time)
 	print (xml);
 
 	currency = value;
-
+	
 	if (!xml)
 		return;
 
 	// Get new keyValues
-
+		
 	var
 		keyValues = get_keyValues (currency),
 		minValue  = Math .min .apply (Math, keyValues),
 		maxValue  = Math .max .apply (Math, keyValues)
 		length    = keyValues .length,
 		length2   = interpolator .value_changed .length;
-
+		
 	// Move current keyValues
-
+		
 	for (var i = 0; i < length; ++ i)
 	{
 		var x = (i + 1) / length * numValues;
-
+		
 		if (length2 - length + i >= 0)
 			var y = interpolator .value_changed [length2 - length + i] .y;
 		else
 			var y = minY;
-
+	
 		interpolator .keyValue [i] = new SFVec3f (x, y, 0);
 	}
-
+		
 	// Set new keyValues
-
+		
 	for (var i = 0; i < length; ++ i)
 	{
 		var x = (i + 1) / length * numValues;
-
+	
 		if (maxValue - minValue)
 			var y = ((keyValues [i] || minValue) - minValue) / (maxValue - minValue) * (maxY - minY) + minY;
 		else
 			var y = maxY;
-
+	
 		interpolator .keyValue [length + i] = new SFVec3f (x, y, 0);
 	}
-
+	
 	interpolator .keyValue .length = length * 2;
-
+		
 	timer .stopTime  = time;
 	timer .startTime = time;
-
+	
 	// Generate text
-
+	
 	var
 		last1 = keyValues .length - 1,
 		last2 = keyValues .length - 2;
-
+	
 	text_changed [0] = currency;
 	text_changed [1] = currencies [currency];
 	text_changed [2] = last1 >= 0 ? keyValues [last1] : "N/A";
@@ -1406,9 +1407,9 @@ function set_currency (value, time)
 function get_keyValues (currency)
 {
 	var array = [ ];
-
+	
 	get_keyValue (xml, array);
-
+	
 	return array .reverse ();
 }
 
@@ -1417,7 +1418,7 @@ function get_keyValue (xml, array)
 	for (var i = 0; i < xml .childNodes .length; ++ i)
 	{
 		var child = xml .childNodes [i];
-
+		
 		if (child .nodeName == "Cube")
 		{
 			if (child .getAttribute ("currency") == currency)
@@ -1426,7 +1427,7 @@ function get_keyValue (xml, array)
 				return;
 			}
 		}
-
+		
 		get_keyValue (child, array);
 	}
 }

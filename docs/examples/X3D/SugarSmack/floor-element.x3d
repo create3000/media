@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Fri, 29 Sep 2017 09:17:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
+    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/X3D/SugarSmack/floor-element.x3d'/>
     <meta name='modified' content='Fri, 18 Nov 2022 00:42:01 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
     <ProtoDeclare name='Bevel'>
@@ -116,7 +118,7 @@ function eventsProcessed ()
 	}
 	else
 		bevel .color = null;
-
+		
 	if (geometry .texCoord)
 	{
 		bevel .texCoordIndex = geometry .texCoordIndex;
@@ -125,7 +127,7 @@ function eventsProcessed ()
 	}
 	else
 		bevel .texCoord = null;
-
+		
 	if (geometry .normal)
 	{
 		bevel .normalIndex = geometry .normalIndex;
@@ -134,7 +136,7 @@ function eventsProcessed ()
 	}
 	else
 		bevel .normal = null;
-
+	
 	if (geometry .coord)
 	{
 		bevel .coordIndex = geometry .coordIndex;
@@ -157,13 +159,13 @@ function getEdges ()
 	for (var i = 0, il = geometry .coordIndex .length; i < il; ++ i)
 	{
 		var index = geometry .coordIndex [i];
-
+	
 		if (index < 0)
 		{
 			if (vertices .length >= 3)
 			{
 				var normal = getNormal (vertices);
-
+		
 				for (var v0 = 0, vl = vertices .length; v0 < vl; ++ v0)
 				{
 					var
@@ -176,10 +178,10 @@ function getEdges ()
 						max    = Math .min (index0, index1),
 						key    = min + ":" + max,
 						edge   = edges [key];
-
+					
 						if (! edge)
 							edge = edges [key] = [ ];
-
+						
 						edge .push ({
 							i0: i0,
 							i1: i1,
@@ -187,14 +189,14 @@ function getEdges ()
 						});
 				}
 			}
-
+	
 			vertices .length = 0;
 			continue;
 		}
-
+			
 		vertices .push (i);
 	}
-
+	
 	return edges;
 }
 

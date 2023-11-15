@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='EnvironmentalEffects' level='3'/>
     <component name='Layering' level='1'/>
@@ -8,10 +8,11 @@
     <component name='NURBS' level='3'/>
     <component name='Shape' level='4'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsSweptSurface/NurbsSweptSurface.O.x3d'/>
     <meta name='modified' content='Sat, 26 Jan 2019 01:49:12 GMT'/>
   </head>
   <Scene>
@@ -80,7 +81,7 @@ function eventsProcessed ()
 		var
 			x = Math .sin (first + z * twist) * radius,
 			y = Math .cos (first + z * twist) * radius;
-
+			
 		controlPoint .point .push (new SFVec3d (x, y, z));
 	}
 }
@@ -142,22 +143,22 @@ function set_material (value, time)
 function build ()
 {
 	group .children .length = 0;
-
+	
 	for (var i = 0; i < lines; ++ i)
 	{
 		var line = Browser .currentScene .createProto ("TubeLine");
-
+		
 		// Scale a little to prevent z-fighting.
 		line .scale = new SFVec3f (1 + Math .random () * 0.1,
 		                           1 + Math .random () * 0.1,
 		                           1 + Math .random () * 0.1);
-
+		
 		if (material .length)
 			line .material = material [Math .floor (Math .random () * material .length)];
-
+		
 		group .children .push (line);
 	}
-
+	
 	set_fraction (0, 0);
 }
 ]]>

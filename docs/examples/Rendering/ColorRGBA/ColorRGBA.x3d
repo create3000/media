@@ -4,10 +4,11 @@
   <head>
     <component name='CADGeometry' level='2'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Tue, 10 Jul 2018 16:12:19 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/ColorRGBA/ColorRGBA.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:23:50 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 18:01:43 GMT'/>
@@ -74,14 +75,14 @@ function set_value (value, time)
 
 	if (dt < updateInterval)
 		return;
-
+		
 	if (points .length > width)
 		points .shift ();
 
 	points .push (value);
-
+	
 	lastTime = time;
-
+	
 	animate ();
 }
 
@@ -131,7 +132,7 @@ function build ()
 			hsva .setHSVA (hue, 1, 1, 1);
 
 			color .push (hsva);
-
+				
 			coord .push (new SFVec3f (x1, y1, 0));
 			coord .push (new SFVec3f (x2, y1, 0));
 			coord .push (new SFVec3f (x2, y2, 0));
@@ -143,7 +144,7 @@ function build ()
 function animate ()
 {
 	var color = geometry .color .color;
-
+		
 	for (var w = 0; w < points .length; ++ w)
 	{
 		var value = (points [w] + 1) * 0.5 * height;
@@ -153,7 +154,7 @@ function animate ()
 			var
 				i = w * height + h,
 				c = color [i];
-
+		
 			if (value > h)
 			{
 				c .a = 1;

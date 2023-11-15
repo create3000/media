@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='EnvironmentalEffects' level='3'/>
     <component name='Grouping' level='3'/>
     <component name='RigidBodyPhysics' level='1'/>
     <component name='Shape' level='4'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Thu, 17 May 2018 17:06:06 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.9, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/BallJoint/BallJoint.O.x3d'/>
     <meta name='modified' content='Mon, 07 Jan 2019 03:44:54 GMT'/>
   </head>
   <Scene>
@@ -610,7 +611,7 @@ function initialize ()
 		var
 			x = i / numCollidables * length,
 			y = Math .sin (x / length * Math .PI) * -height;
-
+			
 		anchorPoints .push (new SFVec3f (x, y, 0));
 	}
 
@@ -621,11 +622,11 @@ function initialize ()
 			rigidBody       = scene .createNode ("RigidBody"),
 			position        = anchorPoints [i] .add (anchorPoints [i + 1]) .divide (2);
 			orientation     = new SFRotation (xAxis, anchorPoints [i + 1] .subtract (anchorPoints [i]));
-
-		collidableShape .shape        = Math .floor (i / 3) % 2 ? shape1 : shape2;
+		
+		collidableShape .shape        = Math .floor (i / 3) % 2 ? shape1 : shape2;	
 		rigidBody .position           = position;
 		rigidBody .orientation        = orientation;
-
+			
 		collidables .children .push (collidableShape);
 		rigidBody .geometry .push (collidableShape);
 		collection  .bodies .push (rigidBody);
@@ -633,15 +634,15 @@ function initialize ()
 
 	collection  .bodies [0] .fixed                               = true;
 	collection  .bodies [collection  .bodies .length - 1] .fixed = true;
-
+	
 	for (var i = 0; i < numCollidables - 1; ++ i)
 	{
 		var joint = scene .createNode ("BallJoint");
-
+	
 		joint .anchorPoint = anchorPoints [i + 1];
 		joint .body1       = collection .bodies [i];
 		joint .body2       = collection .bodies [i + 1];
-
+				
 		collection .joints .push (joint);
 	}
 }
@@ -649,7 +650,7 @@ function initialize ()
 function set_time (value, time)
 {
 	var force = new SFVec3f (0, 0, (Math .random () * wind * 2) - wind);
-
+	
 	for (var i = 0; i < collection .bodies .length; ++ i)
 		collection .bodies [i] .forces [0] = force;
 }

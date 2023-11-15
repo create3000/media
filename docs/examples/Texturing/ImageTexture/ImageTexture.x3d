@@ -3,10 +3,11 @@
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 02 Dec 2018 17:40:27 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/ImageTexture/ImageTexture.O.x3d'/>
     <meta name='modified' content='Sun, 17 Nov 2019 09:11:03 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.87, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Wed, 09 Aug 2023 12:17:35 GMT'/>
@@ -132,7 +133,7 @@ var
 function initialize ()
 {
 	n = 0;
-
+	
 	group .children .length = 0;
 
 	timeSensor .startTime = 0;
@@ -146,14 +147,14 @@ function set_time (value, time)
 		timeSensor .stopTime = time;
 		timeSensor .loop     = false;
 	}
-
+	
 	++ n;
-
+	
 	var image = Browser .currentScene .createProto ("Image");
 
 	image .startTime = n * timeSensor .cycleInterval;
 	image .loop      = true;
-
+	
 	group .children .push (image);
 }
 ]]>

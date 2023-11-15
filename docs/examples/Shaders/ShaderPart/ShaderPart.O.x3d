@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Immersive' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='Interpolation' level='4'/>
     <component name='Layering' level='1'/>
@@ -8,11 +8,13 @@
     <component name='Shaders' level='1'/>
     <component name='Shape' level='4'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <meta name='comment' content='World of Titania'/>
     <meta name='created' content='Sun, 10 Dec 2017 16:14:16 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.7, http://titania.create3000.de'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shaders/ShaderPart/ShaderPart.O.x3d'/>
     <meta name='modified' content='Sat, 22 Dec 2018 12:01:23 GMT'/>
+    <meta name='titania-add-metadata' content='true'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -109,17 +111,17 @@ main ()
 
 	float x = (2.0 * gl_FragCoord .x - size .x) / max (size .x, size .y);
 	float y = (2.0 * gl_FragCoord .y - size .y) / max (size .x, size .y);
-
+	
 	vec3 ray_dir  = normalize (vec3 (x, y, -1.0 /*+sqrt(x*x+y*y)*/));
 	vec3 ray_orig = vec3 (0.0, 0.0, 0.0);
 
 	float offs = 0.0;
 	float i    = 0.0;
-
+	
 	for (float j = 0.0; j < 64.0; j++)
 	{
 		float dist = distfunc (ray_orig + ray_dir * offs);
-
+		
 		offs += dist;
 		i     = j;
 
