@@ -7,7 +7,7 @@
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <component name='Text' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 29 Aug 2015 07:24:31 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.0, http://titania.create3000.de'/>
@@ -123,7 +123,7 @@
 function initialize ()
 {
 	isActive = true;
-	
+
 	Browser .setBrowserOption ("Shading",  "PHONG");
 	//Browser .setBrowserOption ("Dashboard", true);
 }
@@ -1003,13 +1003,13 @@ function set_children ()
 function build ()
 {
 	var scene = Browser .currentScene;
-	
+
 	playground .keyValue .length = 0;
 	group .children .length      = 0;
 	boxesLeft                    = 0;
-	
+
 	var positions = shuffle (fill ([ ], dimension [0] * dimension [1]));
-	
+
 	var
 		xOffset = (dimension [0] * size .x - size .x) / -2,
 		yOffset = (dimension [1] * size .y - size .y) / -2;
@@ -1021,17 +1021,17 @@ function build ()
 			x     = k % dimension [0],
 			y     = Math .floor (k / dimension [0]),
 			child = random (children .length - 1);
-		
+
 		playground .keyValue [k] = child + 1;
-		
+
 		var transform = scene .createNode ("Transform");
-		
+
 		transform .translation .x = x * size .x + xOffset;
 		transform .translation .z = y * size .y + yOffset;
 		transform .children [0]   = children [child];
-		
+
 		connect (transform, child);
-		
+
 		group .children [group .children .length] = transform;
 	}
 
@@ -1048,15 +1048,15 @@ function build ()
 function connect (transform, child)
 {
 	var scene = Browser .currentScene;
-	
+
 	if (child == 0)
 	{
 		var touchSensor = scene .createNode ("TouchSensor");
-		
+
 		transform .addChildren = new MFNode (touchSensor);
-		
+
 		Browser .addRoute (touchSensor, "touchTime", self, "set_touchTime");
-		
+
 		++ boxesLeft;
 	}
 }
@@ -1064,28 +1064,28 @@ function connect (transform, child)
 function fill (array, length)
 {
 	array .length = length;
-	
+
 	for (var i = 0; i < length; ++ i)
 		array [i] = i;
-	
+
 	return array;
 }
 
 function shuffle (array)
 {
 	var i = array .length;
-	
+
 	while (i > 1)
 	{
 		var
 			a   = --i,
 			b   = Math .round (Math .random () * i),
 			tmp = array [a];
-			
+
 		array [a] = array [b];
 		array [b] = tmp;
 	}
-	
+
 	return array;
 }
 
@@ -1175,14 +1175,14 @@ function eventsProcessed ()
 	var seconds = Math .floor (t) % 60;
 	t /= 60;
 	if (seconds < 10) seconds = "0" + seconds;
-	
+
 	var minutes = Math .floor (t) % 60;
 	t /= 60;
 	if (minutes < 10) minutes = "0" + minutes;
-	
+
 	var hours = Math .floor (t);
 	if (hours && hours < 10) hours = "0" + hours;
-	
+
 	string_changed [0] = "Boxes left: " + boxesLeft;
 	string_changed [1] = "Time: " + (hours ? hours + ":" : "") + minutes + ":" + seconds;
 }]]>

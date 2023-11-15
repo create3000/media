@@ -5,7 +5,7 @@
     <component name='Followers' level='1'/>
     <component name='Picking' level='3'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 23 Mar 2019 14:58:44 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
@@ -140,7 +140,7 @@ function set_points (value, time)
 	for (var i = 0, length = points .length; i < length; ++ i)
 	{
 		points [i] .color *= 0.99;
-	}	
+	}
 
 	for (var i = 0, length = points .length; i < length; ++ i)
 	{
@@ -153,16 +153,16 @@ function set_points (value, time)
 	for (var i = 0, length = value .length; i < length; ++ i)
 	{
 		var p = value [i];
-		
+
 		points .push ({ point: new SFVec3f (p .x, p .y, p .z), color: 1 });
 	}
-	
+
 	for (var i = 0, length = points .length; i < length; ++ i)
 	{
 		point [i] = points [i] .point;
 		color [i] = new SFColor (1, 1 - points [i] .color, 1 - points [i] .color);
 	}
-	
+
 	point .length = length;
 	color .length = length;
 }

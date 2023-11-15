@@ -6,7 +6,7 @@
     <component name='Layering' level='1'/>
     <component name='NURBS' level='1'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
@@ -185,18 +185,18 @@ function set_viewpointPosition (value, time)
 	interpolator .key         .length = 0;
 	interpolator .keyValue    .length = 0;
 	interpolator .keyVelocity .length = 0;
-	
+
 	for (var i = 0, length = group .children .length; i < length; ++ i)
 	{
 		interpolator .key .push ((i + 1) / (length + 1));
 		interpolator .keyValue .push (group .children [i] .viewpointPosition_changed .add (group .children [i] .translation));
 		interpolator .keyVelocity .push (new SFVec3f ());
 	}
-	
+
 	interpolator .key .unshift (0);
 	interpolator .keyValue .unshift (interpolator .keyValue [0]);
 	interpolator .keyVelocity .unshift (new SFVec3f ());
-	
+
 	interpolator .key .push (1);
 	interpolator .keyValue .push (interpolator .keyValue [interpolator .keyValue .length - 1]);
 	interpolator .keyVelocity .push (new SFVec3f ());
@@ -231,12 +231,12 @@ function eventsProcessed ()
 	}
 
 	group .children .length = 0;
-	
+
 	for (var i = 0, length = string .length; i < length; ++ i)
 	{
 		var
 			text = Browser .currentScene .createProto ("SizeText"),
-			hue  = Math .PI * 2 * (i / length); 
+			hue  = Math .PI * 2 * (i / length);
 
 		color .setHSV (hue, 1, 1);
 
@@ -246,9 +246,9 @@ function eventsProcessed ()
 		text .string [0]  = string [i];
 		text .size        = size [i];
 		text .color       = color;
-		
+
 		group .children .push (text);
-		
+
 		Browser .addRoute (group .children [i], "viewpointPosition_changed", script, "set_viewpointPosition");
 	}
 
@@ -259,7 +259,7 @@ function eventsProcessed ()
 		var p = i - 1;
 
 		s += group .children [i] .size;
-		
+
 		group .children [i] .translation .y = s;
 	}
 
@@ -417,7 +417,7 @@ function eventsProcessed ()
 function initialize ()
 {
 	Browser .setBrowserOption ("LogarithmicDepthBuffer", true);
-	
+
 	startTime = 0;
 }
 

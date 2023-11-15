@@ -9,7 +9,7 @@
     <component name='Picking' level='3'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 25 Mar 2019 17:22:57 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.4.4, http://titania.create3000.de'/>
@@ -531,15 +531,15 @@ function set_key (value, time)
 {
 	if (value !== " ")
 		return;
-		
+
 	set_triggerShot (time, time);
 }
 
 function set_triggerShot (value, time)
 {
 	var direction = proxy .orientation_changed .multVec (new SFVec3f (0, 0, -15));
-	
-	interpolator .keyValue = new MFVec3f (proxy .position_changed, proxy .position_changed .add (direction));	
+
+	interpolator .keyValue = new MFVec3f (proxy .position_changed, proxy .position_changed .add (direction));
 	timer .startTime       = time;
 }
 
@@ -549,20 +549,20 @@ function set_pick (value, time)
 		return;
 
 	var shape = getShape ();
-	
+
 	if (! shape)
 		return;
-		
+
 	var
 		image    = shape .appearance .texture .image,
 		texCoord = pickSensor .pickedTextureCoordinate [0],
 		cx       = Math .floor (image .width  * texCoord .x),
 		cy       = Math .floor (image .height * texCoord .y);
-	
+
 	var
 		sw = hole .width,
 		sh = hole .height;
-	 
+
 	for (var sy = 0; sy < sh; ++ sy)
 	{
 		for (var sx = 0; sx < sw; ++ sx)
@@ -572,7 +572,7 @@ function set_pick (value, time)
 				y  = Math .floor (cy - sh / 2 + sy),
 				sp = hole .array [sy * sw + sx],
 				dp = image .array [y * image .width + x];
-  
+
 			image .array [y * image .width + x] = mul (sp, dp);
 		}
 	}
@@ -588,15 +588,15 @@ function getShape ()
 	var
 		shapes   = pickSensor .pickTarget,
 		geometry = pickSensor .pickedGeometry [0];
-	
+
 	for (var i = 0, length = shapes .length; i < length; ++ i)
 	{
 		var shape = shapes [i];
-	
+
 		if (shape .geometry === geometry)
 			return shape;
 	}
-	
+
 	return null;
 }
 

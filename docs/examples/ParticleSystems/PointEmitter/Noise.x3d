@@ -3,7 +3,7 @@
 <X3D profile='Interchange' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
   <head>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 23 Dec 2017 00:33:15 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.10, http://titania.create3000.de'/>
@@ -117,10 +117,10 @@ function spline (x, nknots, knot)
 		/* Find the appropriate 4-point span of the spline. */
 		var x    = clamp(x, 0, 1) * nspans;
 		var span = Math.floor(x);
-		
+
 		if (span >= (nknots - 3))
 			span = (nknots - 3);
-		
+
 		x -= span;
 		i += span;
 

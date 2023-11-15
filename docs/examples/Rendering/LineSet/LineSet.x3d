@@ -3,7 +3,7 @@
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Scripting' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 10 Dec 2017 07:18:34 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
@@ -84,7 +84,7 @@ function Particle ()
 	this .vx = (Math .random () * 2 - 1) * speed;
 	this .vy = (Math .random () * 2 - 1) * speed;
 
-	// Now the radius of the particles. I want all of 
+	// Now the radius of the particles. I want all of
 	// them to be equal in size so no Math.random() here..
 	this .radius = 4;
 }
@@ -128,9 +128,9 @@ function set_time (value, time)
 	particles .lines = 0;
 
 	var point = points .point;
-	
+
 	point .length = particles .length;
-	
+
 	// In this function, we are first going to update every
 	// particle's position according to their velocities
 	for (var i = 0; i < particles .length; ++ i)
@@ -140,17 +140,17 @@ function set_time (value, time)
 		// Change the velocities
 		p1 .x += p1 .vx;
 		p1 .y += p1 .vy
-			
+
 		// We don't want to make the particles leave the
 		// area, so just change their position when they
 		// touch the walls of the window
-		if (p1 .x > width) 
+		if (p1 .x > width)
 			p1 .x = 0;
 
 		else if (p1 .x < 0)
 			p1 .x = width;
 
-		if (p1 .y > height) 
+		if (p1 .y > height)
 			p1 .y = 0;
 
 		else if (p1 .y < 0) {
@@ -201,17 +201,17 @@ function distance (p1, p2)
 		point [l * 2 + 1] .x   = p2 .x;
 		point [l * 2 + 1] .y   = p2 .y;
 
-		// Some acceleration for the partcles 
+		// Some acceleration for the partcles
 		// depending upon their distance
 		var
 			ax = dx / 1000,
 			ay = dy / 1000,
 			s2 = speed * 2;
-		
+
 		// Apply the acceleration on the particles
 		p1 .vx = Math .max (p1 .vx - ax, -s2);
 		p1 .vy = Math .max (p1 .vy - ay, -s2);
-		
+
 		p2 .vx = Math .min (p2 .vx + ax, s2);
 		p2 .vy = Math .min (p2 .vy + ay, s2);
 	}

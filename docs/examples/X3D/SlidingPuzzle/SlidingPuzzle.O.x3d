@@ -5,7 +5,7 @@
     <component name='Layering' level='1'/>
     <component name='Shape' level='4'/>
     <component name='Time' level='2'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 21 Dec 2015 20:19:56 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.3.11, http://titania.create3000.de'/>
@@ -774,16 +774,16 @@ function set_touchTime (index)
 			}
 		}
 	}
-	
+
 	if (coords .x !== emptyPiece .x && coords .y !== emptyPiece .y)
 		return;
-		
+
 	if (coords .y === emptyPiece .y)
 	{
 		if (coords .x < emptyPiece .x)
 			move = { x: coords .x, l: emptyPiece .x, d: 1, t: 0 }
 		else
-			move = { x: emptyPiece .x + 1, l: coords .x + 1, d: -1, t: 0 };	
+			move = { x: emptyPiece .x + 1, l: coords .x + 1, d: -1, t: 0 };
 	}
 	else
 	{
@@ -792,7 +792,7 @@ function set_touchTime (index)
 		else
 			move = { y: emptyPiece .y + 1, l: coords .y + 1, d: 1, t: 0 };
 	}
-	
+
 	touched        = true;
 	moving         = true;
 	timer .enabled = true;
@@ -801,16 +801,16 @@ function set_touchTime (index)
 function set_solveTime ()
 {
 	timer .enabled = false;
-	
+
 	emptyPiece = { x: 4, y: 4 };
-	
+
 	var dimension = xDimension * yDimension;
 
 	matrix .length = dimension;
-	
+
 	for (var i = 0, length = dimension - 1; i < length; ++ i)
 		matrix [i] = i;
-		
+
 	matrix [length] = -1;
 
 	set_translation ();
@@ -822,15 +822,15 @@ function set_startTime ()
 		return;
 
 	timer .enabled = true;
-	
+
 	var dimension = xDimension * yDimension;
-	
+
 	for (var y = 0; y < yDimension; ++ y)
 	{
 		for (var x = 0; x < xDimension; ++ x)
 		{
 			var i = x + y * xDimension;
-		
+
 			if (matrix [i] !== -1)
 				continue;
 
@@ -850,7 +850,7 @@ function set_time (value)
 		var
 			dt = 1 / Browser .currentFrameRate,
 			dv = velocity * dt / (touched ? 4 : 1);
-			
+
 		if (move .x !== undefined)
 		{
 			for (var x = move .x; x < move .l; ++ x)
@@ -858,7 +858,7 @@ function set_time (value)
 				var
 					i     = x + emptyPiece .y * xDimension,
 					piece = pieces .children [matrix [i]];
-				
+
 				piece .translation .x += dv * move .d;
 			}
 		}
@@ -869,20 +869,20 @@ function set_time (value)
 				var
 					i     = emptyPiece .x + y * yDimension,
 					piece = pieces .children [matrix [i]];
-				
+
 				piece .translation .y += dv * move .d;
 			}
 		}
 
 		move .t += dv;
-	
+
 		if (move .t > size .x * 2)
 		{
 			if (timer .elapsedTime > duration)
 				timer .enabled = false;
 
 			moving = false;
-			
+
 			if (touched)
 				touched = timer .enabled = false;
 
@@ -898,10 +898,10 @@ function set_time (value)
 					var
 						f = x + emptyPiece .y * xDimension,
 						t = x - step + emptyPiece .y * xDimension;
-					
+
 					matrix [t] = matrix [f];
 				}
-				
+
 				emptyPiece .x = x - step;
 				matrix [emptyPiece .x + emptyPiece .y * xDimension] = -1;
 			}
@@ -917,10 +917,10 @@ function set_time (value)
 					var
 						f = emptyPiece .x + y * xDimension,
 						t = emptyPiece .x + (y - step) * xDimension;
-					
+
 					matrix [t] = matrix [f];
 				}
-				
+
 				emptyPiece .y = y - step;
 				matrix [emptyPiece .x + emptyPiece .y * yDimension] = -1;
 			}
@@ -929,13 +929,13 @@ function set_time (value)
 		}
 	}
 	else
-	{	
+	{
 		if (move .x === undefined)
 		{
 			if (Math .random () < 0.5 && emptyPiece .x > 0 || emptyPiece .x === xDimension - 1)
 				move = { x: random (0, emptyPiece .x - 1), l: emptyPiece .x, d: 1, t: 0 }
 			else
-				move = { x: emptyPiece .x + 1, l: random (emptyPiece .x + 2, xDimension), d: -1, t: 0 };	
+				move = { x: emptyPiece .x + 1, l: random (emptyPiece .x + 2, xDimension), d: -1, t: 0 };
 		}
 		else
 		{
@@ -944,27 +944,27 @@ function set_time (value)
 			else
 				move = { y: emptyPiece .y + 1, l: random (emptyPiece .y + 2, yDimension), d: 1, t: 0 };
 		}
-	
-		moving = true;	
+
+		moving = true;
 	}
 }
 
 function set_translation ()
 {
 	var dimension = xDimension * yDimension;
-	
+
 	for (var y = 0; y < yDimension; ++ y)
 	{
 		for (var x = 0; x < xDimension; ++ x)
 		{
 			var index = matrix [x + y * xDimension];
-			
+
 			if (index === -1)
 				continue;
 
 			var piece= pieces .children [index];
-			
-			
+
+
 			piece .translation = new SFVec3f ( x * size .x * 2 - size .x * xDimension + size .x,
 			                                  -y * size .y * 2 + size .y * yDimension - size .y,
 			                                   0);

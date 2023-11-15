@@ -4,7 +4,7 @@
   <head>
     <component name='Scripting' level='1'/>
     <component name='Text' level='1'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 04 Dec 2018 10:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V4.6.7, http://titania.create3000.de'/>
@@ -37,15 +37,15 @@ function initialize ()
 		helix    = createHelix (),
 		cloud    = createCloud (helix .length),
 		keyValue = interpolator .keyValue;
-	
+
 	keyValue .length = 0;
-	
+
 	for (var i = 0, length = cloud .length; i < length; ++ i)
 		keyValue .push (cloud [i]);
-		
+
 	for (var i = 0, length = helix .length; i < length; ++ i)
 		keyValue .push (helix [i]);
-		
+
 	for (var i = 0, length = helix .length; i < length; ++ i)
 		keyValue .push (helix [i]);
 }
@@ -53,17 +53,17 @@ function initialize ()
 function createCloud (n)
 {
 	var points = new MFVec3f ();
-	
+
 	for (var i = 0; i < n; ++ i)
 	{
 		var
 			x = random (-10, 10),
 			y = random (-4, 4),
 			z = random (-4, 4);
-			
+
 		points .push (new SFVec3f (x, y, z));
 	}
-	
+
 	return points;
 }
 
@@ -82,17 +82,17 @@ function createHelix ()
 			z = Math .sin (a),
 			u = new SFVec3f (x, y, z),
 			d = new SFVec3f (x, -y, -z);
-		
+
 		points .push (u);
 		points .push (d);
-		
+
 		if (i % 6 == 0 && false)
 		{
 			for (var t = 0.2; t < 1; t += 0.2)
 				points .push (u .lerp (d, t));
 		}
 	}
-	
+
 	return points;
 }
 
