@@ -12,8 +12,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 27 Oct 2019 05:58:52 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Tue, 10 Oct 2023 17:33:56 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:22:16 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Volume'>
@@ -185,11 +186,11 @@ function set_dimension ()
     <Transform DEF='Volume_1'>
       <ProtoInstance name='Volume' DEF='Volume'>
         <fieldValue name='voxels'>
-          <ImageTexture3D DEF='_1'
+          <ImageTexture3D DEF='_5'
               url='"datasets/dicom/IM00001.implicit_little_endian.dcm"'/>
         </fieldValue>
       </ProtoInstance>
-      <ClipPlane DEF='_2'
+      <ClipPlane DEF='_6'
           plane='0 0 -1 0.643118'/>
     </Transform>
     <Transform DEF='VisibleClipPlane'>
@@ -202,7 +203,7 @@ function set_dimension ()
           scale='0.5 0.5 1'>
         <Shape>
           <Appearance>
-            <LineProperties DEF='_3'
+            <LineProperties DEF='_7'
                 linewidthScaleFactor='2'/>
             <Material
                 transparency='1'/>
@@ -211,7 +212,7 @@ function set_dimension ()
         </Shape>
         <Shape>
           <Appearance>
-            <LineProperties USE='_3'/>
+            <LineProperties USE='_7'/>
             <Material/>
           </Appearance>
           <IndexedLineSet
@@ -234,7 +235,7 @@ function set_translation (value)
 ]]>
       </Script>
     </Transform>
-    <ROUTE fromNode='ClipPlaneScript' fromField='plane_changed' toNode='_2' toField='set_plane'/>
+    <ROUTE fromNode='ClipPlaneScript' fromField='plane_changed' toNode='_6' toField='set_plane'/>
     <ROUTE fromNode='PlaneSensor' fromField='translation_changed' toNode='Rectangle2D' toField='set_translation'/>
     <ROUTE fromNode='PlaneSensor' fromField='translation_changed' toNode='ClipPlaneScript' toField='set_translation'/>
   </Scene>

@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CubeMapTexturing/ComposedCubeMapTexture/ComposedCubeMapTexture.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 27 Jan 2019 15:59:48 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:47:50 GMT"
+          "@content": "Wed, 15 Nov 2023 02:02:01 GMT"
         }
       ],
       "component": [
@@ -96,14 +84,160 @@
                       { "ShaderPart":
                         {
                           "@DEF": "VertexShader",
-                          "@url": [ "data:x-shader/x-vertex,\n\nprecision highp float;\nprecision highp int;\n\nuniform float refraction;\nuniform float reflection;\n\nuniform mat4 x3d_CameraSpaceMatrix;\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\nuniform mat3 x3d_NormalMatrix;\n\nattribute vec3 x3d_Normal;\nattribute vec4 x3d_Vertex;\n\nvarying vec3 v;  // point on geometry\nvarying vec3 vN; // normalized normal vector at this point on geometry\nvarying vec3 vReflect;\nvarying vec3 vRefract[3];\nvarying float vReflectionFactor;\n\nvoid\nmain ()\n{\n\tmat4 modelMatrix   = x3d_CameraSpaceMatrix * x3d_ModelViewMatrix;\n\tvec4 position      = x3d_ModelViewMatrix * x3d_Vertex;\n\tvec4 worldPosition = modelMatrix * x3d_Vertex;\n\tvec3 worldNormal   = normalize (mat3 (modelMatrix [0] .xyz, modelMatrix [1] .xyz, modelMatrix [2] .xyz) * x3d_Normal);\n\tvec3 I             = normalize (worldPosition .xyz - x3d_CameraSpaceMatrix [3] .xyz);\n\n\tvReflect           = reflect (I, worldNormal);\n\tvRefract [0]       = refract (I, worldNormal, refraction);\n\tvRefract [1]       = refract (I, worldNormal, refraction * 0.99);\n\tvRefract [2]       = refract (I, worldNormal, refraction * 0.98);\n\tvReflectionFactor  = pow (1.0 + dot (I, worldNormal), 1.0 - reflection);\n\n\tvN = normalize (x3d_NormalMatrix * x3d_Normal);\n\tv  = position .xyz;\n\n\tgl_Position = x3d_ProjectionMatrix * position;\n}\n\n" ]
+                          "#sourceCode": [
+"data:x-shader/x-vertex,",
+"",
+"precision highp float;",
+"precision highp int;",
+"",
+"uniform float refraction;",
+"uniform float reflection;",
+"",
+"uniform mat4 x3d_CameraSpaceMatrix;",
+"uniform mat4 x3d_ProjectionMatrix;",
+"uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat3 x3d_NormalMatrix;",
+"",
+"attribute vec3 x3d_Normal;",
+"attribute vec4 x3d_Vertex;",
+"",
+"varying vec3 v;  // point on geometry",
+"varying vec3 vN; // normalized normal vector at this point on geometry",
+"varying vec3 vReflect;",
+"varying vec3 vRefract[3];",
+"varying float vReflectionFactor;",
+"",
+"void",
+"main ()",
+"{",
+"\tmat4 modelMatrix   = x3d_CameraSpaceMatrix * x3d_ModelViewMatrix;",
+"\tvec4 position      = x3d_ModelViewMatrix * x3d_Vertex;",
+"\tvec4 worldPosition = modelMatrix * x3d_Vertex;",
+"\tvec3 worldNormal   = normalize (mat3 (modelMatrix [0] .xyz, modelMatrix [1] .xyz, modelMatrix [2] .xyz) * x3d_Normal);",
+"\tvec3 I             = normalize (worldPosition .xyz - x3d_CameraSpaceMatrix [3] .xyz);",
+"",
+"\tvReflect           = reflect (I, worldNormal);",
+"\tvRefract [0]       = refract (I, worldNormal, refraction);",
+"\tvRefract [1]       = refract (I, worldNormal, refraction * 0.99);",
+"\tvRefract [2]       = refract (I, worldNormal, refraction * 0.98);",
+"\tvReflectionFactor  = pow (1.0 + dot (I, worldNormal), 1.0 - reflection);",
+"",
+"\tvN = normalize (x3d_NormalMatrix * x3d_Normal);",
+"\tv  = position .xyz;",
+"",
+"\tgl_Position = x3d_ProjectionMatrix * position;",
+"}",
+"",
+""
+                          ]
                         }
                       },
                       { "ShaderPart":
                         {
                           "@DEF": "FragmentShader",
                           "@type": "FRAGMENT",
-                          "@url": [ "data:x-shader/x-fragment,\n\nprecision highp float;\nprecision highp int;\n\nuniform int x3d_NumLights;\nuniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];\nuniform x3d_MaterialParameters x3d_Material;\n\nuniform samplerCube cubMapTexture;\n\nvarying vec3 v;  // point on geometry\nvarying vec3 vN; // normalized normal vector at this point on geometry\nvarying vec3 vReflect;\nvarying vec3 vRefract [3];\nvarying float vReflectionFactor;\n\nvec4\ngetTextureColor ()\n{\n\tvec4 reflectedColor = textureCube (cubMapTexture, vec3 (vReflect .xy, -vReflect .z));\n\tvec4 refractedColor = vec4 (1.0);\n\n\trefractedColor .r = textureCube (cubMapTexture, vec3 (vRefract [0] .xy, -vRefract [0] .z)) .r;\n\trefractedColor .g = textureCube (cubMapTexture, vec3 (vRefract [1] .xy, -vRefract [1] .z)) .g;\n\trefractedColor .b = textureCube (cubMapTexture, vec3 (vRefract [2] .xy, -vRefract [2] .z)) .b;\n\n\treturn mix (refractedColor, reflectedColor, clamp (vReflectionFactor, 0.0, 1.0));\n}\n\nfloat\ngetSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)\n{\n\tfloat spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));\n\n\tif (spotAngle >= cutOffAngle)\n\t\treturn 0.0;\n\telse if (spotAngle <= beamWidth)\n\t\treturn 1.0;\n\n\treturn (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);\n}\n\nvec4\ngetMaterialColor (in x3d_MaterialParameters material)\n{\n\tvec4 textureColor = getTextureColor ();\n\n  vec3  N  = normalize (gl_FrontFacing ? vN : -vN);\n  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position\n  float dV = length (v);\n\n  // Calculate diffuseFactor & alpha\n\n  float alpha = 1.0 - material .transparency;\n\n  alpha *= textureColor .a;\n\n  // Apply light sources\n\n  vec3 finalColor = textureColor .rgb;\n\n  for (int i = 0; i < x3d_MaxLights; ++ i)\n  {\n    if (i == x3d_NumLights)\n      break;\n\n    x3d_LightSourceParameters light = x3d_LightSource [i];\n\n    vec3  vL = light .location - v;\n    float dL = length (vL);\n    bool  di = light .type == x3d_DirectionalLight;\n\n    if (di || dL <= light .radius)\n    {\n      vec3 d = light .direction;\n      vec3 c = light .attenuation;\n      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.\n      vec3 H = normalize (L + V);             // Specular term\n\n      float lightAngle            = dot (N, L);      // Angle between normal and light ray.\n      float specularFactor        = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;\n      float attenuationFactor     = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);\n      float spotFactor            = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;\n      float attenuationSpotFactor = attenuationFactor * spotFactor;\n      vec3  specularTerm          = material .specularColor * specularFactor;\n\n      finalColor += attenuationSpotFactor * light .color * light .intensity * specularTerm;\n    }\n  }\n\n  return vec4 (finalColor, alpha);\n}\n\nvoid\nmain ()\n{\n\tgl_FragColor = getMaterialColor (x3d_Material);\n}\n" ]
+                          "#sourceCode": [
+"data:x-shader/x-fragment,",
+"",
+"precision highp float;",
+"precision highp int;",
+"",
+"uniform int x3d_NumLights;",
+"uniform x3d_LightSourceParameters x3d_LightSource [x3d_MaxLights];",
+"uniform x3d_MaterialParameters x3d_Material;",
+"",
+"uniform samplerCube cubMapTexture;",
+"",
+"varying vec3 v;  // point on geometry",
+"varying vec3 vN; // normalized normal vector at this point on geometry",
+"varying vec3 vReflect;",
+"varying vec3 vRefract [3];",
+"varying float vReflectionFactor;",
+"",
+"vec4",
+"getTextureColor ()",
+"{",
+"\tvec4 reflectedColor = textureCube (cubMapTexture, vec3 (vReflect .xy, -vReflect .z));",
+"\tvec4 refractedColor = vec4 (1.0);",
+"",
+"\trefractedColor .r = textureCube (cubMapTexture, vec3 (vRefract [0] .xy, -vRefract [0] .z)) .r;",
+"\trefractedColor .g = textureCube (cubMapTexture, vec3 (vRefract [1] .xy, -vRefract [1] .z)) .g;",
+"\trefractedColor .b = textureCube (cubMapTexture, vec3 (vRefract [2] .xy, -vRefract [2] .z)) .b;",
+"",
+"\treturn mix (refractedColor, reflectedColor, clamp (vReflectionFactor, 0.0, 1.0));",
+"}",
+"",
+"float",
+"getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)",
+"{",
+"\tfloat spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));",
+"",
+"\tif (spotAngle >= cutOffAngle)",
+"\t\treturn 0.0;",
+"\telse if (spotAngle <= beamWidth)",
+"\t\treturn 1.0;",
+"",
+"\treturn (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);",
+"}",
+"",
+"vec4",
+"getMaterialColor (in x3d_MaterialParameters material)",
+"{",
+"\tvec4 textureColor = getTextureColor ();",
+"",
+"  vec3  N  = normalize (gl_FrontFacing ? vN : -vN);",
+"  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position",
+"  float dV = length (v);",
+"",
+"  // Calculate diffuseFactor & alpha",
+"",
+"  float alpha = 1.0 - material .transparency;",
+"",
+"  alpha *= textureColor .a;",
+"",
+"  // Apply light sources",
+"",
+"  vec3 finalColor = textureColor .rgb;",
+"",
+"  for (int i = 0; i < x3d_MaxLights; ++ i)",
+"  {",
+"    if (i == x3d_NumLights)",
+"      break;",
+"",
+"    x3d_LightSourceParameters light = x3d_LightSource [i];",
+"",
+"    vec3  vL = light .location - v;",
+"    float dL = length (vL);",
+"    bool  di = light .type == x3d_DirectionalLight;",
+"",
+"    if (di || dL <= light .radius)",
+"    {",
+"      vec3 d = light .direction;",
+"      vec3 c = light .attenuation;",
+"      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.",
+"      vec3 H = normalize (L + V);             // Specular term",
+"",
+"      float lightAngle            = dot (N, L);      // Angle between normal and light ray.",
+"      float specularFactor        = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;",
+"      float attenuationFactor     = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);",
+"      float spotFactor            = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;",
+"      float attenuationSpotFactor = attenuationFactor * spotFactor;",
+"      vec3  specularTerm          = material .specularColor * specularFactor;",
+"",
+"      finalColor += attenuationSpotFactor * light .color * light .intensity * specularTerm;",
+"    }",
+"  }",
+"",
+"  return vec4 (finalColor, alpha);",
+"}",
+"",
+"void",
+"main ()",
+"{",
+"\tgl_FragColor = getMaterialColor (x3d_Material);",
+"}",
+""
+                          ]
                         }
                       }
                     ],
@@ -155,11 +289,11 @@
             "@DEF": "WideOcean",
             "-frontTexture": { "ImageTexture":
               {
-                "@DEF": "_1",
+                "@DEF": "_3",
                 "@url": [ "assets/WideOcean/WideOcean-front.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@DEF": "_2",
+                    "@DEF": "_4",
                     "@minificationFilter": "DEFAULT",
                     "@magnificationFilter": "DEFAULT",
                     "@boundaryModeS": "CLAMP_TO_EDGE",
@@ -172,55 +306,55 @@
             },
             "-backTexture": { "ImageTexture":
               {
-                "@DEF": "_3",
+                "@DEF": "_5",
                 "@url": [ "assets/WideOcean/WideOcean-back.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@USE": "_2"
+                    "@USE": "_4"
                   }
                 }
               }
             },
             "-leftTexture": { "ImageTexture":
               {
-                "@DEF": "_4",
+                "@DEF": "_6",
                 "@url": [ "assets/WideOcean/WideOcean-left.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@USE": "_2"
+                    "@USE": "_4"
                   }
                 }
               }
             },
             "-rightTexture": { "ImageTexture":
               {
-                "@DEF": "_5",
+                "@DEF": "_7",
                 "@url": [ "assets/WideOcean/WideOcean-right.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@USE": "_2"
+                    "@USE": "_4"
                   }
                 }
               }
             },
             "-topTexture": { "ImageTexture":
               {
-                "@DEF": "_6",
+                "@DEF": "_8",
                 "@url": [ "assets/WideOcean/WideOcean-top.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@USE": "_2"
+                    "@USE": "_4"
                   }
                 }
               }
             },
             "-bottomTexture": { "ImageTexture":
               {
-                "@DEF": "_7",
+                "@DEF": "_9",
                 "@url": [ "assets/WideOcean/WideOcean-bottom.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@USE": "_2"
+                    "@USE": "_4"
                   }
                 }
               }
@@ -229,8 +363,8 @@
         },
         { "Transform":
           {
-            "@DEF": "_8",
-            "@rotation": [ 0, -1, 0, 2.16262637828138 ],
+            "@DEF": "_10",
+            "@rotation": [ 0, -1, 0, 2.72357692843222 ],
             "-children": [
               { "Group":
                 {
@@ -272,7 +406,7 @@
             "-children": [
               { "Transform":
                 {
-                  "@DEF": "_9",
+                  "@DEF": "_1",
                   "-children": [
                     { "Shape":
                       {
@@ -286,35 +420,35 @@
                             },
                             "-texture": { "ComposedCubeMapTexture":
                               {
-                                "@DEF": "_10",
+                                "@DEF": "_2",
                                 "-frontTexture": { "ImageTexture":
-                                  {
-                                    "@USE": "_1"
-                                  }
-                                },
-                                "-backTexture": { "ImageTexture":
                                   {
                                     "@USE": "_3"
                                   }
                                 },
-                                "-leftTexture": { "ImageTexture":
-                                  {
-                                    "@USE": "_4"
-                                  }
-                                },
-                                "-rightTexture": { "ImageTexture":
+                                "-backTexture": { "ImageTexture":
                                   {
                                     "@USE": "_5"
                                   }
                                 },
-                                "-bottomTexture": { "ImageTexture":
+                                "-leftTexture": { "ImageTexture":
+                                  {
+                                    "@USE": "_6"
+                                  }
+                                },
+                                "-rightTexture": { "ImageTexture":
                                   {
                                     "@USE": "_7"
                                   }
                                 },
                                 "-topTexture": { "ImageTexture":
                                   {
-                                    "@USE": "_6"
+                                    "@USE": "_8"
+                                  }
+                                },
+                                "-bottomTexture": { "ImageTexture":
+                                  {
+                                    "@USE": "_9"
                                   }
                                 }
                               }
@@ -333,7 +467,7 @@
                                       "-children": [
                                         { "ComposedCubeMapTexture":
                                           {
-                                            "@USE": "_10"
+                                            "@USE": "_2"
                                           }
                                         }
                                       ]
@@ -369,7 +503,7 @@
           {
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_8",
+            "@toNode": "_10",
             "@toField": "rotation"
           }
         }

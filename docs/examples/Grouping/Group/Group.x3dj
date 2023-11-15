@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.8, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Grouping/Group/Group.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 02:21:23 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:53:53 GMT"
+          "@content": "Wed, 15 Nov 2023 02:07:10 GMT"
         }
       ],
       "component": [
@@ -49,7 +41,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -610,7 +602,7 @@
                 ]
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -655,11 +647,11 @@
 "\tvar index = getIndex (position [2], position [1], position [0]);",
 "",
 "\tmatrix [index] = 2;",
-"\t",
+"",
 "\tfor (var zOffset = -1; zOffset < 2; ++ zOffset)",
 "\t{",
 "\t\tvar z = position [2] + zOffset;",
-"\t",
+"",
 "\t\tif (z < 0 || z >= dimension)",
 "\t\t\tcontinue;",
 "",
@@ -674,14 +666,14 @@
 "\t\t\t{",
 "\t\t\t\tif (Math .abs (xOffset) + Math .abs (yOffset) + Math .abs (zOffset) > 1)",
 "\t\t\t\t\tcontinue;",
-"\t\t\t\t",
+"",
 "\t\t\t\tvar x = position [0] + xOffset;",
-"\t\t\t\t",
+"",
 "\t\t\t\tif (x < 0 || x >= dimension)",
 "\t\t\t\t\tcontinue;",
-"\t\t\t\t",
+"",
 "\t\t\t\tvar next = getIndex (z, y, x);",
-"\t\t\t\t",
+"",
 "\t\t\t\tif (matrix [next] == 1)",
 "\t\t\t\t{",
 "\t\t\t\t\t//print (x, \" \", y, \" \", z, \" \", next, \" \", matrix [next]);",
@@ -708,7 +700,7 @@
 "\t\tvar transform = cache .pop ();",
 "\t}",
 "\telse",
-"\t{\t",
+"\t{",
 "\t\tvar transform = Browser .currentScene .createNode (\"Transform\");",
 "",
 "\t\ttransform .children .push (shape);",
@@ -717,7 +709,7 @@
 "\ttransform .translation .x = position [0] * size + offset;",
 "\ttransform .translation .y = position [1] * size + offset;",
 "\ttransform .translation .z = -position [2] * size + offset;",
-"\t",
+"",
 "\tgroup .children .push (transform);",
 "}",
 "",

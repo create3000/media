@@ -10,9 +10,8 @@
     <meta name='created' content='Fri, 14 Dec 2018 17:54:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 15 Dec 2018 02:34:30 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:55:35 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:08:55 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -256,7 +255,7 @@
               point='-0.0389259 -3.18513 -1.17972e-14, -0.0389259 -3.26298 -1.17972e-14, -0.116778 -3.26298 -1.20488e-14, -0.116778 -3.34083 -1.20488e-14, -0.66174 -3.34083 -1.38096e-14, -0.66174 -3.41869 -1.38096e-14, -0.739592 -3.41869 -1.40611e-14, -0.739592 -3.49654 -1.40611e-14, -0.66174 -3.49654 -1.38096e-14, -0.66174 -3.57439 -1.38096e-14, 0.66174 -3.57439 -9.53329e-15, 0.66174 -3.49654 -9.53329e-15, 0.739592 -3.49654 -9.28174e-15, 0.739592 -3.41869 -9.28174e-15, 0.66174 -3.41869 -9.53329e-15, 0.66174 -3.34083 -9.53329e-15, 0.116778 -3.34083 -1.12941e-14, 0.116778 -3.26298 -1.12941e-14, 0.0389259 -3.26298 -1.15457e-14, 0.0389259 -3.18513 -1.15457e-14, -0.0389259 -3.18513 -1.17972e-14, -0.0389259 -3.18513 -1.17972e-14'/>
         </IndexedTriangleSet>
       </Shape>
-      <Switch DEF='_1'
+      <Switch DEF='_14'
           whichChoice='0'>
         <Script DEF='WeaponScript'>
           <field accessType='inputOnly' type='SFBool' name='set_active'/>
@@ -275,16 +274,15 @@ function set_active (value, time)
 ]]>
         </Script>
         <Group>
-          <TimeSensor DEF='_2'
+          <TimeSensor DEF='_15'
               cycleInterval='3'
               loop='true'/>
-          <TimeSensor DEF='_3'
-              startTime='1544841196.42438'/>
-          <PositionInterpolator DEF='_4'
+          <TimeSensor DEF='_16'
+              startTime='1700014135.717'/>
+          <PositionInterpolator DEF='_17'
               key='0, 1'
               keyValue='0 0 0, 0 3 0'/>
-          <Transform DEF='Weapon'
-              translation='0 3 0'>
+          <Transform DEF='Weapon'>
             <Shape>
               <Appearance>
                 <Material
@@ -303,7 +301,7 @@ function set_active (value, time)
         </Group>
       </Switch>
     </Transform>
-    <KeySensor DEF='_5'/>
+    <KeySensor DEF='_18'/>
     <Script DEF='SpaceInvadersScript'>
       <field accessType='inputOnly' type='SFInt32' name='set_actionKey'/>
       <field accessType='inputOnly' type='SFString' name='set_key'/>
@@ -348,22 +346,23 @@ function set_key (value, time)
         minFront='20'
         maxBack='30'
         maxFront='30'>
-      <AudioClip DEF='_6'
+      <AudioClip DEF='_19'
           description='Weapon'
-          url='"assets/weapon.mp3"'/>
+          url='"assets/weapon.mp3"'
+          loop='true'/>
     </Sound>
     <Inline
         global='true'
         url='"assets/starfield.x3d"'/>
-    <ROUTE fromNode='_5' fromField='actionKeyPress' toNode='SpaceInvadersScript' toField='set_actionKey'/>
+    <ROUTE fromNode='_18' fromField='actionKeyPress' toNode='SpaceInvadersScript' toField='set_actionKey'/>
     <ROUTE fromNode='SpaceInvadersScript' fromField='translation_changed' toNode='Pad' toField='set_translation'/>
-    <ROUTE fromNode='_3' fromField='fraction_changed' toNode='_4' toField='set_fraction'/>
-    <ROUTE fromNode='_4' fromField='value_changed' toNode='Weapon' toField='set_translation'/>
-    <ROUTE fromNode='_3' fromField='isActive' toNode='WeaponScript' toField='set_active'/>
-    <ROUTE fromNode='WeaponScript' fromField='whichChoice_changed' toNode='_1' toField='set_whichChoice'/>
-    <ROUTE fromNode='_5' fromField='keyPress' toNode='SpaceInvadersScript' toField='set_key'/>
-    <ROUTE fromNode='SpaceInvadersScript' fromField='fire' toNode='_3' toField='set_startTime'/>
-    <ROUTE fromNode='_2' fromField='cycleTime' toNode='_3' toField='set_startTime'/>
-    <ROUTE fromNode='_3' fromField='isActive' toNode='_6' toField='set_loop'/>
+    <ROUTE fromNode='_16' fromField='fraction_changed' toNode='_17' toField='set_fraction'/>
+    <ROUTE fromNode='_17' fromField='value_changed' toNode='Weapon' toField='set_translation'/>
+    <ROUTE fromNode='_16' fromField='isActive' toNode='WeaponScript' toField='set_active'/>
+    <ROUTE fromNode='WeaponScript' fromField='whichChoice_changed' toNode='_14' toField='set_whichChoice'/>
+    <ROUTE fromNode='_18' fromField='keyPress' toNode='SpaceInvadersScript' toField='set_key'/>
+    <ROUTE fromNode='SpaceInvadersScript' fromField='fire' toNode='_16' toField='set_startTime'/>
+    <ROUTE fromNode='_15' fromField='cycleTime' toNode='_16' toField='set_startTime'/>
+    <ROUTE fromNode='_16' fromField='isActive' toNode='_19' toField='set_loop'/>
   </Scene>
 </X3D>

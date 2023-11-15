@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.0.2, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/PointingDeviceSensor/CylinderSensor/CylinderSensor.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 27 Nov 2017 02:53:33 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:01:00 GMT"
+          "@content": "Wed, 15 Nov 2023 02:15:27 GMT"
         }
       ],
       "component": [
@@ -61,7 +53,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -148,7 +140,7 @@
                 { "CylinderSensor":
                   {
                     "@DEF": "CylinderTouch",
-                    "@diskAngle": 9.69914e+8,
+                    "@diskAngle": 9.69914e8,
                     "IS": {
                       "connect": [
                         {
@@ -252,7 +244,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -296,7 +288,7 @@
 "\t\tif (value != value_changed)",
 "\t\t{",
 "\t\t\tvar axis = sensor .axisRotation .multVec (new SFVec3f (0, 1, 0));",
-"\t\t\t",
+"",
 "\t\t\trotation_changed = new SFRotation (axis, -value / factor);",
 "\t\t\tvalue_changed    = value;",
 "\t\t}",
@@ -485,7 +477,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -598,7 +590,7 @@
               },
               { "Transform":
                 {
-                  "@DEF": "Number_1",
+                  "@DEF": "Number_2",
                   "@translation": [ 2, 0, 0 ],
                   "@scale": [ 0.5, 0.5, 0.5 ],
                   "-children": [
@@ -615,7 +607,7 @@
                         },
                         "-geometry": { "ProtoInstance":
                           {
-                            "@DEF": "_2",
+                            "@DEF": "_3",
                             "@name": "Number",
                             "fieldValue": [
                               {
@@ -627,7 +619,7 @@
                                 "-children": [
                                   { "FontStyle":
                                     {
-                                      "@DEF": "_3",
+                                      "@DEF": "_4",
                                       "@family": [ "TYPEWRITER" ],
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
                                     }
@@ -657,7 +649,7 @@
           {
             "@fromNode": "DiskSensor",
             "@fromField": "value_changed",
-            "@toNode": "_2",
+            "@toNode": "_3",
             "@toField": "value"
           }
         }

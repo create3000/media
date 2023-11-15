@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.11, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsSweptSurface/NurbsSweptSurface.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Sat, 26 Jan 2019 01:49:12 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:57:08 GMT"
+          "@content": "Wed, 15 Nov 2023 02:10:47 GMT"
         }
       ],
       "component": [
@@ -194,7 +186,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var first = Math .random () * Math .PI * 2;",
@@ -213,7 +205,7 @@
 "\t\tvar",
 "\t\t\tx = Math .sin (first + z * twist) * radius,",
 "\t\t\ty = Math .cos (first + z * twist) * radius;",
-"\t\t\t",
+"",
 "\t\tcontrolPoint .point .push (new SFVec3d (x, y, z));",
 "\t}",
 "}",
@@ -281,7 +273,7 @@
                   {
                     "@DEF": "BoxRotationInterpolator",
                     "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
-                    "@keyValue": [ 0, 0, 1, 0, -3.06559318185163e-18, 0.00000367320512848233, -0.999999999993254, 1.5707963267949, 4.21656770439807e-15, 0.00000367320512426576, -0.999999999993254, 3.14159253438725, -1.20024808346484e-13, -0.00000367320524850646, 0.999999999993254, 1.57079638639955, 0, 0, 1, 0 ]
+                    "@keyValue": [ 0, 0, 1, 0, -3.06559318185163e-18, 3.67320512848233e-6, -0.999999999993254, 1.5707963267949, 4.21656770439807e-15, 3.67320512426576e-6, -0.999999999993254, 3.14159253438725, -1.20024808346484e-13, -3.67320524850646e-6, 0.999999999993254, 1.57079638639955, 0, 0, 1, 0 ]
                   }
                 },
                 { "Script":
@@ -317,7 +309,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -346,22 +338,22 @@
 "function build ()",
 "{",
 "\tgroup .children .length = 0;",
-"\t",
+"",
 "\tfor (var i = 0; i < lines; ++ i)",
 "\t{",
 "\t\tvar line = Browser .currentScene .createProto (\"TubeLine\");",
-"\t\t",
+"",
 "\t\t// Scale a little to prevent z-fighting.",
 "\t\tline .scale = new SFVec3f (1 + Math .random () * 0.1,",
 "\t\t                           1 + Math .random () * 0.1,",
 "\t\t                           1 + Math .random () * 0.1);",
-"\t\t",
+"",
 "\t\tif (material .length)",
 "\t\t\tline .material = material [Math .floor (Math .random () * material .length)];",
-"\t\t",
+"",
 "\t\tgroup .children .push (line);",
 "\t}",
-"\t",
+"",
 "\tset_fraction (0, 0);",
 "}",
 ""
@@ -451,31 +443,31 @@
                             "-children": [
                               { "Material":
                                 {
-                                  "@DEF": "_4",
+                                  "@DEF": "_17",
                                   "@diffuseColor": [ 0.968627, 0.929412, 0.6 ]
                                 }
                               },
                               { "Material":
                                 {
-                                  "@DEF": "_5",
+                                  "@DEF": "_18",
                                   "@diffuseColor": [ 0.862745, 0.12549, 0.180392 ]
                                 }
                               },
                               { "Material":
                                 {
-                                  "@DEF": "_6",
+                                  "@DEF": "_19",
                                   "@diffuseColor": [ 0.462745, 0.188235, 0.419608 ]
                                 }
                               },
                               { "Material":
                                 {
-                                  "@DEF": "_7",
+                                  "@DEF": "_20",
                                   "@diffuseColor": [ 0.176471, 0.2, 0.545098 ]
                                 }
                               },
                               { "Material":
                                 {
-                                  "@DEF": "_8",
+                                  "@DEF": "_21",
                                   "@diffuseColor": [ 0.917647, 0.54902, 0.176471 ]
                                 }
                               }

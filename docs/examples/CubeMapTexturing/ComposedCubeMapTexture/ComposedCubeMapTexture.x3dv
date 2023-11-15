@@ -1,19 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT CubeMapTexturing : 3
 COMPONENT Shaders : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sat, 30 Apr 2016 02:18:39 GMT"
 META "creator" "holger"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/CubeMapTexturing/ComposedCubeMapTexture/ComposedCubeMapTexture.O.x3d"
-META "modified" "Sun, 27 Jan 2019 15:59:48 GMT"
-META "titania-add-metadata" "true"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:47:42 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:02:00 GMT"
 
 EXTERNPROTO Dolphin [ ]
 "assets/Dolphin.x3d#Dolphin"
@@ -187,9 +184,9 @@ main ()
 WorldInfo { }
 
 DEF WideOcean TextureBackground {
-  frontTexture DEF _1 ImageTexture {
+  frontTexture DEF _3 ImageTexture {
     url "assets/WideOcean/WideOcean-front.jpg"
-    textureProperties DEF _2 TextureProperties {
+    textureProperties DEF _4 TextureProperties {
       minificationFilter "DEFAULT"
       magnificationFilter "DEFAULT"
       boundaryModeS "CLAMP_TO_EDGE"
@@ -198,30 +195,30 @@ DEF WideOcean TextureBackground {
       textureCompression "DEFAULT"
     }
   }
-  backTexture DEF _3 ImageTexture {
+  backTexture DEF _5 ImageTexture {
     url "assets/WideOcean/WideOcean-back.jpg"
-    textureProperties USE _2
+    textureProperties USE _4
   }
-  leftTexture DEF _4 ImageTexture {
+  leftTexture DEF _6 ImageTexture {
     url "assets/WideOcean/WideOcean-left.jpg"
-    textureProperties USE _2
+    textureProperties USE _4
   }
-  rightTexture DEF _5 ImageTexture {
+  rightTexture DEF _7 ImageTexture {
     url "assets/WideOcean/WideOcean-right.jpg"
-    textureProperties USE _2
+    textureProperties USE _4
   }
-  topTexture DEF _6 ImageTexture {
+  topTexture DEF _8 ImageTexture {
     url "assets/WideOcean/WideOcean-top.jpg"
-    textureProperties USE _2
+    textureProperties USE _4
   }
-  bottomTexture DEF _7 ImageTexture {
+  bottomTexture DEF _9 ImageTexture {
     url "assets/WideOcean/WideOcean-bottom.jpg"
-    textureProperties USE _2
+    textureProperties USE _4
   }
 }
 
-DEF _8 Transform {
-  rotation 0 -1 0 2.16262637828138
+DEF _10 Transform {
+  rotation 0 -1 0 2.71697956908091
   children [
     DEF Animation Group {
       children [
@@ -247,24 +244,24 @@ DEF _8 Transform {
 }
 
 DEF Dolphin Transform {
-  children DEF _9 Transform {
+  children DEF _1 Transform {
     children Shape {
       appearance Appearance {
         material Material {
           specularColor 0 0.192168 0.357
           shininess 0.073718
         }
-        texture DEF _10 ComposedCubeMapTexture {
-          frontTexture USE _1
-          backTexture USE _3
-          leftTexture USE _4
-          rightTexture USE _5
-          bottomTexture USE _7
-          topTexture USE _6
+        texture DEF _2 ComposedCubeMapTexture {
+          frontTexture USE _3
+          backTexture USE _5
+          leftTexture USE _6
+          rightTexture USE _7
+          topTexture USE _8
+          bottomTexture USE _9
         }
         shaders FresnelShader {
           reflection 0.4
-          cubeMapTexture USE _10
+          cubeMapTexture USE _2
         }
       }
       geometry Dolphin { }
@@ -273,4 +270,4 @@ DEF Dolphin Transform {
 }
 
 ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
-ROUTE RotationInterpolator.value_changed TO _8.set_rotation
+ROUTE RotationInterpolator.value_changed TO _10.set_rotation

@@ -1,18 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Fri, 21 Dec 2018 04:34:14 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d"
-META "modified" "Mon, 07 Jan 2019 04:02:09 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:07:38 GMT"
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:22:42 GMT"
 
 EXTERNPROTO ArcOpen2D [
   inputOutput    SFInt32 dimension
@@ -24,7 +22,9 @@ EXTERNPROTO ArcOpen2D [
 ]
 [ "assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D" ]
 
-WorldInfo { }
+WorldInfo {
+  title "TimeSensor"
+}
 
 NavigationInfo {
   type "NONE"
@@ -34,7 +34,7 @@ Viewpoint {
   position 0 0 34.142
 }
 
-DEF _1 TimeSensor {
+DEF _14 TimeSensor {
   loop TRUE
 }
 
@@ -64,7 +64,7 @@ function set_time (value, time)
 	seconds_changed = zero - seconds * Math .PI * 2;
 	minutes_changed = zero - minutes * Math .PI * 2;
 	hours_changed   = zero - hours12 * Math .PI * 2;
-	
+
 	string_changed [0] = fill (hours24 * 24) + \":\" + fill (minutes * 60) + \":\" + fill (seconds * 60);
 }
 
@@ -74,7 +74,7 @@ function fill (value)
 
 	if (value < 10)
 		return \"0\" + value;
-		
+
 	return value .toString ();
 }
 "
@@ -82,43 +82,43 @@ function fill (value)
 
 DEF Clock Group {
   children [
-    DEF Seconds_1 Shape {
-      appearance DEF _2 Appearance {
+    DEF Seconds_15 Shape {
+      appearance DEF _16 Appearance {
         material UnlitMaterial {
           emissiveColor 0 1 0.995191
         }
       }
-      geometry DEF _3 ArcOpen2D {
+      geometry DEF _17 ArcOpen2D {
         dimension 64
-        startAngle 0.733038
+        startAngle -3.769911
         innerRadius 9
         outerRadius 10
         solid TRUE
       }
     }
-    DEF Minutes_1 Shape {
-      appearance USE _2
-      geometry DEF _4 ArcOpen2D {
+    DEF Minutes_18 Shape {
+      appearance USE _16
+      geometry DEF _19 ArcOpen2D {
         dimension 64
-        startAngle 1.34739
+        startAngle 0.3298672
         innerRadius 10.3
         outerRadius 11.3
       }
     }
-    DEF Hours_1 Shape {
-      appearance USE _2
-      geometry DEF _5 ArcOpen2D {
+    DEF Hours_20 Shape {
+      appearance USE _16
+      geometry DEF _21 ArcOpen2D {
         dimension 64
-        startAngle -1.06581
+        startAngle 0.420188
         innerRadius 11.6
         outerRadius 12.6
         solid TRUE
       }
     }
-    DEF Text_1 Shape {
-      appearance USE _2
-      geometry DEF _6 Text {
-        string "05:02:08"
+    DEF Text_22 Shape {
+      appearance USE _16
+      geometry DEF _23 Text {
+        string "02:11:51"
         solid TRUE
         fontStyle FontStyle {
           family "assets/Papertape-Letters.otf"
@@ -130,7 +130,7 @@ DEF Clock Group {
     DEF LocalTime Transform {
       translation 0 -2.67569 0
       children Shape {
-        appearance USE _2
+        appearance USE _16
         geometry Text {
           string "Local Time"
           solid TRUE
@@ -142,10 +142,10 @@ DEF Clock Group {
         }
       }
     }
-    DEF Minutes5_1 Group {
+    DEF Minutes5_24 Group {
       children [
         Shape {
-          appearance USE _2
+          appearance USE _16
           geometry ArcOpen2D {
             dimension 64
             startAngle 1.0472
@@ -154,7 +154,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _2
+          appearance USE _16
           geometry ArcOpen2D {
             dimension 64
             endAngle 0.523599
@@ -163,7 +163,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _2
+          appearance USE _16
           geometry ArcOpen2D {
             dimension 64
             startAngle -1.0472
@@ -173,7 +173,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _2
+          appearance USE _16
           geometry ArcOpen2D {
             dimension 64
             startAngle -2.0944
@@ -183,7 +183,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _2
+          appearance USE _16
           geometry ArcOpen2D {
             dimension 64
             startAngle -3.14159
@@ -193,7 +193,7 @@ DEF Clock Group {
           }
         }
         Shape {
-          appearance USE _2
+          appearance USE _16
           geometry ArcOpen2D {
             dimension 64
             startAngle -4.18879
@@ -207,8 +207,8 @@ DEF Clock Group {
   ]
 }
 
-ROUTE ClockScript.string_changed TO _6.set_string
-ROUTE _1.cycleTime TO ClockScript.set_time
-ROUTE ClockScript.seconds_changed TO _3.set_startAngle
-ROUTE ClockScript.minutes_changed TO _4.set_startAngle
-ROUTE ClockScript.hours_changed TO _5.set_startAngle
+ROUTE ClockScript.string_changed TO _23.set_string
+ROUTE _14.cycleTime TO ClockScript.set_time
+ROUTE ClockScript.seconds_changed TO _17.set_startAngle
+ROUTE ClockScript.minutes_changed TO _19.set_startAngle
+ROUTE ClockScript.hours_changed TO _21.set_startAngle

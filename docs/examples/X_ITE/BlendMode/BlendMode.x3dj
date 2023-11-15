@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.5, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X_ITE/BlendMode/BlendMode.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 07 Apr 2019 14:46:49 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:13:32 GMT"
+          "@content": "Wed, 15 Nov 2023 02:28:15 GMT"
         }
       ],
       "component": [
@@ -152,8 +140,8 @@
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "_1",
-                        "@rotation": [ -0.998960144229723, 0.0452369564793854, 0.00567873304653588, 1.48458083528778 ],
+                        "@DEF": "_30",
+                        "@rotation": [ -0.993531874564947, 0.0976101320308734, 0.058023067381671, 1.51435129813043 ],
                         "@scale": [ 0.999999, 1, 1 ],
                         "@scaleOrientation": [ 0.612491025726436, -0.540118771611692, 0.577171080319566, 0.174185270591961 ],
                         "-children": [
@@ -269,17 +257,17 @@
                           { "Transform":
                             {
                               "@DEF": "BoxAnim",
-                              "@rotation": [ 0, 0, 1, 2.84460670761878 ],
+                              "@rotation": [ 0, 0, 1, 4.30873269455671 ],
                               "-children": [
                                 { "Transform":
                                   {
-                                    "@DEF": "_2",
-                                    "@rotation": [ 0, 1, 0, 3.15213165587297 ],
+                                    "@DEF": "_32",
+                                    "@rotation": [ 0, 0, 1, 2.05749014636517 ],
                                     "-children": [
                                       { "Transform":
                                         {
                                           "@DEF": "Box",
-                                          "@rotation": [ 1, 0, 0, 3.76222158129864 ],
+                                          "@rotation": [ 0, 0, 1, 0.428879055190086 ],
                                           "-children": [
                                             { "Shape":
                                               {
@@ -320,7 +308,7 @@
                     },
                     { "ParticleSystem":
                       {
-                        "@DEF": "Fire_1",
+                        "@DEF": "Fire_33",
                         "@geometryType": "SPRITE",
                         "@maxParticles": 151,
                         "@particleLifetime": 8.31,
@@ -360,14 +348,80 @@
                                     { "ShaderPart":
                                       {
                                         "@DEF": "VertexShader",
-                                        "@url": [ "data:x-shader/x-vertes,\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Color;\nattribute vec4 x3d_TexCoord0;\nattribute vec4 x3d_Vertex;\n\nattribute vec4 x3d_Particle;\nattribute mat4 x3d_ParticleMatrix;\n\nvarying vec4 color;\nvarying vec4 texCoord;\n\n#define PI 3.1415\n\nmat4\ngetXZRotation (in float a)\n{\n\tfloat s = sin (a);\n\tfloat c = cos (a);\n\n\treturn mat4 (  c, 0.0 ,  s, 0.0,\n\t             0.0, 1.0, 0.0, 0.0,\n\t              -s, 0.0,   c, 0.0,\n\t             0.0, 0.0, 0.0, 1.0);\n}\n\nvoid\nmain ()\n{\n  float e = x3d_Particle [2] / x3d_Particle [1];\n\tfloat s = 1.0 - e;\n\tmat4  r = getXZRotation (e * 2.0 * PI / 2.0);\n\tvec4  p = x3d_ParticleMatrix [3] * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);\n\tvec4  v = vec4 (x3d_Vertex .xyz * s, 0.0) + r * p;\n\n\tcolor    = x3d_Color;\n\ttexCoord = x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;\n}\n" ]
+                                        "#sourceCode": [
+"data:x-shader/x-vertes,",
+"",
+"precision mediump float;",
+"",
+"uniform mat4 x3d_ProjectionMatrix;",
+"uniform mat4 x3d_ModelViewMatrix;",
+"",
+"attribute vec4 x3d_Color;",
+"attribute vec4 x3d_TexCoord0;",
+"attribute vec4 x3d_Vertex;",
+"",
+"attribute vec4 x3d_Particle;",
+"attribute mat4 x3d_ParticleMatrix;",
+"",
+"varying vec4 color;",
+"varying vec4 texCoord;",
+"",
+"#define PI 3.1415",
+"",
+"mat4",
+"getXZRotation (in float a)",
+"{",
+"\tfloat s = sin (a);",
+"\tfloat c = cos (a);",
+"",
+"\treturn mat4 (  c, 0.0 ,  s, 0.0,",
+"\t             0.0, 1.0, 0.0, 0.0,",
+"\t              -s, 0.0,   c, 0.0,",
+"\t             0.0, 0.0, 0.0, 1.0);",
+"}",
+"",
+"void",
+"main ()",
+"{",
+"  float e = x3d_Particle [2] / x3d_Particle [1];",
+"\tfloat s = 1.0 - e;",
+"\tmat4  r = getXZRotation (e * 2.0 * PI / 2.0);",
+"\tvec4  p = x3d_ParticleMatrix [3] * vec4 (pow (s, 0.3), 1.0, pow (s, 0.3), 1.0);",
+"\tvec4  v = vec4 (x3d_Vertex .xyz * s, 0.0) + r * p;",
+"",
+"\tcolor    = x3d_Color;",
+"\ttexCoord = x3d_TexCoord0;",
+"",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;",
+"}",
+""
+                                        ]
                                       }
                                     },
                                     { "ShaderPart":
                                       {
                                         "@DEF": "FragmentShader",
                                         "@type": "FRAGMENT",
-                                        "@url": [ "data:x-shader/x-fragment,\n\nprecision mediump float;\n\nuniform x3d_MaterialParameters x3d_Material;\nuniform sampler2D x3d_Texture2D [1];\n\nvarying vec4 color;\nvarying vec4 texCoord;\n\nvoid\nmain ()\n{\n\tvec4  t = texture2D (x3d_Texture2D [0], texCoord .st);\n\tfloat a = 1.0 - x3d_Material .transparency;\n\n\tgl_FragColor = vec4 (color .rgb * t .rgb, a * color .a * t .a);\n}" ]
+                                        "#sourceCode": [
+"data:x-shader/x-fragment,",
+"",
+"precision mediump float;",
+"",
+"uniform x3d_MaterialParameters x3d_Material;",
+"uniform sampler2D x3d_Texture2D [1];",
+"",
+"varying vec4 color;",
+"varying vec4 texCoord;",
+"",
+"void",
+"main ()",
+"{",
+"\tvec4  t = texture2D (x3d_Texture2D [0], texCoord .st);",
+"\tfloat a = 1.0 - x3d_Material .transparency;",
+"",
+"\tgl_FragColor = vec4 (color .rgb * t .rgb, a * color .a * t .a);",
+"}"
+                                        ]
                                       }
                                     }
                                   ]
@@ -393,7 +447,7 @@
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Fire_2",
+                        "@DEF": "Fire_34",
                         "@translation": [ -6.80942, 3.70732, 0 ],
                         "@scale": [ 1.48791, 1.48791, 1.48791 ],
                         "-children": [
@@ -401,7 +455,7 @@
                             {
                               "-appearance": { "Appearance":
                                 {
-                                  "@DEF": "_3",
+                                  "@DEF": "_35",
                                   "-material": { "Material":
                                     {
                                       "@diffuseColor": [ 0.564706, 0.933333, 0.564706 ]
@@ -415,7 +469,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@DEF": "_4",
+                                      "@DEF": "_36",
                                       "@family": [ "assets/MinskaBoldITCTT.otf" ],
                                       "@justify": [ "BEGIN", "BEGIN" ]
                                     }
@@ -449,7 +503,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@USE": "_4"
+                                      "@USE": "_36"
                                     }
                                   }
                                 }
@@ -468,7 +522,7 @@
                             {
                               "-appearance": { "Appearance":
                                 {
-                                  "@USE": "_3"
+                                  "@USE": "_35"
                                 }
                               },
                               "-geometry": { "Text":
@@ -507,7 +561,7 @@
           {
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_1",
+            "@toNode": "_30",
             "@toField": "rotation"
           }
         },
@@ -523,7 +577,7 @@
           {
             "@fromNode": "Y",
             "@fromField": "rotation_changed",
-            "@toNode": "_2",
+            "@toNode": "_32",
             "@toField": "rotation"
           }
         },

@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/ExplosionEmitter/ExplosionEmitter.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 07 Nov 2019 12:56:53 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:59:17 GMT"
+          "@content": "Wed, 15 Nov 2023 02:12:55 GMT"
         }
       ],
       "component": [
@@ -53,16 +41,12 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
         { "Background":
           {
             "@DEF": "Summer",
@@ -81,7 +65,7 @@
         },
         { "ParticleSystem":
           {
-            "@DEF": "BlackSmoke_1",
+            "@DEF": "BlackSmoke_15",
             "@geometryType": "LINE",
             "@maxParticles": 2000,
             "@particleLifetime": 3.5,
@@ -104,7 +88,6 @@
               },
               { "WindPhysicsModel":
                 {
-                  "@direction": [ 1, 0, 0 ],
                   "@speed": 0.27,
                   "@gustiness": 2.5,
                   "@turbulence": 0.39
@@ -121,7 +104,6 @@
               {
                 "-lineProperties": { "LineProperties":
                   {
-                    "@DEF": "_1",
                     "@linewidthScaleFactor": 16
                   }
                 },
@@ -162,7 +144,6 @@
               },
               { "WindPhysicsModel":
                 {
-                  "@direction": [ 1, 0, 0 ],
                   "@speed": 0.3,
                   "@gustiness": 2
                 }
@@ -189,7 +170,6 @@
         { "Inline":
           {
             "@DEF": "Vulcano",
-            "@global": true,
             "@url": [ "vulcano.x3dz" ]
           }
         }

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.11.9
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -6,31 +6,20 @@ META "comment" "Rise and Shine"
 META "created" "Mon, 05 Feb 2018 07:19:25 GMT"
 META "created" "Sat, 10 Feb 2018 02:42:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.0.83, https://create3000.github.io/sunrize/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
-META "modified" "Tue, 08 Aug 2023 17:41:44 GMT"
-META "converter" "x3d-tidy V1.0.83, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Tue, 08 Aug 2023 18:01:34 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:08:00 GMT"
 
 WorldInfo {
   title "Star Flag of the United States"
-  info [
-    "version: 2.0",
-    "generator: Sketchfab (OSG glTF plugin)"
-  ]
+  info [ "version: 2.0", "generator: Sketchfab (OSG glTF plugin)" ]
 }
 
 Background {
   skyAngle 1.5708
-  skyColor [
-    0.141 0.122878 0.0998179,
-    0.397224 0.34617 0.281206
-  ]
+  skyColor [ 0.141 0.122878 0.0998179, 0.397224 0.34617 0.281206 ]
   groundAngle 1.45428
-  groundColor [
-    0.141 0.122878 0.0998179,
-    0.397224 0.34617 0.281206
-  ]
+  groundColor [ 0.141 0.122878 0.0998179, 0.397224 0.34617 0.281206 ]
 }
 
 Viewpoint {
@@ -48,6 +37,5 @@ DEF _1 LoadSensor {
 }
 
 IMPORT StarFlag.Timer1
-
 ROUTE _1.loadTime TO Timer1.set_startTime
 ROUTE _1.isLoaded TO Timer1.set_loop

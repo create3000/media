@@ -11,9 +11,8 @@
     <meta name='created' content='Mon, 21 Dec 2015 03:16:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 16:10:20 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:10:09 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:24:49 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFNode' url='"MFNode.x3d#MFNode"'>
@@ -1193,9 +1192,9 @@ function initialize ()
           <field accessType='inputOnly' type='SFVec3f' name='set_hitPoint'/>
           <field accessType='inputOnly' type='SFTime' name='set_time'/>
           <field accessType='inputOutput' type='MFNode' name='textures'>
-            <ImageTexture USE='_3' containerField='textures'/>
-            <ImageTexture USE='_1' containerField='textures'/>
-            <ImageTexture USE='_2' containerField='textures'/>
+            <ImageTexture USE='_3'/>
+            <ImageTexture USE='_1'/>
+            <ImageTexture USE='_2'/>
           </field>
 <![CDATA[ecmascript:
 
@@ -1298,10 +1297,10 @@ function random (min, max)
       </Layer>
       <Layer DEF='Text'
           pickable='false'>
-        <NavigationInfo DEF='_6'
+        <NavigationInfo DEF='_10'
             type='"NONE"'
             headlight='false'/>
-        <OrthoViewpoint DEF='_7'/>
+        <OrthoViewpoint DEF='_11'/>
         <Transform DEF='circles'
             translation='0 0.248408 0'
             scale='0.551883 0.186872 4.71371'>
@@ -1315,7 +1314,7 @@ function random (min, max)
             <Rectangle2D/>
           </Shape>
         </Transform>
-        <Transform DEF='Text_1'
+        <Transform DEF='Text_12'
             translation='0 -0.0191083 0'>
           <Shape>
             <Appearance>
@@ -1328,14 +1327,14 @@ function random (min, max)
             <Text
                 string='"An Interactive X3D Experience"'
                 solid='true'>
-              <FontStyle DEF='_8'
+              <FontStyle DEF='_13'
                   family='"CharlotteSansBoldPlain.otf", "SERIF"'
                   size='0.08'
                   justify='"MIDDLE", "MIDDLE"'/>
             </Text>
           </Shape>
         </Transform>
-        <Transform DEF='Text_2'
+        <Transform DEF='Text_14'
             translation='0 -0.617834 0'>
           <Shape>
             <Appearance>
@@ -1357,21 +1356,21 @@ function random (min, max)
         </Transform>
       </Layer>
       <Layer>
-        <NavigationInfo USE='_6'/>
-        <OrthoViewpoint USE='_7'/>
+        <NavigationInfo USE='_10'/>
+        <OrthoViewpoint USE='_11'/>
         <Transform DEF='Fresh'
             translation='-0.3 -0.259941 0'>
           <Shape>
             <Appearance>
               <ImageTexture USE='_3'/>
             </Appearance>
-            <Disk2D DEF='_9'
+            <Disk2D DEF='_15'
                 outerRadius='0.14'/>
           </Shape>
-          <Transform DEF='Text_3'>
+          <Transform DEF='Text_16'>
             <Shape>
               <Appearance>
-                <Material DEF='_10'
+                <Material DEF='_17'
                     ambientIntensity='0'
                     diffuseColor='0 0 0'
                     shininess='0'/>
@@ -1379,18 +1378,18 @@ function random (min, max)
               <Text
                   string='"FRESH"'
                   solid='true'>
-                <FontStyle USE='_8'/>
+                <FontStyle USE='_13'/>
               </Text>
             </Shape>
           </Transform>
-          <ProtoInstance name='MFNode' DEF='_11'>
+          <ProtoInstance name='MFNode' DEF='_18'>
             <fieldValue name='keyValue'>
               <ImageTexture USE='_1' containerField='keyValue'/>
               <ImageTexture USE='_3' containerField='keyValue'/>
               <ImageTexture USE='_2' containerField='keyValue'/>
             </fieldValue>
           </ProtoInstance>
-          <TouchSensor DEF='_12'/>
+          <TouchSensor DEF='_19'/>
         </Transform>
         <Transform DEF='Warm'
             translation='0 -0.259941 0'>
@@ -1398,9 +1397,9 @@ function random (min, max)
             <Appearance>
               <ImageTexture USE='_1'/>
             </Appearance>
-            <Disk2D USE='_9'/>
+            <Disk2D USE='_15'/>
           </Shape>
-          <Transform DEF='Text_4'>
+          <Transform DEF='Text_20'>
             <Shape>
               <Appearance>
                 <Material
@@ -1418,14 +1417,14 @@ function random (min, max)
               </Text>
             </Shape>
           </Transform>
-          <ProtoInstance name='MFNode' DEF='_13'>
+          <ProtoInstance name='MFNode' DEF='_21'>
             <fieldValue name='keyValue'>
               <ImageTexture USE='_3' containerField='keyValue'/>
               <ImageTexture USE='_1' containerField='keyValue'/>
               <ImageTexture USE='_2' containerField='keyValue'/>
             </fieldValue>
           </ProtoInstance>
-          <TouchSensor DEF='_14'/>
+          <TouchSensor DEF='_22'/>
         </Transform>
         <Transform DEF='Cool'
             translation='0.3 -0.259941 0'>
@@ -1433,39 +1432,39 @@ function random (min, max)
             <Appearance>
               <ImageTexture USE='_2'/>
             </Appearance>
-            <Disk2D USE='_9'/>
+            <Disk2D USE='_15'/>
           </Shape>
-          <Transform DEF='Text_5'>
+          <Transform DEF='Text_23'>
             <Shape>
               <Appearance>
-                <Material USE='_10'/>
+                <Material USE='_17'/>
               </Appearance>
               <Text
                   string='"COOL"'
                   solid='true'>
-                <FontStyle USE='_8'/>
+                <FontStyle USE='_13'/>
               </Text>
             </Shape>
           </Transform>
           <ImageTexture USE='_2' containerField='children'/>
-          <ProtoInstance name='MFNode' DEF='_15'>
+          <ProtoInstance name='MFNode' DEF='_24'>
             <fieldValue name='keyValue'>
               <ImageTexture USE='_3' containerField='keyValue'/>
               <ImageTexture USE='_2' containerField='keyValue'/>
               <ImageTexture USE='_1' containerField='keyValue'/>
             </fieldValue>
           </ProtoInstance>
-          <TouchSensor DEF='_16'/>
+          <TouchSensor DEF='_25'/>
         </Transform>
       </Layer>
     </LayerSet>
     <ROUTE fromNode='_5' fromField='time' toNode='CirclesScript' toField='set_time'/>
     <ROUTE fromNode='_4' fromField='hitPoint_changed' toNode='CirclesScript' toField='set_hitPoint'/>
-    <ROUTE fromNode='_12' fromField='touchTime' toNode='_11' toField='set_triggerTime'/>
-    <ROUTE fromNode='_11' fromField='value_changed' toNode='CirclesScript' toField='set_textures'/>
-    <ROUTE fromNode='_14' fromField='touchTime' toNode='_13' toField='set_triggerTime'/>
-    <ROUTE fromNode='_13' fromField='value_changed' toNode='CirclesScript' toField='set_textures'/>
-    <ROUTE fromNode='_16' fromField='touchTime' toNode='_15' toField='set_triggerTime'/>
-    <ROUTE fromNode='_15' fromField='value_changed' toNode='CirclesScript' toField='set_textures'/>
+    <ROUTE fromNode='_19' fromField='touchTime' toNode='_18' toField='set_triggerTime'/>
+    <ROUTE fromNode='_18' fromField='value_changed' toNode='CirclesScript' toField='set_textures'/>
+    <ROUTE fromNode='_22' fromField='touchTime' toNode='_21' toField='set_triggerTime'/>
+    <ROUTE fromNode='_21' fromField='value_changed' toNode='CirclesScript' toField='set_textures'/>
+    <ROUTE fromNode='_25' fromField='touchTime' toNode='_24' toField='set_triggerTime'/>
+    <ROUTE fromNode='_24' fromField='value_changed' toNode='CirclesScript' toField='set_textures'/>
   </Scene>
 </X3D>

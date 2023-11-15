@@ -7,10 +7,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Fri, 21 Dec 2018 04:34:14 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 04:02:09 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:07:33 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:22:42 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='ArcOpen2D' url='"assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D"'>
@@ -21,12 +20,13 @@
       <field accessType='inputOutput' type='SFFloat' name='outerRadius'/>
       <field accessType='initializeOnly' type='SFBool' name='solid'/>
     </ExternProtoDeclare>
-    <WorldInfo/>
+    <WorldInfo
+        title='TimeSensor'/>
     <NavigationInfo
         type='"NONE"'/>
     <Viewpoint
         position='0 0 34.142'/>
-    <TimeSensor DEF='_1'
+    <TimeSensor DEF='_14'
         loop='true'/>
     <Script DEF='ClockScript'>
       <field accessType='inputOnly' type='SFTime' name='set_time'/>
@@ -69,42 +69,42 @@ function fill (value)
 ]]>
     </Script>
     <Group DEF='Clock'>
-      <Shape DEF='Seconds_1'>
-        <Appearance DEF='_2'>
+      <Shape DEF='Seconds_15'>
+        <Appearance DEF='_16'>
           <UnlitMaterial
               emissiveColor='0 1 0.995191'/>
         </Appearance>
-        <ProtoInstance name='ArcOpen2D' DEF='_3' containerField='geometry'>
+        <ProtoInstance name='ArcOpen2D' DEF='_17' containerField='geometry'>
           <fieldValue name='dimension' value='64'/>
-          <fieldValue name='startAngle' value='0.733038'/>
+          <fieldValue name='startAngle' value='-3.769911'/>
           <fieldValue name='innerRadius' value='9'/>
           <fieldValue name='outerRadius' value='10'/>
           <fieldValue name='solid' value='true'/>
         </ProtoInstance>
       </Shape>
-      <Shape DEF='Minutes_1'>
-        <Appearance USE='_2'/>
-        <ProtoInstance name='ArcOpen2D' DEF='_4' containerField='geometry'>
+      <Shape DEF='Minutes_18'>
+        <Appearance USE='_16'/>
+        <ProtoInstance name='ArcOpen2D' DEF='_19' containerField='geometry'>
           <fieldValue name='dimension' value='64'/>
-          <fieldValue name='startAngle' value='1.34739'/>
+          <fieldValue name='startAngle' value='0.3298672'/>
           <fieldValue name='innerRadius' value='10.3'/>
           <fieldValue name='outerRadius' value='11.3'/>
         </ProtoInstance>
       </Shape>
-      <Shape DEF='Hours_1'>
-        <Appearance USE='_2'/>
-        <ProtoInstance name='ArcOpen2D' DEF='_5' containerField='geometry'>
+      <Shape DEF='Hours_20'>
+        <Appearance USE='_16'/>
+        <ProtoInstance name='ArcOpen2D' DEF='_21' containerField='geometry'>
           <fieldValue name='dimension' value='64'/>
-          <fieldValue name='startAngle' value='-1.06581'/>
+          <fieldValue name='startAngle' value='0.420188'/>
           <fieldValue name='innerRadius' value='11.6'/>
           <fieldValue name='outerRadius' value='12.6'/>
           <fieldValue name='solid' value='true'/>
         </ProtoInstance>
       </Shape>
-      <Shape DEF='Text_1'>
-        <Appearance USE='_2'/>
-        <Text DEF='_6'
-            string='"05:02:08"'
+      <Shape DEF='Text_22'>
+        <Appearance USE='_16'/>
+        <Text DEF='_23'
+            string='"02:11:51"'
             solid='true'>
           <FontStyle
               family='"assets/Papertape-Letters.otf"'
@@ -115,7 +115,7 @@ function fill (value)
       <Transform DEF='LocalTime'
           translation='0 -2.67569 0'>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <Text
               string='"Local Time"'
               solid='true'>
@@ -126,9 +126,9 @@ function fill (value)
           </Text>
         </Shape>
       </Transform>
-      <Group DEF='Minutes5_1'>
+      <Group DEF='Minutes5_24'>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <ProtoInstance name='ArcOpen2D' containerField='geometry'>
             <fieldValue name='dimension' value='64'/>
             <fieldValue name='startAngle' value='1.0472'/>
@@ -137,7 +137,7 @@ function fill (value)
           </ProtoInstance>
         </Shape>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <ProtoInstance name='ArcOpen2D' containerField='geometry'>
             <fieldValue name='dimension' value='64'/>
             <fieldValue name='endAngle' value='0.523599'/>
@@ -146,7 +146,7 @@ function fill (value)
           </ProtoInstance>
         </Shape>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <ProtoInstance name='ArcOpen2D' containerField='geometry'>
             <fieldValue name='dimension' value='64'/>
             <fieldValue name='startAngle' value='-1.0472'/>
@@ -156,7 +156,7 @@ function fill (value)
           </ProtoInstance>
         </Shape>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <ProtoInstance name='ArcOpen2D' containerField='geometry'>
             <fieldValue name='dimension' value='64'/>
             <fieldValue name='startAngle' value='-2.0944'/>
@@ -166,7 +166,7 @@ function fill (value)
           </ProtoInstance>
         </Shape>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <ProtoInstance name='ArcOpen2D' containerField='geometry'>
             <fieldValue name='dimension' value='64'/>
             <fieldValue name='startAngle' value='-3.14159'/>
@@ -176,7 +176,7 @@ function fill (value)
           </ProtoInstance>
         </Shape>
         <Shape>
-          <Appearance USE='_2'/>
+          <Appearance USE='_16'/>
           <ProtoInstance name='ArcOpen2D' containerField='geometry'>
             <fieldValue name='dimension' value='64'/>
             <fieldValue name='startAngle' value='-4.18879'/>
@@ -187,10 +187,10 @@ function fill (value)
         </Shape>
       </Group>
     </Group>
-    <ROUTE fromNode='ClockScript' fromField='string_changed' toNode='_6' toField='set_string'/>
-    <ROUTE fromNode='_1' fromField='cycleTime' toNode='ClockScript' toField='set_time'/>
-    <ROUTE fromNode='ClockScript' fromField='seconds_changed' toNode='_3' toField='set_startAngle'/>
-    <ROUTE fromNode='ClockScript' fromField='minutes_changed' toNode='_4' toField='set_startAngle'/>
-    <ROUTE fromNode='ClockScript' fromField='hours_changed' toNode='_5' toField='set_startAngle'/>
+    <ROUTE fromNode='ClockScript' fromField='string_changed' toNode='_23' toField='set_string'/>
+    <ROUTE fromNode='_14' fromField='cycleTime' toNode='ClockScript' toField='set_time'/>
+    <ROUTE fromNode='ClockScript' fromField='seconds_changed' toNode='_17' toField='set_startAngle'/>
+    <ROUTE fromNode='ClockScript' fromField='minutes_changed' toNode='_19' toField='set_startAngle'/>
+    <ROUTE fromNode='ClockScript' fromField='hours_changed' toNode='_21' toField='set_startAngle'/>
   </Scene>
 </X3D>

@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 03:59:38 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:07:08 GMT"
+          "@content": "Wed, 15 Nov 2023 02:22:16 GMT"
         }
       ],
       "component": [
@@ -352,11 +344,11 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function set_array(value, time) {",
-"\t// send out new picture ",
+"\t// send out new picture",
 "\timage_changed = new SFImage(data.size.x, data.size.y, data.components, value);",
 "}",
 "",
@@ -602,13 +594,12 @@
         },
         { "Viewpoint":
           {
-            "@position": [ -2.03376, -2.79428, 6.874 ],
-            "@fieldOfView": 0.785398
+            "@position": [ -2.03376, -2.79428, 6.874 ]
           }
         },
         { "TimeSensor":
           {
-            "@DEF": "_3",
+            "@DEF": "_4",
             "@loop": true,
             "@startTime": 1
           }
@@ -640,7 +631,7 @@
                 "-children": [
                   { "ProtoInstance":
                     {
-                      "@DEF": "_4",
+                      "@DEF": "_5",
                       "@name": "Canvas",
                       "fieldValue": [
                         {
@@ -675,7 +666,7 @@
                 "-children": [
                   { "ProtoInstance":
                     {
-                      "@DEF": "_5",
+                      "@DEF": "_6",
                       "@name": "Canvas",
                       "fieldValue": [
                         {
@@ -728,7 +719,7 @@
                             { "ProtoInstance":
                               {
                                 "@name": "Canvas",
-                                "@USE": "_4"
+                                "@USE": "_5"
                               }
                             }
                           ]
@@ -781,7 +772,7 @@
                 "@value": 1546833563.52952
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "function set_time (value, time)",
@@ -793,15 +784,15 @@
 "\t\tif (time - colorTime > colorInterval)",
 "\t\t{",
 "\t\t\tcolorTime = time;",
-"\t\t\t",
+"",
 "\t\t\tbgColor = Math .random () > blackLevel",
 "\t\t\t\t? new SFColor (Math .random (), Math.random (), Math.random ())",
 "\t\t\t\t: new SFColor (0, 0, 0);",
-"\t\t\t",
+"",
 "\t\t\tbrush.bgColor = bgColor;",
 "\t\t\tbrush.clear   = time;",
 "\t\t}",
-"\t",
+"",
 "\t\tcanvas.set_hitTexCoord = new SFVec2f (Math.random (), Math.random ());",
 "",
 "\t\tif (time - scaleTime > 19)",
@@ -809,7 +800,7 @@
 "\t\t\tscaleTime = time;",
 "\t\t\tscaleF    = Math .random ();",
 "\t\t}",
-"\t\t",
+"",
 "\t\tif (time - rotateTime > 17)",
 "\t\t{",
 "\t\t\trotateTime = time;",
@@ -834,7 +825,7 @@
                         "-children": [
                           { "TimeSensor":
                             {
-                              "@DEF": "Time_1",
+                              "@DEF": "Time_7",
                               "@cycleInterval": 20,
                               "@loop": true,
                               "@startTime": 1
@@ -848,21 +839,21 @@
                         "-children": [
                           { "ScalarInterpolator":
                             {
-                              "@DEF": "_6",
+                              "@DEF": "_8",
                               "@key": [ 0, 1 ],
                               "@keyValue": [ 1, -1 ]
                             }
                           },
                           { "ScalarInterpolator":
                             {
-                              "@DEF": "_7",
+                              "@DEF": "_9",
                               "@key": [ 0, 1 ],
                               "@keyValue": [ 0.74, 0.74 ]
                             }
                           },
                           { "Script":
                             {
-                              "@DEF": "_8",
+                              "@DEF": "_10",
                               "field": [
                                 {
                                   "@accessType": "outputOnly",
@@ -892,7 +883,7 @@
                                   "@value": 0.74
                                 }
                               ],
-                              "#sourceText": [
+                              "#sourceCode": [
 "ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } "
                               ]
                             }
@@ -912,7 +903,7 @@
                         "-children": [
                           { "TimeSensor":
                             {
-                              "@DEF": "Time_2",
+                              "@DEF": "Time_11",
                               "@cycleInterval": 10,
                               "@stopTime": 1
                             }
@@ -925,21 +916,21 @@
                         "-children": [
                           { "ScalarInterpolator":
                             {
-                              "@DEF": "_9",
+                              "@DEF": "_12",
                               "@key": [ 0, 1 ],
                               "@keyValue": [ 0.1, 5 ]
                             }
                           },
                           { "ScalarInterpolator":
                             {
-                              "@DEF": "_10",
+                              "@DEF": "_13",
                               "@key": [ 0, 1 ],
                               "@keyValue": [ 0.2, 5 ]
                             }
                           },
                           { "Script":
                             {
-                              "@DEF": "_11",
+                              "@DEF": "_3",
                               "field": [
                                 {
                                   "@accessType": "outputOnly",
@@ -969,7 +960,7 @@
                                   "@value": 1.47705
                                 }
                               ],
-                              "#sourceText": [
+                              "#sourceCode": [
 "ecmascript: function xIn(value) { xBuf = value; vec[0] = xBuf; vec[1] = yBuf; } function yIn(value) { yBuf = value; vec[0] = xBuf; vec[1] = yBuf; } "
                               ]
                             }
@@ -1014,12 +1005,12 @@
                       "-texture": { "ProtoInstance":
                         {
                           "@name": "Canvas",
-                          "@USE": "_5"
+                          "@USE": "_6"
                         }
                       },
                       "-textureTransform": { "TextureTransform":
                         {
-                          "@DEF": "_12",
+                          "@DEF": "_14",
                           "@translation": [ -0.175203, 0.74 ],
                           "@rotation": 0.636027,
                           "@scale": [ 1.40365, 1.47705 ],
@@ -1051,7 +1042,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
+            "@fromNode": "_4",
             "@fromField": "time",
             "@toNode": "DiscoScript",
             "@toField": "set_time"
@@ -1059,33 +1050,33 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "Time_1",
+            "@fromNode": "Time_7",
             "@fromField": "fraction_changed",
-            "@toNode": "_6",
-            "@toField": "set_fraction"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "Time_1",
-            "@fromField": "fraction_changed",
-            "@toNode": "_7",
-            "@toField": "set_fraction"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_6",
-            "@fromField": "value_changed",
             "@toNode": "_8",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "Time_7",
+            "@fromField": "fraction_changed",
+            "@toNode": "_9",
+            "@toField": "set_fraction"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_8",
+            "@fromField": "value_changed",
+            "@toNode": "_10",
             "@toField": "xIn"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_7",
+            "@fromNode": "_9",
             "@fromField": "value_changed",
-            "@toNode": "_8",
+            "@toNode": "_10",
             "@toField": "yIn"
           }
         },
@@ -1093,7 +1084,7 @@
           {
             "@fromNode": "DiscoScript",
             "@fromField": "scaleF",
-            "@toNode": "_9",
+            "@toNode": "_12",
             "@toField": "set_fraction"
           }
         },
@@ -1101,23 +1092,23 @@
           {
             "@fromNode": "DiscoScript",
             "@fromField": "scaleF",
-            "@toNode": "_10",
+            "@toNode": "_13",
             "@toField": "set_fraction"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_9",
+            "@fromNode": "_12",
             "@fromField": "value_changed",
-            "@toNode": "_11",
+            "@toNode": "_3",
             "@toField": "xIn"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_10",
+            "@fromNode": "_13",
             "@fromField": "value_changed",
-            "@toNode": "_11",
+            "@toNode": "_3",
             "@toField": "yIn"
           }
         },
@@ -1131,9 +1122,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_8",
+            "@fromNode": "_10",
             "@fromField": "vec",
-            "@toNode": "_12",
+            "@toNode": "_14",
             "@toField": "translation"
           }
         },
@@ -1141,15 +1132,15 @@
           {
             "@fromNode": "UnnamedShapeRotationInterp",
             "@fromField": "value_changed",
-            "@toNode": "_12",
+            "@toNode": "_14",
             "@toField": "rotation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_11",
+            "@fromNode": "_3",
             "@fromField": "vec",
-            "@toNode": "_12",
+            "@toNode": "_14",
             "@toField": "scale"
           }
         }

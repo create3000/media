@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -7,14 +7,12 @@ COMPONENT Scripting : 1
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Fri, 18 May 2018 03:17:41 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollisionCollection/CollisionCollection.O.x3d"
-META "modified" "Mon, 07 Jan 2019 03:46:10 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:03:19 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:18:17 GMT"
 
 WorldInfo { }
 
@@ -35,7 +33,7 @@ Viewpoint {
 DEF Collidables Group {
   children [
     DEF Ball CollidableShape {
-      translation -0.00000192031 -0.251985 -0.00000234233
+      translation -1.92031e-6 -0.251985 -2.34233e-6
       shape Shape {
         appearance Appearance {
           material DEF Tropical22 Material {
@@ -53,7 +51,7 @@ DEF Collidables Group {
     DEF Floor CollidableOffset {
       collidable CollidableShape {
         translation 0 -1 0
-        shape DEF _1 Shape {
+        shape DEF _15 Shape {
           appearance Appearance {
             material DEF Glass33 Material {
               ambientIntensity 0.0346667
@@ -72,7 +70,7 @@ DEF Collidables Group {
     DEF Ceiling CollidableOffset {
       collidable CollidableShape {
         translation 0 1 0
-        shape USE _1
+        shape USE _15
       }
     }
   ]
@@ -85,18 +83,18 @@ RigidBodyCollection {
     collidables USE Ball
   }
   bodies [
-    DEF Ball_1 RigidBody {
-      position -0.00000192031 -0.251985 -0.00000234233
-      linearVelocity -0.00000404398 -1.46553 -0.00000493573
+    DEF Ball_2 RigidBody {
+      position -1.92031e-6 -0.251985 -2.34233e-6
+      linearVelocity -4.04398e-6 -1.46553 -4.93573e-6
       angularVelocity -1.98016e-10 2.95806e-10 0.000388671
       geometry USE Ball
     }
-    DEF Floor_1 RigidBody {
+    DEF Floor_16 RigidBody {
       fixed TRUE
       linearVelocity 0 0.1 0
       geometry USE Floor
     }
-    DEF Ceiling_1 RigidBody {
+    DEF Ceiling_17 RigidBody {
       fixed TRUE
       geometry USE Ceiling
     }
@@ -104,7 +102,7 @@ RigidBodyCollection {
 }
 
 DEF EnterWorldScript Script {
-  initializeOnly SFNode ball USE Ball_1
+  initializeOnly SFNode ball USE Ball_2
 
   url "ecmascript:
 

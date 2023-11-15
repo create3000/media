@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -9,14 +9,12 @@ COMPONENT NURBS : 4
 COMPONENT Scripting : 1
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.11, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/NURBS/NurbsCurve/NurbsCurve.O.x3d"
-META "modified" "Sat, 26 Jan 2019 01:49:04 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:56:51 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:10:26 GMT"
 
 PROTO AnimatedCurve [
   inputOnly   SFTime     set_time
@@ -93,7 +91,7 @@ PROTO MachineLearning [
 
   DEF BoxRotationInterpolator OrientationInterpolator {
     key [ 0, 0.25, 0.5, 0.75, 1 ]
-    keyValue [ 0 0 1 0, -3.06559318185163e-18 0.00000367320512848233 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 0.00000367320512426576 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -0.00000367320524850646 0.999999999993254 1.57079638639955, 0 0 1 0 ]
+    keyValue [ 0 0 1 0, -3.06559318185163e-18 3.67320512848233e-6 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 3.67320512426576e-6 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -3.67320524850646e-6 0.999999999993254 1.57079638639955, 0 0 1 0 ]
   }
 
   DEF MachineLearningScript Script {
@@ -128,7 +126,7 @@ function eventsProcessed ()
 			curve .material = material [Math .floor (material .length * Math .random ())];
 
 		group .children .push (curve);
-		
+
 		Browser .addRoute (timer, \"time\", curve, \"set_time\");
 	}
 }
@@ -160,11 +158,11 @@ LayerSet {
           speed 0.5
           curves 40
           material [
-            DEF _4 Material {
+            DEF _17 Material {
               diffuseColor 0 0 0
               emissiveColor 0.268985 0.140202 0.722821
             }
-            DEF _5 Material {
+            DEF _18 Material {
               emissiveColor 0.277986 0.277986 0.277986
             }
           ]
@@ -190,7 +188,7 @@ LayerSet {
             }
           }
         }
-        DEF Text_1 Transform {
+        DEF Text_19 Transform {
           translation 0 -0.417991 0
           children Shape {
             appearance Appearance {
@@ -212,7 +210,7 @@ LayerSet {
           scale 0.71 0.09 1
           children Shape {
             appearance Appearance {
-              material USE _4
+              material USE _17
             }
             geometry Rectangle2D { }
           }

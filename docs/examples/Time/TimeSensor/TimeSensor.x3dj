@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/TimeSensor.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 04:02:09 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:07:44 GMT"
+          "@content": "Wed, 15 Nov 2023 02:22:42 GMT"
         }
       ],
       "component": [
@@ -92,6 +84,7 @@
         },
         { "WorldInfo":
           {
+            "@title": "TimeSensor"
           }
         },
         { "NavigationInfo":
@@ -106,7 +99,7 @@
         },
         { "TimeSensor":
           {
-            "@DEF": "_1",
+            "@DEF": "_14",
             "@loop": true
           }
         },
@@ -140,7 +133,7 @@
                 "@name": "string_changed"
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -160,7 +153,7 @@
 "\tseconds_changed = zero - seconds * Math .PI * 2;",
 "\tminutes_changed = zero - minutes * Math .PI * 2;",
 "\thours_changed   = zero - hours12 * Math .PI * 2;",
-"\t",
+"",
 "\tstring_changed [0] = fill (hours24 * 24) + \":\" + fill (minutes * 60) + \":\" + fill (seconds * 60);",
 "}",
 "",
@@ -170,7 +163,7 @@
 "",
 "\tif (value < 10)",
 "\t\treturn \"0\" + value;",
-"\t\t",
+"",
 "\treturn value .toString ();",
 "}",
 ""
@@ -183,10 +176,10 @@
             "-children": [
               { "Shape":
                 {
-                  "@DEF": "Seconds_1",
+                  "@DEF": "Seconds_15",
                   "-appearance": { "Appearance":
                     {
-                      "@DEF": "_2",
+                      "@DEF": "_16",
                       "-material": { "UnlitMaterial":
                         {
                           "@emissiveColor": [ 0, 1, 0.995191 ]
@@ -196,7 +189,7 @@
                   },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_3",
+                      "@DEF": "_17",
                       "@name": "ArcOpen2D",
                       "fieldValue": [
                         {
@@ -205,7 +198,7 @@
                         },
                         {
                           "@name": "startAngle",
-                          "@value": 0.733038
+                          "@value": -3.769911
                         },
                         {
                           "@name": "innerRadius",
@@ -226,15 +219,15 @@
               },
               { "Shape":
                 {
-                  "@DEF": "Minutes_1",
+                  "@DEF": "Minutes_18",
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_2"
+                      "@USE": "_16"
                     }
                   },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_4",
+                      "@DEF": "_19",
                       "@name": "ArcOpen2D",
                       "fieldValue": [
                         {
@@ -243,7 +236,7 @@
                         },
                         {
                           "@name": "startAngle",
-                          "@value": 1.34739
+                          "@value": 0.3298672
                         },
                         {
                           "@name": "innerRadius",
@@ -260,15 +253,15 @@
               },
               { "Shape":
                 {
-                  "@DEF": "Hours_1",
+                  "@DEF": "Hours_20",
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_2"
+                      "@USE": "_16"
                     }
                   },
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_5",
+                      "@DEF": "_21",
                       "@name": "ArcOpen2D",
                       "fieldValue": [
                         {
@@ -277,7 +270,7 @@
                         },
                         {
                           "@name": "startAngle",
-                          "@value": -1.06581
+                          "@value": 0.420188
                         },
                         {
                           "@name": "innerRadius",
@@ -298,16 +291,16 @@
               },
               { "Shape":
                 {
-                  "@DEF": "Text_1",
+                  "@DEF": "Text_22",
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_2"
+                      "@USE": "_16"
                     }
                   },
                   "-geometry": { "Text":
                     {
-                      "@DEF": "_6",
-                      "@string": [ "05:02:08" ],
+                      "@DEF": "_23",
+                      "@string": [ "02:11:51" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
@@ -329,7 +322,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "Text":
@@ -352,13 +345,13 @@
               },
               { "Group":
                 {
-                  "@DEF": "Minutes5_1",
+                  "@DEF": "Minutes5_24",
                   "-children": [
                     { "Shape":
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -390,7 +383,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -422,7 +415,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -458,7 +451,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -494,7 +487,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -530,7 +523,7 @@
                       {
                         "-appearance": { "Appearance":
                           {
-                            "@USE": "_2"
+                            "@USE": "_16"
                           }
                         },
                         "-geometry": { "ProtoInstance":
@@ -572,13 +565,13 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "string_changed",
-            "@toNode": "_6",
+            "@toNode": "_23",
             "@toField": "string"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_1",
+            "@fromNode": "_14",
             "@fromField": "cycleTime",
             "@toNode": "ClockScript",
             "@toField": "set_time"
@@ -588,7 +581,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "seconds_changed",
-            "@toNode": "_3",
+            "@toNode": "_17",
             "@toField": "startAngle"
           }
         },
@@ -596,7 +589,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "minutes_changed",
-            "@toNode": "_4",
+            "@toNode": "_19",
             "@toField": "startAngle"
           }
         },
@@ -604,7 +597,7 @@
           {
             "@fromNode": "ClockScript",
             "@fromField": "hours_changed",
-            "@toNode": "_5",
+            "@toNode": "_21",
             "@toField": "startAngle"
           }
         }

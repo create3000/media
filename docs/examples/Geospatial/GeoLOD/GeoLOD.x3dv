@@ -1,17 +1,15 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Geospatial : 2
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Geospatial/GeoLOD/GeoLOD.O.x3d"
-META "modified" "Sat, 02 Mar 2019 12:13:18 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:53:43 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:06:47 GMT"
 
 WorldInfo { }
 
@@ -48,16 +46,16 @@ Group {
         }
       ]
     }
-    DEF _1 Viewpoint {
+    DEF _25 Viewpoint {
       description "Initial View"
-      position -7.45479 44.0757 57.8527
+      position -5.458622 32.27354 42.36142
       orientation -0.980236185234964 -0.187566385249411 -0.0628957254547183 0.65921437443242
     }
   ]
 }
 
-DEF _2 Transform {
-  rotation 0 1 0 4.92537097751533
+DEF _26 Transform {
+  rotation 0 1 0 3.36383311437328
   children GeoLOD {
     geoSystem "GC"
     rootUrl "assets/root.x3d"
@@ -70,6 +68,6 @@ DEF _2 Transform {
 }
 
 ROUTE AnimationTimer.fraction_changed TO PositionInterpolator.set_fraction
-ROUTE PositionInterpolator.value_changed TO _1.set_position
+ROUTE PositionInterpolator.value_changed TO _25.set_position
 ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
-ROUTE RotationInterpolator.value_changed TO _2.set_rotation
+ROUTE RotationInterpolator.value_changed TO _26.set_rotation

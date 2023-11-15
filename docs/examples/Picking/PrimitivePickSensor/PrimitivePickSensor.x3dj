@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PrimitivePickSensor/PrimitivePickSensor.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 07 Nov 2019 12:34:43 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:01:20 GMT"
+          "@content": "Wed, 15 Nov 2023 02:15:15 GMT"
         }
       ],
       "component": [
@@ -116,18 +108,18 @@
                           },
                           "-geometry": { "Sphere":
                             {
-                              "@DEF": "_1"
+                              "@DEF": "_2"
                             }
                           }
                         }
                       },
                       { "PrimitivePickSensor":
                         {
-                          "@DEF": "_2",
+                          "@DEF": "_3",
                           "@objectType": [ "TARGET" ],
                           "-pickingGeometry": { "Sphere":
                             {
-                              "@USE": "_1"
+                              "@USE": "_2"
                             }
                           },
                           "IS": {
@@ -158,7 +150,7 @@
                         "@name": "hitTime"
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function set_active (value, time)",
@@ -196,7 +188,7 @@
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_2",
+                    "@fromNode": "_3",
                     "@fromField": "isActive",
                     "@toNode": "BulletScript",
                     "@toField": "set_active"
@@ -204,10 +196,6 @@
                 }
               ]
             }
-          }
-        },
-        { "WorldInfo":
-          {
           }
         },
         { "Viewpoint":
@@ -244,7 +232,7 @@
               },
               { "Background":
                 {
-                  "@DEF": "_3"
+                  "@DEF": "_18"
                 }
               },
               { "Script":
@@ -262,7 +250,7 @@
                       "@name": "skyColor_changed"
                     }
                   ],
-                  "#sourceText": [
+                  "#sourceCode": [
 "ecmascript:",
 "",
 "function set_color (value, time)",
@@ -282,7 +270,6 @@
             "-children": [
               { "Inline":
                 {
-                  "@global": true,
                   "@url": [ "assets/rocket-ship.x3dz" ]
                 }
               }
@@ -296,7 +283,7 @@
             "-children": [
               { "Transform":
                 {
-                  "@DEF": "_4",
+                  "@DEF": "_19",
                   "@translation": [ 0, 0, 25 ],
                   "-children": [
                     { "Shape":
@@ -332,7 +319,7 @@
                 "-children": [
                   { "Transform":
                     {
-                      "@USE": "_4"
+                      "@USE": "_19"
                     }
                   }
                 ]
@@ -372,7 +359,6 @@
                   },
                   "-appearance": { "Appearance":
                     {
-                      "@DEF": "_5",
                       "-pointProperties": { "PointProperties":
                         {
                           "@pointSizeScaleFactor": 4.94,
@@ -395,7 +381,7 @@
           {
             "@fromNode": "HitColorScript",
             "@fromField": "skyColor_changed",
-            "@toNode": "_3",
+            "@toNode": "_18",
             "@toField": "skyColor"
           }
         },

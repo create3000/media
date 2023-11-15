@@ -7,10 +7,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 11 Oct 2016 17:39:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 13:01:51 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:01:21 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:15:52 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Grid'>
@@ -81,7 +80,7 @@
                 </IS>
               </Material>
             </Appearance>
-            <IndexedLineSet DEF='MinorGrid_1'
+            <IndexedLineSet DEF='MinorGrid_2'
                 coordIndex='0, 1, -1, 2, 3, -1, 4, 5, -1, 6, 7, -1, 8, 9, -1, 10, 11, -1, 12, 13, -1, 14, 15, -1, 16, 17, -1, 18, 19, -1, 20, 21, -1, 22, 23, -1, 24, 25, -1, 26, 27, -1, 28, 29, -1, 30, 31, -1'>
               <Coordinate
                   point='-4 0 -5, -4 0 5, -3 0 -5, -3 0 5, -2 0 -5, -2 0 5, -1 0 -5, -1 0 5, 1 0 -5, 1 0 5, 2 0 -5, 2 0 5, 3 0 -5, 3 0 5, 4 0 -5, 4 0 5, -5 0 -4, 5 0 -4, -5 0 -3, 5 0 -3, -5 0 -2, 5 0 -2, -5 0 -1, 5 0 -1, -5 0 1, 5 0 1, -5 0 2, 5 0 2, -5 0 3, 5 0 3, -5 0 4, 5 0 4'/>
@@ -94,7 +93,7 @@
                   pointSizeMaxValue='6'/>
               <Material USE='MajorMaterial'/>
             </Appearance>
-            <PointSet DEF='MajorPoints_1'>
+            <PointSet DEF='MajorPoints_3'>
               <Coordinate
                   point='0 -5 0, 0 0 0, 0 5 0'/>
             </PointSet>
@@ -106,7 +105,7 @@
                   pointSizeMaxValue='4'/>
               <Material USE='MinorMaterial'/>
             </Appearance>
-            <PointSet DEF='MinorPoints_1'>
+            <PointSet DEF='MinorPoints_4'>
               <Coordinate
                   point='0 -4 0, 0 -3 0, 0 -2 0, 0 -1 0, 0 1 0, 0 2 0, 0 3 0, 0 4 0'/>
             </PointSet>
@@ -119,19 +118,19 @@
           <field accessType='inputOutput' type='MFInt32' name='majorLineEvery'/>
           <field accessType='inputOutput' type='MFInt32' name='majorLineOffset'/>
           <field accessType='initializeOnly' type='SFNode' name='plane'>
-            <Transform USE='Plane' containerField='plane'/>
+            <Transform USE='Plane'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='majorGrid'>
-            <IndexedLineSet USE='MajorGrid_1' containerField='majorGrid'/>
+            <IndexedLineSet USE='MajorGrid_1'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='minorGrid'>
-            <IndexedLineSet USE='MinorGrid_1' containerField='minorGrid'/>
+            <IndexedLineSet USE='MinorGrid_2'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='majorPoints'>
-            <PointSet USE='MajorPoints_1' containerField='majorPoints'/>
+            <PointSet USE='MajorPoints_3'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='minorPoints'>
-            <PointSet USE='MinorPoints_1' containerField='minorPoints'/>
+            <PointSet USE='MinorPoints_4'/>
           </field>
           <IS>
             <connect nodeField='dimension' protoField='dimension'/>
@@ -251,7 +250,6 @@ function isMajor (i, dimension, majorLineEvery, majorLineOffset)
         </Script>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
     <Viewpoint
         description='Home'
         position='20.8877 22.923 30.0087'
@@ -263,30 +261,29 @@ function isMajor (i, dimension, majorLineEvery, majorLineOffset)
     </ProtoInstance>
     <Transform>
       <Inline DEF='Boxes'
-          global='true'
           url='"boxes.x3d"'/>
-      <ClipPlane DEF='_1'
-          plane='-1 0 0 5.75581'/>
-      <ClipPlane DEF='_2'
-          plane='1 0 0 5.75581'/>
-      <ClipPlane DEF='_3'
-          plane='0 0 1 5.75581'/>
-      <ClipPlane DEF='_4'
-          plane='0 0 -1 5.75581'/>
-      <ClipPlane DEF='_5'
-          plane='0 1 0 5.75581'/>
       <ClipPlane DEF='_6'
+          plane='-1 0 0 5.75581'/>
+      <ClipPlane DEF='_7'
+          plane='1 0 0 5.75581'/>
+      <ClipPlane DEF='_8'
+          plane='0 0 1 5.75581'/>
+      <ClipPlane DEF='_9'
+          plane='0 0 -1 5.75581'/>
+      <ClipPlane DEF='_10'
+          plane='0 1 0 5.75581'/>
+      <ClipPlane DEF='_11'
           plane='0 -1 0 5.75581'/>
       <Script DEF='ClipPlanesScript'
           directOutput='true'>
         <field accessType='inputOutput' type='SFFloat' name='distanceFromOrigin' value='5.75581'/>
         <field accessType='inputOutput' type='MFNode' name='planes'>
-          <ClipPlane USE='_1' containerField='planes'/>
-          <ClipPlane USE='_2' containerField='planes'/>
-          <ClipPlane USE='_3' containerField='planes'/>
-          <ClipPlane USE='_4' containerField='planes'/>
-          <ClipPlane USE='_5' containerField='planes'/>
-          <ClipPlane USE='_6' containerField='planes'/>
+          <ClipPlane USE='_6'/>
+          <ClipPlane USE='_7'/>
+          <ClipPlane USE='_8'/>
+          <ClipPlane USE='_9'/>
+          <ClipPlane USE='_10'/>
+          <ClipPlane USE='_11'/>
         </field>
 <![CDATA[ecmascript:
 

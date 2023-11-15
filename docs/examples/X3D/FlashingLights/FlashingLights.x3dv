@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -8,14 +8,12 @@ COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 20 Dec 2015 16:23:08 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d"
-META "modified" "Mon, 07 Jan 2019 04:18:13 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:10:46 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:25:47 GMT"
 
 WorldInfo { }
 
@@ -61,7 +59,7 @@ function initialize ()
               translation 0 0 0.15
               children Shape {
                 appearance Appearance {
-                  material DEF Metal27_1 Material {
+                  material DEF Metal27_2 Material {
                     ambientIntensity 0
                     diffuseColor 0 0 0
                     shininess 0
@@ -79,7 +77,7 @@ function initialize ()
           children [
             DEF ColorAnimation Group {
               children [
-                DEF _2 TimeSensor {
+                DEF _3 TimeSensor {
                   cycleInterval 30
                   loop TRUE
                 }
@@ -90,42 +88,42 @@ function initialize ()
               ]
             }
             DEF Light1 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.645102
               location -1 0 0
             }
             DEF Light2 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.19518
               location -0.714286 0 0
             }
             DEF Light3 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.888487
               location -0.428571 0 0
             }
             DEF Light4 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.912746
               location -0.142857 0 0
             }
             DEF Light5 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.249688
               location 0.142857 0 0
             }
             DEF Light6 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.60139
               location 0.428571 0 0
             }
             DEF Light7 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.999609
               location 0.714286 0 0
             }
             DEF Light8 PointLight {
-              color 0 1 0.607978
+              color 0.4278 1 0
               intensity 0.645102
               location 1 0 0
             }
@@ -162,7 +160,7 @@ function set_active (value)
 	var
 		touchSensor = Browser .currentScene .getNamedNode (\"LightsTouch\"),
 		self        = Browser .currentScene .getNamedNode (\"LightsScript\");
-	
+
 	if (touchSensor .isActive)
 		Browser .addRoute (touchSensor, \"hitPoint_changed\", self, \"set_hitPoint\");
 	else
@@ -174,7 +172,7 @@ function set_hitPoint (value, time)
 	if (time - startTime > 0.1)
 	{
 		lights [light] .location = value;
-	
+
 		startTime = time;
 
 		light = (light + 1) % 8;
@@ -233,7 +231,7 @@ function get_intensity (value)
             geometry Rectangle2D { }
           }
         }
-        DEF Text_1 Transform {
+        DEF Text_4 Transform {
           translation 0 -0.0191083 0
           children Shape {
             appearance Appearance {
@@ -247,7 +245,7 @@ function get_intensity (value)
             geometry Text {
               string "An Interactive X3D Experience"
               solid TRUE
-              fontStyle DEF _3 FontStyle {
+              fontStyle DEF _5 FontStyle {
                 family [ "CharlotteSansBoldPlain.otf", "SERIF" ]
                 size 0.08
                 justify [ "MIDDLE", "MIDDLE" ]
@@ -258,7 +256,7 @@ function get_intensity (value)
         DEF Disk2D Transform {
           translation -0.15 -0.259941 0
           children [
-            DEF _4 Shape {
+            DEF _6 Shape {
               appearance Appearance {
                 material Material {
                   ambientIntensity 0
@@ -271,11 +269,11 @@ function get_intensity (value)
                 outerRadius 0.14
               }
             }
-            DEF Text_2 Transform {
+            DEF Text_7 Transform {
               translation 0 -0.00799999 0
               children Shape {
                 appearance Appearance {
-                  material DEF _5 Material {
+                  material DEF _8 Material {
                     ambientIntensity 0
                     diffuseColor 0 0 0
                     shininess 0
@@ -284,32 +282,32 @@ function get_intensity (value)
                 geometry Text {
                   string "JOIN"
                   solid TRUE
-                  fontStyle USE _3
+                  fontStyle USE _5
                 }
               }
             }
           ]
         }
-        DEF Disk2D_1 Transform {
+        DEF Disk2D_9 Transform {
           translation 0.15 -0.259941 0
           children [
-            USE _4
-            DEF Text_3 Transform {
+            USE _6
+            DEF Text_10 Transform {
               translation 0 0.00100001 0
               children Shape {
                 appearance Appearance {
-                  material USE _5
+                  material USE _8
                 }
                 geometry Text {
                   string "US"
                   solid TRUE
-                  fontStyle USE _3
+                  fontStyle USE _5
                 }
               }
             }
           ]
         }
-        DEF Text_4 Transform {
+        DEF Text_11 Transform {
           translation 0 -0.617834 0
           children Shape {
             appearance Appearance {
@@ -345,5 +343,5 @@ ROUTE Light1.color_changed TO Light5.set_color
 ROUTE Light1.color_changed TO Light6.set_color
 ROUTE Light1.color_changed TO Light7.set_color
 ROUTE Light1.color_changed TO Light8.set_color
-ROUTE _2.fraction_changed TO Light1ColorInterpolator.set_fraction
+ROUTE _3.fraction_changed TO Light1ColorInterpolator.set_fraction
 ROUTE Light1ColorInterpolator.value_changed TO Light1.set_color

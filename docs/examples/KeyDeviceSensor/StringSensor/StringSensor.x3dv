@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -7,16 +7,12 @@ COMPONENT Scripting : 1
 COMPONENT Sound : 3
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Thu, 13 Dec 2018 13:18:33 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/KeyDeviceSensor/StringSensor/StringSensor.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:42:43 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:55:50 GMT"
-
-WorldInfo { }
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:09:13 GMT"
 
 NavigationInfo {
   type "NONE"
@@ -25,7 +21,7 @@ NavigationInfo {
 DEF YouWin Transform {
   translation 0 3 0
   children Shape {
-    appearance DEF _1 Appearance {
+    appearance DEF _16 Appearance {
       material Material {
         diffuseColor 0 0 0
         emissiveColor 0 1 1
@@ -46,7 +42,7 @@ DEF YouWin Transform {
 DEF EnterYourName Transform {
   translation 0 2.53057 0
   children Shape {
-    appearance USE _1
+    appearance USE _16
     geometry Text {
       string "enter your name"
       solid TRUE
@@ -63,7 +59,7 @@ DEF PointSet Transform {
   translation 0 1.57545 0
   scale 0.4 1 1
   children Shape {
-    appearance DEF _2 Appearance {
+    appearance Appearance {
       pointProperties PointProperties {
         pointSizeScaleFactor 4
         pointSizeMaxValue 4
@@ -81,7 +77,7 @@ DEF PointSet Transform {
   }
 }
 
-DEF _4 StringSensor { }
+DEF _17 StringSensor { }
 
 DEF ScoreScript Script {
   inputOnly      SFString set_enteredText
@@ -92,7 +88,7 @@ DEF ScoreScript Script {
   outputOnly     MFString scores_changed
   initializeOnly MFString names [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ]
   initializeOnly MFString scores [ "64954", "90797", "76015", "75371", "59181", "93368" ]
-  initializeOnly SFNode   sound DEF _5 AudioClip {
+  initializeOnly SFNode   sound DEF _18 AudioClip {
     description "screws"
     url "assets/screws.mp3"
     pauseTime 1544722794.88013
@@ -104,7 +100,7 @@ function initialize ()
 {
 	set_enteredText (\"\", 0);
 	set_score ();
-	
+
 	names_changed  = names;
 	scores_changed = scores;
 }
@@ -126,7 +122,7 @@ function set_finalText (value, time)
 
 	names  .length = Math .min (7, names .length);
 	scores .length = Math .min (7, scores .length);
-	
+
 	names_changed  = names;
 	scores_changed = scores;
 
@@ -148,10 +144,10 @@ function random (min, max)
 DEF Name Transform {
   translation 0 1.74394 0
   children Shape {
-    appearance DEF _6 Appearance {
+    appearance DEF _19 Appearance {
       material USE _3
     }
-    geometry DEF _7 Text {
+    geometry DEF _20 Text {
       string ""
       solid TRUE
       fontStyle FontStyle {
@@ -166,9 +162,9 @@ DEF Name Transform {
 DEF Score Transform {
   translation 0 1.16039 0
   children Shape {
-    appearance USE _6
-    geometry DEF _8 Text {
-      string "74499"
+    appearance USE _19
+    geometry DEF _21 Text {
+      string "56374"
       solid TRUE
       fontStyle FontStyle {
         family "assets/ATComputer.otf"
@@ -182,7 +178,7 @@ DEF Score Transform {
 DEF PlayersText Transform {
   translation -6 0.608401 0
   children Shape {
-    appearance USE _6
+    appearance USE _19
     geometry Text {
       string "Players"
       solid TRUE
@@ -197,7 +193,7 @@ DEF PlayersText Transform {
 DEF ScoresText Transform {
   translation 6 0.608401 0
   children Shape {
-    appearance USE _6
+    appearance USE _19
     geometry Text {
       string "Scores"
       solid TRUE
@@ -213,8 +209,8 @@ DEF ScoresText Transform {
 DEF Names Transform {
   translation -6 0 0
   children Shape {
-    appearance USE _1
-    geometry DEF _9 Text {
+    appearance USE _16
+    geometry DEF _22 Text {
       string [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ]
       solid TRUE
       fontStyle FontStyle {
@@ -229,8 +225,8 @@ DEF Names Transform {
 DEF Scores Transform {
   translation 6 0 0
   children Shape {
-    appearance USE _1
-    geometry DEF _10 Text {
+    appearance USE _16
+    geometry DEF _23 Text {
       string [ "64954", "90797", "76015", "75371", "59181", "93368" ]
       solid TRUE
       fontStyle FontStyle {
@@ -244,7 +240,6 @@ DEF Scores Transform {
 }
 
 DEF StarField Inline {
-  global TRUE
   url "assets/starfield.x3d"
 }
 
@@ -253,12 +248,12 @@ DEF screws Sound {
   minFront 20
   maxBack 30
   maxFront 30
-  source USE _5
+  source USE _18
 }
 
-ROUTE _4.enteredText TO ScoreScript.set_enteredText
-ROUTE _4.finalText TO ScoreScript.set_finalText
-ROUTE ScoreScript.name_changed TO _7.set_string
-ROUTE ScoreScript.score_changed TO _8.set_string
-ROUTE ScoreScript.names_changed TO _9.set_string
-ROUTE ScoreScript.scores_changed TO _10.set_string
+ROUTE _17.enteredText TO ScoreScript.set_enteredText
+ROUTE _17.finalText TO ScoreScript.set_finalText
+ROUTE ScoreScript.name_changed TO _20.set_string
+ROUTE ScoreScript.score_changed TO _21.set_string
+ROUTE ScoreScript.names_changed TO _22.set_string
+ROUTE ScoreScript.scores_changed TO _23.set_string

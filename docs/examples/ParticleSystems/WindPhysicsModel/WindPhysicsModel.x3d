@@ -6,14 +6,11 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 02 Dec 2017 06:40:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:53:42 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:00:10 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:14:29 GMT'/>
   </head>
   <Scene>
-    <WorldInfo
-        title='WindPhysicsModel.O'/>
     <Background
         skyAngle='1.09223, 1.5708'
         skyColor='0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3'
@@ -24,9 +21,9 @@
         position='13.2074 11.9628 17.9561'
         orientation='-0.38928278404824 0.911548075869159 0.132434962992728 0.714407813830447'
         centerOfRotation='-0.300751 5.38755 0.400722'/>
-    <Transform DEF='_1'
+    <Transform DEF='_2'
         translation='5 0 0'
-        rotation='0 -1 0 2.65019992197869'
+        rotation='0 0.999999999999998 0 0.375734475077623'
         center='-5 0 0'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
@@ -58,10 +55,9 @@
               gustiness='1.7'
               turbulence='0.1'/>
           <WindPhysicsModel
-              direction='1 0 0'
               speed='0.6'
               gustiness='2'/>
-          <Appearance DEF='_2'>
+          <Appearance>
             <PointProperties
                 pointSizeScaleFactor='8'
                 pointSizeMaxValue='8'/>
@@ -72,13 +68,11 @@
         </ParticleSystem>
       </Transform>
       <Inline
-          global='true'
           url='"toy-train.x3d"'/>
     </Transform>
     <Inline DEF='Cylinder'
-        global='true'
         url='"cylinder.x3d"'/>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_1' toField='set_rotation'/>
+    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_2' toField='set_rotation'/>
   </Scene>
 </X3D>

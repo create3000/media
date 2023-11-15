@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.12.5
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -13,9 +13,9 @@ COMPONENT Texturing3D : 2
 META "comment" "Rise and Shine"
 META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Texturing3D/ImageTexture3D/ImageTexture3D.O.x3d"
-META "modified" "Tue, 10 Oct 2023 17:33:55 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:22:36 GMT"
 
 PROTO Volume [
   inputOutput SFVec3f dimensions 1 1 1
@@ -191,11 +191,11 @@ Viewpoint {
 DEF Volume_1 Transform {
   children [
     DEF Volume Volume {
-      voxels DEF _1 ImageTexture3D {
+      voxels DEF _5 ImageTexture3D {
         url "datasets/dicom/IM00001.implicit_little_endian.dcm"
       }
     }
-    DEF _2 ClipPlane {
+    DEF _6 ClipPlane {
       plane 0 0 -1 0.643118
     }
   ]
@@ -214,7 +214,7 @@ DEF VisibleClipPlane Transform {
       children [
         Shape {
           appearance Appearance {
-            lineProperties DEF _3 LineProperties {
+            lineProperties DEF _7 LineProperties {
               linewidthScaleFactor 2
             }
             material Material {
@@ -225,7 +225,7 @@ DEF VisibleClipPlane Transform {
         }
         Shape {
           appearance Appearance {
-            lineProperties USE _3
+            lineProperties USE _7
             material Material { }
           }
           geometry IndexedLineSet {
@@ -253,6 +253,6 @@ function set_translation (value)
   ]
 }
 
-ROUTE ClipPlaneScript.plane_changed TO _2.set_plane
+ROUTE ClipPlaneScript.plane_changed TO _6.set_plane
 ROUTE PlaneSensor.translation_changed TO Rectangle2D.set_translation
 ROUTE PlaneSensor.translation_changed TO ClipPlaneScript.set_translation

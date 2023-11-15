@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -7,14 +7,12 @@ COMPONENT Scripting : 1
 COMPONENT Sound : 3
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Fri, 14 Dec 2018 17:54:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.5, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/KeyDeviceSensor/KeySensor/KeySensor.O.x3d"
-META "modified" "Sat, 15 Dec 2018 02:34:30 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:55:40 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:09:06 GMT"
 
 WorldInfo { }
 
@@ -304,7 +302,7 @@ DEF Pad Transform {
         }
       }
     }
-    DEF _1 Switch {
+    DEF _14 Switch {
       whichChoice 0
       children [
         DEF WeaponScript Script {
@@ -326,19 +324,18 @@ function set_active (value, time)
         }
         Group {
           children [
-            DEF _2 TimeSensor {
+            DEF _15 TimeSensor {
               cycleInterval 3
               loop TRUE
             }
-            DEF _3 TimeSensor {
-              startTime 1544841196.42438
+            DEF _16 TimeSensor {
+              startTime 1700014145.967
             }
-            DEF _4 PositionInterpolator {
+            DEF _17 PositionInterpolator {
               key [ 0, 1 ]
               keyValue [ 0 0 0, 0 3 0 ]
             }
             DEF Weapon Transform {
-              translation 0 3 0
               children Shape {
                 appearance Appearance {
                   material Material {
@@ -364,7 +361,7 @@ function set_active (value, time)
   ]
 }
 
-DEF _5 KeySensor { }
+DEF _18 KeySensor { }
 
 DEF SpaceInvadersScript Script {
   inputOnly  SFInt32  set_actionKey
@@ -412,9 +409,10 @@ DEF weapon Sound {
   minFront 20
   maxBack 30
   maxFront 30
-  source DEF _6 AudioClip {
+  source DEF _19 AudioClip {
     description "Weapon"
     url "assets/weapon.mp3"
+    loop TRUE
   }
 }
 
@@ -423,13 +421,13 @@ Inline {
   url "assets/starfield.x3d"
 }
 
-ROUTE _5.actionKeyPress TO SpaceInvadersScript.set_actionKey
+ROUTE _18.actionKeyPress TO SpaceInvadersScript.set_actionKey
 ROUTE SpaceInvadersScript.translation_changed TO Pad.set_translation
-ROUTE _3.fraction_changed TO _4.set_fraction
-ROUTE _4.value_changed TO Weapon.set_translation
-ROUTE _3.isActive TO WeaponScript.set_active
-ROUTE WeaponScript.whichChoice_changed TO _1.set_whichChoice
-ROUTE _5.keyPress TO SpaceInvadersScript.set_key
-ROUTE SpaceInvadersScript.fire TO _3.set_startTime
-ROUTE _2.cycleTime TO _3.set_startTime
-ROUTE _3.isActive TO _6.set_loop
+ROUTE _16.fraction_changed TO _17.set_fraction
+ROUTE _17.value_changed TO Weapon.set_translation
+ROUTE _16.isActive TO WeaponScript.set_active
+ROUTE WeaponScript.whichChoice_changed TO _14.set_whichChoice
+ROUTE _18.keyPress TO SpaceInvadersScript.set_key
+ROUTE SpaceInvadersScript.fire TO _16.set_startTime
+ROUTE _15.cycleTime TO _16.set_startTime
+ROUTE _16.isActive TO _19.set_loop

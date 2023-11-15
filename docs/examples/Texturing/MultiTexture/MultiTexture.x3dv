@@ -1,15 +1,13 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.5, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/MultiTexture/MultiTexture.O.x3d"
-META "modified" "Mon, 08 Apr 2019 07:16:10 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:07:05 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:22:06 GMT"
 
 WorldInfo { }
 
@@ -50,8 +48,8 @@ DEF Sphere Transform {
         textureTransform MultiTextureTransform {
           textureTransform [
             TextureTransform { }
-            DEF _1 TextureTransform {
-              translation 0.148662 0
+            DEF _15 TextureTransform {
+              translation 0.05288333 0
             }
           ]
         }
@@ -67,4 +65,4 @@ DEF Starfield Inline {
 }
 
 ROUTE AnimationTimer.fraction_changed TO TranslationInterpolator.set_fraction
-ROUTE TranslationInterpolator.value_changed TO _1.set_translation
+ROUTE TranslationInterpolator.value_changed TO _15.set_translation

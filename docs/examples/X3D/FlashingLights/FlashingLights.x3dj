@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/FlashingLights/FlashingLights.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 04:18:13 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:10:52 GMT"
+          "@content": "Wed, 15 Nov 2023 02:25:45 GMT"
         }
       ],
       "component": [
@@ -80,7 +72,7 @@
                     { "Script":
                       {
                         "@DEF": "EnterWorldScript",
-                        "#sourceText": [
+                        "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -147,7 +139,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@DEF": "Metal27_1",
+                                            "@DEF": "Metal27_2",
                                             "@ambientIntensity": 0,
                                             "@diffuseColor": [ 0, 0, 0 ],
                                             "@shininess": 0,
@@ -185,7 +177,7 @@
                               "-children": [
                                 { "TimeSensor":
                                   {
-                                    "@DEF": "_2",
+                                    "@DEF": "_3",
                                     "@cycleInterval": 30,
                                     "@loop": true
                                   }
@@ -203,7 +195,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light1",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.645102,
                               "@location": [ -1, 0, 0 ]
                             }
@@ -211,7 +203,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light2",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.19518,
                               "@location": [ -0.714286, 0, 0 ]
                             }
@@ -219,7 +211,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light3",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.888487,
                               "@location": [ -0.428571, 0, 0 ]
                             }
@@ -227,7 +219,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light4",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.912746,
                               "@location": [ -0.142857, 0, 0 ]
                             }
@@ -235,7 +227,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light5",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.249688,
                               "@location": [ 0.142857, 0, 0 ]
                             }
@@ -243,7 +235,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light6",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.60139,
                               "@location": [ 0.428571, 0, 0 ]
                             }
@@ -251,7 +243,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light7",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.999609,
                               "@location": [ 0.714286, 0, 0 ]
                             }
@@ -259,7 +251,7 @@
                           { "PointLight":
                             {
                               "@DEF": "Light8",
-                              "@color": [ 0, 1, 0.607978 ],
+                              "@color": [ 0.5708, 1, 0 ],
                               "@intensity": 0.645102,
                               "@location": [ 1, 0, 0 ]
                             }
@@ -300,7 +292,7 @@
                             "@value": 2
                           }
                         ],
-                        "#sourceText": [
+                        "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -323,7 +315,7 @@
 "\tvar",
 "\t\ttouchSensor = Browser .currentScene .getNamedNode (\"LightsTouch\"),",
 "\t\tself        = Browser .currentScene .getNamedNode (\"LightsScript\");",
-"\t",
+"",
 "\tif (touchSensor .isActive)",
 "\t\tBrowser .addRoute (touchSensor, \"hitPoint_changed\", self, \"set_hitPoint\");",
 "\telse",
@@ -335,7 +327,7 @@
 "\tif (time - startTime > 0.1)",
 "\t{",
 "\t\tlights [light] .location = value;",
-"\t",
+"",
 "\t\tstartTime = time;",
 "",
 "\t\tlight = (light + 1) % 8;",
@@ -419,7 +411,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_1",
+                        "@DEF": "Text_4",
                         "@translation": [ 0, -0.0191083, 0 ],
                         "-children": [
                           { "Shape":
@@ -442,7 +434,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@DEF": "_3",
+                                      "@DEF": "_5",
                                       "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
                                       "@size": 0.08,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
@@ -462,7 +454,7 @@
                         "-children": [
                           { "Shape":
                             {
-                              "@DEF": "_4",
+                              "@DEF": "_6",
                               "-appearance": { "Appearance":
                                 {
                                   "-material": { "Material":
@@ -484,7 +476,7 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_2",
+                              "@DEF": "Text_7",
                               "@translation": [ 0, -0.00799999, 0 ],
                               "-children": [
                                 { "Shape":
@@ -493,7 +485,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@DEF": "_5",
+                                            "@DEF": "_8",
                                             "@ambientIntensity": 0,
                                             "@diffuseColor": [ 0, 0, 0 ],
                                             "@shininess": 0
@@ -507,7 +499,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@USE": "_3"
+                                            "@USE": "_5"
                                           }
                                         }
                                       }
@@ -522,17 +514,17 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Disk2D_1",
+                        "@DEF": "Disk2D_9",
                         "@translation": [ 0.15, -0.259941, 0 ],
                         "-children": [
                           { "Shape":
                             {
-                              "@USE": "_4"
+                              "@USE": "_6"
                             }
                           },
                           { "Transform":
                             {
-                              "@DEF": "Text_3",
+                              "@DEF": "Text_10",
                               "@translation": [ 0, 0.00100001, 0 ],
                               "-children": [
                                 { "Shape":
@@ -541,7 +533,7 @@
                                       {
                                         "-material": { "Material":
                                           {
-                                            "@USE": "_5"
+                                            "@USE": "_8"
                                           }
                                         }
                                       }
@@ -552,7 +544,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@USE": "_3"
+                                            "@USE": "_5"
                                           }
                                         }
                                       }
@@ -567,7 +559,7 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Text_4",
+                        "@DEF": "Text_11",
                         "@translation": [ 0, -0.617834, 0 ],
                         "-children": [
                           { "Shape":
@@ -682,7 +674,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_2",
+            "@fromNode": "_3",
             "@fromField": "fraction_changed",
             "@toNode": "Light1ColorInterpolator",
             "@toField": "set_fraction"

@@ -11,9 +11,8 @@
     <meta name='created' content='Sun, 20 Dec 2015 16:23:08 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 04:18:13 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:10:42 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:25:39 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -53,7 +52,7 @@ function initialize ()
               translation='0 0 0.15'>
             <Shape>
               <Appearance>
-                <Material DEF='Metal27_1'
+                <Material DEF='Metal27_2'
                     ambientIntensity='0'
                     diffuseColor='0 0 0'
                     shininess='0'
@@ -67,7 +66,7 @@ function initialize ()
         <Transform DEF='Lights'
             translation='0 0 0.15'>
           <Group DEF='ColorAnimation'>
-            <TimeSensor DEF='_2'
+            <TimeSensor DEF='_3'
                 cycleInterval='30'
                 loop='true'/>
             <ColorInterpolator DEF='Light1ColorInterpolator'
@@ -75,35 +74,35 @@ function initialize ()
                 keyValue='1 0 0, 0.5 1 0, 0 1 1, 0.5 0 1, 1 0 0'/>
           </Group>
           <PointLight DEF='Light1'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.645102'
               location='-1 0 0'/>
           <PointLight DEF='Light2'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.19518'
               location='-0.714286 0 0'/>
           <PointLight DEF='Light3'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.888487'
               location='-0.428571 0 0'/>
           <PointLight DEF='Light4'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.912746'
               location='-0.142857 0 0'/>
           <PointLight DEF='Light5'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.249688'
               location='0.142857 0 0'/>
           <PointLight DEF='Light6'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.60139'
               location='0.428571 0 0'/>
           <PointLight DEF='Light7'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.999609'
               location='0.714286 0 0'/>
           <PointLight DEF='Light8'
-              color='0 1 0.607978'
+              color='1 0.897 0'
               intensity='0.645102'
               location='1 0 0'/>
         </Transform>
@@ -203,7 +202,7 @@ function get_intensity (value)
             <Rectangle2D/>
           </Shape>
         </Transform>
-        <Transform DEF='Text_1'
+        <Transform DEF='Text_4'
             translation='0 -0.0191083 0'>
           <Shape>
             <Appearance>
@@ -216,7 +215,7 @@ function get_intensity (value)
             <Text
                 string='"An Interactive X3D Experience"'
                 solid='true'>
-              <FontStyle DEF='_3'
+              <FontStyle DEF='_5'
                   family='"CharlotteSansBoldPlain.otf", "SERIF"'
                   size='0.08'
                   justify='"MIDDLE", "MIDDLE"'/>
@@ -225,7 +224,7 @@ function get_intensity (value)
         </Transform>
         <Transform DEF='Disk2D'
             translation='-0.15 -0.259941 0'>
-          <Shape DEF='_4'>
+          <Shape DEF='_6'>
             <Appearance>
               <Material
                   ambientIntensity='0'
@@ -236,11 +235,11 @@ function get_intensity (value)
             <Disk2D
                 outerRadius='0.14'/>
           </Shape>
-          <Transform DEF='Text_2'
+          <Transform DEF='Text_7'
               translation='0 -0.00799999 0'>
             <Shape>
               <Appearance>
-                <Material DEF='_5'
+                <Material DEF='_8'
                     ambientIntensity='0'
                     diffuseColor='0 0 0'
                     shininess='0'/>
@@ -248,29 +247,29 @@ function get_intensity (value)
               <Text
                   string='"JOIN"'
                   solid='true'>
-                <FontStyle USE='_3'/>
+                <FontStyle USE='_5'/>
               </Text>
             </Shape>
           </Transform>
         </Transform>
-        <Transform DEF='Disk2D_1'
+        <Transform DEF='Disk2D_9'
             translation='0.15 -0.259941 0'>
-          <Shape USE='_4'/>
-          <Transform DEF='Text_3'
+          <Shape USE='_6'/>
+          <Transform DEF='Text_10'
               translation='0 0.00100001 0'>
             <Shape>
               <Appearance>
-                <Material USE='_5'/>
+                <Material USE='_8'/>
               </Appearance>
               <Text
                   string='"US"'
                   solid='true'>
-                <FontStyle USE='_3'/>
+                <FontStyle USE='_5'/>
               </Text>
             </Shape>
           </Transform>
         </Transform>
-        <Transform DEF='Text_4'
+        <Transform DEF='Text_11'
             translation='0 -0.617834 0'>
           <Shape>
             <Appearance>
@@ -301,7 +300,7 @@ function get_intensity (value)
     <ROUTE fromNode='Light1' fromField='color_changed' toNode='Light6' toField='set_color'/>
     <ROUTE fromNode='Light1' fromField='color_changed' toNode='Light7' toField='set_color'/>
     <ROUTE fromNode='Light1' fromField='color_changed' toNode='Light8' toField='set_color'/>
-    <ROUTE fromNode='_2' fromField='fraction_changed' toNode='Light1ColorInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='_3' fromField='fraction_changed' toNode='Light1ColorInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='Light1ColorInterpolator' fromField='value_changed' toNode='Light1' toField='set_color'/>
   </Scene>
 </X3D>

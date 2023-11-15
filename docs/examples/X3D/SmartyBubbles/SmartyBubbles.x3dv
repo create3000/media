@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -10,16 +10,12 @@ COMPONENT Scripting : 1
 COMPONENT Shaders : 1
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sat, 19 Dec 2015 09:16:40 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SmartyBubbles/SmartyBubbles.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:52:47 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:12:40 GMT"
-
-WorldInfo { }
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:27:10 GMT"
 
 LayerSet {
   activeLayer 1
@@ -36,7 +32,7 @@ LayerSet {
           orientation -0.999933096070184 0.0115578116763063 0.000469438762833508 0.0811939565212404
           centerOfRotation 9.62161 5.34281 -0.241343
         }
-        DEF _1 ParticleSystem {
+        DEF _2 ParticleSystem {
           geometryType "POINT"
           maxParticles 100
           particleLifetime 2
@@ -50,8 +46,8 @@ LayerSet {
           bboxSize 21.59 12 1.09
           bboxCenter 10 6 0
           appearance Appearance {
-            pointProperties DEF _2 PointProperties {
-              pointSizeScaleFactor 97.3167
+            pointProperties DEF _3 PointProperties {
+              pointSizeScaleFactor 25.05152
             }
             material Material {
               transparency 0.50591
@@ -172,7 +168,7 @@ main ()
         }
         DEF BubblesMenu Group {
           children [
-            DEF Header_1 Transform {
+            DEF Header_4 Transform {
               translation 1.6905 -0.759496 -1
               scale 0.0672307 0.0672307 0.0672307
               children Shape {
@@ -202,7 +198,7 @@ main ()
                 appearance Appearance {
                   material Material { }
                 }
-                geometry DEF _3 Text {
+                geometry DEF _5 Text {
                   string "numParticles 100"
                   solid TRUE
                   fontStyle FontStyle {
@@ -213,7 +209,7 @@ main ()
               }
             }
             DEF numParticlesSlider Transform {
-              translation 0.0735 -0.9285 -0.00000351117
+              translation 0.0735 -0.9285 -3.51117e-6
               center 0 -0.027 0
               children [
                 DEF IndexedLineSet Transform {
@@ -222,7 +218,7 @@ main ()
                       lineProperties LineProperties {
                         linewidthScaleFactor 2
                       }
-                      material DEF Artdeco31_1 Material {
+                      material DEF Artdeco31_6 Material {
                         emissiveColor 0.721 0.721 0.721
                       }
                     }
@@ -247,7 +243,7 @@ main ()
                         geometry Disk2D { }
                       }
                     }
-                    DEF _4 PlaneSensor {
+                    DEF _7 PlaneSensor {
                       offset 0.184127 0 0
                       maxPosition 1 0
                     }
@@ -262,8 +258,8 @@ main ()
                 appearance Appearance {
                   material Material { }
                 }
-                geometry DEF _5 Text {
-                  string "pointSize 97"
+                geometry DEF _8 Text {
+                  string "pointSize 25"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -273,16 +269,16 @@ main ()
               }
             }
             DEF pointSizeSlider Transform {
-              translation 0.2205 -0.8305 -0.00000315105
+              translation 0.2205 -0.8305 -3.15105e-6
               center 0 -0.027 0
               children [
-                DEF IndexedLineSet_1 Transform {
+                DEF IndexedLineSet_9 Transform {
                   children Shape {
                     appearance Appearance {
                       lineProperties LineProperties {
                         linewidthScaleFactor 2
                       }
-                      material DEF Artdeco31_2 Material {
+                      material DEF Artdeco31_10 Material {
                         emissiveColor 0.721 0.721 0.721
                       }
                     }
@@ -297,8 +293,8 @@ main ()
                 }
                 Transform {
                   children [
-                    DEF Rectangle2D_1 Transform {
-                      translation 0.972896 0 0
+                    DEF Rectangle2D_11 Transform {
+                      translation 0.9661798 0 0
                       scale 0.027 0.0267372 0.0267372
                       children Shape {
                         appearance Appearance {
@@ -307,8 +303,8 @@ main ()
                         geometry Disk2D { }
                       }
                     }
-                    DEF _6 PlaneSensor {
-                      offset 0.972896 0 0
+                    DEF _12 PlaneSensor {
+                      offset 0.9661798 0 0
                       maxPosition 1 0
                     }
                   ]
@@ -317,7 +313,7 @@ main ()
                   children [
                     DEF Animation Group {
                       children [
-                        DEF _7 TimeSensor {
+                        DEF _13 TimeSensor {
                           cycleInterval 6.8
                           loop TRUE
                           startTime 1450552664.38374
@@ -338,9 +334,8 @@ main ()
                       inputOutput    SFFloat  maxValue 100
                       outputOnly     SFFloat  value_changed
                       outputOnly     MFString string_changed
-                      initializeOnly SFInt32  currentValue 97
+                      initializeOnly SFInt32  currentValue 25
 
-                      description ""
                       url "ecmascript:
 
 function initialized ()
@@ -374,7 +369,6 @@ function set_value (value)
                   outputOnly     MFString string_changed
                   initializeOnly SFInt32  currentValue 100
 
-                  description ""
                   url "ecmascript:
 
 function initialized ()
@@ -397,7 +391,7 @@ function set_value (value)
 	string_changed [0] = description + \" \" + currentValue;
 }"
                 }
-                DEF Rectangle2D_2 Transform {
+                DEF Rectangle2D_14 Transform {
                   translation -0.0729483 0 0
                   scale 0.027 0.0267372 0.0267372
                   children [
@@ -407,12 +401,12 @@ function set_value (value)
                       }
                       geometry Rectangle2D { }
                     }
-                    DEF _8 TouchSensor {
+                    DEF _15 TouchSensor {
                       description "Toggle Animation"
                     }
                     DEF TogglePointSizeAnim Script {
                       inputOnly      SFTime set_touchTime
-                      initializeOnly SFNode timer USE _7
+                      initializeOnly SFNode timer USE _13
 
                       url "ecmascript:
 
@@ -441,16 +435,16 @@ function set_touchTime (value, time)
   ]
 }
 
-ROUTE _4.translation_changed TO Rectangle2D.set_translation
-ROUTE _4.translation_changed TO numParticlesScript.set_translation
-ROUTE numParticlesScript.string_changed TO _3.set_string
-ROUTE _6.translation_changed TO Rectangle2D_1.set_translation
-ROUTE _6.translation_changed TO pointSizeScript.set_translation
-ROUTE pointSizeScript.string_changed TO _5.set_string
-ROUTE _7.fraction_changed TO pointSizeScriptSet_translationInterpolator.set_fraction
+ROUTE _7.translation_changed TO Rectangle2D.set_translation
+ROUTE _7.translation_changed TO numParticlesScript.set_translation
+ROUTE numParticlesScript.string_changed TO _5.set_string
+ROUTE _12.translation_changed TO Rectangle2D_11.set_translation
+ROUTE _12.translation_changed TO pointSizeScript.set_translation
+ROUTE pointSizeScript.string_changed TO _8.set_string
+ROUTE _13.fraction_changed TO pointSizeScriptSet_translationInterpolator.set_fraction
 ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO pointSizeScript.set_translation
-ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO _6.set_offset
-ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO Rectangle2D_1.set_translation
-ROUTE _8.touchTime TO TogglePointSizeAnim.set_touchTime
-ROUTE numParticlesScript.value_changed TO _1.set_maxParticles
-ROUTE pointSizeScript.value_changed TO _2.set_pointSizeScaleFactor
+ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO _12.set_offset
+ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO Rectangle2D_11.set_translation
+ROUTE _15.touchTime TO TogglePointSizeAnim.set_touchTime
+ROUTE numParticlesScript.value_changed TO _2.set_maxParticles
+ROUTE pointSizeScript.value_changed TO _3.set_pointSizeScaleFactor

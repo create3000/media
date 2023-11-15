@@ -1,58 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
-    <component name='ParticleSystems' level='1'/>
-    <component name='Shape' level='5'/>
-    <component name='Time' level='2'/>
+    <component name='ParticleSystems' level='3'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 02 Dec 2017 06:40:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:53:42 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 01:54:45 GMT'/>
   </head>
   <Scene>
-    <WorldInfo
-        title='WindPhysicsModel.O'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <Appearance DEF='_1' containerField='value'>
-              <PointProperties
-                  pointSizeScaleFactor='8'
-                  pointSizeMaxValue='8'/>
-              <Material
-                  emissiveColor='0.0437445 0.0437445 0.0437445'
-                  transparency='0.96'/>
-            </Appearance>
-          </MetadataSet>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
     <Background
         skyAngle='1.09223, 1.5708'
         skyColor='0.2 0.2 0.2, 0.2 0.2 0.2, 0.3 0.3 0.3'
@@ -65,7 +22,7 @@
         centerOfRotation='-0.300751 5.38755 0.400722'/>
     <Transform DEF='_2'
         translation='5 0 0'
-        rotation='0 -1 0 2.65019992197869'
+        rotation='0 -1 0 1.75698801988913'
         center='-5 0 0'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
@@ -97,10 +54,16 @@
               gustiness='1.7'
               turbulence='0.1'/>
           <WindPhysicsModel
-              direction='1 0 0'
               speed='0.6'
               gustiness='2'/>
-          <Appearance USE='_1'/>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='8'
+                pointSizeMaxValue='8'/>
+            <Material
+                emissiveColor='0.0437445 0.0437445 0.0437445'
+                transparency='0.96'/>
+          </Appearance>
         </ParticleSystem>
       </Transform>
       <Inline

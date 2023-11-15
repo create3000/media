@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/IndexedTriangleFanSet/IndexedTriangleFanSet.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 08 Jan 2019 13:13:40 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:02:11 GMT"
+          "@content": "Wed, 15 Nov 2023 02:16:58 GMT"
         }
       ],
       "component": [
@@ -143,7 +135,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -182,13 +174,13 @@
 "",
 "\t\tpoints [1] .x = sin;",
 "\t\tpoints [1] .y = cos;",
-"\t\tpoints [3] .x = -sin;\t\t",
-"\t\tpoints [3] .y = cos;\t\t",
+"\t\tpoints [3] .x = -sin;",
+"\t\tpoints [3] .y = cos;",
 "",
 "\t\tfor (var p = 0; p < 4; ++ p)",
 "\t\t{",
 "\t\t\tvar rotation = new SFRotation (zAxis, boid .velocity);",
-"\t\t",
+"",
 "\t\t\tpoint [i * 4 + p] = rotation .multVec (points [p]) .multiply (scaleFactor) .add (boid .position);",
 "\t\t}",
 "\t}",
@@ -199,7 +191,7 @@
 "\tvar",
 "\t\tindex = new MFInt32 (),",
 "\t\tpoint = geometry .coord .point;",
-"\t",
+"",
 "\tpoint .length = 0;",
 "\tboids .length = 0;",
 "",
@@ -216,12 +208,12 @@
 "\t\tboid .velocity.z = Math .random () * 2 - 1;",
 "\t\tboid .setAvoidWalls (true);",
 "\t\tboid .setWorldSize (500, 200, 500);",
-"\t\t",
+"",
 "\t\tfor (var t = 0, tl = 4; t < tl; ++ t)",
 "\t\t{",
 "\t\t\tindex .push (i * tl + t);",
 "\t\t}",
-"\t\t",
+"",
 "\t\tindex .push (-1)",
 "\t}",
 "",
@@ -395,7 +387,7 @@
 "\tthis .reach = function (target, amount)",
 "\t{",
 "\t\tvar steer = target .subtract (this .position);",
-"\t\t",
+"",
 "\t\tsteer = steer .multiply (amount);",
 "",
 "\t\treturn steer;",
@@ -419,7 +411,7 @@
 "\t\t\tif (distance > 0 && distance <= _neighborhoodRadius)",
 "\t\t\t{",
 "\t\t\t\tvelSum = velSum .add (boid .velocity);",
-"\t\t\t\t",
+"",
 "\t\t\t\t++ count;",
 "\t\t\t}",
 "\t\t}",
@@ -458,7 +450,7 @@
 "\t\t\tif (distance > 0 && distance <= _neighborhoodRadius)",
 "\t\t\t{",
 "\t\t\t\tposSum = posSum .add (boid .position);",
-"\t\t\t\t",
+"",
 "\t\t\t\t++ count;",
 "\t\t\t}",
 "\t\t}",
@@ -569,7 +561,7 @@
                       "-children": [
                         { "Appearance":
                           {
-                            "@DEF": "_3",
+                            "@DEF": "_16",
                             "-material": { "Material":
                               {
                                 "@diffuseColor": [ 0.366785, 0.224382, 0.134316 ]

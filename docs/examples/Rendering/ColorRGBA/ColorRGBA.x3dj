@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/ColorRGBA/ColorRGBA.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 03:23:50 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:01:42 GMT"
+          "@content": "Wed, 15 Nov 2023 02:16:24 GMT"
         }
       ],
       "component": [
@@ -188,7 +180,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -209,14 +201,14 @@
 "",
 "\tif (dt < updateInterval)",
 "\t\treturn;",
-"\t\t",
+"",
 "\tif (points .length > width)",
 "\t\tpoints .shift ();",
 "",
 "\tpoints .push (value);",
-"\t",
+"",
 "\tlastTime = time;",
-"\t",
+"",
 "\tanimate ();",
 "}",
 "",
@@ -266,7 +258,7 @@
 "\t\t\thsva .setHSVA (hue, 1, 1, 1);",
 "",
 "\t\t\tcolor .push (hsva);",
-"\t\t\t\t",
+"",
 "\t\t\tcoord .push (new SFVec3f (x1, y1, 0));",
 "\t\t\tcoord .push (new SFVec3f (x2, y1, 0));",
 "\t\t\tcoord .push (new SFVec3f (x2, y2, 0));",
@@ -278,7 +270,7 @@
 "function animate ()",
 "{",
 "\tvar color = geometry .color .color;",
-"\t\t",
+"",
 "\tfor (var w = 0; w < points .length; ++ w)",
 "\t{",
 "\t\tvar value = (points [w] + 1) * 0.5 * height;",
@@ -288,7 +280,7 @@
 "\t\t\tvar",
 "\t\t\t\ti = w * height + h,",
 "\t\t\t\tc = color [i];",
-"\t\t",
+"",
 "\t\t\tif (value > h)",
 "\t\t\t{",
 "\t\t\t\tc .a = 1;",
@@ -357,7 +349,7 @@
         },
         { "ProtoInstance":
           {
-            "@DEF": "_2",
+            "@DEF": "_15",
             "@name": "Noise",
             "fieldValue": [
               {
@@ -379,7 +371,7 @@
                 {
                   "-geometry": { "ProtoInstance":
                     {
-                      "@DEF": "_3",
+                      "@DEF": "_16",
                       "@name": "GraphicDisplay",
                       "fieldValue": [
                         {
@@ -422,7 +414,7 @@
                   "-geometry": { "ProtoInstance":
                     {
                       "@name": "GraphicDisplay",
-                      "@USE": "_3"
+                      "@USE": "_16"
                     }
                   }
                 }
@@ -432,9 +424,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_2",
+            "@fromNode": "_15",
             "@fromField": "value_changed",
-            "@toNode": "_3",
+            "@toNode": "_16",
             "@toField": "set_value"
           }
         }

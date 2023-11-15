@@ -1,18 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 08 Mar 2015 05:54:30 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Lighting/PointLight/PointLight.O.x3d"
-META "modified" "Wed, 06 Jun 2018 13:03:36 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:09:49 GMT"
 META "title" "Beethoven"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:56:29 GMT"
 
 WorldInfo {
   title "PointLight"
@@ -65,7 +63,7 @@ Transform {
             ]
           }
           DEF RedLight Transform {
-            translation -0.498113 -1.75641 -2.20515
+            translation 0.2815563 -0.9970714 -2.337318
             children [
               DEF _2 PointLight {
                 color 1 0 0
@@ -86,16 +84,16 @@ Transform {
             ]
           }
           DEF GreenLight Transform {
-            translation -0.263931 0.928027 -1.81021
+            translation -0.8597468 1.626193 -1.780668
             children [
               DEF _5 PointLight {
                 color 0 1 0
                 attenuation 0.07 0.16 0.88
               }
-              DEF Sphere_1 Transform {
+              DEF Sphere_6 Transform {
                 children Shape {
                   appearance Appearance {
-                    material DEF _6 Material {
+                    material DEF _7 Material {
                       emissiveColor 0 1 0
                     }
                   }
@@ -105,16 +103,16 @@ Transform {
             ]
           }
           DEF BlueLight Transform {
-            translation -1.6247 -2.40012 1.65397
+            translation -0.8934348 -2.029287 1.873415
             children [
-              DEF _7 PointLight {
+              DEF _8 PointLight {
                 color 0 0 1
                 attenuation 0.07 0.16 0.88
               }
-              DEF Sphere_2 Transform {
+              DEF Sphere_9 Transform {
                 children Shape {
                   appearance Appearance {
-                    material DEF _8 Material {
+                    material DEF _10 Material {
                       emissiveColor 0 0 1
                     }
                   }
@@ -124,16 +122,16 @@ Transform {
             ]
           }
           DEF PinkLight Transform {
-            translation 1.35914 0.199608 1.47597
+            translation 0.4855865 0.4599921 1.556308
             children [
-              DEF _9 PointLight {
+              DEF _11 PointLight {
                 color 1 0 1
                 attenuation 0.07 0.16 0.88
               }
-              DEF Sphere_3 Transform {
+              DEF Sphere_12 Transform {
                 children Shape {
                   appearance Appearance {
-                    material DEF _10 Material {
+                    material DEF _13 Material {
                       emissiveColor 1 0 1
                     }
                   }
@@ -163,6 +161,6 @@ ROUTE BlueLightTranslationInterpolator.value_changed TO BlueLight.set_translatio
 ROUTE _1.fraction_changed TO PinkLightTranslationInterpolator.set_fraction
 ROUTE PinkLightTranslationInterpolator.value_changed TO PinkLight.set_translation
 ROUTE _2.color_changed TO _3.set_emissiveColor
-ROUTE _9.color_changed TO _10.set_emissiveColor
-ROUTE _7.color_changed TO _8.set_emissiveColor
-ROUTE _5.color_changed TO _6.set_emissiveColor
+ROUTE _11.color_changed TO _13.set_emissiveColor
+ROUTE _8.color_changed TO _10.set_emissiveColor
+ROUTE _5.color_changed TO _7.set_emissiveColor

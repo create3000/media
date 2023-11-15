@@ -14,9 +14,8 @@
     <meta name='created' content='Sun, 08 Jul 2018 09:58:21 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 12 Apr 2023 21:42:05 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:50:47 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:04:12 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFFloat' url='"assets/SFFloat.x3d#SFFloat"'>
@@ -186,36 +185,36 @@ function initialize ()
           </Transform>
           <Transform DEF='Year1995'
               translation='-9 -36 0'>
-            <ProtoInstance name='Year' DEF='_8'>
+            <ProtoInstance name='Year' DEF='_1'>
               <fieldValue name='enabled' value='true'/>
               <fieldValue name='string' value='"1995"'/>
             </ProtoInstance>
-            <TouchSensor DEF='_9'/>
+            <TouchSensor DEF='_2'/>
             <BooleanFilter DEF='EnableYear'/>
             <BooleanFilter DEF='DisableOthers'/>
-            <TimeTrigger DEF='_10'/>
+            <TimeTrigger DEF='_3'/>
             <ProtoInstance name='SFFloat' DEF='Cities1995'/>
           </Transform>
           <Transform DEF='Year2000'
               translation='84 -36 0'>
-            <ProtoInstance name='Year' DEF='_11'/>
-            <TouchSensor DEF='_12'/>
-            <BooleanFilter DEF='_13'/>
-            <BooleanFilter DEF='_14'/>
-            <TimeTrigger DEF='_15'/>
+            <ProtoInstance name='Year' DEF='_4'/>
+            <TouchSensor DEF='_5'/>
+            <BooleanFilter DEF='_6'/>
+            <BooleanFilter DEF='_7'/>
+            <TimeTrigger DEF='_8'/>
             <ProtoInstance name='SFFloat' DEF='Cities2000'>
               <fieldValue name='keyValue' value='0.5'/>
             </ProtoInstance>
           </Transform>
           <Transform DEF='Year2005'
               translation='159 -36 0'>
-            <ProtoInstance name='Year' DEF='_16'>
+            <ProtoInstance name='Year' DEF='_9'>
               <fieldValue name='string' value='"2005"'/>
             </ProtoInstance>
-            <TouchSensor DEF='_17'/>
-            <BooleanFilter DEF='_18'/>
-            <BooleanFilter DEF='_19'/>
-            <TimeTrigger DEF='_20'/>
+            <TouchSensor DEF='_10'/>
+            <BooleanFilter DEF='_11'/>
+            <BooleanFilter DEF='_12'/>
+            <TimeTrigger DEF='_13'/>
             <ProtoInstance name='SFFloat' DEF='Cities2005'>
               <fieldValue name='keyValue' value='1'/>
             </ProtoInstance>
@@ -309,31 +308,31 @@ function initialize ()
       </LayoutLayer>
     </LayerSet>
     <IMPORT inlineDEF='Cities' importedDEF='PointInterpolator'/>
-    <ROUTE fromNode='_12' fromField='isOver' toNode='_13' toField='set_boolean'/>
-    <ROUTE fromNode='_17' fromField='isOver' toNode='_18' toField='set_boolean'/>
-    <ROUTE fromNode='_9' fromField='isOver' toNode='EnableYear' toField='set_boolean'/>
+    <ROUTE fromNode='AnimateCities' fromField='value_changed' toNode='PointInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='_5' fromField='isOver' toNode='_6' toField='set_boolean'/>
+    <ROUTE fromNode='_10' fromField='isOver' toNode='_11' toField='set_boolean'/>
+    <ROUTE fromNode='_2' fromField='isOver' toNode='EnableYear' toField='set_boolean'/>
     <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='DisableOthers' toField='set_boolean'/>
-    <ROUTE fromNode='_13' fromField='inputTrue' toNode='_14' toField='set_boolean'/>
-    <ROUTE fromNode='_18' fromField='inputTrue' toNode='_19' toField='set_boolean'/>
-    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_10' toField='set_boolean'/>
-    <ROUTE fromNode='_15' fromField='triggerTime' toNode='Cities2000' toField='set_triggerTime'/>
-    <ROUTE fromNode='_10' fromField='triggerTime' toNode='Cities1995' toField='set_triggerTime'/>
-    <ROUTE fromNode='_13' fromField='inputTrue' toNode='_15' toField='set_boolean'/>
-    <ROUTE fromNode='_20' fromField='triggerTime' toNode='Cities2005' toField='set_triggerTime'/>
-    <ROUTE fromNode='_18' fromField='inputTrue' toNode='_20' toField='set_boolean'/>
+    <ROUTE fromNode='_6' fromField='inputTrue' toNode='_7' toField='set_boolean'/>
+    <ROUTE fromNode='_11' fromField='inputTrue' toNode='_12' toField='set_boolean'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_3' toField='set_boolean'/>
+    <ROUTE fromNode='_8' fromField='triggerTime' toNode='Cities2000' toField='set_triggerTime'/>
+    <ROUTE fromNode='_3' fromField='triggerTime' toNode='Cities1995' toField='set_triggerTime'/>
+    <ROUTE fromNode='_6' fromField='inputTrue' toNode='_8' toField='set_boolean'/>
+    <ROUTE fromNode='_13' fromField='triggerTime' toNode='Cities2005' toField='set_triggerTime'/>
+    <ROUTE fromNode='_11' fromField='inputTrue' toNode='_13' toField='set_boolean'/>
     <ROUTE fromNode='Cities2005' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
     <ROUTE fromNode='Cities2000' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
     <ROUTE fromNode='Cities1995' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
-    <ROUTE fromNode='_18' fromField='inputTrue' toNode='_16' toField='set_enabled'/>
-    <ROUTE fromNode='_14' fromField='inputNegate' toNode='_16' toField='set_enabled'/>
-    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_16' toField='set_enabled'/>
-    <ROUTE fromNode='_19' fromField='inputNegate' toNode='_8' toField='set_enabled'/>
-    <ROUTE fromNode='_14' fromField='inputNegate' toNode='_8' toField='set_enabled'/>
-    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_8' toField='set_enabled'/>
-    <ROUTE fromNode='_19' fromField='inputNegate' toNode='_11' toField='set_enabled'/>
-    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_11' toField='set_enabled'/>
-    <ROUTE fromNode='_13' fromField='inputTrue' toNode='_11' toField='set_enabled'/>
+    <ROUTE fromNode='_11' fromField='inputTrue' toNode='_9' toField='set_enabled'/>
+    <ROUTE fromNode='_7' fromField='inputNegate' toNode='_9' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_9' toField='set_enabled'/>
+    <ROUTE fromNode='_12' fromField='inputNegate' toNode='_1' toField='set_enabled'/>
+    <ROUTE fromNode='_7' fromField='inputNegate' toNode='_1' toField='set_enabled'/>
+    <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_1' toField='set_enabled'/>
+    <ROUTE fromNode='_12' fromField='inputNegate' toNode='_4' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_4' toField='set_enabled'/>
+    <ROUTE fromNode='_6' fromField='inputTrue' toNode='_4' toField='set_enabled'/>
     <ROUTE fromNode='EnterWorldScript' fromField='initialized' toNode='EnableYear' toField='set_boolean'/>
-    <ROUTE fromNode='AnimateCities' fromField='value_changed' toNode='PointInterpolator' toField='set_fraction'/>
   </Scene>
 </X3D>

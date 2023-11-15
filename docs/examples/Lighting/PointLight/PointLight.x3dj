@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,19 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.0, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Lighting/PointLight/PointLight.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 06 Jun 2018 13:03:36 GMT"
+          "@content": "Wed, 15 Nov 2023 02:10:01 GMT"
         },
         {
           "@name": "title",
           "@content": "Beethoven"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:56:34 GMT"
         }
       ],
       "component": [
@@ -132,7 +124,7 @@
                           { "Transform":
                             {
                               "@DEF": "RedLight",
-                              "@translation": [ -0.498113, -1.75641, -2.20515 ],
+                              "@translation": [ -2.187545, -2.908041, -1.126735 ],
                               "-children": [
                                 { "PointLight":
                                   {
@@ -174,7 +166,7 @@
                           { "Transform":
                             {
                               "@DEF": "GreenLight",
-                              "@translation": [ -0.263931, 0.928027, -1.81021 ],
+                              "@translation": [ 1.521829, 0.2339877, -1.380651 ],
                               "-children": [
                                 { "PointLight":
                                   {
@@ -185,7 +177,7 @@
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Sphere_1",
+                                    "@DEF": "Sphere_6",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -193,7 +185,7 @@
                                             {
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "_6",
+                                                  "@DEF": "_7",
                                                   "@emissiveColor": [ 0, 1, 0 ]
                                                 }
                                               }
@@ -215,18 +207,18 @@
                           { "Transform":
                             {
                               "@DEF": "BlueLight",
-                              "@translation": [ -1.6247, -2.40012, 1.65397 ],
+                              "@translation": [ -2.284418, -0.5776511, 0.9042909 ],
                               "-children": [
                                 { "PointLight":
                                   {
-                                    "@DEF": "_7",
+                                    "@DEF": "_8",
                                     "@color": [ 0, 0, 1 ],
                                     "@attenuation": [ 0.07, 0.16, 0.88 ]
                                   }
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Sphere_2",
+                                    "@DEF": "Sphere_9",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -234,7 +226,7 @@
                                             {
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "_8",
+                                                  "@DEF": "_10",
                                                   "@emissiveColor": [ 0, 0, 1 ]
                                                 }
                                               }
@@ -256,18 +248,18 @@
                           { "Transform":
                             {
                               "@DEF": "PinkLight",
-                              "@translation": [ 1.35914, 0.199608, 1.47597 ],
+                              "@translation": [ 2.126165, -1.559099, 1.120903 ],
                               "-children": [
                                 { "PointLight":
                                   {
-                                    "@DEF": "_9",
+                                    "@DEF": "_11",
                                     "@color": [ 1, 0, 1 ],
                                     "@attenuation": [ 0.07, 0.16, 0.88 ]
                                   }
                                 },
                                 { "Transform":
                                   {
-                                    "@DEF": "Sphere_3",
+                                    "@DEF": "Sphere_12",
                                     "-children": [
                                       { "Shape":
                                         {
@@ -275,7 +267,7 @@
                                             {
                                               "-material": { "Material":
                                                 {
-                                                  "@DEF": "_10",
+                                                  "@DEF": "_13",
                                                   "@emissiveColor": [ 1, 0, 1 ]
                                                 }
                                               }
@@ -390,7 +382,15 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_9",
+            "@fromNode": "_11",
+            "@fromField": "color",
+            "@toNode": "_13",
+            "@toField": "emissiveColor"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_8",
             "@fromField": "color",
             "@toNode": "_10",
             "@toField": "emissiveColor"
@@ -398,17 +398,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_7",
-            "@fromField": "color",
-            "@toNode": "_8",
-            "@toField": "emissiveColor"
-          }
-        },
-        { "ROUTE":
-          {
             "@fromNode": "_5",
             "@fromField": "color",
-            "@toNode": "_6",
+            "@toNode": "_7",
             "@toField": "emissiveColor"
           }
         }

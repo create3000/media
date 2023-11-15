@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -13,15 +13,12 @@ COMPONENT Text : 1
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Wed, 27 Sep 2017 11:50:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.4, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SugarSmack/SugarSmack.O.x3d"
-META "modified" "Wed, 27 Mar 2019 07:59:33 GMT"
-META "titania-add-metadata" "true"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:13:01 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:27:35 GMT"
 
 EXTERNPROTO MFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -90,7 +87,7 @@ function generateMaze (complexity, density)
 		matrix [getIndex (0, y)]         = 1;
 		matrix [getIndex (width - 1, y)] = 1;
 	}
-	
+
 	// Make aisles
 
 	for (var i = 0; i < density; ++ i)
@@ -109,20 +106,20 @@ function generateMaze (complexity, density)
 			if (x < width - 2)  neighbours .push ([x + 2, y]);
 			if (y > 1)          neighbours .push ([x, y - 2]);
 			if (y < height - 2) neighbours .push ([x, y + 2]);
-			
+
 			if (neighbours .length)
 			{
 				var neighbour = neighbours [Math .round (random (0, neighbours .length - 1))];
-				
+
 				var
 					x_ = neighbour [0],
 					y_ = neighbour [1];
-				
+
 				if (matrix [getIndex (x_, y_)] == 0)
 				{
 					matrix [getIndex (x_, y_)] = 1;
 					matrix [getIndex (x_ + Math .floor ((x - x_) / 2), y_ + Math .floor ((y - y_) / 2))] = 1;
-					
+
 					x = x_;
 					y = y_;
 				}
@@ -192,7 +189,7 @@ PROTO MazeGeometry [
     initializeOnly SFNode  self USE MazeGeometryScript
 
     url "ecmascript:
-	
+
 var route;
 
 function initialize ()
@@ -203,13 +200,13 @@ function initialize ()
 function set_loadTime ()
 {
 	var collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");
-	
+
 	if (elementProxy || elementShape)
 		return;
-	
+
 	elementProxy = collisionNode .proxy;
 	elementShape = collisionNode .children [0];
-	
+
 	collisionNode .proxy        = proxy;
 	collisionNode .children [0] = shape;
 }
@@ -270,16 +267,16 @@ function generateGeometry (elementShape, shape)
 				for (var r = 0; r < rotations .length; ++ r)
 				{
 					var rotation = rotations [r];
-				
+
 					for (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)
 						colorIndex .push (elementGeometry .colorIndex [i]);
-				
+
 					var numPoints = coord .point .length;
-				
+
 					for (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)
 					{
 						var index = elementGeometry .coordIndex [i];
-					
+
 						if (index < 0)
 							coordIndex .push (-1);
 						else
@@ -289,7 +286,7 @@ function generateGeometry (elementShape, shape)
 					for (var i = 0, length = elementCoord .point .length; i < length; ++ i)
 					{
 						var point = elementCoord .point [i];
-					
+
 						if (rotate)
 							point = rotation .multVec (point);
 
@@ -302,7 +299,7 @@ function generateGeometry (elementShape, shape)
 			}
 		}
 	}
-	
+
 	geometry .colorIndex = colorIndex;
 	geometry .coordIndex = coordIndex;
 }
@@ -451,8 +448,8 @@ function set_maze (value, time)
 	if (maze)
 	{
 		route = Browser .currentScene .addRoute (maze, \"generatedTime\", self, \"set_triggerTime\");
-	
-		set_triggerTime (time, time);	
+
+		set_triggerTime (time, time);
 	}
 }
 
@@ -478,7 +475,7 @@ function set_triggerTime (value, time)
 
 	transform .translation = getTranslation (x ,y);
 	transform .rotation    = new SFRotation ();
-						
+
 	timeSensor .cycleInterval         = cycleInterval;
 	positionInterpolator    .key      = new MFFloat (0, 1);
 	orientationInterpolator .key      = new MFFloat (0, 1);
@@ -503,7 +500,7 @@ function set_turnTime (value, time)
 		x  = position_changed [0],
 		y  = position_changed [1],
 		fc = timeSensor .fraction_changed * cycleInterval;
-	
+
 	direction_changed = opposites [direction_changed];
 
 	position_changed [0] = position_changed [2];
@@ -515,7 +512,7 @@ function set_turnTime (value, time)
 		timeSensor .cycleInterval = cycleInterval;
 	else
 		timeSensor .cycleInterval = fc / (cycleInterval - fc) * cycleInterval;
-	
+
 	mirrorInterpolator (timeSensor .fraction_changed, positionInterpolator);
 	mirrorInterpolator (timeSensor .fraction_changed, orientationInterpolator);
 
@@ -529,14 +526,14 @@ function mirrorInterpolator (f, interpolator)
 		if (interpolator .key [i] >= f)
 			break;
 	}
-	
+
 	var k = i + 1;
-	
+
 	interpolator .key [i]      = f;
 	interpolator .keyValue [i] = interpolator .value_changed;
 
 	if (i)
-	{	
+	{
 		for (-- i; i >= 0; -- i, ++ k)
 		{
 			interpolator .key [k]      = f + (1 - interpolator .key [i] / f) * (1 - f);
@@ -559,10 +556,10 @@ function set_cycleTime (value, time)
 	// Determine new position.
 
 	var positions = getPositions (position_changed [2], position_changed [3], direction_changed);
-		
+
 	if (positions .length == 0)
 		positions = getPositions (position_changed [2], position_changed [3], ANY);
-	
+
 	var index = Math .floor (Math .random () * positions .length);
 
 	direction_changed = positions [index] [2];
@@ -701,13 +698,13 @@ function set_position (value, time)
 	}
 
 	map = { };
-	
+
 	for (var i = 0; i < collidables .length; ++ i)
 	{
 		var
 			collidable = collidables [i],
 			position   = collidable .position_changed;
-		
+
 		for (var p = 0; p < position .length; p += 2)
 		{
 			var
@@ -715,18 +712,18 @@ function set_position (value, time)
 				y = position [p + 1],
 				k = x + \":\" + y,
 				m = map [k];
-			
+
 			if (! m)
 				m = map [k] = [ ];
-			
+
 			m .push (collidable);
 		}
 	}
-	
+
 	for (var k in map)
 	{
 		var m = map [k];
-		
+
 		if (m .length < 2)
 		{
 			delete map [k];
@@ -746,11 +743,11 @@ function set_translation (value, time)
 		for (var c1 = 0; c1 < m .length; ++ c1)
 		{
 			var collidable1 = m [c1];
-		
+
 			for (var c2 = 0; c2 < m .length; ++ c2)
 			{
 				var collidable2 = m [c2];
-		
+
 				if (collidable1 === collidable2)
 					continue;
 
@@ -763,7 +760,7 @@ function set_translation (value, time)
 					if (collidable1 .direction_changed == collidable2 .direction_changed)
 					{
 						if (collidable1 .cycleInterval < collidable2 .cycleInterval)
-							collidable1 .set_turnTime = time; 
+							collidable1 .set_turnTime = time;
 					}
 					else
 					{
@@ -794,7 +791,7 @@ function set_collidables (value, time)
 
 function eventsProcessed ()
 {
-	
+
 }
 "
     directOutput TRUE
@@ -810,7 +807,7 @@ PROTO BonusMap [
   inputOutput MFNode  items [ ]
 ]
 {
-  DEF Group_1 Collision {
+  DEF Group_7 Collision {
     enabled FALSE
   }
 
@@ -823,7 +820,7 @@ PROTO BonusMap [
     outputOnly     SFTime  enterTime IS enterTime
     inputOutput    SFNode  maze IS maze
     inputOutput    MFNode  items IS items
-    initializeOnly SFNode  group USE Group_1
+    initializeOnly SFNode  group USE Group_7
     initializeOnly SFNode  self USE BonusMapScript
 
     url "ecmascript:
@@ -848,7 +845,7 @@ function set_triggerTime (value, time)
 		{
 			if (maze .matrix [getIndex (x, y)])
 				continue;
-	
+
 			for (var d = 0; d < density .length; ++ d)
 			{
 				if (Math .random () < density [d])
@@ -873,7 +870,7 @@ function set_enterTime (value, time)
 			transform       = group .children [i],
 			lod             = transform .children [0],
 			visiblitySensor = lod .children [0];
-	
+
 		if (visiblitySensor .enterTime == value)
 		{
 			group .removeChildren = new MFNode (transform);
@@ -898,17 +895,17 @@ function getNode (b, x, y)
 		lod             = currentScene .createNode (\"LOD\"),
 		transform       = currentScene .createNode (\"Transform\"),
 		visiblitySensor = currentScene .createNode (\"VisibilitySensor\");
-	
+
 	Browser .currentScene .addRoute (visiblitySensor, \"enterTime\", self, \"set_enterTime\");
-	
+
 	lod .range .push (1);
 	lod .children .push (visiblitySensor);
 	lod .children .push (items [b]);
-	
+
 	visiblitySensor .size  = new SFVec3f (1, 1, 1);
 	transform .translation = getTranslation (x, y);
 	transform .children .push (lod);
-	
+
 	return transform;
 }
 
@@ -959,15 +956,15 @@ function set_resetTime (value, time)
 
 WorldInfo { }
 
-DEF _7 LayerSet {
+DEF _25 LayerSet {
   activeLayer 1
   order [ 2, 3 ]
   layers [
     DEF Playground Layer {
       pickable FALSE
       children [
-        DEF _8 TimeTrigger { }
-        DEF _9 MFInt32 {
+        DEF _57 TimeTrigger { }
+        DEF _58 MFInt32 {
           keyValue [ 1, 3 ]
         }
         DEF None NavigationInfo {
@@ -979,7 +976,7 @@ DEF _7 LayerSet {
           orientation 1 0 0 270
           fieldOfView [ -36, -20, 36, 20 ]
         }
-        DEF _10 Background {
+        DEF _59 Background {
           skyAngle [ 76.5191, 90.0002 ]
           skyColor [ 0.045 0.045 0.045, 0.195 0.195 0.195, 0.185 0.185 0.185 ]
           groundAngle [ 60.5651, 90.0002 ]
@@ -992,7 +989,7 @@ DEF _7 LayerSet {
         }
         DirectionalLight {
           ambientIntensity 0.302469
-          direction -0.00000352397 -0.860529 0.509401
+          direction -3.52397e-6 -0.860529 0.509401
           shadows TRUE
         }
         DEF Navigation Group {
@@ -1002,7 +999,7 @@ DEF _7 LayerSet {
               headlight FALSE
               transitionType "TELEPORT"
             }
-            DEF _11 Viewpoint {
+            DEF _62 Viewpoint {
               description "Maze"
               position 12 2 -28
               orientation 0 1 0 90
@@ -1013,7 +1010,7 @@ DEF _7 LayerSet {
               inputOutput    SFVec3f    mazeElementSize 4 2 4
               outputOnly     SFVec3f    position_changed
               outputOnly     SFRotation orientation_changed
-              initializeOnly SFNode     maze DEF _12 Maze {
+              initializeOnly SFNode     maze DEF _63 Maze {
                 width 17
                 height 17
               }
@@ -1035,14 +1032,14 @@ function set_triggerTime (value, time)
 		y = Math .floor (Math .random () * maze .height);
 	}
 	while (maze .matrix [getIndex (x, y)] != 0);
-						
+
 	var offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2, 0, (maze .height - 1) * mazeElementSize .z / 2);
-	
+
 
 
 	var position = new SFVec3f (x * mazeElementSize .x, mazeElementSize .y, y * mazeElementSize .z);
 	position = position .subtract (offset);
-	
+
 	bind                = true;
 	position_changed    = position;
 	orientation_changed = getRotation (x, y);
@@ -1053,15 +1050,15 @@ function getRotation (x, y)
 	if (x > 0)
 		if (maze .matrix [getIndex (x - 1, y)] == 0)
 			return new SFRotation (0, 1, 0, 1 / 2 * Math .PI);
-		
+
 	if (x < maze .width - 1)
 		if (maze .matrix [getIndex (x + 1, y)] == 0)
 			return new SFRotation (0, 1, 0, 3 / 2 * Math .PI);
-	  
+
 	if (y > 0)
 		if (maze .matrix [getIndex (x, y - 1)] == 0)
 			return new SFRotation (0, 1, 0, Math .PI);
-		
+
 	if (y < maze .height - 1)
 		if (maze .matrix [getIndex (x, y + 1)] == 0)
 			return new SFRotation (0, 1, 0, 0);
@@ -1081,14 +1078,14 @@ function getIndex (x, y)
         DEF Walls MazeGeometry {
           mazeElementSize 4 2 4
           mazeElementUrl "maze-element.x3d"
-          maze USE _12
+          maze USE _63
         }
         DEF Floor MazeGeometry {
           type [ 0, 1 ]
           rotate FALSE
           mazeElementSize 4 2 4
           mazeElementUrl "maze-floor-element.x3d"
-          maze USE _12
+          maze USE _63
         }
         LoadSensor {
           children [
@@ -1106,48 +1103,48 @@ function getIndex (x, y)
           children [
             MazeCollisionManager {
               collidables [
-                DEF _13 Globe {
+                DEF _64 Globe {
                   enabled TRUE
                   cycleInterval 4
                   radius 2
                   mazeElementSize 4 2 4
                   startTime 1508046433.07247
                   stopTime 1508046433.07247
-                  maze USE _12
+                  maze USE _63
                   children USE Globe1
                 }
-                DEF _14 Globe {
+                DEF _65 Globe {
                   enabled TRUE
                   cycleInterval 4
                   radius 2
                   mazeElementSize 4 2 4
                   startTime 1507984705.53519
                   stopTime 1507984705.53519
-                  maze USE _12
+                  maze USE _63
                   children USE Globe1
                 }
               ]
             }
-            USE _13
-            USE _14
+            USE _64
+            USE _65
           ]
         }
-        DEF _15 BonusMap {
+        DEF _66 BonusMap {
           density 0.8
           mazeElementSize 4 2 4
-          maze USE _12
+          maze USE _63
           items [
-            DEF _16 Inline {
+            DEF _67 Inline {
               global TRUE
               url "bonus-mint.x3d"
             }
-            DEF _17 Inline {
+            DEF _68 Inline {
               global TRUE
               url "bonus-blue.x3d"
             }
           ]
         }
-        DEF BonusSound_1 Group {
+        DEF BonusSound_69 Group {
           children [
             DEF BonusSound Sound {
               intensity 0.133159
@@ -1155,28 +1152,28 @@ function getIndex (x, y)
               minFront 55
               maxBack 60
               maxFront 60
-              source DEF _18 AudioClip {
+              source DEF _70 AudioClip {
                 url "star-collect.mp3"
                 startTime 1546835705.23872
                 pauseTime 1510042948.99191
                 stopTime 1546835705.23872
               }
             }
-            DEF _19 TimeControler {
+            DEF _71 TimeControler {
               resetTime 1546835705.23872
-              timer USE _18
+              timer USE _70
             }
           ]
         }
-        DEF _20 VisibilitySensor {
+        DEF _72 VisibilitySensor {
           size -1 -1 -1
         }
       ]
     }
     DEF HUD Layer {
       children [
-        DEF _21 TimeTrigger { }
-        DEF _22 MFInt32 {
+        DEF _86 TimeTrigger { }
+        DEF _87 MFInt32 {
           keyValue [ 2, 3 ]
         }
         DEF Background Transform {
@@ -1254,7 +1251,7 @@ function getIndex (x, y)
                 }
               }
             }
-            DEF _23 TouchSensor { }
+            DEF _88 TouchSensor { }
           ]
         }
       ]
@@ -1271,10 +1268,10 @@ function getIndex (x, y)
               }
               geometry Box { }
             }
-            DEF _24 BooleanTrigger { }
-            DEF _25 BooleanToggle { }
-            DEF _26 BooleanFilter { }
-            USE _23
+            DEF _89 BooleanTrigger { }
+            DEF _90 BooleanToggle { }
+            DEF _91 BooleanFilter { }
+            USE _88
           ]
         }
       }
@@ -1296,26 +1293,26 @@ function initialize ()
 "
 }
 
-DEF _27 BooleanFilter { }
+DEF _92 BooleanFilter { }
 
-ROUTE ViewpointPositionScript.position_changed TO _11.set_position
-ROUTE ViewpointPositionScript.orientation_changed TO _11.set_orientation
-ROUTE _25.toggle_changed TO _26.set_boolean
-ROUTE _23.touchTime TO _24.set_triggerTime
-ROUTE _24.triggerTrue TO _25.set_boolean
-ROUTE _20.isActive TO _10.set_bind
-ROUTE _12.generatedTime TO ViewpointPositionScript.set_triggerTime
-ROUTE _20.isActive TO _11.set_bind
-ROUTE EnterWorldScript.entered TO _27.set_boolean
-ROUTE _27.inputNegate TO _25.set_toggle
-ROUTE _20.isActive TO Walk.set_bind
-ROUTE _26.inputTrue TO _8.set_boolean
-ROUTE _26.inputFalse TO _21.set_boolean
-ROUTE _8.triggerTime TO _12.set_triggerTime
-ROUTE _20.isActive TO _13.set_enabled
-ROUTE _20.isActive TO _14.set_enabled
-ROUTE _15.enterTime TO _19.set_resetTime
-ROUTE _22.value_changed TO _7.set_order
-ROUTE _21.triggerTime TO _22.set_triggerTime
-ROUTE _9.value_changed TO _7.set_order
-ROUTE _8.triggerTime TO _9.set_triggerTime
+ROUTE ViewpointPositionScript.position_changed TO _62.set_position
+ROUTE ViewpointPositionScript.orientation_changed TO _62.set_orientation
+ROUTE _90.toggle_changed TO _91.set_boolean
+ROUTE _88.touchTime TO _89.set_triggerTime
+ROUTE _89.triggerTrue TO _90.set_boolean
+ROUTE _72.isActive TO _59.set_bind
+ROUTE _63.generatedTime TO ViewpointPositionScript.set_triggerTime
+ROUTE _72.isActive TO _62.set_bind
+ROUTE EnterWorldScript.entered TO _92.set_boolean
+ROUTE _92.inputNegate TO _90.set_toggle
+ROUTE _72.isActive TO Walk.set_bind
+ROUTE _91.inputTrue TO _57.set_boolean
+ROUTE _91.inputFalse TO _86.set_boolean
+ROUTE _57.triggerTime TO _63.set_triggerTime
+ROUTE _72.isActive TO _64.set_enabled
+ROUTE _72.isActive TO _65.set_enabled
+ROUTE _66.enterTime TO _71.set_resetTime
+ROUTE _87.value_changed TO _25.set_order
+ROUTE _86.triggerTime TO _87.set_triggerTime
+ROUTE _58.value_changed TO _25.set_order
+ROUTE _57.triggerTime TO _58.set_triggerTime

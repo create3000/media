@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,19 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.10, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 23 Jan 2019 12:28:58 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:47:15 GMT"
+          "@content": "Wed, 15 Nov 2023 02:01:38 GMT"
         }
       ],
       "component": [
@@ -86,6 +82,7 @@
                     { "Transform":
                       {
                         "@DEF": "QuadSet",
+                        "@translation": [ 0, 0, 0.972473 ],
                         "-children": [
                           { "Group":
                             {
@@ -122,7 +119,7 @@
                               },
                               "-geometry": { "QuadSet":
                                 {
-                                  "@DEF": "_1",
+                                  "@DEF": "_2",
                                   "@colorPerVertex": false,
                                   "-color": { "Color":
                                     {
@@ -182,13 +179,13 @@
                             "-children": [
                               { "QuadSet":
                                 {
-                                  "@USE": "_1"
+                                  "@USE": "_2"
                                 }
                               }
                             ]
                           }
                         ],
-                        "#sourceText": [
+                        "#sourceCode": [
 "ecmascript:",
 "",
 "var squares = [ ];",
@@ -346,7 +343,7 @@
                     },
                     { "TimeSensor":
                       {
-                        "@DEF": "_2",
+                        "@DEF": "_26",
                         "@loop": true
                       }
                     }
@@ -392,7 +389,7 @@
                             {
                               "-geometry": { "Text":
                                 {
-                                  "@DEF": "_3",
+                                  "@DEF": "_27",
                                   "@string": [ "version 4.3.10" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
@@ -419,7 +416,7 @@
                             "@name": "version_changed"
                           }
                         ],
-                        "#sourceText": [
+                        "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -438,7 +435,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_2",
+            "@fromNode": "_26",
             "@fromField": "time",
             "@toNode": "QuadsScript",
             "@toField": "set_time"
@@ -448,7 +445,7 @@
           {
             "@fromNode": "VersionScript",
             "@fromField": "version_changed",
-            "@toNode": "_3",
+            "@toNode": "_27",
             "@toField": "string"
           }
         },

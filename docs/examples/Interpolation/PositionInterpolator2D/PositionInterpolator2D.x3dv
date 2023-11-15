@@ -1,19 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 COMPONENT Text : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 24 Sep 2017 10:08:54 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Interpolation/PositionInterpolator2D/PositionInterpolator2D.O.x3d"
-META "modified" "Sat, 16 Jun 2018 17:01:27 GMT"
-META "titania-add-metadata" "true"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:55:12 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:08:23 GMT"
 
 EXTERNPROTO Torus [
   inputOutput    SFFloat minorRadius
@@ -63,8 +60,8 @@ DEF Torus Transform {
         texture ImageTexture {
           url "glow.png"
         }
-        textureTransform DEF _1 TextureTransform {
-          translation 0 0.4
+        textureTransform DEF _2 TextureTransform {
+          translation 0 1.325667
           scale 1 2
         }
       }
@@ -85,7 +82,7 @@ DEF Text Transform {
           diffuseColor 1 1 1
         }
       }
-      geometry DEF _2 Text {
+      geometry DEF _3 Text {
         string "Titania"
         solid TRUE
         fontStyle FontStyle {
@@ -110,5 +107,5 @@ function initialize ()
 }
 
 ROUTE GlowAnimationTimer.fraction_changed TO TranslationInterpolator.set_fraction
-ROUTE TranslationInterpolator.value_changed TO _1.set_translation
-ROUTE BrowserScript.string_changed TO _2.set_string
+ROUTE TranslationInterpolator.value_changed TO _2.set_translation
+ROUTE BrowserScript.string_changed TO _3.set_string

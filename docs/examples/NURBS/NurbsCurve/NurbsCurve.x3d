@@ -12,9 +12,8 @@
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 26 Jan 2019 01:49:04 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:56:48 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:10:22 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='AnimatedCurve'>
@@ -99,17 +98,17 @@ function set_time (value, time)
             loop='true'/>
         <OrientationInterpolator DEF='BoxRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
-            keyValue='0 0 1 0, -3.06559318185163e-18 0.00000367320512848233 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 0.00000367320512426576 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -0.00000367320524850646 0.999999999993254 1.57079638639955, 0 0 1 0'/>
+            keyValue='0 0 1 0, -3.06559318185163e-18 3.67320512848233e-6 -0.999999999993254 1.5707963267949, 4.21656770439807e-15 3.67320512426576e-6 -0.999999999993254 3.14159253438725, -1.20024808346484e-13 -3.67320524850646e-6 0.999999999993254 1.57079638639955, 0 0 1 0'/>
         <Script DEF='MachineLearningScript'
             directOutput='true'>
           <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Transform USE='_2' containerField='group'/>
+            <Transform USE='_2'/>
           </field>
           <field accessType='inputOutput' type='SFDouble' name='speed'/>
           <field accessType='inputOutput' type='SFInt32' name='curves'/>
           <field accessType='inputOutput' type='MFNode' name='material'/>
           <field accessType='initializeOnly' type='SFNode' name='timer'>
-            <TimeSensor USE='_3' containerField='timer'/>
+            <TimeSensor USE='_3'/>
           </field>
           <IS>
             <connect nodeField='speed' protoField='speed'/>
@@ -166,10 +165,10 @@ function eventsProcessed ()
           <fieldValue name='speed' value='0.5'/>
           <fieldValue name='curves' value='40'/>
           <fieldValue name='material'>
-            <Material DEF='_4'
+            <Material DEF='_17'
                 diffuseColor='0 0 0'
                 emissiveColor='0.268985 0.140202 0.722821'/>
-            <Material DEF='_5'
+            <Material DEF='_18'
                 emissiveColor='0.277986 0.277986 0.277986'/>
           </fieldValue>
         </ProtoInstance>
@@ -191,7 +190,7 @@ function eventsProcessed ()
             </Text>
           </Shape>
         </Transform>
-        <Transform DEF='Text_1'
+        <Transform DEF='Text_19'
             translation='0 -0.417991 0'>
           <Shape>
             <Appearance>
@@ -212,7 +211,7 @@ function eventsProcessed ()
             scale='0.71 0.09 1'>
           <Shape>
             <Appearance>
-              <Material USE='_4'/>
+              <Material USE='_17'/>
             </Appearance>
             <Rectangle2D/>
           </Shape>

@@ -24,23 +24,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.0.83, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/CoordinateInterpolator/CoordinateInterpolator.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 08 Aug 2023 17:41:44 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.83, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Tue, 08 Aug 2023 18:01:43 GMT"
+          "@content": "Wed, 15 Nov 2023 02:08:00 GMT"
         }
       ]
     },
@@ -49,28 +41,15 @@
         { "WorldInfo":
           {
             "@title": "Star Flag of the United States",
-            "@info": [
-              "version: 2.0",
-              "generator: Sketchfab (OSG glTF plugin)"
-            ]
+            "@info": [ "version: 2.0", "generator: Sketchfab (OSG glTF plugin)" ]
           }
         },
         { "Background":
           {
-            "@skyAngle": [
-              1.5708
-            ],
-            "@skyColor": [
-              0.141, 0.122878, 0.0998179,
-              0.397224, 0.34617, 0.281206
-            ],
-            "@groundAngle": [
-              1.45428
-            ],
-            "@groundColor": [
-              0.141, 0.122878, 0.0998179,
-              0.397224, 0.34617, 0.281206
-            ]
+            "@skyAngle": [ 1.5708 ],
+            "@skyColor": [ 0.141, 0.122878, 0.0998179, 0.397224, 0.34617, 0.281206 ],
+            "@groundAngle": [ 1.45428 ],
+            "@groundColor": [ 0.141, 0.122878, 0.0998179, 0.397224, 0.34617, 0.281206 ]
           }
         },
         { "Viewpoint":
@@ -83,9 +62,7 @@
           {
             "@DEF": "StarFlag",
             "@global": true,
-            "@url": [
-              "assets/star-flag.gltf"
-            ]
+            "@url": [ "assets/star-flag.gltf" ]
           }
         },
         { "LoadSensor":
@@ -111,7 +88,7 @@
             "@fromNode": "_1",
             "@fromField": "loadTime",
             "@toNode": "Timer1",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -119,7 +96,7 @@
             "@fromNode": "_1",
             "@fromField": "isLoaded",
             "@toNode": "Timer1",
-            "@toField": "loop"
+            "@toField": "set_loop"
           }
         }
       ]

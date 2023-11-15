@@ -8,9 +8,8 @@
     <meta name='created' content='Sat, 30 Apr 2016 02:18:39 GMT'/>
     <meta name='creator' content='holger'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 15:59:48 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:47:42 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:02:00 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Dolphin' url='"assets/Dolphin.x3d#Dolphin"'>
@@ -186,9 +185,9 @@ main ()
     </ProtoDeclare>
     <WorldInfo/>
     <TextureBackground DEF='WideOcean'>
-      <ImageTexture DEF='_1' containerField='frontTexture'
+      <ImageTexture DEF='_3' containerField='frontTexture'
           url='"assets/WideOcean/WideOcean-front.jpg"'>
-        <TextureProperties DEF='_2'
+        <TextureProperties DEF='_4'
             minificationFilter='DEFAULT'
             magnificationFilter='DEFAULT'
             boundaryModeS='CLAMP_TO_EDGE'
@@ -196,29 +195,29 @@ main ()
             boundaryModeR='CLAMP_TO_EDGE'
             textureCompression='DEFAULT'/>
       </ImageTexture>
-      <ImageTexture DEF='_3' containerField='backTexture'
+      <ImageTexture DEF='_5' containerField='backTexture'
           url='"assets/WideOcean/WideOcean-back.jpg"'>
-        <TextureProperties USE='_2'/>
+        <TextureProperties USE='_4'/>
       </ImageTexture>
-      <ImageTexture DEF='_4' containerField='leftTexture'
+      <ImageTexture DEF='_6' containerField='leftTexture'
           url='"assets/WideOcean/WideOcean-left.jpg"'>
-        <TextureProperties USE='_2'/>
+        <TextureProperties USE='_4'/>
       </ImageTexture>
-      <ImageTexture DEF='_5' containerField='rightTexture'
+      <ImageTexture DEF='_7' containerField='rightTexture'
           url='"assets/WideOcean/WideOcean-right.jpg"'>
-        <TextureProperties USE='_2'/>
+        <TextureProperties USE='_4'/>
       </ImageTexture>
-      <ImageTexture DEF='_6' containerField='topTexture'
+      <ImageTexture DEF='_8' containerField='topTexture'
           url='"assets/WideOcean/WideOcean-top.jpg"'>
-        <TextureProperties USE='_2'/>
+        <TextureProperties USE='_4'/>
       </ImageTexture>
-      <ImageTexture DEF='_7' containerField='bottomTexture'
+      <ImageTexture DEF='_9' containerField='bottomTexture'
           url='"assets/WideOcean/WideOcean-bottom.jpg"'>
-        <TextureProperties USE='_2'/>
+        <TextureProperties USE='_4'/>
       </ImageTexture>
     </TextureBackground>
-    <Transform DEF='_8'
-        rotation='0 -1 0 2.16262637828138'>
+    <Transform DEF='_10'
+        rotation='0 -1 0 2.69263220084984'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
             cycleInterval='40'
@@ -236,24 +235,24 @@ main ()
           centerOfRotation='0.313083 0.491819 -0.0640737'/>
     </Transform>
     <Transform DEF='Dolphin'>
-      <Transform DEF='_9'>
+      <Transform DEF='_1'>
         <Shape>
           <Appearance>
             <Material
                 specularColor='0 0.192168 0.357'
                 shininess='0.073718'/>
-            <ComposedCubeMapTexture DEF='_10'>
-              <ImageTexture USE='_1' containerField='frontTexture'/>
-              <ImageTexture USE='_3' containerField='backTexture'/>
-              <ImageTexture USE='_4' containerField='leftTexture'/>
-              <ImageTexture USE='_5' containerField='rightTexture'/>
-              <ImageTexture USE='_7' containerField='bottomTexture'/>
-              <ImageTexture USE='_6' containerField='topTexture'/>
+            <ComposedCubeMapTexture DEF='_2'>
+              <ImageTexture USE='_3' containerField='frontTexture'/>
+              <ImageTexture USE='_5' containerField='backTexture'/>
+              <ImageTexture USE='_6' containerField='leftTexture'/>
+              <ImageTexture USE='_7' containerField='rightTexture'/>
+              <ImageTexture USE='_8' containerField='topTexture'/>
+              <ImageTexture USE='_9' containerField='bottomTexture'/>
             </ComposedCubeMapTexture>
             <ProtoInstance name='FresnelShader' containerField='shaders'>
               <fieldValue name='reflection' value='0.4'/>
               <fieldValue name='cubeMapTexture'>
-                <ComposedCubeMapTexture USE='_10' containerField='cubeMapTexture'/>
+                <ComposedCubeMapTexture USE='_2'/>
               </fieldValue>
             </ProtoInstance>
           </Appearance>
@@ -262,6 +261,6 @@ main ()
       </Transform>
     </Transform>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_8' toField='set_rotation'/>
+    <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_10' toField='set_rotation'/>
   </Scene>
 </X3D>

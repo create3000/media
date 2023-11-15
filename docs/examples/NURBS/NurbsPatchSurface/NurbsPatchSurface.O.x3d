@@ -1,67 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
-<X3D profile='Immersive' version='3.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Grouping' level='3'/>
-    <component name='Interpolation' level='4'/>
-    <component name='NURBS' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='NURBS' level='4'/>
+    <component name='Scripting' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='6 February 2003'/>
-    <meta name='creator' content='Charles Adams'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='NURBS model created using X3D NURBS Export Plugin for Maya.'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 21 Jan 2019 07:25:50 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:15:00 GMT'/>
     <meta name='reference' content='http://edocs.nps.edu/npspubs/scholarly/theses/2003/Jun/03Jun_Adams.pdf'/>
     <meta name='subject' content='NURBS Hurricane Lantern'/>
     <meta name='title' content='HurricaneLantern.x3d'/>
     <meta name='translator' content='Exported from Maya 4.0 using X3DNurbsExport Plug-in'/>
   </head>
   <Scene>
-    <WorldInfo
-        title='HurricaneLantern'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-          <MetadataDouble DEF='browserRatio' containerField='value'
-              name='browserRatio'
-              reference='http://titania.create3000.de'
-              value='1.777777'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'/>
-        </MetadataSet>
-        <MetadataSet DEF='BrowserPanel' containerField='value'
-            name='BrowserPanel'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='shading' containerField='value'
-              name='shading'
-              reference='http://titania.create3000.de'
-              value='"", "PHONG", "", ""'/>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
     <Background/>
     <NavigationInfo
         type='"EXAMINE"'/>
@@ -72,14 +26,14 @@
         centerOfRotation='0.00485237 1.00934 0.00837248'/>
     <Group DEF='HurricanLantern'>
       <Group DEF='FlickeringAnimation'>
-        <MetadataSet DEF='Animation'
+        <MetadataSet DEF='Animation' containerField='metadata'
             name='Animation'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='duration' containerField='value'
+          <MetadataInteger DEF='duration'
               name='duration'
               reference='http://titania.create3000.de'
               value='67'/>
-          <MetadataInteger DEF='frameRate' containerField='value'
+          <MetadataInteger DEF='frameRate'
               name='frameRate'
               reference='http://titania.create3000.de'
               value='10'/>
@@ -92,22 +46,22 @@
         <ScalarInterpolator DEF='IntensityInterpolator'
             key='0, 0.0149254, 0.0298507, 0.0447761, 0.0597015, 0.0746269, 0.0895522, 0.104478, 0.119403, 0.134328, 0.149254, 0.164179, 0.179104, 0.19403, 0.208955, 0.223881, 0.238806, 0.253731, 0.268657, 0.283582, 0.298507, 0.313433, 0.328358, 0.343284, 0.358209, 0.373134, 0.38806, 0.402985, 0.41791, 0.432836, 0.447761, 0.462687, 0.477612, 0.492537, 0.507463, 0.522388, 0.537313, 0.552239, 0.567164, 0.58209, 0.597015, 0.61194, 0.626866, 0.641791, 0.656716, 0.671642, 0.686567, 0.701493, 0.716418, 0.731343, 0.746269, 0.761194, 0.776119, 0.791045, 0.80597, 0.820895, 0.835821, 0.850746, 0.865672, 0.880597, 0.895522, 0.910448, 0.925373, 0.940298, 0.955224, 0.970149, 0.985075, 1'
             keyValue='1, 0.999863, 0.999508, 0.999023, 0.998495, 0.998011, 0.997656, 0.997519, 0.983365, 0.947983, 0.901985, 0.855987, 0.820605, 0.806452, 0.76604, 0.661822, 0.519319, 0.364055, 0.221553, 0.117334, 0.0769231, 0.0859553, 0.107494, 0.133201, 0.154739, 0.163772, 0.250739, 0.458124, 0.705648, 0.913032, 1, 0.972084, 0.91067, 0.849256, 0.82134, 0.796049, 0.730824, 0.641638, 0.544466, 0.455281, 0.390056, 0.364764, 0.356269, 0.332974, 0.298169, 0.255143, 0.207184, 0.15758, 0.109621, 0.0665948, 0.0317901, 0.00849564, 0, 0.00245231, 0.00891749, 0.0180579, 0.028536, 0.039014, 0.0481545, 0.0546197, 0.057072, 0.109304, 0.244008, 0.428195, 0.628877, 0.813064, 0.947768, 1'>
-          <MetadataSet DEF='Interpolator'
+          <MetadataSet DEF='Interpolator' containerField='metadata'
               name='Interpolator'
               reference='http://titania.create3000.de'>
-            <MetadataInteger DEF='key' containerField='value'
+            <MetadataInteger DEF='key'
                 name='key'
                 reference='http://titania.create3000.de'
                 value='0, 7, 13, 20, 25, 30, 34, 41, 52, 60, 67'/>
-            <MetadataDouble DEF='keyValue' containerField='value'
+            <MetadataDouble DEF='keyValue'
                 name='keyValue'
                 reference='http://titania.create3000.de'
                 value='1, 0.997518599033356, 0.806451618671417, 0.0769230797886848, 0.163771718740463, 1, 0.821339964866638, 0.364764273166656, 0, 0.0570719614624977, 1'/>
-            <MetadataString DEF='keyType' containerField='value'
+            <MetadataString DEF='keyType'
                 name='keyType'
                 reference='http://titania.create3000.de'
                 value='"SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE", "SPLINE"'/>
-            <MetadataInteger DEF='keySize' containerField='value'
+            <MetadataInteger DEF='keySize'
                 name='keySize'
                 reference='http://titania.create3000.de'
                 value='1'/>
@@ -116,6 +70,7 @@
       </Group>
       <PointLight DEF='_1'
           global='false'
+          intensity='0.6067416'
           location='0 0.630588 0'/>
       <Transform DEF='Glass'
           translation='-51.5865 -10.2621 3.3253'>

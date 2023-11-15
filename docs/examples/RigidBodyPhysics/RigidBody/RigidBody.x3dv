@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -8,14 +8,12 @@ COMPONENT Scripting : 1
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Tue, 27 Mar 2018 07:50:53 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/RigidBody/RigidBody.O.x3d"
-META "modified" "Mon, 07 Jan 2019 03:46:36 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:03:41 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:18:29 GMT"
 
 WorldInfo { }
 
@@ -38,16 +36,16 @@ Background {
   groundColor [ 0.644 0.644 0.644, 0.123 0.123 0.123 ]
 }
 
-DEF _1 TimeSensor {
+DEF _14 TimeSensor {
   cycleInterval 30
   loop TRUE
 }
 
 DEF TowerScript Script {
-  inputOutput    SFTime resetTime 1546832784.13017
+  inputOutput    SFTime resetTime 1700014709.159
   initializeOnly SFNode collection RigidBodyCollection {
     bodies [
-      DEF Ground_1 RigidBody {
+      DEF Ground_15 RigidBody {
         fixed TRUE
         position 0 -2 0
         geometry DEF Ground CollidableShape {
@@ -62,17 +60,17 @@ DEF TowerScript Script {
           }
         }
       }
-      DEF Sphere_1 RigidBody {
-        position 19.088 3 0.00000610603
+      DEF Sphere_16 RigidBody {
+        position 19.088 3 6.10603e-6
         orientation -2.5205028379458e-7 5.77861826926446e-8 1.00000002306305 78.6650392672103
-        linearVelocity -0.858985 0.00013468 -0.0000010066
-        angularVelocity -0.00000242099 1.98636e-7 12.3041
+        linearVelocity -0.858985 0.00013468 -1.0066e-6
+        angularVelocity -2.42099e-6 1.98636e-7 12.3041
         mass 100
         geometry DEF Sphere CollidableShape {
-          translation 19.088 3 0.00000610603
+          translation 19.088 3 6.10603e-6
           rotation -2.5205028379458e-7 5.77861826926446e-8 1.00000002306305 78.6650392672103
           shape Shape {
-            appearance DEF _2 Appearance {
+            appearance DEF _17 Appearance {
               material Material {
                 ambientIntensity 1
               }
@@ -91,11 +89,11 @@ DEF TowerScript Script {
         orientation 0.999798040639205 -0.0142189484721063 0.0142070211321403 90.014750833372
         linearVelocity 0.00135863 0.00246832 0.00466472
         angularVelocity 0.044807 0.0592102 -0.0330344
-        geometry DEF _3 CollidableShape {
+        geometry DEF _18 CollidableShape {
           translation -0.0366745 -0.900102 10.3493
           rotation 0.999798040639205 -0.0142189484721063 0.0142070211321403 90.014750833372
-          shape DEF _4 Shape {
-            appearance USE _2
+          shape DEF _19 Shape {
+            appearance USE _17
             geometry Box {
               size 8 2 0.2
             }
@@ -107,10 +105,10 @@ DEF TowerScript Script {
         orientation -0.567463828265686 0.582230723579214 0.582230380915311 120.853302422629
         linearVelocity -0.00150685 -0.000634333 -0.000673247
         angularVelocity 0.00851501 -0.0134033 0.0296354
-        geometry DEF _5 CollidableShape {
+        geometry DEF _20 CollidableShape {
           translation 9.903 -0.900001 0.551525
           rotation -0.567463828265686 0.582230723579214 0.582230380915311 120.853302422629
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -118,10 +116,10 @@ DEF TowerScript Script {
         orientation 0.00103998006673019 0.707126456994952 -0.707086343047688 179.881827621212
         linearVelocity 0.00502601 -0.00136753 -0.00538726
         angularVelocity 0.0533604 -0.00317306 -0.0102231
-        geometry DEF _6 CollidableShape {
+        geometry DEF _21 CollidableShape {
           translation -0.0616994 -0.900075 -10.311
           rotation 0.00103998006673019 0.707126456994952 -0.707086343047688 179.881827621212
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -129,10 +127,10 @@ DEF TowerScript Script {
         orientation -0.601404960966011 -0.564931634055027 -0.564946379127138 117.95762794534
         linearVelocity -0.00140777 0.00140445 -0.00888648
         angularVelocity 0.000288245 0.1988 -0.134836
-        geometry DEF _7 CollidableShape {
+        geometry DEF _22 CollidableShape {
           translation -8.35718 -0.900018 -0.00939658
           rotation -0.601404960966011 -0.564931634055027 -0.564946379127138 117.95762794534
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -140,10 +138,10 @@ DEF TowerScript Script {
         orientation 0.708609679411141 0.489920691620383 -0.507789207582363 108.406915938153
         linearVelocity 0.0546532 0.00258853 0.00896557
         angularVelocity -0.0738671 0.77172 0.106248
-        geometry DEF _8 CollidableShape {
+        geometry DEF _23 CollidableShape {
           translation 6.25271 -0.799989 8.32689
           rotation 0.708609679411141 0.489920691620383 -0.507789207582363 108.406915938153
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -151,10 +149,10 @@ DEF TowerScript Script {
         orientation -0.643683858085175 0.529660513460711 0.552386368894737 112.949299906185
         linearVelocity 0.00492983 -0.00260231 -0.0044544
         angularVelocity -0.0061831 0.117533 -0.0116198
-        geometry DEF _9 CollidableShape {
+        geometry DEF _24 CollidableShape {
           translation 3.15215 -0.761021 -7.39794
           rotation -0.643683858085175 0.529660513460711 0.552386368894737 112.949299906185
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -162,10 +160,10 @@ DEF TowerScript Script {
         orientation 0.877835295920593 -0.338672607218017 0.338682798740121 97.4455277064633
         linearVelocity -0.0241811 -0.000421228 -0.0128299
         angularVelocity -0.0268344 -0.285135 -0.0269171
-        geometry DEF _10 CollidableShape {
+        geometry DEF _25 CollidableShape {
           translation -4.09573 -0.899993 -7.97244
           rotation 0.877835295920593 -0.338672607218017 0.338682798740121 97.4455277064633
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -173,10 +171,10 @@ DEF TowerScript Script {
         orientation -0.620547619375714 -0.563047711229017 -0.545800363137384 118.04802727489
         linearVelocity -0.0120631 0.000627371 0.00462379
         angularVelocity 0.0103033 -0.142951 0.204144
-        geometry DEF _11 CollidableShape {
+        geometry DEF _26 CollidableShape {
           translation -4.1201 -0.768134 7.11561
           rotation -0.620547619375714 -0.563047711229017 -0.545800363137384 118.04802727489
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -184,10 +182,10 @@ DEF TowerScript Script {
         orientation -0.999561840051353 -0.0142473402249314 -0.0259441194309691 93.9940209445704
         linearVelocity -0.0152797 0.0319957 -0.00135152
         angularVelocity -2.783 0.0416188 -0.449592
-        geometry DEF _12 CollidableShape {
+        geometry DEF _27 CollidableShape {
           translation 0.620701 -0.480148 10.0649
           rotation -0.999561840051353 -0.0142473402249314 -0.0259441194309691 93.9940209445704
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -195,10 +193,10 @@ DEF TowerScript Script {
         orientation 0.513955076400386 0.606581684517132 -0.606554877843257 125.59591571226
         linearVelocity 0.00663245 0.00171756 -0.00516752
         angularVelocity -0.0904087 -0.0543263 -0.253184
-        geometry DEF _13 CollidableShape {
+        geometry DEF _28 CollidableShape {
           translation 7.28426 -0.900029 -0.297341
           rotation 0.513955076400386 0.606581684517132 -0.606554877843257 125.59591571226
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -206,10 +204,10 @@ DEF TowerScript Script {
         orientation -0.0701845542244213 0.705343385830915 0.705382761965586 171.968543834127
         linearVelocity -0.000464212 -0.000277949 -0.00927547
         angularVelocity 0.0469726 0.00547708 -0.0102522
-        geometry DEF _14 CollidableShape {
+        geometry DEF _29 CollidableShape {
           translation -1.44046 -0.699971 -11.2893
           rotation -0.0701845542244213 0.705343385830915 0.705382761965586 171.968543834127
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -217,10 +215,10 @@ DEF TowerScript Script {
         orientation 0.40747124328141 -0.637580391005062 0.653803090610858 134.187417652927
         linearVelocity -0.0124996 0.000265859 0.00139838
         angularVelocity 0.0989991 -0.238223 -0.368815
-        geometry DEF _15 CollidableShape {
+        geometry DEF _30 CollidableShape {
           translation -4.20983 -0.781148 0.116428
           rotation 0.40747124328141 -0.637580391005062 0.653803090610858 134.187417652927
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -228,21 +226,21 @@ DEF TowerScript Script {
         orientation -0.994129412480938 0.0450765235578563 0.0983610795307266 93.344555865748
         linearVelocity 0.0110631 -0.00102595 -0.00336238
         angularVelocity -0.109704 0.232487 -0.000126272
-        geometry DEF _16 CollidableShape {
+        geometry DEF _31 CollidableShape {
           translation 6.3697 -0.641041 5.84157
           rotation -0.994129412480938 0.0450765235578563 0.0983610795307266 93.344555865748
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
         position 5.52472 -0.516472 -7.78843
         orientation 0.15856677823013 0.710556675460351 -0.685540538012084 161.697223395911
-        linearVelocity 0.0009993321 0.0449834 0.0228446
+        linearVelocity 0.000999332 0.0449834 0.0228446
         angularVelocity -0.200497 -0.503018 0.843519
-        geometry DEF _17 CollidableShape {
+        geometry DEF _32 CollidableShape {
           translation 5.52472 -0.516472 -7.78843
           rotation 0.15856677823013 0.710556675460351 -0.685540538012084 161.697223395911
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -250,10 +248,10 @@ DEF TowerScript Script {
         orientation 0.498404454736619 0.613013868803829 0.613030917795258 232.984018348994
         linearVelocity -0.0227142 -0.00057468 -0.017521
         angularVelocity -0.0193266 0.105557 -0.0339089
-        geometry DEF _18 CollidableShape {
+        geometry DEF _33 CollidableShape {
           translation -6.42473 -0.700092 -6.34688
           rotation 0.498404454736619 0.613013868803829 0.613030917795258 232.984018348994
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -261,10 +259,10 @@ DEF TowerScript Script {
         orientation -0.958374560689175 -0.172918131543267 -0.227194852584478 95.4512167135087
         linearVelocity -0.00171318 0.0473959 0.0031056
         angularVelocity -0.176757 -0.200176 -1.57416
-        geometry DEF _19 CollidableShape {
+        geometry DEF _34 CollidableShape {
           translation -4.84882 -0.490281 6.16423
           rotation -0.958374560689175 -0.172918131543267 -0.227194852584478 95.4512167135087
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -272,10 +270,10 @@ DEF TowerScript Script {
         orientation 0.955313393905544 -0.213179317408076 0.204770980458409 88.6069391889123
         linearVelocity 0.0103266 -0.00813412 -0.00857747
         angularVelocity -2.0102 0.129687 -1.05812
-        geometry DEF _20 CollidableShape {
+        geometry DEF _35 CollidableShape {
           translation 0.800516 -0.38712 7.99648
           rotation 0.955313393905544 -0.213179317408076 0.204770980458409 88.6069391889123
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -283,21 +281,21 @@ DEF TowerScript Script {
         orientation 0.959598560667491 -0.198932299328874 0.198988802787052 92.3637553236994
         linearVelocity 0.00815103 0.0124686 -0.00614744
         angularVelocity -0.175593 -0.153989 -0.414147
-        geometry DEF _21 CollidableShape {
+        geometry DEF _36 CollidableShape {
           translation 5.68276 -0.70014 0.0341658
           rotation 0.959598560667491 -0.198932299328874 0.198988802787052 92.3637553236994
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
         position -1.73528 -0.532184 -9.07326
         orientation 0.415310045444224 0.638663664321995 0.647785620640802 228.689257632781
-        linearVelocity -0.00992781 0.00000857934 -0.00610074
+        linearVelocity -0.00992781 8.57934e-6 -0.00610074
         angularVelocity 0.023408 -0.412207 -0.0570143
-        geometry DEF _22 CollidableShape {
+        geometry DEF _37 CollidableShape {
           translation -1.73528 -0.532184 -9.07326
           rotation 0.415310045444224 0.638663664321995 0.647785620640802 228.689257632781
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -305,10 +303,10 @@ DEF TowerScript Script {
         orientation 0.599828257080621 -0.549789557126228 0.581324004127123 120.868360522152
         linearVelocity -0.0103953 0.0657639 0.000424942
         angularVelocity 0.118891 0.00143937 3.79167
-        geometry DEF _23 CollidableShape {
+        geometry DEF _38 CollidableShape {
           translation -10.8686 -0.844441 0.849338
           rotation 0.599828257080621 -0.549789557126228 0.581324004127123 120.868360522152
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -316,10 +314,10 @@ DEF TowerScript Script {
         orientation 0.671070083395 0.495889771116583 -0.55114273129629 109.436251615743
         linearVelocity 0.00492673 -0.0223804 -0.0209005
         angularVelocity 0.72784 -0.0192499 0.383842
-        geometry DEF _24 CollidableShape {
+        geometry DEF _39 CollidableShape {
           translation 4.44625 -0.441172 5.64955
           rotation 0.671070083395 0.495889771116583 -0.55114273129629 109.436251615743
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -327,10 +325,10 @@ DEF TowerScript Script {
         orientation -0.392219869190869 0.612430888785868 0.686361397096975 136.316578028865
         linearVelocity -0.00209747 0.0595801 -0.00177243
         angularVelocity 1.76325 -0.292736 4.69261
-        geometry DEF _25 CollidableShape {
+        geometry DEF _40 CollidableShape {
           translation 3.32105 -0.468123 -6.26648
           rotation -0.392219869190869 0.612430888785868 0.686361397096975 136.316578028865
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -338,10 +336,10 @@ DEF TowerScript Script {
         orientation 0.165977856524975 -0.696298137186791 0.698298106273199 161.636675771648
         linearVelocity -0.0365342 -0.000567097 -0.0112867
         angularVelocity -0.0558269 0.478947 0.0137791
-        geometry DEF _26 CollidableShape {
+        geometry DEF _41 CollidableShape {
           translation -7.74884 -0.501939 -6.22198
           rotation 0.165977856524975 -0.696298137186791 0.698298106273199 161.636675771648
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -349,10 +347,10 @@ DEF TowerScript Script {
         orientation 0.742582307457037 -0.460215607636204 0.486593270062635 102.699824340083
         linearVelocity 0.0101753 0.0364253 -0.00129267
         angularVelocity -0.727485 0.0659983 -1.31199
-        geometry DEF _27 CollidableShape {
+        geometry DEF _42 CollidableShape {
           translation -4.13762 -0.27448 5.27532
           rotation 0.742582307457037 -0.460215607636204 0.486593270062635 102.699824340083
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -360,10 +358,10 @@ DEF TowerScript Script {
         orientation -0.97677367383306 -0.144789544013833 -0.157953502319317 96.0783994119863
         linearVelocity 0.00905874 -0.0538804 0.000890067
         angularVelocity -0.698299 -0.341622 -1.40323
-        geometry DEF _28 CollidableShape {
+        geometry DEF _43 CollidableShape {
           translation 0.919854 0.00484537 7.73315
           rotation -0.97677367383306 -0.144789544013833 -0.157953502319317 96.0783994119863
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -371,10 +369,10 @@ DEF TowerScript Script {
         orientation -0.566572611755183 -0.577759286140826 0.587528593394794 239.396118786388
         linearVelocity 0.0192196 0.000336247 -0.0021489
         angularVelocity -0.059591 -0.185443 -0.40411
-        geometry DEF _29 CollidableShape {
+        geometry DEF _44 CollidableShape {
           translation 7.12328 -0.493473 0.120934
           rotation -0.566572611755183 -0.577759286140826 0.587528593394794 239.396118786388
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -382,10 +380,10 @@ DEF TowerScript Script {
         orientation 0.114447063253893 0.630707560256425 0.767534842824227 194.652905809793
         linearVelocity -0.0345919 0.0244176 0.0165173
         angularVelocity 0.524752 0.0111469 0.380502
-        geometry DEF _30 CollidableShape {
+        geometry DEF _45 CollidableShape {
           translation -1.27029 -0.211701 -6.9827
           rotation 0.114447063253893 0.630707560256425 0.767534842824227 194.652905809793
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -393,10 +391,10 @@ DEF TowerScript Script {
         orientation -0.812042775175752 -0.405924195889833 -0.41929974674666 104.637479413217
         linearVelocity -0.0150136 0.0367287 0.00482912
         angularVelocity -0.642875 0.0176531 -0.287533
-        geometry DEF _31 CollidableShape {
+        geometry DEF _46 CollidableShape {
           translation -8.82682 -0.240738 -0.275182
           rotation -0.812042775175752 -0.405924195889833 -0.41929974674666 104.637479413217
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -404,10 +402,10 @@ DEF TowerScript Script {
         orientation 0.793408828443617 0.410428495856707 -0.449500588386039 100.12731337581
         linearVelocity 0.0173455 -0.0535177 0.00089367
         angularVelocity 1.02962 -0.36047 -0.407598
-        geometry DEF _32 CollidableShape {
+        geometry DEF _47 CollidableShape {
           translation 5.21511 -0.0141292 5.37191
           rotation 0.793408828443617 0.410428495856707 -0.449500588386039 100.12731337581
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -415,10 +413,10 @@ DEF TowerScript Script {
         orientation -0.178719597363453 0.644874161948137 0.743099336743492 168.132203271916
         linearVelocity 0.00696859 -0.0112717 0.0223998
         angularVelocity -0.782324 0.199938 -0.201932
-        geometry DEF _33 CollidableShape {
+        geometry DEF _48 CollidableShape {
           translation 4.14919 -0.346673 -3.84399
           rotation -0.178719597363453 0.644874161948137 0.743099336743492 168.132203271916
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -426,10 +424,10 @@ DEF TowerScript Script {
         orientation -0.060215130567272 -0.700144565000249 0.711457501368443 183.19084128666
         linearVelocity -0.0159052 -0.071776 -0.00615878
         angularVelocity 4.48127 0.124499 0.842099
-        geometry DEF _34 CollidableShape {
+        geometry DEF _49 CollidableShape {
           translation -4.42905 -0.552171 -2.86407
           rotation -0.060215130567272 -0.700144565000249 0.711457501368443 183.19084128666
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -437,10 +435,10 @@ DEF TowerScript Script {
         orientation 0.87540802112316 -0.340462366443912 0.34314179896434 93.2648893586235
         linearVelocity 0.00931998 0.0211978 -0.0113473
         angularVelocity -0.858342 0.213068 -1.46861
-        geometry DEF _35 CollidableShape {
+        geometry DEF _50 CollidableShape {
           translation -4.10736 0.080088 4.08787
           rotation 0.87540802112316 -0.340462366443912 0.34314179896434 93.2648893586235
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -448,10 +446,10 @@ DEF TowerScript Script {
         orientation -0.988948072926098 -0.0986578752622043 -0.110672298148356 94.6550842056775
         linearVelocity 0.024506 -0.013514 -0.0185361
         angularVelocity -1.48218 -0.0956335 -0.752407
-        geometry DEF _36 CollidableShape {
+        geometry DEF _51 CollidableShape {
           translation 0.763465 0.345307 6.51559
           rotation -0.988948072926098 -0.0986578752622043 -0.110672298148356 94.6550842056775
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -459,10 +457,10 @@ DEF TowerScript Script {
         orientation -0.263770183854806 -0.655798273254578 0.707357038274232 213.495969683484
         linearVelocity 0.022443 0.0430131 -0.00462182
         angularVelocity 0.428874 1.00015 4.25854
-        geometry DEF _37 CollidableShape {
+        geometry DEF _52 CollidableShape {
           translation 6.77083 -0.114031 1.00006
           rotation -0.263770183854806 -0.655798273254578 0.707357038274232 213.495969683484
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -470,10 +468,10 @@ DEF TowerScript Script {
         orientation 0.0277184834164329 0.683374317992877 0.729541830395342 183.37201783644
         linearVelocity -0.073992 -0.0444903 0.0265959
         angularVelocity 1.89845 -0.0731037 -0.148742
-        geometry DEF _38 CollidableShape {
+        geometry DEF _53 CollidableShape {
           translation -1.61412 -0.192236 -5.30177
           rotation 0.0277184834164329 0.683374317992877 0.729541830395342 183.37201783644
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -481,10 +479,10 @@ DEF TowerScript Script {
         orientation 0.638813890352305 -0.533046025698739 0.554778064695451 110.317406419994
         linearVelocity -0.0164337 0.00627304 0.0198953
         angularVelocity -0.921751 0.0817643 -1.41431
-        geometry DEF _39 CollidableShape {
+        geometry DEF _54 CollidableShape {
           translation -6.33611 0.0114295 -0.633336
           rotation 0.638813890352305 -0.533046025698739 0.554778064695451 110.317406419994
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -492,10 +490,10 @@ DEF TowerScript Script {
         orientation 0.813691103140006 0.394594932163215 -0.426850850410737 98.8634102549633
         linearVelocity 0.0161424 0.0375749 -0.0212599
         angularVelocity 0.43456 0.148973 0.672886
-        geometry DEF _40 CollidableShape {
+        geometry DEF _55 CollidableShape {
           translation 5.18569 0.362844 4.25744
           rotation 0.813691103140006 0.394594932163215 -0.426850850410737 98.8634102549633
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -503,10 +501,10 @@ DEF TowerScript Script {
         orientation -0.38361905723134 0.645776292774381 0.660158612316526 137.430475821516
         linearVelocity -0.0202292 -0.0563069 0.0245338
         angularVelocity 1.08498 0.262931 0.510644
-        geometry DEF _41 CollidableShape {
+        geometry DEF _56 CollidableShape {
           translation 3.32277 0.0401014 -3.87009
           rotation -0.38361905723134 0.645776292774381 0.660158612316526 137.430475821516
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -514,10 +512,10 @@ DEF TowerScript Script {
         orientation -0.314857762428084 -0.632196005218673 0.707949695028497 207.63797495315
         linearVelocity -0.0294273 -0.040514 0.0198263
         angularVelocity -0.322813 0.815837 -3.87524
-        geometry DEF _42 CollidableShape {
+        geometry DEF _57 CollidableShape {
           translation -5.49604 0.0381587 -3.05624
           rotation -0.314857762428084 -0.632196005218673 0.707949695028497 207.63797495315
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -525,10 +523,10 @@ DEF TowerScript Script {
         orientation 0.855244760854808 -0.363286707915391 0.369566560603439 94.6738666301876
         linearVelocity 0.0191742 0.0117053 -0.0233866
         angularVelocity -1.00133 0.0101726 -1.28568
-        geometry DEF _43 CollidableShape {
+        geometry DEF _58 CollidableShape {
           translation -3.85709 0.414873 3.12351
           rotation 0.855244760854808 -0.363286707915391 0.369566560603439 94.6738666301876
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -536,10 +534,10 @@ DEF TowerScript Script {
         orientation -0.990791064841519 -0.0915420606013408 -0.0997652722292294 94.4763977103592
         linearVelocity 0.022835 0.0349178 -0.0250226
         angularVelocity -0.977799 -0.0231011 -0.0917574
-        geometry DEF _44 CollidableShape {
+        geometry DEF _59 CollidableShape {
           translation 0.711228 0.710342 5.64588
           rotation -0.990791064841519 -0.0915420606013408 -0.0997652722292294 94.4763977103592
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -547,10 +545,10 @@ DEF TowerScript Script {
         orientation 0.739347299129451 -0.315809164803131 -0.594668107047195 208.096521239006
         linearVelocity 1.2061 -0.85744 0.240728
         angularVelocity 10.8549 -13.8196 -87.9832
-        geometry DEF _45 CollidableShape {
+        geometry DEF _60 CollidableShape {
           translation 10.6507 0.533398 -0.00947216
           rotation 0.739347299129451 -0.315809164803131 -0.594668107047195 208.096521239006
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -558,10 +556,10 @@ DEF TowerScript Script {
         orientation 0.0770032442158036 0.698526944891395 0.711428553172945 188.883297250687
         linearVelocity -0.0287941 -0.0324375 0.0367696
         angularVelocity 1.47959 -0.415713 0.39791
-        geometry DEF _46 CollidableShape {
+        geometry DEF _61 CollidableShape {
           translation 0.540462 0.296723 -6.58641
           rotation 0.0770032442158036 0.698526944891395 0.711428553172945 188.883297250687
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -569,10 +567,10 @@ DEF TowerScript Script {
         orientation 0.644087994632707 -0.566710207057753 0.513799940923739 105.181510711835
         linearVelocity 0.0246287 0.0112158 -0.0673721
         angularVelocity 0.380672 -0.461228 1.13122
-        geometry DEF _47 CollidableShape {
+        geometry DEF _62 CollidableShape {
           translation -7.04003 0.596173 -1.25071
           rotation 0.644087994632707 -0.566710207057753 0.513799940923739 105.181510711835
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -580,10 +578,10 @@ DEF TowerScript Script {
         orientation 0.617610111606204 0.51966046023794 -0.590347823025371 112.200709062851
         linearVelocity 0.0149342 0.00666478 -0.0252517
         angularVelocity -3.44434 0.662213 4.63017
-        geometry DEF _48 CollidableShape {
+        geometry DEF _63 CollidableShape {
           translation 3.46522 0.60652 2.92021
           rotation 0.617610111606204 0.51966046023794 -0.590347823025371 112.200709062851
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -591,10 +589,10 @@ DEF TowerScript Script {
         orientation -0.273910348267137 0.673345987574693 0.686715632015167 148.656745442138
         linearVelocity -0.0661042 -0.082856 0.10897
         angularVelocity 2.46832 -1.02494 0.200828
-        geometry DEF _49 CollidableShape {
+        geometry DEF _64 CollidableShape {
           translation 5.00168 0.454632 -4.73547
           rotation -0.273910348267137 0.673345987574693 0.686715632015167 148.656745442138
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -602,10 +600,10 @@ DEF TowerScript Script {
         orientation -0.166272385504521 -0.65688621898412 0.735427811541223 185.313353797133
         linearVelocity 0.0318985 0.00996449 -0.0733505
         angularVelocity -0.138299 -0.853196 -0.334497
-        geometry DEF _50 CollidableShape {
+        geometry DEF _65 CollidableShape {
           translation -3.33251 0.0173433 -2.93669
           rotation -0.166272385504521 -0.65688621898412 0.735427811541223 185.313353797133
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -613,10 +611,10 @@ DEF TowerScript Script {
         orientation 0.978473716524949 -0.0457981384813768 -0.201225695853601 83.7552206568821
         linearVelocity 0.0906995 0.0923338 -0.0683046
         angularVelocity -0.975711 -2.25822 -13.788
-        geometry DEF _51 CollidableShape {
+        geometry DEF _66 CollidableShape {
           translation -4.01281 0.52047 1.12759
           rotation 0.978473716524949 -0.0457981384813768 -0.201225695853601 83.7552206568821
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -624,10 +622,10 @@ DEF TowerScript Script {
         orientation 0.990056437823289 -0.0832985908773413 0.113355697653592 84.454616596188
         linearVelocity 0.0161325 0.0804662 -0.0440595
         angularVelocity -2.74947 0.0277088 -0.284637
-        geometry DEF _52 CollidableShape {
+        geometry DEF _67 CollidableShape {
           translation 0.130903 1.11955 5.98233
           rotation 0.990056437823289 -0.0832985908773413 0.113355697653592 84.454616596188
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -635,10 +633,10 @@ DEF TowerScript Script {
         orientation 0.993058030032515 0.106314847507252 0.0503307060414781 80.9028189179308
         linearVelocity -0.0810202 -0.325298 0.170882
         angularVelocity 19.0425 -5.0387 -7.96037
-        geometry DEF _53 CollidableShape {
+        geometry DEF _68 CollidableShape {
           translation 3.88273 0.487769 -1.36442
           rotation 0.993058030032515 0.106314847507252 0.0503307060414781 80.9028189179308
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -646,10 +644,10 @@ DEF TowerScript Script {
         orientation 0.0618901612346093 0.704198028134163 0.70730103433075 190.653098612292
         linearVelocity -0.00603727 0.0178983 0.0219186
         angularVelocity 12.4009 -5.37116 0.48759
-        geometry DEF _54 CollidableShape {
+        geometry DEF _69 CollidableShape {
           translation 0.949674 0.682023 -6.94587
           rotation 0.0618901612346093 0.704198028134163 0.70730103433075 190.653098612292
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -657,10 +655,10 @@ DEF TowerScript Script {
         orientation -0.270423055880874 0.682862098820707 -0.678653685075196 228.489663065425
         linearVelocity 0.211756 0.3614 -0.221704
         angularVelocity -5.89553 0.601315 -3.48338
-        geometry DEF _55 CollidableShape {
+        geometry DEF _70 CollidableShape {
           translation -5.7214 0.879071 -1.75752
           rotation -0.270423055880874 0.682862098820707 -0.678653685075196 228.489663065425
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -668,10 +666,10 @@ DEF TowerScript Script {
         orientation -0.891907558850931 0.340761078636414 0.297292596540973 106.047925104586
         linearVelocity 0.0286065 -0.195672 -0.0185027
         angularVelocity 8.3199 -0.820122 -8.17498
-        geometry DEF _56 CollidableShape {
+        geometry DEF _71 CollidableShape {
           translation 3.18375 0.989583 3.42338
           rotation -0.891907558850931 0.340761078636414 0.297292596540973 106.047925104586
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -679,10 +677,10 @@ DEF TowerScript Script {
         orientation -0.457751645186126 0.615929539273676 0.641166352279063 133.012618402946
         linearVelocity -0.207689 -0.432228 0.256919
         angularVelocity 12.4275 -5.30334 0.72566
-        geometry DEF _57 CollidableShape {
+        geometry DEF _72 CollidableShape {
           translation 2.76958 0.941362 -4.80805
           rotation -0.457751645186126 0.615929539273676 0.641166352279063 133.012618402946
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -690,10 +688,10 @@ DEF TowerScript Script {
         orientation -0.0366698217182161 -0.634698036819528 0.771889701728111 201.517976625192
         linearVelocity -0.823706 -0.0107077 -1.47196
         angularVelocity -19.3831 9.79465 -17.7769
-        geometry DEF _58 CollidableShape {
+        geometry DEF _73 CollidableShape {
           translation -5.16777 0.629249 -7.48772
           rotation -0.0366698217182161 -0.634698036819528 0.771889701728111 201.517976625192
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -701,10 +699,10 @@ DEF TowerScript Script {
         orientation 0.420520303399258 -0.646934851264919 0.636111800093815 112.19413397503
         linearVelocity 0.0369188 -0.13809 -0.0963096
         angularVelocity -2.7026 0.0621943 3.81043
-        geometry DEF _59 CollidableShape {
+        geometry DEF _74 CollidableShape {
           translation -3.35495 0.866795 2.30848
           rotation 0.420520303399258 -0.646934851264919 0.636111800093815 112.19413397503
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -712,10 +710,10 @@ DEF TowerScript Script {
         orientation -0.968497962607049 0.229414555904921 -0.0968546752582746 99.8252073787215
         linearVelocity 0.373706 -0.214759 -0.25209
         angularVelocity -1.58957 -3.76672 -15.1545
-        geometry DEF _60 CollidableShape {
+        geometry DEF _75 CollidableShape {
           translation -2.74935 0.984089 2.19904
           rotation -0.968497962607049 0.229414555904921 -0.0968546752582746 99.8252073787215
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -723,10 +721,10 @@ DEF TowerScript Script {
         orientation 0.411029268367726 0.68835331447569 -0.597682760452135 132.632723102851
         linearVelocity -0.153697 -0.587355 -0.138158
         angularVelocity -14.3327 -1.05476 -24.5395
-        geometry DEF _61 CollidableShape {
+        geometry DEF _76 CollidableShape {
           translation 1.2277 0.777444 -2.6619
           rotation 0.411029268367726 0.68835331447569 -0.597682760452135 132.632723102851
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -734,10 +732,10 @@ DEF TowerScript Script {
         orientation -0.157952717496591 0.816811583720099 0.554860162757375 179.817541597809
         linearVelocity 0.0921705 0.46108 0.136843
         angularVelocity 27.3519 1.24606 6.64968
-        geometry DEF _62 CollidableShape {
+        geometry DEF _77 CollidableShape {
           translation 1.39116 1.18177 -8.49564
           rotation -0.157952717496591 0.816811583720099 0.554860162757375 179.817541597809
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -745,10 +743,10 @@ DEF TowerScript Script {
         orientation -0.441610040399189 -0.849076855075756 -0.289912453475999 64.6597365813208
         linearVelocity -0.175282 -0.134285 -0.0906907
         angularVelocity 46.7885 1.85572 50.2471
-        geometry DEF _63 CollidableShape {
+        geometry DEF _78 CollidableShape {
           translation -1.42001 1.03385 -1.56411
           rotation -0.441610040399189 -0.849076855075756 -0.289912453475999 64.6597365813208
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -756,10 +754,10 @@ DEF TowerScript Script {
         orientation 0.992207347689411 -0.0274913392214218 -0.121526842680286 200.839349632467
         linearVelocity 0.240564 -0.260574 0.373282
         angularVelocity 41.8643 -2.14907 -10.5074
-        geometry DEF _64 CollidableShape {
+        geometry DEF _79 CollidableShape {
           translation 4.52561 1.69749 1.36083
           rotation 0.992207347689411 -0.0274913392214218 -0.121526842680286 200.839349632467
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -767,10 +765,10 @@ DEF TowerScript Script {
         orientation 0.228612893679546 0.864876565455991 -0.446905532710496 111.878395532787
         linearVelocity -1.19251 -2.02497 -3.26284
         angularVelocity 45.9496 12.4596 23.626
-        geometry DEF _65 CollidableShape {
+        geometry DEF _80 CollidableShape {
           translation 1.0241 0.301648 -14.2276
           rotation 0.228612893679546 0.864876565455991 -0.446905532710496 111.878395532787
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -778,10 +776,10 @@ DEF TowerScript Script {
         orientation -0.97459150253516 0.0715483041808934 0.212255381917877 116.626589500689
         linearVelocity -0.300406 -1.50969 -1.79642
         angularVelocity -31.0243 19.3059 -16.6977
-        geometry DEF _66 CollidableShape {
+        geometry DEF _81 CollidableShape {
           translation -2.50462 0.285096 -9.40454
           rotation -0.97459150253516 0.0715483041808934 0.212255381917877 116.626589500689
-          shape USE _4
+          shape USE _19
         }
       }
       RigidBody {
@@ -789,32 +787,17 @@ DEF TowerScript Script {
         orientation 0.561025773204013 -0.676709026055583 0.476775917222049 93.3493818904704
         linearVelocity 0.601202 -0.139919 -0.691372
         angularVelocity -2.10904 6.93343 -18.4073
-        geometry DEF _67 CollidableShape {
+        geometry DEF _82 CollidableShape {
           translation -4.18352 1.11012 -1.59936
           rotation 0.561025773204013 -0.676709026055583 0.476775917222049 93.3493818904704
-          shape USE _4
+          shape USE _19
         }
       }
     ]
   }
   initializeOnly SFNode group DEF Tower Group {
     children [
-      USE _3
-      USE _5
-      USE _6
-      USE _7
-      USE _8
-      USE _9
-      USE _10
-      USE _11
-      USE _12
-      USE _13
-      USE _14
-      USE _15
-      USE _16
-      USE _17
       USE _18
-      USE _19
       USE _20
       USE _21
       USE _22
@@ -863,11 +846,26 @@ DEF TowerScript Script {
       USE _65
       USE _66
       USE _67
+      USE _68
+      USE _69
+      USE _70
+      USE _71
+      USE _72
+      USE _73
+      USE _74
+      USE _75
+      USE _76
+      USE _77
+      USE _78
+      USE _79
+      USE _80
+      USE _81
+      USE _82
     ]
   }
-  initializeOnly SFNode shape USE _4
-  initializeOnly SFNode ground USE Ground_1
-  initializeOnly SFNode sphere USE Sphere_1
+  initializeOnly SFNode shape USE _19
+  initializeOnly SFNode ground USE Ground_15
+  initializeOnly SFNode sphere USE Sphere_16
 
   url "ecmascript:
 
@@ -895,7 +893,7 @@ function set_resetTime (value, time)
 		var
 			a = n % 2 * Math .PI / 4,
 			y = n * 2;
-	
+
 		for (var i = 0; i < 4; ++ i)
 		{
 			var
@@ -916,7 +914,7 @@ function set_resetTime (value, time)
 
 function eventsProcessed ()
 {
-	
+
 }
 "
   directOutput TRUE
@@ -937,10 +935,10 @@ LayerSet {
           orientation 1 0 0 270
           fieldOfView [ -20, -20, 20, 20 ]
         }
-        DEF _68 NavigationInfo {
+        DEF _93 NavigationInfo {
           headlight FALSE
         }
-        DEF _69 PointLight {
+        DEF _94 PointLight {
           intensity 0.679157
           ambientIntensity 0.323185
           location 0 21.9987 0
@@ -967,8 +965,8 @@ LayerSet {
           centerOfRotation 0 -2 0
           fieldOfView 28.9655
         }
-        USE _68
-        USE _69
+        USE _93
+        USE _94
         USE Collidables
       ]
     }
@@ -983,8 +981,8 @@ LayerSet {
           orientation -0.607688512356904 0.778139354155548 0.158788593620068 37.1241185925089
           centerOfRotation -3.55271e-15 2.13163e-14 0
         }
-        USE _68
-        USE _69
+        USE _93
+        USE _94
         USE Collidables
       ]
     }
@@ -998,12 +996,12 @@ LayerSet {
           position 0 15 50
           fieldOfView [ -20, -20, 20, 20 ]
         }
-        USE _68
-        USE _69
+        USE _93
+        USE _94
         USE Collidables
       ]
     }
   ]
 }
 
-ROUTE _1.cycleTime TO TowerScript.set_resetTime
+ROUTE _14.cycleTime TO TowerScript.set_resetTime

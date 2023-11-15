@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/WindPhysicsModel/WindPhysicsModel.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 07 Nov 2019 12:53:42 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:00:32 GMT"
+          "@content": "Wed, 15 Nov 2023 02:14:34 GMT"
         }
       ],
       "component": [
@@ -48,11 +40,6 @@
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-            "@title": "WindPhysicsModel.O"
-          }
-        },
         { "Background":
           {
             "@skyAngle": [ 1.09223, 1.5708 ],
@@ -71,9 +58,9 @@
         },
         { "Transform":
           {
-            "@DEF": "_1",
+            "@DEF": "_2",
             "@translation": [ 5, 0, 0 ],
-            "@rotation": [ 0, -1, 0, 2.65019992197869 ],
+            "@rotation": [ 0, -1, 0, 0.808227081947827 ],
             "@center": [ -5, 0, 0 ],
             "-children": [
               { "Group":
@@ -130,7 +117,6 @@
                           },
                           { "WindPhysicsModel":
                             {
-                              "@direction": [ 1, 0, 0 ],
                               "@speed": 0.6,
                               "@gustiness": 2
                             }
@@ -138,7 +124,6 @@
                         ],
                         "-appearance": { "Appearance":
                           {
-                            "@DEF": "_2",
                             "-pointProperties": { "PointProperties":
                               {
                                 "@pointSizeScaleFactor": 8,
@@ -160,7 +145,6 @@
               },
               { "Inline":
                 {
-                  "@global": true,
                   "@url": [ "toy-train.x3d" ]
                 }
               }
@@ -170,7 +154,6 @@
         { "Inline":
           {
             "@DEF": "Cylinder",
-            "@global": true,
             "@url": [ "cylinder.x3d" ]
           }
         },
@@ -186,7 +169,7 @@
           {
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_1",
+            "@toNode": "_2",
             "@toField": "rotation"
           }
         }

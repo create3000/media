@@ -1,17 +1,15 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT RigidBodyPhysics : 2
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Tue, 15 May 2018 02:42:31 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.1.1, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/RigidBodyPhysics/SingleAxisHingeJoint/SingleAxisHingeJoint.O.x3d"
-META "modified" "Wed, 16 May 2018 09:25:29 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:03:54 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:18:52 GMT"
 
 WorldInfo { }
 
@@ -28,10 +26,10 @@ Viewpoint {
 
 DEF Collidables Group {
   children [
-    DEF _1 CollidableShape {
+    DEF _14 CollidableShape {
       translation 0 2 0
       shape Shape {
-        appearance DEF _2 Appearance {
+        appearance DEF _15 Appearance {
           material DEF Rococo1 Material {
             ambientIntensity 0.187004
             diffuseColor 0.636212 0.748016 0.300948
@@ -39,39 +37,39 @@ DEF Collidables Group {
             shininess 0.8
           }
         }
-        geometry DEF _3 Sphere {
+        geometry DEF _16 Sphere {
           radius 0.15
         }
       }
     }
-    DEF _4 CollidableShape {
+    DEF _17 CollidableShape {
       translation -2 2 0
-      rotation 2.26008637581007e-7 0.00000387429872713976 -0.999999999992469 1.57079626719778
+      rotation 2.26008637581007e-7 3.87429872713976e-6 -0.999999999992469 1.57079626719778
       shape Shape {
-        appearance USE _2
-        geometry DEF _5 Cylinder {
+        appearance USE _15
+        geometry DEF _18 Cylinder {
           height 4
           radius 0.03
         }
       }
     }
-    DEF _6 CollidableOffset {
+    DEF _19 CollidableOffset {
       translation -2 2 0
-      rotation 2.26008637581007e-7 0.00000387429872713976 -0.999999999992469 1.57079626719778
+      rotation 2.26008637581007e-7 3.87429872713976e-6 -0.999999999992469 1.57079626719778
       collidable CollidableShape {
         translation 0 -2 0
         shape Shape {
-          appearance USE _2
-          geometry DEF _7 Sphere {
+          appearance USE _15
+          geometry DEF _20 Sphere {
             radius 0.5
           }
         }
       }
     }
-    DEF _8 CollidableShape {
+    DEF _21 CollidableShape {
       translation 1 2 0
       shape Shape {
-        appearance DEF _9 Appearance {
+        appearance DEF _22 Appearance {
           material DEF Rococo7 Material {
             ambientIntensity 0.187004
             diffuseColor 0.748016 0.467103 0.261641
@@ -79,30 +77,30 @@ DEF Collidables Group {
             shininess 0.872727
           }
         }
-        geometry USE _3
+        geometry USE _16
       }
     }
-    DEF _10 CollidableShape {
+    DEF _23 CollidableShape {
       translation 1 0 0
       shape Shape {
-        appearance USE _9
-        geometry USE _5
+        appearance USE _22
+        geometry USE _18
       }
     }
-    DEF _11 CollidableOffset {
+    DEF _24 CollidableOffset {
       translation 1 0 0
       collidable CollidableShape {
         translation 0 -2 0
         shape Shape {
-          appearance USE _9
-          geometry USE _7
+          appearance USE _22
+          geometry USE _20
         }
       }
     }
-    DEF _12 CollidableShape {
+    DEF _25 CollidableShape {
       translation 2 2 0
       shape Shape {
-        appearance DEF _13 Appearance {
+        appearance DEF _26 Appearance {
           material DEF Rococo13 Material {
             ambientIntensity 0.187004
             diffuseColor 0.748016 0.272334 0.406842
@@ -110,30 +108,30 @@ DEF Collidables Group {
             shininess 0.6
           }
         }
-        geometry USE _3
+        geometry USE _16
       }
     }
-    DEF _14 CollidableShape {
+    DEF _27 CollidableShape {
       translation 2 0 0
       shape Shape {
-        appearance USE _13
-        geometry USE _5
+        appearance USE _26
+        geometry USE _18
       }
     }
-    DEF _15 CollidableOffset {
+    DEF _28 CollidableOffset {
       translation 2 0 0
       collidable CollidableShape {
         translation 0 -2 0
         shape Shape {
-          appearance USE _13
-          geometry USE _7
+          appearance USE _26
+          geometry USE _20
         }
       }
     }
-    DEF _16 CollidableShape {
+    DEF _29 CollidableShape {
       translation 3 2 0
       shape Shape {
-        appearance DEF _17 Appearance {
+        appearance DEF _30 Appearance {
           material DEF Rococo19 Material {
             ambientIntensity 0.187004
             diffuseColor 0.412056 0.422504 0.748016
@@ -141,30 +139,30 @@ DEF Collidables Group {
             shininess 0.787879
           }
         }
-        geometry USE _3
+        geometry USE _16
       }
     }
-    DEF _18 CollidableShape {
+    DEF _31 CollidableShape {
       translation 3 0 0
       shape Shape {
-        appearance USE _17
-        geometry USE _5
+        appearance USE _30
+        geometry USE _18
       }
     }
-    DEF _19 CollidableOffset {
+    DEF _32 CollidableOffset {
       translation 3 0 0
       collidable CollidableShape {
         translation 0 -2 0
         shape Shape {
-          appearance USE _17
-          geometry USE _7
+          appearance USE _30
+          geometry USE _20
         }
       }
     }
-    DEF _20 CollidableShape {
+    DEF _33 CollidableShape {
       translation 4 2 0
       shape Shape {
-        appearance DEF _21 Appearance {
+        appearance DEF _34 Appearance {
           material DEF Rococo25 Material {
             ambientIntensity 0.187004
             diffuseColor 0.261641 0.748016 0.725916
@@ -172,23 +170,23 @@ DEF Collidables Group {
             shininess 0.593939
           }
         }
-        geometry USE _3
+        geometry USE _16
       }
     }
-    DEF _22 CollidableShape {
+    DEF _35 CollidableShape {
       translation 4 0 0
       shape Shape {
-        appearance USE _21
-        geometry USE _5
+        appearance USE _34
+        geometry USE _18
       }
     }
-    DEF _23 CollidableOffset {
+    DEF _36 CollidableOffset {
       translation 4 0 0
       collidable CollidableShape {
         translation 0 -2 0
         shape Shape {
-          appearance USE _21
-          geometry USE _7
+          appearance USE _34
+          geometry USE _20
         }
       }
     }
@@ -199,93 +197,93 @@ RigidBodyCollection {
   collider CollisionCollection {
     minBounceSpeed 0
     collidables [
-      USE _1
-      USE _4
-      USE _6
-      USE _8
-      USE _10
-      USE _11
-      USE _12
       USE _14
-      USE _15
-      USE _16
-      USE _18
+      USE _17
       USE _19
-      USE _20
-      USE _22
+      USE _21
       USE _23
+      USE _24
+      USE _25
+      USE _27
+      USE _28
+      USE _29
+      USE _31
+      USE _32
+      USE _33
+      USE _35
+      USE _36
     ]
   }
   bodies [
-    DEF _24 RigidBody {
+    DEF _37 RigidBody {
       fixed TRUE
       position 0 2 0
       mass 0.01
-      geometry USE _1
+      geometry USE _14
     }
-    DEF _25 RigidBody {
+    DEF _38 RigidBody {
       position -2 2 0
-      orientation 2.26008637581007e-7 0.00000387429872713976 -0.999999999992469 1.57079626719778
+      orientation 2.26008637581007e-7 3.87429872713976e-6 -0.999999999992469 1.57079626719778
       mass 0.01
       geometry [
-        USE _4
-        USE _6
-      ]
-    }
-    DEF _26 RigidBody {
-      fixed TRUE
-      position 1 2 0
-      mass 0.01
-      geometry USE _8
-    }
-    DEF _27 RigidBody {
-      position 1 0 0
-      mass 0.01
-      geometry [
-        USE _10
-        USE _11
-      ]
-    }
-    DEF _28 RigidBody {
-      fixed TRUE
-      position 2 2 0
-      mass 0.01
-      geometry USE _12
-    }
-    DEF _29 RigidBody {
-      position 2 0 0
-      mass 0.01
-      geometry [
-        USE _14
-        USE _15
-      ]
-    }
-    DEF _30 RigidBody {
-      fixed TRUE
-      position 3 2 0
-      mass 0.01
-      geometry USE _16
-    }
-    DEF _31 RigidBody {
-      position 3 0 0
-      mass 0.01
-      geometry [
-        USE _18
+        USE _17
         USE _19
       ]
     }
-    DEF _32 RigidBody {
+    DEF _39 RigidBody {
+      fixed TRUE
+      position 1 2 0
+      mass 0.01
+      geometry USE _21
+    }
+    DEF _40 RigidBody {
+      position 1 0 0
+      mass 0.01
+      geometry [
+        USE _23
+        USE _24
+      ]
+    }
+    DEF _41 RigidBody {
+      fixed TRUE
+      position 2 2 0
+      mass 0.01
+      geometry USE _25
+    }
+    DEF _42 RigidBody {
+      position 2 0 0
+      mass 0.01
+      geometry [
+        USE _27
+        USE _28
+      ]
+    }
+    DEF _43 RigidBody {
+      fixed TRUE
+      position 3 2 0
+      mass 0.01
+      geometry USE _29
+    }
+    DEF _44 RigidBody {
+      position 3 0 0
+      mass 0.01
+      geometry [
+        USE _31
+        USE _32
+      ]
+    }
+    DEF _45 RigidBody {
       fixed TRUE
       position 4 2 0
       mass 0.01
-      geometry USE _20
+      geometry USE _33
     }
-    DEF _33 RigidBody {
+    DEF _46 RigidBody {
       position 4 0 0
       mass 0.01
       geometry [
-        USE _22
-        USE _23
+        USE _35
+        USE _36
       ]
     }
   ]
@@ -293,32 +291,32 @@ RigidBodyCollection {
     SingleAxisHingeJoint {
       anchorPoint 0 2 0
       axis 0 0 1
-      body1 USE _24
-      body2 USE _25
+      body1 USE _37
+      body2 USE _38
     }
     SingleAxisHingeJoint {
       anchorPoint 1 2 0
       axis 0 0 1
-      body1 USE _26
-      body2 USE _27
+      body1 USE _39
+      body2 USE _40
     }
     SingleAxisHingeJoint {
       anchorPoint 2 2 0
       axis 0 0 1
-      body1 USE _28
-      body2 USE _29
+      body1 USE _41
+      body2 USE _42
     }
     SingleAxisHingeJoint {
       anchorPoint 3 2 0
       axis 0 0 1
-      body1 USE _30
-      body2 USE _31
+      body1 USE _43
+      body2 USE _44
     }
     SingleAxisHingeJoint {
       anchorPoint 4 2 0
       axis 0 0 1
-      body1 USE _32
-      body2 USE _33
+      body1 USE _45
+      body2 USE _46
     }
   ]
 }

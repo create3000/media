@@ -1,18 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT CADGeometry : 2
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Tue, 10 Jul 2018 16:12:19 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/ColorRGBA/ColorRGBA.O.x3d"
-META "modified" "Mon, 07 Jan 2019 03:23:50 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:01:43 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:16:12 GMT"
 
 EXTERNPROTO Noise [
   inputOutput SFBool  enabled
@@ -70,14 +68,14 @@ function set_value (value, time)
 
 	if (dt < updateInterval)
 		return;
-		
+
 	if (points .length > width)
 		points .shift ();
 
 	points .push (value);
-	
+
 	lastTime = time;
-	
+
 	animate ();
 }
 
@@ -127,7 +125,7 @@ function build ()
 			hsva .setHSVA (hue, 1, 1, 1);
 
 			color .push (hsva);
-				
+
 			coord .push (new SFVec3f (x1, y1, 0));
 			coord .push (new SFVec3f (x2, y1, 0));
 			coord .push (new SFVec3f (x2, y2, 0));
@@ -139,7 +137,7 @@ function build ()
 function animate ()
 {
 	var color = geometry .color .color;
-		
+
 	for (var w = 0; w < points .length; ++ w)
 	{
 		var value = (points [w] + 1) * 0.5 * height;
@@ -149,7 +147,7 @@ function animate ()
 			var
 				i = w * height + h,
 				c = color [i];
-		
+
 			if (value > h)
 			{
 				c .a = 1;
@@ -184,14 +182,14 @@ DirectionalLight {
   direction 0 -1 0
 }
 
-DEF _2 Noise {
+DEF _15 Noise {
   enabled TRUE
   frequency 2.4
 }
 
 DEF Display Transform {
   children Shape {
-    geometry DEF _3 GraphicDisplay {
+    geometry DEF _16 GraphicDisplay {
       width 35
       height 40
       size 1 0.4
@@ -208,8 +206,8 @@ DEF DisplayReflection Transform {
         transparency 0.77
       }
     }
-    geometry USE _3
+    geometry USE _16
   }
 }
 
-ROUTE _2.value_changed TO _3.set_value
+ROUTE _15.value_changed TO _16.set_value

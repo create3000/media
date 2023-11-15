@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 10 Feb 2023 23:47:20 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:55:28 GMT"
+          "@content": "Wed, 15 Nov 2023 02:08:49 GMT"
         }
       ],
       "component": [
@@ -238,7 +230,7 @@
                 "-children": [
                   { "Appearance":
                     {
-                      "@DEF": "_1",
+                      "@DEF": "_2",
                       "-material": { "Material":
                         {
                           "@diffuseColor": [ 0, 0, 0 ]
@@ -253,7 +245,7 @@
                 "-children": [
                   { "ScreenFontStyle":
                     {
-                      "@DEF": "_2",
+                      "@DEF": "_3",
                       "@justify": [ "END", "BEGIN" ]
                     }
                   }
@@ -328,7 +320,7 @@
                       ]
                     }
                   ],
-                  "#sourceText": [
+                  "#sourceCode": [
 "ecmascript:",
 "",
 "function set_y (value, time)",
@@ -346,7 +338,7 @@
                     {
                       "-lineProperties": { "LineProperties":
                         {
-                          "@DEF": "_3",
+                          "@DEF": "_1",
                           "@linewidthScaleFactor": 3
                         }
                       },
@@ -364,7 +356,7 @@
                       "fieldValue": [
                         {
                           "@name": "resetTime",
-                          "@value": 1676072840.376
+                          "@value": 1700014128.3
                         },
                         {
                           "@name": "point",
@@ -444,7 +436,7 @@
                             ]
                           }
                         ],
-                        "#sourceText": [
+                        "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -597,7 +589,7 @@
                             ]
                           }
                         ],
-                        "#sourceText": [
+                        "#sourceCode": [
 "ecmascript:",
 "",
 "var velocityScale = 0.5;",
@@ -809,7 +801,7 @@
                 ]
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -890,7 +882,7 @@
 "\tfor (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)",
 "\t{",
 "\t\tvar yOffset = 0;",
-"\t\t",
+"",
 "\t\tif (pointType == VELOCITY)",
 "\t\t\tyOffset = yInterpolator .keyVelocity [i] * velocityScale;",
 "",
@@ -905,7 +897,7 @@
 "\t\tpointIndex = i;",
 "\t\tbreak;",
 "\t}",
-"\t",
+"",
 "\treturn pointIndex;",
 "}",
 "",
@@ -916,7 +908,7 @@
 "\txInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .x);",
 "\tyInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .y);",
 "\tyInterpolator .keyVelocity .splice (pointIndex, 0, 0);",
-"\t",
+"",
 "\tsetXInterpolatorKey ();",
 "}",
 "",
@@ -938,7 +930,7 @@
 "\t\tif (xInterpolator .keyValue [i] > hitPoint .x)",
 "\t\t\tbreak;",
 "\t}",
-"\t",
+"",
 "\treturn i;",
 "}",
 "",
@@ -972,10 +964,10 @@
 "\t\t{",
 "\t\t\tvar point0 = new SFVec2f (xInterpolator .keyValue [i - 1],",
 "\t\t\t\t                       yInterpolator .keyValue [i - 1]);",
-"\t\t\t\t                       ",
+"",
 "\t\t\tvar point1 = new SFVec2f (xInterpolator .keyValue [i],",
 "\t\t\t\t                       yInterpolator .keyValue [i]);",
-"\t\t\t\t                      ",
+"",
 "\t\t\ttotalLength += point1 .subtract (point0) .length ();",
 "\t\t}",
 "",
@@ -985,12 +977,12 @@
 "\t\t{",
 "\t\t\tvar point0 = new SFVec2f (xInterpolator .keyValue [i - 1],",
 "\t\t\t\t                       yInterpolator .keyValue [i - 1]);",
-"\t\t\t\t                       ",
+"",
 "\t\t\tvar point1 = new SFVec2f (xInterpolator .keyValue [i],",
 "\t\t\t\t                       yInterpolator .keyValue [i]);",
-"\t\t\t\t                      ",
+"",
 "\t\t\tlengthSoFar += point1 .subtract (point0) .length ();",
-"\t\t\t",
+"",
 "\t\t\txInterpolator .key [i] = lengthSoFar / totalLength;",
 "\t\t}",
 "",

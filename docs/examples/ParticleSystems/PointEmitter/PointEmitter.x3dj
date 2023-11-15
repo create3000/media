@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.0, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/PointEmitter/PointEmitter.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 11 Apr 2019 08:18:49 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:59:42 GMT"
+          "@content": "Wed, 15 Nov 2023 02:13:35 GMT"
         }
       ],
       "component": [
@@ -242,14 +230,103 @@
                         { "ShaderPart":
                           {
                             "@DEF": "VertexShader",
-                            "@url": [ "data:x-shader/x-vertex,\n\nprecision mediump float;\n\nuniform mat4 x3d_ProjectionMatrix;\nuniform mat4 x3d_ModelViewMatrix;\n\nattribute vec4 x3d_Particle;\nattribute mat4 x3d_ParticleMatrix;\nattribute vec4 x3d_Vertex;\nattribute vec4 x3d_TexCoord0;\nattribute vec4 x3d_Color;\n\nvarying vec3 color;\nvarying vec4 texCoord;\n\n/* Random number generation */\n\nconst int RAND_MAX = int (0x7fffffff);\nconst int RAND_MIN = int (0x80000000);\n\nint seed = 1;\n\nvoid\nsrand (in int value)\n{\n\tseed = value;\n}\n\n// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].\nint\nrand ()\n{\n\treturn seed = seed * 1103515245 + 12345;\n}\n\n// Return a uniform distributed random floating point number in the interval [0, 1].\nfloat\nrandom ()\n{\n\treturn float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;\n}\n\n#define PI 3.1415\n\nmat4\ngetRotation (in float a)\n{\n\tfloat s = sin (a);\n\tfloat c = cos (a);\n\n\treturn mat4 (  c,   s, 0.0, 0.0,\n\t              -s,   c, 0.0, 0.0,\n\t             0.0, 0.0, 1.0, 0.0,\n               0.0, 0.0, 0.0, 1.0);\n}\n\nvoid\nmain ()\n{\n  float f = x3d_Particle [2] / x3d_Particle [1];\n\tmat4  r = getRotation (-2.0 * f * 2.0 * PI);\n\tvec4  v = x3d_ParticleMatrix * (r * x3d_Vertex);\n\n\tsrand (int (x3d_Particle [0] * 107.0));\n\n\tcolor    = vec3 (random (), random (), random ());\n\ttexCoord = x3d_TexCoord0;\n\n\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;\n}" ]
+                            "#sourceCode": [
+"data:x-shader/x-vertex,",
+"",
+"precision mediump float;",
+"",
+"uniform mat4 x3d_ProjectionMatrix;",
+"uniform mat4 x3d_ModelViewMatrix;",
+"",
+"attribute vec4 x3d_Particle;",
+"attribute mat4 x3d_ParticleMatrix;",
+"attribute vec4 x3d_Vertex;",
+"attribute vec4 x3d_TexCoord0;",
+"attribute vec4 x3d_Color;",
+"",
+"varying vec3 color;",
+"varying vec4 texCoord;",
+"",
+"/* Random number generation */",
+"",
+"const int RAND_MAX = int (0x7fffffff);",
+"const int RAND_MIN = int (0x80000000);",
+"",
+"int seed = 1;",
+"",
+"void",
+"srand (in int value)",
+"{",
+"\tseed = value;",
+"}",
+"",
+"// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].",
+"int",
+"rand ()",
+"{",
+"\treturn seed = seed * 1103515245 + 12345;",
+"}",
+"",
+"// Return a uniform distributed random floating point number in the interval [0, 1].",
+"float",
+"random ()",
+"{",
+"\treturn float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;",
+"}",
+"",
+"#define PI 3.1415",
+"",
+"mat4",
+"getRotation (in float a)",
+"{",
+"\tfloat s = sin (a);",
+"\tfloat c = cos (a);",
+"",
+"\treturn mat4 (  c,   s, 0.0, 0.0,",
+"\t              -s,   c, 0.0, 0.0,",
+"\t             0.0, 0.0, 1.0, 0.0,",
+"               0.0, 0.0, 0.0, 1.0);",
+"}",
+"",
+"void",
+"main ()",
+"{",
+"  float f = x3d_Particle [2] / x3d_Particle [1];",
+"\tmat4  r = getRotation (-2.0 * f * 2.0 * PI);",
+"\tvec4  v = x3d_ParticleMatrix * (r * x3d_Vertex);",
+"",
+"\tsrand (int (x3d_Particle [0] * 107.0));",
+"",
+"\tcolor    = vec3 (random (), random (), random ());",
+"\ttexCoord = x3d_TexCoord0;",
+"",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;",
+"}"
+                            ]
                           }
                         },
                         { "ShaderPart":
                           {
                             "@DEF": "FragmentShader",
                             "@type": "FRAGMENT",
-                            "@url": [ "data:x-shader/x-fragment,\n\nprecision mediump float;\n\nuniform sampler2D x3d_Texture2D [1];\n\nvarying vec3 color;\nvarying vec4 texCoord;\n\nvoid\nmain ()\n{\n\tfloat a = texture2D (x3d_Texture2D [0], texCoord .st) .a;\n\n\tgl_FragColor = vec4 (color, a);\n}" ]
+                            "#sourceCode": [
+"data:x-shader/x-fragment,",
+"",
+"precision mediump float;",
+"",
+"uniform sampler2D x3d_Texture2D [1];",
+"",
+"varying vec3 color;",
+"varying vec4 texCoord;",
+"",
+"void",
+"main ()",
+"{",
+"\tfloat a = texture2D (x3d_Texture2D [0], texCoord .st) .a;",
+"",
+"\tgl_FragColor = vec4 (color, a);",
+"}"
+                            ]
                           }
                         }
                       ]

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -8,15 +8,12 @@ COMPONENT Shaders : 1
 COMPONENT Text : 1
 COMPONENT X_ITE : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Tue, 19 Dec 2017 00:35:26 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.5, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X_ITE/BlendMode/BlendMode.O.x3d"
-META "modified" "Sun, 07 Apr 2019 14:46:49 GMT"
-META "titania-add-metadata" "true"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:13:31 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:28:14 GMT"
 
 EXTERNPROTO Rotor [
   inputOutput SFBool     enabled
@@ -42,8 +39,8 @@ LayerSet {
   layers [
     DEF Background Layer {
       pickable FALSE
-      children DEF _1 Transform {
-        rotation -0.998960144229723 0.0452369564793854 0.00567873304653588 1.48458083528778
+      children DEF _30 Transform {
+        rotation -0.992112070431101 0.106109362427897 0.0667416130315985 1.52198891200837
         scale 0.999999 1 1
         scaleOrientation 0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961
         children [
@@ -95,11 +92,11 @@ LayerSet {
               loop TRUE
             }
             DEF BoxAnim Transform {
-              rotation 0 0 1 2.84460670761878
-              children DEF _2 Transform {
-                rotation 0 1 0 3.15213165587297
+              rotation 0 0 1 4.26566980958223
+              children DEF _32 Transform {
+                rotation 0 0 1 2.0097721510458
                 children DEF Box Transform {
-                  rotation 1 0 0 3.76222158129864
+                  rotation 0 0 1 0.371924923038482
                   children Shape {
                     appearance Appearance {
                       material Material {
@@ -120,7 +117,7 @@ LayerSet {
             }
           ]
         }
-        DEF Fire_1 ParticleSystem {
+        DEF Fire_33 ParticleSystem {
           geometryType "SPRITE"
           maxParticles 151
           particleLifetime 8.31
@@ -226,11 +223,11 @@ main ()
     DEF HUD Layer {
       pickable FALSE
       children [
-        DEF Fire_2 Transform {
+        DEF Fire_34 Transform {
           translation -6.80942 3.70732 0
           scale 1.48791 1.48791 1.48791
           children Shape {
-            appearance DEF _3 Appearance {
+            appearance DEF _35 Appearance {
               material Material {
                 diffuseColor 0.564706 0.933333 0.564706
               }
@@ -238,7 +235,7 @@ main ()
             geometry Text {
               string "Fire"
               solid TRUE
-              fontStyle DEF _4 FontStyle {
+              fontStyle DEF _36 FontStyle {
                 family "assets/MinskaBoldITCTT.otf"
                 justify [ "BEGIN", "BEGIN" ]
               }
@@ -256,14 +253,14 @@ main ()
             geometry Text {
               string "Flow"
               solid TRUE
-              fontStyle USE _4
+              fontStyle USE _36
             }
           }
         }
         DEF Text Transform {
           translation 6.79705 -3.47612 0
           children Shape {
-            appearance USE _3
+            appearance USE _35
             geometry Text {
               string [ "in-browser", "flaming-fast", "gpu-accelerated", "deep-learning" ]
               solid TRUE
@@ -281,7 +278,7 @@ main ()
 }
 
 ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
-ROUTE RotationInterpolator.value_changed TO _1.set_rotation
+ROUTE RotationInterpolator.value_changed TO _30.set_rotation
 ROUTE X.rotation_changed TO Box.set_rotation
-ROUTE Y.rotation_changed TO _2.set_rotation
+ROUTE Y.rotation_changed TO _32.set_rotation
 ROUTE Z.rotation_changed TO BoxAnim.set_rotation

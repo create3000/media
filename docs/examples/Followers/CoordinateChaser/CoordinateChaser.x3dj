@@ -1,7 +1,7 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrise X3D Editor V1.0.0, https://create3000.github.io/Sunrise/"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/CoordinateChaser/CoordinateChaser.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 17 Oct 2022 23:17:05 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:50:20 GMT"
+          "@content": "Wed, 15 Nov 2023 02:04:08 GMT"
         }
       ],
       "component": [
@@ -150,7 +142,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -162,17 +154,17 @@
 "{",
 "\tfor (var i = 0; i < numPoints; ++ i)",
 "\t\tdest [i] .x = i * 2;",
-"\t",
+"",
 "\tset_time (0, 0);",
 "}",
 "",
 "function set_time (value, time)",
 "{",
 "\tbumps (points, numPoints, 16);",
-"\t",
+"",
 "\tfor (var i = 0; i < numPoints; ++ i)",
-"\t\tdest [i] .y = points [i]; ",
-"\t",
+"\t\tdest [i] .y = points [i];",
+"",
 "\tchaser .set_destination = dest;",
 "}",
 "",
@@ -182,7 +174,7 @@
 "\tconst x = 1 / (0.1 + Math .random ());",
 "\tconst y = 2 * Math .random () - 0.5;",
 "\tconst z = 10 / (0.1 + Math .random ());",
-"\t",
+"",
 "\tfor (let i = 0; i < n; ++ i)",
 "\t{",
 "\t\tconst w = (i / n - y) * z;",
@@ -196,7 +188,7 @@
 "",
 "\tfor (let i = 0; i < n; ++ i) a [i] = 0;",
 "\tfor (let i = 0; i < m; ++ i) bump (a, n);",
-"\t",
+"",
 "\treturn a;",
 "};",
 ""

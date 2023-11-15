@@ -1,18 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT CubeMapTexturing : 3
 COMPONENT ParticleSystems : 3
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 15 May 2016 00:16:04 GMT"
 META "creator" "holger"
-META "generator" "Titania V4.0.2, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/ParticleSystem/ParticleSystem.O.x3d"
-META "modified" "Wed, 06 Dec 2017 16:23:00 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:59:35 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:13:24 GMT"
 
 EXTERNPROTO FresnelShader [
   inputOutput SFVec3f chromaticDispersion
@@ -70,7 +68,7 @@ DirectionalLight {
 }
 
 DEF Viewpoint Transform {
-  rotation 0 -1 0 3.15695106761078
+  rotation 0 -1 0 3.06697969204977
   children [
     DEF Animation Group {
       children [
@@ -104,6 +102,7 @@ DEF SoapBubbles ParticleSystem {
     surfaceArea 0.1
   }
   physics WindPhysicsModel {
+    direction 0 0 0
     speed 1
     gustiness 1.5
   }
@@ -115,8 +114,8 @@ DEF SoapBubbles ParticleSystem {
         backTexture USE _3
         leftTexture USE _4
         rightTexture USE _5
-        bottomTexture USE _7
         topTexture USE _6
+        bottomTexture USE _7
       }
     }
   }

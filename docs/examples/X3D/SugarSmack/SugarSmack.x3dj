@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.4.4, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SugarSmack/SugarSmack.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 27 Mar 2019 07:59:33 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:13:01 GMT"
+          "@content": "Wed, 15 Nov 2023 02:27:36 GMT"
         }
       ],
       "component": [
@@ -81,7 +69,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -199,7 +187,7 @@
                         "@name": "generatedTime"
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function set_triggerTime (value, time)",
@@ -241,7 +229,7 @@
 "\t\tmatrix [getIndex (0, y)]         = 1;",
 "\t\tmatrix [getIndex (width - 1, y)] = 1;",
 "\t}",
-"\t",
+"",
 "\t// Make aisles",
 "",
 "\tfor (var i = 0; i < density; ++ i)",
@@ -260,20 +248,20 @@
 "\t\t\tif (x < width - 2)  neighbours .push ([x + 2, y]);",
 "\t\t\tif (y > 1)          neighbours .push ([x, y - 2]);",
 "\t\t\tif (y < height - 2) neighbours .push ([x, y + 2]);",
-"\t\t\t",
+"",
 "\t\t\tif (neighbours .length)",
 "\t\t\t{",
 "\t\t\t\tvar neighbour = neighbours [Math .round (random (0, neighbours .length - 1))];",
-"\t\t\t\t",
+"",
 "\t\t\t\tvar",
 "\t\t\t\t\tx_ = neighbour [0],",
 "\t\t\t\t\ty_ = neighbour [1];",
-"\t\t\t\t",
+"",
 "\t\t\t\tif (matrix [getIndex (x_, y_)] == 0)",
 "\t\t\t\t{",
 "\t\t\t\t\tmatrix [getIndex (x_, y_)] = 1;",
 "\t\t\t\t\tmatrix [getIndex (x_ + Math .floor ((x - x_) / 2), y_ + Math .floor ((y - y_) / 2))] = 1;",
-"\t\t\t\t\t",
+"",
 "\t\t\t\t\tx = x_;",
 "\t\t\t\t\ty = y_;",
 "\t\t\t\t}",
@@ -513,9 +501,9 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
-"\t",
+"",
 "var route;",
 "",
 "function initialize ()",
@@ -526,13 +514,13 @@
 "function set_loadTime ()",
 "{",
 "\tvar collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");",
-"\t",
+"",
 "\tif (elementProxy || elementShape)",
 "\t\treturn;",
-"\t",
+"",
 "\telementProxy = collisionNode .proxy;",
 "\telementShape = collisionNode .children [0];",
-"\t",
+"",
 "\tcollisionNode .proxy        = proxy;",
 "\tcollisionNode .children [0] = shape;",
 "}",
@@ -593,16 +581,16 @@
 "\t\t\t\tfor (var r = 0; r < rotations .length; ++ r)",
 "\t\t\t\t{",
 "\t\t\t\t\tvar rotation = rotations [r];",
-"\t\t\t\t",
+"",
 "\t\t\t\t\tfor (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)",
 "\t\t\t\t\t\tcolorIndex .push (elementGeometry .colorIndex [i]);",
-"\t\t\t\t",
+"",
 "\t\t\t\t\tvar numPoints = coord .point .length;",
-"\t\t\t\t",
+"",
 "\t\t\t\t\tfor (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)",
 "\t\t\t\t\t{",
 "\t\t\t\t\t\tvar index = elementGeometry .coordIndex [i];",
-"\t\t\t\t\t",
+"",
 "\t\t\t\t\t\tif (index < 0)",
 "\t\t\t\t\t\t\tcoordIndex .push (-1);",
 "\t\t\t\t\t\telse",
@@ -612,7 +600,7 @@
 "\t\t\t\t\tfor (var i = 0, length = elementCoord .point .length; i < length; ++ i)",
 "\t\t\t\t\t{",
 "\t\t\t\t\t\tvar point = elementCoord .point [i];",
-"\t\t\t\t\t",
+"",
 "\t\t\t\t\t\tif (rotate)",
 "\t\t\t\t\t\t\tpoint = rotation .multVec (point);",
 "",
@@ -625,7 +613,7 @@
 "\t\t\t}",
 "\t\t}",
 "\t}",
-"\t",
+"",
 "\tgeometry .colorIndex = colorIndex;",
 "\tgeometry .coordIndex = coordIndex;",
 "}",
@@ -980,7 +968,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -1011,8 +999,8 @@
 "\tif (maze)",
 "\t{",
 "\t\troute = Browser .currentScene .addRoute (maze, \"generatedTime\", self, \"set_triggerTime\");",
-"\t",
-"\t\tset_triggerTime (time, time);\t",
+"",
+"\t\tset_triggerTime (time, time);",
 "\t}",
 "}",
 "",
@@ -1038,7 +1026,7 @@
 "",
 "\ttransform .translation = getTranslation (x ,y);",
 "\ttransform .rotation    = new SFRotation ();",
-"\t\t\t\t\t\t",
+"",
 "\ttimeSensor .cycleInterval         = cycleInterval;",
 "\tpositionInterpolator    .key      = new MFFloat (0, 1);",
 "\torientationInterpolator .key      = new MFFloat (0, 1);",
@@ -1063,7 +1051,7 @@
 "\t\tx  = position_changed [0],",
 "\t\ty  = position_changed [1],",
 "\t\tfc = timeSensor .fraction_changed * cycleInterval;",
-"\t",
+"",
 "\tdirection_changed = opposites [direction_changed];",
 "",
 "\tposition_changed [0] = position_changed [2];",
@@ -1075,7 +1063,7 @@
 "\t\ttimeSensor .cycleInterval = cycleInterval;",
 "\telse",
 "\t\ttimeSensor .cycleInterval = fc / (cycleInterval - fc) * cycleInterval;",
-"\t",
+"",
 "\tmirrorInterpolator (timeSensor .fraction_changed, positionInterpolator);",
 "\tmirrorInterpolator (timeSensor .fraction_changed, orientationInterpolator);",
 "",
@@ -1089,14 +1077,14 @@
 "\t\tif (interpolator .key [i] >= f)",
 "\t\t\tbreak;",
 "\t}",
-"\t",
+"",
 "\tvar k = i + 1;",
-"\t",
+"",
 "\tinterpolator .key [i]      = f;",
 "\tinterpolator .keyValue [i] = interpolator .value_changed;",
 "",
 "\tif (i)",
-"\t{\t",
+"\t{",
 "\t\tfor (-- i; i >= 0; -- i, ++ k)",
 "\t\t{",
 "\t\t\tinterpolator .key [k]      = f + (1 - interpolator .key [i] / f) * (1 - f);",
@@ -1119,10 +1107,10 @@
 "\t// Determine new position.",
 "",
 "\tvar positions = getPositions (position_changed [2], position_changed [3], direction_changed);",
-"\t\t",
+"",
 "\tif (positions .length == 0)",
 "\t\tpositions = getPositions (position_changed [2], position_changed [3], ANY);",
-"\t",
+"",
 "\tvar index = Math .floor (Math .random () * positions .length);",
 "",
 "\tdirection_changed = positions [index] [2];",
@@ -1345,7 +1333,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -1368,13 +1356,13 @@
 "\t}",
 "",
 "\tmap = { };",
-"\t",
+"",
 "\tfor (var i = 0; i < collidables .length; ++ i)",
 "\t{",
 "\t\tvar",
 "\t\t\tcollidable = collidables [i],",
 "\t\t\tposition   = collidable .position_changed;",
-"\t\t",
+"",
 "\t\tfor (var p = 0; p < position .length; p += 2)",
 "\t\t{",
 "\t\t\tvar",
@@ -1382,18 +1370,18 @@
 "\t\t\t\ty = position [p + 1],",
 "\t\t\t\tk = x + \":\" + y,",
 "\t\t\t\tm = map [k];",
-"\t\t\t",
+"",
 "\t\t\tif (! m)",
 "\t\t\t\tm = map [k] = [ ];",
-"\t\t\t",
+"",
 "\t\t\tm .push (collidable);",
 "\t\t}",
 "\t}",
-"\t",
+"",
 "\tfor (var k in map)",
 "\t{",
 "\t\tvar m = map [k];",
-"\t\t",
+"",
 "\t\tif (m .length < 2)",
 "\t\t{",
 "\t\t\tdelete map [k];",
@@ -1413,11 +1401,11 @@
 "\t\tfor (var c1 = 0; c1 < m .length; ++ c1)",
 "\t\t{",
 "\t\t\tvar collidable1 = m [c1];",
-"\t\t",
+"",
 "\t\t\tfor (var c2 = 0; c2 < m .length; ++ c2)",
 "\t\t\t{",
 "\t\t\t\tvar collidable2 = m [c2];",
-"\t\t",
+"",
 "\t\t\t\tif (collidable1 === collidable2)",
 "\t\t\t\t\tcontinue;",
 "",
@@ -1430,7 +1418,7 @@
 "\t\t\t\t\tif (collidable1 .direction_changed == collidable2 .direction_changed)",
 "\t\t\t\t\t{",
 "\t\t\t\t\t\tif (collidable1 .cycleInterval < collidable2 .cycleInterval)",
-"\t\t\t\t\t\t\tcollidable1 .set_turnTime = time; ",
+"\t\t\t\t\t\t\tcollidable1 .set_turnTime = time;",
 "\t\t\t\t\t}",
 "\t\t\t\t\telse",
 "\t\t\t\t\t{",
@@ -1461,7 +1449,7 @@
 "",
 "function eventsProcessed ()",
 "{",
-"\t",
+"",
 "}",
 ""
                     ],
@@ -1521,7 +1509,7 @@
               "-children": [
                 { "Collision":
                   {
-                    "@DEF": "Group_1",
+                    "@DEF": "Group_7",
                     "@enabled": false
                   }
                 },
@@ -1577,7 +1565,7 @@
                         "-children": [
                           { "Collision":
                             {
-                              "@USE": "Group_1"
+                              "@USE": "Group_7"
                             }
                           }
                         ]
@@ -1595,7 +1583,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var route;",
@@ -1618,7 +1606,7 @@
 "\t\t{",
 "\t\t\tif (maze .matrix [getIndex (x, y)])",
 "\t\t\t\tcontinue;",
-"\t",
+"",
 "\t\t\tfor (var d = 0; d < density .length; ++ d)",
 "\t\t\t{",
 "\t\t\t\tif (Math .random () < density [d])",
@@ -1643,7 +1631,7 @@
 "\t\t\ttransform       = group .children [i],",
 "\t\t\tlod             = transform .children [0],",
 "\t\t\tvisiblitySensor = lod .children [0];",
-"\t",
+"",
 "\t\tif (visiblitySensor .enterTime == value)",
 "\t\t{",
 "\t\t\tgroup .removeChildren = new MFNode (transform);",
@@ -1668,17 +1656,17 @@
 "\t\tlod             = currentScene .createNode (\"LOD\"),",
 "\t\ttransform       = currentScene .createNode (\"Transform\"),",
 "\t\tvisiblitySensor = currentScene .createNode (\"VisibilitySensor\");",
-"\t",
+"",
 "\tBrowser .currentScene .addRoute (visiblitySensor, \"enterTime\", self, \"set_enterTime\");",
-"\t",
+"",
 "\tlod .range .push (1);",
 "\tlod .children .push (visiblitySensor);",
 "\tlod .children .push (items [b]);",
-"\t",
+"",
 "\tvisiblitySensor .size  = new SFVec3f (1, 1, 1);",
 "\ttransform .translation = getTranslation (x, y);",
 "\ttransform .children .push (lod);",
-"\t",
+"",
 "\treturn transform;",
 "}",
 "",
@@ -1769,7 +1757,7 @@
                         "@name": "timer"
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function set_resetTime (value, time)",
@@ -1806,7 +1794,7 @@
         },
         { "LayerSet":
           {
-            "@DEF": "_7",
+            "@DEF": "_25",
             "@activeLayer": 1,
             "@order": [ 2, 3 ],
             "-layers": [
@@ -1817,12 +1805,12 @@
                   "-children": [
                     { "TimeTrigger":
                       {
-                        "@DEF": "_8"
+                        "@DEF": "_57"
                       }
                     },
                     { "ProtoInstance":
                       {
-                        "@DEF": "_9",
+                        "@DEF": "_58",
                         "@name": "MFInt32",
                         "fieldValue": [
                           {
@@ -1848,7 +1836,7 @@
                     },
                     { "Background":
                       {
-                        "@DEF": "_10",
+                        "@DEF": "_59",
                         "@skyAngle": [ 76.5191, 90.0002 ],
                         "@skyColor": [ 0.045, 0.045, 0.045, 0.195, 0.195, 0.195, 0.185, 0.185, 0.185 ],
                         "@groundAngle": [ 60.5651, 90.0002 ],
@@ -1865,7 +1853,7 @@
                     { "DirectionalLight":
                       {
                         "@ambientIntensity": 0.302469,
-                        "@direction": [ -0.00000352397, -0.860529, 0.509401 ],
+                        "@direction": [ -3.52397e-6, -0.860529, 0.509401 ],
                         "@shadows": true
                       }
                     },
@@ -1883,7 +1871,7 @@
                           },
                           { "Viewpoint":
                             {
-                              "@DEF": "_11",
+                              "@DEF": "_62",
                               "@description": "Maze",
                               "@position": [ 12, 2, -28 ],
                               "@orientation": [ 0, 1, 0, 90 ],
@@ -1923,7 +1911,7 @@
                                   "-children": [
                                     { "ProtoInstance":
                                       {
-                                        "@DEF": "_12",
+                                        "@DEF": "_63",
                                         "@name": "Maze",
                                         "fieldValue": [
                                           {
@@ -1940,7 +1928,7 @@
                                   ]
                                 }
                               ],
-                              "#sourceText": [
+                              "#sourceCode": [
 "ecmascript:",
 "",
 "function set_triggerTime (value, time)",
@@ -1958,14 +1946,14 @@
 "\t\ty = Math .floor (Math .random () * maze .height);",
 "\t}",
 "\twhile (maze .matrix [getIndex (x, y)] != 0);",
-"\t\t\t\t\t\t",
+"",
 "\tvar offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2, 0, (maze .height - 1) * mazeElementSize .z / 2);",
-"\t",
+"",
 "",
 "",
 "\tvar position = new SFVec3f (x * mazeElementSize .x, mazeElementSize .y, y * mazeElementSize .z);",
 "\tposition = position .subtract (offset);",
-"\t",
+"",
 "\tbind                = true;",
 "\tposition_changed    = position;",
 "\torientation_changed = getRotation (x, y);",
@@ -1976,15 +1964,15 @@
 "\tif (x > 0)",
 "\t\tif (maze .matrix [getIndex (x - 1, y)] == 0)",
 "\t\t\treturn new SFRotation (0, 1, 0, 1 / 2 * Math .PI);",
-"\t\t",
+"",
 "\tif (x < maze .width - 1)",
 "\t\tif (maze .matrix [getIndex (x + 1, y)] == 0)",
 "\t\t\treturn new SFRotation (0, 1, 0, 3 / 2 * Math .PI);",
-"\t  ",
+"",
 "\tif (y > 0)",
 "\t\tif (maze .matrix [getIndex (x, y - 1)] == 0)",
 "\t\t\treturn new SFRotation (0, 1, 0, Math .PI);",
-"\t\t",
+"",
 "\tif (y < maze .height - 1)",
 "\t\tif (maze .matrix [getIndex (x, y + 1)] == 0)",
 "\t\t\treturn new SFRotation (0, 1, 0, 0);",
@@ -2022,7 +2010,7 @@
                               { "ProtoInstance":
                                 {
                                   "@name": "Maze",
-                                  "@USE": "_12"
+                                  "@USE": "_63"
                                 }
                               }
                             ]
@@ -2057,7 +2045,7 @@
                               { "ProtoInstance":
                                 {
                                   "@name": "Maze",
-                                  "@USE": "_12"
+                                  "@USE": "_63"
                                 }
                               }
                             ]
@@ -2105,7 +2093,7 @@
                                   "-children": [
                                     { "ProtoInstance":
                                       {
-                                        "@DEF": "_13",
+                                        "@DEF": "_64",
                                         "@name": "Globe",
                                         "fieldValue": [
                                           {
@@ -2138,7 +2126,7 @@
                                               { "ProtoInstance":
                                                 {
                                                   "@name": "Maze",
-                                                  "@USE": "_12"
+                                                  "@USE": "_63"
                                                 }
                                               }
                                             ]
@@ -2158,7 +2146,7 @@
                                     },
                                     { "ProtoInstance":
                                       {
-                                        "@DEF": "_14",
+                                        "@DEF": "_65",
                                         "@name": "Globe",
                                         "fieldValue": [
                                           {
@@ -2191,7 +2179,7 @@
                                               { "ProtoInstance":
                                                 {
                                                   "@name": "Maze",
-                                                  "@USE": "_12"
+                                                  "@USE": "_63"
                                                 }
                                               }
                                             ]
@@ -2217,13 +2205,13 @@
                           { "ProtoInstance":
                             {
                               "@name": "Globe",
-                              "@USE": "_13"
+                              "@USE": "_64"
                             }
                           },
                           { "ProtoInstance":
                             {
                               "@name": "Globe",
-                              "@USE": "_14"
+                              "@USE": "_65"
                             }
                           }
                         ]
@@ -2231,7 +2219,7 @@
                     },
                     { "ProtoInstance":
                       {
-                        "@DEF": "_15",
+                        "@DEF": "_66",
                         "@name": "BonusMap",
                         "fieldValue": [
                           {
@@ -2248,7 +2236,7 @@
                               { "ProtoInstance":
                                 {
                                   "@name": "Maze",
-                                  "@USE": "_12"
+                                  "@USE": "_63"
                                 }
                               }
                             ]
@@ -2258,14 +2246,14 @@
                             "-children": [
                               { "Inline":
                                 {
-                                  "@DEF": "_16",
+                                  "@DEF": "_67",
                                   "@global": true,
                                   "@url": [ "bonus-mint.x3d" ]
                                 }
                               },
                               { "Inline":
                                 {
-                                  "@DEF": "_17",
+                                  "@DEF": "_68",
                                   "@global": true,
                                   "@url": [ "bonus-blue.x3d" ]
                                 }
@@ -2277,7 +2265,7 @@
                     },
                     { "Group":
                       {
-                        "@DEF": "BonusSound_1",
+                        "@DEF": "BonusSound_69",
                         "-children": [
                           { "Sound":
                             {
@@ -2289,7 +2277,7 @@
                               "@maxFront": 60,
                               "-source": { "AudioClip":
                                 {
-                                  "@DEF": "_18",
+                                  "@DEF": "_70",
                                   "@url": [ "star-collect.mp3" ],
                                   "@startTime": 1546835705.23872,
                                   "@pauseTime": 1510042948.99191,
@@ -2300,7 +2288,7 @@
                           },
                           { "ProtoInstance":
                             {
-                              "@DEF": "_19",
+                              "@DEF": "_71",
                               "@name": "TimeControler",
                               "fieldValue": [
                                 {
@@ -2312,7 +2300,7 @@
                                   "-children": [
                                     { "AudioClip":
                                       {
-                                        "@USE": "_18"
+                                        "@USE": "_70"
                                       }
                                     }
                                   ]
@@ -2325,7 +2313,7 @@
                     },
                     { "VisibilitySensor":
                       {
-                        "@DEF": "_20",
+                        "@DEF": "_72",
                         "@size": [ -1, -1, -1 ]
                       }
                     }
@@ -2338,12 +2326,12 @@
                   "-children": [
                     { "TimeTrigger":
                       {
-                        "@DEF": "_21"
+                        "@DEF": "_86"
                       }
                     },
                     { "ProtoInstance":
                       {
-                        "@DEF": "_22",
+                        "@DEF": "_87",
                         "@name": "MFInt32",
                         "fieldValue": [
                           {
@@ -2491,7 +2479,7 @@
                           },
                           { "TouchSensor":
                             {
-                              "@DEF": "_23"
+                              "@DEF": "_88"
                             }
                           }
                         ]
@@ -2531,22 +2519,22 @@
                                 },
                                 { "BooleanTrigger":
                                   {
-                                    "@DEF": "_24"
+                                    "@DEF": "_89"
                                   }
                                 },
                                 { "BooleanToggle":
                                   {
-                                    "@DEF": "_25"
+                                    "@DEF": "_90"
                                   }
                                 },
                                 { "BooleanFilter":
                                   {
-                                    "@DEF": "_26"
+                                    "@DEF": "_91"
                                   }
                                 },
                                 { "TouchSensor":
                                   {
-                                    "@USE": "_23"
+                                    "@USE": "_88"
                                   }
                                 }
                               ]
@@ -2571,7 +2559,7 @@
                 "@name": "entered"
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -2586,14 +2574,14 @@
         },
         { "BooleanFilter":
           {
-            "@DEF": "_27"
+            "@DEF": "_92"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "ViewpointPositionScript",
             "@fromField": "position_changed",
-            "@toNode": "_11",
+            "@toNode": "_62",
             "@toField": "position"
           }
         },
@@ -2601,45 +2589,45 @@
           {
             "@fromNode": "ViewpointPositionScript",
             "@fromField": "orientation_changed",
-            "@toNode": "_11",
+            "@toNode": "_62",
             "@toField": "orientation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_25",
+            "@fromNode": "_90",
             "@fromField": "toggle",
-            "@toNode": "_26",
+            "@toNode": "_91",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_23",
+            "@fromNode": "_88",
             "@fromField": "touchTime",
-            "@toNode": "_24",
+            "@toNode": "_89",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_24",
+            "@fromNode": "_89",
             "@fromField": "triggerTrue",
-            "@toNode": "_25",
+            "@toNode": "_90",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_72",
             "@fromField": "isActive",
-            "@toNode": "_10",
+            "@toNode": "_59",
             "@toField": "set_bind"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_12",
+            "@fromNode": "_63",
             "@fromField": "generatedTime",
             "@toNode": "ViewpointPositionScript",
             "@toField": "set_triggerTime"
@@ -2647,9 +2635,9 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_72",
             "@fromField": "isActive",
-            "@toNode": "_11",
+            "@toNode": "_62",
             "@toField": "set_bind"
           }
         },
@@ -2657,21 +2645,21 @@
           {
             "@fromNode": "EnterWorldScript",
             "@fromField": "entered",
-            "@toNode": "_27",
+            "@toNode": "_92",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_27",
+            "@fromNode": "_92",
             "@fromField": "inputNegate",
-            "@toNode": "_25",
+            "@toNode": "_90",
             "@toField": "toggle"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_72",
             "@fromField": "isActive",
             "@toNode": "Walk",
             "@toField": "set_bind"
@@ -2679,81 +2667,81 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_26",
+            "@fromNode": "_91",
             "@fromField": "inputTrue",
-            "@toNode": "_8",
+            "@toNode": "_57",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_26",
+            "@fromNode": "_91",
             "@fromField": "inputFalse",
-            "@toNode": "_21",
+            "@toNode": "_86",
             "@toField": "set_boolean"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_8",
+            "@fromNode": "_57",
             "@fromField": "triggerTime",
-            "@toNode": "_12",
+            "@toNode": "_63",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_72",
             "@fromField": "isActive",
-            "@toNode": "_13",
+            "@toNode": "_64",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_20",
+            "@fromNode": "_72",
             "@fromField": "isActive",
-            "@toNode": "_14",
+            "@toNode": "_65",
             "@toField": "enabled"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_15",
+            "@fromNode": "_66",
             "@fromField": "enterTime",
-            "@toNode": "_19",
+            "@toNode": "_71",
             "@toField": "resetTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_22",
+            "@fromNode": "_87",
             "@fromField": "value_changed",
-            "@toNode": "_7",
+            "@toNode": "_25",
             "@toField": "order"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_21",
+            "@fromNode": "_86",
             "@fromField": "triggerTime",
-            "@toNode": "_22",
+            "@toNode": "_87",
             "@toField": "set_triggerTime"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_9",
+            "@fromNode": "_58",
             "@fromField": "value_changed",
-            "@toNode": "_7",
+            "@toNode": "_25",
             "@toField": "order"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_8",
+            "@fromNode": "_57",
             "@fromField": "triggerTime",
-            "@toNode": "_9",
+            "@toNode": "_58",
             "@toField": "set_triggerTime"
           }
         }

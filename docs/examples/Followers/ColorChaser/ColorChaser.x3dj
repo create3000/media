@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.8, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Followers/ColorChaser/ColorChaser.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 02:18:51 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:49:58 GMT"
+          "@content": "Wed, 15 Nov 2023 02:03:45 GMT"
         }
       ],
       "component": [
@@ -130,7 +122,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -149,7 +141,7 @@
 "\t                                   0, size .y / 2, 0, 0,",
 "\t                                   0, 0, 0, 0,",
 "\t                                   0, 0, 0, 1);",
-"\t                               ",
+"",
 "\tcolor [0] .setHSV (0, 0, value);",
 "\tpoint [0] = new SFVec3f (0, 0, 0);",
 "",
@@ -332,17 +324,17 @@
                 ]
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "function set_time ()",
 "{",
-"\tvar hue        = Math .atan2 (touchSensor .hitPoint_changed .y, touchSensor .hitPoint_changed .x) ",
+"\tvar hue        = Math .atan2 (touchSensor .hitPoint_changed .y, touchSensor .hitPoint_changed .x)",
 "\tvar saturation = touchSensor .hitPoint_changed .length ();",
-"\t",
+"",
 "\tif (hue < 0)",
 "\t\thue = 2 * Math .PI + hue;",
-"\t",
+"",
 "\tdestination_changed .setHSV (hue, saturation, value);",
 "}",
 "",
@@ -350,7 +342,7 @@
 "{",
 "\tif (value)",
 "\t\tcolor_changed = new SFColor (0.8, 0, 0);",
-"\t",
+"",
 "\telse",
 "\t\tcolor_changed = new SFColor (0.8, 0.8, 0.8);",
 "}",

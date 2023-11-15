@@ -9,9 +9,10 @@
     <meta name='created' content='1 January 2008'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
-    <meta name='generator' content='x3d-tidy V1.0.96, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Sun, 01 Oct 2023 09:30:12 GMT'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:18:01 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -41,7 +42,7 @@
     <Group>
       <CollidableShape DEF='Ground'>
         <Shape containerField='shape'>
-          <Appearance DEF='_1'>
+          <Appearance DEF='_3'>
             <Material DEF='Neon12'
                 ambientIntensity='0.341463'
                 diffuseColor='1 1 1'
@@ -61,7 +62,7 @@
       </CollidableShape>
       <CollidableShape DEF='Box_2'>
         <Shape containerField='shape'>
-          <Appearance USE='_1'/>
+          <Appearance USE='_3'/>
           <IndexedFaceSet
               colorPerVertex='false'
               colorIndex='0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0'
@@ -78,7 +79,7 @@
       </CollidableShape>
     </Group>
     <Group DEF='Primitives'>
-      <CollidableShape DEF='_2'
+      <CollidableShape DEF='_6'
           translation='0 5 0'>
         <Shape DEF='Box' containerField='shape'>
           <Appearance>
@@ -88,7 +89,7 @@
                 specularColor='0.198631 0.0754031 0.138803'
                 emissiveColor='0.0106383 0.0106383 0.0106383'
                 shininess='0.0212766'/>
-            <ImageTexture DEF='_3'
+            <ImageTexture DEF='_7'
                 url='"assets/pattern.png"'
                 repeatS='false'
                 repeatT='false'/>
@@ -107,25 +108,25 @@
         <field accessType='inputOutput' type='SFInt32' name='numBodies' value='30'/>
         <field accessType='inputOnly' type='SFTime' name='set_time'/>
         <field accessType='initializeOnly' type='SFNode' name='collection'>
-          <RigidBodyCollection DEF='_4'
+          <RigidBodyCollection DEF='_1'
               iterations='5'>
             <CollisionCollection
                 appliedParameters='"BOUNCE", "FRICTION_COEFFICIENT_2"'
                 bounce='0.6'
                 frictionCoefficients='0.5 0'/>
-            <RigidBody DEF='_5'
+            <RigidBody
                 fixed='true'>
               <CollidableShape USE='Ground' containerField='geometry'/>
             </RigidBody>
-            <RigidBody DEF='_6'
+            <RigidBody
                 fixed='true'>
               <CollidableShape USE='Box_2' containerField='geometry'/>
             </RigidBody>
-            <RigidBody DEF='_7'
+            <RigidBody
                 position='0 5 0'
                 linearVelocity='-1.379216 -1.077583 -1.356423'
                 centerOfMass='-0.8488156 0.8448355 -0.4657963'>
-              <CollidableShape USE='_2' containerField='geometry'/>
+              <CollidableShape USE='_6' containerField='geometry'/>
             </RigidBody>
           </RigidBodyCollection>
         </field>
@@ -142,7 +143,7 @@
                   diffuseColor='0.340537 0.37498 0.685837'
                   specularColor='0.237073 0.295337 0.295337'
                   shininess='0.466321'/>
-              <ImageTexture USE='_3'/>
+              <ImageTexture USE='_7'/>
             </Appearance>
             <Cone
                 height='0.5'
@@ -155,7 +156,7 @@
                   diffuseColor='0.191499 0.0265877 0.0665837'
                   specularColor='0.367348 0.0557356 0.0557356'
                   shininess='0.0585106'/>
-              <ImageTexture USE='_3'/>
+              <ImageTexture USE='_7'/>
             </Appearance>
             <Cylinder
                 height='0.5'
@@ -168,7 +169,7 @@
                   diffuseColor='0.795918 0.505869 0.0933146'
                   specularColor='0.923469 0.428866 0.00636875'
                   shininess='0.397959'/>
-              <ImageTexture USE='_3'/>
+              <ImageTexture USE='_7'/>
             </Appearance>
             <Sphere
                 radius='0.25'/>

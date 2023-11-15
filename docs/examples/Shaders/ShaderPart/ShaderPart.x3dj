@@ -8,7 +8,7 @@
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,19 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shaders/ShaderPart/ShaderPart.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 17 Oct 2023 21:25:16 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
+          "@content": "Wed, 15 Nov 2023 02:19:46 GMT"
         }
       ],
       "component": [
@@ -190,17 +186,17 @@
 "",
 "\tfloat x = (2.0 * gl_FragCoord .x - size .x) / max (size .x, size .y);",
 "\tfloat y = (2.0 * gl_FragCoord .y - size .y) / max (size .x, size .y);",
-"\t",
+"",
 "\tvec3 ray_dir  = normalize (vec3 (x, y, -1.0 /*+sqrt(x*x+y*y)*/));",
 "\tvec3 ray_orig = vec3 (0.0, 0.0, 0.0);",
 "",
 "\tfloat offs = 0.0;",
 "\tfloat i    = 0.0;",
-"\t",
+"",
 "\tfor (float j = 0.0; j < 64.0; j++)",
 "\t{",
 "\t\tfloat dist = distfunc (ray_orig + ray_dir * offs);",
-"\t\t",
+"",
 "\t\toffs += dist;",
 "\t\ti     = j;",
 "",
@@ -225,7 +221,7 @@
                                             "@accessType": "inputOutput",
                                             "@type": "SFFloat",
                                             "@name": "time",
-                                            "@value": 7916.08
+                                            "@value": 4786.042
                                           }
                                         ]
                                       }

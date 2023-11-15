@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -6,17 +6,12 @@ COMPONENT ParticleSystems : 3
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 11 Dec 2017 02:55:45 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/ExplosionEmitter/ExplosionEmitter.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:56:53 GMT"
-META "titania-add-metadata" "true"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:59:16 GMT"
-
-WorldInfo { }
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:12:55 GMT"
 
 DEF Summer Background {
   skyAngle [ 45.8366, 74.4845, 80.2141, 90.0002 ]
@@ -31,7 +26,7 @@ Viewpoint {
   orientation -0.562293756033789 0.812023178324038 0.156346057801091 37.8041456954103
 }
 
-DEF BlackSmoke_1 ParticleSystem {
+DEF BlackSmoke_15 ParticleSystem {
   geometryType "LINE"
   maxParticles 2000
   particleLifetime 3.5
@@ -48,7 +43,6 @@ DEF BlackSmoke_1 ParticleSystem {
   physics [
     ForcePhysicsModel { }
     WindPhysicsModel {
-      direction 1 0 0
       speed 0.27
       gustiness 2.5
       turbulence 0.39
@@ -59,7 +53,7 @@ DEF BlackSmoke_1 ParticleSystem {
     color [ 0.234 0.0408855 0.0219557 1, 1 0.0892731 0 1, 0.0437445 0.0437445 0.0437445 1, 0.0437445 0.0437445 0.0437445 0.913024, 0.0437445 0.0437445 0.0437445 0 ]
   }
   appearance Appearance {
-    lineProperties DEF _1 LineProperties {
+    lineProperties LineProperties {
       linewidthScaleFactor 16
     }
     material Material {
@@ -89,7 +83,6 @@ DEF Lava ParticleSystem {
       turbulence 0.3
     }
     WindPhysicsModel {
-      direction 1 0 0
       speed 0.3
       gustiness 2
     }
@@ -107,6 +100,5 @@ DEF Lava ParticleSystem {
 }
 
 DEF Vulcano Inline {
-  global TRUE
   url "vulcano.x3dz"
 }

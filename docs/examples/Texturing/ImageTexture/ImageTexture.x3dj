@@ -8,7 +8,7 @@
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/ImageTexture/ImageTexture.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 17 Nov 2019 09:11:03 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.87, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Wed, 09 Aug 2023 12:17:33 GMT"
+          "@content": "Wed, 15 Nov 2023 02:21:42 GMT"
         }
       ],
       "component": [
@@ -179,7 +171,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -267,7 +259,7 @@
               "-children": [
                 { "Group":
                   {
-                    "@DEF": "_1"
+                    "@DEF": "_5"
                   }
                 },
                 { "Script":
@@ -287,7 +279,7 @@
                         "-children": [
                           { "TimeSensor":
                             {
-                              "@DEF": "_2",
+                              "@DEF": "_6",
                               "@cycleInterval": 0.1
                             }
                           }
@@ -300,13 +292,13 @@
                         "-children": [
                           { "Group":
                             {
-                              "@USE": "_1"
+                              "@USE": "_5"
                             }
                           }
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -316,7 +308,7 @@
 "function initialize ()",
 "{",
 "\tn = 0;",
-"\t",
+"",
 "\tgroup .children .length = 0;",
 "",
 "\ttimeSensor .startTime = 0;",
@@ -330,14 +322,14 @@
 "\t\ttimeSensor .stopTime = time;",
 "\t\ttimeSensor .loop     = false;",
 "\t}",
-"\t",
+"",
 "\t++ n;",
-"\t",
+"",
 "\tvar image = Browser .currentScene .createProto (\"Image\");",
 "",
 "\timage .startTime = n * timeSensor .cycleInterval;",
 "\timage .loop      = true;",
-"\t",
+"",
 "\tgroup .children .push (image);",
 "}",
 ""
@@ -346,7 +338,7 @@
                 },
                 { "ROUTE":
                   {
-                    "@fromNode": "_2",
+                    "@fromNode": "_6",
                     "@fromField": "cycleTime",
                     "@toNode": "ImagesScript",
                     "@toField": "set_time"

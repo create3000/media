@@ -11,9 +11,8 @@
     <meta name='created' content='Wed, 22 Nov 2017 08:26:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 10 Feb 2023 23:51:36 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:55:16 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:08:26 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
@@ -58,13 +57,13 @@
       <fieldValue name='majorLineTransparency' value='0.4'/>
       <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
       <fieldValue name='numberAppearance'>
-        <Appearance DEF='_1' containerField='numberAppearance'>
+        <Appearance DEF='_2'>
           <Material
               diffuseColor='0 0 0'/>
         </Appearance>
       </fieldValue>
       <fieldValue name='numberFontStyle'>
-        <ScreenFontStyle DEF='_2' containerField='numberFontStyle'
+        <ScreenFontStyle DEF='_3'
             justify='"END", "BEGIN"'/>
       </fieldValue>
     </ProtoInstance>
@@ -83,10 +82,10 @@
         <field accessType='inputOnly' type='SFFloat' name='set_y'/>
         <field accessType='outputOnly' type='SFVec3f' name='point_changed'/>
         <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+          <ScalarInterpolator USE='XInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+          <ScalarInterpolator USE='YInterpolator'/>
         </field>
 <![CDATA[ecmascript:
 
@@ -99,13 +98,13 @@ function set_y (value, time)
       </Script>
       <Shape>
         <Appearance>
-          <LineProperties DEF='_3'
+          <LineProperties DEF='_1'
               linewidthScaleFactor='3'/>
           <Material
               emissiveColor='0.552941 0.270588 0.14902'/>
         </Appearance>
         <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1676073090.3630009'/>
+          <fieldValue name='resetTime' value='1700014104.213'/>
           <fieldValue name='point' value='4.208 -1.138667 0'/>
           <fieldValue name='dimension' value='1000'/>
         </ProtoInstance>
@@ -117,14 +116,14 @@ function set_y (value, time)
         <field accessType='inputOnly' type='MFFloat' name='set_x'/>
         <field accessType='inputOnly' type='MFFloat' name='set_y'/>
         <field accessType='initializeOnly' type='SFNode' name='points'>
-          <Polypoint2D DEF='_4' containerField='points'
+          <Polypoint2D DEF='_4'
               point='-20 -10, -5 5, 10 -5, 20 10'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+          <ScalarInterpolator USE='XInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+          <ScalarInterpolator USE='YInterpolator'/>
         </field>
 <![CDATA[ecmascript:
 
@@ -176,10 +175,10 @@ function eventsProcessed ()
       <field accessType='initializeOnly' type='SFTime' name='doubleClickInterval' value='0.3'/>
       <field accessType='initializeOnly' type='SFFloat' name='pointSize' value='0.5'/>
       <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-        <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+        <ScalarInterpolator USE='XInterpolator'/>
       </field>
       <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-        <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+        <ScalarInterpolator USE='YInterpolator'/>
       </field>
 <![CDATA[ecmascript:
 

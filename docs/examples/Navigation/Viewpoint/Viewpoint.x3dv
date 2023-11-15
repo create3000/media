@@ -1,11 +1,11 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:58:05 GMT"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:11:48 GMT"
 
 NavigationInfo {
   type "NONE"
@@ -13,7 +13,7 @@ NavigationInfo {
 }
 
 DEF ViewpointAnimationGroup Transform {
-  rotation 0 -1 0 0.591019590488519
+  rotation 0 1 0 1.19642347297739
   children [
     DEF ViewpointAnimation Group {
       children [
@@ -35,10 +35,10 @@ DEF ViewpointAnimationGroup Transform {
         }
       ]
     }
-    DEF _1 Viewpoint {
+    DEF _11 Viewpoint {
       description "Initial View"
-      position 1.07653 5.08312 14.4269
-      orientation -0.96026943294108 0.25934616159498 0.103063983160787 0.434376284282661
+      position 0.6278876 2.928707 11.40535
+      orientation -0.972836747446137 0.230001328980228 0.026230735516769 0.263562140648494
       centerOfRotation 0.110902 -0.135934 -0.207341
     }
   ]
@@ -49,7 +49,7 @@ DEF Venus Group {
     DEF CloudySky TextureBackground {
       frontTexture ImageTexture {
         url "cloudy-sky/cloudy-sky-front.jpg"
-        textureProperties DEF _2 TextureProperties {
+        textureProperties DEF _12 TextureProperties {
           minificationFilter "DEFAULT"
           magnificationFilter "DEFAULT"
           boundaryModeS "CLAMP_TO_EDGE"
@@ -60,23 +60,23 @@ DEF Venus Group {
       }
       backTexture ImageTexture {
         url "cloudy-sky/cloudy-sky-back.jpg"
-        textureProperties USE _2
+        textureProperties USE _12
       }
       leftTexture ImageTexture {
         url "cloudy-sky/cloudy-sky-left.jpg"
-        textureProperties USE _2
+        textureProperties USE _12
       }
       rightTexture ImageTexture {
         url "cloudy-sky/cloudy-sky-right.jpg"
-        textureProperties USE _2
+        textureProperties USE _12
       }
       topTexture ImageTexture {
         url "cloudy-sky/cloudy-sky-top.jpg"
-        textureProperties USE _2
+        textureProperties USE _12
       }
       bottomTexture ImageTexture {
         url "cloudy-sky/cloudy-sky-bottom.jpg"
-        textureProperties USE _2
+        textureProperties USE _12
       }
     }
     DEF venus Inline {
@@ -98,8 +98,8 @@ function initialize ()
 }
 
 ROUTE ViewpointAnimationTimer.fraction_changed TO PositionInterpolator.set_fraction
-ROUTE PositionInterpolator.value_changed TO _1.set_position
-ROUTE OrientationInterpolator.value_changed TO _1.set_orientation
+ROUTE PositionInterpolator.value_changed TO _11.set_position
+ROUTE OrientationInterpolator.value_changed TO _11.set_orientation
 ROUTE ViewpointAnimationTimer.fraction_changed TO OrientationInterpolator.set_fraction
 ROUTE ViewpointAnimationTimer.fraction_changed TO ViewpointAnimationRotationInterpolator.set_fraction
 ROUTE ViewpointAnimationRotationInterpolator.value_changed TO ViewpointAnimationGroup.set_rotation

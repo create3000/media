@@ -1,15 +1,13 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 15 Apr 2019 01:44:57 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.5.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shape/LineProperties/LineProperties.O.x3d"
-META "modified" "Mon, 15 Apr 2019 02:42:45 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:05:19 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:20:13 GMT"
 
 WorldInfo { }
 
@@ -31,18 +29,18 @@ Transform {
           key [ 0, 0.25, 0.5, 0.75, 1 ]
           keyValue [ 0 0 1 0, 0 1 0 1.5707963267949, 0 1 0 3.14159253438051, 0 1 0 4.7123888611754, 0 0 1 0 ]
         }
-        DEF RotationInterpolator_1 OrientationInterpolator {
+        DEF RotationInterpolator_15 OrientationInterpolator {
           key [ 0, 0.25, 0.5, 0.75, 1 ]
           keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.14159253438051, 0 1 0 1.57079644600419, 0 0 1 0 ]
         }
-        DEF RotationInterpolator_2 OrientationInterpolator {
+        DEF RotationInterpolator_21 OrientationInterpolator {
           key [ 0, 0.25, 0.5, 0.75, 1 ]
           keyValue [ 0 0 1 0, 0 1 0 1.5707963267949, 0 1 0 3.14159253438051, 0 1 0 4.7123888611754, 0 0 1 0 ]
         }
       ]
     }
-    DEF _1 Transform {
-      rotation 0 1 0 0.462843733150726
+    DEF _27 Transform {
+      rotation 0 1 0 0.40415538043098
       children DEF Box Transform {
         rotation 0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265
         scaleOrientation 0.919403734768909 -0.393313272309237 -0.00120096560392552 4.00563050840657
@@ -56,7 +54,7 @@ Transform {
               emissiveColor 1 1 0
             }
           }
-          geometry DEF _2 IndexedLineSet {
+          geometry DEF _28 IndexedLineSet {
             coordIndex [ 0, 1, 2, 3, 0, -1, 5, 4, 7, 6, 5, -1, 2, 6, -1, 7, 3, -1, 5, 1, -1, 0, 4, -1 ]
             coord Coordinate {
               point [ -1 -1 1, 1 -1 1, 1 1 1, -1 1 1, -1 -1 -1, 1 -1 -1, 1 1 -1, -1 1 -1 ]
@@ -65,9 +63,9 @@ Transform {
         }
       }
     }
-    DEF _3 Transform {
-      rotation 0 -1 0 0.462843733150726
-      children DEF Box_1 Transform {
+    DEF _29 Transform {
+      rotation 0 -1 0 0.40415538043098
+      children DEF Box_30 Transform {
         rotation 0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265
         scale 1.75736 1.75736 1.75736
         scaleOrientation -0.329043930035858 0.566697417302696 -0.755370193566712 0.67555490580333
@@ -81,13 +79,13 @@ Transform {
               emissiveColor 1 0.5 0
             }
           }
-          geometry USE _2
+          geometry USE _28
         }
       }
     }
-    DEF _4 Transform {
-      rotation 0 1 0 0.462843733150726
-      children DEF Box_2 Transform {
+    DEF _31 Transform {
+      rotation 0 1 0 0.40415538043098
+      children DEF Box_32 Transform {
         rotation 0.590284499391797 0.244506671005275 -0.769272836912687 0.98786105818265
         scale 2.82844 2.82844 2.82844
         scaleOrientation 0.111350277667656 0.40117999342139 0.909206097945757 0.731417893085076
@@ -101,7 +99,7 @@ Transform {
               emissiveColor 1 0 0
             }
           }
-          geometry USE _2
+          geometry USE _28
         }
       }
     }
@@ -109,8 +107,8 @@ Transform {
 }
 
 ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
-ROUTE RotationInterpolator.value_changed TO _1.set_rotation
-ROUTE AnimationTimer.fraction_changed TO RotationInterpolator_1.set_fraction
-ROUTE RotationInterpolator_1.value_changed TO _3.set_rotation
-ROUTE AnimationTimer.fraction_changed TO RotationInterpolator_2.set_fraction
-ROUTE RotationInterpolator_2.value_changed TO _4.set_rotation
+ROUTE RotationInterpolator.value_changed TO _27.set_rotation
+ROUTE AnimationTimer.fraction_changed TO RotationInterpolator_15.set_fraction
+ROUTE RotationInterpolator_15.value_changed TO _29.set_rotation
+ROUTE AnimationTimer.fraction_changed TO RotationInterpolator_21.set_fraction
+ROUTE RotationInterpolator_21.value_changed TO _31.set_rotation

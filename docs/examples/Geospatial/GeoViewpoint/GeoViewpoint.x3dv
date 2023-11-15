@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -6,21 +6,16 @@ COMPONENT Geospatial : 2
 COMPONENT Layout : 2
 COMPONENT Text : 1
 
-META "comment" "World of Sunrise X3D Editor"
+META "comment" "Rise and Shine"
 META "created" "Tue, 12 Aug 2014 04:27:36 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Geospatial/GeoViewpoint/GeoViewpoint.O.x3d"
-META "modified" "Thu, 10 Nov 2022 21:44:53 GMT"
-META "titania-add-metadata" "true"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:53:28 GMT"
-
-WorldInfo { }
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:06:58 GMT"
 
 NavigationInfo {
   avatarSize [ 10000, 1.6, 0.75 ]
-  visibilityLimit 1e+8
+  visibilityLimit 1e8
 }
 
 DEF Gray Background {
@@ -142,7 +137,6 @@ DEF Earth Transform {
       }
     }
     DEF Coasts Inline {
-      global TRUE
       url "assets/coasts.x3d"
     }
   ]
@@ -150,7 +144,7 @@ DEF Earth Transform {
 
 DEF Points Transform {
   children Shape {
-    appearance DEF _1 Appearance {
+    appearance Appearance {
       pointProperties PointProperties {
         pointSizeScaleFactor 10
         pointSizeMaxValue 10

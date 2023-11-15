@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -6,14 +6,12 @@ COMPONENT ParticleSystems : 3
 COMPONENT Picking : 3
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/PrimitivePickSensor/PrimitivePickSensor.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:34:43 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:01:19 GMT"
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:15:10 GMT"
 
 PROTO Bullet [
   inputOutput MFNode target [ ]
@@ -43,11 +41,11 @@ PROTO Bullet [
             diffuseColor 1 0 0
           }
         }
-        geometry DEF _1 Sphere { }
+        geometry DEF _2 Sphere { }
       }
-      DEF _2 PrimitivePickSensor {
+      DEF _3 PrimitivePickSensor {
         objectType "TARGET"
-        pickingGeometry USE _1
+        pickingGeometry USE _2
         pickTarget IS target
       }
     ]
@@ -69,10 +67,8 @@ function set_active (value, time)
 
   ROUTE AnimationTimer.fraction_changed TO SphereTranslationInterpolator.set_fraction
   ROUTE SphereTranslationInterpolator.value_changed TO Sphere.set_translation
-  ROUTE _2.isActive TO BulletScript.set_active
+  ROUTE _3.isActive TO BulletScript.set_active
 }
-
-WorldInfo { }
 
 Viewpoint {
   description "Initial view"
@@ -95,7 +91,7 @@ Group {
         }
       ]
     }
-    DEF _3 Background { }
+    DEF _18 Background { }
     DEF HitColorScript Script {
       inputOutput SFColor color 0 0 0
       outputOnly  MFColor skyColor_changed
@@ -113,14 +109,13 @@ function set_color (value, time)
 
 DEF RocketShip Transform {
   children Inline {
-    global TRUE
     url "assets/rocket-ship.x3dz"
   }
 }
 
 DEF Target PickableGroup {
   objectType "TARGET"
-  children DEF _4 Transform {
+  children DEF _19 Transform {
     translation 0 0 25
     children Shape {
       appearance Appearance {
@@ -134,7 +129,7 @@ DEF Target PickableGroup {
 }
 
 DEF Bullet Bullet {
-  target USE _4
+  target USE _19
 }
 
 Transform {
@@ -156,7 +151,7 @@ Transform {
     color Color {
       color [ 1 1 0, 1 0 0 ]
     }
-    appearance DEF _5 Appearance {
+    appearance Appearance {
       pointProperties PointProperties {
         pointSizeScaleFactor 4.94
         pointSizeMaxValue 4.94
@@ -168,7 +163,7 @@ Transform {
   }
 }
 
-ROUTE HitColorScript.skyColor_changed TO _3.set_skyColor
+ROUTE HitColorScript.skyColor_changed TO _18.set_skyColor
 ROUTE SkyAnimationTimer.fraction_changed TO HitColorScriptColorInterpolator.set_fraction
 ROUTE HitColorScriptColorInterpolator.value_changed TO HitColorScript.set_color
 ROUTE Bullet.hitTime TO SkyAnimationTimer.set_startTime

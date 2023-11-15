@@ -8,9 +8,8 @@
     <meta name='created' content='Tue, 10 Jul 2018 16:12:19 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 03:23:50 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:01:43 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:16:13 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Noise' url='"assets/Noise.x3d#Noise"'>
@@ -180,13 +179,13 @@ function animate ()
         centerOfRotation='19.2 8.975 0'/>
     <DirectionalLight
         direction='0 -1 0'/>
-    <ProtoInstance name='Noise' DEF='_2'>
+    <ProtoInstance name='Noise' DEF='_15'>
       <fieldValue name='enabled' value='true'/>
       <fieldValue name='frequency' value='2.4'/>
     </ProtoInstance>
     <Transform DEF='Display'>
       <Shape>
-        <ProtoInstance name='GraphicDisplay' DEF='_3' containerField='geometry'>
+        <ProtoInstance name='GraphicDisplay' DEF='_16' containerField='geometry'>
           <fieldValue name='width' value='35'/>
           <fieldValue name='height' value='40'/>
           <fieldValue name='size' value='1 0.4'/>
@@ -201,9 +200,9 @@ function animate ()
           <Material
               transparency='0.77'/>
         </Appearance>
-        <ProtoInstance name='GraphicDisplay' USE='_3' containerField='geometry'/>
+        <ProtoInstance name='GraphicDisplay' USE='_16' containerField='geometry'/>
       </Shape>
     </Transform>
-    <ROUTE fromNode='_2' fromField='value_changed' toNode='_3' toField='set_value'/>
+    <ROUTE fromNode='_15' fromField='value_changed' toNode='_16' toField='set_value'/>
   </Scene>
 </X3D>

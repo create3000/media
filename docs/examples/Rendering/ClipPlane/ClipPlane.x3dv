@@ -1,18 +1,16 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Geometry2D : 2
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Tue, 11 Oct 2016 17:39:49 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/ClipPlane/ClipPlane.O.x3d"
-META "modified" "Thu, 07 Nov 2019 13:01:51 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:01:24 GMT"
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:15:55 GMT"
 
 PROTO Grid [
   inputOutput    SFVec3f    translation 0 0 0
@@ -73,7 +71,7 @@ PROTO Grid [
             transparency IS lineTransparency
           }
         }
-        geometry DEF MinorGrid_1 IndexedLineSet {
+        geometry DEF MinorGrid_2 IndexedLineSet {
           coordIndex [ 0, 1, -1, 2, 3, -1, 4, 5, -1, 6, 7, -1, 8, 9, -1, 10, 11, -1, 12, 13, -1, 14, 15, -1, 16, 17, -1, 18, 19, -1, 20, 21, -1, 22, 23, -1, 24, 25, -1, 26, 27, -1, 28, 29, -1, 30, 31, -1 ]
           coord Coordinate {
             point [ -4 0 -5, -4 0 5, -3 0 -5, -3 0 5, -2 0 -5, -2 0 5, -1 0 -5, -1 0 5, 1 0 -5, 1 0 5, 2 0 -5, 2 0 5, 3 0 -5, 3 0 5, 4 0 -5, 4 0 5, -5 0 -4, 5 0 -4, -5 0 -3, 5 0 -3, -5 0 -2, 5 0 -2, -5 0 -1, 5 0 -1, -5 0 1, 5 0 1, -5 0 2, 5 0 2, -5 0 3, 5 0 3, -5 0 4, 5 0 4 ]
@@ -88,7 +86,7 @@ PROTO Grid [
           }
           material USE MajorMaterial
         }
-        geometry DEF MajorPoints_1 PointSet {
+        geometry DEF MajorPoints_3 PointSet {
           coord Coordinate {
             point [ 0 -5 0, 0 0 0, 0 5 0 ]
           }
@@ -102,7 +100,7 @@ PROTO Grid [
           }
           material USE MinorMaterial
         }
-        geometry DEF MinorPoints_1 PointSet {
+        geometry DEF MinorPoints_4 PointSet {
           coord Coordinate {
             point [ 0 -4 0, 0 -3 0, 0 -2 0, 0 -1 0, 0 1 0, 0 2 0, 0 3 0, 0 4 0 ]
           }
@@ -117,9 +115,9 @@ PROTO Grid [
     inputOutput    MFInt32 majorLineOffset IS majorLineOffset
     initializeOnly SFNode  plane USE Plane
     initializeOnly SFNode  majorGrid USE MajorGrid_1
-    initializeOnly SFNode  minorGrid USE MinorGrid_1
-    initializeOnly SFNode  majorPoints USE MajorPoints_1
-    initializeOnly SFNode  minorPoints USE MinorPoints_1
+    initializeOnly SFNode  minorGrid USE MinorGrid_2
+    initializeOnly SFNode  majorPoints USE MajorPoints_3
+    initializeOnly SFNode  minorPoints USE MinorPoints_4
 
     url "javascript:
 
@@ -166,7 +164,7 @@ function generateGrid (major, grid)
 		coordIndex [coordIndex .length] = p;
 		coordIndex [coordIndex .length] = p + 1;
 		coordIndex [coordIndex .length] = -1;
-			
+
 		p += 2;
 	}
 
@@ -182,7 +180,7 @@ function generateGrid (major, grid)
 		coordIndex [coordIndex .length] = p;
 		coordIndex [coordIndex .length] = p + 1;
 		coordIndex [coordIndex .length] = -1;
-		
+
 		p += 2;
 	}
 
@@ -236,8 +234,6 @@ function isMajor (i, dimension, majorLineEvery, majorLineOffset)
   }
 }
 
-WorldInfo { }
-
 Viewpoint {
   description "Home"
   position 20.8877 22.923 30.0087
@@ -253,36 +249,35 @@ Grid {
 Transform {
   children [
     DEF Boxes Inline {
-      global TRUE
       url "boxes.x3d"
     }
-    DEF _1 ClipPlane {
+    DEF _6 ClipPlane {
       plane -1 0 0 5.75581
     }
-    DEF _2 ClipPlane {
+    DEF _7 ClipPlane {
       plane 1 0 0 5.75581
     }
-    DEF _3 ClipPlane {
+    DEF _8 ClipPlane {
       plane 0 0 1 5.75581
     }
-    DEF _4 ClipPlane {
+    DEF _9 ClipPlane {
       plane 0 0 -1 5.75581
     }
-    DEF _5 ClipPlane {
+    DEF _10 ClipPlane {
       plane 0 1 0 5.75581
     }
-    DEF _6 ClipPlane {
+    DEF _11 ClipPlane {
       plane 0 -1 0 5.75581
     }
     DEF ClipPlanesScript Script {
       inputOutput SFFloat distanceFromOrigin 5.75581
       inputOutput MFNode  planes [
-        USE _1
-        USE _2
-        USE _3
-        USE _4
-        USE _5
         USE _6
+        USE _7
+        USE _8
+        USE _9
+        USE _10
+        USE _11
       ]
 
       url "ecmascript:
@@ -300,5 +295,4 @@ function set_distanceFromOrigin (value)
 }
 
 IMPORT Boxes.ClipPlanesScriptDistanceFromOriginInterpolator
-
 ROUTE ClipPlanesScriptDistanceFromOriginInterpolator.value_changed TO ClipPlanesScript.set_distanceFromOrigin

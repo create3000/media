@@ -1,17 +1,15 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 09 Jul 2018 02:03:07 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/IndexedTriangleFanSet/IndexedTriangleFanSet.O.x3d"
-META "modified" "Tue, 08 Jan 2019 13:13:40 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:02:04 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:16:57 GMT"
 
 PROTO Birds [
   initializeOnly SFInt32 numBirds 200
@@ -78,13 +76,13 @@ function set_time (value, time)
 
 		points [1] .x = sin;
 		points [1] .y = cos;
-		points [3] .x = -sin;		
-		points [3] .y = cos;		
+		points [3] .x = -sin;
+		points [3] .y = cos;
 
 		for (var p = 0; p < 4; ++ p)
 		{
 			var rotation = new SFRotation (zAxis, boid .velocity);
-		
+
 			point [i * 4 + p] = rotation .multVec (points [p]) .multiply (scaleFactor) .add (boid .position);
 		}
 	}
@@ -95,7 +93,7 @@ function build ()
 	var
 		index = new MFInt32 (),
 		point = geometry .coord .point;
-	
+
 	point .length = 0;
 	boids .length = 0;
 
@@ -112,12 +110,12 @@ function build ()
 		boid .velocity.z = Math .random () * 2 - 1;
 		boid .setAvoidWalls (true);
 		boid .setWorldSize (500, 200, 500);
-		
+
 		for (var t = 0, tl = 4; t < tl; ++ t)
 		{
 			index .push (i * tl + t);
 		}
-		
+
 		index .push (-1)
 	}
 
@@ -291,7 +289,7 @@ var Boid = function ()
 	this .reach = function (target, amount)
 	{
 		var steer = target .subtract (this .position);
-		
+
 		steer = steer .multiply (amount);
 
 		return steer;
@@ -315,7 +313,7 @@ var Boid = function ()
 			if (distance > 0 && distance <= _neighborhoodRadius)
 			{
 				velSum = velSum .add (boid .velocity);
-				
+
 				++ count;
 			}
 		}
@@ -354,7 +352,7 @@ var Boid = function ()
 			if (distance > 0 && distance <= _neighborhoodRadius)
 			{
 				posSum = posSum .add (boid .position);
-				
+
 				++ count;
 			}
 		}
@@ -429,7 +427,7 @@ Viewpoint {
 Transform {
   translation 0 300 0
   children Birds {
-    appearance DEF _3 Appearance {
+    appearance DEF _16 Appearance {
       material Material {
         diffuseColor 0.366785 0.224382 0.134316
       }

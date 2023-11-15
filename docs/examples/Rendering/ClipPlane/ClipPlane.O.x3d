@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='Geometry2D' level='2'/>
+    <component name='Scripting' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 11 Oct 2016 17:39:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 13:01:51 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 01:56:24 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Grid'>
@@ -33,7 +35,7 @@
             <connect nodeField='scale' protoField='scale'/>
           </IS>
           <Transform DEF='Plane'
-              rotation='-3.09087122910219e-08 0.70710528118436 0.707108281185553 3.14159'
+              rotation='-3.09087122910219e-8 0.70710528118436 0.707108281185553 3.14159'
               scale='10 10 1'>
             <Shape>
               <Appearance>
@@ -115,19 +117,19 @@
           <field accessType='inputOutput' type='MFInt32' name='majorLineEvery'/>
           <field accessType='inputOutput' type='MFInt32' name='majorLineOffset'/>
           <field accessType='initializeOnly' type='SFNode' name='plane'>
-            <Transform USE='Plane' containerField='plane'/>
+            <Transform USE='Plane'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='majorGrid'>
-            <IndexedLineSet USE='MajorGrid_1' containerField='majorGrid'/>
+            <IndexedLineSet USE='MajorGrid_1'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='minorGrid'>
-            <IndexedLineSet USE='MinorGrid_2' containerField='minorGrid'/>
+            <IndexedLineSet USE='MinorGrid_2'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='majorPoints'>
-            <PointSet USE='MajorPoints_3' containerField='majorPoints'/>
+            <PointSet USE='MajorPoints_3'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='minorPoints'>
-            <PointSet USE='MinorPoints_4' containerField='minorPoints'/>
+            <PointSet USE='MinorPoints_4'/>
           </field>
           <IS>
             <connect nodeField='dimension' protoField='dimension'/>
@@ -247,89 +249,6 @@ function isMajor (i, dimension, majorLineEvery, majorLineOffset)
         </Script>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='AngleGrid' containerField='value'
-            name='AngleGrid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='false'/>
-        </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
-            name='Grid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_5' containerField='value'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataFloat DEF='scale' containerField='value'
-              name='scale'
-              reference='http://titania.create3000.de'
-              value='0.5, 0.5, 0.5'/>
-          <MetadataInteger DEF='dimension' containerField='value'
-              name='dimension'
-              reference='http://titania.create3000.de'
-              value='50, 10, 50'/>
-          <MetadataFloat DEF='rotation' containerField='value'
-              name='rotation'
-              reference='http://titania.create3000.de'
-              value='0, 0, 1, 0'/>
-        </MetadataSet>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
-            name='NavigationInfo'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
-              name='type'
-              reference='http://titania.create3000.de'
-              value='"EXAMINE"'/>
-        </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
-            name='Viewpoint'
-            reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
-              name='position'
-              reference='http://titania.create3000.de'
-              value='20.8876724243164, 22.9230041503906, 30.0087089538574'/>
-          <MetadataDouble DEF='orientation' containerField='value'
-              name='orientation'
-              reference='http://titania.create3000.de'
-              value='-0.669331169782766, 0.718448014221236, 0.189283480575554, 0.817475942569066'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
-              name='centerOfRotation'
-              reference='http://titania.create3000.de'
-              value='0, 0, 0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <!-- NULL -->
-          </MetadataSet>
-        </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
     <Viewpoint
         description='Home'
         position='20.8877 22.923 30.0087'
@@ -358,12 +277,12 @@ function isMajor (i, dimension, majorLineEvery, majorLineOffset)
           directOutput='true'>
         <field accessType='inputOutput' type='SFFloat' name='distanceFromOrigin' value='5.75581'/>
         <field accessType='inputOutput' type='MFNode' name='planes'>
-          <ClipPlane USE='_6' containerField='planes'/>
-          <ClipPlane USE='_7' containerField='planes'/>
-          <ClipPlane USE='_8' containerField='planes'/>
-          <ClipPlane USE='_9' containerField='planes'/>
-          <ClipPlane USE='_10' containerField='planes'/>
-          <ClipPlane USE='_11' containerField='planes'/>
+          <ClipPlane USE='_6'/>
+          <ClipPlane USE='_7'/>
+          <ClipPlane USE='_8'/>
+          <ClipPlane USE='_9'/>
+          <ClipPlane USE='_10'/>
+          <ClipPlane USE='_11'/>
         </field>
 <![CDATA[ecmascript:
 

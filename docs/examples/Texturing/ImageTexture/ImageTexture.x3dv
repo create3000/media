@@ -1,17 +1,15 @@
-#X3D V4.0 utf8 X_ITE V8.11.13
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 02 Dec 2018 17:40:27 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/ImageTexture/ImageTexture.O.x3d"
-META "modified" "Sun, 17 Nov 2019 09:11:03 GMT"
-META "converter" "x3d-tidy V1.0.87, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Wed, 09 Aug 2023 12:17:35 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:21:41 GMT"
 
 PROTO Image [
   inputOutput SFBool loop FALSE
@@ -113,14 +111,14 @@ function random (min, max)
 
 PROTO Images [ ]
 {
-  DEF _1 Group { }
+  DEF _5 Group { }
 
   DEF ImagesScript Script {
     inputOnly      SFTime set_time
-    initializeOnly SFNode timeSensor DEF _2 TimeSensor {
+    initializeOnly SFNode timeSensor DEF _6 TimeSensor {
       cycleInterval 0.1
     }
-    initializeOnly SFNode group USE _1
+    initializeOnly SFNode group USE _5
 
     url "ecmascript:
 
@@ -131,7 +129,7 @@ var
 function initialize ()
 {
 	n = 0;
-	
+
 	group .children .length = 0;
 
 	timeSensor .startTime = 0;
@@ -145,21 +143,21 @@ function set_time (value, time)
 		timeSensor .stopTime = time;
 		timeSensor .loop     = false;
 	}
-	
+
 	++ n;
-	
+
 	var image = Browser .currentScene .createProto (\"Image\");
 
 	image .startTime = n * timeSensor .cycleInterval;
 	image .loop      = true;
-	
+
 	group .children .push (image);
 }
 "
     directOutput TRUE
   }
 
-  ROUTE _2.cycleTime TO ImagesScript.set_time
+  ROUTE _6.cycleTime TO ImagesScript.set_time
 }
 
 WorldInfo { }

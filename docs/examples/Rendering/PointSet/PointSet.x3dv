@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.12.5
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -6,12 +6,12 @@ COMPONENT Geometry2D : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sat, 30 Jun 2018 20:23:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/PointSet/PointSet.O.x3d"
-META "modified" "Tue, 17 Oct 2023 23:01:03 GMT"
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:17:31 GMT"
 
 PROTO ParticleMap [
   inputOutput SFFloat width 1
@@ -181,8 +181,6 @@ function randomColor (i)
   ROUTE _3.time TO ParticleMapScript.set_time
 }
 
-WorldInfo { }
-
 NavigationInfo {
   type "NONE"
   headlight FALSE
@@ -196,7 +194,7 @@ Viewpoint {
 
 DEF Particles Transform {
   children Shape {
-    appearance DEF _1 Appearance {
+    appearance Appearance {
       pointProperties PointProperties {
         pointSizeScaleFactor 2
         pointSizeMaxValue 2
@@ -206,7 +204,7 @@ DEF Particles Transform {
         emissiveColor 0.844 0.844 0.844
       }
     }
-    geometry DEF _2 ParticleMap {
+    geometry DEF _18 ParticleMap {
       width 533.333
       height 300
       distance 5
@@ -229,8 +227,8 @@ DEF Rectangle2D Transform {
         size 1.777 1
       }
     }
-    DEF _3 TouchSensor { }
+    DEF _19 TouchSensor { }
   ]
 }
 
-ROUTE _3.hitTexCoord_changed TO _2.set_point
+ROUTE _19.hitTexCoord_changed TO _18.set_point

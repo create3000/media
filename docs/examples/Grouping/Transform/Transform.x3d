@@ -9,9 +9,8 @@
     <meta name='created' content='Fri, 22 Sep 2017 14:23:20 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 02:28:19 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:54:20 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:07:29 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Rotor' url='"Rotor.x3d#Rotor", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/Rotor.x3d#Rotor"'>
@@ -74,7 +73,7 @@
           <field accessType='inputOutput' type='SFFloat' name='outerRadius'/>
           <field accessType='inputOutput' type='SFFloat' name='width'/>
           <field accessType='initializeOnly' type='SFNode' name='gear'>
-            <IndexedFaceSet USE='Gear' containerField='gear'/>
+            <IndexedFaceSet USE='Gear'/>
           </field>
           <IS>
             <connect nodeField='teeth' protoField='teeth'/>
@@ -310,13 +309,13 @@ function eventsProcessed ()
         headlight='false'/>
     <Background DEF='White'
         skyColor='1 1 1'/>
-    <OrthoViewpoint DEF='_1'
+    <OrthoViewpoint DEF='_18'
         description='Initial View'
         position='-31.9206 26.1946 31.6035'
         orientation='0.5199480077987 0.825917412387935 0.217978203269455 306.1170626402'
         centerOfRotation='3.92971 -2.324 -3.5675'
         fieldOfView='-22.13, -15.83, 5.99, 38.28'/>
-    <Viewpoint DEF='_2'
+    <Viewpoint DEF='_19'
         description='Perspective'
         position='-41.2725 42.6755 38.89'
         orientation='-0.56019187756473 -0.797236169473889 -0.224943438208595 53.6521853850443'
@@ -331,7 +330,7 @@ function eventsProcessed ()
       <Transform DEF='TransformText'>
         <Transform DEF='Text'
             translation='-26.0162 0.522795 -41.3646'
-            rotation='-0.999999999993254 -0.00000367320512848233 -1.72095619204259e-18 90.0000000000002'
+            rotation='-0.999999999993254 -3.67320512848233e-6 -1.72095619204259e-18 90.0000000000002'
             scale='4.70841 4.70841 4.70841'
             scaleOrientation='0.998514277199544 -0.0537817447270235 -0.00876140187346953 4.64170084948354'>
           <Shape>
@@ -344,11 +343,11 @@ function eventsProcessed ()
                 solid='true'/>
           </Shape>
         </Transform>
-        <Transform DEF='Text_1'
+        <Transform DEF='Text_22'
             translation='-25.6365 0.729452 -35.4932'
-            rotation='-0.999999999993254 -0.00000367320512848233 -1.72095619204259e-18 90.0000000000002'
+            rotation='-0.999999999993254 -3.67320512848233e-6 -1.72095619204259e-18 90.0000000000002'
             scale='4.70841 4.70841 4.70841'
-            scaleOrientation='0.999999999998594 2.04310939291156e-7 -0.00000166466840314536 224.999999999872'>
+            scaleOrientation='0.999999999998594 2.04310939291156e-7 -1.66466840314536e-6 224.999999999872'>
           <Shape>
             <Appearance>
               <Material
@@ -368,13 +367,13 @@ function eventsProcessed ()
           translation='-20 0.865071 -5'
           rotation='-1 0 0 89.9999863396235'
           scale='10.0527 10.0527 0.100527'>
-        <ProtoInstance name='Rotor' DEF='_3'>
+        <ProtoInstance name='Rotor' DEF='_23'>
           <fieldValue name='cycleInterval' value='20'/>
           <fieldValue name='axis' value='0 -1 0'/>
           <fieldValue name='loop' value='true'/>
         </ProtoInstance>
         <Transform DEF='earth'
-            rotation='0 -1 0 322.251577377319'>
+            rotation='0 0 1 163.60199868679'>
           <Inline
               global='true'
               url='"earth.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Grouping/Transform/earth.x3d"'/>
@@ -406,8 +405,8 @@ function eventsProcessed ()
         translation='0 -0.593197 0'>
       <Transform USE='Earth'/>
     </Transform>
-    <ROUTE fromNode='_3' fromField='rotation_changed' toNode='earth' toField='set_rotation'/>
-    <ROUTE fromNode='_2' fromField='isBound' toNode='Examine' toField='set_bind'/>
-    <ROUTE fromNode='_1' fromField='isBound' toNode='None' toField='set_bind'/>
+    <ROUTE fromNode='_23' fromField='rotation_changed' toNode='earth' toField='set_rotation'/>
+    <ROUTE fromNode='_19' fromField='isBound' toNode='Examine' toField='set_bind'/>
+    <ROUTE fromNode='_18' fromField='isBound' toNode='None' toField='set_bind'/>
   </Scene>
 </X3D>

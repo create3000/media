@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -10,14 +10,12 @@ COMPONENT Text : 1
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 24 Feb 2019 11:52:29 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.0, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/EnvironmentalSensor/TransformSensor/TransformSensor.O.x3d"
-META "modified" "Mon, 25 Feb 2019 03:46:04 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:49:42 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:03:14 GMT"
 
 WorldInfo { }
 
@@ -44,8 +42,8 @@ LayerSet {
           url "assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d"
         }
         DEF CarRed Transform {
-          translation -0.00000341998 1.27034 19.3074
-          rotation 7.01098813588437e-17 1 5.23547981568597e-17 163.501318485902
+          translation 2.81904e-6 1.27034 -33.0293
+          rotation -1.54124463404487e-17 1 1.37877126090727e-16 283.140158997666
           scale 2.12352 2.12352 2.12352
           scaleOrientation 3.9267146445042e-16 1 5.03693766912935e-16 90
           center 0 0 7.06
@@ -58,7 +56,7 @@ LayerSet {
                 }
                 DEF Murcielago640TranslationInterpolator PositionInterpolator {
                   key [ 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1 ]
-                  keyValue [ -0.00000341998 1.27034 19.3074, -0.00000341998 1.27034 19.3074, 0.00000281904 1.27034 -33.0293, 0.00000281904 1.27034 -33.0293, 0.00000281904 1.27034 -33.0293, -0.00000341998 1.27034 19.3074, -0.00000341998 1.27034 19.3074 ]
+                  keyValue [ -3.41998e-6 1.27034 19.3074, -3.41998e-6 1.27034 19.3074, 2.81904e-6 1.27034 -33.0293, 2.81904e-6 1.27034 -33.0293, 2.81904e-6 1.27034 -33.0293, -3.41998e-6 1.27034 19.3074, -3.41998e-6 1.27034 19.3074 ]
                 }
                 DEF Murcielago640RotationInterpolator OrientationInterpolator {
                   key [ 0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1 ]
@@ -73,8 +71,8 @@ LayerSet {
           ]
         }
         DEF CarYellow Transform {
-          translation -9.38979e-7 1.27034 4.61112
-          rotation 0 1 0 269.999985628564
+          translation 1.43998e-5 1.27034 -38.2793
+          rotation 0 0.999999999999997 0 333.450043447486
           scale 2.12352 2.12352 2.12352
           center 0 0 11.4343
           children [
@@ -88,7 +86,7 @@ LayerSet {
                 }
                 DEF CarYellowTranslationInterpolator PositionInterpolator {
                   key [ 0, 0.171429, 0.328571, 0.5, 0.671429, 0.828571, 1 ]
-                  keyValue [ -0.00000796401 1.27034 14.9697, -0.00000459149 1.27034 14.8243, 0.0000143998 1.27034 -38.2793, 0.0000143998 1.27034 -38.2793, 0.0000143998 1.27034 -38.2793, -0.00000724219 1.27034 15.6481, -0.00000796401 1.27034 14.9697 ]
+                  keyValue [ -7.96401e-6 1.27034 14.9697, -4.59149e-6 1.27034 14.8243, 1.43998e-5 1.27034 -38.2793, 1.43998e-5 1.27034 -38.2793, 1.43998e-5 1.27034 -38.2793, -7.24219e-6 1.27034 15.6481, -7.96401e-6 1.27034 14.9697 ]
                 }
                 DEF CarYellowRotationInterpolator OrientationInterpolator {
                   key [ 0, 0.171429, 0.328571, 0.5, 0.671429, 0.828571, 1 ]
@@ -146,10 +144,10 @@ LayerSet {
           scale 0.250539 0.250539 0.250539
           children [
             Shape {
-              geometry DEF _1 Text {
+              geometry DEF _32 Text {
                 string "26"
                 solid TRUE
-                fontStyle DEF _2 FontStyle {
+                fontStyle DEF _33 FontStyle {
                   family "assets/Readout-OneFront.otf"
                   justify "END"
                 }
@@ -178,10 +176,10 @@ function set_enterTime (value, time)
 function pad (num, size)
 {
 	var string = num + \"\";
-	
+
 	while (string .length < size)
 		string = \"0\" + string;
-	
+
 	return string;
 }"
             }
@@ -192,7 +190,7 @@ function pad (num, size)
           scale 0.250539 0.250539 0.250539
           children [
             Shape {
-              geometry DEF _3 Text {
+              geometry DEF _34 Text {
                 string "21"
                 solid TRUE
                 fontStyle FontStyle {
@@ -201,7 +199,7 @@ function pad (num, size)
                 }
               }
             }
-            DEF LapScript_1 Script {
+            DEF LapScript_35 Script {
               outputOnly MFString string_changed
               inputOnly  SFTime   set_enterTime
 
@@ -224,10 +222,10 @@ function set_enterTime (value, time)
 function pad (num, size)
 {
 	var string = num + \"\";
-	
+
 	while (string .length < size)
 		string = \"0\" + string;
-	
+
 	return string;
 }"
             }
@@ -240,7 +238,7 @@ function pad (num, size)
             geometry Text {
               string "LAP"
               solid TRUE
-              fontStyle USE _2
+              fontStyle USE _33
             }
           }
         }
@@ -253,11 +251,11 @@ ROUTE AnimationTimer.fraction_changed TO Murcielago640TranslationInterpolator.se
 ROUTE Murcielago640TranslationInterpolator.value_changed TO CarRed.set_translation
 ROUTE AnimationTimer.fraction_changed TO Murcielago640RotationInterpolator.set_fraction
 ROUTE Murcielago640RotationInterpolator.value_changed TO CarRed.set_rotation
-ROUTE LapScript.string_changed TO _1.set_string
+ROUTE LapScript.string_changed TO _32.set_string
 ROUTE RedSensor.enterTime TO LapScript.set_enterTime
 ROUTE YellowCarAnimationTimer.fraction_changed TO CarYellowTranslationInterpolator.set_fraction
 ROUTE CarYellowTranslationInterpolator.value_changed TO CarYellow.set_translation
 ROUTE YellowCarAnimationTimer.fraction_changed TO CarYellowRotationInterpolator.set_fraction
 ROUTE CarYellowRotationInterpolator.value_changed TO CarYellow.set_rotation
-ROUTE LapScript_1.string_changed TO _3.set_string
-ROUTE YellowSensor.enterTime TO LapScript_1.set_enterTime
+ROUTE LapScript_35.string_changed TO _34.set_string
+ROUTE YellowSensor.enterTime TO LapScript_35.set_enterTime

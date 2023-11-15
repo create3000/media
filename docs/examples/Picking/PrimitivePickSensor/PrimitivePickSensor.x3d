@@ -8,10 +8,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:34:43 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:01:01 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:15:11 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Bullet'>
@@ -37,14 +36,14 @@
               <Material
                   diffuseColor='1 0 0'/>
             </Appearance>
-            <Sphere DEF='_1'/>
+            <Sphere DEF='_2'/>
           </Shape>
-          <PrimitivePickSensor DEF='_2'
+          <PrimitivePickSensor DEF='_3'
               objectType='"TARGET"'>
             <IS>
               <connect nodeField='pickTarget' protoField='target'/>
             </IS>
-            <Sphere USE='_1' containerField='pickingGeometry'/>
+            <Sphere USE='_2' containerField='pickingGeometry'/>
           </PrimitivePickSensor>
         </Transform>
         <Script DEF='BulletScript'>
@@ -64,10 +63,9 @@ function set_active (value, time)
         </Script>
         <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='SphereTranslationInterpolator' toField='set_fraction'/>
         <ROUTE fromNode='SphereTranslationInterpolator' fromField='value_changed' toNode='Sphere' toField='set_translation'/>
-        <ROUTE fromNode='_2' fromField='isActive' toNode='BulletScript' toField='set_active'/>
+        <ROUTE fromNode='_3' fromField='isActive' toNode='BulletScript' toField='set_active'/>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
     <Viewpoint
         description='Initial view'
         position='-11.1888 7.48501 -6.36741'
@@ -82,7 +80,7 @@ function set_active (value, time)
             key='0, 0.333333, 0.666667, 1'
             keyValue='1 1 1, 0.740741 0.740741 0.740741, 0.259259 0.259259 0.259259, 0 0 0'/>
       </Group>
-      <Background DEF='_3'/>
+      <Background DEF='_18'/>
       <Script DEF='HitColorScript'>
         <field accessType='inputOutput' type='SFColor' name='color'/>
         <field accessType='outputOnly' type='MFColor' name='skyColor_changed'/>
@@ -97,12 +95,11 @@ function set_color (value, time)
     </Group>
     <Transform DEF='RocketShip'>
       <Inline
-          global='true'
           url='"assets/rocket-ship.x3dz"'/>
     </Transform>
     <PickableGroup DEF='Target'
         objectType='"TARGET"'>
-      <Transform DEF='_4'
+      <Transform DEF='_19'
           translation='0 0 25'>
         <Shape>
           <Appearance>
@@ -115,7 +112,7 @@ function set_color (value, time)
     </PickableGroup>
     <ProtoInstance name='Bullet' DEF='Bullet'>
       <fieldValue name='target'>
-        <Transform USE='_4' containerField='target'/>
+        <Transform USE='_19' containerField='target'/>
       </fieldValue>
     </ProtoInstance>
     <Transform
@@ -134,7 +131,7 @@ function set_color (value, time)
             gustiness='0.07'/>
         <Color
             color='1 1 0, 1 0 0'/>
-        <Appearance DEF='_5'>
+        <Appearance>
           <PointProperties
               pointSizeScaleFactor='4.94'
               pointSizeMaxValue='4.94'/>
@@ -143,7 +140,7 @@ function set_color (value, time)
         </Appearance>
       </ParticleSystem>
     </Transform>
-    <ROUTE fromNode='HitColorScript' fromField='skyColor_changed' toNode='_3' toField='set_skyColor'/>
+    <ROUTE fromNode='HitColorScript' fromField='skyColor_changed' toNode='_18' toField='set_skyColor'/>
     <ROUTE fromNode='SkyAnimationTimer' fromField='fraction_changed' toNode='HitColorScriptColorInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='HitColorScriptColorInterpolator' fromField='value_changed' toNode='HitColorScript' toField='set_color'/>
     <ROUTE fromNode='Bullet' fromField='hitTime' toNode='SkyAnimationTimer' toField='set_startTime'/>

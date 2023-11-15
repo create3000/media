@@ -9,9 +9,8 @@
     <meta name='created' content='Fri, 18 May 2018 03:17:41 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 03:46:10 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 18:03:19 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:18:17 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -27,7 +26,7 @@
         centerOfRotation='6.66134e-16 -3.55271e-15 1.77636e-15'/>
     <Group DEF='Collidables'>
       <CollidableShape DEF='Ball'
-          translation='-0.00000192031 -0.251985 -0.00000234233'>
+          translation='-1.92031e-6 -0.251985 -2.34233e-6'>
         <Shape containerField='shape'>
           <Appearance>
             <Material DEF='Tropical22'
@@ -43,7 +42,7 @@
       <CollidableOffset DEF='Floor'>
         <CollidableShape containerField='collidable'
             translation='0 -1 0'>
-          <Shape DEF='_1' containerField='shape'>
+          <Shape DEF='_15' containerField='shape'>
             <Appearance>
               <Material DEF='Glass33'
                   ambientIntensity='0.0346667'
@@ -60,7 +59,7 @@
       <CollidableOffset DEF='Ceiling'>
         <CollidableShape containerField='collidable'
             translation='0 1 0'>
-          <Shape USE='_1' containerField='shape'/>
+          <Shape USE='_15' containerField='shape'/>
         </CollidableShape>
       </CollidableOffset>
     </Group>
@@ -70,18 +69,18 @@
           minBounceSpeed='0'>
         <CollidableShape USE='Ball' containerField='collidables'/>
       </CollisionCollection>
-      <RigidBody DEF='Ball_1'
-          position='-0.00000192031 -0.251985 -0.00000234233'
-          linearVelocity='-0.00000404398 -1.46553 -0.00000493573'
+      <RigidBody DEF='Ball_2'
+          position='-1.92031e-6 -0.251985 -2.34233e-6'
+          linearVelocity='-4.04398e-6 -1.46553 -4.93573e-6'
           angularVelocity='-1.98016e-10 2.95806e-10 0.000388671'>
         <CollidableShape USE='Ball' containerField='geometry'/>
       </RigidBody>
-      <RigidBody DEF='Floor_1'
+      <RigidBody DEF='Floor_16'
           fixed='true'
           linearVelocity='0 0.1 0'>
         <CollidableOffset USE='Floor' containerField='geometry'/>
       </RigidBody>
-      <RigidBody DEF='Ceiling_1'
+      <RigidBody DEF='Ceiling_17'
           fixed='true'>
         <CollidableOffset USE='Ceiling' containerField='geometry'/>
       </RigidBody>
@@ -89,7 +88,7 @@
     <Script DEF='EnterWorldScript'
         directOutput='true'>
       <field accessType='initializeOnly' type='SFNode' name='ball'>
-        <RigidBody USE='Ball_1' containerField='ball'/>
+        <RigidBody USE='Ball_2'/>
       </field>
 <![CDATA[ecmascript:
 

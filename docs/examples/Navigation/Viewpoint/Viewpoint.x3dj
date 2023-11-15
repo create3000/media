@@ -1,18 +1,18 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:58:25 GMT"
+          "@name": "modified",
+          "@content": "Wed, 15 Nov 2023 02:11:49 GMT"
         }
       ],
       "component": [
@@ -33,7 +33,7 @@
         { "Transform":
           {
             "@DEF": "ViewpointAnimationGroup",
-            "@rotation": [ 0, -1, 0, 0.591019590488519 ],
+            "@rotation": [ 0, 1, 0, 1.12280443799609 ],
             "-children": [
               { "Group":
                 {
@@ -72,10 +72,10 @@
               },
               { "Viewpoint":
                 {
-                  "@DEF": "_1",
+                  "@DEF": "_11",
                   "@description": "Initial View",
-                  "@position": [ 1.07653, 5.08312, 14.4269 ],
-                  "@orientation": [ -0.96026943294108, 0.25934616159498, 0.103063983160787, 0.434376284282661 ],
+                  "@position": [ 0.5749717, 2.987031, 11.38356 ],
+                  "@orientation": [ -0.978447393324916, 0.205017651505163, 0.0246670036075996, 0.262135623508023 ],
                   "@centerOfRotation": [ 0.110902, -0.135934, -0.207341 ]
                 }
               }
@@ -94,7 +94,7 @@
                       "@url": [ "cloudy-sky/cloudy-sky-front.jpg" ],
                       "-textureProperties": { "TextureProperties":
                         {
-                          "@DEF": "_2",
+                          "@DEF": "_12",
                           "@minificationFilter": "DEFAULT",
                           "@magnificationFilter": "DEFAULT",
                           "@boundaryModeS": "CLAMP_TO_EDGE",
@@ -110,7 +110,7 @@
                       "@url": [ "cloudy-sky/cloudy-sky-back.jpg" ],
                       "-textureProperties": { "TextureProperties":
                         {
-                          "@USE": "_2"
+                          "@USE": "_12"
                         }
                       }
                     }
@@ -120,7 +120,7 @@
                       "@url": [ "cloudy-sky/cloudy-sky-left.jpg" ],
                       "-textureProperties": { "TextureProperties":
                         {
-                          "@USE": "_2"
+                          "@USE": "_12"
                         }
                       }
                     }
@@ -130,7 +130,7 @@
                       "@url": [ "cloudy-sky/cloudy-sky-right.jpg" ],
                       "-textureProperties": { "TextureProperties":
                         {
-                          "@USE": "_2"
+                          "@USE": "_12"
                         }
                       }
                     }
@@ -140,7 +140,7 @@
                       "@url": [ "cloudy-sky/cloudy-sky-top.jpg" ],
                       "-textureProperties": { "TextureProperties":
                         {
-                          "@USE": "_2"
+                          "@USE": "_12"
                         }
                       }
                     }
@@ -150,7 +150,7 @@
                       "@url": [ "cloudy-sky/cloudy-sky-bottom.jpg" ],
                       "-textureProperties": { "TextureProperties":
                         {
-                          "@USE": "_2"
+                          "@USE": "_12"
                         }
                       }
                     }
@@ -170,7 +170,7 @@
         { "Script":
           {
             "@DEF": "EnterWorlScript",
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -194,7 +194,7 @@
           {
             "@fromNode": "PositionInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_1",
+            "@toNode": "_11",
             "@toField": "position"
           }
         },
@@ -202,7 +202,7 @@
           {
             "@fromNode": "OrientationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_1",
+            "@toNode": "_11",
             "@toField": "orientation"
           }
         },

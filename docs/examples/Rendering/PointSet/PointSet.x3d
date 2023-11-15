@@ -8,8 +8,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 30 Jun 2018 20:23:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Tue, 17 Oct 2023 23:01:03 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:17:30 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='ParticleMap'>
@@ -184,7 +185,6 @@ function randomColor (i)
         <ROUTE fromNode='_3' fromField='time' toNode='ParticleMapScript' toField='set_time'/>
       </ProtoBody>
     </ProtoDeclare>
-    <WorldInfo/>
     <NavigationInfo
         type='"NONE"'
         headlight='false'/>
@@ -194,7 +194,7 @@ function randomColor (i)
         centerOfRotation='265.5 148.5 0'/>
     <Transform DEF='Particles'>
       <Shape>
-        <Appearance DEF='_1'>
+        <Appearance>
           <PointProperties
               pointSizeScaleFactor='2'
               pointSizeMaxValue='2'/>
@@ -202,7 +202,7 @@ function randomColor (i)
               diffuseColor='0 0 0'
               emissiveColor='0.844 0.844 0.844'/>
         </Appearance>
-        <ProtoInstance name='ParticleMap' DEF='_2' containerField='geometry'>
+        <ProtoInstance name='ParticleMap' DEF='_18' containerField='geometry'>
           <fieldValue name='width' value='533.333'/>
           <fieldValue name='height' value='300'/>
           <fieldValue name='distance' value='5'/>
@@ -221,8 +221,8 @@ function randomColor (i)
         <Rectangle2D
             size='1.777 1'/>
       </Shape>
-      <TouchSensor DEF='_3'/>
+      <TouchSensor DEF='_19'/>
     </Transform>
-    <ROUTE fromNode='_3' fromField='hitTexCoord_changed' toNode='_2' toField='set_point'/>
+    <ROUTE fromNode='_19' fromField='hitTexCoord_changed' toNode='_18' toField='set_point'/>
   </Scene>
 </X3D>

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -10,14 +10,12 @@ COMPONENT Picking : 3
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 25 Mar 2019 17:22:57 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.4.4, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Picking/LinePickSensor/LinePickSensor.O.x3d"
-META "modified" "Wed, 27 Mar 2019 08:08:03 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:00:36 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:14:38 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -110,8 +108,8 @@ PROTO Boxes [
               }
               Transform {
                 translation 0 0 1
-                rotation 0.999999999993308 0.00000365834307214845 1.47427273992507e-8 4.71238898037133
-                scaleOrientation 0.999999999997867 0.00000193058578815613 -7.33950216216808e-7 3.92699081698937
+                rotation 0.999999999993308 3.65834307214845e-6 1.47427273992507e-8 4.71238898037133
+                scaleOrientation 0.999999999997867 1.93058578815613e-6 -7.33950216216808e-7 3.92699081698937
                 center 0 0 -1
                 children DEF _7 Shape {
                   appearance Appearance {
@@ -125,8 +123,8 @@ PROTO Boxes [
               }
               Transform {
                 translation 0 0 1
-                rotation 0.999999999994243 0.00000338383946584776 -2.53455136538034e-7 1.57079632680635
-                scaleOrientation 0.999999999966152 0.00000205677672585685 0.00000796650036947219 0.467978898990537
+                rotation 0.999999999994243 3.38383946584776e-6 -2.53455136538034e-7 1.57079632680635
+                scaleOrientation 0.999999999966152 2.05677672585685e-6 7.96650036947219e-6 0.467978898990537
                 center 0 0 -1
                 children DEF _8 Shape {
                   appearance Appearance {
@@ -201,8 +199,8 @@ PROTO Boxes [
               }
               Transform {
                 translation 0 0 1
-                rotation 0.999999999993308 0.00000365834307214845 1.47427273992507e-8 4.71238898037133
-                scaleOrientation 0.999999999997867 0.00000193058578815613 -7.33950216216808e-7 3.92699081698937
+                rotation 0.999999999993308 3.65834307214845e-6 1.47427273992507e-8 4.71238898037133
+                scaleOrientation 0.999999999997867 1.93058578815613e-6 -7.33950216216808e-7 3.92699081698937
                 center 0 0 -1
                 children DEF _13 Shape {
                   appearance Appearance {
@@ -216,8 +214,8 @@ PROTO Boxes [
               }
               Transform {
                 translation 0 0 1
-                rotation 0.999999999994243 0.00000338383946584776 -2.53455136538034e-7 1.57079632680635
-                scaleOrientation 0.999999999966152 0.00000205677672585685 0.00000796650036947219 0.467978898990537
+                rotation 0.999999999994243 3.38383946584776e-6 -2.53455136538034e-7 1.57079632680635
+                scaleOrientation 0.999999999966152 2.05677672585685e-6 7.96650036947219e-6 0.467978898990537
                 center 0 0 -1
                 children DEF _14 Shape {
                   appearance Appearance {
@@ -292,8 +290,8 @@ PROTO Boxes [
               }
               Transform {
                 translation 0 0 1
-                rotation 0.999999999993308 0.00000365834307214845 1.47427273992507e-8 4.71238898037133
-                scaleOrientation 0.999999999997867 0.00000193058578815613 -7.33950216216808e-7 3.92699081698937
+                rotation 0.999999999993308 3.65834307214845e-6 1.47427273992507e-8 4.71238898037133
+                scaleOrientation 0.999999999997867 1.93058578815613e-6 -7.33950216216808e-7 3.92699081698937
                 center 0 0 -1
                 children DEF _19 Shape {
                   appearance Appearance {
@@ -307,8 +305,8 @@ PROTO Boxes [
               }
               Transform {
                 translation 0 0 1
-                rotation 0.999999999994243 0.00000338383946584776 -2.53455136538034e-7 1.57079632680635
-                scaleOrientation 0.999999999966152 0.00000205677672585685 0.00000796650036947219 0.467978898990537
+                rotation 0.999999999994243 3.38383946584776e-6 -2.53455136538034e-7 1.57079632680635
+                scaleOrientation 0.999999999966152 2.05677672585685e-6 7.96650036947219e-6 0.467978898990537
                 center 0 0 -1
                 children DEF _20 Shape {
                   appearance Appearance {
@@ -417,15 +415,15 @@ function set_key (value, time)
 {
 	if (value !== \" \")
 		return;
-		
+
 	set_triggerShot (time, time);
 }
 
 function set_triggerShot (value, time)
 {
 	var direction = proxy .orientation_changed .multVec (new SFVec3f (0, 0, -15));
-	
-	interpolator .keyValue = new MFVec3f (proxy .position_changed, proxy .position_changed .add (direction));	
+
+	interpolator .keyValue = new MFVec3f (proxy .position_changed, proxy .position_changed .add (direction));
 	timer .startTime       = time;
 }
 
@@ -435,20 +433,20 @@ function set_pick (value, time)
 		return;
 
 	var shape = getShape ();
-	
+
 	if (! shape)
 		return;
-		
+
 	var
 		image    = shape .appearance .texture .image,
 		texCoord = pickSensor .pickedTextureCoordinate [0],
 		cx       = Math .floor (image .width  * texCoord .x),
 		cy       = Math .floor (image .height * texCoord .y);
-	
+
 	var
 		sw = hole .width,
 		sh = hole .height;
-	 
+
 	for (var sy = 0; sy < sh; ++ sy)
 	{
 		for (var sx = 0; sx < sw; ++ sx)
@@ -458,7 +456,7 @@ function set_pick (value, time)
 				y  = Math .floor (cy - sh / 2 + sy),
 				sp = hole .array [sy * sw + sx],
 				dp = image .array [y * image .width + x];
-  
+
 			image .array [y * image .width + x] = mul (sp, dp);
 		}
 	}
@@ -474,15 +472,15 @@ function getShape ()
 	var
 		shapes   = pickSensor .pickTarget,
 		geometry = pickSensor .pickedGeometry [0];
-	
+
 	for (var i = 0, length = shapes .length; i < length; ++ i)
 	{
 		var shape = shapes [i];
-	
+
 		if (shape .geometry === geometry)
 			return shape;
 	}
-	
+
 	return null;
 }
 
@@ -520,7 +518,7 @@ LayerSet {
   activeLayer 1
   order [ 0, 1, 2 ]
   layers [
-    DEF Boxes_1 Layer {
+    DEF Boxes_39 Layer {
       children [
         NavigationInfo {
           type "WALK"
@@ -534,7 +532,7 @@ LayerSet {
         Grid {
           dimension [ 30, 30, 30 ]
         }
-        DEF _26 Boxes { }
+        DEF _40 Boxes { }
       ]
     }
     DEF HUD Layer {
@@ -548,10 +546,10 @@ LayerSet {
             url "assets/revolver.x3dz"
           }
         }
-        DEF _27 TouchSensor { }
+        DEF _46 TouchSensor { }
       ]
     }
   ]
 }
 
-ROUTE _27.touchTime TO _26.set_triggerShot
+ROUTE _46.touchTime TO _40.set_triggerShot

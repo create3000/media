@@ -1,17 +1,15 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Mon, 27 Nov 2017 03:13:31 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.9, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Texturing/PixelTexture/PixelTexture.O.x3d"
-META "modified" "Mon, 07 Jan 2019 03:59:38 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:07:08 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:22:16 GMT"
 
 PROTO Canvas [
   inputOutput    SFVec2f  size 8 8
@@ -83,7 +81,7 @@ PROTO Canvas [
     url "ecmascript:
 
 function set_array(value, time) {
-	// send out new picture 
+	// send out new picture
 	image_changed = new SFImage(data.size.x, data.size.y, data.components, value);
 }
 
@@ -275,10 +273,9 @@ NavigationInfo {
 
 Viewpoint {
   position -2.03376 -2.79428 6.874
-  fieldOfView 0.785398
 }
 
-DEF _3 TimeSensor {
+DEF _4 TimeSensor {
   loop TRUE
   startTime 1
 }
@@ -287,14 +284,14 @@ DEF DiscoScript Script {
   outputOnly     SFFloat scaleF
   outputOnly     SFFloat rotateF
   inputOnly      SFTime  set_time
-  initializeOnly SFNode  brush DEF _4 Canvas {
+  initializeOnly SFNode  brush DEF _5 Canvas {
     size 1 1
     array 8527156
     bgColor 0.510025 0.115847 0.207168
     clear 1546833576.51676
     enabled TRUE
   }
-  initializeOnly SFNode  canvas DEF _5 Canvas {
+  initializeOnly SFNode  canvas DEF _6 Canvas {
     size 32 32
     array [ 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 0, 0, 7094150, 10641407, 7094150, 0, 0, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 0, 7094150, 10641407, 0, 7094150, 0, 7094150, 10641407, 7810746, 0, 7094150, 0, 7094150, 0, 0, 10641407, 10641407, 4263476, 7094150, 13334527, 7810746, 10641407, 0, 0, 0, 0, 0, 9584383, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 0, 12414975, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 7094150, 0, 4263476, 4263476, 12414975, 10641407, 0, 7810746, 10641407, 7094150, 7094150, 10641407, 0, 4263476, 0, 0, 0, 10641407, 7094150, 7094150, 0, 0, 4263476, 0, 9584383, 0, 7094150, 0, 7094150, 0, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 7094150, 7094150, 4263476, 10641407, 0, 7094150, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 4263476, 7094150, 13334527, 7094150, 0, 0, 7094150, 7810746, 0, 4263476, 10641407, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 0, 12414975, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 7094150, 7094150, 0, 7810746, 7094150, 10641407, 0, 13334527, 7094150, 10641407, 0, 0, 0, 10641407, 7094150, 7810746, 0, 0, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 7094150, 10641407, 10641407, 12414975, 4263476, 7094150, 0, 7094150, 10641407, 0, 0, 0, 0, 4263476, 0, 0, 0, 12414975, 7094150, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 9584383, 7094150, 10641407, 7094150, 12414975, 12414975, 0, 12414975, 7094150, 7094150, 0, 7094150, 0, 0, 7094150, 7810746, 0, 10641407, 0, 0, 0, 4263476, 0, 7810746, 0, 7094150, 0, 10641407, 0, 7094150, 0, 10641407, 0, 10641407, 10641407, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 11160831, 0, 4263476, 0, 10641407, 9584383, 7094150, 0, 0, 0, 7094150, 0, 0, 0, 0, 0, 10641407, 10641407, 7094150, 12414975, 0, 0, 7094150, 0, 7094150, 7094150, 12414975, 10641407, 7094150, 7094150, 0, 0, 7094150, 7094150, 4263476, 7094150, 0, 0, 0, 0, 0, 0, 0, 10641407, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 9584383, 0, 7094150, 10641407, 10641407, 0, 12414975, 7094150, 9584383, 7094150, 0, 0, 4263476, 0, 0, 0, 0, 4263476, 0, 12414975, 0, 10641407, 0, 10641407, 0, 4263476, 0, 7094150, 0, 0, 7094150, 0, 7094150, 7094150, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 0, 7094150, 7094150, 0, 7810746, 7094150, 7810746, 0, 10438399, 0, 7094150, 10641407, 0, 7094150, 0, 0, 0, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 7094150, 7094150, 4263476, 0, 13334527, 0, 10641407, 0, 0, 7810746, 12414975, 7094150, 0, 7094150, 7094150, 10641407, 7094150, 0, 6362472, 0, 7094150, 7094150, 10641407, 0, 12414975, 7094150, 0, 12414975, 0, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 7094150, 7094150, 7094150, 10641407, 0, 0, 0, 10641407, 0, 7094150, 0, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 7094150, 7094150, 0, 7094150, 0, 7094150, 0, 7094150, 7094150, 12414975, 7094150, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 12414975, 10641407, 0, 7094150, 0, 7094150, 7094150, 7094150, 0, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 0, 7094150, 0, 0, 7094150, 0, 10641407, 10641407, 0, 10641407, 12414975, 7094150, 0, 0, 9584383, 7094150, 7810746, 7094150, 7094150, 10641407, 0, 10641407, 7810746, 7094150, 7094150, 0, 7094150, 0, 10641407, 10641407, 9584383, 12414975, 10641407, 10641407, 7094150, 0, 7094150, 10641407, 7094150, 0, 7094150, 7094150, 0, 12414975, 0, 0, 0, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 7094150, 7094150, 12414975, 4263476, 7094150, 0, 7094150, 7094150, 11160831, 4263476, 7094150, 10641407, 4263476, 7094150, 0, 7094150, 0, 7810746, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 0, 0, 7094150, 10641407, 10641407, 0, 0, 0, 10641407, 0, 0, 7094150, 10641407, 12414975, 4263476, 8136174, 7094150, 10641407, 7094150, 10641407, 0, 0, 7094150, 0, 10641407, 0, 10641407, 0, 10641407, 7810746, 10641407, 0, 10641407, 9584383, 7094150, 12414975, 10641407, 7094150, 0, 0, 0, 0, 0, 0, 0, 7094150, 0, 0, 7810746, 10438399, 0, 0, 0, 7094150, 0, 4263476, 7094150, 0, 10641407, 12414975, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 10641407, 7094150, 10438399, 0, 0, 0, 10641407, 0, 0, 7094150, 9055743, 10641407, 0, 0, 0, 10641407, 0, 7094150, 7094150, 12414975, 0, 7094150, 10641407, 0, 7094150, 0, 0, 10641407, 0, 12414975, 0, 0, 7810746, 7810746, 0, 7094150, 0, 0, 0, 7094150, 7094150, 0, 9584383, 12414975, 7094150, 0, 7094150, 12414975, 10641407, 12414975, 10641407, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7810746, 0, 7094150, 0, 0, 0, 0, 7094150, 7094150, 9584383, 7094150, 7094150, 0, 4263476, 10641407, 7094150, 10641407, 4263476, 0, 0, 7810746, 0, 10641407, 4263476, 10641407, 7094150, 0, 10641407, 7094150, 0, 7810746, 10641407, 12414975, 7094150, 4263476, 0, 4263476, 7094150, 0, 0, 4263476, 7094150, 0, 0, 10641407, 10641407, 0, 0, 0, 7094150, 0, 0, 12414975, 7094150, 10641407, 7094150, 7094150, 7094150, 7094150, 0, 0, 12414975, 7094150, 0, 7094150, 0, 7094150, 7094150, 0, 0, 7094150, 10641407, 7094150, 0, 7810746, 0, 7094150, 13334527, 10641407, 0, 10641407, 7094150, 7094150, 0, 0, 7094150, 0, 7094150, 0, 0, 0, 7094150, 4263476, 7094150, 7094150, 0, 7810746, 0, 0, 0, 0, 7094150, 0, 0, 0, 7094150, 0, 0, 10641407, 0, 0, 10641407, 0, 0, 0, 7094150, 13334527, 0, 7094150, 0, 0, 0, 0, 10641407, 10641407, 10641407, 7094150, 7094150, 10641407, 10641407, 7094150, 7094150, 10641407, 7094150, 0, 0, 10641407, 4263476, 0, 0, 4263476, 0, 7094150, 7094150, 7094150, 0, 7094150, 10641407, 0, 7094150, 7094150, 0, 0, 0, 0, 10641407, 0, 10641407, 7094150, 10641407, 0, 0, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 7094150, 0, 0, 10438399, 4263476, 0, 0, 0, 0, 0, 0, 0, 0, 10898175, 0, 0, 10641407, 0, 10641407, 10641407, 10641407, 0, 0, 0, 7094150, 7094150, 0, 0, 7094150, 7094150, 0, 7094150, 12414975, 7094150, 0, 0, 0, 10641407, 0, 7094150, 4263476, 7094150, 7094150, 0, 0, 0, 0, 7094150, 0, 0, 0, 10641407, 7094150, 12414975, 7094150, 7094150, 7094150, 7094150, 12414975, 9584383, 0, 0, 0, 0, 0, 7094150, 7094150, 7094150, 7094150, 0, 0, 0, 10641407, 0, 7094150, 7094150, 7094150, 7094150, 0, 7810746, 10641407, 10641407, 7810746, 7094150, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6362472, 0, 7094150, 0, 7810746, 7810746, 0, 10438399, 0, 7094150, 10641407, 4263476, 7094150, 7094150, 7094150, 10641407, 7094150, 0, 0, 4263476, 7094150, 7094150, 7094150, 4263476, 0, 10641407, 12414975, 10641407, 0, 0, 7094150, 0, 10641407, 0, 0, 7094150, 0, 0, 7094150, 0, 4263476, 7094150, 0, 0, 0, 0, 7094150, 0, 13794303, 7094150, 0, 0, 0, 7094150 ]
     repeatS TRUE
@@ -306,7 +303,7 @@ DEF DiscoScript Script {
     horizontallyWrap TRUE
     verticallyWrap TRUE
     combineMode "AVRG"
-    brush USE _4
+    brush USE _5
   }
   initializeOnly SFTime  cycleInterval 0.01
   initializeOnly SFTime  cycleTime 1546833578.26627
@@ -327,15 +324,15 @@ function set_time (value, time)
 		if (time - colorTime > colorInterval)
 		{
 			colorTime = time;
-			
+
 			bgColor = Math .random () > blackLevel
 				? new SFColor (Math .random (), Math.random (), Math.random ())
 				: new SFColor (0, 0, 0);
-			
+
 			brush.bgColor = bgColor;
 			brush.clear   = time;
 		}
-	
+
 		canvas.set_hitTexCoord = new SFVec2f (Math.random (), Math.random ());
 
 		if (time - scaleTime > 19)
@@ -343,7 +340,7 @@ function set_time (value, time)
 			scaleTime = time;
 			scaleF    = Math .random ();
 		}
-		
+
 		if (time - rotateTime > 17)
 		{
 			rotateTime = time;
@@ -361,7 +358,7 @@ Transform {
     Group {
       children [
         DEF UnnamedAnimation3 Group {
-          children DEF Time_1 TimeSensor {
+          children DEF Time_7 TimeSensor {
             cycleInterval 20
             loop TRUE
             startTime 1
@@ -369,15 +366,15 @@ Transform {
         }
         Group {
           children [
-            DEF _6 ScalarInterpolator {
+            DEF _8 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 1, -1 ]
             }
-            DEF _7 ScalarInterpolator {
+            DEF _9 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 0.74, 0.74 ]
             }
-            DEF _8 Script {
+            DEF _10 Script {
               outputOnly     SFVec2f vec
               inputOnly      SFFloat xIn
               inputOnly      SFFloat yIn
@@ -393,22 +390,22 @@ Transform {
     Group {
       children [
         DEF scale Group {
-          children DEF Time_2 TimeSensor {
+          children DEF Time_11 TimeSensor {
             cycleInterval 10
             stopTime 1
           }
         }
         Group {
           children [
-            DEF _9 ScalarInterpolator {
+            DEF _12 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 0.1, 5 ]
             }
-            DEF _10 ScalarInterpolator {
+            DEF _13 ScalarInterpolator {
               key [ 0, 1 ]
               keyValue [ 0.2, 5 ]
             }
-            DEF _11 Script {
+            DEF _3 Script {
               outputOnly     SFVec2f vec
               inputOnly      SFFloat xIn
               inputOnly      SFFloat yIn
@@ -437,8 +434,8 @@ Transform {
     }
     Shape {
       appearance Appearance {
-        texture USE _5
-        textureTransform DEF _12 TextureTransform {
+        texture USE _6
+        textureTransform DEF _14 TextureTransform {
           translation -0.175203 0.74
           rotation 0.636027
           scale 1.40365 1.47705
@@ -459,16 +456,16 @@ Transform {
   ]
 }
 
-ROUTE _3.time TO DiscoScript.set_time
-ROUTE Time_1.fraction_changed TO _6.set_fraction
-ROUTE Time_1.fraction_changed TO _7.set_fraction
-ROUTE _6.value_changed TO _8.xIn
-ROUTE _7.value_changed TO _8.yIn
-ROUTE DiscoScript.scaleF TO _9.set_fraction
-ROUTE DiscoScript.scaleF TO _10.set_fraction
-ROUTE _9.value_changed TO _11.xIn
-ROUTE _10.value_changed TO _11.yIn
+ROUTE _4.time TO DiscoScript.set_time
+ROUTE Time_7.fraction_changed TO _8.set_fraction
+ROUTE Time_7.fraction_changed TO _9.set_fraction
+ROUTE _8.value_changed TO _10.xIn
+ROUTE _9.value_changed TO _10.yIn
+ROUTE DiscoScript.scaleF TO _12.set_fraction
+ROUTE DiscoScript.scaleF TO _13.set_fraction
+ROUTE _12.value_changed TO _3.xIn
+ROUTE _13.value_changed TO _3.yIn
 ROUTE DiscoScript.rotateF TO UnnamedShapeRotationInterp.set_fraction
-ROUTE _8.vec TO _12.set_translation
-ROUTE UnnamedShapeRotationInterp.value_changed TO _12.set_rotation
-ROUTE _11.vec TO _12.set_scale
+ROUTE _10.vec TO _14.set_translation
+ROUTE UnnamedShapeRotationInterp.value_changed TO _14.set_rotation
+ROUTE _3.vec TO _14.set_scale

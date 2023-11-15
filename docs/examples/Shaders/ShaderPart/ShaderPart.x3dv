@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.12.5
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -7,13 +7,12 @@ COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT Shaders : 1
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sun, 10 Dec 2017 16:14:16 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V1.0.97, https://www.npmjs.com/package/x3d-tidy"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shaders/ShaderPart/ShaderPart.O.x3d"
-META "modified" "Tue, 17 Oct 2023 21:25:16 GMT"
-META "titania-add-metadata" "true"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:19:41 GMT"
 
 WorldInfo { }
 
@@ -35,7 +34,7 @@ LayerSet {
         children Shape {
           appearance Appearance {
             shaders DEF ComposedShader ComposedShader {
-              inputOutput SFFloat time 7915.991
+              inputOutput SFFloat time 4781.298
 
               language "GLSL"
               parts [
@@ -121,17 +120,17 @@ main ()
 
 	float x = (2.0 * gl_FragCoord .x - size .x) / max (size .x, size .y);
 	float y = (2.0 * gl_FragCoord .y - size .y) / max (size .x, size .y);
-	
+
 	vec3 ray_dir  = normalize (vec3 (x, y, -1.0 /*+sqrt(x*x+y*y)*/));
 	vec3 ray_orig = vec3 (0.0, 0.0, 0.0);
 
 	float offs = 0.0;
 	float i    = 0.0;
-	
+
 	for (float j = 0.0; j < 64.0; j++)
 	{
 		float dist = distfunc (ray_orig + ray_dir * offs);
-		
+
 		offs += dist;
 		i     = j;
 

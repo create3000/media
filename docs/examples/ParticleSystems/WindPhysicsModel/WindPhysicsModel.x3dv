@@ -1,21 +1,15 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
 COMPONENT ParticleSystems : 3
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Sat, 02 Dec 2017 06:40:01 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.6.7, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/ParticleSystems/WindPhysicsModel/WindPhysicsModel.O.x3d"
-META "modified" "Thu, 07 Nov 2019 12:53:42 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:00:09 GMT"
-
-WorldInfo {
-  title "WindPhysicsModel.O"
-}
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:14:34 GMT"
 
 Background {
   skyAngle [ 1.09223, 1.5708 ]
@@ -31,9 +25,9 @@ Viewpoint {
   centerOfRotation -0.300751 5.38755 0.400722
 }
 
-DEF _1 Transform {
+DEF _2 Transform {
   translation 5 0 0
-  rotation 0 -1 0 2.65019992197869
+  rotation 0 -1 0 0.955044135981723
   center -5 0 0
   children [
     DEF Animation Group {
@@ -73,12 +67,11 @@ DEF _1 Transform {
             turbulence 0.1
           }
           WindPhysicsModel {
-            direction 1 0 0
             speed 0.6
             gustiness 2
           }
         ]
-        appearance DEF _2 Appearance {
+        appearance Appearance {
           pointProperties PointProperties {
             pointSizeScaleFactor 8
             pointSizeMaxValue 8
@@ -91,16 +84,14 @@ DEF _1 Transform {
       }
     }
     Inline {
-      global TRUE
       url "toy-train.x3d"
     }
   ]
 }
 
 DEF Cylinder Inline {
-  global TRUE
   url "cylinder.x3d"
 }
 
 ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
-ROUTE RotationInterpolator.value_changed TO _1.set_rotation
+ROUTE RotationInterpolator.value_changed TO _2.set_rotation

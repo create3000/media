@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/BallJoint/BallJoint.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 03:44:54 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:02:54 GMT"
+          "@content": "Wed, 15 Nov 2023 02:17:59 GMT"
         }
       ],
       "component": [
@@ -1644,7 +1636,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var",
@@ -1669,7 +1661,7 @@
 "\t\tvar",
 "\t\t\tx = i / numCollidables * length,",
 "\t\t\ty = Math .sin (x / length * Math .PI) * -height;",
-"\t\t\t",
+"",
 "\t\tanchorPoints .push (new SFVec3f (x, y, 0));",
 "\t}",
 "",
@@ -1680,11 +1672,11 @@
 "\t\t\trigidBody       = scene .createNode (\"RigidBody\"),",
 "\t\t\tposition        = anchorPoints [i] .add (anchorPoints [i + 1]) .divide (2);",
 "\t\t\torientation     = new SFRotation (xAxis, anchorPoints [i + 1] .subtract (anchorPoints [i]));",
-"\t\t",
-"\t\tcollidableShape .shape        = Math .floor (i / 3) % 2 ? shape1 : shape2;\t",
+"",
+"\t\tcollidableShape .shape        = Math .floor (i / 3) % 2 ? shape1 : shape2;",
 "\t\trigidBody .position           = position;",
 "\t\trigidBody .orientation        = orientation;",
-"\t\t\t",
+"",
 "\t\tcollidables .children .push (collidableShape);",
 "\t\trigidBody .geometry .push (collidableShape);",
 "\t\tcollection  .bodies .push (rigidBody);",
@@ -1692,15 +1684,15 @@
 "",
 "\tcollection  .bodies [0] .fixed                               = true;",
 "\tcollection  .bodies [collection  .bodies .length - 1] .fixed = true;",
-"\t",
+"",
 "\tfor (var i = 0; i < numCollidables - 1; ++ i)",
 "\t{",
 "\t\tvar joint = scene .createNode (\"BallJoint\");",
-"\t",
+"",
 "\t\tjoint .anchorPoint = anchorPoints [i + 1];",
 "\t\tjoint .body1       = collection .bodies [i];",
 "\t\tjoint .body2       = collection .bodies [i + 1];",
-"\t\t\t\t",
+"",
 "\t\tcollection .joints .push (joint);",
 "\t}",
 "}",
@@ -1708,7 +1700,7 @@
 "function set_time (value, time)",
 "{",
 "\tvar force = new SFVec3f (0, 0, (Math .random () * wind * 2) - wind);",
-"\t",
+"",
 "\tfor (var i = 0; i < collection .bodies .length; ++ i)",
 "\t\tcollection .bodies [i] .forces [0] = force;",
 "}",
@@ -1778,10 +1770,10 @@
                           "-children": [
                             { "Appearance":
                               {
-                                "@DEF": "_87",
+                                "@DEF": "_1",
                                 "-material": { "Material":
                                   {
-                                    "@DEF": "Metal10_1",
+                                    "@DEF": "Metal10_87",
                                     "@ambientIntensity": 0.00714286,
                                     "@diffuseColor": [ 0.314286, 0.0743647, 0 ],
                                     "@specularColor": [ 1, 0.766841, 0 ],
@@ -1810,7 +1802,7 @@
                           "-children": [
                             { "Appearance":
                               {
-                                "@DEF": "_89",
+                                "@DEF": "_2",
                                 "-material": { "Material":
                                   {
                                     "@DEF": "Metal31",

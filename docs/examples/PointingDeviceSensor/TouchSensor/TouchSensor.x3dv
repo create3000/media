@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -9,11 +9,9 @@ UNIT angle degree 0.017453292519943295
 META "created" "Tue, 07 Feb 2023 21:26:14 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.0.17, https://create3000.github.io/sunrize/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/PointingDeviceSensor/TouchSensor/TouchSensor.O.x3d"
-META "modified" "Sun, 16 Apr 2023 13:04:59 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:01:20 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:15:43 GMT"
 
 PROTO PointingObjects [ ]
 {
@@ -79,7 +77,7 @@ function createNode ()
    scene .addRoute (interpolator, \"value_changed\", transform, \"set_rotation\");
 
    scene .addRoute (touchSensor, \"isOver\", self, \"set_over\");
-   
+
    group .children .push (transform);
    touchSensors .push (touchSensor);
    materials .push (material);

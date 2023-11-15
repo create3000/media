@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollisionCollection/CollisionCollection.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 03:46:10 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:03:29 GMT"
+          "@content": "Wed, 15 Nov 2023 02:18:18 GMT"
         }
       ],
       "component": [
@@ -53,7 +45,7 @@
         {
           "@category": "angle",
           "@name": "degree",
-          "@conversionFactor": 0.0174532925199433
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -86,7 +78,7 @@
               { "CollidableShape":
                 {
                   "@DEF": "Ball",
-                  "@translation": [ -0.00000192031, -0.251985, -0.00000234233 ],
+                  "@translation": [ -1.92031e-6, -0.251985, -2.34233e-6 ],
                   "-shape": { "Shape":
                     {
                       "-appearance": { "Appearance":
@@ -119,7 +111,7 @@
                       "@translation": [ 0, -1, 0 ],
                       "-shape": { "Shape":
                         {
-                          "@DEF": "_1",
+                          "@DEF": "_15",
                           "-appearance": { "Appearance":
                             {
                               "-material": { "Material":
@@ -153,7 +145,7 @@
                       "@translation": [ 0, 1, 0 ],
                       "-shape": { "Shape":
                         {
-                          "@USE": "_1"
+                          "@USE": "_15"
                         }
                       }
                     }
@@ -181,9 +173,9 @@
             "-bodies": [
               { "RigidBody":
                 {
-                  "@DEF": "Ball_1",
-                  "@position": [ -0.00000192031, -0.251985, -0.00000234233 ],
-                  "@linearVelocity": [ -0.00000404398, -1.46553, -0.00000493573 ],
+                  "@DEF": "Ball_2",
+                  "@position": [ -1.92031e-6, -0.251985, -2.34233e-6 ],
+                  "@linearVelocity": [ -4.04398e-6, -1.46553, -4.93573e-6 ],
                   "@angularVelocity": [ -1.98016e-10, 2.95806e-10, 0.000388671 ],
                   "-geometry": [
                     { "CollidableShape":
@@ -196,7 +188,7 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Floor_1",
+                  "@DEF": "Floor_16",
                   "@fixed": true,
                   "@linearVelocity": [ 0, 0.1, 0 ],
                   "-geometry": [
@@ -210,7 +202,7 @@
               },
               { "RigidBody":
                 {
-                  "@DEF": "Ceiling_1",
+                  "@DEF": "Ceiling_17",
                   "@fixed": true,
                   "-geometry": [
                     { "CollidableOffset":
@@ -236,13 +228,13 @@
                 "-children": [
                   { "RigidBody":
                     {
-                      "@USE": "Ball_1"
+                      "@USE": "Ball_2"
                     }
                   }
                 ]
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",

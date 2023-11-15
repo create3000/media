@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.5.0, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Shape/LineProperties/LineProperties.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 15 Apr 2019 02:42:45 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:05:27 GMT"
+          "@content": "Wed, 15 Nov 2023 02:20:16 GMT"
         }
       ]
     },
@@ -76,14 +68,14 @@
                     },
                     { "OrientationInterpolator":
                       {
-                        "@DEF": "RotationInterpolator_1",
+                        "@DEF": "RotationInterpolator_15",
                         "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
                         "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.14159253438051, 0, 1, 0, 1.57079644600419, 0, 0, 1, 0 ]
                       }
                     },
                     { "OrientationInterpolator":
                       {
-                        "@DEF": "RotationInterpolator_2",
+                        "@DEF": "RotationInterpolator_21",
                         "@key": [ 0, 0.25, 0.5, 0.75, 1 ],
                         "@keyValue": [ 0, 0, 1, 0, 0, 1, 0, 1.5707963267949, 0, 1, 0, 3.14159253438051, 0, 1, 0, 4.7123888611754, 0, 0, 1, 0 ]
                       }
@@ -93,8 +85,8 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_1",
-                  "@rotation": [ 0, 1, 0, 0.462843733150726 ],
+                  "@DEF": "_27",
+                  "@rotation": [ 0, 1, 0, 1.8068764226086 ],
                   "-children": [
                     { "Transform":
                       {
@@ -121,7 +113,7 @@
                               },
                               "-geometry": { "IndexedLineSet":
                                 {
-                                  "@DEF": "_2",
+                                  "@DEF": "_28",
                                   "@coordIndex": [ 0, 1, 2, 3, 0, -1, 5, 4, 7, 6, 5, -1, 2, 6, -1, 7, 3, -1, 5, 1, -1, 0, 4, -1 ],
                                   "-coord": { "Coordinate":
                                     {
@@ -140,12 +132,12 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_3",
-                  "@rotation": [ 0, -1, 0, 0.462843733150726 ],
+                  "@DEF": "_29",
+                  "@rotation": [ 0, -1, 0, 1.8068764226086 ],
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Box_1",
+                        "@DEF": "Box_30",
                         "@rotation": [ 0.590284499391797, 0.244506671005275, -0.769272836912687, 0.98786105818265 ],
                         "@scale": [ 1.75736, 1.75736, 1.75736 ],
                         "@scaleOrientation": [ -0.329043930035858, 0.566697417302696, -0.755370193566712, 0.67555490580333 ],
@@ -169,7 +161,7 @@
                               },
                               "-geometry": { "IndexedLineSet":
                                 {
-                                  "@USE": "_2"
+                                  "@USE": "_28"
                                 }
                               }
                             }
@@ -182,12 +174,12 @@
               },
               { "Transform":
                 {
-                  "@DEF": "_4",
-                  "@rotation": [ 0, 1, 0, 0.462843733150726 ],
+                  "@DEF": "_31",
+                  "@rotation": [ 0, 1, 0, 1.8068764226086 ],
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Box_2",
+                        "@DEF": "Box_32",
                         "@rotation": [ 0.590284499391797, 0.244506671005275, -0.769272836912687, 0.98786105818265 ],
                         "@scale": [ 2.82844, 2.82844, 2.82844 ],
                         "@scaleOrientation": [ 0.111350277667656, 0.40117999342139, 0.909206097945757, 0.731417893085076 ],
@@ -211,7 +203,7 @@
                               },
                               "-geometry": { "IndexedLineSet":
                                 {
-                                  "@USE": "_2"
+                                  "@USE": "_28"
                                 }
                               }
                             }
@@ -237,7 +229,7 @@
           {
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_1",
+            "@toNode": "_27",
             "@toField": "rotation"
           }
         },
@@ -245,15 +237,15 @@
           {
             "@fromNode": "AnimationTimer",
             "@fromField": "fraction_changed",
-            "@toNode": "RotationInterpolator_1",
+            "@toNode": "RotationInterpolator_15",
             "@toField": "set_fraction"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "RotationInterpolator_1",
+            "@fromNode": "RotationInterpolator_15",
             "@fromField": "value_changed",
-            "@toNode": "_3",
+            "@toNode": "_29",
             "@toField": "rotation"
           }
         },
@@ -261,15 +253,15 @@
           {
             "@fromNode": "AnimationTimer",
             "@fromField": "fraction_changed",
-            "@toNode": "RotationInterpolator_2",
+            "@toNode": "RotationInterpolator_21",
             "@toField": "set_fraction"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "RotationInterpolator_2",
+            "@fromNode": "RotationInterpolator_21",
             "@fromField": "value_changed",
-            "@toNode": "_4",
+            "@toNode": "_31",
             "@toField": "rotation"
           }
         }

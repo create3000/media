@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,23 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.6.7, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/KeyDeviceSensor/StringSensor/StringSensor.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 07 Nov 2019 12:42:43 GMT"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 17:55:49 GMT"
+          "@content": "Wed, 15 Nov 2023 02:09:13 GMT"
         }
       ],
       "component": [
@@ -60,10 +52,6 @@
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
         { "NavigationInfo":
           {
             "@type": [ "NONE" ]
@@ -78,7 +66,7 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@DEF": "_1",
+                      "@DEF": "_16",
                       "-material": { "Material":
                         {
                           "@diffuseColor": [ 0, 0, 0 ],
@@ -114,7 +102,7 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_1"
+                      "@USE": "_16"
                     }
                   },
                   "-geometry": { "Text":
@@ -145,7 +133,6 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@DEF": "_2",
                       "-pointProperties": { "PointProperties":
                         {
                           "@pointSizeScaleFactor": 4,
@@ -177,7 +164,7 @@
         },
         { "StringSensor":
           {
-            "@DEF": "_4"
+            "@DEF": "_17"
           }
         },
         { "Script":
@@ -233,7 +220,7 @@
                 "-children": [
                   { "AudioClip":
                     {
-                      "@DEF": "_5",
+                      "@DEF": "_18",
                       "@description": "screws",
                       "@url": [ "assets/screws.mp3" ],
                       "@pauseTime": 1544722794.88013
@@ -242,14 +229,14 @@
                 ]
               }
             ],
-            "#sourceText": [
+            "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
 "{",
 "\tset_enteredText (\"\", 0);",
 "\tset_score ();",
-"\t",
+"",
 "\tnames_changed  = names;",
 "\tscores_changed = scores;",
 "}",
@@ -271,7 +258,7 @@
 "",
 "\tnames  .length = Math .min (7, names .length);",
 "\tscores .length = Math .min (7, scores .length);",
-"\t",
+"",
 "\tnames_changed  = names;",
 "\tscores_changed = scores;",
 "",
@@ -300,7 +287,7 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@DEF": "_6",
+                      "@DEF": "_19",
                       "-material": { "Material":
                         {
                           "@USE": "_3"
@@ -310,7 +297,7 @@
                   },
                   "-geometry": { "Text":
                     {
-                      "@DEF": "_7",
+                      "@DEF": "_20",
                       "@string": [ "" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
@@ -336,13 +323,13 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_6"
+                      "@USE": "_19"
                     }
                   },
                   "-geometry": { "Text":
                     {
-                      "@DEF": "_8",
-                      "@string": [ "74499" ],
+                      "@DEF": "_21",
+                      "@string": [ "56374" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
@@ -367,7 +354,7 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_6"
+                      "@USE": "_19"
                     }
                   },
                   "-geometry": { "Text":
@@ -396,7 +383,7 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_6"
+                      "@USE": "_19"
                     }
                   },
                   "-geometry": { "Text":
@@ -426,12 +413,12 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_1"
+                      "@USE": "_16"
                     }
                   },
                   "-geometry": { "Text":
                     {
-                      "@DEF": "_9",
+                      "@DEF": "_22",
                       "@string": [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
@@ -457,12 +444,12 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "@USE": "_1"
+                      "@USE": "_16"
                     }
                   },
                   "-geometry": { "Text":
                     {
-                      "@DEF": "_10",
+                      "@DEF": "_23",
                       "@string": [ "64954", "90797", "76015", "75371", "59181", "93368" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
@@ -483,7 +470,6 @@
         { "Inline":
           {
             "@DEF": "StarField",
-            "@global": true,
             "@url": [ "assets/starfield.x3d" ]
           }
         },
@@ -496,14 +482,14 @@
             "@maxFront": 30,
             "-source": { "AudioClip":
               {
-                "@USE": "_5"
+                "@USE": "_18"
               }
             }
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_4",
+            "@fromNode": "_17",
             "@fromField": "enteredText",
             "@toNode": "ScoreScript",
             "@toField": "set_enteredText"
@@ -511,7 +497,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_4",
+            "@fromNode": "_17",
             "@fromField": "finalText",
             "@toNode": "ScoreScript",
             "@toField": "set_finalText"
@@ -521,7 +507,7 @@
           {
             "@fromNode": "ScoreScript",
             "@fromField": "name_changed",
-            "@toNode": "_7",
+            "@toNode": "_20",
             "@toField": "string"
           }
         },
@@ -529,7 +515,7 @@
           {
             "@fromNode": "ScoreScript",
             "@fromField": "score_changed",
-            "@toNode": "_8",
+            "@toNode": "_21",
             "@toField": "string"
           }
         },
@@ -537,7 +523,7 @@
           {
             "@fromNode": "ScoreScript",
             "@fromField": "names_changed",
-            "@toNode": "_9",
+            "@toNode": "_22",
             "@toField": "string"
           }
         },
@@ -545,7 +531,7 @@
           {
             "@fromNode": "ScoreScript",
             "@fromField": "scores_changed",
-            "@toNode": "_10",
+            "@toNode": "_23",
             "@toField": "string"
           }
         }

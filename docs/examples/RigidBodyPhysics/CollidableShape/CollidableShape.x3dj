@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.96, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/RigidBodyPhysics/CollidableShape/CollidableShape.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "license",
@@ -36,7 +36,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Sun, 01 Oct 2023 09:30:13 GMT"
+          "@content": "Wed, 15 Nov 2023 02:18:19 GMT"
         },
         {
           "@name": "reference",
@@ -49,10 +49,6 @@
         {
           "@name": "reference",
           "@content": "http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
         },
         {
           "@name": "title",
@@ -133,7 +129,7 @@
                     {
                       "-appearance": { "Appearance":
                         {
-                          "@DEF": "_1",
+                          "@DEF": "_3",
                           "-material": { "Material":
                             {
                               "@DEF": "Neon12",
@@ -173,7 +169,7 @@
                     {
                       "-appearance": { "Appearance":
                         {
-                          "@USE": "_1"
+                          "@USE": "_3"
                         }
                       },
                       "-geometry": { "IndexedFaceSet":
@@ -212,7 +208,7 @@
             "-children": [
               { "CollidableShape":
                 {
-                  "@DEF": "_2",
+                  "@DEF": "_6",
                   "@translation": [ 0, 5, 0 ],
                   "-shape": { "Shape":
                     {
@@ -231,7 +227,7 @@
                           },
                           "-texture": { "ImageTexture":
                             {
-                              "@DEF": "_3",
+                              "@DEF": "_7",
                               "@url": [ "assets/pattern.png" ],
                               "@repeatS": false,
                               "@repeatT": false
@@ -284,7 +280,7 @@
                       "-children": [
                         { "RigidBodyCollection":
                           {
-                            "@DEF": "_4",
+                            "@DEF": "_1",
                             "@iterations": 5,
                             "-collider": { "CollisionCollection":
                               {
@@ -296,7 +292,6 @@
                             "-bodies": [
                               { "RigidBody":
                                 {
-                                  "@DEF": "_5",
                                   "@fixed": true,
                                   "-geometry": [
                                     { "CollidableShape":
@@ -309,7 +304,6 @@
                               },
                               { "RigidBody":
                                 {
-                                  "@DEF": "_6",
                                   "@fixed": true,
                                   "-geometry": [
                                     { "CollidableShape":
@@ -322,14 +316,13 @@
                               },
                               { "RigidBody":
                                 {
-                                  "@DEF": "_7",
                                   "@position": [ 0, 5, 0 ],
                                   "@linearVelocity": [ -1.379216, -1.077583, -1.356423 ],
                                   "@centerOfMass": [ -0.8488156, 0.8448355, -0.4657963 ],
                                   "-geometry": [
                                     { "CollidableShape":
                                       {
-                                        "@USE": "_2"
+                                        "@USE": "_6"
                                       }
                                     }
                                   ]
@@ -383,7 +376,7 @@
                                 },
                                 "-texture": { "ImageTexture":
                                   {
-                                    "@USE": "_3"
+                                    "@USE": "_7"
                                   }
                                 }
                               }
@@ -412,7 +405,7 @@
                                 },
                                 "-texture": { "ImageTexture":
                                   {
-                                    "@USE": "_3"
+                                    "@USE": "_7"
                                   }
                                 }
                               }
@@ -441,7 +434,7 @@
                                 },
                                 "-texture": { "ImageTexture":
                                   {
-                                    "@USE": "_3"
+                                    "@USE": "_7"
                                   }
                                 }
                               }
@@ -479,7 +472,7 @@
 "\t\trigidBody .linearVelocity  = random3 () .multiply (1.5);",
 "\t\trigidBody .angularVelocity = new SFVec3f (0, 0, 0);",
 "\t\trigidBody .centerOfMass    = random3 ();",
-"\t",
+"",
 "\t\t//collection .bodies .push (rigidBody);",
 "\t\t//primitives .children .push (rigidBody .geometry [0]);",
 "\t}",
@@ -499,10 +492,10 @@
 "\t\trigidBody .geometry .push (collidableShape);",
 "\t\tcollection .bodies .push (rigidBody);",
 "\t\tprimitives .children .push (collidableShape);",
-"\t\t",
+"",
 "\t\tcache .push (rigidBody);",
 "\t}",
-"\t",
+"",
 "\ti ++;",
 "}",
 "",

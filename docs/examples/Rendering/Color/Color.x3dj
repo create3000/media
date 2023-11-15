@@ -1,14 +1,14 @@
 { "X3D": {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "3.3",
+    "@version": "4.0",
     "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
     "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
           "@name": "comment",
-          "@content": "World of Titania"
+          "@content": "Rise and Shine"
         },
         {
           "@name": "created",
@@ -20,27 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Titania V4.3.9, http://titania.create3000.de"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
-          "@name": "identifier",
-          "@content": "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Rendering/Color/Color.O.x3d"
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Mon, 07 Jan 2019 03:23:10 GMT"
-        },
-        {
-          "@name": "titania-add-metadata",
-          "@content": "true"
-        },
-        {
-          "@name": "converter",
-          "@content": "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-        },
-        {
-          "@name": "converted",
-          "@content": "Mon, 29 May 2023 18:01:43 GMT"
+          "@content": "Wed, 15 Nov 2023 02:16:13 GMT"
         }
       ],
       "component": [
@@ -239,7 +227,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "function initialize ()",
@@ -290,7 +278,7 @@
 "\t\t\t\t\t.multVec (size)",
 "\t\t\t\t\t.add (start)",
 "\t\t\t\t\t.add (o);",
-"\t\t\t\t",
+"",
 "\t\t\t\tcolor .color .push (c);",
 "\t\t\t\tcoord .point .push (new SFVec3f (p .x, p .y, 0));",
 "\t\t\t}",
@@ -440,7 +428,7 @@
                         ]
                       }
                     ],
-                    "#sourceText": [
+                    "#sourceCode": [
 "ecmascript:",
 "",
 "var dimension, start, offset;",
@@ -489,7 +477,7 @@
 "",
 "\tif (index1 < 0 && index2 < 0)",
 "\t\treturn;",
-"\t",
+"",
 "\tif (index1 < 0)",
 "\t{",
 "\t\tif (moveToLeftSide)",
@@ -502,7 +490,7 @@
 "\t{",
 "\t\tif (moveToRightSide)",
 "\t\t\tswapRectangle (swapIndex2, swapIndex1);",
-"\t\t\t",
+"",
 "\t\treturn;",
 "\t}",
 "",
@@ -531,7 +519,7 @@
 "\t\tcoord .point [index * 4 + i] .x = p .x;",
 "\t\tcoord .point [index * 4 + i] .y = p .y;",
 "\t}",
-"\t",
+"",
 "\tswapMatrix [emptyIndex]\t= swapMatrix [swapIndex];",
 "\tswapMatrix [swapIndex]\t= -1;",
 "}",
@@ -543,7 +531,7 @@
 "\tvar",
 "\t\ti1 = index1 * 4 + i,",
 "\t\ti2 = index2 * 4 + i;",
-"\t",
+"",
 "\tauxColor .assign (color .color [i1]);",
 "",
 "\tcolor .color [i1] = color .color [i2];",
@@ -565,10 +553,10 @@
 "",
 "\tsx += Math .round (swapVariation * rx);",
 "\tsy += Math .round ((swapHeight - height) / 2 * ry);",
-"\t",
+"",
 "\tif (sx < 0 || sx > swapWidth)",
 "\t\treturn -1;",
-"\t",
+"",
 "\treturn getSwapIndex (sx, sy);",
 "}",
 "",

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -14,11 +14,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 08 Jul 2018 09:58:21 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.0.17, https://create3000.github.io/sunrize/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/ScalarChaser/ScalarChaser.O.x3d"
-META "modified" "Wed, 12 Apr 2023 21:42:05 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:50:47 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:04:12 GMT"
 
 EXTERNPROTO SFFloat [
   inputOnly   SFTime  set_triggerTime
@@ -122,7 +120,7 @@ function initialize ()
 	}
 	catch (error)
 	{ }
-	
+
 	initialized = true;
 }
 "
@@ -217,25 +215,25 @@ LayerSet {
             DEF Year1995 Transform {
               translation -9 -36 0
               children [
-                DEF _8 Year {
+                DEF _1 Year {
                   enabled TRUE
                   string "1995"
                 }
-                DEF _9 TouchSensor { }
+                DEF _2 TouchSensor { }
                 DEF EnableYear BooleanFilter { }
                 DEF DisableOthers BooleanFilter { }
-                DEF _10 TimeTrigger { }
+                DEF _3 TimeTrigger { }
                 DEF Cities1995 SFFloat { }
               ]
             }
             DEF Year2000 Transform {
               translation 84 -36 0
               children [
-                DEF _11 Year { }
-                DEF _12 TouchSensor { }
-                DEF _13 BooleanFilter { }
-                DEF _14 BooleanFilter { }
-                DEF _15 TimeTrigger { }
+                DEF _4 Year { }
+                DEF _5 TouchSensor { }
+                DEF _6 BooleanFilter { }
+                DEF _7 BooleanFilter { }
+                DEF _8 TimeTrigger { }
                 DEF Cities2000 SFFloat {
                   keyValue 0.5
                 }
@@ -244,13 +242,13 @@ LayerSet {
             DEF Year2005 Transform {
               translation 159 -36 0
               children [
-                DEF _16 Year {
+                DEF _9 Year {
                   string "2005"
                 }
-                DEF _17 TouchSensor { }
-                DEF _18 BooleanFilter { }
-                DEF _19 BooleanFilter { }
-                DEF _20 TimeTrigger { }
+                DEF _10 TouchSensor { }
+                DEF _11 BooleanFilter { }
+                DEF _12 BooleanFilter { }
+                DEF _13 TimeTrigger { }
                 DEF Cities2005 SFFloat {
                   keyValue 1
                 }
@@ -361,30 +359,30 @@ LayerSet {
 }
 
 IMPORT Cities.PointInterpolator
+ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction
 
-ROUTE _12.isOver TO _13.set_boolean
-ROUTE _17.isOver TO _18.set_boolean
-ROUTE _9.isOver TO EnableYear.set_boolean
+ROUTE _5.isOver TO _6.set_boolean
+ROUTE _10.isOver TO _11.set_boolean
+ROUTE _2.isOver TO EnableYear.set_boolean
 ROUTE EnableYear.inputTrue TO DisableOthers.set_boolean
-ROUTE _13.inputTrue TO _14.set_boolean
-ROUTE _18.inputTrue TO _19.set_boolean
-ROUTE EnableYear.inputTrue TO _10.set_boolean
-ROUTE _15.triggerTime TO Cities2000.set_triggerTime
-ROUTE _10.triggerTime TO Cities1995.set_triggerTime
-ROUTE _13.inputTrue TO _15.set_boolean
-ROUTE _20.triggerTime TO Cities2005.set_triggerTime
-ROUTE _18.inputTrue TO _20.set_boolean
+ROUTE _6.inputTrue TO _7.set_boolean
+ROUTE _11.inputTrue TO _12.set_boolean
+ROUTE EnableYear.inputTrue TO _3.set_boolean
+ROUTE _8.triggerTime TO Cities2000.set_triggerTime
+ROUTE _3.triggerTime TO Cities1995.set_triggerTime
+ROUTE _6.inputTrue TO _8.set_boolean
+ROUTE _13.triggerTime TO Cities2005.set_triggerTime
+ROUTE _11.inputTrue TO _13.set_boolean
 ROUTE Cities2005.value_changed TO AnimateCities.set_destination
 ROUTE Cities2000.value_changed TO AnimateCities.set_destination
 ROUTE Cities1995.value_changed TO AnimateCities.set_destination
-ROUTE _18.inputTrue TO _16.set_enabled
-ROUTE _14.inputNegate TO _16.set_enabled
-ROUTE DisableOthers.inputNegate TO _16.set_enabled
-ROUTE _19.inputNegate TO _8.set_enabled
-ROUTE _14.inputNegate TO _8.set_enabled
-ROUTE EnableYear.inputTrue TO _8.set_enabled
-ROUTE _19.inputNegate TO _11.set_enabled
-ROUTE DisableOthers.inputNegate TO _11.set_enabled
-ROUTE _13.inputTrue TO _11.set_enabled
+ROUTE _11.inputTrue TO _9.set_enabled
+ROUTE _7.inputNegate TO _9.set_enabled
+ROUTE DisableOthers.inputNegate TO _9.set_enabled
+ROUTE _12.inputNegate TO _1.set_enabled
+ROUTE _7.inputNegate TO _1.set_enabled
+ROUTE EnableYear.inputTrue TO _1.set_enabled
+ROUTE _12.inputNegate TO _4.set_enabled
+ROUTE DisableOthers.inputNegate TO _4.set_enabled
+ROUTE _6.inputTrue TO _4.set_enabled
 ROUTE EnterWorldScript.initialized TO EnableYear.set_boolean
-ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction

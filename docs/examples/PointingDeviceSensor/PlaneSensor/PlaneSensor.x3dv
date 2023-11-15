@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -6,14 +6,12 @@ COMPONENT PointingDeviceSensor : 1
 
 UNIT angle degree 0.017453292519943295
 
-META "comment" "World of Titania"
+META "comment" "Rise and Shine"
 META "created" "Thu, 06 Oct 2016 10:49:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.10, http://titania.create3000.de"
-META "identifier" "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/PointingDeviceSensor/PlaneSensor/PlaneSensor.O.x3d"
-META "modified" "Mon, 21 Jan 2019 09:17:37 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 18:01:01 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:15:36 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -45,7 +43,7 @@ NavigationInfo {
   type "NONE"
 }
 
-DEF _1 Viewpoint {
+DEF _2 Viewpoint {
   position 0 0 12.9309
 }
 
@@ -74,7 +72,7 @@ DEF Clone1 Transform {
           geometry Cone { }
         }
       }
-      DEF _2 PlaneSensor {
+      DEF _3 PlaneSensor {
         maxPosition 0 2
       }
     ]
@@ -90,9 +88,9 @@ DEF Clone2 Transform {
 
 DEF Clone3 Transform {
   translation 0 -3 6.66134e-16
-  rotation 0.00000172022019207585 0.00000172022019207586 -0.999999999997041 90.0000000001698
-  scaleOrientation 0.543313393239255 -0.839529958577022 -0.0000733383290662978 0.000130177385127595
+  rotation 1.72022019207585e-6 1.72022019207586e-6 -0.999999999997041 90.0000000001698
+  scaleOrientation 0.543313393239255 -0.839529958577022 -7.33383290662978e-5 0.000130177385127595
   children USE SimpleSlider
 }
 
-ROUTE _2.translation_changed TO Cone.set_translation
+ROUTE _3.translation_changed TO Cone.set_translation

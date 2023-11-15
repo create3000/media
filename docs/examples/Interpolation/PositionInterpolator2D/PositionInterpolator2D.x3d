@@ -8,9 +8,8 @@
     <meta name='created' content='Sun, 24 Sep 2017 10:08:54 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 16 Jun 2018 17:01:27 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:55:09 GMT'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:08:23 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Torus' url='"Torus.x3d#Torus"'>
@@ -47,8 +46,8 @@
               shininess='0.536'/>
           <ImageTexture
               url='"glow.png"'/>
-          <TextureTransform DEF='_1'
-              translation='0 0.4'
+          <TextureTransform DEF='_2'
+              translation='0 1.338833'
               scale='1 2'/>
         </Appearance>
         <ProtoInstance name='Torus' containerField='geometry'>
@@ -64,7 +63,7 @@
           <Material
               diffuseColor='1 1 1'/>
         </Appearance>
-        <Text DEF='_2'
+        <Text DEF='_3'
             string='"Titania"'
             solid='true'>
           <FontStyle
@@ -85,7 +84,7 @@ function initialize ()
       </Script>
     </Transform>
     <ROUTE fromNode='GlowAnimationTimer' fromField='fraction_changed' toNode='TranslationInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='TranslationInterpolator' fromField='value_changed' toNode='_1' toField='set_translation'/>
-    <ROUTE fromNode='BrowserScript' fromField='string_changed' toNode='_2' toField='set_string'/>
+    <ROUTE fromNode='TranslationInterpolator' fromField='value_changed' toNode='_2' toField='set_translation'/>
+    <ROUTE fromNode='BrowserScript' fromField='string_changed' toNode='_3' toField='set_string'/>
   </Scene>
 </X3D>

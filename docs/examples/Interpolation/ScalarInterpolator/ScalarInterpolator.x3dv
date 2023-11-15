@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V8.6.8
+#X3D V4.0 utf8 X_ITE V9.0.3
 
 PROFILE Interchange
 
@@ -12,11 +12,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Wed, 22 Nov 2017 08:26:49 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/"
-META "identifier" "file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/ScalarInterpolator/ScalarInterpolator.O.x3d"
-META "modified" "Fri, 10 Feb 2023 23:51:36 GMT"
-META "converter" "x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "converted" "Mon, 29 May 2023 17:55:15 GMT"
+META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 15 Nov 2023 02:08:31 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -69,12 +67,12 @@ Grid {
   majorLineColor 0 0 0
   majorLineTransparency 0.4
   numberOffset -0.1 0 0.14
-  numberAppearance DEF _1 Appearance {
+  numberAppearance DEF _2 Appearance {
     material Material {
       diffuseColor 0 0 0
     }
   }
-  numberFontStyle DEF _2 ScreenFontStyle {
+  numberFontStyle DEF _3 ScreenFontStyle {
     justify [ "END", "BEGIN" ]
   }
 }
@@ -111,7 +109,7 @@ function set_y (value, time)
     }
     Shape {
       appearance Appearance {
-        lineProperties DEF _3 LineProperties {
+        lineProperties DEF _1 LineProperties {
           linewidthScaleFactor 3
         }
         material Material {
@@ -119,7 +117,7 @@ function set_y (value, time)
         }
       }
       geometry DEF Trail LineTrail {
-        resetTime 1676073090.3630009
+        resetTime 1700014109.533
         point 4.208 -1.138667 0
         dimension 1000
       }
@@ -269,7 +267,7 @@ function pick (hitPoint)
 		pointIndex = i;
 		break;
 	}
-	
+
 	return pointIndex;
 }
 
@@ -279,7 +277,7 @@ function addPoint ()
 
 	xInterpolator .keyValue .splice (pointIndex, 0, hitPoint .x);
 	yInterpolator .keyValue .splice (pointIndex, 0, hitPoint .y);
-	
+
 	setXInterpolatorKey ();
 }
 
@@ -289,7 +287,7 @@ function removePoint ()
 
 	xInterpolator .keyValue .splice (pointIndex, 1);
 	yInterpolator .keyValue .splice (pointIndex, 1);
-	
+
 	setXInterpolatorKey ();
 }
 
@@ -300,7 +298,7 @@ function getAddPointIndex ()
 		if (xInterpolator .keyValue [i] > hitPoint .x)
 			break;
 	}
-	
+
 	return i;
 }
 
@@ -334,10 +332,10 @@ function setXInterpolatorKey ()
 		{
 			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
 				                       yInterpolator .keyValue [i - 1]);
-				                       
+
 			var point1 = new SFVec2f (xInterpolator .keyValue [i],
 				                       yInterpolator .keyValue [i]);
-				                      
+
 			totalLength += point1 .subtract (point0) .length ();
 		}
 
@@ -347,12 +345,12 @@ function setXInterpolatorKey ()
 		{
 			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
 				                       yInterpolator .keyValue [i - 1]);
-				                       
+
 			var point1 = new SFVec2f (xInterpolator .keyValue [i],
 				                       yInterpolator .keyValue [i]);
-				                      
+
 			lengthSoFar += point1 .subtract (point0) .length ();
-			
+
 			xInterpolator .key [i] = lengthSoFar / totalLength;
 		}
 

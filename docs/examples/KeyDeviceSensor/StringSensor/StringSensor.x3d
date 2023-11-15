@@ -9,19 +9,17 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Thu, 13 Dec 2018 13:18:33 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 Nov 2019 12:42:43 GMT'/>
-    <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='converted' content='Mon, 29 May 2023 17:55:43 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 15 Nov 2023 02:09:13 GMT'/>
   </head>
   <Scene>
-    <WorldInfo/>
     <NavigationInfo
         type='"NONE"'/>
     <Transform DEF='YouWin'
         translation='0 3 0'>
       <Shape>
-        <Appearance DEF='_1'>
+        <Appearance DEF='_16'>
           <Material
               diffuseColor='0 0 0'
               emissiveColor='0 1 1'/>
@@ -39,7 +37,7 @@
     <Transform DEF='EnterYourName'
         translation='0 2.53057 0'>
       <Shape>
-        <Appearance USE='_1'/>
+        <Appearance USE='_16'/>
         <Text
             string='"enter your name"'
             solid='true'>
@@ -54,7 +52,7 @@
         translation='0 1.57545 0'
         scale='0.4 1 1'>
       <Shape>
-        <Appearance DEF='_2'>
+        <Appearance>
           <PointProperties
               pointSizeScaleFactor='4'
               pointSizeMaxValue='4'/>
@@ -68,7 +66,7 @@
         </PointSet>
       </Shape>
     </Transform>
-    <StringSensor DEF='_4'/>
+    <StringSensor DEF='_17'/>
     <Script DEF='ScoreScript'>
       <field accessType='inputOnly' type='SFString' name='set_enteredText'/>
       <field accessType='inputOnly' type='SFString' name='set_finalText'/>
@@ -79,7 +77,7 @@
       <field accessType='initializeOnly' type='MFString' name='names' value='"nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug"'/>
       <field accessType='initializeOnly' type='MFString' name='scores' value='"64954", "90797", "76015", "75371", "59181", "93368"'/>
       <field accessType='initializeOnly' type='SFNode' name='sound'>
-        <AudioClip DEF='_5' containerField='sound'
+        <AudioClip DEF='_18'
             description='screws'
             url='"assets/screws.mp3"'
             pauseTime='1544722794.88013'/>
@@ -133,10 +131,10 @@ function random (min, max)
     <Transform DEF='Name'
         translation='0 1.74394 0'>
       <Shape>
-        <Appearance DEF='_6'>
+        <Appearance DEF='_19'>
           <Material USE='_3'/>
         </Appearance>
-        <Text DEF='_7'
+        <Text DEF='_20'
             string='""'
             solid='true'>
           <FontStyle
@@ -149,9 +147,9 @@ function random (min, max)
     <Transform DEF='Score'
         translation='0 1.16039 0'>
       <Shape>
-        <Appearance USE='_6'/>
-        <Text DEF='_8'
-            string='"74499"'
+        <Appearance USE='_19'/>
+        <Text DEF='_21'
+            string='"56374"'
             solid='true'>
           <FontStyle
               family='"assets/ATComputer.otf"'
@@ -163,7 +161,7 @@ function random (min, max)
     <Transform DEF='PlayersText'
         translation='-6 0.608401 0'>
       <Shape>
-        <Appearance USE='_6'/>
+        <Appearance USE='_19'/>
         <Text
             string='"Players"'
             solid='true'>
@@ -176,7 +174,7 @@ function random (min, max)
     <Transform DEF='ScoresText'
         translation='6 0.608401 0'>
       <Shape>
-        <Appearance USE='_6'/>
+        <Appearance USE='_19'/>
         <Text
             string='"Scores"'
             solid='true'>
@@ -190,8 +188,8 @@ function random (min, max)
     <Transform DEF='Names'
         translation='-6 0 0'>
       <Shape>
-        <Appearance USE='_1'/>
-        <Text DEF='_9'
+        <Appearance USE='_16'/>
+        <Text DEF='_22'
             string='"nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug"'
             solid='true'>
           <FontStyle
@@ -204,8 +202,8 @@ function random (min, max)
     <Transform DEF='Scores'
         translation='6 0 0'>
       <Shape>
-        <Appearance USE='_1'/>
-        <Text DEF='_10'
+        <Appearance USE='_16'/>
+        <Text DEF='_23'
             string='"64954", "90797", "76015", "75371", "59181", "93368"'
             solid='true'>
           <FontStyle
@@ -217,20 +215,19 @@ function random (min, max)
       </Shape>
     </Transform>
     <Inline DEF='StarField'
-        global='true'
         url='"assets/starfield.x3d"'/>
     <Sound DEF='screws'
         minBack='20'
         minFront='20'
         maxBack='30'
         maxFront='30'>
-      <AudioClip USE='_5'/>
+      <AudioClip USE='_18'/>
     </Sound>
-    <ROUTE fromNode='_4' fromField='enteredText' toNode='ScoreScript' toField='set_enteredText'/>
-    <ROUTE fromNode='_4' fromField='finalText' toNode='ScoreScript' toField='set_finalText'/>
-    <ROUTE fromNode='ScoreScript' fromField='name_changed' toNode='_7' toField='set_string'/>
-    <ROUTE fromNode='ScoreScript' fromField='score_changed' toNode='_8' toField='set_string'/>
-    <ROUTE fromNode='ScoreScript' fromField='names_changed' toNode='_9' toField='set_string'/>
-    <ROUTE fromNode='ScoreScript' fromField='scores_changed' toNode='_10' toField='set_string'/>
+    <ROUTE fromNode='_17' fromField='enteredText' toNode='ScoreScript' toField='set_enteredText'/>
+    <ROUTE fromNode='_17' fromField='finalText' toNode='ScoreScript' toField='set_finalText'/>
+    <ROUTE fromNode='ScoreScript' fromField='name_changed' toNode='_20' toField='set_string'/>
+    <ROUTE fromNode='ScoreScript' fromField='score_changed' toNode='_21' toField='set_string'/>
+    <ROUTE fromNode='ScoreScript' fromField='names_changed' toNode='_22' toField='set_string'/>
+    <ROUTE fromNode='ScoreScript' fromField='scores_changed' toNode='_23' toField='set_string'/>
   </Scene>
 </X3D>
