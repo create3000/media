@@ -16,7 +16,6 @@
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
-    <meta name='titania-add-metadata' content='true'/>
     <meta name='title' content='BallBounce.x3d'/>
     <meta name='translated' content='26 December 2008'/>
     <meta name='translator' content='Don Brutzman'/>
@@ -207,7 +206,7 @@ function set_time (value, time)
 		rigidBody .linearVelocity  = random3 () .multiply (1.5);
 		rigidBody .angularVelocity = new SFVec3f (0, 0, 0);
 		rigidBody .centerOfMass    = random3 ();
-	
+
 		//collection .bodies .push (rigidBody);
 		//primitives .children .push (rigidBody .geometry [0]);
 	}
@@ -227,10 +226,10 @@ function set_time (value, time)
 		rigidBody .geometry .push (collidableShape);
 		collection .bodies .push (rigidBody);
 		primitives .children .push (collidableShape);
-		
+
 		cache .push (rigidBody);
 	}
-	
+
 	i ++;
 }
 
