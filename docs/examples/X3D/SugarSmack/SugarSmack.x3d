@@ -11,13 +11,11 @@
     <component name='Sound' level='3'/>
     <component name='Text' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
-    <meta name='comment' content='World of Titania'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 27 Sep 2017 11:50:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Titania V4.4.4, http://titania.create3000.de'/>
-    <meta name='identifier' content='file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/X3D/SugarSmack/SugarSmack.O.x3d'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
     <meta name='modified' content='Wed, 27 Mar 2019 07:59:33 GMT'/>
-    <meta name='titania-add-metadata' content='true'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 18:13:00 GMT'/>
   </head>
@@ -97,7 +95,7 @@ function generateMaze (complexity, density)
 		matrix [getIndex (0, y)]         = 1;
 		matrix [getIndex (width - 1, y)] = 1;
 	}
-	
+
 	// Make aisles
 
 	for (var i = 0; i < density; ++ i)
@@ -116,20 +114,20 @@ function generateMaze (complexity, density)
 			if (x < width - 2)  neighbours .push ([x + 2, y]);
 			if (y > 1)          neighbours .push ([x, y - 2]);
 			if (y < height - 2) neighbours .push ([x, y + 2]);
-			
+
 			if (neighbours .length)
 			{
 				var neighbour = neighbours [Math .round (random (0, neighbours .length - 1))];
-				
+
 				var
 					x_ = neighbour [0],
 					y_ = neighbour [1];
-				
+
 				if (matrix [getIndex (x_, y_)] == 0)
 				{
 					matrix [getIndex (x_, y_)] = 1;
 					matrix [getIndex (x_ + Math .floor ((x - x_) / 2), y_ + Math .floor ((y - y_) / 2))] = 1;
-					
+
 					x = x_;
 					y = y_;
 				}
@@ -212,7 +210,7 @@ function random (min, max)
             <connect nodeField='maze' protoField='maze'/>
           </IS>
 <![CDATA[ecmascript:
-	
+
 var route;
 
 function initialize ()
@@ -223,13 +221,13 @@ function initialize ()
 function set_loadTime ()
 {
 	var collisionNode = Browser .currentScene .getImportedNode ("MazeElement");
-	
+
 	if (elementProxy || elementShape)
 		return;
-	
+
 	elementProxy = collisionNode .proxy;
 	elementShape = collisionNode .children [0];
-	
+
 	collisionNode .proxy        = proxy;
 	collisionNode .children [0] = shape;
 }
@@ -290,16 +288,16 @@ function generateGeometry (elementShape, shape)
 				for (var r = 0; r < rotations .length; ++ r)
 				{
 					var rotation = rotations [r];
-				
+
 					for (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)
 						colorIndex .push (elementGeometry .colorIndex [i]);
-				
+
 					var numPoints = coord .point .length;
-				
+
 					for (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)
 					{
 						var index = elementGeometry .coordIndex [i];
-					
+
 						if (index < 0)
 							coordIndex .push (-1);
 						else
@@ -309,7 +307,7 @@ function generateGeometry (elementShape, shape)
 					for (var i = 0, length = elementCoord .point .length; i < length; ++ i)
 					{
 						var point = elementCoord .point [i];
-					
+
 						if (rotate)
 							point = rotation .multVec (point);
 
@@ -322,7 +320,7 @@ function generateGeometry (elementShape, shape)
 			}
 		}
 	}
-	
+
 	geometry .colorIndex = colorIndex;
 	geometry .coordIndex = coordIndex;
 }
@@ -489,8 +487,8 @@ function set_maze (value, time)
 	if (maze)
 	{
 		route = Browser .currentScene .addRoute (maze, "generatedTime", self, "set_triggerTime");
-	
-		set_triggerTime (time, time);	
+
+		set_triggerTime (time, time);
 	}
 }
 
@@ -516,7 +514,7 @@ function set_triggerTime (value, time)
 
 	transform .translation = getTranslation (x ,y);
 	transform .rotation    = new SFRotation ();
-						
+
 	timeSensor .cycleInterval         = cycleInterval;
 	positionInterpolator    .key      = new MFFloat (0, 1);
 	orientationInterpolator .key      = new MFFloat (0, 1);
@@ -541,7 +539,7 @@ function set_turnTime (value, time)
 		x  = position_changed [0],
 		y  = position_changed [1],
 		fc = timeSensor .fraction_changed * cycleInterval;
-	
+
 	direction_changed = opposites [direction_changed];
 
 	position_changed [0] = position_changed [2];
@@ -553,7 +551,7 @@ function set_turnTime (value, time)
 		timeSensor .cycleInterval = cycleInterval;
 	else
 		timeSensor .cycleInterval = fc / (cycleInterval - fc) * cycleInterval;
-	
+
 	mirrorInterpolator (timeSensor .fraction_changed, positionInterpolator);
 	mirrorInterpolator (timeSensor .fraction_changed, orientationInterpolator);
 
@@ -567,14 +565,14 @@ function mirrorInterpolator (f, interpolator)
 		if (interpolator .key [i] >= f)
 			break;
 	}
-	
+
 	var k = i + 1;
-	
+
 	interpolator .key [i]      = f;
 	interpolator .keyValue [i] = interpolator .value_changed;
 
 	if (i)
-	{	
+	{
 		for (-- i; i >= 0; -- i, ++ k)
 		{
 			interpolator .key [k]      = f + (1 - interpolator .key [i] / f) * (1 - f);
@@ -597,10 +595,10 @@ function set_cycleTime (value, time)
 	// Determine new position.
 
 	var positions = getPositions (position_changed [2], position_changed [3], direction_changed);
-		
+
 	if (positions .length == 0)
 		positions = getPositions (position_changed [2], position_changed [3], ANY);
-	
+
 	var index = Math .floor (Math .random () * positions .length);
 
 	direction_changed = positions [index] [2];
@@ -743,13 +741,13 @@ function set_position (value, time)
 	}
 
 	map = { };
-	
+
 	for (var i = 0; i < collidables .length; ++ i)
 	{
 		var
 			collidable = collidables [i],
 			position   = collidable .position_changed;
-		
+
 		for (var p = 0; p < position .length; p += 2)
 		{
 			var
@@ -757,18 +755,18 @@ function set_position (value, time)
 				y = position [p + 1],
 				k = x + ":" + y,
 				m = map [k];
-			
+
 			if (! m)
 				m = map [k] = [ ];
-			
+
 			m .push (collidable);
 		}
 	}
-	
+
 	for (var k in map)
 	{
 		var m = map [k];
-		
+
 		if (m .length < 2)
 		{
 			delete map [k];
@@ -788,11 +786,11 @@ function set_translation (value, time)
 		for (var c1 = 0; c1 < m .length; ++ c1)
 		{
 			var collidable1 = m [c1];
-		
+
 			for (var c2 = 0; c2 < m .length; ++ c2)
 			{
 				var collidable2 = m [c2];
-		
+
 				if (collidable1 === collidable2)
 					continue;
 
@@ -805,7 +803,7 @@ function set_translation (value, time)
 					if (collidable1 .direction_changed == collidable2 .direction_changed)
 					{
 						if (collidable1 .cycleInterval < collidable2 .cycleInterval)
-							collidable1 .set_turnTime = time; 
+							collidable1 .set_turnTime = time;
 					}
 					else
 					{
@@ -836,7 +834,7 @@ function set_collidables (value, time)
 
 function eventsProcessed ()
 {
-	
+
 }
 ]]>
         </Script>
@@ -900,7 +898,7 @@ function set_triggerTime (value, time)
 		{
 			if (maze .matrix [getIndex (x, y)])
 				continue;
-	
+
 			for (var d = 0; d < density .length; ++ d)
 			{
 				if (Math .random () < density [d])
@@ -925,7 +923,7 @@ function set_enterTime (value, time)
 			transform       = group .children [i],
 			lod             = transform .children [0],
 			visiblitySensor = lod .children [0];
-	
+
 		if (visiblitySensor .enterTime == value)
 		{
 			group .removeChildren = new MFNode (transform);
@@ -950,17 +948,17 @@ function getNode (b, x, y)
 		lod             = currentScene .createNode ("LOD"),
 		transform       = currentScene .createNode ("Transform"),
 		visiblitySensor = currentScene .createNode ("VisibilitySensor");
-	
+
 	Browser .currentScene .addRoute (visiblitySensor, "enterTime", self, "set_enterTime");
-	
+
 	lod .range .push (1);
 	lod .children .push (visiblitySensor);
 	lod .children .push (items [b]);
-	
+
 	visiblitySensor .size  = new SFVec3f (1, 1, 1);
 	transform .translation = getTranslation (x, y);
 	transform .children .push (lod);
-	
+
 	return transform;
 }
 
@@ -1081,14 +1079,14 @@ function set_triggerTime (value, time)
 		y = Math .floor (Math .random () * maze .height);
 	}
 	while (maze .matrix [getIndex (x, y)] != 0);
-						
+
 	var offset = new SFVec3f ((maze .width - 1) * mazeElementSize .x / 2, 0, (maze .height - 1) * mazeElementSize .z / 2);
-	
+
 
 
 	var position = new SFVec3f (x * mazeElementSize .x, mazeElementSize .y, y * mazeElementSize .z);
 	position = position .subtract (offset);
-	
+
 	bind                = true;
 	position_changed    = position;
 	orientation_changed = getRotation (x, y);
@@ -1099,15 +1097,15 @@ function getRotation (x, y)
 	if (x > 0)
 		if (maze .matrix [getIndex (x - 1, y)] == 0)
 			return new SFRotation (0, 1, 0, 1 / 2 * Math .PI);
-		
+
 	if (x < maze .width - 1)
 		if (maze .matrix [getIndex (x + 1, y)] == 0)
 			return new SFRotation (0, 1, 0, 3 / 2 * Math .PI);
-	  
+
 	if (y > 0)
 		if (maze .matrix [getIndex (x, y - 1)] == 0)
 			return new SFRotation (0, 1, 0, Math .PI);
-		
+
 	if (y < maze .height - 1)
 		if (maze .matrix [getIndex (x, y + 1)] == 0)
 			return new SFRotation (0, 1, 0, 0);
