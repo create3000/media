@@ -9,7 +9,6 @@
     <meta name='created' content='Mon, 17 Jun 2019 10:51:39 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrise X3D Editor V1.0.0, https://create3000.github.io/Sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Followers/CoordinateChaser/CoordinateChaser.O.x3d'/>
     <meta name='modified' content='Mon, 17 Oct 2022 23:17:05 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 17:50:19 GMT'/>
@@ -60,17 +59,17 @@ function initialize ()
 {
 	for (var i = 0; i < numPoints; ++ i)
 		dest [i] .x = i * 2;
-	
+
 	set_time (0, 0);
 }
 
 function set_time (value, time)
 {
 	bumps (points, numPoints, 16);
-	
+
 	for (var i = 0; i < numPoints; ++ i)
-		dest [i] .y = points [i]; 
-	
+		dest [i] .y = points [i];
+
 	chaser .set_destination = dest;
 }
 
@@ -80,7 +79,7 @@ function bump (a, n)
 	const x = 1 / (0.1 + Math .random ());
 	const y = 2 * Math .random () - 0.5;
 	const z = 10 / (0.1 + Math .random ());
-	
+
 	for (let i = 0; i < n; ++ i)
 	{
 		const w = (i / n - y) * z;
@@ -94,7 +93,7 @@ function bumps (a, n, m)
 
 	for (let i = 0; i < n; ++ i) a [i] = 0;
 	for (let i = 0; i < m; ++ i) bump (a, n);
-	
+
 	return a;
 };
 ]]>

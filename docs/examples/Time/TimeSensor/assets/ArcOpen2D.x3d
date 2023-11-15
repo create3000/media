@@ -6,7 +6,6 @@
     <meta name='created' content='Fri, 21 Dec 2018 02:11:05 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrise X3D Editor V1.0.4, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Time/TimeSensor/assets/ArcOpen2D.x3d'/>
     <meta name='modified' content='Fri, 18 Nov 2022 00:34:09 GMT'/>
   </head>
   <Scene>
@@ -72,13 +71,13 @@ function eventsProcessed ()
 		++ steps;
 
 	var steps_1 = circle ? steps : steps - 1;
-	
+
 	coord .point .length         = 0;
 	texCoord .point .length      = 0;
 
 	if (r1 === r2)
 		return;
-		
+
 	var
 		coordIndex = new MFInt32 (),
 		texOffset  = new SFVec3f (r2, r2, 0);
@@ -97,7 +96,7 @@ function eventsProcessed ()
 			var
 				point1 = point .multiply (r1),
 				tex1   = point1 .add (texOffset) .divide (r2 * 2);
-				
+
 			coord .point .push (point1);
 			texCoord .point .push (new SFVec2f (tex1 .x, tex1 .y));
 		}
@@ -122,10 +121,10 @@ function eventsProcessed ()
 		else
 		{
 			var l = coord .point .length;
-			
+
 			coord .point .push (new SFVec3f ());
 			texCoord .point .push (new SFVec2f (0.5, 0.5));
-		
+
 			for (var n = 0; n < steps - 1; ++ n)
 			{
 				coordIndex .push (n);
@@ -148,13 +147,13 @@ function eventsProcessed ()
 			coordIndex .push (-1);
 		}
 	}
-		
+
 	if (circle)
 	{
 		var
 			l1 = coordIndex [coordIndex .length - 2],
 			l2 = coordIndex [coordIndex .length - 3];
-	
+
 		coordIndex .push (l1);
 		coordIndex .push (l2);
 		coordIndex .push (coordIndex [1]);
@@ -169,7 +168,7 @@ function eventsProcessed ()
 
 		coordIndex .push (-1);
 	}
-	
+
 	geometry .set_coordIndex = coordIndex;
 }
 
@@ -189,7 +188,7 @@ function getSweepAngle ()
 
 	if (! isNaN (sweepAngle))
 		return sweepAngle;
-	
+
 	// We must test for NAN, as NAN to int32_t is undefined.
 	return 0;
 }

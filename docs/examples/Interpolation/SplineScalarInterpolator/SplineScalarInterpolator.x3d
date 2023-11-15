@@ -10,7 +10,6 @@
     <meta name='created' content='Fri, 22 Sep 2017 06:52:58 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrise X3D Editor V1.0.8, https://create3000.github.io/sunrise/'/>
-    <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/examples/Interpolation/SplineScalarInterpolator/SplineScalarInterpolator.O.x3d'/>
     <meta name='modified' content='Fri, 10 Feb 2023 23:47:20 GMT'/>
     <meta name='converter' content='x3d-tidy V1.0.14, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='converted' content='Mon, 29 May 2023 17:55:18 GMT'/>
@@ -363,7 +362,7 @@ function pick (hitPoint)
 	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
 	{
 		var yOffset = 0;
-		
+
 		if (pointType == VELOCITY)
 			yOffset = yInterpolator .keyVelocity [i] * velocityScale;
 
@@ -378,7 +377,7 @@ function pick (hitPoint)
 		pointIndex = i;
 		break;
 	}
-	
+
 	return pointIndex;
 }
 
@@ -389,7 +388,7 @@ function addPoint ()
 	xInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .x);
 	yInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .y);
 	yInterpolator .keyVelocity .splice (pointIndex, 0, 0);
-	
+
 	setXInterpolatorKey ();
 }
 
@@ -411,7 +410,7 @@ function getAddPointIndex ()
 		if (xInterpolator .keyValue [i] > hitPoint .x)
 			break;
 	}
-	
+
 	return i;
 }
 
@@ -445,10 +444,10 @@ function setXInterpolatorKey ()
 		{
 			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
 				                       yInterpolator .keyValue [i - 1]);
-				                       
+
 			var point1 = new SFVec2f (xInterpolator .keyValue [i],
 				                       yInterpolator .keyValue [i]);
-				                      
+
 			totalLength += point1 .subtract (point0) .length ();
 		}
 
@@ -458,12 +457,12 @@ function setXInterpolatorKey ()
 		{
 			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
 				                       yInterpolator .keyValue [i - 1]);
-				                       
+
 			var point1 = new SFVec2f (xInterpolator .keyValue [i],
 				                       yInterpolator .keyValue [i]);
-				                      
+
 			lengthSoFar += point1 .subtract (point0) .length ();
-			
+
 			xInterpolator .key [i] = lengthSoFar / totalLength;
 		}
 
