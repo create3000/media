@@ -1,0 +1,205 @@
+#X3D V4.0 utf8 X_ITE V9.0.3
+
+PROFILE Interchange
+
+COMPONENT Text : 1
+COMPONENT X_ITE : 1
+
+UNIT angle degree 0.017453292519943295
+
+META "created" "Thu, 23 Nov 2023 08:48:21 GMT"
+META "comment" "Rise and Shine"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+META "modified" "Thu, 23 Nov 2023 10:04:05 GMT"
+
+DEF Gray Background {
+  skyColor 0.2 0.2 0.2
+}
+
+DEF _1 TimeSensor {
+  cycleInterval 10
+  loop TRUE
+}
+
+DEF _2 OrientationInterpolator {
+  key [
+    0,
+    0.25,
+    0.5,
+    0.75,
+    1
+  ]
+  keyValue [
+    0 0 1 0,
+    0 1 0 90,
+    0 1 0 180,
+    0 1 0 270,
+    0 1 0 0
+  ]
+}
+
+DEF Box1_1 Transform {
+  translation -3 0 0
+  children DEF _3 Transform {
+    rotation 0 1 0 56.5200233459472
+    children DEF Box_1 Transform {
+      rotation -0.587480920443623 0.243342564883178 0.77178401397722 56.4445743079964
+      children [
+        DEF Fill_1 Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.9568627 0.2627451 0.2117647
+            }
+          }
+          geometry DEF _4 Box { }
+        }
+        DEF Line_1 Shape {
+          appearance Appearance {
+            lineProperties LineProperties {
+              linewidthScaleFactor 3
+            }
+            material UnlitMaterial { }
+            depthMode DepthMode {
+              depthRange 1 1
+            }
+          }
+          geometry IndexedLineSet {
+            coordIndex [
+              0,
+              1,
+              2,
+              3,
+              0,
+              -1,
+              4,
+              5,
+              6,
+              7,
+              4,
+              -1,
+              0,
+              4,
+              -1,
+              1,
+              5,
+              -1,
+              2,
+              6,
+              -1,
+              3,
+              7,
+              -1
+            ]
+            coord Coordinate {
+              point [
+                1 1 1,
+                -1 1 1,
+                -1 -1 1,
+                1 -1 1,
+                1 1 -1,
+                -1 1 -1,
+                -1 -1 -1,
+                1 -1 -1
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+DEF Box2 Transform {
+  children DEF _6 Transform {
+    rotation 0 1 0 56.5200233459472
+    children DEF Box_2 Transform {
+      rotation -0.587480920443623 0.243342564883178 0.77178401397722 56.4445743079964
+      children [
+        DEF Fill_2 Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.454902 0.2784314 0
+            }
+          }
+          geometry USE _4
+        }
+        USE Line_1
+      ]
+    }
+  }
+}
+
+DEF Box3 Transform {
+  translation 3 0 0
+  children DEF _7 Transform {
+    rotation 0 1 0 56.5200233459472
+    children DEF Box Transform {
+      rotation -0.587480920443623 0.243342564883178 0.77178401397722 56.4445743079964
+      children [
+        DEF Fill Shape {
+          appearance Appearance {
+            material Material {
+              diffuseColor 0.8078431 0.4941176 0
+            }
+          }
+          geometry USE _4
+        }
+        USE Line_1
+      ]
+    }
+  }
+}
+
+DEF Text_1 Transform {
+  translation 0 -2.8 0
+  children Shape {
+    appearance Appearance {
+      material UnlitMaterial {
+        emissiveColor 1 0.8509804 0.4
+      }
+    }
+    geometry Text {
+      string "The Depth Corporation"
+      fontStyle FontStyle {
+        family "assets/DotMatrix-TwoExtended.otf"
+        style "BOLD"
+        justify [
+          "MIDDLE",
+          "MIDDLE"
+        ]
+      }
+    }
+  }
+}
+
+DEF Text Transform {
+  translation 0 -3.7 0
+  children Shape {
+    appearance Appearance {
+      material UnlitMaterial {
+        emissiveColor 1 0.8509804 0.4
+      }
+    }
+    geometry Text {
+      string [
+        "Presents",
+        "The DepthMode Node"
+      ]
+      fontStyle FontStyle {
+        family "assets/Days.otf"
+        size 0.3
+        spacing 1.2
+        justify [
+          "MIDDLE",
+          "MIDDLE"
+        ]
+      }
+    }
+  }
+}
+
+ROUTE _2.value_changed TO _3.set_rotation
+ROUTE _1.fraction_changed TO _2.set_fraction
+ROUTE _2.value_changed TO _6.set_rotation
+ROUTE _2.value_changed TO _7.set_rotation
