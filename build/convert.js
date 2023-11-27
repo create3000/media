@@ -3,6 +3,7 @@
 
 const
    path                   = require ("path"),
+   os                     = require ("os"),
    { default: Semaphore } = require ("semaphore-async-await");
 
 function sh (strings, ... values)
@@ -32,7 +33,7 @@ const
    cwd      = process .cwd (),
    examples = `${cwd}/docs/examples`,
    includes = new Set (process .argv .slice (2)),
-   lock     = new Semaphore (4);
+   lock     = new Semaphore (os .cpus () .length);
 
 async function queue (name, fn)
 {
