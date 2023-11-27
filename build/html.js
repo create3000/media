@@ -33,5 +33,5 @@ function example (folder)
    fs .writeFileSync (`${folder}/example.html`, html);
 }
 
-for (const folder of sh`find ${examples} -maxdepth 2 -mindepth 2 -type d` .split ("\n") .sort ())
+for (const folder of sh`find ${examples} -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ())
    example (folder);
