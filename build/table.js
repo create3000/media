@@ -22,7 +22,7 @@ const
 	X3D   = sh`find '${examples}/X3D' -type f -name 'example.html'` .trim () .split ("\n") .sort (),
 	other = sh`find '${examples}' -type f -name 'example.html' -not -path '*/X3D/*'` .trim () .split ("\n") .sort (),
 	html  = [... X3D, ... other],
-	table = Array .from ({length: Math .floor ((html .length - 1) / COLUMNS) + 1}, () => [ ]);
+	table = Array .from ({ length: Math .floor ((html .length - 1) / COLUMNS) + 1 }, () => [ ]);
 
 for (const [i, example] of html .entries ())
 	table [Math .floor (i / COLUMNS)] .push (example);
