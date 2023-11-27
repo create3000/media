@@ -27,7 +27,7 @@ function example (folder)
 
    let html = sh`cat ${cwd}/example-template.html`;
    html = html .replace (/BASE/sg, base);
-   html = html .replace (/FILE_NAMEsg/, `${base}.x3d`);
+   html = html .replace (/FILE_NAME/sg, `${base}.x3d`);
    html = html .replace (/URL/sg, `${media}/${component}/${base}/${base}.x3d`);
 
    fs .writeFileSync (`${folder}/example.html`, html);
