@@ -5,12 +5,7 @@ const
    path = require ("path"),
    fs   = require ("fs");
 
-function sh (strings, ... values)
-{
-   const { execSync } = require ("child_process");
-
-   return execSync (String .raw ({ raw: strings }, ... values), { encoding: "utf8", maxBuffer: Infinity });
-}
+const { sh } = require ("shell-tools");
 
 const COLUMNS = 7;
 

@@ -3,28 +3,7 @@
 
 const path = require ("path");
 
-function sh (strings, ... values)
-{
-   const { execSync } = require ("child_process");
-
-   return execSync (String .raw ({ raw: strings }, ... values), { encoding: "utf8", maxBuffer: Infinity });
-}
-
-function system (command)
-{
-   return new Promise (async (resolve, reject) =>
-   {
-      const { exec } = require ("child_process");
-
-      const childProcess = exec (command);
-
-      childProcess .stdout .on ("data", data => console .log (data));
-      childProcess .stderr .on ("data", data => console .error (data));
-
-      childProcess .on ("exit",  resolve);
-      childProcess .on ("error", reject);
-   });
-}
+const { sh, system } = require ("shell-tools");
 
 const
    cwd      = process .cwd (),
