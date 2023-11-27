@@ -34,9 +34,10 @@ const
    includes = new Set (process .argv .slice (2)),
    lock     = new Semaphore (4);
 
-async function queue (fn)
+async function queue (name, fn)
 {
    await lock .acquire ();
+   console .log (name);
    await fn ();
    lock .release ();
 }
@@ -53,11 +54,9 @@ function convert (folder)
    if (includes .size && !includes .has (base))
       return;
 
-   console .log (base);
-
-   queue (() => system (`npx --yes x3d-tidy            -r -m -i '${orig}' -o '${x3d}' `));
-   queue (() => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dv}'`));
-   queue (() => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dj}'`));
+   queue (x3d,  () => system (`npx --yes x3d-tidy            -r -m -i '${orig}' -o '${x3d}' `));
+   queue (x3dv, () => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dv}'`));
+   queue (x3dj, () => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dj}'`));
 }
 
 const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
