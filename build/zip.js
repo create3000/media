@@ -31,7 +31,7 @@ const
    examples = `${cwd}/docs/examples`,
    includes = new Set (process .argv .slice (2));
 
-function zip (folder)
+async function zip (folder)
 {
    const base = path .basename (folder);
 
@@ -41,11 +41,17 @@ function zip (folder)
    console .log (base);
 
    process .chdir (path .dirname (folder));
-   system (`zip ${base}.zip ${base}/ -r -x */${base}.O.x3d -x */${base}.zip -x */screenshot-small.png`);
-   system (`mv ${base}.zip ${base}/`);
+   await system (`zip -q ${base}.zip ${base}/ -r -x */${base}.O.x3d -x */${base}.zip -x */screenshot-small.png`);
+   await system (`mv ${base}.zip ${base}/`);
 }
 
-const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
+async function main ()
+{
+   const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
 
-for (const folder of files)
-   zip (folder);
+   for (const folder of files)
+      await zip (folder);
+}
+
+main ();
+
