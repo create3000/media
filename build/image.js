@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 "use strict";
 
-const path = require ("path");
+const
+   path  = require ("path"),
+   yargs = require ("yargs");
 
 const { sh, system } = require ("shell-tools");
 
@@ -9,6 +11,13 @@ const
    cwd      = process .cwd (),
    examples = `${cwd}/docs/examples`,
    includes = new Set (process .argv .slice (2));
+
+const args = yargs (process .argv) .option ("delay",
+{
+   type: "number",
+   alias: "d",
+})
+.argv;
 
 async function image (folder)
 {
@@ -19,10 +28,13 @@ async function image (folder)
 
    console .log (base);
 
-   // push @extra, "-d", $delay;
+   let extra = "";
+
+   if (args .delay)
+      extra += `-d ${args .delay}`;
 
    process .chdir (folder);
-   await system (`npx --yes x3d-image -s 1000x562 -i ${base}.x3d -o screenshot.png`);
+   await system (`npx --yes x3d-image ${extra} -s 1000x562 -i ${base}.x3d -o screenshot.png`);
    await system (`convert -resize 110x62 screenshot.png screenshot-small.png`);
 }
 
