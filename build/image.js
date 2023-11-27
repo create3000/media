@@ -19,6 +19,11 @@ const args = yargs (process .argv) .option ("delay",
 })
 .argv;
 
+let extra = "";
+
+if (args .delay)
+   extra += `-d ${args .delay}`;
+
 async function image (folder)
 {
    const base = path .basename (folder);
@@ -27,11 +32,6 @@ async function image (folder)
       return;
 
    console .log (base);
-
-   let extra = "";
-
-   if (args .delay)
-      extra += `-d ${args .delay}`;
 
    process .chdir (folder);
    await system (`npx --yes x3d-image ${extra} -s 1000x562 -i ${base}.x3d -o screenshot.png`);
