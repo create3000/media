@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 "use strict";
 
-const path = require ("path");
-
-const { sh, system } = require ("shell-tools");
+const
+   path               = require ("path"),
+   { sh, systemSync } = require ("shell-tools");
 
 const
    cwd      = process .cwd (),
    examples = `${cwd}/docs/examples`,
    includes = new Set (process .argv .slice (2));
 
-async function zip (folder)
+function zip (folder)
 {
    const base = path .basename (folder);
 
@@ -20,16 +20,16 @@ async function zip (folder)
    console .log (base);
 
    process .chdir (path .dirname (folder));
-   await system (`zip -q ${base}.zip ${base}/ -r -x */${base}.O.x3d -x */${base}.zip -x */screenshot-small.png`);
-   await system (`mv ${base}.zip ${base}/`);
+   systemSync (`zip -q ${base}.zip ${base}/ -r -x */${base}.O.x3d -x */${base}.zip -x */screenshot-small.png`);
+   systemSync (`mv ${base}.zip ${base}/`);
 }
 
-async function main ()
+function main ()
 {
    const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
 
    for (const folder of files)
-      await zip (folder);
+      zip (folder);
 }
 
 main ();

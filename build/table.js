@@ -2,10 +2,9 @@
 "use strict";
 
 const
-   path = require ("path"),
-   fs   = require ("fs");
-
-const { sh } = require ("shell-tools");
+   path   = require ("path"),
+   fs     = require ("fs"),
+	{ sh } = require ("shell-tools");
 
 const COLUMNS = 7;
 

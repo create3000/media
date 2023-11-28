@@ -2,10 +2,9 @@
 "use strict";
 
 const
-   path  = require ("path"),
-   yargs = require ("yargs");
-
-const { sh, system } = require ("shell-tools");
+   path               = require ("path"),
+   yargs              = require ("yargs"),
+   { sh, systemSync } = require ("shell-tools");
 
 const
    cwd      = process .cwd (),
@@ -24,7 +23,7 @@ let extra = "";
 if (args .delay)
    extra += `-d ${args .delay}`;
 
-async function image (folder)
+function image (folder)
 {
    const base = path .basename (folder);
 
@@ -34,16 +33,16 @@ async function image (folder)
    console .log (base);
 
    process .chdir (folder);
-   await system (`npx --yes x3d-image ${extra} -s 1000x562 -i ${base}.x3d -o screenshot.png`);
-   await system (`convert -resize 110x62 screenshot.png screenshot-small.png`);
+   systemSync (`npx --yes x3d-image ${extra} -s 1000x562 -i ${base}.x3d -o screenshot.png`);
+   systemSync (`convert -resize 110x62 screenshot.png screenshot-small.png`);
 }
 
-async function main ()
+function main ()
 {
    const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
 
    for (const folder of files)
-      await image (folder);
+      image (folder);
 }
 
 main ();

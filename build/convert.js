@@ -4,9 +4,8 @@
 const
    path                   = require ("path"),
    os                     = require ("os"),
-   { default: Semaphore } = require ("semaphore-async-await");
-
-const { sh, system } = require ("shell-tools");
+   { default: Semaphore } = require ("semaphore-async-await"),
+   { sh, system }         = require ("shell-tools");
 
 const
    cwd      = process .cwd (),
