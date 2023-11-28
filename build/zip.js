@@ -26,7 +26,7 @@ function zip (folder)
 
 function main ()
 {
-   const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
+   const files = sh (`find '${examples}' -maxdepth 2 -mindepth 2 -type d`) .trim () .split ("\n") .sort ();
 
    for (const folder of files)
       zip (folder);

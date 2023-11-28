@@ -13,8 +13,8 @@ const
 	examples = `${cwd}/docs/examples`;
 
 const
-	X3D   = sh`find '${examples}/X3D' -type f -name 'example.html'` .trim () .split ("\n") .sort (),
-	other = sh`find '${examples}' -type f -name 'example.html' -not -path '*/X3D/*'` .trim () .split ("\n") .sort (),
+	X3D   = sh (`find '${examples}/X3D' -type f -name 'example.html'`) .trim () .split ("\n") .sort (),
+	other = sh (`find '${examples}' -type f -name 'example.html' -not -path '*/X3D/*'`) .trim () .split ("\n") .sort (),
 	html  = [... X3D, ... other],
 	table = Array .from ({ length: Math .floor ((html .length - 1) / COLUMNS) + 1 }, () => [ ]);
 
@@ -52,7 +52,7 @@ output += `</table>\n`;
 
 // Wiki
 
-let index = sh`cat '${cwd}/../x_ite/docs/_posts/getting-started.md'`;
+let index = sh (`cat '${cwd}/../x_ite/docs/_posts/getting-started.md'`);
 index = index .replace (/<table class="examples">.*?<\/table>\n/sg, output);
 
 fs .writeFileSync (`${cwd}/../x_ite/docs/_posts/getting-started.md`, index);

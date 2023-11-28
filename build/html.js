@@ -19,7 +19,7 @@ function example (folder)
 
    console .log (component, base);
 
-   let html = sh`cat ${cwd}/example-template.html`;
+   let html = sh (`cat ${cwd}/example-template.html`);
    html = html .replace (/BASE/sg, base);
    html = html .replace (/FILE_NAME/sg, `${base}.x3d`);
    html = html .replace (/URL/sg, `${media}/${component}/${base}/${base}.x3d`);
@@ -27,7 +27,7 @@ function example (folder)
    fs .writeFileSync (`${folder}/example.html`, html);
 }
 
-const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
+const files = sh (`find '${examples}' -maxdepth 2 -mindepth 2 -type d`) .trim () .split ("\n") .sort ();
 
 for (const folder of files)
    example (folder);

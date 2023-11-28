@@ -38,7 +38,7 @@ function convert (folder)
    queue (x3dj, () => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dj}'`));
 }
 
-const files = sh`find '${examples}' -maxdepth 2 -mindepth 2 -type d` .trim () .split ("\n") .sort ();
+const files = sh (`find '${examples}' -maxdepth 2 -mindepth 2 -type d`) .trim () .split ("\n") .sort ();
 
 for (const folder of files)
    convert (folder);
