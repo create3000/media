@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Core' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Shape' level='5'/>
-    <component name='Rendering' level='5'/>
+    <component name='Followers' level='1'/>
     <component name='NURBS' level='4'/>
-    <component name='Time' level='2'/>
-    <component name='Followers' level='4'/>
     <component name='Scripting' level='1'/>
-    <component name='Core' level='2'/>
-    <component name='Navigation' level='3'/>
-    <component name='Grouping' level='3'/>
-    <meta name='comment' content='World of Sunrise X3D Editor'/>
+    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 17 Jun 2019 10:51:39 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 17 Oct 2022 23:17:05 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.5.1, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 01 Feb 2024 22:38:53 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Bumps'>
@@ -47,10 +41,11 @@
         </Shape>
         <TimeSensor DEF='_2'
             loop='true'/>
-        <Script DEF='BumpsScript'>
+        <Script DEF='BumpsScript'
+            directOutput='true'>
           <field accessType='inputOnly' type='SFTime' name='set_time'/>
           <field accessType='initializeOnly' type='SFNode' name='chaser'>
-            <CoordinateChaser DEF='_3' containerField='chaser'/>
+            <CoordinateChaser DEF='_3'/>
           </field>
 <![CDATA[ecmascript:
 
