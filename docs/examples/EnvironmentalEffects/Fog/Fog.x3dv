@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V9.3.1
 
 PROFILE Interchange
 
@@ -11,9 +11,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Mon, 04 Feb 2019 10:59:00 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:02:28 GMT"
+META "generator" "Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sun, 10 Mar 2024 18:59:56 GMT"
 
 WorldInfo { }
 
@@ -25,6 +25,7 @@ LayerSet {
       children [
         NavigationInfo {
           type "WALK"
+          headlight FALSE
         }
         Viewpoint {
           description "Initial View"
@@ -35,10 +36,14 @@ LayerSet {
         Background {
           skyColor 0.791 0.791 0.791
         }
-        DEF _1 Fog {
+        DEF _4 Fog {
           fogType "EXPONENTIAL"
           color 0.791 0.791 0.791
           visibilityRange 49
+        }
+        DirectionalLight {
+          direction 0 -1 -1
+          shadows TRUE
         }
         DEF Island Transform {
           children Shape {
@@ -61,7 +66,7 @@ LayerSet {
     Layer {
       children [
         OrthoViewpoint { }
-        DEF BubblesMenu Group {
+        DEF FogMenu Group {
           children [
             DEF Header_1 Transform {
               translation 1.6905 -0.859496 -1
@@ -187,4 +192,4 @@ function set_value (value)
 ROUTE visibilityRangeScript.string_changed TO _2.set_string
 ROUTE _3.translation_changed TO Disk2D.set_translation
 ROUTE _3.translation_changed TO visibilityRangeScript.set_translation
-ROUTE visibilityRangeScript.value_changed TO _1.set_visibilityRange
+ROUTE visibilityRangeScript.value_changed TO _4.set_visibilityRange

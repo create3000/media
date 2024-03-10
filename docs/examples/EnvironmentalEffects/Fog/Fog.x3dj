@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:02:29 GMT"
+          "@content": "Sun, 10 Mar 2024 18:59:52 GMT"
         }
       ],
       "component": [
@@ -70,7 +70,8 @@
                   "-children": [
                     { "NavigationInfo":
                       {
-                        "@type": [ "WALK" ]
+                        "@type": [ "WALK" ],
+                        "@headlight": false
                       }
                     },
                     { "Viewpoint":
@@ -88,10 +89,16 @@
                     },
                     { "Fog":
                       {
-                        "@DEF": "_1",
+                        "@DEF": "_4",
                         "@fogType": "EXPONENTIAL",
                         "@color": [ 0.791, 0.791, 0.791 ],
                         "@visibilityRange": 49
+                      }
+                    },
+                    { "DirectionalLight":
+                      {
+                        "@direction": [ 0, -1, -1 ],
+                        "@shadows": true
                       }
                     },
                     { "Transform":
@@ -138,7 +145,7 @@
                     },
                     { "Group":
                       {
-                        "@DEF": "BubblesMenu",
+                        "@DEF": "FogMenu",
                         "-children": [
                           { "Transform":
                             {
@@ -380,7 +387,7 @@
             "@fromNode": "visibilityRangeScript",
             "@fromField": "string_changed",
             "@toNode": "_2",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -388,7 +395,7 @@
             "@fromNode": "_3",
             "@fromField": "translation_changed",
             "@toNode": "Disk2D",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -403,8 +410,8 @@
           {
             "@fromNode": "visibilityRangeScript",
             "@fromField": "value_changed",
-            "@toNode": "_1",
-            "@toField": "visibilityRange"
+            "@toNode": "_4",
+            "@toField": "set_visibilityRange"
           }
         }
       ]

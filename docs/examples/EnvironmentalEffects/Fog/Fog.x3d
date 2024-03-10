@@ -10,9 +10,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:02:27 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sun, 10 Mar 2024 18:59:55 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -21,7 +21,8 @@
         order='1, 2'>
       <Layer>
         <NavigationInfo
-            type='"WALK"'/>
+            type='"WALK"'
+            headlight='false'/>
         <Viewpoint
             description='Initial View'
             position='35.3983 8.88267 64.9158'
@@ -29,10 +30,13 @@
             centerOfRotation='32.638 -7.96321 21.5875'/>
         <Background
             skyColor='0.791 0.791 0.791'/>
-        <Fog DEF='_1'
+        <Fog DEF='_4'
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
             visibilityRange='49'/>
+        <DirectionalLight
+            direction='0 -1 -1'
+            shadows='true'/>
         <Transform DEF='Island'>
           <Shape>
             <Appearance>
@@ -50,7 +54,7 @@
       </Layer>
       <Layer>
         <OrthoViewpoint/>
-        <Group DEF='BubblesMenu'>
+        <Group DEF='FogMenu'>
           <Transform DEF='Header_1'
               translation='1.6905 -0.859496 -1'
               scale='0.0672307 0.0672307 0.0672307'>
@@ -159,6 +163,6 @@ function set_value (value)
     <ROUTE fromNode='visibilityRangeScript' fromField='string_changed' toNode='_2' toField='set_string'/>
     <ROUTE fromNode='_3' fromField='translation_changed' toNode='Disk2D' toField='set_translation'/>
     <ROUTE fromNode='_3' fromField='translation_changed' toNode='visibilityRangeScript' toField='set_translation'/>
-    <ROUTE fromNode='visibilityRangeScript' fromField='value_changed' toNode='_1' toField='set_visibilityRange'/>
+    <ROUTE fromNode='visibilityRangeScript' fromField='value_changed' toNode='_4' toField='set_visibilityRange'/>
   </Scene>
 </X3D>
