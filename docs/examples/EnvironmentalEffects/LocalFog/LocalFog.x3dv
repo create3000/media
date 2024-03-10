@@ -13,7 +13,7 @@ META "created" "Mon, 04 Feb 2019 10:59:00 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sun, 10 Mar 2024 18:55:10 GMT"
+META "modified" "Sun, 10 Mar 2024 19:14:16 GMT"
 
 WorldInfo { }
 
@@ -39,7 +39,7 @@ LayerSet {
         DEF _1 Fog {
           fogType "EXPONENTIAL"
           color 0.791 0.791 0.791
-          visibilityRange 49
+          visibilityRange 50.33668
         }
         DirectionalLight {
           direction 0 -1 -1
@@ -137,7 +137,7 @@ LayerSet {
             }
             DEF _2 LocalFog {
               color 0.792157 0.792157 0.792157
-              visibilityRange 96
+              visibilityRange 90.47181
             }
           ]
         }
@@ -179,7 +179,7 @@ LayerSet {
                   material Material { }
                 }
                 geometry DEF _3 Text {
-                  string "visibilityRange 96.0"
+                  string "visibilityRange 90.0"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -214,7 +214,7 @@ LayerSet {
                 DEF Knob Transform {
                   children [
                     DEF Disk2D Transform {
-                      translation 0.8289146 0 0
+                      translation 0.9138567 0 0
                       scale 0.027 0.0267372 0.0267372
                       children Shape {
                         appearance Appearance {
@@ -224,7 +224,7 @@ LayerSet {
                       }
                     }
                     DEF _4 PlaneSensor {
-                      offset 0.8289146 0 0
+                      offset 0.9138567 0 0
                       maxPosition 1 0
                     }
                   ]
@@ -233,10 +233,10 @@ LayerSet {
                   inputOnly      SFVec3f  set_translation
                   inputOutput    SFString description "visibilityRange"
                   inputOutput    SFFloat  minValue 0
-                  inputOutput    SFFloat  maxValue 100
+                  inputOutput    SFFloat  maxValue 99
                   outputOnly     SFFloat  value_changed
                   outputOnly     MFString string_changed
-                  initializeOnly SFInt32  currentValue 96
+                  initializeOnly SFInt32  currentValue 90
 
                   url "ecmascript:
 
@@ -292,7 +292,7 @@ function set_value (value)
                   material Material { }
                 }
                 geometry DEF _5 Text {
-                  string "visibilityRange 49.0"
+                  string "visibilityRange 50.0"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -327,7 +327,7 @@ function set_value (value)
                 DEF Knob_1 Transform {
                   children [
                     DEF Disk2D_1 Transform {
-                      translation 0.8289146 0 0
+                      translation 0.5084513 0 0
                       scale 0.027 0.0267372 0.0267372
                       children Shape {
                         appearance Appearance {
@@ -337,7 +337,7 @@ function set_value (value)
                       }
                     }
                     DEF _6 PlaneSensor {
-                      offset 0.8289146 0 0
+                      offset 0.5084513 0 0
                       maxPosition 1 0
                     }
                   ]
@@ -346,10 +346,10 @@ function set_value (value)
                   inputOnly      SFVec3f  set_translation
                   inputOutput    SFString description "visibilityRange"
                   inputOutput    SFFloat  minValue 0
-                  inputOutput    SFFloat  maxValue 60
+                  inputOutput    SFFloat  maxValue 99
                   outputOnly     SFFloat  value_changed
                   outputOnly     MFString string_changed
-                  initializeOnly SFInt32  currentValue 49
+                  initializeOnly SFInt32  currentValue 50
 
                   url "ecmascript:
 

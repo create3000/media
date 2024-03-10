@@ -12,7 +12,7 @@
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/'/>
     <meta name='generator' content='x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Sun, 10 Mar 2024 18:55:13 GMT'/>
+    <meta name='modified' content='Sun, 10 Mar 2024 19:14:09 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -33,7 +33,7 @@
         <Fog DEF='_1'
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
-            visibilityRange='49'/>
+            visibilityRange='50.33668'/>
         <DirectionalLight
             direction='0 -1 -1'
             shadows='true'/>
@@ -117,7 +117,7 @@
           </Transform>
           <LocalFog DEF='_2'
               color='0.792157 0.792157 0.792157'
-              visibilityRange='96'/>
+              visibilityRange='90.47181'/>
         </Transform>
       </Layer>
       <Layer>
@@ -152,7 +152,7 @@
                 <Material/>
               </Appearance>
               <Text DEF='_3'
-                  string='"visibilityRange 96.0"'
+                  string='"visibilityRange 90.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -181,7 +181,7 @@
             </Transform>
             <Transform DEF='Knob'>
               <Transform DEF='Disk2D'
-                  translation='0.8289146 0 0'
+                  translation='0.9138567 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
                   <Appearance>
@@ -191,17 +191,17 @@
                 </Shape>
               </Transform>
               <PlaneSensor DEF='_4'
-                  offset='0.8289146 0 0'
+                  offset='0.9138567 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Script DEF='LocalFogVisibilityRangeScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
               <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
               <field accessType='inputOutput' type='SFFloat' name='minValue'/>
-              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='100'/>
+              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
-              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='96'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='90'/>
 <![CDATA[ecmascript:
 
 function set_translation (value)
@@ -251,7 +251,7 @@ function set_value (value)
                 <Material/>
               </Appearance>
               <Text DEF='_5'
-                  string='"visibilityRange 49.0"'
+                  string='"visibilityRange 50.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -280,7 +280,7 @@ function set_value (value)
             </Transform>
             <Transform DEF='Knob_1'>
               <Transform DEF='Disk2D_1'
-                  translation='0.8289146 0 0'
+                  translation='0.5084513 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
                   <Appearance>
@@ -290,17 +290,17 @@ function set_value (value)
                 </Shape>
               </Transform>
               <PlaneSensor DEF='_6'
-                  offset='0.8289146 0 0'
+                  offset='0.5084513 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Script DEF='FogisibilityRangeScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
               <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
               <field accessType='inputOutput' type='SFFloat' name='minValue'/>
-              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='60'/>
+              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
-              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='49'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='50'/>
 <![CDATA[ecmascript:
 
 function set_translation (value)

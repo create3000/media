@@ -11,7 +11,7 @@
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 10 Mar 2024 18:59:17 GMT'/>
+    <meta name='modified' content='Sun, 10 Mar 2024 19:08:10 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -148,7 +148,7 @@
         <Fog DEF='_4'
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
-            visibilityRange='49'/>
+            visibilityRange='50.33668'/>
         <DirectionalLight
             direction='0 -1 -1'
             shadows='true'/>
@@ -208,7 +208,7 @@
                 <Material/>
               </Appearance>
               <Text DEF='_2'
-                  string='"visibilityRange 49.0"'
+                  string='"visibilityRange 50.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -237,7 +237,7 @@
             </Transform>
             <Transform DEF='Knob'>
               <Transform DEF='Disk2D'
-                  translation='0.8289146 0 0'
+                  translation='0.5084513 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
                   <Appearance>
@@ -247,17 +247,17 @@
                 </Shape>
               </Transform>
               <PlaneSensor DEF='_3'
-                  offset='0.8289146 0 0'
+                  offset='0.5084513 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Script DEF='visibilityRangeScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
               <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
               <field accessType='inputOutput' type='SFFloat' name='minValue'/>
-              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='60'/>
+              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
-              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='49'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='50'/>
 <![CDATA[ecmascript:
 
 function initialized ()
