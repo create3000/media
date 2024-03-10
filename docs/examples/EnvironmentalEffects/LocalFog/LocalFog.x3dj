@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:02:52 GMT"
+          "@content": "Sun, 10 Mar 2024 18:55:13 GMT"
         }
       ],
       "component": [
@@ -271,6 +271,7 @@
                           },
                           { "LocalFog":
                             {
+                              "@DEF": "_2",
                               "@color": [ 0.792157, 0.792157, 0.792157 ],
                               "@visibilityRange": 96
                             }
@@ -290,12 +291,12 @@
                     },
                     { "Group":
                       {
-                        "@DEF": "BubblesMenu",
+                        "@DEF": "LocalFogMenu_1",
                         "-children": [
                           { "Transform":
                             {
                               "@DEF": "Header_1",
-                              "@translation": [ 1.6905, -0.859496, -1 ],
+                              "@translation": [ 1.6905, -0.6934729, -1 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -334,7 +335,7 @@
                           { "Transform":
                             {
                               "@DEF": "visibilityRangeText",
-                              "@translation": [ 1.6905, -0.945, -1 ],
+                              "@translation": [ 1.6905, -0.7789769, -1 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -349,8 +350,8 @@
                                     },
                                     "-geometry": { "Text":
                                       {
-                                        "@DEF": "_2",
-                                        "@string": [ "visibilityRange 49.0" ],
+                                        "@DEF": "_3",
+                                        "@string": [ "visibilityRange 96.0" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
@@ -368,7 +369,7 @@
                           { "Transform":
                             {
                               "@DEF": "visibilityRangeSlider",
-                              "@translation": [ 0.0735, -0.9285, -3.51117e-6 ],
+                              "@translation": [ 0.0735, -0.7624769, -3.51117e-6 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
@@ -439,7 +440,7 @@
                                       },
                                       { "PlaneSensor":
                                         {
-                                          "@DEF": "_3",
+                                          "@DEF": "_4",
                                           "@offset": [ 0.8289146, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
@@ -449,7 +450,235 @@
                                 },
                                 { "Script":
                                   {
-                                    "@DEF": "visibilityRangeScript",
+                                    "@DEF": "LocalFogVisibilityRangeScript",
+                                    "field": [
+                                      {
+                                        "@accessType": "inputOnly",
+                                        "@type": "SFVec3f",
+                                        "@name": "set_translation"
+                                      },
+                                      {
+                                        "@accessType": "inputOutput",
+                                        "@type": "SFString",
+                                        "@name": "description",
+                                        "@value": "visibilityRange"
+                                      },
+                                      {
+                                        "@accessType": "inputOutput",
+                                        "@type": "SFFloat",
+                                        "@name": "minValue"
+                                      },
+                                      {
+                                        "@accessType": "inputOutput",
+                                        "@type": "SFFloat",
+                                        "@name": "maxValue",
+                                        "@value": 100
+                                      },
+                                      {
+                                        "@accessType": "outputOnly",
+                                        "@type": "SFFloat",
+                                        "@name": "value_changed"
+                                      },
+                                      {
+                                        "@accessType": "outputOnly",
+                                        "@type": "MFString",
+                                        "@name": "string_changed"
+                                      },
+                                      {
+                                        "@accessType": "initializeOnly",
+                                        "@type": "SFInt32",
+                                        "@name": "currentValue",
+                                        "@value": 96
+                                      }
+                                    ],
+                                    "#sourceCode": [
+"ecmascript:",
+"",
+"function set_translation (value)",
+"{",
+"\tset_value (minValue + (value .x * (maxValue - minValue)));",
+"}",
+"",
+"function set_value (value)",
+"{",
+"\tif (value == currentValue)",
+"\t\treturn;",
+"",
+"\tcurrentValue       = value;",
+"\tvalue_changed      = value;",
+"\tstring_changed [0] = description + \" \" + currentValue .toFixed (1);",
+"}"
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Group":
+                      {
+                        "@DEF": "FogMenu_1",
+                        "-children": [
+                          { "Transform":
+                            {
+                              "@DEF": "Header",
+                              "@translation": [ 1.6905, -0.859496, -1 ],
+                              "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                            "@DEF": "Artdeco31_2",
+                                            "@ambientIntensity": 0,
+                                            "@diffuseColor": [ 0, 0, 0 ],
+                                            "@shininess": 0
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "Fog" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "SANS" ],
+                                            "@style": "BOLD",
+                                            "@size": 0.68,
+                                            "@justify": [ "END" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "visibilityRangeText_1",
+                              "@translation": [ 1.6905, -0.945, -1 ],
+                              "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@DEF": "_5",
+                                        "@string": [ "visibilityRange 49.0" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "SANS" ],
+                                            "@justify": [ "END" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "visibilityRangeSlider_1",
+                              "@translation": [ 0.0735, -0.9285, -3.51117e-6 ],
+                              "@center": [ 0, -0.027, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "IndexedLineSet_1",
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-lineProperties": { "LineProperties":
+                                                {
+                                                  "@linewidthScaleFactor": 2
+                                                }
+                                              },
+                                              "-material": { "Material":
+                                                {
+                                                  "@DEF": "Artdeco31_3",
+                                                  "@emissiveColor": [ 0.721, 0.721, 0.721 ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "IndexedLineSet":
+                                            {
+                                              "@colorPerVertex": false,
+                                              "@coordIndex": [ 0, 1, -1 ],
+                                              "-coord": { "Coordinate":
+                                                {
+                                                  "@point": [ 0, 0, 0, 1, 0, 0 ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Knob_1",
+                                    "-children": [
+                                      { "Transform":
+                                        {
+                                          "@DEF": "Disk2D_1",
+                                          "@translation": [ 0.8289146, 0, 0 ],
+                                          "@scale": [ 0.027, 0.0267372, 0.0267372 ],
+                                          "-children": [
+                                            { "Shape":
+                                              {
+                                                "-appearance": { "Appearance":
+                                                  {
+                                                    "-material": { "Material":
+                                                      {
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "-geometry": { "Disk2D":
+                                                  {
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      { "PlaneSensor":
+                                        {
+                                          "@DEF": "_6",
+                                          "@offset": [ 0.8289146, 0, 0 ],
+                                          "@maxPosition": [ 1, 0 ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Script":
+                                  {
+                                    "@DEF": "FogisibilityRangeScript",
                                     "field": [
                                       {
                                         "@accessType": "inputOnly",
@@ -493,11 +722,6 @@
                                     "#sourceCode": [
 "ecmascript:",
 "",
-"function initialized ()",
-"{",
-"\tset_value (value);",
-"}",
-"",
 "function set_translation (value)",
 "{",
 "\tset_value (minValue + (value .x * (maxValue - minValue)));",
@@ -529,34 +753,66 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
+            "@fromNode": "_6",
             "@fromField": "translation_changed",
-            "@toNode": "Disk2D",
-            "@toField": "translation"
+            "@toNode": "Disk2D_1",
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "visibilityRangeScript",
+            "@fromNode": "FogisibilityRangeScript",
             "@fromField": "value_changed",
             "@toNode": "_1",
-            "@toField": "visibilityRange"
+            "@toField": "set_visibilityRange"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "visibilityRangeScript",
+            "@fromNode": "FogisibilityRangeScript",
             "@fromField": "string_changed",
-            "@toNode": "_2",
-            "@toField": "string"
+            "@toNode": "_5",
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
+            "@fromNode": "_6",
             "@fromField": "translation_changed",
-            "@toNode": "visibilityRangeScript",
+            "@toNode": "FogisibilityRangeScript",
             "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "LocalFogVisibilityRangeScript",
+            "@fromField": "string_changed",
+            "@toNode": "_3",
+            "@toField": "set_string"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_4",
+            "@fromField": "translation_changed",
+            "@toNode": "Disk2D",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_4",
+            "@fromField": "translation_changed",
+            "@toNode": "LocalFogVisibilityRangeScript",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "LocalFogVisibilityRangeScript",
+            "@fromField": "value_changed",
+            "@toNode": "_2",
+            "@toField": "set_visibilityRange"
           }
         }
       ]

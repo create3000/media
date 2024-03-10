@@ -10,9 +10,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:02:53 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sun, 10 Mar 2024 18:55:13 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -115,16 +115,16 @@
               </IndexedFaceSet>
             </Shape>
           </Transform>
-          <LocalFog
+          <LocalFog DEF='_2'
               color='0.792157 0.792157 0.792157'
               visibilityRange='96'/>
         </Transform>
       </Layer>
       <Layer>
         <OrthoViewpoint/>
-        <Group DEF='BubblesMenu'>
+        <Group DEF='LocalFogMenu_1'>
           <Transform DEF='Header_1'
-              translation='1.6905 -0.859496 -1'
+              translation='1.6905 -0.6934729 -1'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance>
@@ -145,14 +145,14 @@
             </Shape>
           </Transform>
           <Transform DEF='visibilityRangeText'
-              translation='1.6905 -0.945 -1'
+              translation='1.6905 -0.7789769 -1'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance>
                 <Material/>
               </Appearance>
-              <Text DEF='_2'
-                  string='"visibilityRange 49.0"'
+              <Text DEF='_3'
+                  string='"visibilityRange 96.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -161,7 +161,7 @@
             </Shape>
           </Transform>
           <Transform DEF='visibilityRangeSlider'
-              translation='0.0735 -0.9285 -3.51117e-6'
+              translation='0.0735 -0.7624769 -3.51117e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet'>
               <Shape>
@@ -190,11 +190,110 @@
                   <Disk2D/>
                 </Shape>
               </Transform>
-              <PlaneSensor DEF='_3'
+              <PlaneSensor DEF='_4'
                   offset='0.8289146 0 0'
                   maxPosition='1 0'/>
             </Transform>
-            <Script DEF='visibilityRangeScript'>
+            <Script DEF='LocalFogVisibilityRangeScript'>
+              <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
+              <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
+              <field accessType='inputOutput' type='SFFloat' name='minValue'/>
+              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='100'/>
+              <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+              <field accessType='outputOnly' type='MFString' name='string_changed'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='96'/>
+<![CDATA[ecmascript:
+
+function set_translation (value)
+{
+	set_value (minValue + (value .x * (maxValue - minValue)));
+}
+
+function set_value (value)
+{
+	if (value == currentValue)
+		return;
+
+	currentValue       = value;
+	value_changed      = value;
+	string_changed [0] = description + " " + currentValue .toFixed (1);
+}]]>
+            </Script>
+          </Transform>
+        </Group>
+        <Group DEF='FogMenu_1'>
+          <Transform DEF='Header'
+              translation='1.6905 -0.859496 -1'
+              scale='0.0672307 0.0672307 0.0672307'>
+            <Shape>
+              <Appearance>
+                <Material DEF='Artdeco31_2'
+                    ambientIntensity='0'
+                    diffuseColor='0 0 0'
+                    shininess='0'/>
+              </Appearance>
+              <Text
+                  string='"Fog"'
+                  solid='true'>
+                <FontStyle
+                    family='"SANS"'
+                    style='BOLD'
+                    size='0.68'
+                    justify='"END"'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='visibilityRangeText_1'
+              translation='1.6905 -0.945 -1'
+              scale='0.0672307 0.0672307 0.0672307'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Text DEF='_5'
+                  string='"visibilityRange 49.0"'
+                  solid='true'>
+                <FontStyle
+                    family='"SANS"'
+                    justify='"END"'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='visibilityRangeSlider_1'
+              translation='0.0735 -0.9285 -3.51117e-6'
+              center='0 -0.027 0'>
+            <Transform DEF='IndexedLineSet_1'>
+              <Shape>
+                <Appearance>
+                  <LineProperties
+                      linewidthScaleFactor='2'/>
+                  <Material DEF='Artdeco31_3'
+                      emissiveColor='0.721 0.721 0.721'/>
+                </Appearance>
+                <IndexedLineSet
+                    colorPerVertex='false'
+                    coordIndex='0, 1, -1'>
+                  <Coordinate
+                      point='0 0 0, 1 0 0'/>
+                </IndexedLineSet>
+              </Shape>
+            </Transform>
+            <Transform DEF='Knob_1'>
+              <Transform DEF='Disk2D_1'
+                  translation='0.8289146 0 0'
+                  scale='0.027 0.0267372 0.0267372'>
+                <Shape>
+                  <Appearance>
+                    <Material/>
+                  </Appearance>
+                  <Disk2D/>
+                </Shape>
+              </Transform>
+              <PlaneSensor DEF='_6'
+                  offset='0.8289146 0 0'
+                  maxPosition='1 0'/>
+            </Transform>
+            <Script DEF='FogisibilityRangeScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
               <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
               <field accessType='inputOutput' type='SFFloat' name='minValue'/>
@@ -203,11 +302,6 @@
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
               <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='49'/>
 <![CDATA[ecmascript:
-
-function initialized ()
-{
-	set_value (value);
-}
 
 function set_translation (value)
 {
@@ -228,9 +322,13 @@ function set_value (value)
         </Group>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='_3' fromField='translation_changed' toNode='Disk2D' toField='set_translation'/>
-    <ROUTE fromNode='visibilityRangeScript' fromField='value_changed' toNode='_1' toField='set_visibilityRange'/>
-    <ROUTE fromNode='visibilityRangeScript' fromField='string_changed' toNode='_2' toField='set_string'/>
-    <ROUTE fromNode='_3' fromField='translation_changed' toNode='visibilityRangeScript' toField='set_translation'/>
+    <ROUTE fromNode='_6' fromField='translation_changed' toNode='Disk2D_1' toField='set_translation'/>
+    <ROUTE fromNode='FogisibilityRangeScript' fromField='value_changed' toNode='_1' toField='set_visibilityRange'/>
+    <ROUTE fromNode='FogisibilityRangeScript' fromField='string_changed' toNode='_5' toField='set_string'/>
+    <ROUTE fromNode='_6' fromField='translation_changed' toNode='FogisibilityRangeScript' toField='set_translation'/>
+    <ROUTE fromNode='LocalFogVisibilityRangeScript' fromField='string_changed' toNode='_3' toField='set_string'/>
+    <ROUTE fromNode='_4' fromField='translation_changed' toNode='Disk2D' toField='set_translation'/>
+    <ROUTE fromNode='_4' fromField='translation_changed' toNode='LocalFogVisibilityRangeScript' toField='set_translation'/>
+    <ROUTE fromNode='LocalFogVisibilityRangeScript' fromField='value_changed' toNode='_2' toField='set_visibilityRange'/>
   </Scene>
 </X3D>
