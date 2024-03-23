@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.6.3, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.130, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:20:50 GMT"
+          "@content": "Sat, 23 Mar 2024 08:37:17 GMT"
         }
       ],
       "component": [
@@ -284,23 +284,20 @@
                 "@name": "set_active"
               },
               {
+                "@accessType": "outputOnly",
+                "@type": "MFString",
+                "@name": "url_changed"
+              },
+              {
+                "@accessType": "outputOnly",
+                "@type": "SFTime",
+                "@name": "startTime"
+              },
+              {
                 "@accessType": "initializeOnly",
                 "@type": "MFString",
                 "@name": "files",
                 "@value": [ "assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don't Pay My Bills.mp3", "assets/audio/03. Crockett's Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3" ]
-              },
-              {
-                "@accessType": "initializeOnly",
-                "@type": "SFNode",
-                "@name": "source",
-                "-children": [
-                  { "AudioClip":
-                    {
-                      "@DEF": "AudioClip",
-                      "@url": [ "assets/audio/01. Calabi Yau Space.mp3" ]
-                    }
-                  }
-                ]
               }
             ],
             "#sourceCode": [
@@ -320,8 +317,8 @@
 "",
 "   const url = files [track ++ % files .length];",
 "",
-"   source .url       = new MFString (url);",
-"   source .startTime = time;",
+"   url_changed = new MFString (url);",
+"   startTime   = time;",
 "}"
             ]
           }
@@ -341,7 +338,8 @@
                   "-children": [
                     { "AudioClip":
                       {
-                        "@USE": "AudioClip"
+                        "@DEF": "AudioClip",
+                        "@url": [ "assets/audio/01. Calabi Yau Space.mp3" ]
                       }
                     }
                   ]
@@ -374,7 +372,7 @@
                     },
                     {
                       "@name": "byteFrequencyData",
-                      "@value": [ 255, 246, 201, 168, 172, 180, 166, 149, 138, 133, 124, 118, 117, 112, 95, 92, 85, 73, 72, 58, 53, 37, 35, 32, 8, 0, 0, 0, 0, 0, 0, 0 ]
+                      "@value": [ 245, 232, 199, 179, 182, 194, 184, 153, 133, 134, 129, 115, 116, 105, 85, 82, 75, 73, 74, 66, 53, 47, 41, 23, 0, 0, 0, 0, 0, 0, 0, 0 ]
                     }
                   ]
                 }
@@ -395,7 +393,7 @@
             "@fromNode": "_1",
             "@fromField": "byteFrequencyData",
             "@toNode": "_2",
-            "@toField": "byteFrequencyData"
+            "@toField": "set_byteFrequencyData"
           }
         },
         { "ROUTE":
@@ -403,7 +401,31 @@
             "@fromNode": "_1",
             "@fromField": "frequencyBinCount",
             "@toNode": "_2",
-            "@toField": "frequencyBinCount"
+            "@toField": "set_frequencyBinCount"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AudioScript",
+            "@fromField": "url_changed",
+            "@toNode": "AudioClip",
+            "@toField": "set_url"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AudioScript",
+            "@fromField": "startTime",
+            "@toNode": "AudioClip",
+            "@toField": "set_startTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "AudioScript",
+            "@fromField": "startTime",
+            "@toNode": "_1",
+            "@toField": "set_startTime"
           }
         }
       ]

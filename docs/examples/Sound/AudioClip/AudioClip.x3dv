@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V9.3.2
 
 PROFILE Interchange
 
@@ -10,9 +10,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:20:47 GMT"
+META "generator" "Sunrize X3D Editor V1.6.3, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.130, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sat, 23 Mar 2024 08:37:15 GMT"
 
 PROTO SpectrumAnalyser [
   inputOutput SFFloat yScale 1
@@ -143,10 +143,9 @@ Viewpoint {
 
 DEF AudioScript Script {
   inputOnly      SFBool   set_active
+  outputOnly     MFString url_changed
+  outputOnly     SFTime   startTime
   initializeOnly MFString files [ "assets/audio/01. Calabi Yau Space.mp3", "assets/audio/02. You Don't Pay My Bills.mp3", "assets/audio/03. Crockett's Theme.mp3", "assets/audio/04. In The Future With Machines.mp3", "assets/audio/05. Racer Car.mp3", "assets/audio/06. Seven Of Nine.mp3", "assets/audio/07. FPU Theme.mp3", "assets/audio/08. Time Safari.mp3", "assets/audio/09. Eastside Protection.mp3", "assets/audio/10. Waiting For Snow.mp3", "assets/audio/11. Endgame.mp3" ]
-  initializeOnly SFNode   source DEF AudioClip AudioClip {
-    url "assets/audio/01. Calabi Yau Space.mp3"
-  }
 
   url "ecmascript:
 
@@ -164,8 +163,8 @@ function set_active (value, time)
 
    const url = files [track ++ % files .length];
 
-   source .url       = new MFString (url);
-   source .startTime = time;
+   url_changed = new MFString (url);
+   startTime   = time;
 }"
   directOutput TRUE
 }
@@ -177,7 +176,9 @@ DEF Seven-Of-Nine Sound {
   maxFront 100000
   children DEF _1 Analyser {
     fftSize 64
-    children USE AudioClip
+    children DEF AudioClip AudioClip {
+      url "assets/audio/01. Calabi Yau Space.mp3"
+    }
   }
 }
 
@@ -187,10 +188,13 @@ DEF SpectrumAnalyser Transform {
     yScale 8
     samples 32
     frequencyBinCount 32
-    byteFrequencyData [ 255, 246, 201, 168, 172, 180, 166, 149, 138, 133, 124, 118, 117, 112, 95, 92, 85, 73, 72, 58, 53, 37, 35, 32, 8, 0, 0, 0, 0, 0, 0, 0 ]
+    byteFrequencyData [ 245, 232, 199, 179, 182, 194, 184, 153, 133, 134, 129, 115, 116, 105, 85, 82, 75, 73, 74, 66, 53, 47, 41, 23, 0, 0, 0, 0, 0, 0, 0, 0 ]
   }
 }
 
 ROUTE AudioClip.isActive TO AudioScript.set_active
 ROUTE _1.byteFrequencyData TO _2.set_byteFrequencyData
 ROUTE _1.frequencyBinCount TO _2.set_frequencyBinCount
+ROUTE AudioScript.url_changed TO AudioClip.set_url
+ROUTE AudioScript.startTime TO AudioClip.set_startTime
+ROUTE AudioScript.startTime TO _1.set_startTime
