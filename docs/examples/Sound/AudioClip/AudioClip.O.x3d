@@ -9,7 +9,7 @@
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.3, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 23 Mar 2024 08:26:50 GMT'/>
+    <meta name='modified' content='Sat, 23 Mar 2024 11:17:34 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='SpectrumAnalyser'>
@@ -301,24 +301,20 @@ function set_active (value, time)
    startTime   = time;
 }]]>
     </Script>
-    <Sound DEF='Seven-Of-Nine'
-        minBack='100000'
-        minFront='100000'
-        maxBack='100000'
-        maxFront='100000'>
+    <AudioDestination>
       <Analyser DEF='_1'
           fftSize='64'>
         <AudioClip DEF='AudioClip' containerField='children'
             url='"assets/audio/01. Calabi Yau Space.mp3"'/>
       </Analyser>
-    </Sound>
+    </AudioDestination>
     <Transform DEF='SpectrumAnalyser'
         scale='1 1 -1'>
       <ProtoInstance name='SpectrumAnalyser' DEF='_2'>
         <fieldValue name='yScale' value='8'/>
         <fieldValue name='samples' value='32'/>
         <fieldValue name='frequencyBinCount' value='32'/>
-        <fieldValue name='byteFrequencyData' value='245, 232, 199, 179, 182, 194, 184, 153, 133, 134, 129, 115, 116, 105, 85, 82, 75, 73, 74, 66, 53, 47, 41, 23, 0, 0, 0, 0, 0, 0, 0, 0'/>
+        <fieldValue name='byteFrequencyData' value='191, 187, 175, 161, 155, 155, 139, 142, 138, 132, 129, 117, 132, 135, 134, 124, 113, 108, 122, 124, 107, 96, 97, 78, 86, 89, 73, 38, 0, 0, 0, 0'/>
       </ProtoInstance>
     </Transform>
     <ROUTE fromNode='AudioClip' fromField='isActive' toNode='AudioScript' toField='set_active'/>

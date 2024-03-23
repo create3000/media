@@ -12,7 +12,7 @@ META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.6.3, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V1.0.130, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sat, 23 Mar 2024 08:37:15 GMT"
+META "modified" "Sat, 23 Mar 2024 11:18:52 GMT"
 
 PROTO SpectrumAnalyser [
   inputOutput SFFloat yScale 1
@@ -169,11 +169,7 @@ function set_active (value, time)
   directOutput TRUE
 }
 
-DEF Seven-Of-Nine Sound {
-  minBack 100000
-  minFront 100000
-  maxBack 100000
-  maxFront 100000
+AudioDestination {
   children DEF _1 Analyser {
     fftSize 64
     children DEF AudioClip AudioClip {
@@ -188,7 +184,7 @@ DEF SpectrumAnalyser Transform {
     yScale 8
     samples 32
     frequencyBinCount 32
-    byteFrequencyData [ 245, 232, 199, 179, 182, 194, 184, 153, 133, 134, 129, 115, 116, 105, 85, 82, 75, 73, 74, 66, 53, 47, 41, 23, 0, 0, 0, 0, 0, 0, 0, 0 ]
+    byteFrequencyData [ 191, 187, 175, 161, 155, 155, 139, 142, 138, 132, 129, 117, 132, 135, 134, 124, 113, 108, 122, 124, 107, 96, 97, 78, 86, 89, 73, 38, 0, 0, 0, 0 ]
   }
 }
 
