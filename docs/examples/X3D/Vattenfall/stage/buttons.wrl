@@ -1,86 +1,86 @@
 #VRML V2.0 utf8
 
 EXTERNPROTO CheckBox [
-	    exposedField SFBool enabled 
-	    exposedField SFBool on 
-	    exposedField SFTime touchTime 
-	    eventOut     SFBool isActive 
-	    exposedField SFInt32 whichChoice 
-	    exposedField MFNode choice 
+	    exposedField SFBool enabled
+	    exposedField SFBool on
+	    exposedField SFTime touchTime
+	    eventOut     SFBool isActive
+	    exposedField SFInt32 whichChoice
+	    exposedField MFNode choice
 	  ]
 	"CheckBox_proto.wrl"
 EXTERNPROTO Button [
-	    exposedField SFBool enabled 
-	    eventOut     SFBool isActive 
-	    eventOut     SFBool isOver 
-	    eventOut     SFBool isOut 
-	    eventOut     SFVec3f hitNormal_changed 
-	    eventOut     SFVec3f hitPoint_changed 
-	    eventOut     SFVec2f hitTexCoord_changed 
-	    eventOut     SFTime touchTime 
-	    eventOut     SFTime downTime 
-	    eventOut     SFTime overTime 
-	    eventOut     SFTime outTime 
-	    exposedField SFInt32 whichChoice 
-	    exposedField MFNode choice 
+	    exposedField SFBool enabled
+	    eventOut     SFBool isActive
+	    eventOut     SFBool isOver
+	    eventOut     SFBool isOut
+	    eventOut     SFVec3f hitNormal_changed
+	    eventOut     SFVec3f hitPoint_changed
+	    eventOut     SFVec2f hitTexCoord_changed
+	    eventOut     SFTime touchTime
+	    eventOut     SFTime downTime
+	    eventOut     SFTime overTime
+	    eventOut     SFTime outTime
+	    exposedField SFInt32 whichChoice
+	    exposedField MFNode choice
 	  ]
 	"Button_proto.wrl"
 EXTERNPROTO RadioButton [
-	    exposedField SFBool enabled 
-	    eventOut     SFTime touchTime 
-	    exposedField SFInt32 whichChoice 
-	    exposedField MFNode choice 
+	    exposedField SFBool enabled
+	    eventOut     SFTime touchTime
+	    exposedField SFInt32 whichChoice
+	    exposedField MFNode choice
 	  ]
 	"RadioButton_proto.wrl"
 EXTERNPROTO Delay [
-	    exposedField SFTime cycleInterval 
-	    exposedField SFBool enabled 
-	    exposedField SFTime startTime 
-	    exposedField SFTime stopTime 
-	    eventOut     SFBool isActive 
-	    eventOut     SFTime exitTime 
+	    exposedField SFTime cycleInterval
+	    exposedField SFBool enabled
+	    exposedField SFTime startTime
+	    exposedField SFTime stopTime
+	    eventOut     SFBool isActive
+	    eventOut     SFTime exitTime
 	  ]
 	"Delay_proto.wrl"
 EXTERNPROTO Random [
-	    exposedField SFInt32 minValue 
-	    exposedField SFInt32 maxValue 
-	    exposedField SFInt32 numValues 
-	    exposedField SFTime startTime 
-	    exposedField SFTime stopTime 
-	    eventOut     SFInt32 whichChoice_changed 
-	    eventOut     SFFloat fraction_changed 
+	    exposedField SFInt32 minValue
+	    exposedField SFInt32 maxValue
+	    exposedField SFInt32 numValues
+	    exposedField SFTime startTime
+	    exposedField SFTime stopTime
+	    eventOut     SFInt32 whichChoice_changed
+	    eventOut     SFFloat fraction_changed
 	  ]
 	"Random_proto.wrl"
 EXTERNPROTO RandomDelay [
-	    exposedField SFTime minInterval 
-	    exposedField SFTime maxInterval 
-	    exposedField SFBool enabled 
-	    exposedField SFTime startTime 
-	    exposedField SFTime stopTime 
-	    eventOut     SFBool isActive 
-	    eventOut     SFTime exitTime 
+	    exposedField SFTime minInterval
+	    exposedField SFTime maxInterval
+	    exposedField SFBool enabled
+	    exposedField SFTime startTime
+	    exposedField SFTime stopTime
+	    eventOut     SFBool isActive
+	    eventOut     SFTime exitTime
 	  ]
 	"RandomDelay_proto.wrl"
 EXTERNPROTO Scene [
-	    exposedField SFBool enabled 
-	    exposedField SFTime startTime 
-	    exposedField SFTime stopTime 
-	    eventOut     SFBool isActive 
-	    eventOut     SFTime enterTime 
-	    eventOut     SFTime exitTime 
-	    exposedField MFNode interface 
+	    exposedField SFBool enabled
+	    exposedField SFTime startTime
+	    exposedField SFTime stopTime
+	    eventOut     SFBool isActive
+	    eventOut     SFTime enterTime
+	    eventOut     SFTime exitTime
+	    exposedField MFNode interface
 	  ]
 	"Scene_proto.wrl"
 EXTERNPROTO Bool [
-	    exposedField SFBool value 
-	    exposedField SFTime startTime 
-	    eventOut     SFBool bool 
+	    exposedField SFBool value
+	    exposedField SFTime startTime
+	    eventOut     SFBool bool
 	  ]
 	"Bool_proto.wrl"
 EXTERNPROTO Int [
-	    exposedField SFInt32 value 
-	    exposedField SFTime startTime 
-	    eventOut     SFInt32 int 
+	    exposedField SFInt32 value
+	    exposedField SFTime startTime
+	    eventOut     SFInt32 int
 	  ]
 	"Int_proto.wrl"
 WorldInfo {
@@ -684,7 +684,7 @@ DEF Scene Transform {
 }
 DEF open Sound {
   source	DEF open_66 AudioClip {
-    url	"open.aiff"
+    url ["open.aiff", "open.wav"]
     startTime	0
     description	"open"
   }
@@ -698,7 +698,7 @@ DEF open Sound {
 }
 DEF close Sound {
   source	DEF close_67 AudioClip {
-    url	"close.aiff"
+    url	["close.aiff", "close.wav"]
     startTime	0
     description	"close"
   }
@@ -712,7 +712,7 @@ DEF close Sound {
 }
 DEF ok Sound {
   source	DEF ok_68 AudioClip {
-    url	"ok.aiff"
+    url ["ok.aiff", "ok.wav"]
     startTime	0
     description	"ok"
   }

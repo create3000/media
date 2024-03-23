@@ -1165,7 +1165,7 @@ Transform {
 	  }
 	  DEF Jet1 Sound {
 	    source	DEF jetsound AudioClip {
-	      url	"jet1.aiff"
+	      url	["jet1.aiff", "jet1.wav"]
 	      loop	TRUE
 	      startTime	0
 	      pitch	0.3
@@ -1204,10 +1204,10 @@ DEF enterWorldScript Script {
   eventOut  SFBool  firstTime
   eventIn  SFTime  triggerIn
   url	"vrmlscript:function triggerIn(value, time) {
-                                                                        
-         // fire off a single round                                     
-         startTime = value;                                             
-         firstTime = FALSE;                                             
+
+         // fire off a single round
+         startTime = value;
+         firstTime = FALSE;
        }"
 }
 Transform {
