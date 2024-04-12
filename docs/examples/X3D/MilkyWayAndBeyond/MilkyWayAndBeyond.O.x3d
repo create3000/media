@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Interpolation' level='4'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Layout' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <component name='Layout' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 04 Apr 2016 01:15:14 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 16:06:52 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.6.8, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Fri, 12 Apr 2024 17:53:17 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFFloat' url='"MFFloat.x3d#MFFloat"'>
@@ -33,99 +33,100 @@
       <field accessType='outputOnly' type='MFFloat' name='value_changed'/>
     </ExternProtoDeclare>
     <WorldInfo>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='AngleGrid' containerField='value'
+        <MetadataSet DEF='AngleGrid'
             name='AngleGrid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
+          <MetadataBoolean DEF='enabled'
               name='enabled'
               reference='http://titania.create3000.de'
               value='false'/>
         </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
+        <MetadataSet DEF='Grid'
             name='Grid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_1' containerField='value'
+          <MetadataBoolean DEF='enabled_1'
               name='enabled'
               reference='http://titania.create3000.de'
               value='true'/>
-          <MetadataInteger DEF='dimension' containerField='value'
+          <MetadataInteger DEF='dimension'
               name='dimension'
               reference='http://titania.create3000.de'
               value='6, 10, 8'/>
-          <MetadataFloat DEF='scale' containerField='value'
+          <MetadataFloat DEF='scale'
               name='scale'
               reference='http://titania.create3000.de'
               value='1, 1, 1'/>
         </MetadataSet>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
+        <MetadataSet DEF='NavigationInfo'
             name='NavigationInfo'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
+          <MetadataString DEF='type'
               name='type'
               reference='http://titania.create3000.de'
               value='"EXAMINE"'/>
         </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
+        <MetadataSet DEF='Viewpoint'
             name='Viewpoint'
             reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
+          <MetadataDouble DEF='position'
               name='position'
               reference='http://titania.create3000.de'
               value='0, 0, 10'/>
-          <MetadataDouble DEF='orientation' containerField='value'
+          <MetadataDouble DEF='orientation'
               name='orientation'
               reference='http://titania.create3000.de'
               value='0, 0, 1, 0'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
+          <MetadataDouble DEF='centerOfRotation'
               name='centerOfRotation'
               reference='http://titania.create3000.de'
               value='0, 0, 0'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
             <Transform DEF='_2' containerField='value'
                 translation='0.00704333 0.0134851 0.0105878'
                 scale='11.1125 11.1125 11.1125'>
               <Inline
+                  global='true'
                   url='"universe.x3d"'/>
             </Transform>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='LayerSet' containerField='value'
+        <MetadataSet DEF='LayerSet'
             name='LayerSet'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeLayer' containerField='value'
+          <MetadataInteger DEF='activeLayer'
               name='activeLayer'
               reference='http://titania.create3000.de'
               value='-1'/>
         </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
         </MetadataSet>
-        <MetadataSet DEF='Prototype' containerField='value'
+        <MetadataSet DEF='Prototype'
             name='Prototype'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='path' containerField='value'
+          <MetadataString DEF='path'
               name='path'
               reference='http://titania.create3000.de'
               value='"MFNode"'/>
@@ -136,7 +137,7 @@
         activeLayer='-1'
         order='1, 2, 3, 4, 5'>
       <Layer DEF='Background'
-          isPickable='false'>
+          pickable='false'>
         <Background
             skyAngle='71.4645, 90.0002'
             skyColor='0 0 0, 0.145147 0.145147 0.145147, 0.368 0.368 0.368'
@@ -144,37 +145,37 @@
             groundColor='0 0 0, 0.146 0.146 0.146, 0.368 0.368 0.368'/>
       </Layer>
       <LayoutLayer DEF='Layout'>
-        <MetadataSet DEF='Titania_4'
+        <MetadataSet DEF='Titania_4' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='AngleGrid_5' containerField='value'
+          <MetadataSet DEF='AngleGrid_5'
               name='AngleGrid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_6' containerField='value'
+            <MetadataBoolean DEF='enabled_6'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
           </MetadataSet>
-          <MetadataSet DEF='Grid_7' containerField='value'
+          <MetadataSet DEF='Grid_7'
               name='Grid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_8' containerField='value'
+            <MetadataBoolean DEF='enabled_8'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
-            <MetadataFloat DEF='rotation' containerField='value'
+            <MetadataFloat DEF='rotation'
                 name='rotation'
                 reference='http://titania.create3000.de'
                 value='0, 0, 1, 0'/>
-            <MetadataFloat DEF='scale_9' containerField='value'
+            <MetadataFloat DEF='scale_9'
                 name='scale'
                 reference='http://titania.create3000.de'
                 value='1, 1, 1'/>
-            <MetadataInteger DEF='dimension_10' containerField='value'
+            <MetadataInteger DEF='dimension_10'
                 name='dimension'
                 reference='http://titania.create3000.de'
                 value='10, 10, 10'/>
-            <MetadataDouble DEF='snapDistance' containerField='value'
+            <MetadataDouble DEF='snapDistance'
                 name='snapDistance'
                 reference='http://titania.create3000.de'
                 value='0.25'/>
@@ -237,7 +238,7 @@
                 texCoordIndex='0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1'
                 coordIndex='0, 1, 2, 3, -1, 4, 5, 6, 7, -1, 8, 9, 10, 11, -1'>
               <TextureCoordinate
-                  point='0.387728 2.96516e-08, 1 2.96516e-08, 1 0.0447725, 0.387728 0.0447725, 0.159191 2.96516e-08, 0.378079 2.96516e-08, 0.378079 0.0447725, 0.159191 0.0447725, 0 0, 0.159191 0, 0.159191 0.089545, 0 0.089545'/>
+                  point='0.387728 2.96516e-8, 1 2.96516e-8, 1 0.0447725, 0.387728 0.0447725, 0.159191 2.96516e-8, 0.378079 2.96516e-8, 0.378079 0.0447725, 0.159191 0.0447725, 0 0, 0.159191 0, 0.159191 0.089545, 0 0.089545'/>
               <Coordinate
                   point='-0.115302 0.269869 0, 0.500082 0.269869 0, 0.500082 0.314869 0, -0.115302 0.314869 0, -0.345 0.269869 0, -0.125 0.269869 0, -0.125 0.314869 0, -0.345 0.314869 0, -0.505 0.269869 0, -0.345 0.269869 0, -0.345 0.359869 0, -0.505 0.359869 0'/>
             </IndexedFaceSet>
@@ -453,12 +454,12 @@
             translation='0.0190885 -0.0138826 -0.00390446'
             scale='1.86766 1.86766 1.86766'>
           <Inline
+              global='true'
               url='"pulsarpos.x3d"'/>
         </Transform>
         <Transform DEF='ResizeButton'
-            translation='3.81477e-13 -1.03854e-07 2.38402'
-            scale='9.75756 9.75756 9.75756'
-            scaleOrientation='0 0 -1 44.9999961509023'>
+            translation='0 0 2.38402'
+            scale='9.75756 9.75756 9.75756'>
           <Shape>
             <Appearance>
               <Material
@@ -512,10 +513,11 @@ function set_time (value, time)
                     skyColor='0.085 0.085 0.085'/>
                 <Transform>
                   <Inline
+                      global='true'
                       url='"pulsars.x3d"'/>
                 </Transform>
                 <Transform DEF='ResizeButton_29'
-                    translation='0 -1.73635e-07 2.91311'
+                    translation='0 -1.73635e-7 2.91311'
                     scale='8.8919 8.8919 8.8919'
                     scaleOrientation='-0.516855678645447 0.066477445823548 -0.853487525772188 57.1484129626132'>
                   <Shape>
@@ -574,10 +576,9 @@ function set_time (value, time)
                             skyColor='0.085 0.085 0.085'/>
                         <Transform USE='_2'/>
                         <Transform DEF='ResizeButton_33'
-                            translation='0 4 0'
-                            rotation='-0.999999999993254 -3.67320644183592e-06 -3.87957778337562e-13 89.9999945280246'
+                            translation='0 0 4'
                             scale='5.37823 5.37822 5.37822'
-                            scaleOrientation='-0.999999999996086 1.22935148054597e-06 2.51317855295013e-06 45.0000000002237'>
+                            scaleOrientation='-1 1.22935148054597e-6 2.51317855295013e-6 45.0000000002237'>
                           <Shape>
                             <Appearance>
                               <Material
@@ -671,7 +672,7 @@ function set_time (value, time)
                   <Group>
                     <TimeSensor DEF='_44'
                         cycleInterval='2'
-                        startTime='1506563747.81161'/>
+                        startTime='1712944363.986'/>
                     <EaseInEaseOut DEF='_45'
                         key='0, 1'
                         easeInEaseOut='0 1, 1 0'/>
@@ -681,7 +682,7 @@ function set_time (value, time)
                     </ProtoInstance>
                     <TimeSensor DEF='_47'
                         cycleInterval='2'
-                        startTime='1506563750.33323'/>
+                        startTime='1712944366.568'/>
                     <EaseInEaseOut DEF='_48'
                         key='0, 1'
                         easeInEaseOut='0 1, 1 0'/>

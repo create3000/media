@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.6.8, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.136, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:26:34 GMT"
+          "@content": "Fri, 12 Apr 2024 17:54:52 GMT"
         }
       ],
       "component": [
@@ -762,9 +762,8 @@
                     { "Transform":
                       {
                         "@DEF": "ResizeButton",
-                        "@translation": [ 3.81477e-13, -1.03854e-7, 2.38402 ],
+                        "@translation": [ 0, 0, 2.38402 ],
                         "@scale": [ 9.75756, 9.75756, 9.75756 ],
-                        "@scaleOrientation": [ 0, 0, -1, 44.9999961509023 ],
                         "-children": [
                           { "Shape":
                             {
@@ -1053,10 +1052,9 @@
                                                                 { "Transform":
                                                                   {
                                                                     "@DEF": "ResizeButton_33",
-                                                                    "@translation": [ 0, 4, 0 ],
-                                                                    "@rotation": [ -0.999999999993254, -3.67320644183592e-6, -3.87957778337562e-13, 89.9999945280246 ],
+                                                                    "@translation": [ 0, 0, 4 ],
                                                                     "@scale": [ 5.37823, 5.37822, 5.37822 ],
-                                                                    "@scaleOrientation": [ -0.999999999996086, 1.22935148054597e-6, 2.51317855295013e-6, 45.0000000002237 ],
+                                                                    "@scaleOrientation": [ -1, 1.22935148054597e-6, 2.51317855295013e-6, 45.0000000002237 ],
                                                                     "-children": [
                                                                       { "Shape":
                                                                         {
@@ -1320,7 +1318,7 @@
                                                         {
                                                           "@DEF": "_44",
                                                           "@cycleInterval": 2,
-                                                          "@startTime": 1506563747.81161
+                                                          "@startTime": 1712944363.986
                                                         }
                                                       },
                                                       { "EaseInEaseOut":
@@ -1350,7 +1348,7 @@
                                                         {
                                                           "@DEF": "_47",
                                                           "@cycleInterval": 2,
-                                                          "@startTime": 1506563750.33323
+                                                          "@startTime": 1712944366.568
                                                         }
                                                       },
                                                       { "EaseInEaseOut":
@@ -1522,7 +1520,7 @@
             "@fromNode": "UniverseToggleScript",
             "@fromField": "triggerTrue",
             "@toNode": "_36",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1546,7 +1544,7 @@
             "@fromNode": "UniverseToggleScript",
             "@fromField": "triggerFalse",
             "@toNode": "_39",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1570,7 +1568,7 @@
             "@fromNode": "GalaxyToggleScript",
             "@fromField": "triggerFalse",
             "@toNode": "_55",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1578,7 +1576,7 @@
             "@fromNode": "GalaxyToggleScript",
             "@fromField": "triggerTrue",
             "@toNode": "_52",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1610,7 +1608,7 @@
             "@fromNode": "PulsarsToggleScript",
             "@fromField": "triggerFalse",
             "@toNode": "_47",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1618,7 +1616,7 @@
             "@fromNode": "PulsarsToggleScript",
             "@fromField": "triggerTrue",
             "@toNode": "_44",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1634,7 +1632,7 @@
             "@fromNode": "_44",
             "@fromField": "isActive",
             "@toNode": "PulsarsToggleScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -1642,7 +1640,7 @@
             "@fromNode": "_47",
             "@fromField": "isActive",
             "@toNode": "PulsarsToggleScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -1650,7 +1648,7 @@
             "@fromNode": "_36",
             "@fromField": "isActive",
             "@toNode": "UniverseToggleScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -1658,7 +1656,7 @@
             "@fromNode": "_39",
             "@fromField": "isActive",
             "@toNode": "UniverseToggleScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -1666,7 +1664,7 @@
             "@fromNode": "_52",
             "@fromField": "isActive",
             "@toNode": "GalaxyToggleScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -1674,7 +1672,7 @@
             "@fromNode": "_55",
             "@fromField": "isActive",
             "@toNode": "GalaxyToggleScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -1682,7 +1680,7 @@
             "@fromNode": "_25",
             "@fromField": "touchTime",
             "@toNode": "GalaxyToggleScript",
-            "@toField": "resetTime"
+            "@toField": "set_resetTime"
           }
         },
         { "ROUTE":
@@ -1690,7 +1688,7 @@
             "@fromNode": "_25",
             "@fromField": "touchTime",
             "@toNode": "PulsarsToggleScript",
-            "@toField": "resetTime"
+            "@toField": "set_resetTime"
           }
         },
         { "ROUTE":
@@ -1698,7 +1696,7 @@
             "@fromNode": "_25",
             "@fromField": "touchTime",
             "@toNode": "UniverseToggleScript",
-            "@toField": "resetTime"
+            "@toField": "set_resetTime"
           }
         },
         { "ROUTE":
@@ -1714,7 +1712,7 @@
             "@fromNode": "_49",
             "@fromField": "value_changed",
             "@toNode": "_28",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1730,7 +1728,7 @@
             "@fromNode": "_54",
             "@fromField": "value_changed",
             "@toNode": "_26",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1746,7 +1744,7 @@
             "@fromNode": "_57",
             "@fromField": "value_changed",
             "@toNode": "_26",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1762,7 +1760,7 @@
             "@fromNode": "_38",
             "@fromField": "value_changed",
             "@toNode": "_32",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1778,7 +1776,7 @@
             "@fromNode": "_41",
             "@fromField": "value_changed",
             "@toNode": "_32",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1794,7 +1792,7 @@
             "@fromNode": "_46",
             "@fromField": "value_changed",
             "@toNode": "_28",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1802,7 +1800,7 @@
             "@fromNode": "NormalSize_50",
             "@fromField": "value_changed",
             "@toNode": "_26",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1810,7 +1808,7 @@
             "@fromNode": "FullScreen_51",
             "@fromField": "value_changed",
             "@toNode": "_26",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1818,7 +1816,7 @@
             "@fromNode": "NormalSize",
             "@fromField": "value_changed",
             "@toNode": "_32",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1826,7 +1824,7 @@
             "@fromNode": "FullScreen",
             "@fromField": "value_changed",
             "@toNode": "_32",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1834,7 +1832,7 @@
             "@fromNode": "NormalSize_42",
             "@fromField": "value_changed",
             "@toNode": "_28",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1842,7 +1840,7 @@
             "@fromNode": "FullScreen_43",
             "@fromField": "value_changed",
             "@toNode": "_28",
-            "@toField": "clipBoundary"
+            "@toField": "set_clipBoundary"
           }
         },
         { "ROUTE":
@@ -1858,7 +1856,7 @@
             "@fromNode": "Layers",
             "@fromField": "value_changed",
             "@toNode": "_3",
-            "@toField": "layers"
+            "@toField": "set_layers"
           }
         },
         { "ROUTE":
@@ -1874,7 +1872,7 @@
             "@fromNode": "Layers_35",
             "@fromField": "value_changed",
             "@toNode": "_3",
-            "@toField": "layers"
+            "@toField": "set_layers"
           }
         },
         { "ROUTE":
@@ -1890,7 +1888,7 @@
             "@fromNode": "Layers_31",
             "@fromField": "value_changed",
             "@toNode": "_3",
-            "@toField": "layers"
+            "@toField": "set_layers"
           }
         }
       ]
