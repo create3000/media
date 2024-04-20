@@ -10,7 +10,7 @@
     <meta name='generator' content='Titania V4.6.9, http://titania.create3000.de'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.9, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content=''/>
-    <meta name='modified' content='Sat, 20 Apr 2024 18:00:15 GMT'/>
+    <meta name='modified' content='Sat, 20 Apr 2024 18:07:46 GMT'/>
     <meta name='titania-output-style' content='Nicest'/>
   </head>
   <Scene>
@@ -81,7 +81,7 @@ function eventsProcessed ()
             tz = z * zSpacing,
             vx = Math .random () * positionVariation,
             vz = Math .random () * positionVariation,
-            va = Math .random () * rotationVariation;
+            va = Math .random () * rotationVariation * 2;
 
          shape .translations .push (new SFVec3f (tx + vx, 0, tz + vz));
          shape .rotations    .push (new SFRotation (0, 1, 0, va));
