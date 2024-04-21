@@ -10,7 +10,8 @@ function main ()
    systemSync ("npm", "run", "convert", "--", ... argv);
    systemSync ("npm", "run", "image",   "--", ... argv);
    systemSync ("npm", "run", "zip",     "--", ... argv);
+   systemSync ("npm", "run", "html");
+   systemSync ("npm", "run", "table");
 }
 
 main ();
-
