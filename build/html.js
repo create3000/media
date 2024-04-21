@@ -9,6 +9,7 @@ const
 const
    cwd      = process .cwd (),
    examples = path .join (cwd, "docs/examples"),
+   includes = new Set (process .argv .slice (2)),
    media    = "https://create3000.github.io/media/examples";
 
 function example (folder)
@@ -16,6 +17,9 @@ function example (folder)
    const
       base      = path .basename (folder),
       component = path .basename (path .dirname (folder));
+
+   if (includes .size && !includes .has (base))
+      return;
 
    console .log (component, base);
 
