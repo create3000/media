@@ -12,7 +12,7 @@
     <meta name='generator' content='Titania V4.6.9, http://titania.create3000.de'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.9, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content=''/>
-    <meta name='modified' content='Sat, 20 Apr 2024 18:14:01 GMT'/>
+    <meta name='modified' content='Sun, 21 Apr 2024 07:52:50 GMT'/>
     <meta name='titania-output-style' content='Nicest'/>
   </head>
   <Scene>
@@ -110,18 +110,34 @@ function eventsProcessed ()
         </MetadataSet>
       </MetadataSet>
     </WorldInfo>
-    <Viewpoint
-        position='28.10304 12.618 36.97733'
-        orientation='0.92403650418025 -0.349284696151657 -0.155424386685569 308.572781128505'
-        centerOfRotation='22.5 -0 22.5'/>
+    <NavigationInfo
+        headlight='false'/>
     <Background DEF='Summer'
         skyAngle='45.83662, 74.48451, 80.21409, 90.00021'
         skyColor='0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98'
         groundAngle='37.81361, 68.75494, 80.16367, 90.00021'
         groundColor='0.105712 0.156051 0.297, 0.187629 0.255857 0.398, 0.33604 0.405546 0.542, 0.3612 0.469145 0.602, 0.39471 0.522059 0.669'/>
+    <Viewpoint
+        description='Initial View'
+        position='28.10304 12.618 36.97733'
+        orientation='0.92403650418025 -0.349284696151657 -0.155424386685569 308.572781128505'
+        centerOfRotation='22.5 -0 22.5'/>
+    <DirectionalLight
+        direction='-0.4775688 -0.6484554 -0.5928184'
+        shadows='true'
+        shadowMapSize='4096'>
+      <MetadataSet containerField='metadata'
+          name='DirectionalLight'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataFloat
+            name='location'
+            value='19.55631, 5, 22'/>
+      </MetadataSet>
+    </DirectionalLight>
     <Transform DEF='Floor'
         rotation='1 0 0 270'>
-      <Shape>
+      <Shape
+          castShadow='false'>
         <Appearance>
           <PhysicalMaterial
               baseColor='0.2235294 0.1372549 0.0745098'
