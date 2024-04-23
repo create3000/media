@@ -12,7 +12,7 @@
     <meta name='generator' content='Titania V4.0.2, http://titania.create3000.de'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Library/Tests/Components/ParticleSystems/Waterfall.x3d'/>
-    <meta name='modified' content='Tue, 23 Apr 2024 21:14:59 GMT'/>
+    <meta name='modified' content='Tue, 23 Apr 2024 21:19:44 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -41,6 +41,8 @@
         position='5.84487 5.03472 4.6136'
         orientation='-0.345888826425389 0.916328938277108 0.201747854090235 64.956204996263'
         centerOfRotation='-0.531098 1.64484 1.00739'/>
+    <NavigationInfo
+        headlight='false'/>
     <EnvironmentLight
         color='0.9764706 0.7960784 0.6117647'
         intensity='0.45'
@@ -57,10 +59,14 @@
         <TextureProperties USE='_1'/>
       </ImageCubeMapTexture>
     </EnvironmentLight>
+    <DirectionalLight
+        direction='0.55 -0.8835938 -0.434375'
+        shadows='true'/>
     <Transform DEF='Floor'
         rotation='-1 0 0 90.0000000000002'
         scale='5 5 5'>
-      <Shape>
+      <Shape
+          castShadow='false'>
         <Appearance>
           <PhysicalMaterial
               metallic='0.5107484'
@@ -93,7 +99,7 @@
         </IndexedFaceSet>
       </Shape>
     </Transform>
-    <ParticleSystem DEF='Waterfall_1'
+    <ParticleSystem DEF='Waterfall'
         geometryType='LINE'
         maxParticles='30000'
         particleLifetime='20'
