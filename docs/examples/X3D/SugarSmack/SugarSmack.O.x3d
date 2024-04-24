@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
+    <component name='EnvironmentalSensor' level='3'/>
+    <component name='EventUtilities' level='1'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Shape' level='3'/>
-    <component name='Time' level='2'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Sound' level='3'/>
+    <component name='Text' level='1'/>
+    <component name='X_ITE' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 27 Sep 2017 11:50:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 27 Mar 2019 07:59:33 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 24 Apr 2024 07:11:25 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFInt32' url='"MFInt32.x3d#MFInt32"'>
@@ -152,13 +157,18 @@ function random (min, max)
         <field accessType='inputOutput' type='SFNode' name='maze'/>
       </ProtoInterface>
       <ProtoBody>
-        <Inline DEF='_1'>
+        <Collision>
+          <InstancedShape DEF='Proxy' containerField='proxy'/>
+          <InstancedShape DEF='Shape'/>
+        </Collision>
+        <Inline DEF='_1'
+            global='true'>
           <IS>
             <connect nodeField='url' protoField='mazeElementUrl'/>
           </IS>
         </Inline>
         <LoadSensor DEF='_2'>
-          <Inline USE='_1' containerField='watchList'/>
+          <Inline USE='_1'/>
         </LoadSensor>
         <Script DEF='MazeGeometryScript'
             directOutput='true'>
@@ -168,33 +178,17 @@ function random (min, max)
           <field accessType='inputOutput' type='SFBool' name='rotate'/>
           <field accessType='inputOutput' type='SFVec3f' name='mazeElementSize'/>
           <field accessType='initializeOnly' type='SFNode' name='inlineNode'>
-            <Inline USE='_1' containerField='inlineNode'/>
+            <Inline USE='_1'/>
           </field>
           <field accessType='inputOutput' type='SFNode' name='maze'/>
-          <field accessType='initializeOnly' type='SFNode' name='elementProxy'/>
-          <field accessType='initializeOnly' type='SFNode' name='elementShape'/>
           <field accessType='initializeOnly' type='SFNode' name='proxy'>
-            <Shape containerField='proxy'>
-              <IndexedFaceSet>
-                <Coordinate/>
-              </IndexedFaceSet>
-            </Shape>
+            <InstancedShape USE='Proxy'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='shape'>
-            <Shape containerField='shape'>
-              <Appearance>
-                <Material
-                    ambientIntensity='0.553957'
-                    specularColor='0.922 0.922 0.922'
-                    shininess='0.923547'/>
-              </Appearance>
-              <IndexedFaceSet>
-                <Coordinate/>
-              </IndexedFaceSet>
-            </Shape>
+            <InstancedShape USE='Shape'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='self'>
-            <Script USE='MazeGeometryScript' containerField='self'/>
+            <Script USE='MazeGeometryScript'/>
           </field>
           <IS>
             <connect nodeField='type' protoField='type'/>
@@ -213,16 +207,12 @@ function initialize ()
 
 function set_loadTime ()
 {
-	var collisionNode = Browser .currentScene .getImportedNode ("MazeElement");
+	const collisionNode = Browser .currentScene .getImportedNode ("MazeElement");
 
-	if (elementProxy || elementShape)
-		return;
+	proxy .geometry = collisionNode .proxy .geometry;
 
-	elementProxy = collisionNode .proxy;
-	elementShape = collisionNode .children [0];
-
-	collisionNode .proxy        = proxy;
-	collisionNode .children [0] = shape;
+	shape .appearance = collisionNode .children [0] .appearance;
+	shape .geometry   = collisionNode .children [0] .geometry;
 }
 
 function set_maze (value, time)
@@ -239,83 +229,43 @@ function set_triggerTime (value, time)
 	if (maze .matrix .length == 0)
 		return;
 
-	generateGeometry (elementProxy, proxy);
-	generateGeometry (elementShape, shape);
+	generateGeometry (proxy);
+	generateGeometry (shape);
 }
 
-function generateGeometry (elementShape, shape)
+function generateGeometry (shape)
 {
-	var
-		elementWidth    = mazeElementSize .x,
-		elementDepth    = mazeElementSize .z,
-		elementGeometry = elementShape .geometry,
-		elementCoord    = elementGeometry .coord,
-		geometry        = shape .geometry,
-		coord           = geometry .coord,
-		offset          = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);
+	const
+		elementWidth = mazeElementSize .x,
+		elementDepth = mazeElementSize .z,
+		offset       = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);
 
-	shape .appearance = elementShape .appearance;
+	shape .translations .length = 0;
+	shape .rotations    .length = 0;
 
-	geometry .solid           = elementGeometry .solid;
-	geometry .ccw             = elementGeometry .ccw;
-	geometry .convex          = elementGeometry .convex;
-	geometry .creaseAngle     = elementGeometry .creaseAngle;
-	geometry .colorPerVertex  = elementGeometry .colorPerVertex;
-	geometry .normalPerVertex = elementGeometry .normalPerVertex;
-	geometry .color           = elementGeometry .color;
-
-	var
-		colorIndex = new MFInt32 (),
-		coordIndex = new MFInt32 ();
-
-	coord .point .length = 0;
-
-	for (var y = 0; y < maze .height; ++ y)
+	for (let y = 0; y < maze .height; ++ y)
 	{
-		for (var x = 0; x < maze .width; ++ x)
+		for (let x = 0; x < maze .width; ++ x)
 		{
-			if (isType (maze .matrix [getIndex (x, y)]))
+			if (!isType (maze .matrix [getIndex (x, y)]))
+				continue;
+
+			const translation = new SFVec3f (x * elementWidth, 0, y * elementDepth) .subtract (offset);
+
+			if (rotate)
 			{
-				var rotations = rotate ? getRotations (x, y) : [ false ];
-
-				for (var r = 0; r < rotations .length; ++ r)
+				for (const rotation of getRotations (x, y))
 				{
-					var rotation = rotations [r];
-
-					for (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)
-						colorIndex .push (elementGeometry .colorIndex [i]);
-
-					var numPoints = coord .point .length;
-
-					for (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)
-					{
-						var index = elementGeometry .coordIndex [i];
-
-						if (index < 0)
-							coordIndex .push (-1);
-						else
-							coordIndex .push (numPoints + index);
-					}
-
-					for (var i = 0, length = elementCoord .point .length; i < length; ++ i)
-					{
-						var point = elementCoord .point [i];
-
-						if (rotate)
-							point = rotation .multVec (point);
-
-						point = point .add (new SFVec3f (x * elementWidth, 0, y * elementDepth));
-						point = point .subtract (offset);
-
-						coord .point .push (point);
-					}
+					shape .translations .push (translation);
+					shape .rotations    .push (rotation);
 				}
+			}
+			else
+			{
+				shape .translations .push (translation);
 			}
 		}
 	}
-
-	geometry .colorIndex = colorIndex;
-	geometry .coordIndex = coordIndex;
 }
 
 function isType (value)
@@ -414,10 +364,10 @@ function getIndex (x, y)
           <field accessType='outputOnly' type='MFInt32' name='position_changed'/>
           <field accessType='inputOutput' type='SFNode' name='maze'/>
           <field accessType='initializeOnly' type='SFNode' name='transform'>
-            <Transform USE='_3' containerField='transform'/>
+            <Transform USE='_3'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='timeSensor'>
-            <TimeSensor DEF='_4' containerField='timeSensor'
+            <TimeSensor DEF='_4'
                 cycleInterval='0'
                 loop='true'>
               <IS>
@@ -429,17 +379,17 @@ function getIndex (x, y)
             </TimeSensor>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='positionInterpolator'>
-            <PositionInterpolator DEF='_5' containerField='positionInterpolator'
+            <PositionInterpolator DEF='_5'
                 key='0, 1'
                 keyValue='-8 2 4, -4 2 4'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='orientationInterpolator'>
-            <OrientationInterpolator DEF='_6' containerField='orientationInterpolator'
+            <OrientationInterpolator DEF='_6'
                 key='0, 0.25, 0.5, 0.75, 1'
                 keyValue='-0.284180511188001 -0.790532371841786 0.542494245251621 185.949206667814, 0.471950584965486 0.697161480359967 -0.539655923392892 189.608794592081, 0.64245736891161 0.569991777568564 -0.512208846697712 204.736550266607, 0.790426756107843 0.407195559520415 -0.457621371371233 218.697477248719, 0.904626025961796 0.207714310453148 -0.372164638816668 230.661122157893'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='self'>
-            <Script USE='GlobeScript' containerField='self'/>
+            <Script USE='GlobeScript'/>
           </field>
           <IS>
             <connect nodeField='cycleInterval' protoField='cycleInterval'/>
@@ -707,7 +657,7 @@ function getIndex (x, y)
           <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
           <field accessType='inputOutput' type='MFNode' name='collidables'/>
           <field accessType='initializeOnly' type='SFNode' name='self'>
-            <Script USE='MazeCollisionManagerScript' containerField='self'/>
+            <Script USE='MazeCollisionManagerScript'/>
           </field>
           <IS>
             <connect nodeField='collidables' protoField='collidables'/>
@@ -856,10 +806,10 @@ function eventsProcessed ()
           <field accessType='inputOutput' type='SFNode' name='maze'/>
           <field accessType='inputOutput' type='MFNode' name='items'/>
           <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Collision USE='Group_7' containerField='group'/>
+            <Collision USE='Group_7'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='self'>
-            <Script USE='BonusMapScript' containerField='self'/>
+            <Script USE='BonusMapScript'/>
           </field>
           <IS>
             <connect nodeField='density' protoField='density'/>
@@ -1004,198 +954,198 @@ function set_resetTime (value, time)
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataString DEF='panels' containerField='value'
+          <MetadataString DEF='panels'
               name='panels'
               reference='http://titania.create3000.de'
               value='"BROWSER_PANEL", "BROWSER_PANEL", "BROWSER_PANEL", "BROWSER_PANEL"'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'/>
         </MetadataSet>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
+        <MetadataSet DEF='NavigationInfo'
             name='NavigationInfo'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
+          <MetadataString DEF='type'
               name='type'
               reference='http://titania.create3000.de'
               value='"WALK"'/>
         </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
+        <MetadataSet DEF='Viewpoint'
             name='Viewpoint'
             reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
+          <MetadataDouble DEF='position'
               name='position'
               reference='http://titania.create3000.de'
               value='-20, 1.59999996522202, -20'/>
-          <MetadataDouble DEF='orientation' containerField='value'
+          <MetadataDouble DEF='orientation'
               name='orientation'
               reference='http://titania.create3000.de'
               value='0, 1, 0, 4.71238898038469'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
+          <MetadataDouble DEF='centerOfRotation'
               name='centerOfRotation'
               reference='http://titania.create3000.de'
               value='2.30880999565125, 1.59994995594025, -0.422762989997864'/>
         </MetadataSet>
-        <MetadataSet DEF='BrowserPanel' containerField='value'
+        <MetadataSet DEF='BrowserPanel'
             name='BrowserPanel'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='type_8' containerField='value'
+          <MetadataString DEF='type_8'
               name='type'
               reference='http://titania.create3000.de'
               value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
-          <MetadataSet DEF='viewpoints' containerField='value'
+          <MetadataSet DEF='viewpoints'
               name='viewpoints'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='TopViewpoint' containerField='value'
+            <MetadataSet DEF='TopViewpoint'
                 name='TopViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_9' containerField='value'
+              <MetadataDouble DEF='position_9'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='0, 10000, 0'/>
-              <MetadataDouble DEF='orientation_10' containerField='value'
+              <MetadataDouble DEF='orientation_10'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='1, 0, 0, 4.71238898038469'/>
-              <MetadataDouble DEF='centerOfRotation_11' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_11'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='1'/>
             </MetadataSet>
-            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
+            <MetadataSet DEF='PerspectiveViewpoint'
                 name='PerspectiveViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_12' containerField='value'
+              <MetadataDouble DEF='position_12'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='8.48219013214111, 12, 8.48219013214111'/>
-              <MetadataDouble DEF='orientation_13' containerField='value'
+              <MetadataDouble DEF='orientation_13'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0.678598156250032, -0.678598556661039, -0.281084580209608, 5.18712872208587'/>
-              <MetadataDouble DEF='centerOfRotation_14' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_14'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale_15' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_15'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='1'/>
             </MetadataSet>
-            <MetadataSet DEF='FrontViewpoint' containerField='value'
+            <MetadataSet DEF='FrontViewpoint'
                 name='FrontViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_16' containerField='value'
+              <MetadataDouble DEF='position_16'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='0, 0, 10000'/>
-              <MetadataDouble DEF='orientation_17' containerField='value'
+              <MetadataDouble DEF='orientation_17'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 1, 0'/>
-              <MetadataDouble DEF='centerOfRotation_18' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_18'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale_19' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_19'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='1'/>
             </MetadataSet>
-            <MetadataSet DEF='RightViewpoint' containerField='value'
+            <MetadataSet DEF='RightViewpoint'
                 name='RightViewpoint'
                 reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_20' containerField='value'
+              <MetadataDouble DEF='position_20'
                   name='position'
                   reference='http://titania.create3000.de'
                   value='10000, 0, 0'/>
-              <MetadataDouble DEF='orientation_21' containerField='value'
+              <MetadataDouble DEF='orientation_21'
                   name='orientation'
                   reference='http://titania.create3000.de'
                   value='0, 1, 0, 1.5707963267949'/>
-              <MetadataDouble DEF='centerOfRotation_22' containerField='value'
+              <MetadataDouble DEF='centerOfRotation_22'
                   name='centerOfRotation'
                   reference='http://titania.create3000.de'
                   value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale_23' containerField='value'
+              <MetadataDouble DEF='fieldOfViewScale_23'
                   name='fieldOfViewScale'
                   reference='http://titania.create3000.de'
                   value='1'/>
             </MetadataSet>
           </MetadataSet>
-          <MetadataInteger DEF='layerNumber' containerField='value'
+          <MetadataInteger DEF='layerNumber'
               name='layerNumber'
               reference='http://titania.create3000.de'
               value='-1, 1, 1, -1, 1, -1, -1, -1'/>
         </MetadataSet>
-        <MetadataSet DEF='LayerSet' containerField='value'
+        <MetadataSet DEF='LayerSet'
             name='LayerSet'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeLayer' containerField='value'
+          <MetadataInteger DEF='activeLayer'
               name='activeLayer'
               reference='http://titania.create3000.de'
               value='2'/>
         </MetadataSet>
-        <MetadataSet DEF='Prototype' containerField='value'
+        <MetadataSet DEF='Prototype'
             name='Prototype'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='path' containerField='value'
+          <MetadataString DEF='path'
               name='path'
               reference='http://titania.create3000.de'
               value='"MFInt32"'/>
         </MetadataSet>
-        <MetadataSet DEF='RouteGraph' containerField='value'
+        <MetadataSet DEF='RouteGraph'
             name='RouteGraph'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='pages' containerField='value'
+          <MetadataSet DEF='pages'
               name='pages'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='Page0' containerField='value'
+            <MetadataSet DEF='Page0'
                 name='Page0'
                 reference='http://titania.create3000.de'>
-              <MetadataString DEF='pageName' containerField='value'
+              <MetadataString DEF='pageName'
                   name='pageName'
                   reference='http://titania.create3000.de'
                   value='"New Logic"'/>
-              <MetadataDouble DEF='scrollPosition' containerField='value'
+              <MetadataDouble DEF='scrollPosition'
                   name='scrollPosition'
                   reference='http://titania.create3000.de'
                   value='0, 0'/>
-              <MetadataDouble DEF='nodePositions' containerField='value'
+              <MetadataDouble DEF='nodePositions'
                   name='nodePositions'
                   reference='http://titania.create3000.de'/>
-              <MetadataSet DEF='nodes_24' containerField='value'
+              <MetadataSet DEF='nodes_24'
                   name='nodes'
                   reference='http://titania.create3000.de'/>
             </MetadataSet>
           </MetadataSet>
-          <MetadataInteger DEF='currentPage' containerField='value'
+          <MetadataInteger DEF='currentPage'
               name='currentPage'
               reference='http://titania.create3000.de'
               value='0'/>
@@ -1206,156 +1156,156 @@ function set_resetTime (value, time)
         activeLayer='1'
         order='2, 3'>
       <Layer DEF='Playground'
-          isPickable='false'>
-        <MetadataSet DEF='Titania_26'
+          pickable='false'>
+        <MetadataSet DEF='Titania_26' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='AngleGrid' containerField='value'
+          <MetadataSet DEF='AngleGrid'
               name='AngleGrid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled' containerField='value'
+            <MetadataBoolean DEF='enabled'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
           </MetadataSet>
-          <MetadataSet DEF='Grid' containerField='value'
+          <MetadataSet DEF='Grid'
               name='Grid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_27' containerField='value'
+            <MetadataBoolean DEF='enabled_27'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
-            <MetadataInteger DEF='dimension' containerField='value'
+            <MetadataInteger DEF='dimension'
                 name='dimension'
                 reference='http://titania.create3000.de'
                 value='76, 10, 44'/>
-            <MetadataBoolean DEF='collision' containerField='value'
+            <MetadataBoolean DEF='collision'
                 name='collision'
                 reference='http://titania.create3000.de'
                 value='true'/>
-            <MetadataInteger DEF='majorLineEvery' containerField='value'
+            <MetadataInteger DEF='majorLineEvery'
                 name='majorLineEvery'
                 reference='http://titania.create3000.de'
                 value='4, 5, 4'/>
-            <MetadataInteger DEF='majorLineOffset' containerField='value'
+            <MetadataInteger DEF='majorLineOffset'
                 name='majorLineOffset'
                 reference='http://titania.create3000.de'
                 value='2, 0, 2'/>
           </MetadataSet>
-          <MetadataSet DEF='NavigationInfo_28' containerField='value'
+          <MetadataSet DEF='NavigationInfo_28'
               name='NavigationInfo'
               reference='http://titania.create3000.de'>
-            <MetadataString DEF='type_29' containerField='value'
+            <MetadataString DEF='type_29'
                 name='type'
                 reference='http://titania.create3000.de'
                 value='"WALK"'/>
           </MetadataSet>
-          <MetadataSet DEF='Viewpoint_30' containerField='value'
+          <MetadataSet DEF='Viewpoint_30'
               name='Viewpoint'
               reference='http://titania.create3000.de'>
-            <MetadataDouble DEF='position_31' containerField='value'
+            <MetadataDouble DEF='position_31'
                 name='position'
                 reference='http://titania.create3000.de'
                 value='-27.8462807102401, 1.59986136485143, 3.61568454931596'/>
-            <MetadataDouble DEF='orientation_32' containerField='value'
+            <MetadataDouble DEF='orientation_32'
                 name='orientation'
                 reference='http://titania.create3000.de'
                 value='-7.95018876156103e-18, -1, 8.68767109511615e-18, 3.46493514902326'/>
-            <MetadataDouble DEF='centerOfRotation_33' containerField='value'
+            <MetadataDouble DEF='centerOfRotation_33'
                 name='centerOfRotation'
                 reference='http://titania.create3000.de'
                 value='1.74524999456461, 1.59992428073874, 1.66891060591988'/>
           </MetadataSet>
-          <MetadataSet DEF='AxonometricGrid' containerField='value'
+          <MetadataSet DEF='AxonometricGrid'
               name='AxonometricGrid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_34' containerField='value'
+            <MetadataBoolean DEF='enabled_34'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
           </MetadataSet>
-          <MetadataSet DEF='BrowserPanel_35' containerField='value'
+          <MetadataSet DEF='BrowserPanel_35'
               name='BrowserPanel'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='viewpoints_36' containerField='value'
+            <MetadataSet DEF='viewpoints_36'
                 name='viewpoints'
                 reference='http://titania.create3000.de'>
-              <MetadataSet DEF='TopViewpoint_37' containerField='value'
+              <MetadataSet DEF='TopViewpoint_37'
                   name='TopViewpoint'
                   reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position_38' containerField='value'
+                <MetadataDouble DEF='position_38'
                     name='position'
                     reference='http://titania.create3000.de'
                     value='0, 10000, 0'/>
-                <MetadataDouble DEF='orientation_39' containerField='value'
+                <MetadataDouble DEF='orientation_39'
                     name='orientation'
                     reference='http://titania.create3000.de'
                     value='1, 0, 0, 4.71238898038469'/>
-                <MetadataDouble DEF='centerOfRotation_40' containerField='value'
+                <MetadataDouble DEF='centerOfRotation_40'
                     name='centerOfRotation'
                     reference='http://titania.create3000.de'
                     value='0, 0, 0'/>
-                <MetadataDouble DEF='fieldOfViewScale_41' containerField='value'
+                <MetadataDouble DEF='fieldOfViewScale_41'
                     name='fieldOfViewScale'
                     reference='http://titania.create3000.de'
                     value='1'/>
               </MetadataSet>
-              <MetadataSet DEF='PerspectiveViewpoint_42' containerField='value'
+              <MetadataSet DEF='PerspectiveViewpoint_42'
                   name='PerspectiveViewpoint'
                   reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position_43' containerField='value'
+                <MetadataDouble DEF='position_43'
                     name='position'
                     reference='http://titania.create3000.de'
                     value='8.48219013214111, 12, 8.48219013214111'/>
-                <MetadataDouble DEF='orientation_44' containerField='value'
+                <MetadataDouble DEF='orientation_44'
                     name='orientation'
                     reference='http://titania.create3000.de'
                     value='0.678598156250032, -0.678598556661039, -0.281084580209608, 5.18712872208587'/>
-                <MetadataDouble DEF='centerOfRotation_45' containerField='value'
+                <MetadataDouble DEF='centerOfRotation_45'
                     name='centerOfRotation'
                     reference='http://titania.create3000.de'
                     value='0, 0, 0'/>
-                <MetadataDouble DEF='fieldOfViewScale_46' containerField='value'
+                <MetadataDouble DEF='fieldOfViewScale_46'
                     name='fieldOfViewScale'
                     reference='http://titania.create3000.de'
                     value='1'/>
               </MetadataSet>
-              <MetadataSet DEF='RightViewpoint_47' containerField='value'
+              <MetadataSet DEF='RightViewpoint_47'
                   name='RightViewpoint'
                   reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position_48' containerField='value'
+                <MetadataDouble DEF='position_48'
                     name='position'
                     reference='http://titania.create3000.de'
                     value='10000, 0.5071776882327, 1.52070371455408'/>
-                <MetadataDouble DEF='orientation_49' containerField='value'
+                <MetadataDouble DEF='orientation_49'
                     name='orientation'
                     reference='http://titania.create3000.de'
                     value='0, 1, 0, 1.5707963267949'/>
-                <MetadataDouble DEF='centerOfRotation_50' containerField='value'
+                <MetadataDouble DEF='centerOfRotation_50'
                     name='centerOfRotation'
                     reference='http://titania.create3000.de'
                     value='3.76146254118111e-15, 0.5071776882327, 1.52070371455408'/>
-                <MetadataDouble DEF='fieldOfViewScale_51' containerField='value'
+                <MetadataDouble DEF='fieldOfViewScale_51'
                     name='fieldOfViewScale'
                     reference='http://titania.create3000.de'
                     value='1.82752415742614'/>
               </MetadataSet>
-              <MetadataSet DEF='FrontViewpoint_52' containerField='value'
+              <MetadataSet DEF='FrontViewpoint_52'
                   name='FrontViewpoint'
                   reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position_53' containerField='value'
+                <MetadataDouble DEF='position_53'
                     name='position'
                     reference='http://titania.create3000.de'
                     value='0, 0, 10000'/>
-                <MetadataDouble DEF='orientation_54' containerField='value'
+                <MetadataDouble DEF='orientation_54'
                     name='orientation'
                     reference='http://titania.create3000.de'
                     value='0, 0, 1, 0'/>
-                <MetadataDouble DEF='centerOfRotation_55' containerField='value'
+                <MetadataDouble DEF='centerOfRotation_55'
                     name='centerOfRotation'
                     reference='http://titania.create3000.de'
                     value='0, 0, 0'/>
-                <MetadataDouble DEF='fieldOfViewScale_56' containerField='value'
+                <MetadataDouble DEF='fieldOfViewScale_56'
                     name='fieldOfViewScale'
                     reference='http://titania.create3000.de'
                     value='1'/>
@@ -1382,11 +1332,11 @@ function set_resetTime (value, time)
         <DirectionalLight
             intensity='0.656934'
             ambientIntensity='0.382716'
-            direction='0.65147 2.93442e-08 -0.758675'>
-          <MetadataSet DEF='DirectionalLight'
+            direction='0.65147 2.93442e-8 -0.758675'>
+          <MetadataSet DEF='DirectionalLight' containerField='metadata'
               name='DirectionalLight'
               reference='http://titania.create3000.de'>
-            <MetadataFloat DEF='location' containerField='value'
+            <MetadataFloat DEF='location'
                 name='location'
                 reference='http://titania.create3000.de'
                 value='-34, 5, 18.2811'/>
@@ -1394,13 +1344,12 @@ function set_resetTime (value, time)
         </DirectionalLight>
         <DirectionalLight
             ambientIntensity='0.302469'
-            direction='-3.52397e-06 -0.860529 0.509401'
-            shadows='true'
-            shadowIntensity='1'>
-          <MetadataSet DEF='DirectionalLight_60'
+            direction='-3.52397e-6 -0.860529 0.509401'
+            shadows='true'>
+          <MetadataSet DEF='DirectionalLight_60' containerField='metadata'
               name='DirectionalLight'
               reference='http://titania.create3000.de'>
-            <MetadataFloat DEF='location_61' containerField='value'
+            <MetadataFloat DEF='location_61'
                 name='location'
                 reference='http://titania.create3000.de'
                 value='1, 5, -18'/>
@@ -1413,8 +1362,8 @@ function set_resetTime (value, time)
               transitionType='"TELEPORT"'/>
           <Viewpoint DEF='_62'
               description='Maze'
-              position='12 2 -28'
-              orientation='0 1 0 90'
+              position='-20 2 -20'
+              orientation='0 1 0 270'
               centerOfRotation='2.30881 1.59995 -0.422763'/>
           <Script DEF='ViewpointPositionScript'
               directOutput='true'>
@@ -1423,7 +1372,7 @@ function set_resetTime (value, time)
             <field accessType='outputOnly' type='SFVec3f' name='position_changed'/>
             <field accessType='outputOnly' type='SFRotation' name='orientation_changed'/>
             <field accessType='initializeOnly' type='SFNode' name='maze'>
-              <ProtoInstance name='Maze' DEF='_63' containerField='maze'>
+              <ProtoInstance name='Maze' DEF='_63'>
                 <fieldValue name='width' value='17'/>
                 <fieldValue name='height' value='17'/>
               </ProtoInstance>
@@ -1490,7 +1439,7 @@ function getIndex (x, y)
           <fieldValue name='mazeElementSize' value='4 2 4'/>
           <fieldValue name='mazeElementUrl' value='"maze-element.x3d"'/>
           <fieldValue name='maze'>
-            <ProtoInstance name='Maze' USE='_63' containerField='maze'/>
+            <ProtoInstance name='Maze' USE='_63'/>
           </fieldValue>
         </ProtoInstance>
         <ProtoInstance name='MazeGeometry' DEF='Floor'>
@@ -1499,13 +1448,14 @@ function getIndex (x, y)
           <fieldValue name='mazeElementSize' value='4 2 4'/>
           <fieldValue name='mazeElementUrl' value='"maze-floor-element.x3d"'/>
           <fieldValue name='maze'>
-            <ProtoInstance name='Maze' USE='_63' containerField='maze'/>
+            <ProtoInstance name='Maze' USE='_63'/>
           </fieldValue>
         </ProtoInstance>
         <LoadSensor>
-          <ProtoInstance name='MazeGeometry' USE='Walls' containerField='watchList'/>
-          <ProtoInstance name='MazeGeometry' USE='Floor' containerField='watchList'/>
-          <Inline DEF='Globe1' containerField='watchList'
+          <ProtoInstance name='MazeGeometry' USE='Walls'/>
+          <ProtoInstance name='MazeGeometry' USE='Floor'/>
+          <Inline DEF='Globe1'
+              global='true'
               url='"globe1.x3d"'/>
         </LoadSensor>
         <Group DEF='Globes'
@@ -1521,7 +1471,7 @@ function getIndex (x, y)
                 <fieldValue name='startTime' value='1508046433.07247'/>
                 <fieldValue name='stopTime' value='1508046433.07247'/>
                 <fieldValue name='maze'>
-                  <ProtoInstance name='Maze' USE='_63' containerField='maze'/>
+                  <ProtoInstance name='Maze' USE='_63'/>
                 </fieldValue>
                 <fieldValue name='children'>
                   <Inline USE='Globe1'/>
@@ -1535,7 +1485,7 @@ function getIndex (x, y)
                 <fieldValue name='startTime' value='1507984705.53519'/>
                 <fieldValue name='stopTime' value='1507984705.53519'/>
                 <fieldValue name='maze'>
-                  <ProtoInstance name='Maze' USE='_63' containerField='maze'/>
+                  <ProtoInstance name='Maze' USE='_63'/>
                 </fieldValue>
                 <fieldValue name='children'>
                   <Inline USE='Globe1'/>
@@ -1550,12 +1500,14 @@ function getIndex (x, y)
           <fieldValue name='density' value='0.8'/>
           <fieldValue name='mazeElementSize' value='4 2 4'/>
           <fieldValue name='maze'>
-            <ProtoInstance name='Maze' USE='_63' containerField='maze'/>
+            <ProtoInstance name='Maze' USE='_63'/>
           </fieldValue>
           <fieldValue name='items'>
             <Inline DEF='_67' containerField='items'
+                global='true'
                 url='"bonus-mint.x3d"'/>
             <Inline DEF='_68' containerField='items'
+                global='true'
                 url='"bonus-blue.x3d"'/>
           </fieldValue>
         </ProtoInstance>
@@ -1568,14 +1520,14 @@ function getIndex (x, y)
               maxFront='60'>
             <AudioClip DEF='_70'
                 url='"star-collect.mp3"'
-                startTime='1546835705.23872'
+                startTime='1713941812.847'
                 pauseTime='1510042948.99191'
-                stopTime='1546835705.23872'/>
+                stopTime='1713941812.847'/>
           </Sound>
           <ProtoInstance name='TimeControler' DEF='_71'>
-            <fieldValue name='resetTime' value='1546835705.23872'/>
+            <fieldValue name='resetTime' value='1713941812.847'/>
             <fieldValue name='timer'>
-              <AudioClip USE='_70' containerField='timer'/>
+              <AudioClip USE='_70'/>
             </fieldValue>
           </ProtoInstance>
         </Group>
@@ -1583,51 +1535,51 @@ function getIndex (x, y)
             size='-1 -1 -1'/>
       </Layer>
       <Layer DEF='HUD'>
-        <MetadataSet DEF='Titania_73'
+        <MetadataSet DEF='Titania_73' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='BrowserPanel_74' containerField='value'
+          <MetadataSet DEF='BrowserPanel_74'
               name='BrowserPanel'
               reference='http://titania.create3000.de'>
-            <MetadataSet DEF='viewpoints_75' containerField='value'
+            <MetadataSet DEF='viewpoints_75'
                 name='viewpoints'
                 reference='http://titania.create3000.de'>
-              <MetadataSet DEF='TopViewpoint_76' containerField='value'
+              <MetadataSet DEF='TopViewpoint_76'
                   name='TopViewpoint'
                   reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position_77' containerField='value'
+                <MetadataDouble DEF='position_77'
                     name='position'
                     reference='http://titania.create3000.de'
                     value='-1.36431309184498, 10000, -0.448596915357377'/>
-                <MetadataDouble DEF='orientation_78' containerField='value'
+                <MetadataDouble DEF='orientation_78'
                     name='orientation'
                     reference='http://titania.create3000.de'
                     value='1, 0, 0, 4.71238898038469'/>
-                <MetadataDouble DEF='centerOfRotation_79' containerField='value'
+                <MetadataDouble DEF='centerOfRotation_79'
                     name='centerOfRotation'
                     reference='http://titania.create3000.de'
                     value='-1.36431309184498, 0, -0.448596915357377'/>
-                <MetadataDouble DEF='fieldOfViewScale_80' containerField='value'
+                <MetadataDouble DEF='fieldOfViewScale_80'
                     name='fieldOfViewScale'
                     reference='http://titania.create3000.de'
                     value='1.32011942198647'/>
               </MetadataSet>
-              <MetadataSet DEF='PerspectiveViewpoint_81' containerField='value'
+              <MetadataSet DEF='PerspectiveViewpoint_81'
                   name='PerspectiveViewpoint'
                   reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position_82' containerField='value'
+                <MetadataDouble DEF='position_82'
                     name='position'
                     reference='http://titania.create3000.de'
                     value='14.5275537626882, 3.83108699337275, 12.5187423265521'/>
-                <MetadataDouble DEF='orientation_83' containerField='value'
+                <MetadataDouble DEF='orientation_83'
                     name='orientation'
                     reference='http://titania.create3000.de'
                     value='0.395242894713827, -0.911919854849274, -0.110386740643582, 5.76985308850149'/>
-                <MetadataDouble DEF='centerOfRotation_84' containerField='value'
+                <MetadataDouble DEF='centerOfRotation_84'
                     name='centerOfRotation'
                     reference='http://titania.create3000.de'
                     value='3.81159568634139, -1.19005091453601, -8.62907033079362'/>
-                <MetadataDouble DEF='fieldOfViewScale_85' containerField='value'
+                <MetadataDouble DEF='fieldOfViewScale_85'
                     name='fieldOfViewScale'
                     reference='http://titania.create3000.de'
                     value='1'/>
@@ -1721,7 +1673,8 @@ function getIndex (x, y)
               <Box/>
             </Shape>
             <BooleanTrigger DEF='_89'/>
-            <BooleanToggle DEF='_90'/>
+            <BooleanToggle DEF='_90'
+                toggle='true'/>
             <BooleanFilter DEF='_91'/>
             <TouchSensor USE='_88'/>
           </Transform>
