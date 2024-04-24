@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.138, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:27:36 GMT"
+          "@content": "Wed, 24 Apr 2024 07:13:35 GMT"
         }
       ],
       "component": [
@@ -62,6 +62,10 @@
         },
         {
           "@name": "Text",
+          "@level": 1
+        },
+        {
+          "@name": "X_ITE",
           "@level": 1
         }
       ],
@@ -356,6 +360,22 @@
             },
             "ProtoBody": {
               "-children": [
+                { "Collision":
+                  {
+                    "-proxy": { "InstancedShape":
+                      {
+                        "@DEF": "Proxy"
+                      }
+                    },
+                    "-children": [
+                      { "InstancedShape":
+                        {
+                          "@DEF": "Shape"
+                        }
+                      }
+                    ]
+                  }
+                },
                 { "Inline":
                   {
                     "@DEF": "_1",
@@ -432,28 +452,11 @@
                       {
                         "@accessType": "initializeOnly",
                         "@type": "SFNode",
-                        "@name": "elementProxy"
-                      },
-                      {
-                        "@accessType": "initializeOnly",
-                        "@type": "SFNode",
-                        "@name": "elementShape"
-                      },
-                      {
-                        "@accessType": "initializeOnly",
-                        "@type": "SFNode",
                         "@name": "proxy",
                         "-children": [
-                          { "Shape":
+                          { "InstancedShape":
                             {
-                              "-geometry": { "IndexedFaceSet":
-                                {
-                                  "-coord": { "Coordinate":
-                                    {
-                                    }
-                                  }
-                                }
-                              }
+                              "@USE": "Proxy"
                             }
                           }
                         ]
@@ -463,27 +466,9 @@
                         "@type": "SFNode",
                         "@name": "shape",
                         "-children": [
-                          { "Shape":
+                          { "InstancedShape":
                             {
-                              "-appearance": { "Appearance":
-                                {
-                                  "-material": { "Material":
-                                    {
-                                      "@ambientIntensity": 0.553957,
-                                      "@specularColor": [ 0.922, 0.922, 0.922 ],
-                                      "@shininess": 0.923547
-                                    }
-                                  }
-                                }
-                              },
-                              "-geometry": { "IndexedFaceSet":
-                                {
-                                  "-coord": { "Coordinate":
-                                    {
-                                    }
-                                  }
-                                }
-                              }
+                              "@USE": "Shape"
                             }
                           }
                         ]
@@ -513,16 +498,12 @@
 "",
 "function set_loadTime ()",
 "{",
-"\tvar collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");",
+"\tconst collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");",
 "",
-"\tif (elementProxy || elementShape)",
-"\t\treturn;",
+"\tproxy .geometry = collisionNode .proxy .geometry;",
 "",
-"\telementProxy = collisionNode .proxy;",
-"\telementShape = collisionNode .children [0];",
-"",
-"\tcollisionNode .proxy        = proxy;",
-"\tcollisionNode .children [0] = shape;",
+"\tshape .appearance = collisionNode .children [0] .appearance;",
+"\tshape .geometry   = collisionNode .children [0] .geometry;",
 "}",
 "",
 "function set_maze (value, time)",
@@ -539,83 +520,43 @@
 "\tif (maze .matrix .length == 0)",
 "\t\treturn;",
 "",
-"\tgenerateGeometry (elementProxy, proxy);",
-"\tgenerateGeometry (elementShape, shape);",
+"\tgenerateGeometry (proxy);",
+"\tgenerateGeometry (shape);",
 "}",
 "",
-"function generateGeometry (elementShape, shape)",
+"function generateGeometry (shape)",
 "{",
-"\tvar",
-"\t\telementWidth    = mazeElementSize .x,",
-"\t\telementDepth    = mazeElementSize .z,",
-"\t\telementGeometry = elementShape .geometry,",
-"\t\telementCoord    = elementGeometry .coord,",
-"\t\tgeometry        = shape .geometry,",
-"\t\tcoord           = geometry .coord,",
-"\t\toffset          = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);",
+"\tconst",
+"\t\telementWidth = mazeElementSize .x,",
+"\t\telementDepth = mazeElementSize .z,",
+"\t\toffset       = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);",
 "",
-"\tshape .appearance = elementShape .appearance;",
+"\tshape .translations .length = 0;",
+"\tshape .rotations    .length = 0;",
 "",
-"\tgeometry .solid           = elementGeometry .solid;",
-"\tgeometry .ccw             = elementGeometry .ccw;",
-"\tgeometry .convex          = elementGeometry .convex;",
-"\tgeometry .creaseAngle     = elementGeometry .creaseAngle;",
-"\tgeometry .colorPerVertex  = elementGeometry .colorPerVertex;",
-"\tgeometry .normalPerVertex = elementGeometry .normalPerVertex;",
-"\tgeometry .color           = elementGeometry .color;",
-"",
-"\tvar",
-"\t\tcolorIndex = new MFInt32 (),",
-"\t\tcoordIndex = new MFInt32 ();",
-"",
-"\tcoord .point .length = 0;",
-"",
-"\tfor (var y = 0; y < maze .height; ++ y)",
+"\tfor (let y = 0; y < maze .height; ++ y)",
 "\t{",
-"\t\tfor (var x = 0; x < maze .width; ++ x)",
+"\t\tfor (let x = 0; x < maze .width; ++ x)",
 "\t\t{",
-"\t\t\tif (isType (maze .matrix [getIndex (x, y)]))",
+"\t\t\tif (!isType (maze .matrix [getIndex (x, y)]))",
+"\t\t\t\tcontinue;",
+"",
+"\t\t\tconst translation = new SFVec3f (x * elementWidth, 0, y * elementDepth) .subtract (offset);",
+"",
+"\t\t\tif (rotate)",
 "\t\t\t{",
-"\t\t\t\tvar rotations = rotate ? getRotations (x, y) : [ false ];",
-"",
-"\t\t\t\tfor (var r = 0; r < rotations .length; ++ r)",
+"\t\t\t\tfor (const rotation of getRotations (x, y))",
 "\t\t\t\t{",
-"\t\t\t\t\tvar rotation = rotations [r];",
-"",
-"\t\t\t\t\tfor (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)",
-"\t\t\t\t\t\tcolorIndex .push (elementGeometry .colorIndex [i]);",
-"",
-"\t\t\t\t\tvar numPoints = coord .point .length;",
-"",
-"\t\t\t\t\tfor (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)",
-"\t\t\t\t\t{",
-"\t\t\t\t\t\tvar index = elementGeometry .coordIndex [i];",
-"",
-"\t\t\t\t\t\tif (index < 0)",
-"\t\t\t\t\t\t\tcoordIndex .push (-1);",
-"\t\t\t\t\t\telse",
-"\t\t\t\t\t\t\tcoordIndex .push (numPoints + index);",
-"\t\t\t\t\t}",
-"",
-"\t\t\t\t\tfor (var i = 0, length = elementCoord .point .length; i < length; ++ i)",
-"\t\t\t\t\t{",
-"\t\t\t\t\t\tvar point = elementCoord .point [i];",
-"",
-"\t\t\t\t\t\tif (rotate)",
-"\t\t\t\t\t\t\tpoint = rotation .multVec (point);",
-"",
-"\t\t\t\t\t\tpoint = point .add (new SFVec3f (x * elementWidth, 0, y * elementDepth));",
-"\t\t\t\t\t\tpoint = point .subtract (offset);",
-"",
-"\t\t\t\t\t\tcoord .point .push (point);",
-"\t\t\t\t\t}",
+"\t\t\t\t\tshape .translations .push (translation);",
+"\t\t\t\t\tshape .rotations    .push (rotation);",
 "\t\t\t\t}",
+"\t\t\t}",
+"\t\t\telse",
+"\t\t\t{",
+"\t\t\t\tshape .translations .push (translation);",
 "\t\t\t}",
 "\t\t}",
 "\t}",
-"",
-"\tgeometry .colorIndex = colorIndex;",
-"\tgeometry .coordIndex = coordIndex;",
 "}",
 "",
 "function isType (value)",
@@ -1271,7 +1212,7 @@
                     "@fromNode": "_6",
                     "@fromField": "value_changed",
                     "@toNode": "_3",
-                    "@toField": "rotation"
+                    "@toField": "set_rotation"
                   }
                 },
                 { "ROUTE":
@@ -1279,7 +1220,7 @@
                     "@fromNode": "_5",
                     "@fromField": "value_changed",
                     "@toNode": "_3",
-                    "@toField": "translation"
+                    "@toField": "set_translation"
                   }
                 }
               ]
@@ -1873,8 +1814,8 @@
                             {
                               "@DEF": "_62",
                               "@description": "Maze",
-                              "@position": [ 12, 2, -28 ],
-                              "@orientation": [ 0, 1, 0, 90 ],
+                              "@position": [ -20, 2, -20 ],
+                              "@orientation": [ 0, 1, 0, 270 ],
                               "@centerOfRotation": [ 2.30881, 1.59995, -0.422763 ]
                             }
                           },
@@ -2279,9 +2220,9 @@
                                 {
                                   "@DEF": "_70",
                                   "@url": [ "star-collect.mp3" ],
-                                  "@startTime": 1546835705.23872,
+                                  "@startTime": 1713941812.847,
                                   "@pauseTime": 1510042948.99191,
-                                  "@stopTime": 1546835705.23872
+                                  "@stopTime": 1713941812.847
                                 }
                               }
                             }
@@ -2293,7 +2234,7 @@
                               "fieldValue": [
                                 {
                                   "@name": "resetTime",
-                                  "@value": 1546835705.23872
+                                  "@value": 1713941812.847
                                 },
                                 {
                                   "@name": "timer",
@@ -2524,7 +2465,8 @@
                                 },
                                 { "BooleanToggle":
                                   {
-                                    "@DEF": "_90"
+                                    "@DEF": "_90",
+                                    "@toggle": true
                                   }
                                 },
                                 { "BooleanFilter":
@@ -2582,7 +2524,7 @@
             "@fromNode": "ViewpointPositionScript",
             "@fromField": "position_changed",
             "@toNode": "_62",
-            "@toField": "position"
+            "@toField": "set_position"
           }
         },
         { "ROUTE":
@@ -2590,13 +2532,13 @@
             "@fromNode": "ViewpointPositionScript",
             "@fromField": "orientation_changed",
             "@toNode": "_62",
-            "@toField": "orientation"
+            "@toField": "set_orientation"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "_90",
-            "@fromField": "toggle",
+            "@fromField": "toggle_changed",
             "@toNode": "_91",
             "@toField": "set_boolean"
           }
@@ -2654,7 +2596,7 @@
             "@fromNode": "_92",
             "@fromField": "inputNegate",
             "@toNode": "_90",
-            "@toField": "toggle"
+            "@toField": "set_toggle"
           }
         },
         { "ROUTE":
@@ -2694,7 +2636,7 @@
             "@fromNode": "_72",
             "@fromField": "isActive",
             "@toNode": "_64",
-            "@toField": "enabled"
+            "@toField": "set_enabled"
           }
         },
         { "ROUTE":
@@ -2702,7 +2644,7 @@
             "@fromNode": "_72",
             "@fromField": "isActive",
             "@toNode": "_65",
-            "@toField": "enabled"
+            "@toField": "set_enabled"
           }
         },
         { "ROUTE":
@@ -2710,7 +2652,7 @@
             "@fromNode": "_66",
             "@fromField": "enterTime",
             "@toNode": "_71",
-            "@toField": "resetTime"
+            "@toField": "set_resetTime"
           }
         },
         { "ROUTE":
@@ -2718,7 +2660,7 @@
             "@fromNode": "_87",
             "@fromField": "value_changed",
             "@toNode": "_25",
-            "@toField": "order"
+            "@toField": "set_order"
           }
         },
         { "ROUTE":
@@ -2734,7 +2676,7 @@
             "@fromNode": "_58",
             "@fromField": "value_changed",
             "@toNode": "_25",
-            "@toField": "order"
+            "@toField": "set_order"
           }
         },
         { "ROUTE":

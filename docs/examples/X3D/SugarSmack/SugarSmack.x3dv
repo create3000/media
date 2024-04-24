@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V9.5.0
 
 PROFILE Interchange
 
@@ -10,15 +10,16 @@ COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Sound : 3
 COMPONENT Text : 1
+COMPONENT X_ITE : 1
 
 UNIT angle degree 0.017453292519943295
 
 META "comment" "Rise and Shine"
 META "created" "Wed, 27 Sep 2017 11:50:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:27:35 GMT"
+META "generator" "Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.138, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 24 Apr 2024 07:13:34 GMT"
 
 EXTERNPROTO MFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -150,6 +151,11 @@ PROTO MazeGeometry [
   inputOutput SFNode   maze NULL
 ]
 {
+  Collision {
+    proxy DEF Proxy InstancedShape { }
+    children DEF Shape InstancedShape { }
+  }
+
   DEF _1 Inline {
     global TRUE
     url IS mazeElementUrl
@@ -167,25 +173,8 @@ PROTO MazeGeometry [
     inputOutput    SFVec3f mazeElementSize IS mazeElementSize
     initializeOnly SFNode  inlineNode USE _1
     inputOutput    SFNode  maze IS maze
-    initializeOnly SFNode  elementProxy NULL
-    initializeOnly SFNode  elementShape NULL
-    initializeOnly SFNode  proxy Shape {
-      geometry IndexedFaceSet {
-        coord Coordinate { }
-      }
-    }
-    initializeOnly SFNode  shape Shape {
-      appearance Appearance {
-        material Material {
-          ambientIntensity 0.553957
-          specularColor 0.922 0.922 0.922
-          shininess 0.923547
-        }
-      }
-      geometry IndexedFaceSet {
-        coord Coordinate { }
-      }
-    }
+    initializeOnly SFNode  proxy USE Proxy
+    initializeOnly SFNode  shape USE Shape
     initializeOnly SFNode  self USE MazeGeometryScript
 
     url "ecmascript:
@@ -199,16 +188,12 @@ function initialize ()
 
 function set_loadTime ()
 {
-	var collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");
+	const collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");
 
-	if (elementProxy || elementShape)
-		return;
+	proxy .geometry = collisionNode .proxy .geometry;
 
-	elementProxy = collisionNode .proxy;
-	elementShape = collisionNode .children [0];
-
-	collisionNode .proxy        = proxy;
-	collisionNode .children [0] = shape;
+	shape .appearance = collisionNode .children [0] .appearance;
+	shape .geometry   = collisionNode .children [0] .geometry;
 }
 
 function set_maze (value, time)
@@ -225,83 +210,43 @@ function set_triggerTime (value, time)
 	if (maze .matrix .length == 0)
 		return;
 
-	generateGeometry (elementProxy, proxy);
-	generateGeometry (elementShape, shape);
+	generateGeometry (proxy);
+	generateGeometry (shape);
 }
 
-function generateGeometry (elementShape, shape)
+function generateGeometry (shape)
 {
-	var
-		elementWidth    = mazeElementSize .x,
-		elementDepth    = mazeElementSize .z,
-		elementGeometry = elementShape .geometry,
-		elementCoord    = elementGeometry .coord,
-		geometry        = shape .geometry,
-		coord           = geometry .coord,
-		offset          = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);
+	const
+		elementWidth = mazeElementSize .x,
+		elementDepth = mazeElementSize .z,
+		offset       = new SFVec3f ((maze .width - 1) * elementWidth / 2, 0, (maze .height - 1) * elementDepth / 2);
 
-	shape .appearance = elementShape .appearance;
+	shape .translations .length = 0;
+	shape .rotations    .length = 0;
 
-	geometry .solid           = elementGeometry .solid;
-	geometry .ccw             = elementGeometry .ccw;
-	geometry .convex          = elementGeometry .convex;
-	geometry .creaseAngle     = elementGeometry .creaseAngle;
-	geometry .colorPerVertex  = elementGeometry .colorPerVertex;
-	geometry .normalPerVertex = elementGeometry .normalPerVertex;
-	geometry .color           = elementGeometry .color;
-
-	var
-		colorIndex = new MFInt32 (),
-		coordIndex = new MFInt32 ();
-
-	coord .point .length = 0;
-
-	for (var y = 0; y < maze .height; ++ y)
+	for (let y = 0; y < maze .height; ++ y)
 	{
-		for (var x = 0; x < maze .width; ++ x)
+		for (let x = 0; x < maze .width; ++ x)
 		{
-			if (isType (maze .matrix [getIndex (x, y)]))
+			if (!isType (maze .matrix [getIndex (x, y)]))
+				continue;
+
+			const translation = new SFVec3f (x * elementWidth, 0, y * elementDepth) .subtract (offset);
+
+			if (rotate)
 			{
-				var rotations = rotate ? getRotations (x, y) : [ false ];
-
-				for (var r = 0; r < rotations .length; ++ r)
+				for (const rotation of getRotations (x, y))
 				{
-					var rotation = rotations [r];
-
-					for (var i = 0, length = elementGeometry .colorIndex .length; i < length; ++ i)
-						colorIndex .push (elementGeometry .colorIndex [i]);
-
-					var numPoints = coord .point .length;
-
-					for (var i = 0, length = elementGeometry .coordIndex .length; i < length; ++ i)
-					{
-						var index = elementGeometry .coordIndex [i];
-
-						if (index < 0)
-							coordIndex .push (-1);
-						else
-							coordIndex .push (numPoints + index);
-					}
-
-					for (var i = 0, length = elementCoord .point .length; i < length; ++ i)
-					{
-						var point = elementCoord .point [i];
-
-						if (rotate)
-							point = rotation .multVec (point);
-
-						point = point .add (new SFVec3f (x * elementWidth, 0, y * elementDepth));
-						point = point .subtract (offset);
-
-						coord .point .push (point);
-					}
+					shape .translations .push (translation);
+					shape .rotations    .push (rotation);
 				}
+			}
+			else
+			{
+				shape .translations .push (translation);
 			}
 		}
 	}
-
-	geometry .colorIndex = colorIndex;
-	geometry .coordIndex = coordIndex;
 }
 
 function isType (value)
@@ -1001,8 +946,8 @@ DEF _25 LayerSet {
             }
             DEF _62 Viewpoint {
               description "Maze"
-              position 12 2 -28
-              orientation 0 1 0 90
+              position -20 2 -20
+              orientation 0 1 0 270
               centerOfRotation 2.30881 1.59995 -0.422763
             }
             DEF ViewpointPositionScript Script {
@@ -1154,13 +1099,13 @@ function getIndex (x, y)
               maxFront 60
               source DEF _70 AudioClip {
                 url "star-collect.mp3"
-                startTime 1546835705.23872
+                startTime 1713941812.847
                 pauseTime 1510042948.99191
-                stopTime 1546835705.23872
+                stopTime 1713941812.847
               }
             }
             DEF _71 TimeControler {
-              resetTime 1546835705.23872
+              resetTime 1713941812.847
               timer USE _70
             }
           ]
@@ -1269,7 +1214,9 @@ function getIndex (x, y)
               geometry Box { }
             }
             DEF _89 BooleanTrigger { }
-            DEF _90 BooleanToggle { }
+            DEF _90 BooleanToggle {
+              toggle TRUE
+            }
             DEF _91 BooleanFilter { }
             USE _88
           ]
