@@ -10,7 +10,7 @@
     <meta name='created' content='Sun, 10 Dec 2017 17:30:12 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 29 Apr 2024 11:24:36 GMT'/>
+    <meta name='modified' content='Mon, 29 Apr 2024 14:05:18 GMT'/>
   </head>
   <Scene>
     <LayerSet
@@ -79,31 +79,29 @@
                 size='0.282222 0.211667'/>
           </Shape>
         </Transform>
-        <Transform
-            translation='-0.3902069 -0.1438641 0'>
-          <ParticleSystem
-              geometryType='POINT'
-              maxParticles='5000'
-              particleLifetime='1'
-              colorKey='0, 0.2, 0.5, 1'>
-            <ConeEmitter
-                direction='-1 -0.5 0'
-                angle='10'
-                speed='1'
-                mass='0.1'
-                surfaceArea='0.1'/>
-            <WindPhysicsModel
-                speed='1'
-                gustiness='0.5'/>
-            <Color
-                color='1 1 1, 1 1 0, 1 0 0, 0.5 0 0'/>
-            <Appearance>
-              <PointProperties
-                  pointSizeScaleFactor='2'
-                  pointSizeMaxValue='2'/>
-            </Appearance>
-          </ParticleSystem>
-        </Transform>
+        <ParticleSystem
+            geometryType='POINT'
+            maxParticles='5000'
+            particleLifetime='1'
+            colorKey='0, 0.2, 0.5, 1'>
+          <ConeEmitter
+              position='-0.3902069 -0.1438641 0'
+              direction='-1 -0.5 0'
+              angle='10'
+              speed='1'
+              mass='0.1'
+              surfaceArea='0.1'/>
+          <WindPhysicsModel
+              speed='1'
+              gustiness='0.5'/>
+          <Color
+              color='1 1 1, 1 1 0, 1 0 0, 0.5 0 0'/>
+          <Appearance>
+            <PointProperties
+                pointSizeScaleFactor='2'
+                pointSizeMaxValue='2'/>
+          </Appearance>
+        </ParticleSystem>
       </Layer>
     </LayerSet>
   </Scene>

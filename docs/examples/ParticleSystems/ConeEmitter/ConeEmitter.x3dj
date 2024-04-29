@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 29 Apr 2024 11:25:18 GMT"
+          "@content": "Mon, 29 Apr 2024 14:08:42 GMT"
         }
       ],
       "component": [
@@ -196,51 +196,45 @@
                         ]
                       }
                     },
-                    { "Transform":
+                    { "ParticleSystem":
                       {
-                        "@translation": [ -0.3902069, -0.1438641, 0 ],
-                        "-children": [
-                          { "ParticleSystem":
+                        "@geometryType": "POINT",
+                        "@maxParticles": 5000,
+                        "@particleLifetime": 1,
+                        "-emitter": { "ConeEmitter":
+                          {
+                            "@position": [ -0.3902069, -0.1438641, 0 ],
+                            "@direction": [ -1, -0.5, 0 ],
+                            "@angle": 10,
+                            "@speed": 1,
+                            "@mass": 0.1,
+                            "@surfaceArea": 0.1
+                          }
+                        },
+                        "-physics": [
+                          { "WindPhysicsModel":
                             {
-                              "@geometryType": "POINT",
-                              "@maxParticles": 5000,
-                              "@particleLifetime": 1,
-                              "-emitter": { "ConeEmitter":
-                                {
-                                  "@direction": [ -1, -0.5, 0 ],
-                                  "@angle": 10,
-                                  "@speed": 1,
-                                  "@mass": 0.1,
-                                  "@surfaceArea": 0.1
-                                }
-                              },
-                              "-physics": [
-                                { "WindPhysicsModel":
-                                  {
-                                    "@speed": 1,
-                                    "@gustiness": 0.5
-                                  }
-                                }
-                              ],
-                              "@colorKey": [ 0, 0.2, 0.5, 1 ],
-                              "-color": { "Color":
-                                {
-                                  "@color": [ 1, 1, 1, 1, 1, 0, 1, 0, 0, 0.5, 0, 0 ]
-                                }
-                              },
-                              "-appearance": { "Appearance":
-                                {
-                                  "-pointProperties": { "PointProperties":
-                                    {
-                                      "@pointSizeScaleFactor": 2,
-                                      "@pointSizeMaxValue": 2
-                                    }
-                                  }
-                                }
+                              "@speed": 1,
+                              "@gustiness": 0.5
+                            }
+                          }
+                        ],
+                        "@colorKey": [ 0, 0.2, 0.5, 1 ],
+                        "-color": { "Color":
+                          {
+                            "@color": [ 1, 1, 1, 1, 1, 0, 1, 0, 0, 0.5, 0, 0 ]
+                          }
+                        },
+                        "-appearance": { "Appearance":
+                          {
+                            "-pointProperties": { "PointProperties":
+                              {
+                                "@pointSizeScaleFactor": 2,
+                                "@pointSizeMaxValue": 2
                               }
                             }
                           }
-                        ]
+                        }
                       }
                     }
                   ]

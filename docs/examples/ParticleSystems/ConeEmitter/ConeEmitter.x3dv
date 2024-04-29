@@ -13,7 +13,7 @@ META "created" "Sun, 10 Dec 2017 17:30:12 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V1.0.139, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Mon, 29 Apr 2024 11:25:21 GMT"
+META "modified" "Mon, 29 Apr 2024 14:08:46 GMT"
 
 LayerSet {
   activeLayer -1
@@ -93,32 +93,30 @@ LayerSet {
             }
           }
         }
-        Transform {
-          translation -0.3902069 -0.1438641 0
-          children ParticleSystem {
-            geometryType "POINT"
-            maxParticles 5000
-            particleLifetime 1
-            emitter ConeEmitter {
-              direction -1 -0.5 0
-              angle 10
-              speed 1
-              mass 0.1
-              surfaceArea 0.1
-            }
-            physics WindPhysicsModel {
-              speed 1
-              gustiness 0.5
-            }
-            colorKey [ 0, 0.2, 0.5, 1 ]
-            color Color {
-              color [ 1 1 1, 1 1 0, 1 0 0, 0.5 0 0 ]
-            }
-            appearance Appearance {
-              pointProperties PointProperties {
-                pointSizeScaleFactor 2
-                pointSizeMaxValue 2
-              }
+        ParticleSystem {
+          geometryType "POINT"
+          maxParticles 5000
+          particleLifetime 1
+          emitter ConeEmitter {
+            position -0.3902069 -0.1438641 0
+            direction -1 -0.5 0
+            angle 10
+            speed 1
+            mass 0.1
+            surfaceArea 0.1
+          }
+          physics WindPhysicsModel {
+            speed 1
+            gustiness 0.5
+          }
+          colorKey [ 0, 0.2, 0.5, 1 ]
+          color Color {
+            color [ 1 1 1, 1 1 0, 1 0 0, 0.5 0 0 ]
+          }
+          appearance Appearance {
+            pointProperties PointProperties {
+              pointSizeScaleFactor 2
+              pointSizeMaxValue 2
             }
           }
         }
