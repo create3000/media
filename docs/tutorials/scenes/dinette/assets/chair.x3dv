@@ -1,60 +1,12 @@
-#X3D V3.3 utf8 Titania V4.3.0
+#X3D V4.0 utf8 X_ITE V9.5.2
 
-PROFILE Full
+PROFILE Interchange
 
-META "comment" "World of Titania"
 META "created" "Fri, 29 Jun 2018 23:04:54 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Titania V4.3.0, http://titania.create3000.de"
-META "identifier" "file:///run/user/1000/gvfs/ftp:host=create3000.de/html/create3000.de/media/htdocs/tutorials/chair.x3dv"
-META "modified" "Fri, 29 Jun 2018 23:04:56 GMT"
+META "modified" "Mon, 29 Apr 2024 20:14:09 GMT"
+META "generator" "Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/"
 
-WorldInfo {
-  metadata DEF Titania MetadataSet {
-    name "Titania"
-    reference "http://titania.create3000.de"
-    value [
-      DEF Selection MetadataSet {
-        name "Selection"
-        reference "http://titania.create3000.de"
-        value DEF selectGeometry MetadataBoolean {
-          name "selectGeometry"
-          reference "http://titania.create3000.de"
-          value FALSE
-        }
-      }
-      DEF Page MetadataSet {
-        name "Page"
-        reference "http://titania.create3000.de"
-        value [
-          DEF activeView MetadataInteger {
-            name "activeView"
-            reference "http://titania.create3000.de"
-            value 1
-          }
-          DEF multiView MetadataInteger {
-            name "multiView"
-            reference "http://titania.create3000.de"
-            value 0
-          }
-        ]
-      }
-    ]
-  }
-  title "chair"
-}
-
-#
-#  Dinette Chair
-#  chair.wrl
-#        by David R. Nadeau
-#
-#  This chair is inlined in to the dinette.wrl file to illustrate inline
-#  groups.
-#
-#
-#  Chair seat
-#
 Transform {
   translation 0 0.5 0
   children Shape {
@@ -69,9 +21,6 @@ Transform {
   }
 }
 
-#
-#  Chair legs
-#
 Transform {
   translation 0.1575 0.2485 0.1575
   children DEF Leg Shape {
@@ -97,9 +46,6 @@ Transform {
   children USE Leg
 }
 
-#
-#  Chair back
-#
 Transform {
   translation 0.1875 0.5 0
   rotation 0 0 1 6.11318530717959
