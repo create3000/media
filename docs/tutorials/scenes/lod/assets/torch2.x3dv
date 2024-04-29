@@ -1,62 +1,19 @@
-#X3D V3.3 utf8 Titania V4.3.0
+#X3D V4.0 utf8 X_ITE V9.5.2
 
-PROFILE Full
+PROFILE Interchange
 
 META "comment" "World of Titania"
 META "created" "Fri, 29 Jun 2018 12:21:11 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "generator" "Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/"
 META "identifier" "file:///home/holger/torch2.x3dv"
-META "modified" "Fri, 29 Jun 2018 12:21:11 GMT"
+META "modified" "Mon, 29 Apr 2024 20:01:48 GMT"
 
-WorldInfo {
-  metadata DEF Titania MetadataSet {
-    name "Titania"
-    reference "http://titania.create3000.de"
-    value [
-      DEF Selection MetadataSet {
-        name "Selection"
-        reference "http://titania.create3000.de"
-        value DEF selectGeometry MetadataBoolean {
-          name "selectGeometry"
-          reference "http://titania.create3000.de"
-          value FALSE
-        }
-      }
-      DEF Page MetadataSet {
-        name "Page"
-        reference "http://titania.create3000.de"
-        value [
-          DEF activeView MetadataInteger {
-            name "activeView"
-            reference "http://titania.create3000.de"
-            value 1
-          }
-          DEF multiView MetadataInteger {
-            name "multiView"
-            reference "http://titania.create3000.de"
-            value 0
-          }
-        ]
-      }
-    ]
-  }
-  title "torch2"
-}
-
-#
-#  torch2.wrl
-#  A torch (medium detail)
-#    by David R. Nadeau
-#
-#  A simple torch model used in LOD node illustrations (see torches.wrl).
-#
 Transform {
   translation 0 0 0.2
   scale 0.5 0.5 0.5
-  # Additional Flames (eliminated)
   children [
-    # Torch handle
     Transform {
       translation 0 -0.75 0
       rotation 1 0 0 3.14
@@ -73,7 +30,6 @@ Transform {
         }
       }
     }
-    # Fire pot
     DEF Ring Shape {
       appearance USE Gray
       geometry Cylinder {
@@ -87,11 +43,7 @@ Transform {
       translation 0 0.2 0
       children USE Ring
     }
-    # Fire pot detail (eliminated)
-    # Mounting bracket (eliminated)
-    # Flames
     DEF Flames Shape {
-      # No appearance, use emissive shading
       geometry IndexedFaceSet {
         coordIndex [
           0,

@@ -1,100 +1,31 @@
-#X3D V3.3 utf8 Titania V4.3.0
+#X3D V4.0 utf8 X_ITE V9.5.2
 
-PROFILE Full
+PROFILE Interchange
 
 META "comment" "World of Titania"
 META "created" "Fri, 29 Jun 2018 23:05:28 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Titania V4.3.0, http://titania.create3000.de"
+META "generator" "Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/"
 META "identifier" "file:///run/user/1000/gvfs/ftp:host=create3000.de/html/create3000.de/media/htdocs/tutorials/dinette.x3dv"
-META "modified" "Fri, 29 Jun 2018 23:05:56 GMT"
+META "modified" "Mon, 29 Apr 2024 20:01:06 GMT"
 
-WorldInfo {
-  metadata DEF Titania MetadataSet {
-    name "Titania"
-    reference "http://titania.create3000.de"
-    value [
-      DEF Selection MetadataSet {
-        name "Selection"
-        reference "http://titania.create3000.de"
-        value [
-          DEF selectGeometry MetadataBoolean {
-            name "selectGeometry"
-            reference "http://titania.create3000.de"
-            value FALSE
-          }
-          DEF nodes MetadataSet {
-            name "nodes"
-            reference "http://titania.create3000.de"
-            value DEF _1 Viewpoint {
-              description "Initial View"
-              position 1.79832 3.25259 3.19985
-              orientation -0.765210061200835 0.61182508768393 0.20030882236578 0.808565269074585
-              centerOfRotation -0.000171005 0.560533 0
-            }
-          }
-        ]
-      }
-      DEF Page MetadataSet {
-        name "Page"
-        reference "http://titania.create3000.de"
-        value [
-          DEF activeView MetadataInteger {
-            name "activeView"
-            reference "http://titania.create3000.de"
-            value 1
-          }
-          DEF multiView MetadataInteger {
-            name "multiView"
-            reference "http://titania.create3000.de"
-            value 0
-          }
-        ]
-      }
-    ]
-  }
-  title "dinette"
+Viewpoint {
+  description "Initial View"
+  position 1.79832 3.25259 3.19985
+  orientation -0.765210061200835 0.61182508768393 0.20030882236578 0.808565269074585
+  centerOfRotation -0.000171005 0.560533 0
 }
 
-USE _1
-
-#
-#  A Dinette
-#  dinette.wrl
-#        by David R. Nadeau
-#
-#  This example illustrates the use of the Inline node.
-#
-#  Two separate world components are inlined:  a table, and a chair.  The
-#  chair is then instanced three times more to put one chair on each side
-#  of the table.  The completed shape is a dinette, suitable for inlining
-#  in to further worlds.
-#
-#  Things to experiment with:
-#        Add things to the table, such as plates, glasses, candles, etc.
-#
-#        Add a point light source at the tip of a candle on the table
-#
-#        Change the table to use a formica table top texture.  Change the
-#        table and chair legs to chrome by using a specular color and
-#        shininess factor in their Material nodes.  Add a cloth texture to
-#        the chair seats.
-#
-#        Place the dinette in a room by inlining it.
-#
-#
-#  Table
-#
 Inline {
+  global TRUE
   url "assets/table.x3dv"
 }
 
-#
-#  Chairs
-#
 Transform {
   translation 0.95 0 0
   children DEF Chair Inline {
+    global TRUE
     url "assets/chair.x3dv"
   }
 }
