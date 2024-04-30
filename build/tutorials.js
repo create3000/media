@@ -12,15 +12,15 @@ function html (folder)
 {
    const
       base     = path .basename (folder),
-      name     = fs .existsSync (path .join (folder, `${base}.x3d`)) ? `${base}.x3d`: `${base}.x3dv`,
-      file     = path .join (folder, name),
+      basename = fs .existsSync (path .join (folder, `${base}.x3d`)) ? `${base}.x3d`: `${base}.x3dv`,
+      file     = path .join (folder, basename),
       relative = path .relative (path .join (cwd, "docs/tutorials/"), file);
 
    console .log (relative);
 
    let html = sh (`cat ${cwd}/example-template.html`);
    html = html .replace (/BASE/sg, base);
-   html = html .replace (/FILE_NAME/sg, name);
+   html = html .replace (/FILE_NAME/sg, basename);
    html = html .replace (/URL/sg, `${media}/${relative}`);
 
    fs .writeFileSync (`${folder}/example.html`, html);
