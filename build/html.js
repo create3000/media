@@ -12,7 +12,7 @@ const
    includes = new Set (process .argv .slice (2)),
    media    = "https://create3000.github.io/media/examples";
 
-function example (folder)
+function html (folder)
 {
    const
       base      = path .basename (folder),
@@ -34,4 +34,4 @@ function example (folder)
 const files = sh (`find '${examples}' -maxdepth 2 -mindepth 2 -type d`) .trim () .split ("\n") .sort ();
 
 for (const folder of files)
-   example (folder);
+   html (folder);
