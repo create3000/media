@@ -22,6 +22,10 @@ function zip (folder)
    process .chdir (path .dirname (folder));
    systemSync (`zip -q ${base}.zip ${base}/ -r -x */${base}.O.x3d -x */${base}.zip -x */screenshot-small.png`);
    systemSync (`mv ${base}.zip ${base}/`);
+
+   systemSync (`git add -A`);
+	systemSync (`git commit -am 'Updated ZIP archive.'`);
+	systemSync (`git push origin`);
 }
 
 function main ()
