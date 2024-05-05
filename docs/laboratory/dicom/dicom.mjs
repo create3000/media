@@ -4,7 +4,7 @@ X_ITE .then (X3D =>
 {
 let slider;
 
-init ();
+$("x3d-canvas") .on ("load", init);
 
 function init ()
 {

@@ -2,7 +2,7 @@
 
 X_ITE .then (X3D =>
 {
-init ();
+$("x3d-canvas") .on ("load", init);
 
 function init ()
 {

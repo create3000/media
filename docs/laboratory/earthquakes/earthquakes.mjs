@@ -3,8 +3,7 @@
 X_ITE .then (X3D =>
 {
 $("#time") .on ("change", selectTime);
-
-init ();
+$("x3d-canvas") .on ("load", init);
 
 function init ()
 {
