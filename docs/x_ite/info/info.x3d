@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='Layout' level='2'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
+    <component name='Layout' level='2'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Fri, 05 Sep 2014 01:58:48 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrise X3D Editor V1.0.0, https://create3000.github.io/Sunrise/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.6.12, https://create3000.github.io/sunrize/'/>
     <meta name='icon' content='../../ui/icons/icon-bw.svg'/>
     <meta name='identifier' content='file:///Users/holger/Desktop/X_ITE/media/docs/x_ite/info/info.x3d'/>
-    <meta name='modified' content='Mon, 24 Oct 2022 18:41:44 GMT'/>
+    <meta name='modified' content='Sun, 05 May 2024 22:15:32 GMT'/>
     <meta name='title' content='about:info'/>
   </head>
   <Scene>
@@ -117,9 +121,10 @@
                   <fieldValue name='loop' value='true'/>
                 </ProtoInstance>
                 <Transform DEF='Logo'
-                    rotation='0 0 -1 2.93936515003'
+                    rotation='0 0 -1.00000000000001 0.236876069901964'
                     center='5.6 -5.9 0'>
                   <Inline
+                      global='true'
                       url='"library/logo.x3dv"'/>
                 </Transform>
               </Transform>
@@ -233,7 +238,7 @@
                         diffuseColor='1 1 1'/>
                   </Appearance>
                   <Text DEF='VersionNumberText'
-                      string='"6.1.0"'
+                      string='"9.6.0"'
                       maxExtent='0.65'>
                     <FontStyle
                         family='"PTN77F.ttf", "sans"'
@@ -243,10 +248,10 @@
                 </Shape>
                 <Script DEF='VersionNumberScript'>
                   <field accessType='initializeOnly' type='SFNode' name='browser'>
-                    <Text USE='BrowserNameText' containerField='browser'/>
+                    <Text USE='BrowserNameText'/>
                   </field>
                   <field accessType='initializeOnly' type='SFNode' name='version'>
-                    <Text USE='VersionNumberText' containerField='version'/>
+                    <Text USE='VersionNumberText'/>
                   </field>
 <![CDATA[vrmlscript:
 function initialize ()
