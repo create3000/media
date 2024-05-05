@@ -2,6 +2,8 @@
 
 let slider = undefined;
 
+$("x3d-canvas") .on ("load", init);
+
 function init ()
 {
 	$("<input/>")
@@ -66,5 +68,3 @@ function onsample (event)
 
 	return false;
 }
-
-X3D (init ());
