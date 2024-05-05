@@ -1,6 +1,8 @@
 // L-System
 
-$("x3d-canvas") .on ("load", init);
+X_ITE .then (X3D =>
+{
+init ();
 
 function init ()
 {
@@ -605,3 +607,4 @@ LSystem .prototype =
 		//console .log (commands);
 	},
 };
+});

@@ -1,8 +1,10 @@
 // DICOM
 
-let slider = undefined;
+X_ITE .then (X3D =>
+{
+let slider;
 
-$("x3d-canvas") .on ("load", init);
+init ();
 
 function init ()
 {
@@ -68,3 +70,4 @@ function onsample (event)
 
 	return false;
 }
+});

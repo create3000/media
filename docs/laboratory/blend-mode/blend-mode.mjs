@@ -1,6 +1,8 @@
 // JavaScript
 
-$("x3d-canvas") .on ("load", init);
+X_ITE .then (X3D =>
+{
+init ();
 
 function init ()
 {
@@ -236,35 +238,35 @@ function getEquationFactor (i, channel, factor, blendColor)
 {
 	switch (factor)
 	{
-	   case "ZERO":
+		case "ZERO":
 			return "0";
-	   case "ONE":
+		case "ONE":
 			return "1";
-	   case "SRC_COLOR":
+		case "SRC_COLOR":
 			return "s" + channel;
-	   case "ONE_MINUS_SRC_COLOR":
+		case "ONE_MINUS_SRC_COLOR":
 			return "(1 - s" + channel + ")";
-	   case "DST_COLOR":
+		case "DST_COLOR":
 			return "d" + channel;
-	   case "ONE_MINUS_DST_COLOR":
+		case "ONE_MINUS_DST_COLOR":
 			return "(1 - d" + channel + ")";
-	   case "SRC_ALPHA":
+		case "SRC_ALPHA":
 			return "sA";
-	   case "ONE_MINUS_SRC_ALPHA":
+		case "ONE_MINUS_SRC_ALPHA":
 			return "(1 - sA)";
-	   case "DST_ALPHA":
+		case "DST_ALPHA":
 			return "dA";
-	   case "ONE_MINUS_DST_ALPHA":
+		case "ONE_MINUS_DST_ALPHA":
 			return "(1 - dA)";
-	   case "SRC_ALPHA_SATURATE":
+		case "SRC_ALPHA_SATURATE":
 			return "min (sA, 1 - dA)";
-	   case "CONSTANT_COLOR":
+		case "CONSTANT_COLOR":
 			return blendColor [i] .toFixed (3);
-	   case "ONE_MINUS_CONSTANT_COLOR":
+		case "ONE_MINUS_CONSTANT_COLOR":
 			return "(1 - " + blendColor [i] .toFixed (3) + ")";
-	   case "CONSTANT_ALPHA":
+		case "CONSTANT_ALPHA":
 			return blendColor [3] .toFixed (3);
-	   case "ONE_MINUS_CONSTANT_ALPHA":
+		case "ONE_MINUS_CONSTANT_ALPHA":
 			return "(1 - " + blendColor [3] .toFixed (3) + ")";
 		default:
 			return "n/a";
@@ -276,3 +278,4 @@ function xmlOutput (blendMode)
 	$("#XML")  .text (blendMode .toXMLString ()  .trim ());
 	$("#VRML") .text (blendMode .toVRMLString () .trim ());
 }
+});
