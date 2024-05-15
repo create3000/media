@@ -1,7 +1,5 @@
 // L-System
 
-X_ITE .then (X3D =>
-{
 $("x3d-canvas") .on ("load", init);
 
 function init ()
@@ -607,4 +605,3 @@ LSystem .prototype =
 		//console .log (commands);
 	},
 };
-});

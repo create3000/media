@@ -1,7 +1,5 @@
 // https://earthquake.usgs.gov/earthquakes/feed/v1.0/atom.php
 
-X_ITE .then (X3D =>
-{
 $("#time") .on ("change", selectTime);
 $("x3d-canvas") .on ("load", init);
 
@@ -188,4 +186,4 @@ function selectEarthQuake (earthquake)
 	timer .stopTime  = now;
 	timer .startTime = now;
 }
-});
+

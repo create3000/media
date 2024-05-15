@@ -1,7 +1,3 @@
-// JavaScript
-
-X_ITE .then (X3D =>
-{
 $("x3d-canvas") .on ("load", init);
 
 function init ()
@@ -278,4 +274,3 @@ function xmlOutput (blendMode)
 	$("#XML")  .text (blendMode .toXMLString ()  .trim ());
 	$("#VRML") .text (blendMode .toVRMLString () .trim ());
 }
-});
