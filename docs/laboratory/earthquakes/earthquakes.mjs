@@ -11,7 +11,7 @@ function init ()
 
 function selectTime ()
 {
-	loadData (parseInt (jQuery ("#time") .val ()));
+	loadData (parseInt ($("#time") .val ()));
 }
 
 async function loadData (index)
@@ -136,17 +136,17 @@ function generatePoints (earthquakes)
 		color .color .push (yellow .lerp (red, m));
 	});
 
-	var locations = jQuery (".locations") .empty ();
+	var locations = $(".locations") .empty ();
 
-	var list = jQuery ("<ul></ul>")
+	var list = $("<ul></ul>")
 		.addClass ("link-list")
 		.css ({"overflow": "scroll", "height": "450px"})
 		.appendTo (locations);
 
 	earthquakes .forEach (function (earthquake)
 	{
-		list .append (jQuery ("<li></li>")
-			.append (jQuery ("<a></a>")
+		list .append ($("<li></li>")
+			.append ($("<a></a>")
 				.css ({ "cursor": "pointer" })
 				.text (earthquake .magnitude .toFixed (1) + " - " + earthquake .location)
 				.click (selectEarthQuake .bind (null, earthquake))));
