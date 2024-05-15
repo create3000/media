@@ -16,31 +16,28 @@ function selectTime ()
 	loadData (parseInt (jQuery ("#time") .val ()));
 }
 
-function loadData (index)
+async function loadData (index)
 {
-	var urls = [
+	const urls = [
 		"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom",
 		"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom",
 		"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom",
 		"https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.atom",
 	];
 
-	var
+	const
 		Browser = X3D .getBrowser (),
 		loading = Browser .currentScene .getNamedNode ("LoadingSwitch");
 
 	loading .whichChoice = 1;
 
-	jQuery .ajax ({
-		type: "GET",
-		url: urls [index],
-		dataType: "xml",
-		success: function (xml)
-		{
-			parseAtom (xml);
-			loading .whichChoice = 0;
-		},
-	});
+	const
+		response = await fetch (urls [index]),
+		xml      = $.parseXML (await response .text ());
+
+	parseAtom (xml);
+
+	loading .whichChoice = 0;
 }
 
 function parseAtom (xml)
