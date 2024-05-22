@@ -10,7 +10,8 @@ const COLUMNS = 7;
 
 const
 	cwd      = process .cwd (),
-	examples = `${cwd}/docs/examples`;
+	examples = `${cwd}/docs/examples`,
+	docs     = `${cwd}/../x_ite/docs/_posts/components/`;
 
 const
 	X3D   = sh (`find '${examples}/X3D' -type f -name 'example.html'`) .trim () .split ("\n") .sort (),
@@ -34,12 +35,13 @@ for (const row of table)
 		let
 			folder    = path .dirname (example),
 			basename  = path .basename (folder),
-			component = path .basename (path .dirname (folder));
+			component = path .basename (path .dirname (folder)),
+			doc       = fs .existsSync (`${docs}/${component}/${basename}.md`);
 
 		folder = folder .replace (new RegExp (`${cwd}/docs/`), "");
 
 		output += `    <td>\n`;
-		output += `      <a href="https://create3000.github.io/media/${folder}/${basename}.x3d" title="${component} » ${basename}" componentName="${component}" typeName="${basename}">`;
+		output += `      <a href="https://create3000.github.io/media/${folder}/${basename}.x3d" title="${component} » ${basename}" componentName="${component}" typeName="${basename}" doc="${doc}">`;
 		output += `<img src="https://create3000.github.io/media/${folder}/screenshot-small.png" alt="${basename}"/>`;
 		output += `</a>\n`;
 		output += `    </td>\n`;
