@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Shape' level='4'/>
-    <meta name='comment' content='Rise and Shine'/>
+    <component name='Scripting' level='1'/>
     <meta name='created' content='Fri, 05 Jan 2018 14:05:05 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 26 Jan 2018 13:40:16 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Fri, 24 May 2024 07:03:59 GMT'/>
   </head>
   <Scene>
     <WorldInfo
         title='Cone.O'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='browserRatio' containerField='value'
+          <MetadataDouble DEF='browserRatio'
               name='browserRatio'
               reference='http://titania.create3000.de'
               value='1.777777'/>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
-            <Script DEF='EnterWorldScript' containerField='value'>
+            <Script DEF='EnterWorldScript_1' containerField='value'>
 <![CDATA[ecmascript:
 
 function initialize ()
@@ -68,7 +66,7 @@ function initialize ()
         description='Initial View'
         position='1.69574 1.67644 3.99636'
         orientation='-0.704047440947535 0.695566770035024 0.143192420603437 0.568942006035104'
-        centerOfRotation='8.07257e-07 1.16639e-06 -8.87304e-07'/>
+        centerOfRotation='8.07257e-7 1.16639e-6 -8.87304e-7'/>
     <Transform DEF='Cone'>
       <Shape>
         <Appearance>
@@ -86,6 +84,13 @@ function initialize ()
             height='2.5'/>
       </Shape>
     </Transform>
-    <Script USE='EnterWorldScript'/>
+    <Script DEF='EnterWorldScript'>
+<![CDATA[ecmascript:
+function initialize ()
+{
+	Browser .setBrowserOption ("PrimitiveQuality", "HIGH");
+}
+]]>
+    </Script>
   </Scene>
 </X3D>
