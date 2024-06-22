@@ -6,7 +6,7 @@
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 22 Jun 2024 20:37:47 GMT'/>
+    <meta name='modified' content='Sat, 22 Jun 2024 20:41:55 GMT'/>
   </head>
   <Scene>
     <Background DEF='Summer'
@@ -23,7 +23,7 @@
           headlight='false'/>
     </Viewpoint>
     <DirectionalLight
-        ambientIntensity='1'
+        intensity='2.65'
         direction='0.276539 -0.879378 0.387584'
         shadows='true'>
       <MetadataSet DEF='DirectionalLight' containerField='metadata'
@@ -39,16 +39,6 @@
       <Inline DEF='_2'
           global='true'
           url='"assets/Windmill/Windmill.gltf"'/>
-      <DirectionalLight
-          direction='0.6216318 -0.5950833 0.5093621'>
-        <MetadataSet containerField='metadata'
-            name='DirectionalLight'
-            reference='https://create3000.github.io/sunrize/'>
-          <MetadataFloat
-              name='location'
-              value='0, 6.768345, 0'/>
-        </MetadataSet>
-      </DirectionalLight>
       <LoadSensor DEF='_1'>
         <Inline USE='_2'/>
       </LoadSensor>
@@ -73,7 +63,8 @@
           castShadow='false'>
         <Appearance>
           <Material
-              diffuseColor='0.208125 0.328202 0.221296'/>
+              ambientIntensity='0.1886548'
+              diffuseColor='0.08473424 0.1324219 0.08996499'/>
         </Appearance>
         <Box/>
       </Shape>

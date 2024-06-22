@@ -20,24 +20,20 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.144, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:10:12 GMT"
+          "@content": "Sat, 22 Jun 2024 20:43:00 GMT"
         }
       ]
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
         { "Background":
           {
             "@DEF": "Summer",
@@ -47,22 +43,22 @@
             "@groundColor": [ 0.105712, 0.156051, 0.297, 0.187629, 0.255857, 0.398, 0.57, 0.66, 0.85, 0.6, 0.73, 0.89, 0.7, 0.83, 0.98 ]
           }
         },
-        { "NavigationInfo":
-          {
-            "@headlight": false
-          }
-        },
         { "Viewpoint":
           {
             "@description": "Initial View",
             "@position": [ -3.43117, 6.67934, -8.37163 ],
             "@orientation": [ 0.0344305431435684, 0.988430850520579, 0.147712529725828, 3.5944794517807 ],
-            "@centerOfRotation": [ 1.09901, 3.54717, 0.817995 ]
+            "@centerOfRotation": [ 1.09901, 3.54717, 0.817995 ],
+            "-navigationInfo": { "NavigationInfo":
+              {
+                "@headlight": false
+              }
+            }
           }
         },
         { "DirectionalLight":
           {
-            "@ambientIntensity": 1,
+            "@intensity": 2.65,
             "@direction": [ 0.276539, -0.879378, 0.387584 ],
             "@shadows": true
           }
@@ -70,13 +66,24 @@
         { "Transform":
           {
             "@DEF": "Windmill",
-            "@bboxSize": [ 6.3211, 8.207, 4.81566 ],
-            "@bboxCenter": [ 1.06066, 3.62608, 0.817995 ],
             "-children": [
               { "Inline":
                 {
+                  "@DEF": "_2",
                   "@global": true,
-                  "@url": [ "windmill.x3d" ]
+                  "@url": [ "assets/Windmill/Windmill.gltf" ]
+                }
+              },
+              { "LoadSensor":
+                {
+                  "@DEF": "_1",
+                  "-children": [
+                    { "Inline":
+                      {
+                        "@USE": "_2"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -84,7 +91,7 @@
         },
         { "Transform":
           {
-            "@DEF": "Pyramid",
+            "@DEF": "Pyramid_1",
             "@translation": [ 0.962762, 0, 0.957526 ],
             "-children": [
               { "Shape":
@@ -125,7 +132,8 @@
                     {
                       "-material": { "Material":
                         {
-                          "@diffuseColor": [ 0.208125, 0.328202, 0.221296 ]
+                          "@ambientIntensity": 0.1886548,
+                          "@diffuseColor": [ 0.08473424, 0.1324219, 0.08996499 ]
                         }
                       }
                     }
@@ -137,6 +145,20 @@
                 }
               }
             ]
+          }
+        },
+        { "IMPORT":
+          {
+            "@inlineDEF": "_2",
+            "@importedDEF": "Timer1"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "isLoaded",
+            "@toNode": "Timer1",
+            "@toField": "set_loop"
           }
         }
       ]
