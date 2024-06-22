@@ -9,8 +9,8 @@
     <meta name='created' content='Fri, 14 Jul 2023 16:20:40 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 22 Sep 2023 10:50:45 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sat, 22 Jun 2024 19:40:43 GMT'/>
   </head>
   <Scene>
     <Background DEF='White'
@@ -25,7 +25,15 @@
     </Viewpoint>
     <DirectionalLight
         direction='1 -1 -1'
-        shadows='true'/>
+        shadows='true'>
+      <MetadataSet containerField='metadata'
+          name='DirectionalLight'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataFloat
+            name='location'
+            value='-8.713056, 8.713056, 8.713056'/>
+      </MetadataSet>
+    </DirectionalLight>
     <Transform DEF='Bee'
         scale='3 3 3'>
       <Inline DEF='_1'
@@ -34,6 +42,17 @@
         <Inline USE='_1'/>
       </LoadSensor>
       <TouchSensor DEF='_3'/>
+      <DirectionalLight
+          intensity='3.25'
+          direction='-0.2043322 -0.7004693 -0.6838064'>
+        <MetadataSet containerField='metadata'
+            name='DirectionalLight'
+            reference='https://create3000.github.io/sunrize/'>
+          <MetadataFloat
+              name='location'
+              value='0.5294914, 4.394673, 1.81124'/>
+        </MetadataSet>
+      </DirectionalLight>
     </Transform>
     <Transform DEF='Floor'
         translation='0 -3 0'
@@ -49,7 +68,7 @@
       </Shape>
     </Transform>
     <Script DEF='ToggleAnimScript'>
-      <field accessType='inputOutput' type='SFTime' name='toggle' value='1695379815.79'/>
+      <field accessType='inputOutput' type='SFTime' name='toggle' value='1719085097.717'/>
       <field accessType='outputOnly' type='SFBool' name='loop1'/>
       <field accessType='outputOnly' type='SFTime' name='startTime1'/>
       <field accessType='outputOnly' type='SFTime' name='stopTime1'/>
