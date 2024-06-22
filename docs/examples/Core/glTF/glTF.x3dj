@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.144, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:01:59 GMT"
+          "@content": "Sat, 22 Jun 2024 19:42:43 GMT"
         }
       ],
       "component": [
@@ -107,6 +107,12 @@
                 {
                   "@DEF": "_3"
                 }
+              },
+              { "DirectionalLight":
+                {
+                  "@intensity": 3.25,
+                  "@direction": [ -0.2043322, -0.7004693, -0.6838064 ]
+                }
               }
             ]
           }
@@ -147,7 +153,7 @@
                 "@accessType": "inputOutput",
                 "@type": "SFTime",
                 "@name": "toggle",
-                "@value": 1695379815.79
+                "@value": 1719085097.717
               },
               {
                 "@accessType": "outputOnly",
@@ -217,6 +223,28 @@
             "@importedDEF": "Timer1"
           }
         },
+        { "IMPORT":
+          {
+            "@inlineDEF": "_1",
+            "@importedDEF": "Timer2"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_3",
+            "@fromField": "touchTime",
+            "@toNode": "ToggleAnimScript",
+            "@toField": "set_toggle"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_2",
+            "@fromField": "loadTime",
+            "@toNode": "ToggleAnimScript",
+            "@toField": "set_toggle"
+          }
+        },
         { "ROUTE":
           {
             "@fromNode": "ToggleAnimScript",
@@ -241,12 +269,6 @@
             "@toField": "set_stopTime"
           }
         },
-        { "IMPORT":
-          {
-            "@inlineDEF": "_1",
-            "@importedDEF": "Timer2"
-          }
-        },
         { "ROUTE":
           {
             "@fromNode": "ToggleAnimScript",
@@ -269,22 +291,6 @@
             "@fromField": "stopTime2",
             "@toNode": "Timer2",
             "@toField": "set_stopTime"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_3",
-            "@fromField": "touchTime",
-            "@toNode": "ToggleAnimScript",
-            "@toField": "toggle"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_2",
-            "@fromField": "loadTime",
-            "@toNode": "ToggleAnimScript",
-            "@toField": "toggle"
           }
         }
       ]
