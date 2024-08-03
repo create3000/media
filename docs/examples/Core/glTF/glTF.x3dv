@@ -11,9 +11,9 @@ UNIT angle degree 0.017453292519943295
 META "created" "Fri, 14 Jul 2023 16:20:40 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.8, https://create3000.github.io/sunrize/"
+META "generator" "Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V1.0.152, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sat, 03 Aug 2024 23:43:19 GMT"
+META "modified" "Sat, 03 Aug 2024 23:54:37 GMT"
 
 DEF White Background {
   skyColor 1 1 1
@@ -67,7 +67,7 @@ DEF Floor Transform {
 }
 
 DEF ToggleAnimScript Script {
-  inputOutput SFTime toggle 1722728499.787
+  inputOutput SFTime toggle 1719085097.717
   outputOnly  SFBool loop1
   outputOnly  SFTime startTime1
   outputOnly  SFTime stopTime1
@@ -105,13 +105,13 @@ function set_toggle (value, time)
 }
 
 IMPORT _1.Timer1
-IMPORT _1.Timer0
+IMPORT _1.Timer2
 
 ROUTE _3.touchTime TO ToggleAnimScript.set_toggle
 ROUTE _2.loadTime TO ToggleAnimScript.set_toggle
-ROUTE ToggleAnimScript.loop1 TO Timer0.set_loop
-ROUTE ToggleAnimScript.startTime1 TO Timer0.set_startTime
-ROUTE ToggleAnimScript.stopTime1 TO Timer0.set_stopTime
-ROUTE ToggleAnimScript.loop2 TO Timer1.set_loop
-ROUTE ToggleAnimScript.startTime2 TO Timer1.set_startTime
-ROUTE ToggleAnimScript.stopTime2 TO Timer1.set_stopTime
+ROUTE ToggleAnimScript.loop1 TO Timer1.set_loop
+ROUTE ToggleAnimScript.startTime1 TO Timer1.set_startTime
+ROUTE ToggleAnimScript.stopTime1 TO Timer1.set_stopTime
+ROUTE ToggleAnimScript.loop2 TO Timer2.set_loop
+ROUTE ToggleAnimScript.startTime2 TO Timer2.set_startTime
+ROUTE ToggleAnimScript.stopTime2 TO Timer2.set_stopTime
