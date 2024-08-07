@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.6.2
+#X3D V4.0 utf8 X_ITE V10.2.0
 
 PROFILE Interchange
 
@@ -6,9 +6,9 @@ COMPONENT Geometry2D : 2
 
 META "created" "Sat, 22 Jan 2022 13:59:12 +0100"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 24 May 2024 07:12:55 GMT"
+META "generator" "Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.153, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 07 Aug 2024 22:32:46 GMT"
 
 NavigationInfo {
   type "EXAMINE"
@@ -27,9 +27,9 @@ Viewpoint {
   position 0 0 3.4142
 }
 
-DEF Disk2D Transform {
+DEF DiskWithHole Transform {
   children Shape {
-    appearance Appearance {
+    appearance DEF _1 Appearance {
       material DEF Santafe30 Material {
         ambientIntensity 0.0611001
         diffuseColor 0.241185 0.100458 0.100458
@@ -43,7 +43,7 @@ DEF Disk2D Transform {
   }
 }
 
-DEF Disk2D_2 Transform {
+DEF Circle_1 Transform {
   children Shape {
     appearance Appearance {
       lineProperties LineProperties {
@@ -56,6 +56,15 @@ DEF Disk2D_2 Transform {
     geometry Disk2D {
       innerRadius 0.3
       outerRadius 0.3
+    }
+  }
+}
+
+DEF Disk Transform {
+  children Shape {
+    appearance USE _1
+    geometry Disk2D {
+      outerRadius 0.2
     }
   }
 }

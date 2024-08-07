@@ -5,8 +5,8 @@
     <component name='Geometry2D' level='2'/>
     <meta name='created' content='Sat, 22 Jan 2022 13:59:12 +0100'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 24 May 2024 07:10:01 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 07 Aug 2024 22:30:27 GMT'/>
   </head>
   <Scene>
     <NavigationInfo
@@ -20,9 +20,9 @@
     <Viewpoint
         description='Initial View'
         position='0 0 3.4142'/>
-    <Transform DEF='Disk2D'>
+    <Transform DEF='DiskWithHole'>
       <Shape>
-        <Appearance>
+        <Appearance DEF='_1'>
           <Material DEF='Santafe30'
               ambientIntensity='0.0611001'
               diffuseColor='0.241185 0.100458 0.100458'
@@ -33,7 +33,7 @@
             innerRadius='0.5'/>
       </Shape>
     </Transform>
-    <Transform DEF='Disk2D_2'>
+    <Transform DEF='Circle_1'>
       <Shape>
         <Appearance>
           <LineProperties
@@ -44,6 +44,13 @@
         <Disk2D
             innerRadius='0.3'
             outerRadius='0.3'/>
+      </Shape>
+    </Transform>
+    <Transform DEF='Disk'>
+      <Shape>
+        <Appearance USE='_1'/>
+        <Disk2D
+            outerRadius='0.2'/>
       </Shape>
     </Transform>
   </Scene>
