@@ -5,8 +5,8 @@
     <component name='Geometry2D' level='2'/>
     <meta name='created' content='Fri, 24 May 2024 07:09:17 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 24 May 2024 07:09:17 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 07 Aug 2024 22:36:14 GMT'/>
   </head>
   <Scene>
     <NavigationInfo
@@ -21,10 +21,10 @@
         description='Initial View'
         position='0 0 3.08613'
         centerOfRotation='-0.0197983 -0.0453368 0'/>
-    <Transform DEF='ArcClose2D'>
+    <Transform DEF='Pie_1'>
       <Shape>
-        <Appearance>
-          <Material DEF='Santafe11'
+        <Appearance DEF='_1'>
+          <Material DEF='Santafe11_1'
               ambientIntensity='0.110396'
               diffuseColor='0.228655 0.195513 0.425484'
               specularColor='0.324504 0.404255 0.404255'
@@ -33,6 +33,15 @@
         <ArcClose2D
             startAngle='2'
             endAngle='6'/>
+      </Shape>
+    </Transform>
+    <Transform DEF='Chord'>
+      <Shape>
+        <Appearance USE='_1'/>
+        <ArcClose2D
+            closureType='CHORD'
+            startAngle='6.2'
+            endAngle='1.8'/>
       </Shape>
     </Transform>
   </Scene>

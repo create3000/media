@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.6.2
+#X3D V4.0 utf8 X_ITE V10.2.0
 
 PROFILE Interchange
 
@@ -6,9 +6,9 @@ COMPONENT Geometry2D : 2
 
 META "created" "Fri, 24 May 2024 07:09:17 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 24 May 2024 07:12:55 GMT"
+META "generator" "Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.153, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 07 Aug 2024 22:37:00 GMT"
 
 NavigationInfo {
   type "EXAMINE"
@@ -28,10 +28,10 @@ Viewpoint {
   centerOfRotation -0.0197983 -0.0453368 0
 }
 
-DEF ArcClose2D Transform {
+DEF Pie_1 Transform {
   children Shape {
-    appearance Appearance {
-      material DEF Santafe11 Material {
+    appearance DEF _1 Appearance {
+      material DEF Santafe11_1 Material {
         ambientIntensity 0.110396
         diffuseColor 0.228655 0.195513 0.425484
         specularColor 0.324504 0.404255 0.404255
@@ -41,6 +41,17 @@ DEF ArcClose2D Transform {
     geometry ArcClose2D {
       startAngle 2
       endAngle 6
+    }
+  }
+}
+
+DEF Chord Transform {
+  children Shape {
+    appearance USE _1
+    geometry ArcClose2D {
+      closureType "CHORD"
+      startAngle 6.2
+      endAngle 1.8
     }
   }
 }

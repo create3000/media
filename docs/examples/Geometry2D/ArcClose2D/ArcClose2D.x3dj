@@ -16,15 +16,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.153, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 24 May 2024 07:12:55 GMT"
+          "@content": "Wed, 07 Aug 2024 22:36:56 GMT"
         }
       ],
       "component": [
@@ -59,15 +59,16 @@
         },
         { "Transform":
           {
-            "@DEF": "ArcClose2D",
+            "@DEF": "Pie_1",
             "-children": [
               { "Shape":
                 {
                   "-appearance": { "Appearance":
                     {
+                      "@DEF": "_1",
                       "-material": { "Material":
                         {
-                          "@DEF": "Santafe11",
+                          "@DEF": "Santafe11_1",
                           "@ambientIntensity": 0.110396,
                           "@diffuseColor": [ 0.228655, 0.195513, 0.425484 ],
                           "@specularColor": [ 0.324504, 0.404255, 0.404255 ],
@@ -80,6 +81,29 @@
                     {
                       "@startAngle": 2,
                       "@endAngle": 6
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "Chord",
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "@USE": "_1"
+                    }
+                  },
+                  "-geometry": { "ArcClose2D":
+                    {
+                      "@closureType": "CHORD",
+                      "@startAngle": 6.2,
+                      "@endAngle": 1.8
                     }
                   }
                 }
