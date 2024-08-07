@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V10.2.0
 
 PROFILE Interchange
 
@@ -7,9 +7,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 27 Jan 2019 12:29:03 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:21:16 GMT"
+META "generator" "Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.153, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 07 Aug 2024 20:33:25 GMT"
 
 WorldInfo {
   title "Text.O"
@@ -23,41 +23,209 @@ Viewpoint {
   description "Initial View"
 }
 
-DEF Ubuntu Transform {
-  translation -5.89326 0 0
-  children Shape {
-    appearance Appearance {
-      material Material {
-        ambientIntensity 0
-        diffuseColor 0 0 0
-        shininess 0
+DEF SERIF_1 Transform {
+  children [
+    DEF PLAIN_1 Transform {
+      translation -5.89326 3.041283 0
+      children Shape {
+        appearance DEF _1 Appearance {
+          material UnlitMaterial {
+            emissiveColor 0 0 0
+          }
+        }
+        geometry Text {
+          string "SERIF"
+          fontStyle FontStyle {
+            size 0.33
+          }
+        }
       }
     }
-    geometry Text {
-      string "Ubuntu"
-      fontStyle FontStyle {
-        family "SANS"
-        style "BOLD"
+    DEF BOLD_1 Transform {
+      translation -4.03 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "BOLD"
+          fontStyle FontStyle {
+            style "BOLD"
+            size 0.33
+          }
+        }
       }
     }
-  }
+    DEF ITALIC_1 Transform {
+      translation -2.914094 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "ITALIC"
+          fontStyle FontStyle {
+            style "ITALIC"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF BOLDITALIC_1 Transform {
+      translation -1.67 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "BOLDITALIC"
+          fontStyle FontStyle {
+            style "BOLDITALIC"
+            size 0.33
+          }
+        }
+      }
+    }
+  ]
 }
 
-DEF Glyphs Transform {
+DEF SANS_1 Transform {
+  translation 0 -0.5 0
+  children [
+    DEF PLAIN_2 Transform {
+      translation -5.89326 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "SANS"
+          fontStyle FontStyle {
+            family "SANS"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF BOLD_2 Transform {
+      translation -4.03 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "BOLD"
+          fontStyle FontStyle {
+            family "SANS"
+            style "BOLD"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF ITALIC_2 Transform {
+      translation -2.914094 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "ITALIC"
+          fontStyle FontStyle {
+            family "SANS"
+            style "ITALIC"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF BOLDITALIC_2 Transform {
+      translation -1.67 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "BOLDITALIC"
+          fontStyle FontStyle {
+            family "SANS"
+            style "BOLDITALIC"
+            size 0.33
+          }
+        }
+      }
+    }
+  ]
+}
+
+DEF TYPEWRITER Transform {
+  translation 0 -1 0
+  children [
+    DEF PLAIN Transform {
+      translation -5.89326 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "TYPEWRITER"
+          fontStyle FontStyle {
+            family "TYPEWRITER"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF BOLD Transform {
+      translation -4.03 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "BOLD"
+          fontStyle FontStyle {
+            family "TYPEWRITER"
+            style "BOLD"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF ITALIC Transform {
+      translation -2.914094 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "ITALIC"
+          fontStyle FontStyle {
+            family "TYPEWRITER"
+            style "ITALIC"
+            size 0.33
+          }
+        }
+      }
+    }
+    DEF BOLDITALIC Transform {
+      translation -1.67 3.041283 0
+      children Shape {
+        appearance USE _1
+        geometry Text {
+          string "BOLDITALIC"
+          fontStyle FontStyle {
+            family "TYPEWRITER"
+            style "BOLDITALIC"
+            size 0.33
+          }
+        }
+      }
+    }
+  ]
+}
+
+DEF Ubuntu Transform {
   translation -5.89326 0 0
-  children Shape {
-    appearance Appearance {
-      material Material {
-        ambientIntensity 0
-        diffuseColor 0 0 0
-        shininess 0
+  children [
+    DEF Name Shape {
+      appearance USE _1
+      geometry Text {
+        string "Ubuntu"
+        fontStyle FontStyle {
+          family "SANS"
+          style "BOLD"
+        }
       }
     }
-    geometry Text {
-      string [ "", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&/()=?\\'" ]
-      fontStyle FontStyle {
-        family "SANS"
+    DEF Glyphs Shape {
+      appearance USE _1
+      geometry Text {
+        string [ "", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&/()=?\\'" ]
+        fontStyle FontStyle {
+          family "SANS"
+        }
       }
     }
-  }
+  ]
 }

@@ -1,60 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Shape' level='4'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 27 Jan 2019 12:29:03 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 27 Jan 2019 12:29:03 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 07 Aug 2024 20:32:02 GMT'/>
   </head>
   <Scene>
     <WorldInfo
         title='Text.O'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <Transform DEF='Glyphs' containerField='value'
-                translation='-5.89326 0 0'>
-              <Shape>
-                <Appearance>
-                  <Material
-                      ambientIntensity='0'
-                      diffuseColor='0 0 0'
-                      shininess='0'/>
-                </Appearance>
-                <Text
-                    string='"", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&amp;/()=?\\&apos;"'>
-                  <FontStyle
-                      family='"SANS"'/>
-                </Text>
-              </Shape>
-            </Transform>
-          </MetadataSet>
+      <MetadataSet containerField='metadata'
+          name='Sunrize'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataSet
+            name='BrowserFrame'>
+          <MetadataBoolean
+              name='fixedSize'
+              value='true'/>
+          <MetadataDouble
+              name='aspectRatio'
+              value='16, 9'/>
+          <MetadataString
+              name='backgroundColor'
+              value='""'/>
         </MetadataSet>
       </MetadataSet>
     </WorldInfo>
@@ -62,15 +33,170 @@
         skyColor='1 1 1'/>
     <Viewpoint
         description='Initial View'/>
+    <Transform DEF='SERIF_1'>
+      <Transform DEF='PLAIN_1'
+          translation='-5.89326 3.041283 0'>
+        <Shape>
+          <Appearance DEF='_1'>
+            <UnlitMaterial
+                emissiveColor='0 0 0'/>
+          </Appearance>
+          <Text
+              string='"SERIF"'>
+            <FontStyle
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='BOLD_1'
+          translation='-4.03 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"BOLD"'>
+            <FontStyle
+                style='BOLD'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='ITALIC_1'
+          translation='-2.914094 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"ITALIC"'>
+            <FontStyle
+                style='ITALIC'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='BOLDITALIC_1'
+          translation='-1.67 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"BOLDITALIC"'>
+            <FontStyle
+                style='BOLDITALIC'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+    </Transform>
+    <Transform DEF='SANS_1'
+        translation='0 -0.5 0'>
+      <Transform DEF='PLAIN_2'
+          translation='-5.89326 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"SANS"'>
+            <FontStyle
+                family='"SANS"'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='BOLD_2'
+          translation='-4.03 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"BOLD"'>
+            <FontStyle
+                family='"SANS"'
+                style='BOLD'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='ITALIC_2'
+          translation='-2.914094 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"ITALIC"'>
+            <FontStyle
+                family='"SANS"'
+                style='ITALIC'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='BOLDITALIC_2'
+          translation='-1.67 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"BOLDITALIC"'>
+            <FontStyle
+                family='"SANS"'
+                style='BOLDITALIC'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+    </Transform>
+    <Transform DEF='TYPEWRITER'
+        translation='0 -1 0'>
+      <Transform DEF='PLAIN'
+          translation='-5.89326 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"TYPEWRITER"'>
+            <FontStyle
+                family='"TYPEWRITER"'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='BOLD'
+          translation='-4.03 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"BOLD"'>
+            <FontStyle
+                family='"TYPEWRITER"'
+                style='BOLD'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='ITALIC'
+          translation='-2.914094 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"ITALIC"'>
+            <FontStyle
+                family='"TYPEWRITER"'
+                style='ITALIC'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <Transform DEF='BOLDITALIC'
+          translation='-1.67 3.041283 0'>
+        <Shape>
+          <Appearance USE='_1'/>
+          <Text
+              string='"BOLDITALIC"'>
+            <FontStyle
+                family='"TYPEWRITER"'
+                style='BOLDITALIC'
+                size='0.33'/>
+          </Text>
+        </Shape>
+      </Transform>
+    </Transform>
     <Transform DEF='Ubuntu'
         translation='-5.89326 0 0'>
-      <Shape>
-        <Appearance>
-          <Material
-              ambientIntensity='0'
-              diffuseColor='0 0 0'
-              shininess='0'/>
-        </Appearance>
+      <Shape DEF='Name'>
+        <Appearance USE='_1'/>
         <Text
             string='"Ubuntu"'>
           <FontStyle
@@ -78,7 +204,14 @@
               style='BOLD'/>
         </Text>
       </Shape>
+      <Shape DEF='Glyphs'>
+        <Appearance USE='_1'/>
+        <Text
+            string='"", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&amp;/()=?\\&apos;"'>
+          <FontStyle
+              family='"SANS"'/>
+        </Text>
+      </Shape>
     </Transform>
-    <Transform USE='Glyphs'/>
   </Scene>
 </X3D>
