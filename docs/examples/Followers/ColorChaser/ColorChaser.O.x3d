@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
     <component name='Followers' level='1'/>
-    <component name='Shape' level='3'/>
+    <component name='Geometry2D' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 25 Nov 2017 08:43:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 02:18:51 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 08 Aug 2024 16:01:05 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='ChromaticCircle'>
@@ -78,29 +79,29 @@ function eventsProcessed ()
     </ProtoDeclare>
     <WorldInfo
         title='ColorChaser.O'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'/>
         </MetadataSet>
@@ -113,23 +114,12 @@ function eventsProcessed ()
     <Viewpoint
         position='0 0 3'/>
     <ColorChaser DEF='Follower'/>
-    <Transform DEF='SphereButton'
-        translation='1.13732 0 0'
-        scale='0.0630925 0.0630925 0.0630925'>
-      <Shape>
-        <Appearance>
-          <Material DEF='SphereActive'/>
-        </Appearance>
-        <Sphere/>
-      </Shape>
-    </Transform>
     <Transform DEF='ColorSphere'
-        translation='0.404598 -0.371683 0'
-        scale='0.0446722 0.0446722 0.0446722'>
-      <Shape>
+        scale='0.08 0.08 0.08'>
+      <Shape
+          pointerEvents='false'>
         <Appearance>
-          <Material DEF='SphereMaterial'
-              diffuseColor='1 0.450593 0.840416'/>
+          <Material DEF='SphereMaterial'/>
         </Appearance>
         <Sphere/>
       </Shape>
@@ -137,6 +127,16 @@ function eventsProcessed ()
     <Transform DEF='ChromaticCircleButton'>
       <TouchSensor DEF='Touch'/>
       <ProtoInstance name='ChromaticCircle'/>
+    </Transform>
+    <Transform DEF='ActivityCircle_1'
+        translation='1.3 0 0'
+        scale='0.15 0.15 0.15'>
+      <Shape>
+        <Appearance>
+          <UnlitMaterial DEF='_1'/>
+        </Appearance>
+        <Disk2D/>
+      </Shape>
     </Transform>
     <Script DEF='FollowerScript'
         directOutput='true'>
@@ -148,7 +148,7 @@ function eventsProcessed ()
       <field accessType='outputOnly' type='SFColor' name='color_changed'/>
       <field accessType='outputOnly' type='SFVec3f' name='translation_changed'/>
       <field accessType='initializeOnly' type='SFNode' name='touchSensor'>
-        <TouchSensor USE='Touch' containerField='touchSensor'/>
+        <TouchSensor USE='Touch'/>
       </field>
 <![CDATA[ecmascript:
 
@@ -188,7 +188,7 @@ function set_color (value)
     <ROUTE fromNode='Follower' fromField='value_changed' toNode='SphereMaterial' toField='set_diffuseColor'/>
     <ROUTE fromNode='Follower' fromField='value_changed' toNode='FollowerScript' toField='set_color'/>
     <ROUTE fromNode='FollowerScript' fromField='translation_changed' toNode='ColorSphere' toField='set_translation'/>
-    <ROUTE fromNode='FollowerScript' fromField='color_changed' toNode='SphereActive' toField='set_diffuseColor'/>
     <ROUTE fromNode='Follower' fromField='isActive' toNode='FollowerScript' toField='set_active'/>
+    <ROUTE fromNode='FollowerScript' fromField='color_changed' toNode='_1' toField='set_emissiveColor'/>
   </Scene>
 </X3D>

@@ -3,14 +3,15 @@
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Followers' level='1'/>
+    <component name='Geometry2D' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 25 Nov 2017 08:46:55 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:03:46 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.153, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Thu, 08 Aug 2024 16:01:41 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='ChromaticCircle'>
@@ -86,19 +87,10 @@ function eventsProcessed ()
     <Viewpoint
         position='0 0 3'/>
     <ColorDamper DEF='Follower'/>
-    <Transform DEF='SphereButton'
-        translation='1.13732 0 0'
-        scale='0.0630925 0.0630925 0.0630925'>
-      <Shape>
-        <Appearance>
-          <Material DEF='SphereActive'/>
-        </Appearance>
-        <Sphere/>
-      </Shape>
-    </Transform>
-    <Transform DEF='ColorSphere'
-        scale='0.0446722 0.0446722 0.0446722'>
-      <Shape>
+    <Transform DEF='ColorSphere_1'
+        scale='0.08 0.08 0.08'>
+      <Shape
+          pointerEvents='false'>
         <Appearance>
           <Material DEF='SphereMaterial'/>
         </Appearance>
@@ -108,6 +100,16 @@ function eventsProcessed ()
     <Transform DEF='ChromaticCircleButton'>
       <TouchSensor DEF='Touch'/>
       <ProtoInstance name='ChromaticCircle'/>
+    </Transform>
+    <Transform DEF='ActivityCircle'
+        translation='1.3 0 0'
+        scale='0.15 0.15 0.15'>
+      <Shape>
+        <Appearance>
+          <UnlitMaterial DEF='_1'/>
+        </Appearance>
+        <Disk2D/>
+      </Shape>
     </Transform>
     <Script DEF='FollowerScript'
         directOutput='true'>
@@ -158,8 +160,8 @@ function set_color (value)
     <ROUTE fromNode='FollowerScript' fromField='destination_changed' toNode='Follower' toField='set_destination'/>
     <ROUTE fromNode='Follower' fromField='value_changed' toNode='SphereMaterial' toField='set_diffuseColor'/>
     <ROUTE fromNode='Follower' fromField='value_changed' toNode='FollowerScript' toField='set_color'/>
-    <ROUTE fromNode='FollowerScript' fromField='translation_changed' toNode='ColorSphere' toField='set_translation'/>
-    <ROUTE fromNode='FollowerScript' fromField='color_changed' toNode='SphereActive' toField='set_diffuseColor'/>
+    <ROUTE fromNode='FollowerScript' fromField='translation_changed' toNode='ColorSphere_1' toField='set_translation'/>
     <ROUTE fromNode='Follower' fromField='isActive' toNode='FollowerScript' toField='set_active'/>
+    <ROUTE fromNode='FollowerScript' fromField='color_changed' toNode='_1' toField='set_emissiveColor'/>
   </Scene>
 </X3D>

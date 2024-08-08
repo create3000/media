@@ -1,17 +1,18 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V10.2.0
 
 PROFILE Interchange
 
 COMPONENT Followers : 1
+COMPONENT Geometry2D : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 
 META "comment" "Rise and Shine"
 META "created" "Sat, 25 Nov 2017 08:43:49 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:03:44 GMT"
+META "generator" "Sunrize X3D Editor V1.7.9, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.153, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Thu, 08 Aug 2024 16:01:41 GMT"
 
 PROTO ChromaticCircle [
   inputOutput SFFloat value 1
@@ -92,21 +93,10 @@ Viewpoint {
 
 DEF Follower ColorChaser { }
 
-DEF SphereButton Transform {
-  translation 1.13732 0 0
-  scale 0.0630925 0.0630925 0.0630925
-  children Shape {
-    appearance Appearance {
-      material DEF SphereActive Material { }
-    }
-    geometry Sphere { }
-  }
-}
-
 DEF ColorSphere Transform {
-  translation 0.404598 -0.371683 0
-  scale 0.0446722 0.0446722 0.0446722
+  scale 0.08 0.08 0.08
   children Shape {
+    pointerEvents FALSE
     appearance Appearance {
       material DEF SphereMaterial Material { }
     }
@@ -119,6 +109,17 @@ DEF ChromaticCircleButton Transform {
     DEF Touch TouchSensor { }
     ChromaticCircle { }
   ]
+}
+
+DEF ActivityCircle_1 Transform {
+  translation 1.3 0 0
+  scale 0.15 0.15 0.15
+  children Shape {
+    appearance Appearance {
+      material DEF _1 UnlitMaterial { }
+    }
+    geometry Disk2D { }
+  }
 }
 
 DEF FollowerScript Script {
@@ -171,5 +172,5 @@ ROUTE FollowerScript.destination_changed TO Follower.set_destination
 ROUTE Follower.value_changed TO SphereMaterial.set_diffuseColor
 ROUTE Follower.value_changed TO FollowerScript.set_color
 ROUTE FollowerScript.translation_changed TO ColorSphere.set_translation
-ROUTE FollowerScript.color_changed TO SphereActive.set_diffuseColor
 ROUTE Follower.isActive TO FollowerScript.set_active
+ROUTE FollowerScript.color_changed TO _1.set_emissiveColor
