@@ -14,10 +14,11 @@ const
 	docs     = `${cwd}/../x_ite/docs/_posts/components/`;
 
 const
-	X3D   = sh (`find '${examples}/X3D' -type f -name 'example.html'`) .trim () .split ("\n") .sort (),
-	other = sh (`find '${examples}' -type f -name 'example.html' -not -path '*/X3D/*'`) .trim () .split ("\n") .sort (),
-	html  = [... X3D, ... other],
-	table = Array .from ({ length: Math .floor ((html .length - 1) / COLUMNS) + 1 }, () => [ ]);
+	X3D    = sh (`find '${examples}/X3D' -type f -name 'example.html'`) .trim () .split ("\n") .sort (),
+	other  = sh (`find '${examples}' -type f -name 'example.html' -not -path '*/X3D/*'`) .trim () .split ("\n") .sort (),
+	html   = [... X3D, ... other],
+	table  = Array .from ({ length: Math .floor ((html .length - 1) / COLUMNS) + 1 }, () => [ ]),
+	config = require (`${examples}/config.json`);
 
 for (const [i, example] of html .entries ())
 	table [Math .floor (i / COLUMNS)] .push (example);
@@ -41,7 +42,7 @@ for (const row of table)
 		folder = folder .replace (new RegExp (`${cwd}/docs/`), "");
 
 		output += `    <td>\n`;
-		output += `      <a href="https://create3000.github.io/media/${folder}/${basename}.x3d" title="${component} » ${basename}" componentName="${component}" typeName="${basename}" doc="${doc}">`;
+		output += `      <a href="https://create3000.github.io/media/${folder}/${basename}.x3d" title="${component} » ${basename}" componentName="${component}" typeName="${basename}" doc="${doc}" xr-button="${config [basename] ?.["xr-button"] ?? "br"}">`;
 		output += `<img src="https://create3000.github.io/media/${folder}/screenshot-small.png" alt="${basename}"/>`;
 		output += `</a>\n`;
 		output += `    </td>\n`;
