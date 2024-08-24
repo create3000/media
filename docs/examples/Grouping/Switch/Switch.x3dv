@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V10.3.1
 
 PROFILE Interchange
 
@@ -10,11 +10,9 @@ COMPONENT Layout : 2
 META "comment" "Rise and Shine"
 META "created" "Sat, 30 Jun 2018 14:23:48 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:07:19 GMT"
-
-WorldInfo { }
+META "generator" "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sat, 24 Aug 2024 09:14:48 GMT"
 
 LayerSet {
   activeLayer -1
@@ -24,17 +22,19 @@ LayerSet {
       layout Layout {
         scaleMode [ "STRETCH", "STRETCH" ]
       }
-      children DEF Rectangle2D Transform {
-        scale 1.6 1 1
-        children Shape {
-          appearance Appearance {
-            material Material { }
-            texture ImageTexture {
-              url "assets/clouds.jpg"
+      children StaticGroup {
+        children Transform {
+          scale 1.6 1 1
+          children Shape {
+            appearance Appearance {
+              material Material { }
+              texture ImageTexture {
+                url "assets/clouds.jpg"
+              }
             }
-          }
-          geometry Rectangle2D {
-            size 1 1
+            geometry Rectangle2D {
+              size 1 1
+            }
           }
         }
       }
@@ -47,9 +47,10 @@ LayerSet {
           centerOfRotation 0.453916 4.9987 0.559686
         }
         DEF Platform Transform {
-          rotation 0 1 0 1.27229768064323
+          rotation 0 -1 0 1.29663026051733
           children [
             DEF SwitchAnimation Group {
+              visible FALSE
               children [
                 DEF SwitchAnimationTimer TimeSensor {
                   cycleInterval 15
@@ -62,6 +63,7 @@ LayerSet {
               ]
             }
             DEF PlatformRotationAnimation Group {
+              visible FALSE
               children [
                 DEF AnimationTimer TimeSensor {
                   cycleInterval 20
@@ -76,39 +78,47 @@ LayerSet {
             DEF Mens Switch {
               whichChoice 0
               children [
-                DEF GordonFreeman Transform {
-                  translation 415.087 -3.0715 -276.76
-                  scale 0.0128517 0.0128517 0.0128517
-                  center -415.087 8.0715 276.76
-                  children Inline {
-                    global TRUE
-                    url "assets/lego_gordon_freeman_half-life/scene.gltf"
+                DEF GordonFreeman StaticGroup {
+                  children Transform {
+                    translation 415.087 -3.0715 -276.76
+                    scale 0.0128517 0.0128517 0.0128517
+                    center -415.087 8.0715 276.76
+                    children Inline {
+                      global TRUE
+                      url "assets/lego_gordon_freeman_half-life/scene.gltf"
+                    }
                   }
                 }
-                DEF JonSnow Transform {
-                  translation 0 5 0
-                  scale 5 5 5
-                  children Inline {
-                    global TRUE
-                    url "assets/lego_jon_snow/scene.gltf"
+                DEF JonSnow StaticGroup {
+                  children Transform {
+                    translation 0 5 0
+                    scale 5 5 5
+                    children Inline {
+                      global TRUE
+                      url "assets/lego_jon_snow/scene.gltf"
+                    }
                   }
                 }
-                DEF StreetFighter Transform {
-                  translation 0 5 0
-                  scale 5 5 5
-                  children Inline {
-                    global TRUE
-                    url "assets/lego_mad_hatter_street_fighter_twist/scene.gltf"
+                DEF StreetFighter StaticGroup {
+                  children Transform {
+                    translation 0 5 0
+                    scale 5 5 5
+                    children Inline {
+                      global TRUE
+                      url "assets/lego_mad_hatter_street_fighter_twist/scene.gltf"
+                    }
                   }
                 }
               ]
             }
-            DEF Platform_29 Transform {
-              translation 0.291846 -1.25397 -0.614791
-              scale 0.19916 0.19916 0.19916
-              children Inline {
-                global TRUE
-                url "assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf"
+            DEF Platform_1 StaticGroup {
+              children Transform {
+                translation 0.291846 -1.25397 -0.614791
+                scale 0.19916 0.19916 0.19916
+                children Inline {
+                  global TRUE
+                  url "assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf"
+                }
               }
             }
           ]

@@ -9,30 +9,31 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 30 Jun 2018 14:23:48 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:07:10 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sat, 24 Aug 2024 09:14:51 GMT'/>
   </head>
   <Scene>
-    <WorldInfo/>
     <LayerSet
         activeLayer='-1'
         order='1, 2'>
       <LayoutLayer DEF='Clouds'>
         <Layout
             scaleMode='"STRETCH", "STRETCH"'/>
-        <Transform DEF='Rectangle2D'
-            scale='1.6 1 1'>
-          <Shape>
-            <Appearance>
-              <Material/>
-              <ImageTexture
-                  url='"assets/clouds.jpg"'/>
-            </Appearance>
-            <Rectangle2D
-                size='1 1'/>
-          </Shape>
-        </Transform>
+        <StaticGroup>
+          <Transform
+              scale='1.6 1 1'>
+            <Shape>
+              <Appearance>
+                <Material/>
+                <ImageTexture
+                    url='"assets/clouds.jpg"'/>
+              </Appearance>
+              <Rectangle2D
+                  size='1 1'/>
+            </Shape>
+          </Transform>
+        </StaticGroup>
       </LayoutLayer>
       <Layer DEF='LegoMens'>
         <Viewpoint
@@ -40,8 +41,9 @@
             orientation='-0.702493566218813 0.693784242009822 0.15863863010008 0.629356170493366'
             centerOfRotation='0.453916 4.9987 0.559686'/>
         <Transform DEF='Platform'
-            rotation='0 -1 0 1.86468261489323'>
-          <Group DEF='SwitchAnimation'>
+            rotation='0 1 0 3.88160940792693'>
+          <Group DEF='SwitchAnimation'
+              visible='false'>
             <TimeSensor DEF='SwitchAnimationTimer'
                 cycleInterval='15'
                 loop='true'/>
@@ -49,7 +51,8 @@
                 key='0, 0.333333, 0.666667, 1'
                 keyValue='0, 1, 2, 0'/>
           </Group>
-          <Group DEF='PlatformRotationAnimation'>
+          <Group DEF='PlatformRotationAnimation'
+              visible='false'>
             <TimeSensor DEF='AnimationTimer'
                 cycleInterval='20'
                 loop='true'/>
@@ -59,36 +62,44 @@
           </Group>
           <Switch DEF='Mens'
               whichChoice='1'>
-            <Transform DEF='GordonFreeman'
-                translation='415.087 -3.0715 -276.76'
-                scale='0.0128517 0.0128517 0.0128517'
-                center='-415.087 8.0715 276.76'>
-              <Inline
-                  global='true'
-                  url='"assets/lego_gordon_freeman_half-life/scene.gltf"'/>
-            </Transform>
-            <Transform DEF='JonSnow'
-                translation='0 5 0'
-                scale='5 5 5'>
-              <Inline
-                  global='true'
-                  url='"assets/lego_jon_snow/scene.gltf"'/>
-            </Transform>
-            <Transform DEF='StreetFighter'
-                translation='0 5 0'
-                scale='5 5 5'>
-              <Inline
-                  global='true'
-                  url='"assets/lego_mad_hatter_street_fighter_twist/scene.gltf"'/>
-            </Transform>
+            <StaticGroup DEF='GordonFreeman'>
+              <Transform
+                  translation='415.087 -3.0715 -276.76'
+                  scale='0.0128517 0.0128517 0.0128517'
+                  center='-415.087 8.0715 276.76'>
+                <Inline
+                    global='true'
+                    url='"assets/lego_gordon_freeman_half-life/scene.gltf"'/>
+              </Transform>
+            </StaticGroup>
+            <StaticGroup DEF='JonSnow'>
+              <Transform
+                  translation='0 5 0'
+                  scale='5 5 5'>
+                <Inline
+                    global='true'
+                    url='"assets/lego_jon_snow/scene.gltf"'/>
+              </Transform>
+            </StaticGroup>
+            <StaticGroup DEF='StreetFighter'>
+              <Transform
+                  translation='0 5 0'
+                  scale='5 5 5'>
+                <Inline
+                    global='true'
+                    url='"assets/lego_mad_hatter_street_fighter_twist/scene.gltf"'/>
+              </Transform>
+            </StaticGroup>
           </Switch>
-          <Transform DEF='Platform_29'
-              translation='0.291846 -1.25397 -0.614791'
-              scale='0.19916 0.19916 0.19916'>
-            <Inline
-                global='true'
-                url='"assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf"'/>
-          </Transform>
+          <StaticGroup DEF='Platform_1'>
+            <Transform
+                translation='0.291846 -1.25397 -0.614791'
+                scale='0.19916 0.19916 0.19916'>
+              <Inline
+                  global='true'
+                  url='"assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf"'/>
+            </Transform>
+          </StaticGroup>
         </Transform>
       </Layer>
     </LayerSet>

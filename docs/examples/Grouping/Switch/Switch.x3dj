@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:07:28 GMT"
+          "@content": "Sat, 24 Aug 2024 09:14:51 GMT"
         }
       ],
       "component": [
@@ -52,10 +52,6 @@
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
         { "LayerSet":
           {
             "@activeLayer": -1,
@@ -70,31 +66,36 @@
                     }
                   },
                   "-children": [
-                    { "Transform":
+                    { "StaticGroup":
                       {
-                        "@DEF": "Rectangle2D",
-                        "@scale": [ 1.6, 1, 1 ],
                         "-children": [
-                          { "Shape":
+                          { "Transform":
                             {
-                              "-appearance": { "Appearance":
-                                {
-                                  "-material": { "Material":
-                                    {
-                                    }
-                                  },
-                                  "-texture": { "ImageTexture":
-                                    {
-                                      "@url": [ "assets/clouds.jpg" ]
+                              "@scale": [ 1.6, 1, 1 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                          }
+                                        },
+                                        "-texture": { "ImageTexture":
+                                          {
+                                            "@url": [ "assets/clouds.jpg" ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Rectangle2D":
+                                      {
+                                        "@size": [ 1, 1 ]
+                                      }
                                     }
                                   }
                                 }
-                              },
-                              "-geometry": { "Rectangle2D":
-                                {
-                                  "@size": [ 1, 1 ]
-                                }
-                              }
+                              ]
                             }
                           }
                         ]
@@ -117,11 +118,12 @@
                     { "Transform":
                       {
                         "@DEF": "Platform",
-                        "@rotation": [ 0, -1, 0, 1.30065025025933 ],
+                        "@rotation": [ 0, 1, 0, 3.87602803922961 ],
                         "-children": [
                           { "Group":
                             {
                               "@DEF": "SwitchAnimation",
+                              "@visible": false,
                               "-children": [
                                 { "TimeSensor":
                                   {
@@ -143,6 +145,7 @@
                           { "Group":
                             {
                               "@DEF": "PlatformRotationAnimation",
+                              "@visible": false,
                               "-children": [
                                 { "TimeSensor":
                                   {
@@ -164,49 +167,67 @@
                           { "Switch":
                             {
                               "@DEF": "Mens",
-                              "@whichChoice": 2,
+                              "@whichChoice": 1,
                               "-children": [
-                                { "Transform":
+                                { "StaticGroup":
                                   {
                                     "@DEF": "GordonFreeman",
-                                    "@translation": [ 415.087, -3.0715, -276.76 ],
-                                    "@scale": [ 0.0128517, 0.0128517, 0.0128517 ],
-                                    "@center": [ -415.087, 8.0715, 276.76 ],
                                     "-children": [
-                                      { "Inline":
+                                      { "Transform":
                                         {
-                                          "@global": true,
-                                          "@url": [ "assets/lego_gordon_freeman_half-life/scene.gltf" ]
+                                          "@translation": [ 415.087, -3.0715, -276.76 ],
+                                          "@scale": [ 0.0128517, 0.0128517, 0.0128517 ],
+                                          "@center": [ -415.087, 8.0715, 276.76 ],
+                                          "-children": [
+                                            { "Inline":
+                                              {
+                                                "@global": true,
+                                                "@url": [ "assets/lego_gordon_freeman_half-life/scene.gltf" ]
+                                              }
+                                            }
+                                          ]
                                         }
                                       }
                                     ]
                                   }
                                 },
-                                { "Transform":
+                                { "StaticGroup":
                                   {
                                     "@DEF": "JonSnow",
-                                    "@translation": [ 0, 5, 0 ],
-                                    "@scale": [ 5, 5, 5 ],
                                     "-children": [
-                                      { "Inline":
+                                      { "Transform":
                                         {
-                                          "@global": true,
-                                          "@url": [ "assets/lego_jon_snow/scene.gltf" ]
+                                          "@translation": [ 0, 5, 0 ],
+                                          "@scale": [ 5, 5, 5 ],
+                                          "-children": [
+                                            { "Inline":
+                                              {
+                                                "@global": true,
+                                                "@url": [ "assets/lego_jon_snow/scene.gltf" ]
+                                              }
+                                            }
+                                          ]
                                         }
                                       }
                                     ]
                                   }
                                 },
-                                { "Transform":
+                                { "StaticGroup":
                                   {
                                     "@DEF": "StreetFighter",
-                                    "@translation": [ 0, 5, 0 ],
-                                    "@scale": [ 5, 5, 5 ],
                                     "-children": [
-                                      { "Inline":
+                                      { "Transform":
                                         {
-                                          "@global": true,
-                                          "@url": [ "assets/lego_mad_hatter_street_fighter_twist/scene.gltf" ]
+                                          "@translation": [ 0, 5, 0 ],
+                                          "@scale": [ 5, 5, 5 ],
+                                          "-children": [
+                                            { "Inline":
+                                              {
+                                                "@global": true,
+                                                "@url": [ "assets/lego_mad_hatter_street_fighter_twist/scene.gltf" ]
+                                              }
+                                            }
+                                          ]
                                         }
                                       }
                                     ]
@@ -215,16 +236,22 @@
                               ]
                             }
                           },
-                          { "Transform":
+                          { "StaticGroup":
                             {
-                              "@DEF": "Platform_29",
-                              "@translation": [ 0.291846, -1.25397, -0.614791 ],
-                              "@scale": [ 0.19916, 0.19916, 0.19916 ],
+                              "@DEF": "Platform_1",
                               "-children": [
-                                { "Inline":
+                                { "Transform":
                                   {
-                                    "@global": true,
-                                    "@url": [ "assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf" ]
+                                    "@translation": [ 0.291846, -1.25397, -0.614791 ],
+                                    "@scale": [ 0.19916, 0.19916, 0.19916 ],
+                                    "-children": [
+                                      { "Inline":
+                                        {
+                                          "@global": true,
+                                          "@url": [ "assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf" ]
+                                        }
+                                      }
+                                    ]
                                   }
                                 }
                               ]
@@ -252,7 +279,7 @@
             "@fromNode": "PlatformRotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "Platform",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -268,7 +295,7 @@
             "@fromNode": "MensWhichChoiceInterpolator",
             "@fromField": "value_changed",
             "@toNode": "Mens",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         }
       ]
