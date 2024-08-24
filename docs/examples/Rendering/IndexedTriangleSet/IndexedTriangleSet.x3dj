@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:17:07 GMT"
+          "@content": "Sat, 24 Aug 2024 09:51:29 GMT"
         }
       ],
       "component": [
@@ -91,103 +91,77 @@
                         "@fieldOfView": [ -0.8885, -0.5, 0.8885, 0.5 ]
                       }
                     },
-                    { "Inline":
+                    { "StaticGroup":
                       {
-                        "@DEF": "design",
-                        "@global": true,
-                        "@url": [ "assets/design.svg" ]
-                      }
-                    },
-                    { "Transform":
-                      {
-                        "@DEF": "BoomBox",
-                        "@translation": [ 1.55, -0.255, 0 ],
-                        "@rotation": [ 0, 1, 0, 2.88170662945123 ],
-                        "@scale": [ 0.06, 0.06, 0.06 ],
+                        "@DEF": "Statics",
                         "-children": [
                           { "Inline":
                             {
-                              "@DEF": "BoomBox_1",
+                              "@DEF": "design",
                               "@global": true,
-                              "@url": [ "assets/BoomBox/BoomBox.gltf" ]
+                              "@url": [ "assets/design.svg" ]
                             }
                           },
-                          { "TouchSensor":
+                          { "Transform":
                             {
-                              "@DEF": "_1"
-                            }
-                          },
-                          { "ProtoInstance":
-                            {
-                              "@DEF": "_2",
-                              "@name": "SFInt32"
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    { "Transform":
-                      {
-                        "@DEF": "Telephone",
-                        "@translation": [ 0.13052, -0.865, 0 ],
-                        "@rotation": [ 0, 1, 0, 3.14159265358979 ],
-                        "@scale": [ 0.0533868, 0.0533868, 0.0533868 ],
-                        "-children": [
-                          { "Inline":
-                            {
-                              "@DEF": "Telephone_1",
-                              "@global": true,
-                              "@url": [ "assets/Telephone/Telephone.gltf" ]
-                            }
-                          },
-                          { "TouchSensor":
-                            {
-                              "@DEF": "_3"
-                            }
-                          },
-                          { "ProtoInstance":
-                            {
-                              "@DEF": "_4",
-                              "@name": "SFInt32",
-                              "fieldValue": [
-                                {
-                                  "@name": "keyValue",
-                                  "@value": 1
+                              "@DEF": "PBR_1",
+                              "@translation": [ 1.72614, -0.06, 0 ],
+                              "@scale": [ 0.0743421, 0.0743421, 0.0743421 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "@DEF": "_7",
+                                        "-material": { "Material":
+                                          {
+                                            "@diffuseColor": [ 1, 1, 1 ]
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "PHYSICS BASED RENDERING" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "assets/Mambo-Bold.otf" ],
+                                            "@justify": [ "END" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
                                 }
                               ]
                             }
-                          }
-                        ]
-                      }
-                    },
-                    { "Transform":
-                      {
-                        "@DEF": "DamagedHelmet_1",
-                        "@translation": [ 1.605, -0.85, 0 ],
-                        "@rotation": [ -0.168605254730166, -0.984703435521794, -0.0439478344057174, 3.61750029571862 ],
-                        "@scale": [ 0.0482975, 0.0482974, 0.0482975 ],
-                        "@scaleOrientation": [ 0.966775723053675, -0.255609715258277, -0.00289392115085315, 0.500305288263049 ],
-                        "-children": [
-                          { "Inline":
-                            {
-                              "@DEF": "DamagedHelmet_2",
-                              "@global": true,
-                              "@url": [ "assets/DamagedHelmet/DamagedHelmet.gltf" ]
-                            }
                           },
-                          { "TouchSensor":
+                          { "Transform":
                             {
-                              "@DEF": "_5"
-                            }
-                          },
-                          { "ProtoInstance":
-                            {
-                              "@DEF": "_6",
-                              "@name": "SFInt32",
-                              "fieldValue": [
-                                {
-                                  "@name": "keyValue",
-                                  "@value": 2
+                              "@DEF": "Exploration_1",
+                              "@translation": [ 0.0561412, -0.06, 0 ],
+                              "@scale": [ 0.0743421, 0.0743421, 0.0743421 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "@USE": "_7"
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@string": [ "EXPLORATION" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "assets/Mambo-Bold.otf" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
                                 }
                               ]
                             }
@@ -205,18 +179,13 @@
                             {
                               "-appearance": { "Appearance":
                                 {
-                                  "@DEF": "_7",
-                                  "-material": { "Material":
-                                    {
-                                      "@diffuseColor": [ 1, 1, 1 ]
-                                    }
-                                  }
+                                  "@USE": "_7"
                                 }
                               },
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_8",
-                                  "@string": [ "" ],
+                                  "@string": [ "" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
@@ -334,29 +303,33 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "PBR",
-                        "@translation": [ 1.72614, -0.06, 0 ],
-                        "@scale": [ 0.0743421, 0.0743421, 0.0743421 ],
+                        "@DEF": "BoomBox",
+                        "@translation": [ 1.55, -0.255, 0 ],
+                        "@rotation": [ 0, 1, 0, 2.88170662945123 ],
+                        "@scale": [ 0.06, 0.06, 0.06 ],
                         "-children": [
-                          { "Shape":
+                          { "StaticGroup":
                             {
-                              "-appearance": { "Appearance":
-                                {
-                                  "@USE": "_7"
-                                }
-                              },
-                              "-geometry": { "Text":
-                                {
-                                  "@string": [ "PHYSICS BASED RENDERING" ],
-                                  "@solid": true,
-                                  "-fontStyle": { "FontStyle":
-                                    {
-                                      "@family": [ "assets/Mambo-Bold.otf" ],
-                                      "@justify": [ "END" ]
-                                    }
+                              "@DEF": "BoomBox_3",
+                              "-children": [
+                                { "Inline":
+                                  {
+                                    "@global": true,
+                                    "@url": [ "assets/BoomBox/BoomBox.gltf" ]
                                   }
                                 }
-                              }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_1"
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_2",
+                              "@name": "SFInt32"
                             }
                           }
                         ]
@@ -364,28 +337,81 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "Exploration",
-                        "@translation": [ 0.0561412, -0.06, 0 ],
-                        "@scale": [ 0.0743421, 0.0743421, 0.0743421 ],
+                        "@DEF": "Telephone",
+                        "@translation": [ 0.13052, -0.865, 0 ],
+                        "@rotation": [ 0, 1, 0, 3.14159265358979 ],
+                        "@scale": [ 0.0533868, 0.0533868, 0.0533868 ],
                         "-children": [
-                          { "Shape":
+                          { "StaticGroup":
                             {
-                              "-appearance": { "Appearance":
-                                {
-                                  "@USE": "_7"
-                                }
-                              },
-                              "-geometry": { "Text":
-                                {
-                                  "@string": [ "EXPLORATION" ],
-                                  "@solid": true,
-                                  "-fontStyle": { "FontStyle":
-                                    {
-                                      "@family": [ "assets/Mambo-Bold.otf" ]
-                                    }
+                              "@DEF": "Telephone_1",
+                              "-children": [
+                                { "Inline":
+                                  {
+                                    "@global": true,
+                                    "@url": [ "assets/Telephone/Telephone.gltf" ]
                                   }
                                 }
-                              }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_3"
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_4",
+                              "@name": "SFInt32",
+                              "fieldValue": [
+                                {
+                                  "@name": "keyValue",
+                                  "@value": 1
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "Transform":
+                      {
+                        "@DEF": "DamagedHelmet_1",
+                        "@translation": [ 1.605, -0.85, 0 ],
+                        "@rotation": [ -0.168605254730166, -0.984703435521794, -0.0439478344057174, 3.61750029571862 ],
+                        "@scale": [ 0.0482975, 0.0482974, 0.0482975 ],
+                        "@scaleOrientation": [ 0.966775723053675, -0.255609715258277, -0.00289392115085315, 0.500305288263049 ],
+                        "-children": [
+                          { "StaticGroup":
+                            {
+                              "@DEF": "DamagedHelmet",
+                              "-children": [
+                                { "Inline":
+                                  {
+                                    "@DEF": "DamagedHelmet_2",
+                                    "@global": true,
+                                    "@url": [ "assets/DamagedHelmet/DamagedHelmet.gltf" ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "TouchSensor":
+                            {
+                              "@DEF": "_5"
+                            }
+                          },
+                          { "ProtoInstance":
+                            {
+                              "@DEF": "_6",
+                              "@name": "SFInt32",
+                              "fieldValue": [
+                                {
+                                  "@name": "keyValue",
+                                  "@value": 2
+                                }
+                              ]
                             }
                           }
                         ]
@@ -398,24 +424,25 @@
                 {
                   "@DEF": "Models",
                   "-children": [
-                    { "NavigationInfo":
-                      {
-                        "@type": [ "EXAMINE" ]
-                      }
-                    },
                     { "Viewpoint":
                       {
-                        "@description": "Initial View"
+                        "@description": "Initial View",
+                        "-navigationInfo": { "NavigationInfo":
+                          {
+                            "@type": [ "EXAMINE" ]
+                          }
+                        }
                       }
                     },
                     { "Transform":
                       {
                         "@DEF": "_10",
-                        "@rotation": [ 0, -1, 0, 3.66456979020811 ],
+                        "@rotation": [ 0, 1, 0, 1.46936855061665 ],
                         "-children": [
                           { "Group":
                             {
                               "@DEF": "RotationAnimation",
+                              "@visible": false,
                               "-children": [
                                 { "TimeSensor":
                                   {
@@ -450,9 +477,9 @@
                                     "@rotation": [ 0, 1, 0, 3.14159265358979 ],
                                     "@scale": [ 3.5, 3.5, 3.5 ],
                                     "-children": [
-                                      { "Inline":
+                                      { "StaticGroup":
                                         {
-                                          "@USE": "BoomBox_1"
+                                          "@USE": "BoomBox_3"
                                         }
                                       }
                                     ]
@@ -466,7 +493,7 @@
                                     "@scale": [ 4, 4, 4 ],
                                     "@center": [ 0.125757, 0.609631, 0.0543429 ],
                                     "-children": [
-                                      { "Inline":
+                                      { "StaticGroup":
                                         {
                                           "@USE": "Telephone_1"
                                         }
@@ -480,12 +507,10 @@
                                     "@translation": [ 0, -0.6, 0 ],
                                     "@rotation": [ -0.696127542009453, 0.04916375731856, -0.716232762600398, 1.32075070179467e-6 ],
                                     "@scale": [ 3, 3, 3 ],
-                                    "@scaleOrientation": [ 0.981701360865451, -0.0201875672336223, -0.189353902003916, 0.00264365783946709 ],
-                                    "@center": [ 0, 1.05202e-5, 0 ],
                                     "-children": [
-                                      { "Inline":
+                                      { "StaticGroup":
                                         {
-                                          "@USE": "DamagedHelmet_2"
+                                          "@USE": "DamagedHelmet"
                                         }
                                       }
                                     ]
@@ -516,7 +541,7 @@
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_10",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -524,7 +549,7 @@
             "@fromNode": "CodeScript",
             "@fromField": "string_changed",
             "@toNode": "_8",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -540,7 +565,7 @@
             "@fromNode": "_2",
             "@fromField": "value_changed",
             "@toNode": "_11",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -556,7 +581,7 @@
             "@fromNode": "_4",
             "@fromField": "value_changed",
             "@toNode": "_11",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -572,7 +597,7 @@
             "@fromNode": "_6",
             "@fromField": "value_changed",
             "@toNode": "_11",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V10.3.1
 
 PROFILE Interchange
 
@@ -10,9 +10,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:17:03 GMT"
+META "generator" "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sat, 24 Aug 2024 09:51:32 GMT"
 
 EXTERNPROTO SFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -32,51 +32,44 @@ LayerSet {
           centerOfRotation 0.8885 -0.5 0
           fieldOfView [ -0.8885, -0.5, 0.8885, 0.5 ]
         }
-        DEF design Inline {
-          global TRUE
-          url "assets/design.svg"
-        }
-        DEF BoomBox Transform {
-          translation 1.55 -0.255 0
-          rotation 0 1 0 2.88170662945123
-          scale 0.06 0.06 0.06
+        DEF Statics StaticGroup {
           children [
-            DEF BoomBox_1 Inline {
+            DEF design Inline {
               global TRUE
-              url "assets/BoomBox/BoomBox.gltf"
+              url "assets/design.svg"
             }
-            DEF _1 TouchSensor { }
-            DEF _2 SFInt32 { }
-          ]
-        }
-        DEF Telephone Transform {
-          translation 0.13052 -0.865 0
-          rotation 0 1 0 3.14159265358979
-          scale 0.0533868 0.0533868 0.0533868
-          children [
-            DEF Telephone_1 Inline {
-              global TRUE
-              url "assets/Telephone/Telephone.gltf"
+            DEF PBR_1 Transform {
+              translation 1.72614 -0.06 0
+              scale 0.0743421 0.0743421 0.0743421
+              children Shape {
+                appearance DEF _7 Appearance {
+                  material Material {
+                    diffuseColor 1 1 1
+                  }
+                }
+                geometry Text {
+                  string "PHYSICS BASED RENDERING"
+                  solid TRUE
+                  fontStyle FontStyle {
+                    family "assets/Mambo-Bold.otf"
+                    justify "END"
+                  }
+                }
+              }
             }
-            DEF _3 TouchSensor { }
-            DEF _4 SFInt32 {
-              keyValue 1
-            }
-          ]
-        }
-        DEF DamagedHelmet_1 Transform {
-          translation 1.605 -0.85 0
-          rotation -0.168605254730166 -0.984703435521794 -0.0439478344057174 3.61750029571862
-          scale 0.0482975 0.0482974 0.0482975
-          scaleOrientation 0.966775723053675 -0.255609715258277 -0.00289392115085315 0.500305288263049
-          children [
-            DEF DamagedHelmet_2 Inline {
-              global TRUE
-              url "assets/DamagedHelmet/DamagedHelmet.gltf"
-            }
-            DEF _5 TouchSensor { }
-            DEF _6 SFInt32 {
-              keyValue 2
+            DEF Exploration_1 Transform {
+              translation 0.0561412 -0.06 0
+              scale 0.0743421 0.0743421 0.0743421
+              children Shape {
+                appearance USE _7
+                geometry Text {
+                  string "EXPLORATION"
+                  solid TRUE
+                  fontStyle FontStyle {
+                    family "assets/Mambo-Bold.otf"
+                  }
+                }
+              }
             }
           ]
         }
@@ -85,13 +78,9 @@ LayerSet {
           scale 0.0269332 0.0269332 0.0269332
           children [
             Shape {
-              appearance DEF _7 Appearance {
-                material Material {
-                  diffuseColor 1 1 1
-                }
-              }
+              appearance USE _7
               geometry DEF _8 Text {
-                string ""
+                string ""
                 solid TRUE
                 fontStyle FontStyle {
                   family "assets/MaterialIcons.ttf"
@@ -175,49 +164,71 @@ function random (min, max)
             }
           ]
         }
-        DEF PBR Transform {
-          translation 1.72614 -0.06 0
-          scale 0.0743421 0.0743421 0.0743421
-          children Shape {
-            appearance USE _7
-            geometry Text {
-              string "PHYSICS BASED RENDERING"
-              solid TRUE
-              fontStyle FontStyle {
-                family "assets/Mambo-Bold.otf"
-                justify "END"
+        DEF BoomBox Transform {
+          translation 1.55 -0.255 0
+          rotation 0 1 0 2.88170662945123
+          scale 0.06 0.06 0.06
+          children [
+            DEF BoomBox_3 StaticGroup {
+              children Inline {
+                global TRUE
+                url "assets/BoomBox/BoomBox.gltf"
               }
             }
-          }
+            DEF _1 TouchSensor { }
+            DEF _2 SFInt32 { }
+          ]
         }
-        DEF Exploration Transform {
-          translation 0.0561412 -0.06 0
-          scale 0.0743421 0.0743421 0.0743421
-          children Shape {
-            appearance USE _7
-            geometry Text {
-              string "EXPLORATION"
-              solid TRUE
-              fontStyle FontStyle {
-                family "assets/Mambo-Bold.otf"
+        DEF Telephone Transform {
+          translation 0.13052 -0.865 0
+          rotation 0 1 0 3.14159265358979
+          scale 0.0533868 0.0533868 0.0533868
+          children [
+            DEF Telephone_1 StaticGroup {
+              children Inline {
+                global TRUE
+                url "assets/Telephone/Telephone.gltf"
               }
             }
-          }
+            DEF _3 TouchSensor { }
+            DEF _4 SFInt32 {
+              keyValue 1
+            }
+          ]
+        }
+        DEF DamagedHelmet_1 Transform {
+          translation 1.605 -0.85 0
+          rotation -0.168605254730166 -0.984703435521794 -0.0439478344057174 3.61750029571862
+          scale 0.0482975 0.0482974 0.0482975
+          scaleOrientation 0.966775723053675 -0.255609715258277 -0.00289392115085315 0.500305288263049
+          children [
+            DEF DamagedHelmet StaticGroup {
+              children DEF DamagedHelmet_2 Inline {
+                global TRUE
+                url "assets/DamagedHelmet/DamagedHelmet.gltf"
+              }
+            }
+            DEF _5 TouchSensor { }
+            DEF _6 SFInt32 {
+              keyValue 2
+            }
+          ]
         }
       ]
     }
     DEF Models Layer {
       children [
-        NavigationInfo {
-          type "EXAMINE"
-        }
         Viewpoint {
           description "Initial View"
+          navigationInfo NavigationInfo {
+            type "EXAMINE"
+          }
         }
         DEF _10 Transform {
-          rotation 0 -1 0 3.47764503179019
+          rotation 0 1 0 1.27815026526783
           children [
             DEF RotationAnimation Group {
+              visible FALSE
               children [
                 DEF AnimationTimer TimeSensor {
                   cycleInterval 120
@@ -240,7 +251,7 @@ function random (min, max)
                   translation 0 -0.5 0
                   rotation 0 1 0 3.14159265358979
                   scale 3.5 3.5 3.5
-                  children USE BoomBox_1
+                  children USE BoomBox_3
                 }
                 DEF Telephone_2 Transform {
                   translation -0.4 1.1 -0.0543429
@@ -253,9 +264,7 @@ function random (min, max)
                   translation 0 -0.6 0
                   rotation -0.696127542009453 0.04916375731856 -0.716232762600398 1.32075070179467e-6
                   scale 3 3 3
-                  scaleOrientation 0.981701360865451 -0.0201875672336223 -0.189353902003916 0.00264365783946709
-                  center 0 1.05202e-5 0
-                  children USE DamagedHelmet_2
+                  children USE DamagedHelmet
                 }
               ]
             }

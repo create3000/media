@@ -9,9 +9,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:17:00 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sat, 24 Aug 2024 09:51:32 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFInt32' url='"assets/SFInt32.x3d#SFInt32"'>
@@ -27,54 +27,48 @@
             position='0.8885 -0.5 10'
             centerOfRotation='0.8885 -0.5 0'
             fieldOfView='-0.8885, -0.5, 0.8885, 0.5'/>
-        <Inline DEF='design'
-            global='true'
-            url='"assets/design.svg"'/>
-        <Transform DEF='BoomBox'
-            translation='1.55 -0.255 0'
-            rotation='0 1 0 2.88170662945123'
-            scale='0.06 0.06 0.06'>
-          <Inline DEF='BoomBox_1'
+        <StaticGroup DEF='Statics'>
+          <Inline DEF='design'
               global='true'
-              url='"assets/BoomBox/BoomBox.gltf"'/>
-          <TouchSensor DEF='_1'/>
-          <ProtoInstance name='SFInt32' DEF='_2'/>
-        </Transform>
-        <Transform DEF='Telephone'
-            translation='0.13052 -0.865 0'
-            rotation='0 1 0 3.14159265358979'
-            scale='0.0533868 0.0533868 0.0533868'>
-          <Inline DEF='Telephone_1'
-              global='true'
-              url='"assets/Telephone/Telephone.gltf"'/>
-          <TouchSensor DEF='_3'/>
-          <ProtoInstance name='SFInt32' DEF='_4'>
-            <fieldValue name='keyValue' value='1'/>
-          </ProtoInstance>
-        </Transform>
-        <Transform DEF='DamagedHelmet_1'
-            translation='1.605 -0.85 0'
-            rotation='-0.168605254730166 -0.984703435521794 -0.0439478344057174 3.61750029571862'
-            scale='0.0482975 0.0482974 0.0482975'
-            scaleOrientation='0.966775723053675 -0.255609715258277 -0.00289392115085315 0.500305288263049'>
-          <Inline DEF='DamagedHelmet_2'
-              global='true'
-              url='"assets/DamagedHelmet/DamagedHelmet.gltf"'/>
-          <TouchSensor DEF='_5'/>
-          <ProtoInstance name='SFInt32' DEF='_6'>
-            <fieldValue name='keyValue' value='2'/>
-          </ProtoInstance>
-        </Transform>
+              url='"assets/design.svg"'/>
+          <Transform DEF='PBR_1'
+              translation='1.72614 -0.06 0'
+              scale='0.0743421 0.0743421 0.0743421'>
+            <Shape>
+              <Appearance DEF='_7'>
+                <Material
+                    diffuseColor='1 1 1'/>
+              </Appearance>
+              <Text
+                  string='"PHYSICS BASED RENDERING"'
+                  solid='true'>
+                <FontStyle
+                    family='"assets/Mambo-Bold.otf"'
+                    justify='"END"'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='Exploration_1'
+              translation='0.0561412 -0.06 0'
+              scale='0.0743421 0.0743421 0.0743421'>
+            <Shape>
+              <Appearance USE='_7'/>
+              <Text
+                  string='"EXPLORATION"'
+                  solid='true'>
+                <FontStyle
+                    family='"assets/Mambo-Bold.otf"'/>
+              </Text>
+            </Shape>
+          </Transform>
+        </StaticGroup>
         <Transform DEF='Code'
             translation='1.72614 -0.1 0'
             scale='0.0269332 0.0269332 0.0269332'>
           <Shape>
-            <Appearance DEF='_7'>
-              <Material
-                  diffuseColor='1 1 1'/>
-            </Appearance>
+            <Appearance USE='_7'/>
             <Text DEF='_8'
-                string='""'
+                string='""'
                 solid='true'>
               <FontStyle
                   family='"assets/MaterialIcons.ttf"'
@@ -154,42 +148,58 @@ function random (min, max)
 ]]>
           </Script>
         </Transform>
-        <Transform DEF='PBR'
-            translation='1.72614 -0.06 0'
-            scale='0.0743421 0.0743421 0.0743421'>
-          <Shape>
-            <Appearance USE='_7'/>
-            <Text
-                string='"PHYSICS BASED RENDERING"'
-                solid='true'>
-              <FontStyle
-                  family='"assets/Mambo-Bold.otf"'
-                  justify='"END"'/>
-            </Text>
-          </Shape>
+        <Transform DEF='BoomBox'
+            translation='1.55 -0.255 0'
+            rotation='0 1 0 2.88170662945123'
+            scale='0.06 0.06 0.06'>
+          <StaticGroup DEF='BoomBox_3'>
+            <Inline
+                global='true'
+                url='"assets/BoomBox/BoomBox.gltf"'/>
+          </StaticGroup>
+          <TouchSensor DEF='_1'/>
+          <ProtoInstance name='SFInt32' DEF='_2'/>
         </Transform>
-        <Transform DEF='Exploration'
-            translation='0.0561412 -0.06 0'
-            scale='0.0743421 0.0743421 0.0743421'>
-          <Shape>
-            <Appearance USE='_7'/>
-            <Text
-                string='"EXPLORATION"'
-                solid='true'>
-              <FontStyle
-                  family='"assets/Mambo-Bold.otf"'/>
-            </Text>
-          </Shape>
+        <Transform DEF='Telephone'
+            translation='0.13052 -0.865 0'
+            rotation='0 1 0 3.14159265358979'
+            scale='0.0533868 0.0533868 0.0533868'>
+          <StaticGroup DEF='Telephone_1'>
+            <Inline
+                global='true'
+                url='"assets/Telephone/Telephone.gltf"'/>
+          </StaticGroup>
+          <TouchSensor DEF='_3'/>
+          <ProtoInstance name='SFInt32' DEF='_4'>
+            <fieldValue name='keyValue' value='1'/>
+          </ProtoInstance>
+        </Transform>
+        <Transform DEF='DamagedHelmet_1'
+            translation='1.605 -0.85 0'
+            rotation='-0.168605254730166 -0.984703435521794 -0.0439478344057174 3.61750029571862'
+            scale='0.0482975 0.0482974 0.0482975'
+            scaleOrientation='0.966775723053675 -0.255609715258277 -0.00289392115085315 0.500305288263049'>
+          <StaticGroup DEF='DamagedHelmet'>
+            <Inline DEF='DamagedHelmet_2'
+                global='true'
+                url='"assets/DamagedHelmet/DamagedHelmet.gltf"'/>
+          </StaticGroup>
+          <TouchSensor DEF='_5'/>
+          <ProtoInstance name='SFInt32' DEF='_6'>
+            <fieldValue name='keyValue' value='2'/>
+          </ProtoInstance>
         </Transform>
       </Layer>
       <Layer DEF='Models'>
-        <NavigationInfo
-            type='"EXAMINE"'/>
         <Viewpoint
-            description='Initial View'/>
+            description='Initial View'>
+          <NavigationInfo containerField='navigationInfo'
+              type='"EXAMINE"'/>
+        </Viewpoint>
         <Transform DEF='_10'
-            rotation='0 -1 0 3.2648021253431'>
-          <Group DEF='RotationAnimation'>
+            rotation='0 1 0 1.27799318442714'>
+          <Group DEF='RotationAnimation'
+              visible='false'>
             <TimeSensor DEF='AnimationTimer'
                 cycleInterval='120'
                 loop='true'
@@ -207,22 +217,20 @@ function random (min, max)
                 translation='0 -0.5 0'
                 rotation='0 1 0 3.14159265358979'
                 scale='3.5 3.5 3.5'>
-              <Inline USE='BoomBox_1'/>
+              <StaticGroup USE='BoomBox_3'/>
             </Transform>
             <Transform DEF='Telephone_2'
                 translation='-0.4 1.1 -0.0543429'
                 rotation='0 1 0 3.14159265358979'
                 scale='4 4 4'
                 center='0.125757 0.609631 0.0543429'>
-              <Inline USE='Telephone_1'/>
+              <StaticGroup USE='Telephone_1'/>
             </Transform>
             <Transform DEF='DamagedHelmet_3'
                 translation='0 -0.6 0'
                 rotation='-0.696127542009453 0.04916375731856 -0.716232762600398 1.32075070179467e-6'
-                scale='3 3 3'
-                scaleOrientation='0.981701360865451 -0.0201875672336223 -0.189353902003916 0.00264365783946709'
-                center='0 1.05202e-5 0'>
-              <Inline USE='DamagedHelmet_2'/>
+                scale='3 3 3'>
+              <StaticGroup USE='DamagedHelmet'/>
             </Transform>
           </Switch>
         </Transform>
