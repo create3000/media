@@ -1,237 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='EventUtilities' level='1'/>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Layout' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='Layout' level='2'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 30 Jun 2018 14:23:48 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 30 Jun 2018 15:43:38 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sat, 24 Aug 2024 09:11:40 GMT'/>
   </head>
   <Scene>
-    <WorldInfo>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='AngleGrid' containerField='value'
-            name='AngleGrid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='false'/>
-        </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
-            name='Grid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_1' containerField='value'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='true'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <Switch DEF='Mens' containerField='value'
-                whichChoice='0'>
-              <Transform DEF='GordonFreeman'
-                  translation='415.087 -3.0715 -276.76'
-                  scale='0.0128517 0.0128517 0.0128517'
-                  center='-415.087 8.0715 276.76'>
-                <Inline
-                    url='"assets/lego_gordon_freeman_half-life/scene.gltf"'/>
-              </Transform>
-              <Transform DEF='JonSnow'
-                  translation='0 5 0'
-                  scale='5 5 5'>
-                <Inline
-                    url='"assets/lego_jon_snow/scene.gltf"'/>
-              </Transform>
-              <Transform DEF='StreetFighter'
-                  translation='0 5 0'
-                  scale='5 5 5'>
-                <Inline
-                    url='"assets/lego_mad_hatter_street_fighter_twist/scene.gltf"'/>
-              </Transform>
-            </Switch>
-          </MetadataSet>
-        </MetadataSet>
-        <MetadataSet DEF='BrowserPanel' containerField='value'
-            name='BrowserPanel'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='type_2' containerField='value'
-              name='type'
-              reference='http://titania.create3000.de'
-              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
-          <MetadataSet DEF='viewpoints' containerField='value'
-              name='viewpoints'
-              reference='http://titania.create3000.de'>
-            <MetadataSet DEF='PerspectiveViewpoint' containerField='value'
-                name='PerspectiveViewpoint'
-                reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_3' containerField='value'
-                  name='position'
-                  reference='http://titania.create3000.de'
-                  value='8.48219013214111, 12, 8.48219013214111'/>
-              <MetadataDouble DEF='orientation_4' containerField='value'
-                  name='orientation'
-                  reference='http://titania.create3000.de'
-                  value='0.678598156250032, -0.678598556661039, -0.281084580209608, 5.18712872208587'/>
-              <MetadataDouble DEF='centerOfRotation_5' containerField='value'
-                  name='centerOfRotation'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale' containerField='value'
-                  name='fieldOfViewScale'
-                  reference='http://titania.create3000.de'
-                  value='1'/>
-            </MetadataSet>
-            <MetadataSet DEF='TopViewpoint' containerField='value'
-                name='TopViewpoint'
-                reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_6' containerField='value'
-                  name='position'
-                  reference='http://titania.create3000.de'
-                  value='0, 10000, 0'/>
-              <MetadataDouble DEF='orientation_7' containerField='value'
-                  name='orientation'
-                  reference='http://titania.create3000.de'
-                  value='1, 0, 0, 4.71238898038469'/>
-              <MetadataDouble DEF='centerOfRotation_8' containerField='value'
-                  name='centerOfRotation'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale_9' containerField='value'
-                  name='fieldOfViewScale'
-                  reference='http://titania.create3000.de'
-                  value='1'/>
-            </MetadataSet>
-            <MetadataSet DEF='FrontViewpoint' containerField='value'
-                name='FrontViewpoint'
-                reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_10' containerField='value'
-                  name='position'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 10000'/>
-              <MetadataDouble DEF='orientation_11' containerField='value'
-                  name='orientation'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 1, 0'/>
-              <MetadataDouble DEF='centerOfRotation_12' containerField='value'
-                  name='centerOfRotation'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale_13' containerField='value'
-                  name='fieldOfViewScale'
-                  reference='http://titania.create3000.de'
-                  value='1'/>
-            </MetadataSet>
-          </MetadataSet>
-        </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-          <MetadataDouble DEF='browserRatio' containerField='value'
-              name='browserRatio'
-              reference='http://titania.create3000.de'
-              value='1.777777'/>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
     <LayerSet
         activeLayer='-1'
         order='1, 2'>
       <LayoutLayer DEF='Clouds'>
         <Layout
             scaleMode='"STRETCH", "STRETCH"'/>
-        <Transform DEF='Rectangle2D'
-            scale='1.6 1 1'>
-          <Shape>
-            <Appearance>
-              <Material/>
-              <ImageTexture
-                  url='"assets/clouds.jpg"'/>
-            </Appearance>
-            <Rectangle2D
-                size='1 1'/>
-          </Shape>
-        </Transform>
+        <StaticGroup>
+          <Transform
+              scale='1.6 1 1'>
+            <Shape>
+              <Appearance>
+                <Material/>
+                <ImageTexture
+                    url='"assets/clouds.jpg"'/>
+              </Appearance>
+              <Rectangle2D
+                  size='1 1'/>
+            </Shape>
+          </Transform>
+        </StaticGroup>
       </LayoutLayer>
       <Layer DEF='LegoMens'>
-        <MetadataSet DEF='Titania_14'
-            name='Titania'
-            reference='http://titania.create3000.de'>
-          <MetadataSet DEF='Grid_15' containerField='value'
-              name='Grid'
-              reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_16' containerField='value'
-                name='enabled'
-                reference='http://titania.create3000.de'
-                value='false'/>
-          </MetadataSet>
-          <MetadataSet DEF='BrowserPanel_17' containerField='value'
-              name='BrowserPanel'
-              reference='http://titania.create3000.de'>
-            <MetadataSet DEF='viewpoints_18' containerField='value'
-                name='viewpoints'
-                reference='http://titania.create3000.de'>
-              <MetadataSet DEF='FrontViewpoint_19' containerField='value'
-                  name='FrontViewpoint'
-                  reference='http://titania.create3000.de'>
-                <MetadataDouble DEF='position' containerField='value'
-                    name='position'
-                    reference='http://titania.create3000.de'
-                    value='-4.21788859264707, 3.68470699419783, 10000'/>
-                <MetadataDouble DEF='orientation' containerField='value'
-                    name='orientation'
-                    reference='http://titania.create3000.de'
-                    value='0, 0, 1, 0'/>
-                <MetadataDouble DEF='centerOfRotation' containerField='value'
-                    name='centerOfRotation'
-                    reference='http://titania.create3000.de'
-                    value='-4.21788859264707, 3.68470699419783, 0'/>
-                <MetadataDouble DEF='fieldOfViewScale_20' containerField='value'
-                    name='fieldOfViewScale'
-                    reference='http://titania.create3000.de'
-                    value='1.58264068111203'/>
-              </MetadataSet>
-            </MetadataSet>
-          </MetadataSet>
-        </MetadataSet>
         <Viewpoint
             position='8.55853 14.0994 17.5892'
             orientation='-0.702493566218813 0.693784242009822 0.15863863010008 0.629356170493366'
             centerOfRotation='0.453916 4.9987 0.559686'/>
         <Transform DEF='Platform'
-            rotation='0 -1 0 0.57171960394431'>
+            rotation='0 1 0 3.64873861151282'>
           <Group DEF='SwitchAnimation'>
-            <MetadataSet DEF='Animation'
+            <MetadataSet DEF='Animation' containerField='metadata'
                 name='Animation'
                 reference='http://titania.create3000.de'>
-              <MetadataInteger DEF='duration_21' containerField='value'
+              <MetadataInteger DEF='duration_21'
                   name='duration'
                   reference='http://titania.create3000.de'
                   value='150'/>
-              <MetadataInteger DEF='frameRate_22' containerField='value'
+              <MetadataInteger DEF='frameRate_22'
                   name='frameRate'
                   reference='http://titania.create3000.de'
                   value='10'/>
@@ -242,22 +60,22 @@
             <IntegerSequencer DEF='MensWhichChoiceInterpolator'
                 key='0, 0.333333, 0.666667, 1'
                 keyValue='0, 1, 2, 0'>
-              <MetadataSet DEF='Interpolator_23'
+              <MetadataSet DEF='Interpolator_23' containerField='metadata'
                   name='Interpolator'
                   reference='http://titania.create3000.de'>
-                <MetadataInteger DEF='key_24' containerField='value'
+                <MetadataInteger DEF='key_24'
                     name='key'
                     reference='http://titania.create3000.de'
                     value='0, 50, 100, 150'/>
-                <MetadataDouble DEF='keyValue_25' containerField='value'
+                <MetadataDouble DEF='keyValue_25'
                     name='keyValue'
                     reference='http://titania.create3000.de'
                     value='0, 1, 2, 0'/>
-                <MetadataString DEF='keyType_26' containerField='value'
+                <MetadataString DEF='keyType_26'
                     name='keyType'
                     reference='http://titania.create3000.de'
                     value='"CONSTANT", "CONSTANT", "CONSTANT", "CONSTANT"'/>
-                <MetadataInteger DEF='keySize_27' containerField='value'
+                <MetadataInteger DEF='keySize_27'
                     name='keySize'
                     reference='http://titania.create3000.de'
                     value='1'/>
@@ -265,14 +83,14 @@
             </IntegerSequencer>
           </Group>
           <Group DEF='PlatformRotationAnimation'>
-            <MetadataSet DEF='Animation_28'
+            <MetadataSet DEF='Animation_28' containerField='metadata'
                 name='Animation'
                 reference='http://titania.create3000.de'>
-              <MetadataInteger DEF='duration' containerField='value'
+              <MetadataInteger DEF='duration'
                   name='duration'
                   reference='http://titania.create3000.de'
                   value='200'/>
-              <MetadataInteger DEF='frameRate' containerField='value'
+              <MetadataInteger DEF='frameRate'
                   name='frameRate'
                   reference='http://titania.create3000.de'
                   value='10'/>
@@ -283,35 +101,68 @@
             <OrientationInterpolator DEF='PlatformRotationInterpolator'
                 key='0, 0.25, 0.5, 0.75, 1'
                 keyValue='0 1 0 1.16099466823039, 0 -1 0 0.379149921334659, 0 1 0 4.35789393518189, 0 1 0 2.80748864666412, 0 1 0 1.16099466823039'>
-              <MetadataSet DEF='Interpolator'
+              <MetadataSet DEF='Interpolator' containerField='metadata'
                   name='Interpolator'
                   reference='http://titania.create3000.de'>
-                <MetadataInteger DEF='key' containerField='value'
+                <MetadataInteger DEF='key'
                     name='key'
                     reference='http://titania.create3000.de'
                     value='0, 50, 100, 150, 200'/>
-                <MetadataDouble DEF='keyValue' containerField='value'
+                <MetadataDouble DEF='keyValue'
                     name='keyValue'
                     reference='http://titania.create3000.de'
                     value='0, 1, 0, 1.16099466823039, 0, -1, 0, 0.379149921334659, 0, 1, 0, 4.35789393518189, 0, 1, 0, 2.80748864666412, 0, 1, 0, 1.16099466823039'/>
-                <MetadataString DEF='keyType' containerField='value'
+                <MetadataString DEF='keyType'
                     name='keyType'
                     reference='http://titania.create3000.de'
                     value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
-                <MetadataInteger DEF='keySize' containerField='value'
+                <MetadataInteger DEF='keySize'
                     name='keySize'
                     reference='http://titania.create3000.de'
                     value='1'/>
               </MetadataSet>
             </OrientationInterpolator>
           </Group>
-          <Switch USE='Mens'/>
-          <Transform DEF='Platform_29'
-              translation='0.291846 -1.25397 -0.614791'
-              scale='0.19916 0.19916 0.19916'>
-            <Inline
-                url='"assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf"'/>
-          </Transform>
+          <Switch DEF='Mens'
+              whichChoice='1'>
+            <StaticGroup DEF='GordonFreeman'>
+              <Transform
+                  translation='415.087 -3.0715 -276.76'
+                  scale='0.0128517 0.0128517 0.0128517'
+                  center='-415.087 8.0715 276.76'>
+                <Inline
+                    global='true'
+                    url='"assets/lego_gordon_freeman_half-life/scene.gltf"'/>
+              </Transform>
+            </StaticGroup>
+            <StaticGroup DEF='JonSnow'>
+              <Transform
+                  translation='0 5 0'
+                  scale='5 5 5'>
+                <Inline
+                    global='true'
+                    url='"assets/lego_jon_snow/scene.gltf"'/>
+              </Transform>
+            </StaticGroup>
+            <StaticGroup DEF='StreetFighter'>
+              <Transform
+                  translation='0 5 0'
+                  scale='5 5 5'>
+                <Inline
+                    global='true'
+                    url='"assets/lego_mad_hatter_street_fighter_twist/scene.gltf"'/>
+              </Transform>
+            </StaticGroup>
+          </Switch>
+          <StaticGroup DEF='Platform_1'>
+            <Transform
+                translation='0.291846 -1.25397 -0.614791'
+                scale='0.19916 0.19916 0.19916'>
+              <Inline
+                  global='true'
+                  url='"assets/60_years_lego_bricks_-_mini_space_ship/scene.gltf"'/>
+            </Transform>
+          </StaticGroup>
         </Transform>
       </Layer>
     </LayerSet>
