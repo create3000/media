@@ -2,6 +2,7 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='CubeMapTexturing' level='3'/>
     <component name='Layering' level='1'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
@@ -9,8 +10,8 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 12 Nov 2017 22:36:28 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 24 Aug 2024 09:49:09 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.15, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 28 Aug 2024 15:10:25 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFInt32' url='"assets/SFInt32.x3d#SFInt32"'>
@@ -67,7 +68,7 @@
           <Shape>
             <Appearance USE='_7'/>
             <Text DEF='_8'
-                string='""'
+                string='""'
                 solid='true'>
               <FontStyle
                   family='"assets/MaterialIcons.ttf"'
@@ -156,11 +157,11 @@ function random (min, max)
                 global='true'
                 url='"assets/BoomBox/BoomBox.gltf"'/>
           </StaticGroup>
-          <TouchSensor DEF='_1'/>
+          <TouchSensor DEF='_12'/>
           <ProtoInstance name='SFInt32' DEF='_2'/>
         </Transform>
         <Transform DEF='Telephone'
-            translation='0.13052 -0.865 0'
+            translation='0.13052 -0.865 1'
             rotation='0 1 0 3.14159265358979'
             scale='0.0533868 0.0533868 0.0533868'>
           <StaticGroup DEF='Telephone_1'>
@@ -195,8 +196,21 @@ function random (min, max)
           <NavigationInfo containerField='navigationInfo'
               type='"EXAMINE"'/>
         </Viewpoint>
+        <EnvironmentLight>
+          <ImageCubeMapTexture containerField='diffuseTexture'
+              url='"assets/helipad-diffuse.jpg"'>
+            <TextureProperties DEF='_1'
+                generateMipMaps='true'
+                minificationFilter='NICEST'
+                magnificationFilter='NICEST'/>
+          </ImageCubeMapTexture>
+          <ImageCubeMapTexture containerField='specularTexture'
+              url='"assets/helipad-specular.jpg"'>
+            <TextureProperties USE='_1'/>
+          </ImageCubeMapTexture>
+        </EnvironmentLight>
         <Transform DEF='_10'
-            rotation='0 -1 0 3.56613322766731'>
+            rotation='0 -1 0 1.37351185228276'>
           <Group DEF='RotationAnimation'
               visible='false'>
             <MetadataSet DEF='Animation_1' containerField='metadata'
@@ -244,7 +258,7 @@ function random (min, max)
             </OrientationInterpolator>
           </Group>
           <Switch DEF='_11'
-              whichChoice='1'>
+              whichChoice='2'>
             <Transform DEF='BoomBox_2'
                 translation='0 -0.5 0'
                 rotation='0 1 0 3.14159265358979'
@@ -273,7 +287,7 @@ function random (min, max)
     <ROUTE fromNode='CodeScript' fromField='string_changed' toNode='_8' toField='set_string'/>
     <ROUTE fromNode='_9' fromField='cycleTime' toNode='CodeScript' toField='set_time'/>
     <ROUTE fromNode='_2' fromField='value_changed' toNode='_11' toField='set_whichChoice'/>
-    <ROUTE fromNode='_1' fromField='touchTime' toNode='_2' toField='set_triggerTime'/>
+    <ROUTE fromNode='_12' fromField='touchTime' toNode='_2' toField='set_triggerTime'/>
     <ROUTE fromNode='_4' fromField='value_changed' toNode='_11' toField='set_whichChoice'/>
     <ROUTE fromNode='_3' fromField='touchTime' toNode='_4' toField='set_triggerTime'/>
     <ROUTE fromNode='_6' fromField='value_changed' toNode='_11' toField='set_whichChoice'/>

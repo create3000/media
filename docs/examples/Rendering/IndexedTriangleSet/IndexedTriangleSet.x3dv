@@ -1,7 +1,8 @@
-#X3D V4.0 utf8 X_ITE V10.3.1
+#X3D V4.0 utf8 X_ITE V10.4.1
 
 PROFILE Interchange
 
+COMPONENT CubeMapTexturing : 3
 COMPONENT Layering : 1
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
@@ -10,9 +11,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sat, 24 Aug 2024 09:51:32 GMT"
+META "generator" "Sunrize X3D Editor V1.7.15, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.159, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 28 Aug 2024 15:12:32 GMT"
 
 EXTERNPROTO SFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -80,7 +81,7 @@ LayerSet {
             Shape {
               appearance USE _7
               geometry DEF _8 Text {
-                string ""
+                string ""
                 solid TRUE
                 fontStyle FontStyle {
                   family "assets/MaterialIcons.ttf"
@@ -175,12 +176,12 @@ function random (min, max)
                 url "assets/BoomBox/BoomBox.gltf"
               }
             }
-            DEF _1 TouchSensor { }
+            DEF _12 TouchSensor { }
             DEF _2 SFInt32 { }
           ]
         }
         DEF Telephone Transform {
-          translation 0.13052 -0.865 0
+          translation 0.13052 -0.865 1
           rotation 0 1 0 3.14159265358979
           scale 0.0533868 0.0533868 0.0533868
           children [
@@ -224,8 +225,22 @@ function random (min, max)
             type "EXAMINE"
           }
         }
+        EnvironmentLight {
+          diffuseTexture ImageCubeMapTexture {
+            url "assets/helipad-diffuse.jpg"
+            textureProperties DEF _1 TextureProperties {
+              generateMipMaps TRUE
+              minificationFilter "NICEST"
+              magnificationFilter "NICEST"
+            }
+          }
+          specularTexture ImageCubeMapTexture {
+            url "assets/helipad-specular.jpg"
+            textureProperties USE _1
+          }
+        }
         DEF _10 Transform {
-          rotation 0 1 0 1.27815026526783
+          rotation 0 -1 0 1.85988198702921
           children [
             DEF RotationAnimation Group {
               visible FALSE
@@ -245,7 +260,7 @@ function random (min, max)
               ]
             }
             DEF _11 Switch {
-              whichChoice 1
+              whichChoice 2
               children [
                 DEF BoomBox_2 Transform {
                   translation 0 -0.5 0
@@ -280,7 +295,7 @@ ROUTE RotationInterpolator.value_changed TO _10.set_rotation
 ROUTE CodeScript.string_changed TO _8.set_string
 ROUTE _9.cycleTime TO CodeScript.set_time
 ROUTE _2.value_changed TO _11.set_whichChoice
-ROUTE _1.touchTime TO _2.set_triggerTime
+ROUTE _12.touchTime TO _2.set_triggerTime
 ROUTE _4.value_changed TO _11.set_whichChoice
 ROUTE _3.touchTime TO _4.set_triggerTime
 ROUTE _6.value_changed TO _11.set_whichChoice

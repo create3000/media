@@ -20,18 +20,22 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.15, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.156, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V1.0.159, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Sat, 24 Aug 2024 09:51:29 GMT"
+          "@content": "Wed, 28 Aug 2024 15:12:36 GMT"
         }
       ],
       "component": [
+        {
+          "@name": "CubeMapTexturing",
+          "@level": 3
+        },
         {
           "@name": "Layering",
           "@level": 1
@@ -185,7 +189,7 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_8",
-                                  "@string": [ "" ],
+                                  "@string": [ "" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
@@ -323,7 +327,7 @@
                           },
                           { "TouchSensor":
                             {
-                              "@DEF": "_1"
+                              "@DEF": "_12"
                             }
                           },
                           { "ProtoInstance":
@@ -338,7 +342,7 @@
                     { "Transform":
                       {
                         "@DEF": "Telephone",
-                        "@translation": [ 0.13052, -0.865, 0 ],
+                        "@translation": [ 0.13052, -0.865, 1 ],
                         "@rotation": [ 0, 1, 0, 3.14159265358979 ],
                         "@scale": [ 0.0533868, 0.0533868, 0.0533868 ],
                         "-children": [
@@ -434,10 +438,37 @@
                         }
                       }
                     },
+                    { "EnvironmentLight":
+                      {
+                        "-diffuseTexture": { "ImageCubeMapTexture":
+                          {
+                            "@url": [ "assets/helipad-diffuse.jpg" ],
+                            "-textureProperties": { "TextureProperties":
+                              {
+                                "@DEF": "_1",
+                                "@generateMipMaps": true,
+                                "@minificationFilter": "NICEST",
+                                "@magnificationFilter": "NICEST"
+                              }
+                            }
+                          }
+                        },
+                        "-specularTexture": { "ImageCubeMapTexture":
+                          {
+                            "@url": [ "assets/helipad-specular.jpg" ],
+                            "-textureProperties": { "TextureProperties":
+                              {
+                                "@USE": "_1"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "_10",
-                        "@rotation": [ 0, 1, 0, 1.46936855061665 ],
+                        "@rotation": [ 0, -1, 0, 2.05780230797956 ],
                         "-children": [
                           { "Group":
                             {
@@ -468,7 +499,7 @@
                           { "Switch":
                             {
                               "@DEF": "_11",
-                              "@whichChoice": 1,
+                              "@whichChoice": 2,
                               "-children": [
                                 { "Transform":
                                   {
@@ -570,7 +601,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_1",
+            "@fromNode": "_12",
             "@fromField": "touchTime",
             "@toNode": "_2",
             "@toField": "set_triggerTime"
