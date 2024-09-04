@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='NURBS' level='4'/>
+    <meta name='created' content='Wed, 04 Sep 2024 21:46:47 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.16, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.160, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Wed, 04 Sep 2024 22:22:13 GMT'/>
+  </head>
+  <Scene>
+    <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d"'>
+      <field accessType='inputOutput' type='SFVec3f' name='translation'/>
+      <field accessType='inputOutput' type='SFRotation' name='rotation'/>
+      <field accessType='inputOutput' type='SFVec3f' name='scale'/>
+      <field accessType='inputOutput' type='MFInt32' name='dimension'/>
+      <field accessType='inputOutput' type='MFInt32' name='majorLineEvery'/>
+      <field accessType='inputOutput' type='MFInt32' name='majorLineOffset'/>
+      <field accessType='inputOutput' type='SFColor' name='color'/>
+      <field accessType='inputOutput' type='SFFloat' name='transparency'/>
+      <field accessType='inputOutput' type='SFColor' name='lineColor'/>
+      <field accessType='inputOutput' type='SFFloat' name='lineTransparency'/>
+      <field accessType='inputOutput' type='SFColor' name='majorLineColor'/>
+      <field accessType='inputOutput' type='SFFloat' name='majorLineTransparency'/>
+      <field accessType='initializeOnly' type='SFBool' name='solid'/>
+    </ExternProtoDeclare>
+    <WorldInfo/>
+    <Viewpoint
+        description='Initial View'
+        position='1.135291 1.948687 2.805519'
+        orientation='0.724631081003012 -0.674545698190467 -0.141059907476005 5.72128005812276'
+        centerOfRotation='0 0.625 0'/>
+    <ProtoInstance name='Grid'>
+      <fieldValue name='lineColor' value='0.9647059 0.6980392 0.4196078'/>
+      <fieldValue name='majorLineColor' value='0.9647059 0.6980392 0.4196078'/>
+    </ProtoInstance>
+    <Transform
+        translation='-2 -0.5 -2'>
+      <Shape>
+        <Appearance>
+          <Material
+              diffuseColor='1 0 0'
+              specularColor='0.6941176 1 0'
+              shininess='0.03220936'/>
+        </Appearance>
+        <NurbsTrimmedSurface
+            uTessellation='30'
+            vTessellation='30'
+            solid='false'
+            uOrder='4'
+            vOrder='4'
+            uDimension='5'
+            vDimension='5'
+            uKnot='-4, -3, -2, -1, 0, 1, 2, 3, 4'
+            vKnot='-4, -3, -2, -1, 0, 1, 2, 3, 4'>
+          <Coordinate containerField='controlPoint'
+              point='0 0 0, 1 0 0, 2 0 0, 3 0 0, 4 0 0, 0 0 1, 1 1 1, 2 1 1, 3 1 1, 4 0 1, 0 0 2, 1 1 2, 2 2 2, 3 1 2, 4 0 2, 0 0 3, 1 1 3, 2 1 3, 3 1 3, 4 0 3, 0 0 4, 1 0 4, 2 0 4, 3 0 4, 4 0 4'/>
+          <Contour2D>
+            <NurbsCurve2D
+                tessellation='12'
+                order='2'
+                knot='0, 0, 0.25, 0.5, 0.75, 1, 1'
+                weight='1, 1, 1, 1, 1'
+                controlPoint='-4 -4, 4 -4, 4 4, -4 4, -4 -4'/>
+          </Contour2D>
+          <Contour2D>
+            <NurbsCurve2D
+                tessellation='32'
+                knot='0, 0, 0, 0.25, 0.25, 0.5, 0.5, 0.75, 0.75, 1, 1, 1'
+                weight='1, 0.7071, 1, 0.7071, 1, 0.7071, 1, 0.7071, 1'
+                controlPoint='3 2, 2.1213 0.7071, 2 1, 0.7071 0.7071, 1 2, 0.7071 2.1213, 2 3, 2.1213 2.1213, 3 2'/>
+          </Contour2D>
+        </NurbsTrimmedSurface>
+      </Shape>
+    </Transform>
+  </Scene>
+</X3D>

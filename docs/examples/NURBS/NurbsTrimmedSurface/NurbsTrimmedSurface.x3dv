@@ -1,0 +1,88 @@
+#X3D V4.0 utf8 X_ITE V10.4.2
+
+PROFILE Interchange
+
+COMPONENT NURBS : 4
+
+META "created" "Wed, 04 Sep 2024 21:46:47 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.16, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.160, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Wed, 04 Sep 2024 22:22:12 GMT"
+
+EXTERNPROTO Grid [
+  inputOutput    SFVec3f    translation
+  inputOutput    SFRotation rotation
+  inputOutput    SFVec3f    scale
+  inputOutput    MFInt32    dimension
+  inputOutput    MFInt32    majorLineEvery
+  inputOutput    MFInt32    majorLineOffset
+  inputOutput    SFColor    color
+  inputOutput    SFFloat    transparency
+  inputOutput    SFColor    lineColor
+  inputOutput    SFFloat    lineTransparency
+  inputOutput    SFColor    majorLineColor
+  inputOutput    SFFloat    majorLineTransparency
+  initializeOnly SFBool     solid
+]
+"assets/Grid.x3d"
+
+WorldInfo { }
+
+Viewpoint {
+  description "Initial View"
+  position 1.135291 1.948687 2.805519
+  orientation 0.724631081003012 -0.674545698190467 -0.141059907476005 5.72128005812276
+  centerOfRotation 0 0.625 0
+}
+
+Grid {
+  lineColor 0.9647059 0.6980392 0.4196078
+  majorLineColor 0.9647059 0.6980392 0.4196078
+}
+
+Transform {
+  translation -2 -0.5 -2
+  children Shape {
+    appearance Appearance {
+      material Material {
+        diffuseColor 1 0 0
+        specularColor 0.6941176 1 0
+        shininess 0.03220936
+      }
+    }
+    geometry NurbsTrimmedSurface {
+      uTessellation 30
+      vTessellation 30
+      solid FALSE
+      uOrder 4
+      vOrder 4
+      uDimension 5
+      vDimension 5
+      uKnot [ -4, -3, -2, -1, 0, 1, 2, 3, 4 ]
+      vKnot [ -4, -3, -2, -1, 0, 1, 2, 3, 4 ]
+      controlPoint Coordinate {
+        point [ 0 0 0, 1 0 0, 2 0 0, 3 0 0, 4 0 0, 0 0 1, 1 1 1, 2 1 1, 3 1 1, 4 0 1, 0 0 2, 1 1 2, 2 2 2, 3 1 2, 4 0 2, 0 0 3, 1 1 3, 2 1 3, 3 1 3, 4 0 3, 0 0 4, 1 0 4, 2 0 4, 3 0 4, 4 0 4 ]
+      }
+      trimmingContour [
+        Contour2D {
+          children NurbsCurve2D {
+            tessellation 12
+            order 2
+            knot [ 0, 0, 0.25, 0.5, 0.75, 1, 1 ]
+            weight [ 1, 1, 1, 1, 1 ]
+            controlPoint [ -4 -4, 4 -4, 4 4, -4 4, -4 -4 ]
+          }
+        }
+        Contour2D {
+          children NurbsCurve2D {
+            tessellation 32
+            knot [ 0, 0, 0, 0.25, 0.25, 0.5, 0.5, 0.75, 0.75, 1, 1, 1 ]
+            weight [ 1, 0.7071, 1, 0.7071, 1, 0.7071, 1, 0.7071, 1 ]
+            controlPoint [ 3 2, 2.1213 0.7071, 2 1, 0.7071 0.7071, 1 2, 0.7071 2.1213, 2 3, 2.1213 2.1213, 3 2 ]
+          }
+        }
+      ]
+    }
+  }
+}
