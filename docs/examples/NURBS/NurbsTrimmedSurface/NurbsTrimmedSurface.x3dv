@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V10.4.2
+#X3D V4.0 utf8 X_ITE V10.5.0
 
 PROFILE Interchange
 
@@ -7,8 +7,8 @@ COMPONENT NURBS : 4
 META "created" "Wed, 04 Sep 2024 21:46:47 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.16, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.160, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 05 Sep 2024 07:17:23 GMT"
+META "generator" "x3d-tidy V1.0.161, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sun, 08 Sep 2024 06:52:35 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -38,8 +38,8 @@ DEF Gray Background {
 
 Viewpoint {
   description "Initial View"
-  position 1.528997 2.668456 4.072408
-  orientation -0.778220360608206 0.611893494091393 0.141277819290442 0.576825351078843
+  position 1.486329 2.922975 3.958765
+  orientation 0.813310181218901 -0.562784702796103 -0.147647984830066 5.65911354592762
   centerOfRotation 0 0.75 0
 }
 
@@ -93,7 +93,7 @@ StaticGroup {
         }
         DEF Tesselation Shape {
           appearance DEF _4 Appearance {
-            material UnlitMaterial {
+            material DEF _5 UnlitMaterial {
               emissiveColor 0 0 0
             }
           }
@@ -124,9 +124,7 @@ StaticGroup {
               pointSizeMinValue 6
               pointSizeMaxValue 6
             }
-            material UnlitMaterial {
-              emissiveColor 0 0 0
-            }
+            material USE _5
           }
           geometry PointSet {
             coord USE _2
