@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Scripting' level='1'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='created' content='Thu 26 Mar 2020 19:16:33'/>
+    <meta name='title' content='imaginary-harmonic-cutoff-figureOc_alpha.x3d'/>
+    <meta name='description' content='3D Fig. 1c in Pisanty et al, 2020'/>
+    <meta name='modifier' content='Andreas Plesch'/>
+    <meta name='modified' content='Sat, 24 Aug 2024 09:57:11 GMT'/>
+    <meta name='reason' content='transparency'/>
+    <meta name='reference' content='https://https//imaginary-harmonic-cutoff.github.io'/>
+    <meta name='reference' content='https://doi.org/10.5281/zenodo.3758483'/>
+    <meta name='reference' content='https://doi.org/10.1088/2515-7647/ab8f1e'/>
+    <meta name='reference' content='https://arxiv.org/abs/2003.00277v2'/>
+    <meta name='reference' content='The imaginary part of the high-harmonic cutoff. E. Pisanty, M.F. Ciappina and M. Lewenstein. J. Phys. Photonics 2, 034013 (2020), arXiv:2003.00277.'/>
+    <meta name='rights' content='© Emilio Pisanty, 2020'/>
+    <meta name='subject' content='Photonics: The imaginary part of the high-harmonic cutoff'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/'/>
+    <meta name='license' content='CC BY-SA 4.0.'/>
+    <meta name='comment' content='Rise and Shine'/>
+  </head>
+  <Scene>
+    <Viewpoint
+        description='Imaginary Function'
+        position='152.8526 81.99515 -106.8417'
+        orientation='-0.109038674068902 0.968448566292785 0.224093600985716 2.26086627444702'
+        centerOfRotation='20.75 -0.09605026 -3.233685'/>
+    <Script DEF='EnterWorldScript'>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   Browser .setBrowserOption ("OrderIndependentTransparency", true);
+}
+]]>
+    </Script>
+    <StaticGroup DEF='ImaginaryFunction'>
+      <Inline
+          url='"assets/function.x3d"'/>
+    </StaticGroup>
+  </Scene>
+</X3D>

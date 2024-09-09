@@ -1,0 +1,128 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Interchange",
+    "@version": "4.0",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "created",
+          "@content": "Thu 26 Mar 2020 19:16:33"
+        },
+        {
+          "@name": "title",
+          "@content": "imaginary-harmonic-cutoff-figureOc_alpha.x3d"
+        },
+        {
+          "@name": "description",
+          "@content": "3D Fig. 1c in Pisanty et al, 2020"
+        },
+        {
+          "@name": "modifier",
+          "@content": "Andreas Plesch"
+        },
+        {
+          "@name": "modified",
+          "@content": "Mon, 09 Sep 2024 20:45:13 GMT"
+        },
+        {
+          "@name": "reason",
+          "@content": "transparency"
+        },
+        {
+          "@name": "reference",
+          "@content": "https://https//imaginary-harmonic-cutoff.github.io"
+        },
+        {
+          "@name": "reference",
+          "@content": "https://doi.org/10.5281/zenodo.3758483"
+        },
+        {
+          "@name": "reference",
+          "@content": "https://doi.org/10.1088/2515-7647/ab8f1e"
+        },
+        {
+          "@name": "reference",
+          "@content": "https://arxiv.org/abs/2003.00277v2"
+        },
+        {
+          "@name": "reference",
+          "@content": "The imaginary part of the high-harmonic cutoff. E. Pisanty, M.F. Ciappina and M. Lewenstein. J. Phys. Photonics 2, 034013 (2020), arXiv:2003.00277."
+        },
+        {
+          "@name": "rights",
+          "@content": "© Emilio Pisanty, 2020"
+        },
+        {
+          "@name": "subject",
+          "@content": "Photonics: The imaginary part of the high-harmonic cutoff"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.162, https://www.npmjs.com/package/x3d-tidy"
+        },
+        {
+          "@name": "license",
+          "@content": "CC BY-SA 4.0."
+        },
+        {
+          "@name": "comment",
+          "@content": "Rise and Shine"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Scripting",
+          "@level": 1
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "Viewpoint":
+          {
+            "@description": "Imaginary Function",
+            "@position": [ 152.8526, 81.99515, -106.8417 ],
+            "@orientation": [ -0.109038674068902, 0.968448566292785, 0.224093600985716, 2.26086627444702 ],
+            "@centerOfRotation": [ 20.75, -0.09605026, -3.233685 ]
+          }
+        },
+        { "Script":
+          {
+            "@DEF": "EnterWorldScript",
+            "#sourceCode": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"   Browser .setBrowserOption (\"OrderIndependentTransparency\", true);",
+"}",
+""
+            ]
+          }
+        },
+        { "StaticGroup":
+          {
+            "@DEF": "ImaginaryFunction",
+            "-children": [
+              { "Inline":
+                {
+                  "@url": [ "assets/function.x3d" ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

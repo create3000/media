@@ -1,0 +1,47 @@
+#X3D V4.0 utf8 X_ITE V10.5.1
+
+PROFILE Interchange
+
+COMPONENT Scripting : 1
+
+META "creator" "Holger Seelig"
+META "created" "Thu 26 Mar 2020 19:16:33"
+META "title" "imaginary-harmonic-cutoff-figureOc_alpha.x3d"
+META "description" "3D Fig. 1c in Pisanty et al, 2020"
+META "modifier" "Andreas Plesch"
+META "modified" "Mon, 09 Sep 2024 20:45:13 GMT"
+META "reason" "transparency"
+META "reference" "https://https//imaginary-harmonic-cutoff.github.io"
+META "reference" "https://doi.org/10.5281/zenodo.3758483"
+META "reference" "https://doi.org/10.1088/2515-7647/ab8f1e"
+META "reference" "https://arxiv.org/abs/2003.00277v2"
+META "reference" "The imaginary part of the high-harmonic cutoff. E. Pisanty, M.F. Ciappina and M. Lewenstein. J. Phys. Photonics 2, 034013 (2020), arXiv:2003.00277."
+META "rights" "© Emilio Pisanty, 2020"
+META "subject" "Photonics: The imaginary part of the high-harmonic cutoff"
+META "generator" "Sunrize X3D Editor V1.7.12, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V1.0.162, https://www.npmjs.com/package/x3d-tidy"
+META "license" "CC BY-SA 4.0."
+META "comment" "Rise and Shine"
+
+Viewpoint {
+  description "Imaginary Function"
+  position 152.8526 81.99515 -106.8417
+  orientation -0.109038674068902 0.968448566292785 0.224093600985716 2.26086627444702
+  centerOfRotation 20.75 -0.09605026 -3.233685
+}
+
+DEF EnterWorldScript Script {
+  url "ecmascript:
+
+function initialize ()
+{
+   Browser .setBrowserOption (\"OrderIndependentTransparency\", true);
+}
+"
+}
+
+DEF ImaginaryFunction StaticGroup {
+  children Inline {
+    url "assets/function.x3d"
+  }
+}
