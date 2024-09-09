@@ -3,13 +3,9 @@
   <head>
     <title>Accessing the External Browser</title>
     <meta charset="utf-8"/>
-
-    <script src="https://cdn.jsdelivr.net/npm/x_ite@latest/dist/x_ite.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.js"></script>
-
+    <script defer src="https://code.jquery.com/jquery-latest.js"></script>
     <style>
-
-@import url(https://fonts.googleapis.com/css?family=PT+Sans:400);
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400");
 
 html, body {
   margin: 0px;
@@ -54,16 +50,26 @@ body {
   margin-right: 5px;
 }
     </style>
-    <script type="text/javascript">
+    <script type="module">
+import X3D from "https://cdn.jsdelivr.net/npm/x_ite@latest/dist/x_ite.min.mjs";
+
+const Browser = X3D .getBrowser (".browser");
+
+Browser .addBrowserCallback ("init", X3D .X3DConstants .INITIALIZED_EVENT, init);
+
 function init ()
 {
   const
-    Browser = X3D .getBrowser (".browser"),               // Get the browser instance.
-    scene   = Browser .currentScene,                      // Get the scene.
-    timer   = scene .getNamedNode ("SpinAnimationTimer"); // Get box TouchSensor node.
+    scene = Browser .currentScene,                      // Get the scene.
+    timer = scene .getNamedNode ("SpinAnimationTimer"); // Get box TouchSensor node.
+
+  $("#center")            .on ("click",  center);
+  $("#change-style")      .on ("change", changeStyle);
+  $("#change-background") .on ("change", changeBackground);
+  $("#spin")              .on ("click",  spin);
 
   // Add field callback to get informed when cycleTime is fired. "time" is an arbitrary
-  // string to identify the callback, for intance if you later want to remove the callback.
+  // string to identify the callback, for instance if you later want to remove the callback.
   timer .getField ("cycleTime") .addFieldCallback ("time", value =>
   {
     console .log ("cycleTime: " + value);
@@ -83,7 +89,6 @@ function center ()
 function changeStyle ()
 {
   const
-    Browser    = X3D .getBrowser (".browser"),            // Get the browser instance.
     scene      = Browser .currentScene,                   // Get the scene.
     switchNode = scene .getNamedNode ("Adrenaline");      // Get Switch node.
 
@@ -95,7 +100,6 @@ function changeStyle ()
 function changeBackground ()
 {
   const
-    Browser        = X3D .getBrowser (".browser"),            // Get the browser instance.
     scene          = Browser .currentScene,                   // Get the scene.
     backgroundNode = scene .getNamedNode ("Background");      // Get Background node.
 
@@ -113,9 +117,8 @@ function changeBackground ()
 function spin ()
 {
   const
-    Browser = X3D .getBrowser (".browser"),               // Get the browser instance.
-    scene   = Browser .currentScene,                      // Get the scene.
-    timer   = scene .getNamedNode ("SpinAnimationTimer"); // Get TimeSensor node.
+    scene = Browser .currentScene,                      // Get the scene.
+    timer = scene .getNamedNode ("SpinAnimationTimer"); // Get TimeSensor node.
 
   if (timer .isPaused)
     timer .resumeTime = Date .now () / 1000;
@@ -126,23 +129,23 @@ function spin ()
     </head>
   <body>
 
-    <X3d-canvas class="browser" timings="false" src="adrenaline.x3d" onload="init ()" update="auto">
+    <X3d-canvas class="browser" timings="false" src="adrenaline.x3d" update="auto">
       <img class="fallback" src="adrenaline.png"/>
     </X3d-canvas>
 
     <div class="buttons">
-      <button id="center" class="button" onclick="center ()">Center</button>
-      <select id="change-style" class="button" onchange="changeStyle ()">
+      <button id="center" class="button">Center</button>
+      <select id="change-style" class="button">
         <option value="0">Balls</option>
         <option value="1">Sticks And Balls</option>
         <option value="2">Sticks</option>
         <option value="3">Line</option>
       </select>
-      <select id="change-background" class="button" onchange="changeBackground ()">
+      <select id="change-background" class="button">
         <option value="0">White Background</option>
         <option value="1">Black Background</option>
       </select>
-      <button id="spin" class="button" onclick="spin ()">Spin</button>
+      <button id="spin" class="button">Spin</button>
     </div>
 
   </body>
