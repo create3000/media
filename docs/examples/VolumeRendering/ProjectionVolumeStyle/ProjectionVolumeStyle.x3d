@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Texturing3D' level='2'/>
+    <component name='VolumeRendering' level='4'/>
+    <meta name='title' content='ProjectionMaxVentricles.x3d'/>
+    <meta name='description' content='Volume rendering of a segmented brain dataset, rendered with maximum projection render style'/>
+    <meta name='created' content='29 February 2011'/>
+    <meta name='modified' content='Thu, 12 Sep 2024 22:07:29 GMT'/>
+    <meta name='creator' content='Andrew Wood, Nicholas Polys: Virginia Tech'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='reference' content='ProjectionMaxVentricles.x3d'/>
+    <meta name='reference' content='Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles.nrrd'/>
+    <meta name='reference' content='All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip'/>
+    <meta name='reference' content='Run the download target in the Ant build.xml file to install reference nrrd files locally.'/>
+    <meta name='reference' content='build.xml'/>
+    <meta name='reference' content='Volume Data obtained from http://www.volvis.org'/>
+    <meta name='identifier' content='http://www.web3d.org/x3d/content/examples/Basic/VolumeRendering/ProjectionMaxVentricles.x3d'/>
+    <meta name='generator' content='X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit'/>
+    <meta name='generator' content='Nrrd conversion utility located at http://teem.sourceforge.net/unrrdu'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.18, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V1.0.162, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='license' content='../license.html'/>
+  </head>
+  <Scene>
+    <Viewpoint
+        description='Projection Max Ventricles'
+        position='0 0 3.475352'/>
+    <Background
+        skyColor='0.2 0.2 0.2'/>
+    <VolumeData
+        dimensions='2.304 2.304 1.116'>
+      <ProjectionVolumeStyle/>
+      <ImageTexture3D containerField='voxels'
+          url='"assets/mri_ventricles.nrrd"'/>
+    </VolumeData>
+  </Scene>
+</X3D>

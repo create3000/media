@@ -1,0 +1,123 @@
+{ "X3D": {
+    "encoding": "UTF-8",
+    "@profile": "Interchange",
+    "@version": "4.0",
+    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "head": {
+      "meta": [
+        {
+          "@name": "title",
+          "@content": "ProjectionMaxVentricles.x3d"
+        },
+        {
+          "@name": "description",
+          "@content": "Volume rendering of a segmented brain dataset, rendered with maximum projection render style"
+        },
+        {
+          "@name": "created",
+          "@content": "29 February 2011"
+        },
+        {
+          "@name": "modified",
+          "@content": "Thu, 12 Sep 2024 22:07:29 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Andrew Wood, Nicholas Polys: Virginia Tech"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "reference",
+          "@content": "ProjectionMaxVentricles.x3d"
+        },
+        {
+          "@name": "reference",
+          "@content": "Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/mri_ventricles.nrrd"
+        },
+        {
+          "@name": "reference",
+          "@content": "All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip"
+        },
+        {
+          "@name": "reference",
+          "@content": "Run the download target in the Ant build.xml file to install reference nrrd files locally."
+        },
+        {
+          "@name": "reference",
+          "@content": "build.xml"
+        },
+        {
+          "@name": "reference",
+          "@content": "Volume Data obtained from http://www.volvis.org"
+        },
+        {
+          "@name": "identifier",
+          "@content": "http://www.web3d.org/x3d/content/examples/Basic/VolumeRendering/ProjectionMaxVentricles.x3d"
+        },
+        {
+          "@name": "generator",
+          "@content": "X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit"
+        },
+        {
+          "@name": "generator",
+          "@content": "Nrrd conversion utility located at http://teem.sourceforge.net/unrrdu"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrize X3D Editor V1.7.18, https://create3000.github.io/sunrize/"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V1.0.162, https://www.npmjs.com/package/x3d-tidy"
+        },
+        {
+          "@name": "license",
+          "@content": "../license.html"
+        }
+      ],
+      "component": [
+        {
+          "@name": "Texturing3D",
+          "@level": 2
+        },
+        {
+          "@name": "VolumeRendering",
+          "@level": 4
+        }
+      ]
+    },
+    "Scene": {
+      "-children": [
+        { "Viewpoint":
+          {
+            "@description": "Projection Max Ventricles",
+            "@position": [ 0, 0, 3.475352 ]
+          }
+        },
+        { "Background":
+          {
+            "@skyColor": [ 0.2, 0.2, 0.2 ]
+          }
+        },
+        { "VolumeData":
+          {
+            "@dimensions": [ 2.304, 2.304, 1.116 ],
+            "-renderStyle": { "ProjectionVolumeStyle":
+              {
+              }
+            },
+            "-voxels": { "ImageTexture3D":
+              {
+                "@url": [ "assets/mri_ventricles.nrrd" ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
