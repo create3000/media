@@ -10,7 +10,7 @@
     <meta name='created' content='Fri, 05 Sep 2014 01:58:48 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 17 Oct 2024 09:05:28 GMT'/>
+    <meta name='modified' content='Thu, 17 Oct 2024 09:28:16 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Rotor' url='"assets/Rotor.x3dv"'>
@@ -116,6 +116,7 @@
                 </ProtoInstance>
                 <Transform DEF='Logo_1'
                     translation='-503.0028 -535.156 0'
+                    rotation='0 0 -1 5.83770732449065'
                     scale='0.01156416 -0.01156416 -40.97537'
                     center='508.0261 528.6276 0'>
                   <Shape>
@@ -281,7 +282,8 @@
                   <field accessType='initializeOnly' type='SFNode' name='version'>
                     <Text USE='VersionNumberText'/>
                   </field>
-<![CDATA[vrmlscript:
+<![CDATA[ecmascript:
+
 function initialize ()
 {
 	browser .string = new MFString (Browser .name);
@@ -297,9 +299,10 @@ function initialize ()
     </LayerSet>
     <Script DEF='EnterWorld'>
 <![CDATA[ecmascript:
+
 function initialize ()
 {
-	Browser .setBrowserOption ('Dashboard', false);
+	Browser .setBrowserOption ("TextCompression", "SCALING");
 }
 ]]>
     </Script>
