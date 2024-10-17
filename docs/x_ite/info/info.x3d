@@ -9,11 +9,11 @@
     <component name='Text' level='1'/>
     <meta name='created' content='Fri, 05 Sep 2014 01:58:48 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.12, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 05 May 2024 22:15:32 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.26, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 17 Oct 2024 09:05:28 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Rotor' url='"library/Rotor.x3dv"'>
+    <ExternProtoDeclare name='Rotor' url='"assets/Rotor.x3dv"'>
       <field accessType='inputOutput' type='SFBool' name='enabled'/>
       <field accessType='inputOutput' type='SFTime' name='cycleInterval'/>
       <field accessType='inputOutput' type='SFVec3f' name='axis'/>
@@ -66,12 +66,11 @@
               scaleMode='"STRETCH", "NONE"'/>
           <Transform
               scale='1.01 1 1'>
-            <Switch DEF='Image'
-                whichChoice='1'>
+            <Switch DEF='Image'>
               <Shape>
                 <Appearance>
                   <ImageTexture
-                      url='"info.png"'
+                      url='"assets/info.png"'
                       repeatS='false'
                       repeatT='false'/>
                 </Appearance>
@@ -115,12 +114,46 @@
                   <fieldValue name='axis' value='0 0 -1'/>
                   <fieldValue name='loop' value='true'/>
                 </ProtoInstance>
-                <Transform DEF='Logo'
-                    rotation='0 0 -1.00000000000001 0.236876069901964'
-                    center='5.6 -5.9 0'>
-                  <Inline
-                      global='true'
-                      url='"library/logo.x3dv"'/>
+                <Transform DEF='Logo_1'
+                    translation='-503.0028 -535.156 0'
+                    scale='0.01156416 -0.01156416 -40.97537'
+                    center='508.0261 528.6276 0'>
+                  <Shape>
+                    <Appearance>
+                      <UnlitMaterial
+                          emissiveColor='0.8431373 0.1215686 0.1215686'/>
+                    </Appearance>
+                    <IndexedTriangleSet
+                        solid='false'
+                        index='0, 3, 5, 3, 0, 2, 3, 2, 4, 1, 5, 2, 5, 1, 0, 2, 5, 4'>
+                      <Coordinate
+                          point='240.5742 84.17773 0, 239.9062 973.7461 0, 1010.398 530.2129 0, 300.4961 188.2402 0, 890.4258 530.0449 0, 299.9844 869.9316 0'/>
+                    </IndexedTriangleSet>
+                  </Shape>
+                  <Shape>
+                    <Appearance>
+                      <UnlitMaterial
+                          emissiveColor='1 0.6235294 0.1803922'/>
+                    </Appearance>
+                    <IndexedTriangleSet
+                        solid='false'
+                        index='0, 5, 1, 5, 0, 3, 3, 0, 2, 3, 2, 4, 5, 2, 1, 2, 5, 4'>
+                      <Coordinate
+                          point='321.2305 46.61523 0, 166.0996 922.5547 0, 1001.906 619.5527 0, 362.1699 159.502 0, 883.7832 598.5547 0, 243.293 830.748 0'/>
+                    </IndexedTriangleSet>
+                  </Shape>
+                  <Shape>
+                    <Appearance>
+                      <UnlitMaterial
+                          emissiveColor='1 0.8901961 0.1764706'/>
+                    </Appearance>
+                    <IndexedTriangleSet
+                        solid='false'
+                        index='0, 5, 1, 5, 0, 3, 3, 0, 2, 3, 2, 4, 5, 2, 1, 2, 5, 4'>
+                      <Coordinate
+                          point='405.9916 23.19704 0, 102.3027 859.3223 0, 977.8069 704.8156 0, 426.8765 141.4487 0, 865.0685 663.785 0, 194.1547 782.1858 0'/>
+                    </IndexedTriangleSet>
+                  </Shape>
                 </Transform>
               </Transform>
               <Transform DEF='BrowserName'
@@ -133,7 +166,7 @@
                   <Text DEF='BrowserNameText'
                       string='"X_ITE"'>
                     <FontStyle
-                        family='"PTN77F.ttf", "sans"'
+                        family='"assets/PTN77F.ttf", "sans"'
                         style='BOLD'
                         size='0.12'/>
                   </Text>
@@ -149,7 +182,7 @@
                   <Text
                       string='"X3D Browser"'>
                     <FontStyle
-                        family='"PTN57F.ttf", "sans"'
+                        family='"assets/PTN57F.ttf", "sans"'
                         style='BOLD'
                         size='0.08'/>
                   </Text>
@@ -163,9 +196,9 @@
                         diffuseColor='1 1 1'/>
                   </Appearance>
                   <Text
-                      string='"Ocean of Time and Space"'>
+                      string='"Ready for X3Dv4!"'>
                     <FontStyle
-                        family='"PTN57F.ttf", "sans"'
+                        family='"assets/PTN57F.ttf", "sans"'
                         style='BOLD'
                         size='0.03'/>
                   </Text>
@@ -184,7 +217,7 @@
                     <Text
                         string='"For additional support please visit", "https://create3000.github.io/x_ite/."'>
                       <FontStyle
-                          family='"PTN57F.ttf", "sans"'
+                          family='"assets/PTN57F.ttf", "sans"'
                           style='NORMAL'
                           size='0.04'
                           spacing='1.2'/>
@@ -202,7 +235,7 @@
                   <Text
                       string='"GNU GPL v3"'>
                     <FontStyle
-                        family='"PTN77F.ttf", "sans"'
+                        family='"assets/PTN77F.ttf", "sans"'
                         style='BOLD'
                         size='0.03'/>
                   </Text>
@@ -216,10 +249,10 @@
                         diffuseColor='0 0 0'/>
                   </Appearance>
                   <Text
-                      string='"© 2010 - 2014"'
+                      string='"© 2009 - 2024"'
                       length='0.15'>
                     <FontStyle
-                        family='"PTN77F.ttf", "sans"'
+                        family='"assets/PTN77F.ttf", "sans"'
                         style='BOLD'
                         size='0.03'/>
                   </Text>
@@ -233,10 +266,10 @@
                         diffuseColor='1 1 1'/>
                   </Appearance>
                   <Text DEF='VersionNumberText'
-                      string='"9.6.0"'
+                      string='"10.5.7"'
                       maxExtent='0.65'>
                     <FontStyle
-                        family='"PTN77F.ttf", "sans"'
+                        family='"assets/PTN77F.ttf", "sans"'
                         style='BOLD'
                         size='0.34'/>
                   </Text>
@@ -270,6 +303,6 @@ function initialize ()
 }
 ]]>
     </Script>
-    <ROUTE fromNode='LogoRotor' fromField='rotation_changed' toNode='Logo' toField='set_rotation'/>
+    <ROUTE fromNode='LogoRotor' fromField='rotation_changed' toNode='Logo_1' toField='set_rotation'/>
   </Scene>
 </X3D>
