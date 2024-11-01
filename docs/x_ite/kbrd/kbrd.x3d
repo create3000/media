@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Sound' level='3'/>
+    <meta name='created' content='Thu, 31 Oct 2024 08:30:19 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.29, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Fri, 01 Nov 2024 10:31:10 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Keyboard'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='MFString' name='sampleURL'/>
+        <field accessType='initializeOnly' type='SFVec3f' name='keySize' value='0.23 0.1 1.5'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='_3'>
+          <Transform DEF='WhiteKeys'/>
+          <Transform DEF='BlackKeys'
+              translation='0.15 0.1 -0.5'/>
+          <AudioDestination DEF='_2'/>
+        </Transform>
+        <Script DEF='KeyboardScript'>
+          <field accessType='inputOnly' type='SFBool' name='set_active'/>
+          <field accessType='initializeOnly' type='SFVec3f' name='keySize'/>
+          <field accessType='inputOutput' type='MFString' name='sampleURL'/>
+          <field accessType='initializeOnly' type='SFNode' name='keyboard'>
+            <Transform USE='_3'/>
+          </field>
+          <field accessType='inputOutput' type='SFNode' name='whiteKey'>
+            <Shape DEF='WhiteKey'>
+              <Appearance DEF='IvoryWhite'>
+                <Material
+                    diffuseColor='1 1 0.941176'/>
+              </Appearance>
+              <Box DEF='_1'>
+                <IS>
+                  <connect nodeField='size' protoField='keySize'/>
+                </IS>
+              </Box>
+            </Shape>
+          </field>
+          <field accessType='inputOutput' type='SFNode' name='blackKey'>
+            <Shape DEF='BlackKey_1'>
+              <Appearance>
+                <Material
+                    diffuseColor='0.1 0.1 0.1'/>
+              </Appearance>
+              <Box USE='_1'/>
+            </Shape>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='whiteKeys'>
+            <Transform USE='WhiteKeys'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='blackKeys'>
+            <Transform USE='BlackKeys'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='audioDestination'>
+            <AudioDestination USE='_2'/>
+          </field>
+          <IS>
+            <connect nodeField='keySize' protoField='keySize'/>
+            <connect nodeField='sampleURL' protoField='sampleURL'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   createKeyboard (this, 9, 109, 3);
+
+   set_sampleURL (sampleURL, 0);
+}
+
+function createKeyboard (scriptNode, startNote, endNote, offset)
+{
+   for (let i = 0, n = startNote; n < endNote; ++ i) 
+   {
+      whiteKeys .children .push (createKey (scriptNode, i, n ++, whiteKey));
+
+      if (!((i + offset) % 7) || !((i + offset + 3) % 7))
+         continue;
+
+      if (n >= endNote - 1)
+         break;
+
+      blackKeys .children .push (createKey (scriptNode, i, n ++, blackKey));
+   }
+
+   keyboard .translation .x = -((whiteKeys .children .length - 1) * 0.25) / 2;
+}
+
+function createKey (scriptNode, i, note, shapeNode)
+{
+   const 
+      scene           = Browser .currentScene,
+      transformNode   = scene .createNode ("Transform"),
+      touchSensorNode = scene .createNode ("TouchSensor"),
+      audioClipNode   = scene .createNode ("AudioClip"); 
+
+   transformNode .translation .x = 0.25 * i;
+   audioClipNode .pitch = getPitch (60, note);
+
+   transformNode .children .push (shapeNode);
+   transformNode .children .push (touchSensorNode);
+   transformNode .children .push (audioClipNode);
+   audioDestination .children .push (audioClipNode);
+
+   scene .addRoute (touchSensorNode, "isActive", scriptNode, "set_active");
+
+   return transformNode;
+}
+
+function getPitch (sampleNote, noteToPlay) 
+{
+   return 2 ** ((noteToPlay - sampleNote) / 12);
+}
+
+function set_sampleURL (value, time)
+{
+   for (const audioClipNode of audioDestination .children)
+      audioClipNode .url = sampleURL;
+}
+
+function set_active (value, time)
+{
+   if (!value)
+      return;
+
+   const 
+      nodes = [... whiteKeys .children, ... blackKeys .children],
+      node  = nodes .find (node => node .children [1] .isActive);
+
+   node .children [2] .stopTime  = time;
+   node .children [2] .startTime = time;
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet containerField='metadata'
+          name='Sunrize'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataSet
+            name='GridTool'>
+          <MetadataBoolean
+              name='visible'
+              value='true'/>
+          <MetadataInteger
+              name='dimension'
+              value='30, 10, 8'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <OrthoViewpoint
+        position='0 10 0'
+        orientation='-1 0 0 1.5707963267949'
+        fieldOfView='-0.8, -0.8, 0.8, 0.8'/>
+    <Viewpoint
+        description='Initial View'
+        position='0 11 0'
+        orientation='-1 0 0 1.5707963267949'
+        centerOfRotation='7.25 0 0'/>
+    <ProtoInstance name='Keyboard'>
+      <fieldValue name='sampleURL' value='"assets/single-piano-note-c4_100bpm_C_major.wav"'/>
+    </ProtoInstance>
+  </Scene>
+</X3D>
