@@ -8,12 +8,16 @@
     <meta name='created' content='Thu, 31 Oct 2024 08:30:19 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.29, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 01 Nov 2024 15:00:39 GMT'/>
+    <meta name='modified' content='Fri, 01 Nov 2024 15:15:15 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Keyboard'>
       <ProtoInterface>
+        <field accessType='inputOutput' type='SFInt32' name='startNote' value='9'/>
+        <field accessType='inputOutput' type='SFInt32' name='endNote' value='109'/>
+        <field accessType='inputOnly' type='SFInt32' name='sampleNote'/>
         <field accessType='inputOutput' type='MFString' name='sampleURL'/>
+        <field accessType='inputOutput' type='SFInt32' name='keyOffset' value='3'/>
         <field accessType='initializeOnly' type='SFVec3f' name='keySize' value='0.23 0.1 1.5'/>
       </ProtoInterface>
       <ProtoBody>
@@ -25,8 +29,12 @@
         </Transform>
         <Script DEF='KeyboardScript'>
           <field accessType='inputOnly' type='SFBool' name='set_active'/>
-          <field accessType='initializeOnly' type='SFVec3f' name='keySize'/>
+          <field accessType='inputOutput' type='SFInt32' name='startNote'/>
+          <field accessType='inputOutput' type='SFInt32' name='endNote'/>
+          <field accessType='inputOutput' type='SFInt32' name='sampleNote' value='60'/>
           <field accessType='inputOutput' type='MFString' name='sampleURL'/>
+          <field accessType='inputOutput' type='SFInt32' name='keyOffset'/>
+          <field accessType='initializeOnly' type='SFVec3f' name='keySize'/>
           <field accessType='initializeOnly' type='SFNode' name='keyboard'>
             <Transform USE='_3'/>
           </field>
@@ -62,14 +70,18 @@
             <AudioDestination USE='_2'/>
           </field>
           <IS>
-            <connect nodeField='keySize' protoField='keySize'/>
+            <connect nodeField='startNote' protoField='startNote'/>
+            <connect nodeField='endNote' protoField='endNote'/>
+            <connect nodeField='sampleNote' protoField='sampleNote'/>
             <connect nodeField='sampleURL' protoField='sampleURL'/>
+            <connect nodeField='keyOffset' protoField='keyOffset'/>
+            <connect nodeField='keySize' protoField='keySize'/>
           </IS>
 <![CDATA[ecmascript:
 
 function initialize ()
 {
-   createKeyboard (this, 9, 109, 3);
+   createKeyboard (this, startNote, endNote, keyOffset);
 
    set_sampleURL (sampleURL, 0);
 }
@@ -101,7 +113,7 @@ function createKey (scriptNode, i, note, shapeNode)
       audioClipNode   = scene .createNode ("AudioClip"); 
 
    transformNode .translation .x = 0.25 * i;
-   audioClipNode .pitch = getPitch (60, note);
+   audioClipNode .pitch = getPitch (sampleNote, note);
 
    transformNode .children .push (shapeNode);
    transformNode .children .push (touchSensorNode);
