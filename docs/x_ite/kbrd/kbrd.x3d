@@ -8,7 +8,7 @@
     <meta name='created' content='Thu, 31 Oct 2024 08:30:19 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.29, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 01 Nov 2024 10:31:10 GMT'/>
+    <meta name='modified' content='Fri, 01 Nov 2024 15:00:39 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Keyboard'>
@@ -130,11 +130,12 @@ function set_active (value, time)
       return;
 
    const 
-      nodes = [... whiteKeys .children, ... blackKeys .children],
-      node  = nodes .find (node => node .children [1] .isActive);
+      keys = [... whiteKeys .children, ... blackKeys .children],
+      key  = keys .find (key => key .children [1] .isActive);
 
-   node .children [2] .stopTime  = time;
-   node .children [2] .startTime = time;
+   // Stop, start AudioClip.
+   key .children [2] .stopTime  = time;
+   key .children [2] .startTime = time;
 }
 ]]>
         </Script>
@@ -164,8 +165,9 @@ function set_active (value, time)
         position='0 11 0'
         orientation='-1 0 0 1.5707963267949'
         centerOfRotation='7.25 0 0'/>
-    <ProtoInstance name='Keyboard'>
+    <ProtoInstance name='Keyboard' DEF='_1'>
       <fieldValue name='sampleURL' value='"assets/single-piano-note-c4_100bpm_C_major.wav"'/>
     </ProtoInstance>
+    <EXPORT localDEF='_1' AS='Keyboard'/>
   </Scene>
 </X3D>
