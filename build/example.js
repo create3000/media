@@ -11,6 +11,7 @@ function main ()
    systemSync ("npm", "run", "image",   "--", ... argv);
    systemSync ("npm", "run", "zip",     "--", ... argv);
    systemSync ("npm", "run", "html",    "--", ... argv);
+   systemSync ("npm", "run", "config");
 }
 
 main ();
