@@ -31,7 +31,9 @@ function main ()
       object .component = component;
    }
 
-   const modified = Object .values (tree) .flatMap (component => Object .values (component));
+   const modified = Object .values (tree) .flatMap (component => Object .values (component))
+      .sort ((a, b) => a .name .localeCompare (b .name))
+      .sort ((a, b) => a .component .localeCompare (b .component));
 
    fs .writeFileSync (filePath, JSON .stringify (modified, null, 2));
 }
