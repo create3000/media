@@ -10,7 +10,7 @@ META "created" "Mon, 13 Oct 2014 00:37:06 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.33, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.6, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sun, 01 Dec 2024 08:59:29 GMT"
+META "modified" "Sun, 01 Dec 2024 18:13:25 GMT"
 
 WorldInfo {
   title "GeoElevationGrid"
@@ -31,7 +31,11 @@ GeoViewpoint {
 DEF GeoElevationGrid Transform {
   children Shape {
     appearance Appearance {
-      material Material { }
+      material PhysicalMaterial {
+        baseColor 2 2 2
+        metallic 0
+        roughness 0.5
+      }
       texture ImageTexture {
         url "earth.jpg"
       }
