@@ -2,6 +2,7 @@
 
 PROFILE Interchange
 
+COMPONENT EnvironmentalSensor : 3
 COMPONENT Geospatial : 2
 COMPONENT Scripting : 1
 
@@ -10,7 +11,7 @@ META "created" "Mon, 13 Oct 2014 00:37:06 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.33, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.6, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sun, 01 Dec 2024 18:23:57 GMT"
+META "modified" "Sun, 01 Dec 2024 19:05:02 GMT"
 
 WorldInfo {
   title "GeoElevationGrid"
@@ -25,14 +26,15 @@ GeoViewpoint {
   position 0 0 12824631.673243
   orientation -0.99989783103684 0.013869210277529 0.0034601292039208 1.5664412635989
   centerOfRotation -56.320592536082 -40.81835066102 -6262282.9309548
-  navigationInfo NavigationInfo { }
+  navigationInfo NavigationInfo {
+    headlight FALSE
+  }
 }
 
 DEF GeoElevationGrid Transform {
   children Shape {
     appearance Appearance {
       material PhysicalMaterial {
-        baseColor 2 2 2
         metallic 0
         roughness 0.5
       }
@@ -49,3 +51,17 @@ DEF GeoElevationGrid Transform {
     }
   }
 }
+
+DEF _1 ProximitySensor {
+  size -1 -1 -1
+}
+
+DEF Light Transform {
+  rotation 0.710087116735011 -0.423431247080651 -0.562567565402312 1.62901099430923
+  children DirectionalLight {
+    global TRUE
+    intensity 2
+  }
+}
+
+ROUTE _1.orientation_changed TO Light.set_rotation
