@@ -2,13 +2,14 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='EnvironmentalSensor' level='3'/>
     <component name='Geospatial' level='2'/>
     <component name='Scripting' level='1'/>
     <meta name='comment' content='World of Sunrise X3D Editor'/>
     <meta name='created' content='Mon, 13 Oct 2014 00:37:06 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.33, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 01 Dec 2024 18:23:37 GMT'/>
+    <meta name='modified' content='Sun, 01 Dec 2024 18:57:08 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -82,13 +83,13 @@ function initialize ()
         position='0 0 12824631.673243'
         orientation='-0.99989783103684 0.013869210277529 0.0034601292039208 1.5664412635989'
         centerOfRotation='-56.320592536082 -40.81835066102 -6262282.9309548'>
-      <NavigationInfo containerField='navigationInfo'/>
+      <NavigationInfo containerField='navigationInfo'
+          headlight='false'/>
     </GeoViewpoint>
     <Transform DEF='GeoElevationGrid'>
       <Shape>
         <Appearance>
           <PhysicalMaterial
-              baseColor='2 2 2'
               metallic='0'
               roughness='0.5'/>
           <ImageTexture
@@ -111,5 +112,14 @@ function initialize ()
         </GeoElevationGrid>
       </Shape>
     </Transform>
+    <ProximitySensor DEF='_1'
+        size='-1 -1 -1'/>
+    <Transform DEF='Light'
+        rotation='0.710087116735011 -0.423431247080651 -0.562567565402312 1.62901099430923'>
+      <DirectionalLight
+          global='true'
+          intensity='2'/>
+    </Transform>
+    <ROUTE fromNode='_1' fromField='orientation_changed' toNode='Light' toField='set_rotation'/>
   </Scene>
 </X3D>
