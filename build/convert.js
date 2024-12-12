@@ -33,9 +33,13 @@ function convert (folder)
    if (includes .size && !includes .has (base))
       return;
 
-   queue (x3d,  () => system (`npx --yes x3d-tidy            -r -m -i '${orig}' -o '${x3d}' `));
-   queue (x3dv, () => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dv}'`));
-   queue (x3dj, () => system (`npx --yes x3d-tidy -s COMPACT -r -m -i '${orig}' -o '${x3dj}'`));
+   let cmd = `npx --yes x3d-tidy -r -m`;
+
+   cmd += ` -s TIDY    -i '${orig}' -o '${x3d}' `;
+   cmd += ` -s COMPACT -i '${orig}' -o '${x3dv}'`;
+   cmd += ` -s COMPACT -i '${orig}' -o '${x3dj}'`;
+
+   queue (x3d, () => system (cmd));
 }
 
 const files = sh (`find '${examples}' -maxdepth 2 -mindepth 2 -type d`) .trim () .split ("\n") .sort ();
