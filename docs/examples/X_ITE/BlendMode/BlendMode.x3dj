@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,18 +20,22 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:28:15 GMT"
+          "@content": "Thu, 09 Jan 2025 16:57:41 GMT"
         }
       ],
       "component": [
+        {
+          "@name": "EnvironmentalSensor",
+          "@level": 3
+        },
         {
           "@name": "Layering",
           "@level": 1
@@ -39,6 +43,10 @@
         {
           "@name": "ParticleSystems",
           "@level": 3
+        },
+        {
+          "@name": "Scripting",
+          "@level": 1
         },
         {
           "@name": "Shaders",
@@ -124,8 +132,237 @@
             "@url": [ "assets/Rotor.x3d#Rotor" ]
           }
         },
+        { "ProtoDeclare":
+          {
+            "@name":"Numbers",
+            "ProtoInterface": {
+
+            },
+            "ProtoBody": {
+              "-children": [
+                { "ProtoDeclare":
+                  {
+                    "@name":"Number",
+                    "ProtoInterface": {
+                      "field": [
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFVec3f",
+                          "@name": "translation"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "SFRotation",
+                          "@name": "rotation"
+                        }
+                      ]
+                    },
+                    "ProtoBody": {
+                      "-children": [
+                        { "Transform":
+                          {
+                            "@DEF": "Text",
+                            "-children": [
+                              { "Shape":
+                                {
+                                  "-appearance": { "Appearance":
+                                    {
+                                      "-material": { "Material":
+                                        {
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "-geometry": { "Text":
+                                    {
+                                      "@DEF": "_2",
+                                      "@string": [ "0.34" ],
+                                      "-fontStyle": { "FontStyle":
+                                        {
+                                          "@style": "TYPEWRITER",
+                                          "@size": 0.12,
+                                          "@justify": [ "MIDDLE", "MIDDLE" ]
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ],
+                            "IS": {
+                              "connect": [
+                                {
+                                  "@nodeField": "translation",
+                                  "@protoField": "translation"
+                                },
+                                {
+                                  "@nodeField": "rotation",
+                                  "@protoField": "rotation"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        { "TimeSensor":
+                          {
+                            "@DEF": "_1",
+                            "@loop": true
+                          }
+                        },
+                        { "Script":
+                          {
+                            "@DEF": "NumberScript",
+                            "field": [
+                              {
+                                "@accessType": "inputOnly",
+                                "@type": "SFFloat",
+                                "@name": "set_fraction"
+                              },
+                              {
+                                "@accessType": "initializeOnly",
+                                "@type": "SFNode",
+                                "@name": "text",
+                                "-children": [
+                                  { "Text":
+                                    {
+                                      "@USE": "_2"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "#sourceCode": [
+"ecmascript:",
+"",
+"let up = true;",
+"",
+"const ",
+"   low  = Math .random (),",
+"   high = Math .random ();",
+"",
+"function set_fraction (value)",
+"{",
+"   const v = low + value * (high - low);",
+"   const s = v .toFixed (1);",
+"",
+"   if (s === text .string [0])",
+"      return;",
+"",
+"   text .string [0] = s;",
+"}",
+""
+                            ]
+                          }
+                        },
+                        { "ROUTE":
+                          {
+                            "@fromNode": "_1",
+                            "@fromField": "fraction_changed",
+                            "@toNode": "NumberScript",
+                            "@toField": "set_fraction"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                { "Group":
+                  {
+                    "-children": [
+                      { "Group":
+                        {
+                          "@DEF": "_1"
+                        }
+                      },
+                      { "ProximitySensor":
+                        {
+                          "@DEF": "_2",
+                          "@size": [ -1, -1, -1 ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                { "Script":
+                  {
+                    "@DEF": "NumbersScript",
+                    "field": [
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "group",
+                        "-children": [
+                          { "Group":
+                            {
+                              "@USE": "_1"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "proxy",
+                        "-children": [
+                          { "ProximitySensor":
+                            {
+                              "@USE": "_2"
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "#sourceCode": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"   const ",
+"      scene   = Browser .currentScene,",
+"      numbers = [ ];",
+"",
+"   for (let y = 0; y < 4; ++ y)",
+"   {",
+"      for (let x = 0; x < 4; ++ x)",
+"      {",
+"         const number = scene .createProto (\"Number\");",
+"",
+"         Browser .addRoute (proxy, \"orientation_changed\", number, \"set_rotation\");",
+"",
+"         numbers .push (number);",
+"      }",
+"   }",
+"",
+"   for (let z = 0; z < 4; ++ z)",
+"   {",
+"      for (let y = 0; y < 4; ++ y)",
+"      {",
+"         for (let x = 0; x < 4; ++ x)",
+"         {",
+"            const trans = scene .createNode (\"Transform\");",
+"",
+"            trans .translation .x = x / 2 - 0.75;",
+"            trans .translation .y = y / 2 - 0.75;",
+"            trans .translation .z = z / 2 - 0.75;",
+"",
+"            trans .children .push (numbers [Math .floor (Math .random () * 16)]);",
+"",
+"            group .children .push (trans);",
+"         }",
+"      }",
+"   }",
+"}",
+""
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
         { "WorldInfo":
           {
+            "@title": "Fire Flow"
           }
         },
         { "LayerSet":
@@ -136,12 +373,11 @@
               { "Layer":
                 {
                   "@DEF": "Background",
-                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
                         "@DEF": "_30",
-                        "@rotation": [ -0.993531874564947, 0.0976101320308734, 0.058023067381671, 1.51435129813043 ],
+                        "@rotation": [ 0.983913888130298, -0.142094759040423, -0.108270680230452, 4.66849813765019 ],
                         "@scale": [ 0.999999, 1, 1 ],
                         "@scaleOrientation": [ 0.612491025726436, -0.540118771611692, 0.577171080319566, 0.174185270591961 ],
                         "-children": [
@@ -185,7 +421,6 @@
               { "Layer":
                 {
                   "@DEF": "Scene",
-                  "@pickable": false,
                   "-children": [
                     { "Viewpoint":
                       {
@@ -196,7 +431,8 @@
                     },
                     { "Transform":
                       {
-                        "@DEF": "LineBox",
+                        "@DEF": "LineBox_1",
+                        "@scale": [ 1.557352, 1.557352, 1.557352 ],
                         "-children": [
                           { "ProtoInstance":
                             {
@@ -257,17 +493,17 @@
                           { "Transform":
                             {
                               "@DEF": "BoxAnim",
-                              "@rotation": [ 0, 0, 1, 4.30873269455671 ],
+                              "@rotation": [ 0, 0, 1, 5.06394084700448 ],
                               "-children": [
                                 { "Transform":
                                   {
                                     "@DEF": "_32",
-                                    "@rotation": [ 0, 0, 1, 2.05749014636517 ],
+                                    "@rotation": [ 0, 1, 0, 2.55470916751219 ],
                                     "-children": [
                                       { "Transform":
                                         {
-                                          "@DEF": "Box",
-                                          "@rotation": [ 0, 0, 1, 0.428879055190086 ],
+                                          "@DEF": "Box_1",
+                                          "@rotation": [ 0.999999999999999, 0, 0, 5.88673656446662 ],
                                           "-children": [
                                             { "Shape":
                                               {
@@ -292,6 +528,11 @@
                                                     }
                                                   }
                                                 }
+                                              }
+                                            },
+                                            { "ProtoInstance":
+                                              {
+                                                "@name": "Numbers"
                                               }
                                             }
                                           ]
@@ -443,7 +684,6 @@
               { "Layer":
                 {
                   "@DEF": "HUD",
-                  "@pickable": false,
                   "-children": [
                     { "Transform":
                       {
@@ -562,15 +802,15 @@
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_30",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "X",
             "@fromField": "rotation_changed",
-            "@toNode": "Box",
-            "@toField": "rotation"
+            "@toNode": "Box_1",
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -578,7 +818,7 @@
             "@fromNode": "Y",
             "@fromField": "rotation_changed",
             "@toNode": "_32",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -586,7 +826,7 @@
             "@fromNode": "Z",
             "@fromField": "rotation_changed",
             "@toNode": "BoxAnim",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         }
       ]

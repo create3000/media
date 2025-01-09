@@ -1,9 +1,11 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.0.3
 
 PROFILE Interchange
 
+COMPONENT EnvironmentalSensor : 3
 COMPONENT Layering : 1
 COMPONENT ParticleSystems : 3
+COMPONENT Scripting : 1
 COMPONENT Shaders : 1
 COMPONENT Text : 1
 COMPONENT X_ITE : 1
@@ -11,9 +13,9 @@ COMPONENT X_ITE : 1
 META "comment" "Rise and Shine"
 META "created" "Tue, 19 Dec 2017 00:35:26 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:28:14 GMT"
+META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Thu, 09 Jan 2025 16:57:41 GMT"
 
 EXTERNPROTO Rotor [
   inputOutput SFBool     enabled
@@ -31,16 +33,130 @@ EXTERNPROTO Rotor [
 ]
 "assets/Rotor.x3d#Rotor"
 
-WorldInfo { }
+PROTO Numbers [ ]
+{
+  PROTO Number [
+    inputOutput SFVec3f    translation 0 0 0
+    inputOutput SFRotation rotation 0 0 1 0
+  ]
+  {
+    DEF Text Transform {
+      translation IS translation
+      rotation IS rotation
+      children Shape {
+        appearance Appearance {
+          material Material { }
+        }
+        geometry DEF _2 Text {
+          string "0.34"
+          fontStyle FontStyle {
+            style "TYPEWRITER"
+            size 0.12
+            justify [ "MIDDLE", "MIDDLE" ]
+          }
+        }
+      }
+    }
+
+    DEF _1 TimeSensor {
+      loop TRUE
+    }
+
+    DEF NumberScript Script {
+      inputOnly      SFFloat set_fraction
+      initializeOnly SFNode  text USE _2
+
+      url "ecmascript:
+
+let up = true;
+
+const 
+   low  = Math .random (),
+   high = Math .random ();
+
+function set_fraction (value)
+{
+   const v = low + value * (high - low);
+   const s = v .toFixed (1);
+
+   if (s === text .string [0])
+      return;
+
+   text .string [0] = s;
+}
+"
+    }
+
+    ROUTE _1.fraction_changed TO NumberScript.set_fraction
+  }
+
+  Group {
+    children [
+      DEF _1 Group { }
+      DEF _2 ProximitySensor {
+        size -1 -1 -1
+      }
+    ]
+  }
+
+  DEF NumbersScript Script {
+    initializeOnly SFNode group USE _1
+    initializeOnly SFNode proxy USE _2
+
+    url "ecmascript:
+
+function initialize ()
+{
+   const 
+      scene   = Browser .currentScene,
+      numbers = [ ];
+
+   for (let y = 0; y < 4; ++ y)
+   {
+      for (let x = 0; x < 4; ++ x)
+      {
+         const number = scene .createProto (\"Number\");
+
+         Browser .addRoute (proxy, \"orientation_changed\", number, \"set_rotation\");
+
+         numbers .push (number);
+      }
+   }
+
+   for (let z = 0; z < 4; ++ z)
+   {
+      for (let y = 0; y < 4; ++ y)
+      {
+         for (let x = 0; x < 4; ++ x)
+         {
+            const trans = scene .createNode (\"Transform\");
+
+            trans .translation .x = x / 2 - 0.75;
+            trans .translation .y = y / 2 - 0.75;
+            trans .translation .z = z / 2 - 0.75;
+
+            trans .children .push (numbers [Math .floor (Math .random () * 16)]);
+
+            group .children .push (trans);
+         }
+      }
+   }
+}
+"
+  }
+}
+
+WorldInfo {
+  title "Fire Flow"
+}
 
 LayerSet {
   activeLayer 2
   order [ 1, 2, 3 ]
   layers [
     DEF Background Layer {
-      pickable FALSE
       children DEF _30 Transform {
-        rotation -0.992112070431101 0.106109362427897 0.0667416130315985 1.52198891200837
+        rotation 0.983913888130298 -0.142094759040423 -0.108270680230452 4.66849813765019
         scale 0.999999 1 1
         scaleOrientation 0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961
         children [
@@ -68,14 +184,14 @@ LayerSet {
       }
     }
     DEF Scene Layer {
-      pickable FALSE
       children [
         Viewpoint {
           description "Initial View"
           position 2.61467 6.08253 4.95477
           orientation -0.851140952915042 0.48075139780266 0.210801261337929 0.951420774094538
         }
-        DEF LineBox Transform {
+        DEF LineBox_1 Transform {
+          scale 1.557352 1.557352 1.557352
           children [
             DEF X Rotor {
               cycleInterval 31
@@ -92,26 +208,29 @@ LayerSet {
               loop TRUE
             }
             DEF BoxAnim Transform {
-              rotation 0 0 1 4.26566980958223
+              rotation 0 0 1 5.06394084700448
               children DEF _32 Transform {
-                rotation 0 0 1 2.0097721510458
-                children DEF Box Transform {
-                  rotation 0 0 1 0.371924923038482
-                  children Shape {
-                    appearance Appearance {
-                      material Material {
-                        diffuseColor 0 0 0
-                        emissiveColor 0 1 0
-                        transparency 0.406091
+                rotation 0 1 0 2.55470916751219
+                children DEF Box_1 Transform {
+                  rotation 0.999999999999999 0 0 5.88673656446662
+                  children [
+                    Shape {
+                      appearance Appearance {
+                        material Material {
+                          diffuseColor 0 0 0
+                          emissiveColor 0 1 0
+                          transparency 0.406091
+                        }
+                      }
+                      geometry LineSet {
+                        vertexCount [ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ]
+                        coord Coordinate {
+                          point [ -1 -1 -1, -1 1 -1, -1 -1 -0.5, -1 1 -0.5, -1 -1 0, -1 1 0, -1 -1 0.5, -1 1 0.5, -1 -1 1, -1 1 1, -0.5 -1 -1, -0.5 1 -1, -0.5 -1 -0.5, -0.5 1 -0.5, -0.5 -1 0, -0.5 1 0, -0.5 -1 0.5, -0.5 1 0.5, -0.5 -1 1, -0.5 1 1, 0 -1 -1, 0 1 -1, 0 -1 -0.5, 0 1 -0.5, 0 -1 0, 0 1 0, 0 -1 0.5, 0 1 0.5, 0 -1 1, 0 1 1, 0.5 -1 -1, 0.5 1 -1, 0.5 -1 -0.5, 0.5 1 -0.5, 0.5 -1 0, 0.5 1 0, 0.5 -1 0.5, 0.5 1 0.5, 0.5 -1 1, 0.5 1 1, 1 -1 -1, 1 1 -1, 1 -1 -0.5, 1 1 -0.5, 1 -1 0, 1 1 0, 1 -1 0.5, 1 1 0.5, 1 -1 1, 1 1 1, -1 -1 -1, 1 -1 -1, -1 -1 -0.5, 1 -1 -0.5, -1 -1 0, 1 -1 0, -1 -1 0.5, 1 -1 0.5, -1 -1 1, 1 -1 1, -1 -0.5 -1, 1 -0.5 -1, -1 -0.5 -0.5, 1 -0.5 -0.5, -1 -0.5 0, 1 -0.5 0, -1 -0.5 0.5, 1 -0.5 0.5, -1 -0.5 1, 1 -0.5 1, -1 0 -1, 1 0 -1, -1 0 -0.5, 1 0 -0.5, -1 0 0, 1 0 0, -1 0 0.5, 1 0 0.5, -1 0 1, 1 0 1, -1 0.5 -1, 1 0.5 -1, -1 0.5 -0.5, 1 0.5 -0.5, -1 0.5 0, 1 0.5 0, -1 0.5 0.5, 1 0.5 0.5, -1 0.5 1, 1 0.5 1, -1 1 -1, 1 1 -1, -1 1 -0.5, 1 1 -0.5, -1 1 0, 1 1 0, -1 1 0.5, 1 1 0.5, -1 1 1, 1 1 1, -1 -1 -1, -1 -1 1, -1 -0.5 -1, -1 -0.5 1, -1 0 -1, -1 0 1, -1 0.5 -1, -1 0.5 1, -1 1 -1, -1 1 1, -0.5 -1 -1, -0.5 -1 1, -0.5 -0.5 -1, -0.5 -0.5 1, -0.5 0 -1, -0.5 0 1, -0.5 0.5 -1, -0.5 0.5 1, -0.5 1 -1, -0.5 1 1, 0 -1 -1, 0 -1 1, 0 -0.5 -1, 0 -0.5 1, 0 0 -1, 0 0 1, 0 0.5 -1, 0 0.5 1, 0 1 -1, 0 1 1, 0.5 -1 -1, 0.5 -1 1, 0.5 -0.5 -1, 0.5 -0.5 1, 0.5 0 -1, 0.5 0 1, 0.5 0.5 -1, 0.5 0.5 1, 0.5 1 -1, 0.5 1 1, 1 -1 -1, 1 -1 1, 1 -0.5 -1, 1 -0.5 1, 1 0 -1, 1 0 1, 1 0.5 -1, 1 0.5 1, 1 1 -1, 1 1 1 ]
+                        }
                       }
                     }
-                    geometry LineSet {
-                      vertexCount [ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ]
-                      coord Coordinate {
-                        point [ -1 -1 -1, -1 1 -1, -1 -1 -0.5, -1 1 -0.5, -1 -1 0, -1 1 0, -1 -1 0.5, -1 1 0.5, -1 -1 1, -1 1 1, -0.5 -1 -1, -0.5 1 -1, -0.5 -1 -0.5, -0.5 1 -0.5, -0.5 -1 0, -0.5 1 0, -0.5 -1 0.5, -0.5 1 0.5, -0.5 -1 1, -0.5 1 1, 0 -1 -1, 0 1 -1, 0 -1 -0.5, 0 1 -0.5, 0 -1 0, 0 1 0, 0 -1 0.5, 0 1 0.5, 0 -1 1, 0 1 1, 0.5 -1 -1, 0.5 1 -1, 0.5 -1 -0.5, 0.5 1 -0.5, 0.5 -1 0, 0.5 1 0, 0.5 -1 0.5, 0.5 1 0.5, 0.5 -1 1, 0.5 1 1, 1 -1 -1, 1 1 -1, 1 -1 -0.5, 1 1 -0.5, 1 -1 0, 1 1 0, 1 -1 0.5, 1 1 0.5, 1 -1 1, 1 1 1, -1 -1 -1, 1 -1 -1, -1 -1 -0.5, 1 -1 -0.5, -1 -1 0, 1 -1 0, -1 -1 0.5, 1 -1 0.5, -1 -1 1, 1 -1 1, -1 -0.5 -1, 1 -0.5 -1, -1 -0.5 -0.5, 1 -0.5 -0.5, -1 -0.5 0, 1 -0.5 0, -1 -0.5 0.5, 1 -0.5 0.5, -1 -0.5 1, 1 -0.5 1, -1 0 -1, 1 0 -1, -1 0 -0.5, 1 0 -0.5, -1 0 0, 1 0 0, -1 0 0.5, 1 0 0.5, -1 0 1, 1 0 1, -1 0.5 -1, 1 0.5 -1, -1 0.5 -0.5, 1 0.5 -0.5, -1 0.5 0, 1 0.5 0, -1 0.5 0.5, 1 0.5 0.5, -1 0.5 1, 1 0.5 1, -1 1 -1, 1 1 -1, -1 1 -0.5, 1 1 -0.5, -1 1 0, 1 1 0, -1 1 0.5, 1 1 0.5, -1 1 1, 1 1 1, -1 -1 -1, -1 -1 1, -1 -0.5 -1, -1 -0.5 1, -1 0 -1, -1 0 1, -1 0.5 -1, -1 0.5 1, -1 1 -1, -1 1 1, -0.5 -1 -1, -0.5 -1 1, -0.5 -0.5 -1, -0.5 -0.5 1, -0.5 0 -1, -0.5 0 1, -0.5 0.5 -1, -0.5 0.5 1, -0.5 1 -1, -0.5 1 1, 0 -1 -1, 0 -1 1, 0 -0.5 -1, 0 -0.5 1, 0 0 -1, 0 0 1, 0 0.5 -1, 0 0.5 1, 0 1 -1, 0 1 1, 0.5 -1 -1, 0.5 -1 1, 0.5 -0.5 -1, 0.5 -0.5 1, 0.5 0 -1, 0.5 0 1, 0.5 0.5 -1, 0.5 0.5 1, 0.5 1 -1, 0.5 1 1, 1 -1 -1, 1 -1 1, 1 -0.5 -1, 1 -0.5 1, 1 0 -1, 1 0 1, 1 0.5 -1, 1 0.5 1, 1 1 -1, 1 1 1 ]
-                      }
-                    }
-                  }
+                    Numbers { }
+                  ]
                 }
               }
             }
@@ -221,7 +340,6 @@ main ()
       ]
     }
     DEF HUD Layer {
-      pickable FALSE
       children [
         DEF Fire_34 Transform {
           translation -6.80942 3.70732 0
@@ -279,6 +397,6 @@ main ()
 
 ROUTE AnimationTimer.fraction_changed TO RotationInterpolator.set_fraction
 ROUTE RotationInterpolator.value_changed TO _30.set_rotation
-ROUTE X.rotation_changed TO Box.set_rotation
+ROUTE X.rotation_changed TO Box_1.set_rotation
 ROUTE Y.rotation_changed TO _32.set_rotation
 ROUTE Z.rotation_changed TO BoxAnim.set_rotation

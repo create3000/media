@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='EnvironmentalSensor' level='3'/>
     <component name='Layering' level='1'/>
     <component name='ParticleSystems' level='3'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
     <component name='Text' level='1'/>
     <component name='X_ITE' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 19 Dec 2017 00:35:26 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:28:12 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Thu, 09 Jan 2025 16:57:41 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Rotor' url='"assets/Rotor.x3d#Rotor"'>
@@ -29,14 +31,125 @@
       <field accessType='outputOnly' type='SFTime' name='cycleTime'/>
       <field accessType='outputOnly' type='SFRotation' name='rotation_changed'/>
     </ExternProtoDeclare>
-    <WorldInfo/>
+    <ProtoDeclare name='Numbers'>
+      <ProtoBody>
+        <ProtoDeclare name='Number'>
+          <ProtoInterface>
+            <field accessType='inputOutput' type='SFVec3f' name='translation'/>
+            <field accessType='inputOutput' type='SFRotation' name='rotation'/>
+          </ProtoInterface>
+          <ProtoBody>
+            <Transform DEF='Text'>
+              <IS>
+                <connect nodeField='translation' protoField='translation'/>
+                <connect nodeField='rotation' protoField='rotation'/>
+              </IS>
+              <Shape>
+                <Appearance>
+                  <Material/>
+                </Appearance>
+                <Text DEF='_2'
+                    string='"0.34"'>
+                  <FontStyle
+                      style='TYPEWRITER'
+                      size='0.12'
+                      justify='"MIDDLE", "MIDDLE"'/>
+                </Text>
+              </Shape>
+            </Transform>
+            <TimeSensor DEF='_1'
+                loop='true'/>
+            <Script DEF='NumberScript'>
+              <field accessType='inputOnly' type='SFFloat' name='set_fraction'/>
+              <field accessType='initializeOnly' type='SFNode' name='text'>
+                <Text USE='_2'/>
+              </field>
+<![CDATA[ecmascript:
+
+let up = true;
+
+const 
+   low  = Math .random (),
+   high = Math .random ();
+
+function set_fraction (value)
+{
+   const v = low + value * (high - low);
+   const s = v .toFixed (1);
+
+   if (s === text .string [0])
+      return;
+
+   text .string [0] = s;
+}
+]]>
+            </Script>
+            <ROUTE fromNode='_1' fromField='fraction_changed' toNode='NumberScript' toField='set_fraction'/>
+          </ProtoBody>
+        </ProtoDeclare>
+        <Group>
+          <Group DEF='_1'/>
+          <ProximitySensor DEF='_2'
+              size='-1 -1 -1'/>
+        </Group>
+        <Script DEF='NumbersScript'>
+          <field accessType='initializeOnly' type='SFNode' name='group'>
+            <Group USE='_1'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='proxy'>
+            <ProximitySensor USE='_2'/>
+          </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   const 
+      scene   = Browser .currentScene,
+      numbers = [ ];
+
+   for (let y = 0; y < 4; ++ y)
+   {
+      for (let x = 0; x < 4; ++ x)
+      {
+         const number = scene .createProto ("Number");
+
+         Browser .addRoute (proxy, "orientation_changed", number, "set_rotation");
+
+         numbers .push (number);
+      }
+   }
+
+   for (let z = 0; z < 4; ++ z)
+   {
+      for (let y = 0; y < 4; ++ y)
+      {
+         for (let x = 0; x < 4; ++ x)
+         {
+            const trans = scene .createNode ("Transform");
+
+            trans .translation .x = x / 2 - 0.75;
+            trans .translation .y = y / 2 - 0.75;
+            trans .translation .z = z / 2 - 0.75;
+
+            trans .children .push (numbers [Math .floor (Math .random () * 16)]);
+
+            group .children .push (trans);
+         }
+      }
+   }
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo
+        title='Fire Flow'/>
     <LayerSet
         activeLayer='2'
         order='1, 2, 3'>
-      <Layer DEF='Background'
-          pickable='false'>
+      <Layer DEF='Background'>
         <Transform DEF='_30'
-            rotation='0.984640973405867 -0.140264095686592 -0.103962190009487 4.70200250724669'
+            rotation='0.983913888130298 -0.142094759040423 -0.108270680230452 4.66849813765019'
             scale='0.999999 1 1'
             scaleOrientation='0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961'>
           <Group DEF='Animation'>
@@ -56,13 +169,13 @@
               groundColor='0.312858 0.110334 0.108973, 0.172499 0.10631 0.0766709, 0.172499 0.10631 0.0766709'/>
         </Transform>
       </Layer>
-      <Layer DEF='Scene'
-          pickable='false'>
+      <Layer DEF='Scene'>
         <Viewpoint
             description='Initial View'
             position='2.61467 6.08253 4.95477'
             orientation='-0.851140952915042 0.48075139780266 0.210801261337929 0.951420774094538'/>
-        <Transform DEF='LineBox'>
+        <Transform DEF='LineBox_1'
+            scale='1.557352 1.557352 1.557352'>
           <ProtoInstance name='Rotor' DEF='X'>
             <fieldValue name='cycleInterval' value='31'/>
             <fieldValue name='axis' value='1 0 0'/>
@@ -78,11 +191,11 @@
             <fieldValue name='loop' value='true'/>
           </ProtoInstance>
           <Transform DEF='BoxAnim'
-              rotation='0 0 1 3.96101123427391'>
+              rotation='0 0 1 5.06394084700448'>
             <Transform DEF='_32'
-                rotation='0 0 1 1.67217962730497'>
-              <Transform DEF='Box'
-                  rotation='0 0 0.999999999999842 6.25217474096481'>
+                rotation='0 1 0 2.55470916751219'>
+              <Transform DEF='Box_1'
+                  rotation='0.999999999999999 0 0 5.88673656446662'>
                 <Shape>
                   <Appearance>
                     <Material
@@ -96,6 +209,7 @@
                         point='-1 -1 -1, -1 1 -1, -1 -1 -0.5, -1 1 -0.5, -1 -1 0, -1 1 0, -1 -1 0.5, -1 1 0.5, -1 -1 1, -1 1 1, -0.5 -1 -1, -0.5 1 -1, -0.5 -1 -0.5, -0.5 1 -0.5, -0.5 -1 0, -0.5 1 0, -0.5 -1 0.5, -0.5 1 0.5, -0.5 -1 1, -0.5 1 1, 0 -1 -1, 0 1 -1, 0 -1 -0.5, 0 1 -0.5, 0 -1 0, 0 1 0, 0 -1 0.5, 0 1 0.5, 0 -1 1, 0 1 1, 0.5 -1 -1, 0.5 1 -1, 0.5 -1 -0.5, 0.5 1 -0.5, 0.5 -1 0, 0.5 1 0, 0.5 -1 0.5, 0.5 1 0.5, 0.5 -1 1, 0.5 1 1, 1 -1 -1, 1 1 -1, 1 -1 -0.5, 1 1 -0.5, 1 -1 0, 1 1 0, 1 -1 0.5, 1 1 0.5, 1 -1 1, 1 1 1, -1 -1 -1, 1 -1 -1, -1 -1 -0.5, 1 -1 -0.5, -1 -1 0, 1 -1 0, -1 -1 0.5, 1 -1 0.5, -1 -1 1, 1 -1 1, -1 -0.5 -1, 1 -0.5 -1, -1 -0.5 -0.5, 1 -0.5 -0.5, -1 -0.5 0, 1 -0.5 0, -1 -0.5 0.5, 1 -0.5 0.5, -1 -0.5 1, 1 -0.5 1, -1 0 -1, 1 0 -1, -1 0 -0.5, 1 0 -0.5, -1 0 0, 1 0 0, -1 0 0.5, 1 0 0.5, -1 0 1, 1 0 1, -1 0.5 -1, 1 0.5 -1, -1 0.5 -0.5, 1 0.5 -0.5, -1 0.5 0, 1 0.5 0, -1 0.5 0.5, 1 0.5 0.5, -1 0.5 1, 1 0.5 1, -1 1 -1, 1 1 -1, -1 1 -0.5, 1 1 -0.5, -1 1 0, 1 1 0, -1 1 0.5, 1 1 0.5, -1 1 1, 1 1 1, -1 -1 -1, -1 -1 1, -1 -0.5 -1, -1 -0.5 1, -1 0 -1, -1 0 1, -1 0.5 -1, -1 0.5 1, -1 1 -1, -1 1 1, -0.5 -1 -1, -0.5 -1 1, -0.5 -0.5 -1, -0.5 -0.5 1, -0.5 0 -1, -0.5 0 1, -0.5 0.5 -1, -0.5 0.5 1, -0.5 1 -1, -0.5 1 1, 0 -1 -1, 0 -1 1, 0 -0.5 -1, 0 -0.5 1, 0 0 -1, 0 0 1, 0 0.5 -1, 0 0.5 1, 0 1 -1, 0 1 1, 0.5 -1 -1, 0.5 -1 1, 0.5 -0.5 -1, 0.5 -0.5 1, 0.5 0 -1, 0.5 0 1, 0.5 0.5 -1, 0.5 0.5 1, 0.5 1 -1, 0.5 1 1, 1 -1 -1, 1 -1 1, 1 -0.5 -1, 1 -0.5 1, 1 0 -1, 1 0 1, 1 0.5 -1, 1 0.5 1, 1 1 -1, 1 1 1'/>
                   </LineSet>
                 </Shape>
+                <ProtoInstance name='Numbers'/>
               </Transform>
             </Transform>
           </Transform>
@@ -196,8 +310,7 @@ main ()
           </Appearance>
         </ParticleSystem>
       </Layer>
-      <Layer DEF='HUD'
-          pickable='false'>
+      <Layer DEF='HUD'>
         <Transform DEF='Fire_34'
             translation='-6.80942 3.70732 0'
             scale='1.48791 1.48791 1.48791'>
@@ -247,7 +360,7 @@ main ()
     </LayerSet>
     <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='RotationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='RotationInterpolator' fromField='value_changed' toNode='_30' toField='set_rotation'/>
-    <ROUTE fromNode='X' fromField='rotation_changed' toNode='Box' toField='set_rotation'/>
+    <ROUTE fromNode='X' fromField='rotation_changed' toNode='Box_1' toField='set_rotation'/>
     <ROUTE fromNode='Y' fromField='rotation_changed' toNode='_32' toField='set_rotation'/>
     <ROUTE fromNode='Z' fromField='rotation_changed' toNode='BoxAnim' toField='set_rotation'/>
   </Scene>
