@@ -13,7 +13,7 @@
     <meta name='created' content='Tue, 19 Dec 2017 00:35:26 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 09 Jan 2025 16:56:04 GMT'/>
+    <meta name='modified' content='Thu, 09 Jan 2025 18:34:12 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Rotor' url='"assets/Rotor.x3d#Rotor"'>
@@ -36,6 +36,7 @@
           <ProtoInterface>
             <field accessType='inputOutput' type='SFVec3f' name='translation'/>
             <field accessType='inputOutput' type='SFRotation' name='rotation'/>
+            <field accessType='inputOutput' type='MFNode' name='fractions'/>
           </ProtoInterface>
           <ProtoBody>
             <Transform DEF='Text'>
@@ -43,43 +44,35 @@
                 <connect nodeField='translation' protoField='translation'/>
                 <connect nodeField='rotation' protoField='rotation'/>
               </IS>
-              <Shape>
-                <Appearance>
-                  <Material/>
-                </Appearance>
-                <Text DEF='_2'
-                    string='"0.34"'>
-                  <FontStyle
-                      style='TYPEWRITER'
-                      size='0.12'
-                      justify='"MIDDLE", "MIDDLE"'/>
-                </Text>
-              </Shape>
+              <Switch DEF='_2'>
+                <IS>
+                  <connect nodeField='children' protoField='fractions'/>
+                </IS>
+              </Switch>
             </Transform>
             <TimeSensor DEF='_1'
                 loop='true'/>
             <Script DEF='NumberScript'>
               <field accessType='inputOnly' type='SFFloat' name='set_fraction'/>
               <field accessType='initializeOnly' type='SFNode' name='text'>
-                <Text USE='_2'/>
+                <Switch USE='_2'/>
               </field>
 <![CDATA[ecmascript:
 
 let up = true;
 
 const 
-   low  = Math .random (),
-   high = Math .random ();
+   low  = Math .random () * 10,
+   high = Math .random () * 10;
 
 function set_fraction (value)
 {
-   const v = low + value * (high - low);
-   const s = v .toFixed (1);
+   const v = Math .floor (low + value * (high - low));
 
-   if (s === text .string [0])
+   if (v === text .whichChoice)
       return;
 
-   text .string [0] = s;
+   text .whichChoice = v;
 }
 ]]>
             </Script>
@@ -87,16 +80,93 @@ function set_fraction (value)
           </ProtoBody>
         </ProtoDeclare>
         <Group>
-          <Group DEF='_1'/>
-          <ProximitySensor DEF='_2'
+          <Group DEF='_3'/>
+          <ProximitySensor DEF='_4'
               size='-1 -1 -1'/>
         </Group>
         <Script DEF='NumbersScript'>
           <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Group USE='_1'/>
+            <Group USE='_3'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='proxy'>
-            <ProximitySensor USE='_2'/>
+            <ProximitySensor USE='_4'/>
+          </field>
+          <field accessType='inputOutput' type='MFNode' name='fractions'>
+            <Shape>
+              <Appearance DEF='_6'>
+                <Material/>
+              </Appearance>
+              <Text
+                  string='"0.0"'>
+                <FontStyle DEF='_16'
+                    style='TYPEWRITER'
+                    size='0.12'
+                    justify='"MIDDLE", "MIDDLE"'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.1"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.2"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.3"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.4"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.5"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.6"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.7"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.8"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
+            <Shape>
+              <Appearance USE='_6'/>
+              <Text
+                  string='"0.9"'>
+                <FontStyle USE='_16'/>
+              </Text>
+            </Shape>
           </field>
 <![CDATA[ecmascript:
 
@@ -111,6 +181,8 @@ function initialize ()
       for (let x = 0; x < 4; ++ x)
       {
          const number = scene .createProto ("Number");
+
+         number .fractions = fractions;
 
          Browser .addRoute (proxy, "orientation_changed", number, "set_rotation");
 
@@ -200,7 +272,7 @@ function initialize ()
           </MetadataSet>
         </MetadataSet>
         <Transform DEF='_30'
-            rotation='-0.993106788580832 0.100255197746001 0.060727273935003 1.5166107107835'
+            rotation='0.993416444558473 -0.0880962473616217 -0.0732312698346951 4.44460291933418'
             scale='0.999999 1 1'
             scaleOrientation='0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961'>
           <Group DEF='Animation'>
@@ -275,11 +347,11 @@ function initialize ()
             <fieldValue name='loop' value='true'/>
           </ProtoInstance>
           <Transform DEF='BoxAnim'
-              rotation='0 0 1 5.06394084700448'>
+              rotation='0 0 1 0.929298451650349'>
             <Transform DEF='_32'
-                rotation='0 1 0 2.55470916751219'>
+                rotation='0 1 0 1.02976314912606'>
               <Transform DEF='Box_1'
-                  rotation='0.999999999999999 0 0 5.88673656446662'>
+                  rotation='1 0 0 2.24248913076007'>
                 <Shape>
                   <Appearance>
                     <Material
