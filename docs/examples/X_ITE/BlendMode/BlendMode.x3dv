@@ -15,7 +15,7 @@ META "created" "Tue, 19 Dec 2017 00:35:26 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 09 Jan 2025 16:57:41 GMT"
+META "modified" "Thu, 09 Jan 2025 18:37:26 GMT"
 
 EXTERNPROTO Rotor [
   inputOutput SFBool     enabled
@@ -38,23 +38,14 @@ PROTO Numbers [ ]
   PROTO Number [
     inputOutput SFVec3f    translation 0 0 0
     inputOutput SFRotation rotation 0 0 1 0
+    inputOutput MFNode     fractions [ ]
   ]
   {
     DEF Text Transform {
       translation IS translation
       rotation IS rotation
-      children Shape {
-        appearance Appearance {
-          material Material { }
-        }
-        geometry DEF _2 Text {
-          string "0.34"
-          fontStyle FontStyle {
-            style "TYPEWRITER"
-            size 0.12
-            justify [ "MIDDLE", "MIDDLE" ]
-          }
-        }
+      children DEF _2 Switch {
+        children IS fractions
       }
     }
 
@@ -71,18 +62,17 @@ PROTO Numbers [ ]
 let up = true;
 
 const 
-   low  = Math .random (),
-   high = Math .random ();
+   low  = Math .random () * 10,
+   high = Math .random () * 10;
 
 function set_fraction (value)
 {
-   const v = low + value * (high - low);
-   const s = v .toFixed (1);
+   const v = Math .floor (low + value * (high - low));
 
-   if (s === text .string [0])
+   if (v === text .whichChoice)
       return;
 
-   text .string [0] = s;
+   text .whichChoice = v;
 }
 "
     }
@@ -92,16 +82,94 @@ function set_fraction (value)
 
   Group {
     children [
-      DEF _1 Group { }
-      DEF _2 ProximitySensor {
+      DEF _3 Group { }
+      DEF _4 ProximitySensor {
         size -1 -1 -1
       }
     ]
   }
 
   DEF NumbersScript Script {
-    initializeOnly SFNode group USE _1
-    initializeOnly SFNode proxy USE _2
+    initializeOnly SFNode group USE _3
+    initializeOnly SFNode proxy USE _4
+    inputOutput    MFNode fractions [
+      Shape {
+        appearance DEF _6 Appearance {
+          material Material { }
+        }
+        geometry Text {
+          string "0.0"
+          fontStyle DEF _16 FontStyle {
+            style "TYPEWRITER"
+            size 0.12
+            justify [ "MIDDLE", "MIDDLE" ]
+          }
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.1"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.2"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.3"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.4"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.5"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.6"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.7"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.8"
+          fontStyle USE _16
+        }
+      }
+      Shape {
+        appearance USE _6
+        geometry Text {
+          string "0.9"
+          fontStyle USE _16
+        }
+      }
+    ]
 
     url "ecmascript:
 
@@ -116,6 +184,8 @@ function initialize ()
       for (let x = 0; x < 4; ++ x)
       {
          const number = scene .createProto (\"Number\");
+
+         number .fractions = fractions;
 
          Browser .addRoute (proxy, \"orientation_changed\", number, \"set_rotation\");
 
@@ -156,7 +226,7 @@ LayerSet {
   layers [
     DEF Background Layer {
       children DEF _30 Transform {
-        rotation 0.983913888130298 -0.142094759040423 -0.108270680230452 4.66849813765019
+        rotation -0.98950533437392 -0.096162679075131 -0.107851436701839 1.65961277833489
         scale 0.999999 1 1
         scaleOrientation 0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961
         children [
@@ -208,11 +278,11 @@ LayerSet {
               loop TRUE
             }
             DEF BoxAnim Transform {
-              rotation 0 0 1 5.06394084700448
+              rotation 0 0 1 0.929298451650349
               children DEF _32 Transform {
-                rotation 0 1 0 2.55470916751219
+                rotation 0 1 0 1.02976314912606
                 children DEF Box_1 Transform {
-                  rotation 0.999999999999999 0 0 5.88673656446662
+                  rotation 1 0 0 2.24248913076007
                   children [
                     Shape {
                       appearance Appearance {

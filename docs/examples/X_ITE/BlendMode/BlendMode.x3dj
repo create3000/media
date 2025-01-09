@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Thu, 09 Jan 2025 16:57:41 GMT"
+          "@content": "Thu, 09 Jan 2025 18:37:26 GMT"
         }
       ],
       "component": [
@@ -154,6 +154,11 @@
                           "@accessType": "inputOutput",
                           "@type": "SFRotation",
                           "@name": "rotation"
+                        },
+                        {
+                          "@accessType": "inputOutput",
+                          "@type": "MFNode",
+                          "@name": "fractions"
                         }
                       ]
                     },
@@ -163,28 +168,16 @@
                           {
                             "@DEF": "Text",
                             "-children": [
-                              { "Shape":
+                              { "Switch":
                                 {
-                                  "-appearance": { "Appearance":
-                                    {
-                                      "-material": { "Material":
-                                        {
-                                        }
+                                  "@DEF": "_2",
+                                  "IS": {
+                                    "connect": [
+                                      {
+                                        "@nodeField": "children",
+                                        "@protoField": "fractions"
                                       }
-                                    }
-                                  },
-                                  "-geometry": { "Text":
-                                    {
-                                      "@DEF": "_2",
-                                      "@string": [ "0.34" ],
-                                      "-fontStyle": { "FontStyle":
-                                        {
-                                          "@style": "TYPEWRITER",
-                                          "@size": 0.12,
-                                          "@justify": [ "MIDDLE", "MIDDLE" ]
-                                        }
-                                      }
-                                    }
+                                    ]
                                   }
                                 }
                               }
@@ -223,7 +216,7 @@
                                 "@type": "SFNode",
                                 "@name": "text",
                                 "-children": [
-                                  { "Text":
+                                  { "Switch":
                                     {
                                       "@USE": "_2"
                                     }
@@ -237,18 +230,17 @@
 "let up = true;",
 "",
 "const ",
-"   low  = Math .random (),",
-"   high = Math .random ();",
+"   low  = Math .random () * 10,",
+"   high = Math .random () * 10;",
 "",
 "function set_fraction (value)",
 "{",
-"   const v = low + value * (high - low);",
-"   const s = v .toFixed (1);",
+"   const v = Math .floor (low + value * (high - low));",
 "",
-"   if (s === text .string [0])",
+"   if (v === text .whichChoice)",
 "      return;",
 "",
-"   text .string [0] = s;",
+"   text .whichChoice = v;",
 "}",
 ""
                             ]
@@ -271,12 +263,12 @@
                     "-children": [
                       { "Group":
                         {
-                          "@DEF": "_1"
+                          "@DEF": "_3"
                         }
                       },
                       { "ProximitySensor":
                         {
-                          "@DEF": "_2",
+                          "@DEF": "_4",
                           "@size": [ -1, -1, -1 ]
                         }
                       }
@@ -294,7 +286,7 @@
                         "-children": [
                           { "Group":
                             {
-                              "@USE": "_1"
+                              "@USE": "_3"
                             }
                           }
                         ]
@@ -306,7 +298,211 @@
                         "-children": [
                           { "ProximitySensor":
                             {
-                              "@USE": "_2"
+                              "@USE": "_4"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "inputOutput",
+                        "@type": "MFNode",
+                        "@name": "fractions",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@DEF": "_6",
+                                  "-material": { "Material":
+                                    {
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.0" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@DEF": "_16",
+                                      "@style": "TYPEWRITER",
+                                      "@size": 0.12,
+                                      "@justify": [ "MIDDLE", "MIDDLE" ]
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.1" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.2" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.3" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.4" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.5" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.6" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.7" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.8" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "@USE": "_6"
+                                }
+                              },
+                              "-geometry": { "Text":
+                                {
+                                  "@string": [ "0.9" ],
+                                  "-fontStyle": { "FontStyle":
+                                    {
+                                      "@USE": "_16"
+                                    }
+                                  }
+                                }
+                              }
                             }
                           }
                         ]
@@ -326,6 +522,8 @@
 "      for (let x = 0; x < 4; ++ x)",
 "      {",
 "         const number = scene .createProto (\"Number\");",
+"",
+"         number .fractions = fractions;",
 "",
 "         Browser .addRoute (proxy, \"orientation_changed\", number, \"set_rotation\");",
 "",
@@ -377,7 +575,7 @@
                     { "Transform":
                       {
                         "@DEF": "_30",
-                        "@rotation": [ 0.983913888130298, -0.142094759040423, -0.108270680230452, 4.66849813765019 ],
+                        "@rotation": [ -0.98950533437392, -0.096162679075131, -0.107851436701839, 1.65961277833489 ],
                         "@scale": [ 0.999999, 1, 1 ],
                         "@scaleOrientation": [ 0.612491025726436, -0.540118771611692, 0.577171080319566, 0.174185270591961 ],
                         "-children": [
@@ -493,17 +691,17 @@
                           { "Transform":
                             {
                               "@DEF": "BoxAnim",
-                              "@rotation": [ 0, 0, 1, 5.06394084700448 ],
+                              "@rotation": [ 0, 0, 1, 0.929298451650349 ],
                               "-children": [
                                 { "Transform":
                                   {
                                     "@DEF": "_32",
-                                    "@rotation": [ 0, 1, 0, 2.55470916751219 ],
+                                    "@rotation": [ 0, 1, 0, 1.02976314912606 ],
                                     "-children": [
                                       { "Transform":
                                         {
                                           "@DEF": "Box_1",
-                                          "@rotation": [ 0.999999999999999, 0, 0, 5.88673656446662 ],
+                                          "@rotation": [ 1, 0, 0, 2.24248913076007 ],
                                           "-children": [
                                             { "Shape":
                                               {
