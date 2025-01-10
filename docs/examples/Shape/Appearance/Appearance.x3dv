@@ -2,6 +2,7 @@
 
 PROFILE Interchange
 
+COMPONENT CubeMapTexturing : 3
 COMPONENT Geometry2D : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
@@ -13,7 +14,7 @@ META "created" "Fri, 10 Jan 2025 11:00:08 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 10 Jan 2025 14:26:27 GMT"
+META "modified" "Fri, 10 Jan 2025 14:47:38 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -56,6 +57,21 @@ Viewpoint {
   description "Initial View"
   position 0 0 7.23798
   centerOfRotation -1.77636e-15 -7.10543e-15 3.55271e-15
+}
+
+EnvironmentLight {
+  diffuseTexture ImageCubeMapTexture {
+    url "https://create3000.github.io/Library/Tests/Components/images/helipad-diffuse.jpg"
+    textureProperties DEF _3 TextureProperties {
+      generateMipMaps TRUE
+      minificationFilter "NICEST"
+      magnificationFilter "NICEST"
+    }
+  }
+  specularTexture ImageCubeMapTexture {
+    url "https://create3000.github.io/Library/Tests/Components/images/helipad-specular.jpg"
+    textureProperties USE _3
+  }
 }
 
 Grid {
@@ -135,11 +151,10 @@ DEF Material_1 Transform {
   children [
     Shape {
       appearance Appearance {
-        material DEF Metal15_1 Material {
-          ambientIntensity 0.0787879
-          diffuseColor 0.315152 0.0745695 0
-          specularColor 0.508861 0.684007 0.326263
-          shininess 0.0363636
+        material PhysicalMaterial {
+          baseColor 1 0.5420773 0.01719731
+          metallic 0.6948019
+          roughness 0.5843698
         }
       }
       geometry USE _2
@@ -155,7 +170,7 @@ DEF Texture Transform {
   children [
     Shape {
       appearance Appearance {
-        material Material { }
+        material DEF _4 Material { }
         texture ImageTexture {
           url "black-world.jpg"
         }
@@ -173,7 +188,7 @@ DEF TextureTransform Transform {
   children [
     Shape {
       appearance Appearance {
-        material Material { }
+        material USE _4
         texture ImageTexture {
           url "color-palette.png"
         }
@@ -223,4 +238,11 @@ function initialize ()
 	Browser .setBrowserOption (\"Shading\",          \"PHONG\");
 }
 "
+}
+
+DEF Metal15_1 Material {
+  ambientIntensity 0.0787879
+  diffuseColor 0.315152 0.0745695 0
+  specularColor 0.508861 0.684007 0.326263
+  shininess 0.0363636
 }

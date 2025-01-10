@@ -28,10 +28,14 @@
         },
         {
           "@name": "modified",
-          "@content": "Fri, 10 Jan 2025 14:26:27 GMT"
+          "@content": "Fri, 10 Jan 2025 14:47:38 GMT"
         }
       ],
       "component": [
+        {
+          "@name": "CubeMapTexturing",
+          "@level": 3
+        },
         {
           "@name": "Geometry2D",
           "@level": 2
@@ -209,6 +213,33 @@
             "@centerOfRotation": [ -1.77636e-15, -7.10543e-15, 3.55271e-15 ]
           }
         },
+        { "EnvironmentLight":
+          {
+            "-diffuseTexture": { "ImageCubeMapTexture":
+              {
+                "@url": [ "https://create3000.github.io/Library/Tests/Components/images/helipad-diffuse.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@DEF": "_3",
+                    "@generateMipMaps": true,
+                    "@minificationFilter": "NICEST",
+                    "@magnificationFilter": "NICEST"
+                  }
+                }
+              }
+            },
+            "-specularTexture": { "ImageCubeMapTexture":
+              {
+                "@url": [ "https://create3000.github.io/Library/Tests/Components/images/helipad-specular.jpg" ],
+                "-textureProperties": { "TextureProperties":
+                  {
+                    "@USE": "_3"
+                  }
+                }
+              }
+            }
+          }
+        },
         { "ProtoInstance":
           {
             "@name": "Grid",
@@ -369,13 +400,11 @@
                 {
                   "-appearance": { "Appearance":
                     {
-                      "-material": { "Material":
+                      "-material": { "PhysicalMaterial":
                         {
-                          "@DEF": "Metal15_1",
-                          "@ambientIntensity": 0.0787879,
-                          "@diffuseColor": [ 0.315152, 0.0745695, 0 ],
-                          "@specularColor": [ 0.508861, 0.684007, 0.326263 ],
-                          "@shininess": 0.0363636
+                          "@baseColor": [ 1, 0.5420773, 0.01719731 ],
+                          "@metallic": 0.6948019,
+                          "@roughness": 0.5843698
                         }
                       }
                     }
@@ -406,6 +435,7 @@
                     {
                       "-material": { "Material":
                         {
+                          "@DEF": "_4"
                         }
                       },
                       "-texture": { "ImageTexture":
@@ -441,6 +471,7 @@
                     {
                       "-material": { "Material":
                         {
+                          "@USE": "_4"
                         }
                       },
                       "-texture": { "ImageTexture":
@@ -539,6 +570,15 @@
 "}",
 ""
             ]
+          }
+        },
+        { "Material":
+          {
+            "@DEF": "Metal15_1",
+            "@ambientIntensity": 0.0787879,
+            "@diffuseColor": [ 0.315152, 0.0745695, 0 ],
+            "@specularColor": [ 0.508861, 0.684007, 0.326263 ],
+            "@shininess": 0.0363636
           }
         }
       ]
