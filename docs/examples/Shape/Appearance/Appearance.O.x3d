@@ -12,7 +12,7 @@
     <meta name='created' content='Fri, 10 Jan 2025 11:00:08 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 10 Jan 2025 14:21:09 GMT'/>
+    <meta name='modified' content='Fri, 10 Jan 2025 14:25:34 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
@@ -61,7 +61,7 @@
     <Transform DEF='LineProperties'
         translation='-2.5 1.25 0'>
       <Shape>
-        <Appearance>
+        <Appearance DEF='_1'>
           <LineProperties
               linetype='2'
               linewidthScaleFactor='2'/>
@@ -69,6 +69,21 @@
               emissiveColor='0.03529412 0.5921569 0.6117647'/>
         </Appearance>
         <Circle2D/>
+      </Shape>
+      <Shape>
+        <Appearance USE='_1'/>
+        <Circle2D
+            radius='0.75'/>
+      </Shape>
+      <Shape>
+        <Appearance USE='_1'/>
+        <Circle2D
+            radius='0.5'/>
+      </Shape>
+      <Shape>
+        <Appearance USE='_1'/>
+        <Circle2D
+            radius='0.25'/>
       </Shape>
       <TouchSensor
           description='LineProperties'/>
@@ -86,7 +101,7 @@
               specularColor='0.508861 0.684007 0.326263'
               shininess='0.0363636'/>
         </Appearance>
-        <Sphere DEF='_1'/>
+        <Sphere DEF='_2'/>
       </Shape>
       <TouchSensor
           description='FillProperties'/>
@@ -101,7 +116,7 @@
               specularColor='0.508861 0.684007 0.326263'
               shininess='0.0363636'/>
         </Appearance>
-        <Sphere USE='_1'/>
+        <Sphere USE='_2'/>
       </Shape>
       <TouchSensor
           description='Material'/>
@@ -114,7 +129,7 @@
           <ImageTexture
               url='"black-world.jpg"'/>
         </Appearance>
-        <Sphere USE='_1'/>
+        <Sphere USE='_2'/>
       </Shape>
       <TouchSensor
           description='Texture'/>
@@ -129,7 +144,7 @@
           <TextureTransform
               scale='8 8'/>
         </Appearance>
-        <Sphere USE='_1'/>
+        <Sphere USE='_2'/>
       </Shape>
       <TouchSensor
           description='TextureTransform'/>
@@ -149,7 +164,7 @@
             <fieldValue name='skyColor' value='0.5 0.5 1'/>
           </ProtoInstance>
         </Appearance>
-        <Sphere USE='_1'/>
+        <Sphere USE='_2'/>
       </Shape>
       <TouchSensor
           description='Shader'/>

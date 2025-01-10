@@ -13,7 +13,7 @@ META "created" "Fri, 10 Jan 2025 11:00:08 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 10 Jan 2025 14:21:31 GMT"
+META "modified" "Fri, 10 Jan 2025 14:26:27 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -71,7 +71,7 @@ DEF LineProperties Transform {
   translation -2.5 1.25 0
   children [
     Shape {
-      appearance Appearance {
+      appearance DEF _1 Appearance {
         lineProperties LineProperties {
           linetype 2
           linewidthScaleFactor 2
@@ -81,6 +81,24 @@ DEF LineProperties Transform {
         }
       }
       geometry Circle2D { }
+    }
+    Shape {
+      appearance USE _1
+      geometry Circle2D {
+        radius 0.75
+      }
+    }
+    Shape {
+      appearance USE _1
+      geometry Circle2D {
+        radius 0.5
+      }
+    }
+    Shape {
+      appearance USE _1
+      geometry Circle2D {
+        radius 0.25
+      }
     }
     TouchSensor {
       description "LineProperties"
@@ -104,7 +122,7 @@ DEF FillProperties_1 Transform {
           shininess 0.0363636
         }
       }
-      geometry DEF _1 Sphere { }
+      geometry DEF _2 Sphere { }
     }
     TouchSensor {
       description "FillProperties"
@@ -124,7 +142,7 @@ DEF Material_1 Transform {
           shininess 0.0363636
         }
       }
-      geometry USE _1
+      geometry USE _2
     }
     TouchSensor {
       description "Material"
@@ -142,7 +160,7 @@ DEF Texture Transform {
           url "black-world.jpg"
         }
       }
-      geometry USE _1
+      geometry USE _2
     }
     TouchSensor {
       description "Texture"
@@ -163,7 +181,7 @@ DEF TextureTransform Transform {
           scale 8 8
         }
       }
-      geometry USE _1
+      geometry USE _2
     }
     TouchSensor {
       description "TextureTransform"
@@ -188,7 +206,7 @@ DEF Shader Transform {
           skyColor 0.5 0.5 1
         }
       }
-      geometry USE _1
+      geometry USE _2
     }
     TouchSensor {
       description "Shader"
