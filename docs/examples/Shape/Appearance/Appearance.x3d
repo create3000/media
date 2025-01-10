@@ -12,10 +12,10 @@
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
     <meta name='generator' content='x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Fri, 10 Jan 2025 14:47:38 GMT'/>
+    <meta name='modified' content='Fri, 10 Jan 2025 14:57:45 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
+    <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
       <field accessType='inputOutput' type='SFVec3f' name='translation'/>
       <field accessType='inputOutput' type='SFRotation' name='rotation'/>
       <field accessType='inputOutput' type='SFVec3f' name='scale'/>
@@ -35,7 +35,7 @@
       <field accessType='inputOutput' type='SFNode' name='numberFontStyle'/>
       <field accessType='initializeOnly' type='SFBool' name='solid'/>
     </ExternProtoDeclare>
-    <ExternProtoDeclare name='Water3' url='"Water3.x3d#Water3"'>
+    <ExternProtoDeclare name='Water3' url='"assets/Water3.x3d#Water3"'>
       <field accessType='inputOutput' type='SFFloat' name='amplitude'/>
       <field accessType='inputOutput' type='SFFloat' name='frequency'/>
       <field accessType='inputOutput' type='SFVec2f' name='velocity'/>
@@ -52,14 +52,14 @@
         centerOfRotation='-1.77636e-15 -7.10543e-15 3.55271e-15'/>
     <EnvironmentLight>
       <ImageCubeMapTexture containerField='diffuseTexture'
-          url='"https://create3000.github.io/Library/Tests/Components/images/helipad-diffuse.jpg"'>
+          url='"assets/cannon-exterior-diffuse.avif", "assets/cannon-exterior-diffuse.jpg"'>
         <TextureProperties DEF='_3'
             generateMipMaps='true'
             minificationFilter='NICEST'
             magnificationFilter='NICEST'/>
       </ImageCubeMapTexture>
       <ImageCubeMapTexture containerField='specularTexture'
-          url='"https://create3000.github.io/Library/Tests/Components/images/helipad-specular.jpg"'>
+          url='"assets/cannon-exterior-specular.avif", "assets/cannon-exterior-specular.jpg"'>
         <TextureProperties USE='_3'/>
       </ImageCubeMapTexture>
     </EnvironmentLight>
@@ -125,8 +125,8 @@
         <Appearance>
           <PhysicalMaterial
               baseColor='1 0.5420773 0.01719731'
-              metallic='0.6948019'
-              roughness='0.5843698'/>
+              metallic='0.6303832'
+              roughness='0.4831404'/>
         </Appearance>
         <Sphere USE='_2'/>
       </Shape>
@@ -139,7 +139,7 @@
         <Appearance>
           <Material DEF='_4'/>
           <ImageTexture
-              url='"black-world.jpg"'/>
+              url='"assets/black-world.avif", "assets/black-world.jpg"'/>
         </Appearance>
         <Sphere USE='_2'/>
       </Shape>
@@ -152,7 +152,7 @@
         <Appearance>
           <Material USE='_4'/>
           <ImageTexture
-              url='"color-palette.png"'/>
+              url='"assets/color-palette.avif", "assets/color-palette.png"'/>
           <TextureTransform
               scale='8 8'/>
         </Appearance>

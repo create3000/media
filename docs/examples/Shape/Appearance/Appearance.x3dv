@@ -14,7 +14,7 @@ META "created" "Fri, 10 Jan 2025 11:00:08 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 10 Jan 2025 14:47:38 GMT"
+META "modified" "Fri, 10 Jan 2025 14:57:45 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -36,7 +36,7 @@ EXTERNPROTO Grid [
   inputOutput    SFNode     numberFontStyle
   initializeOnly SFBool     solid
 ]
-"Grid.x3d#Grid"
+"assets/Grid.x3d#Grid"
 
 EXTERNPROTO Water3 [
   inputOutput SFFloat amplitude
@@ -47,7 +47,7 @@ EXTERNPROTO Water3 [
   inputOutput SFFloat skyIntensity
   inputOutput SFColor skyColor
 ]
-"Water3.x3d#Water3"
+"assets/Water3.x3d#Water3"
 
 DEF Gray Background {
   skyColor 0.2 0.2 0.2
@@ -61,7 +61,7 @@ Viewpoint {
 
 EnvironmentLight {
   diffuseTexture ImageCubeMapTexture {
-    url "https://create3000.github.io/Library/Tests/Components/images/helipad-diffuse.jpg"
+    url [ "assets/cannon-exterior-diffuse.avif", "assets/cannon-exterior-diffuse.jpg" ]
     textureProperties DEF _3 TextureProperties {
       generateMipMaps TRUE
       minificationFilter "NICEST"
@@ -69,7 +69,7 @@ EnvironmentLight {
     }
   }
   specularTexture ImageCubeMapTexture {
-    url "https://create3000.github.io/Library/Tests/Components/images/helipad-specular.jpg"
+    url [ "assets/cannon-exterior-specular.avif", "assets/cannon-exterior-specular.jpg" ]
     textureProperties USE _3
   }
 }
@@ -153,8 +153,8 @@ DEF Material_1 Transform {
       appearance Appearance {
         material PhysicalMaterial {
           baseColor 1 0.5420773 0.01719731
-          metallic 0.6948019
-          roughness 0.5843698
+          metallic 0.6303832
+          roughness 0.4831404
         }
       }
       geometry USE _2
@@ -172,7 +172,7 @@ DEF Texture Transform {
       appearance Appearance {
         material DEF _4 Material { }
         texture ImageTexture {
-          url "black-world.jpg"
+          url [ "assets/black-world.avif", "assets/black-world.jpg" ]
         }
       }
       geometry USE _2
@@ -190,7 +190,7 @@ DEF TextureTransform Transform {
       appearance Appearance {
         material USE _4
         texture ImageTexture {
-          url "color-palette.png"
+          url [ "assets/color-palette.avif", "assets/color-palette.png" ]
         }
         textureTransform TextureTransform {
           scale 8 8
