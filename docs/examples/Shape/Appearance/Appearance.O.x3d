@@ -13,7 +13,7 @@
     <meta name='created' content='Fri, 10 Jan 2025 11:00:08 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 11 Jan 2025 14:21:57 GMT'/>
+    <meta name='modified' content='Sat, 11 Jan 2025 18:53:19 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
@@ -51,19 +51,6 @@
         description='Initial View'
         position='0 0 7.23798'
         centerOfRotation='-1.77636e-15 -7.10543e-15 3.55271e-15'/>
-    <EnvironmentLight>
-      <ImageCubeMapTexture containerField='diffuseTexture'
-          url='"assets/cannon-exterior-diffuse.avif", "assets/cannon-exterior-diffuse.jpg"'>
-        <TextureProperties DEF='_3'
-            generateMipMaps='true'
-            minificationFilter='NICEST'
-            magnificationFilter='NICEST'/>
-      </ImageCubeMapTexture>
-      <ImageCubeMapTexture containerField='specularTexture'
-          url='"assets/cannon-exterior-specular.avif", "assets/cannon-exterior-specular.jpg"'>
-        <TextureProperties USE='_3'/>
-      </ImageCubeMapTexture>
-    </EnvironmentLight>
     <ProtoInstance name='Grid'>
       <fieldValue name='rotation' value='1 0 0 1.5707963267949'/>
       <fieldValue name='scale' value='0.25 0.25 0.25'/>
@@ -122,6 +109,19 @@
     </Transform>
     <Transform DEF='Material_1'
         translation='0 1.25 0'>
+      <EnvironmentLight>
+        <ImageCubeMapTexture containerField='diffuseTexture'
+            url='"assets/cannon-exterior-diffuse.avif", "assets/cannon-exterior-diffuse.jpg"'>
+          <TextureProperties DEF='_3'
+              generateMipMaps='true'
+              minificationFilter='NICEST'
+              magnificationFilter='NICEST'/>
+        </ImageCubeMapTexture>
+        <ImageCubeMapTexture containerField='specularTexture'
+            url='"assets/cannon-exterior-specular.avif", "assets/cannon-exterior-specular.jpg"'>
+          <TextureProperties USE='_3'/>
+        </ImageCubeMapTexture>
+      </EnvironmentLight>
       <Shape>
         <Appearance>
           <PhysicalMaterial

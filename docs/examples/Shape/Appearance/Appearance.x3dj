@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Sat, 11 Jan 2025 14:22:23 GMT"
+          "@content": "Sat, 11 Jan 2025 18:54:33 GMT"
         }
       ],
       "component": [
@@ -213,33 +213,6 @@
             "@centerOfRotation": [ -1.77636e-15, -7.10543e-15, 3.55271e-15 ]
           }
         },
-        { "EnvironmentLight":
-          {
-            "-diffuseTexture": { "ImageCubeMapTexture":
-              {
-                "@url": [ "assets/cannon-exterior-diffuse.avif", "assets/cannon-exterior-diffuse.jpg" ],
-                "-textureProperties": { "TextureProperties":
-                  {
-                    "@DEF": "_3",
-                    "@generateMipMaps": true,
-                    "@minificationFilter": "NICEST",
-                    "@magnificationFilter": "NICEST"
-                  }
-                }
-              }
-            },
-            "-specularTexture": { "ImageCubeMapTexture":
-              {
-                "@url": [ "assets/cannon-exterior-specular.avif", "assets/cannon-exterior-specular.jpg" ],
-                "-textureProperties": { "TextureProperties":
-                  {
-                    "@USE": "_3"
-                  }
-                }
-              }
-            }
-          }
-        },
         { "ProtoInstance":
           {
             "@name": "Grid",
@@ -396,6 +369,33 @@
             "@DEF": "Material_1",
             "@translation": [ 0, 1.25, 0 ],
             "-children": [
+              { "EnvironmentLight":
+                {
+                  "-diffuseTexture": { "ImageCubeMapTexture":
+                    {
+                      "@url": [ "assets/cannon-exterior-diffuse.avif", "assets/cannon-exterior-diffuse.jpg" ],
+                      "-textureProperties": { "TextureProperties":
+                        {
+                          "@DEF": "_3",
+                          "@generateMipMaps": true,
+                          "@minificationFilter": "NICEST",
+                          "@magnificationFilter": "NICEST"
+                        }
+                      }
+                    }
+                  },
+                  "-specularTexture": { "ImageCubeMapTexture":
+                    {
+                      "@url": [ "assets/cannon-exterior-specular.avif", "assets/cannon-exterior-specular.jpg" ],
+                      "-textureProperties": { "TextureProperties":
+                        {
+                          "@USE": "_3"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
               { "Shape":
                 {
                   "-appearance": { "Appearance":
