@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.6.2
+#X3D V4.0 utf8 X_ITE V11.0.5
 
 PROFILE Interchange
 
@@ -6,9 +6,9 @@ COMPONENT Geometry2D : 2
 
 META "created" "Sat, 22 Jan 2022 18:41:23 +0100"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 24 May 2024 07:12:55 GMT"
+META "generator" "Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Thu, 23 Jan 2025 13:08:30 GMT"
 
 WorldInfo {
   title "Circle2D.O.x3d"
@@ -35,7 +35,7 @@ Viewpoint {
 DEF Circle2D Transform {
   children Shape {
     appearance Appearance {
-      lineProperties LineProperties {
+      lineProperties DEF _1 LineProperties {
         linewidthScaleFactor 4
       }
       material UnlitMaterial {
@@ -43,5 +43,19 @@ DEF Circle2D Transform {
       }
     }
     geometry Circle2D { }
+  }
+}
+
+DEF SmallCircle2D Transform {
+  children Shape {
+    appearance Appearance {
+      lineProperties USE _1
+      material UnlitMaterial {
+        emissiveColor 0.01176471 0.4313725 0.545098
+      }
+    }
+    geometry Circle2D {
+      radius 0.5
+    }
   }
 }

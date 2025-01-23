@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -16,15 +16,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 24 May 2024 07:12:52 GMT"
+          "@content": "Thu, 23 Jan 2025 13:08:30 GMT"
         }
       ],
       "component": [
@@ -72,6 +72,7 @@
                     {
                       "-lineProperties": { "LineProperties":
                         {
+                          "@DEF": "_1",
                           "@linewidthScaleFactor": 4
                         }
                       },
@@ -84,6 +85,36 @@
                   },
                   "-geometry": { "Circle2D":
                     {
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "SmallCircle2D",
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-lineProperties": { "LineProperties":
+                        {
+                          "@USE": "_1"
+                        }
+                      },
+                      "-material": { "UnlitMaterial":
+                        {
+                          "@emissiveColor": [ 0.01176471, 0.4313725, 0.545098 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Circle2D":
+                    {
+                      "@radius": 0.5
                     }
                   }
                 }

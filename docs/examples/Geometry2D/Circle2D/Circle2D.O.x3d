@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <meta name='created' content='Sat, 22 Jan 2022 18:41:23 +0100'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 24 May 2024 07:09:39 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 23 Jan 2025 13:08:25 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -26,12 +26,23 @@
     <Transform DEF='Circle2D'>
       <Shape>
         <Appearance>
-          <LineProperties
+          <LineProperties DEF='_1'
               linewidthScaleFactor='4'/>
           <UnlitMaterial
               emissiveColor='0 0.595268 0.758'/>
         </Appearance>
         <Circle2D/>
+      </Shape>
+    </Transform>
+    <Transform DEF='SmallCircle2D'>
+      <Shape>
+        <Appearance>
+          <LineProperties USE='_1'/>
+          <UnlitMaterial
+              emissiveColor='0.01176471 0.4313725 0.545098'/>
+        </Appearance>
+        <Circle2D
+            radius='0.5'/>
       </Shape>
     </Transform>
   </Scene>
