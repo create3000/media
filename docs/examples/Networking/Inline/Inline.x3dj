@@ -20,7 +20,7 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
@@ -28,10 +28,14 @@
         },
         {
           "@name": "modified",
-          "@content": "Thu, 23 Jan 2025 14:58:45 GMT"
+          "@content": "Thu, 23 Jan 2025 22:31:01 GMT"
         }
       ],
       "component": [
+        {
+          "@name": "CubeMapTexturing",
+          "@level": 3
+        },
         {
           "@name": "EventUtilities",
           "@level": 1
@@ -157,6 +161,34 @@
                         "@position": [ 0, 0, 12.1899 ]
                       }
                     },
+                    { "EnvironmentLight":
+                      {
+                        "@intensity": 0.75,
+                        "-diffuseTexture": { "ImageCubeMapTexture":
+                          {
+                            "@url": [ "assets/helipad-diffuse.jpg" ],
+                            "-textureProperties": { "TextureProperties":
+                              {
+                                "@DEF": "_2",
+                                "@generateMipMaps": true,
+                                "@minificationFilter": "NICEST",
+                                "@magnificationFilter": "NICEST"
+                              }
+                            }
+                          }
+                        },
+                        "-specularTexture": { "ImageCubeMapTexture":
+                          {
+                            "@url": [ "assets/helipad-specular.jpg" ],
+                            "-textureProperties": { "TextureProperties":
+                              {
+                                "@USE": "_2"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
                     { "Transform":
                       {
                         "-children": [
@@ -164,7 +196,7 @@
                             {
                               "@DEF": "Beethoven",
                               "@global": true,
-                              "@url": [ "assets/beethoven.x3d" ]
+                              "@url": [ "assets/Beethoven.x3d" ]
                             }
                           }
                         ]
@@ -183,16 +215,12 @@
                         "-children": [
                           { "ProtoInstance":
                             {
-                              "@DEF": "_1",
+                              "@DEF": "_9",
                               "@name": "BooleanSwitch",
                               "fieldValue": [
                                 {
                                   "@name": "whichChoice",
                                   "@value": true
-                                },
-                                {
-                                  "@name": "bboxSize",
-                                  "@value": [ -1, -1, -1 ]
                                 },
                                 {
                                   "@name": "children",
@@ -204,7 +232,7 @@
                                         "-children": [
                                           { "Shape":
                                             {
-                                              "@DEF": "_2",
+                                              "@DEF": "_10",
                                               "-appearance": { "Appearance":
                                                 {
                                                   "-material": { "Material":
@@ -219,16 +247,8 @@
                                                   "@name": "RoundedRectangle2D",
                                                   "fieldValue": [
                                                     {
-                                                      "@name": "cornerRadius",
-                                                      "@value": 1
-                                                    },
-                                                    {
                                                       "@name": "size",
                                                       "@value": [ 0.7, 0.4 ]
-                                                    },
-                                                    {
-                                                      "@name": "solid",
-                                                      "@value": true
                                                     }
                                                   ]
                                                 }
@@ -271,7 +291,7 @@
                                         "-children": [
                                           { "Shape":
                                             {
-                                              "@USE": "_2"
+                                              "@USE": "_10"
                                             }
                                           },
                                           { "Transform":
@@ -328,7 +348,7 @@
                                     "-geometry": { "Text":
                                       {
                                         "@DEF": "_7",
-                                        "@string": [ "1,147 ms" ],
+                                        "@string": [ "591 ms" ],
                                         "-fontStyle": { "FontStyle":
                                           {
                                             "@family": [ "TYPEWRITER" ],
@@ -435,7 +455,7 @@
           {
             "@fromNode": "_6",
             "@fromField": "toggle_changed",
-            "@toNode": "_1",
+            "@toNode": "_9",
             "@toField": "set_whichChoice"
           }
         },

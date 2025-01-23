@@ -2,6 +2,7 @@
 
 PROFILE Interchange
 
+COMPONENT CubeMapTexturing : 3
 COMPONENT EventUtilities : 1
 COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
@@ -12,9 +13,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Tue, 28 Nov 2017 11:47:53 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+META "generator" "Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 23 Jan 2025 14:58:45 GMT"
+META "modified" "Thu, 23 Jan 2025 22:31:01 GMT"
 
 EXTERNPROTO BooleanSwitch [
   inputOutput    SFBool  whichChoice
@@ -55,10 +56,25 @@ LayerSet {
           description "Inital View"
           position 0 0 12.1899
         }
+        EnvironmentLight {
+          intensity 0.75
+          diffuseTexture ImageCubeMapTexture {
+            url "assets/helipad-diffuse.jpg"
+            textureProperties DEF _2 TextureProperties {
+              generateMipMaps TRUE
+              minificationFilter "NICEST"
+              magnificationFilter "NICEST"
+            }
+          }
+          specularTexture ImageCubeMapTexture {
+            url "assets/helipad-specular.jpg"
+            textureProperties USE _2
+          }
+        }
         Transform {
           children DEF Beethoven Inline {
             global TRUE
-            url "assets/beethoven.x3d"
+            url "assets/Beethoven.x3d"
           }
         }
       ]
@@ -67,23 +83,20 @@ LayerSet {
       children [
         DEF Button Group {
           children [
-            DEF _1 BooleanSwitch {
+            DEF _9 BooleanSwitch {
               whichChoice TRUE
-              bboxSize -1 -1 -1
               children [
                 DEF RoundedRectangle2D Transform {
                   translation 0 -3.55158 0
                   children [
-                    DEF _2 Shape {
+                    DEF _10 Shape {
                       appearance Appearance {
                         material Material {
                           diffuseColor 0 0 0
                         }
                       }
                       geometry RoundedRectangle2D {
-                        cornerRadius 1
                         size 0.7 0.4
-                        solid TRUE
                       }
                     }
                     Transform {
@@ -104,7 +117,7 @@ LayerSet {
                 DEF RoundedRectangle2D_1 Transform {
                   translation 0 -3.55158 0
                   children [
-                    USE _2
+                    USE _10
                     Transform {
                       translation 0.13 0 0
                       children USE _3
@@ -128,7 +141,7 @@ LayerSet {
               translation 0 -4 0
               children Shape {
                 geometry DEF _7 Text {
-                  string "1,147 ms"
+                  string "591 ms"
                   fontStyle FontStyle {
                     family "TYPEWRITER"
                     style "BOLD"
@@ -179,6 +192,6 @@ function set_active (value, time)
 ROUTE _5.triggerTrue TO _6.set_boolean
 ROUTE _4.touchTime TO _5.set_triggerTime
 ROUTE _6.toggle_changed TO Beethoven.set_load
-ROUTE _6.toggle_changed TO _1.set_whichChoice
+ROUTE _6.toggle_changed TO _9.set_whichChoice
 ROUTE _8.isActive TO LoadTimeScript.set_active
 ROUTE LoadTimeScript.string_changed TO _7.set_string

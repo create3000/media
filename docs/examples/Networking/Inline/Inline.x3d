@@ -2,6 +2,7 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='CubeMapTexturing' level='3'/>
     <component name='EventUtilities' level='1'/>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
@@ -11,9 +12,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/'/>
     <meta name='generator' content='x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Thu, 23 Jan 2025 14:58:45 GMT'/>
+    <meta name='modified' content='Thu, 23 Jan 2025 22:31:01 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -46,29 +47,40 @@
         <Viewpoint
             description='Inital View'
             position='0 0 12.1899'/>
+        <EnvironmentLight
+            intensity='0.75'>
+          <ImageCubeMapTexture containerField='diffuseTexture'
+              url='"assets/helipad-diffuse.jpg"'>
+            <TextureProperties DEF='_2'
+                generateMipMaps='true'
+                minificationFilter='NICEST'
+                magnificationFilter='NICEST'/>
+          </ImageCubeMapTexture>
+          <ImageCubeMapTexture containerField='specularTexture'
+              url='"assets/helipad-specular.jpg"'>
+            <TextureProperties USE='_2'/>
+          </ImageCubeMapTexture>
+        </EnvironmentLight>
         <Transform>
           <Inline DEF='Beethoven'
               global='true'
-              url='"assets/beethoven.x3d"'/>
+              url='"assets/Beethoven.x3d"'/>
         </Transform>
       </Layer>
       <Layer DEF='HUD'>
         <Group DEF='Button'>
-          <ProtoInstance name='BooleanSwitch' DEF='_1'>
+          <ProtoInstance name='BooleanSwitch' DEF='_9'>
             <fieldValue name='whichChoice' value='true'/>
-            <fieldValue name='bboxSize' value='-1 -1 -1'/>
             <fieldValue name='children'>
               <Transform DEF='RoundedRectangle2D'
                   translation='0 -3.55158 0'>
-                <Shape DEF='_2'>
+                <Shape DEF='_10'>
                   <Appearance>
                     <Material
                         diffuseColor='0 0 0'/>
                   </Appearance>
                   <ProtoInstance name='RoundedRectangle2D' containerField='geometry'>
-                    <fieldValue name='cornerRadius' value='1'/>
                     <fieldValue name='size' value='0.7 0.4'/>
-                    <fieldValue name='solid' value='true'/>
                   </ProtoInstance>
                 </Shape>
                 <Transform
@@ -85,7 +97,7 @@
               </Transform>
               <Transform DEF='RoundedRectangle2D_1'
                   translation='0 -3.55158 0'>
-                <Shape USE='_2'/>
+                <Shape USE='_10'/>
                 <Transform
                     translation='0.13 0 0'>
                   <Shape USE='_3'/>
@@ -104,7 +116,7 @@
               translation='0 -4 0'>
             <Shape>
               <Text DEF='_7'
-                  string='"1,147 ms"'>
+                  string='"591 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -149,7 +161,7 @@ function set_active (value, time)
     <ROUTE fromNode='_5' fromField='triggerTrue' toNode='_6' toField='set_boolean'/>
     <ROUTE fromNode='_4' fromField='touchTime' toNode='_5' toField='set_triggerTime'/>
     <ROUTE fromNode='_6' fromField='toggle_changed' toNode='Beethoven' toField='set_load'/>
-    <ROUTE fromNode='_6' fromField='toggle_changed' toNode='_1' toField='set_whichChoice'/>
+    <ROUTE fromNode='_6' fromField='toggle_changed' toNode='_9' toField='set_whichChoice'/>
     <ROUTE fromNode='_8' fromField='isActive' toNode='LoadTimeScript' toField='set_active'/>
     <ROUTE fromNode='LoadTimeScript' fromField='string_changed' toNode='_7' toField='set_string'/>
   </Scene>
