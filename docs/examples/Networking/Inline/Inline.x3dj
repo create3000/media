@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:12:20 GMT"
+          "@content": "Thu, 23 Jan 2025 14:58:45 GMT"
         }
       ],
       "component": [
@@ -191,6 +191,10 @@
                                   "@value": true
                                 },
                                 {
+                                  "@name": "bboxSize",
+                                  "@value": [ -1, -1, -1 ]
+                                },
+                                {
                                   "@name": "children",
                                   "-children": [
                                     { "Transform":
@@ -215,8 +219,16 @@
                                                   "@name": "RoundedRectangle2D",
                                                   "fieldValue": [
                                                     {
+                                                      "@name": "cornerRadius",
+                                                      "@value": 1
+                                                    },
+                                                    {
                                                       "@name": "size",
                                                       "@value": [ 0.7, 0.4 ]
+                                                    },
+                                                    {
+                                                      "@name": "solid",
+                                                      "@value": true
                                                     }
                                                   ]
                                                 }
@@ -414,17 +426,17 @@
         { "ROUTE":
           {
             "@fromNode": "_6",
-            "@fromField": "toggle",
+            "@fromField": "toggle_changed",
             "@toNode": "Beethoven",
-            "@toField": "load"
+            "@toField": "set_load"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "_6",
-            "@fromField": "toggle",
+            "@fromField": "toggle_changed",
             "@toNode": "_1",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -440,7 +452,7 @@
             "@fromNode": "LoadTimeScript",
             "@fromField": "string_changed",
             "@toNode": "_7",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         }
       ]

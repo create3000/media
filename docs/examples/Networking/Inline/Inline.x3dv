@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.0.5
 
 PROFILE Interchange
 
@@ -13,8 +13,8 @@ META "comment" "Rise and Shine"
 META "created" "Tue, 28 Nov 2017 11:47:53 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:12:19 GMT"
+META "generator" "x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Thu, 23 Jan 2025 14:58:45 GMT"
 
 EXTERNPROTO BooleanSwitch [
   inputOutput    SFBool  whichChoice
@@ -69,6 +69,7 @@ LayerSet {
           children [
             DEF _1 BooleanSwitch {
               whichChoice TRUE
+              bboxSize -1 -1 -1
               children [
                 DEF RoundedRectangle2D Transform {
                   translation 0 -3.55158 0
@@ -80,7 +81,9 @@ LayerSet {
                         }
                       }
                       geometry RoundedRectangle2D {
+                        cornerRadius 1
                         size 0.7 0.4
+                        solid TRUE
                       }
                     }
                     Transform {
