@@ -13,7 +13,7 @@
     <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 23 Jan 2025 22:39:47 GMT'/>
+    <meta name='modified' content='Fri, 24 Jan 2025 13:49:47 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -343,7 +343,7 @@
               translation='0 -4 0'>
             <Shape>
               <Text DEF='_7'
-                  string='"591 ms"'>
+                  string='"527 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -364,20 +364,20 @@ let startTime = 0;
 
 function initialize ()
 {
-   string_changed [0] = "0 ms"
+   string_changed [0] = "0 ms";
 }
 
 function set_active (value, time)
 {
    if (value)
    {
-      startTime = Date .now ()
+      startTime = Date .now ();
    }
    else
    {
-      const loadTime = Math .floor (Date .now () - startTime)
+      const loadTime = Math .floor (Date .now () - startTime);
 
-      string_changed [0] = `${loadTime .toLocaleString ("en")} ms`
+      string_changed [0] = `${loadTime .toLocaleString ("en")} ms`;
    }
 }
 ]]>
