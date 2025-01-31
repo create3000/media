@@ -1,0 +1,31 @@
+#X3D V4.0 utf8 X_ITE V11.1.0
+
+PROFILE Interchange
+
+COMPONENT PointingDeviceSensor : 1
+
+META "created" "Fri, 31 Jan 2025 17:24:45 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
+META "modified" "Fri, 31 Jan 2025 17:25:23 GMT"
+
+DEF Monolith1Touch TouchSensor { }
+
+Shape {
+  appearance Appearance {
+    material DEF Monolith1Facade Material {
+      diffuseColor 0.2 0.2 0.2
+    }
+  }
+  geometry Box {
+    size 2 4 0.3
+  }
+}
+
+DEF Monolith1Timer TimeSensor {
+  cycleInterval 4
+  stopTime 0.1
+}
+
+ROUTE Monolith1Touch.touchTime TO Monolith1Timer.set_startTime
+ROUTE Monolith1Timer.fraction_changed TO Monolith1Facade.set_transparency
