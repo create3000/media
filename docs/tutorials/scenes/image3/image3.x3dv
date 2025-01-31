@@ -1,0 +1,30 @@
+#X3D V4.0 utf8 X_ITE V11.1.0
+
+PROFILE Interchange
+
+COMPONENT Geometry2D : 2
+
+META "created" "Fri, 31 Jan 2025 17:31:05 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
+META "modified" "Fri, 31 Jan 2025 21:49:29 GMT"
+
+DEF Gray Background {
+  skyColor 0.2 0.2 0.2
+}
+
+Transform {
+  scale 0.02 0.02 0.02
+  children Shape {
+    appearance Appearance {
+      material Material { }
+      texture MovieTexture {
+        url "file_example_MP4_480_1_5MG.mp4"
+        loop TRUE
+      }
+    }
+    geometry Rectangle2D {
+      size 480 270
+    }
+  }
+}
