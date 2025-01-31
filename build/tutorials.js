@@ -6,7 +6,8 @@ const
    path               = require ("path"),
    { sh, systemSync } = require ("shell-tools"),
    cwd                = process .cwd (),
-   media              = "https://create3000.github.io/media/tutorials";
+   media              = "https://create3000.github.io/media/tutorials",
+   includes           = new Set (process .argv .slice (2));
 
 function html (folder)
 {
@@ -26,6 +27,19 @@ function html (folder)
    fs .writeFileSync (`${folder}/example.html`, html);
 }
 
+function image (folder)
+{
+   const base = path .basename (folder);
+
+   if (includes .size && !includes .has (base))
+      return;
+
+   console .log (base);
+
+   process .chdir (folder);
+   systemSync (`npx --yes x3d-image -s 1000x562 -i ${base}.x3dv -o screenshot.png`);
+}
+
 function zip (folder)
 {
    const base = path .basename (folder);
@@ -38,17 +52,25 @@ function zip (folder)
 
 function example (folder)
 {
+   const base = path .basename (folder);
+
+   if (includes .size && !includes .has (base))
+      return;
+
    html (folder);
+   image (folder);
    zip (folder);
 }
 
 function main ()
 {
-   example (path .join (cwd, "docs/tutorials/hello-world"));
+   const
+      scenes  = path .join (cwd, "docs/tutorials/scenes"),
+      folders = Array .from (fs .readdirSync (scenes))
 
-   const scenes = path .join (cwd, "docs/tutorials/scenes");
+   folders .push (path .join (cwd, "docs/tutorials/hello-world"));
 
-   for (const folder of fs .readdirSync (scenes))
+   for (const folder of folders)
       example (path .join (scenes, folder));
 }
 
