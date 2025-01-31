@@ -1,0 +1,26 @@
+#X3D V4.0 utf8 X_ITE V11.1.0
+
+PROFILE Interchange
+
+COMPONENT PointingDeviceSensor : 1
+
+META "created" "Fri, 31 Jan 2025 16:25:04 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
+META "modified" "Fri, 31 Jan 2025 16:26:15 GMT"
+
+Transform {
+  children [
+    DEF Rotator CylinderSensor { }
+    DEF RotateMe Transform {
+      children Shape {
+        appearance Appearance {
+          material Material { }
+        }
+        geometry Box { }
+      }
+    }
+  ]
+}
+
+ROUTE Rotator.rotation_changed TO RotateMe.set_rotation
