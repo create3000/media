@@ -1,0 +1,53 @@
+#X3D V4.0 utf8 X_ITE V11.1.0
+
+PROFILE Interchange
+
+META "created" "Fri, 31 Jan 2025 22:38:50 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
+META "modified" "Fri, 31 Jan 2025 22:44:32 GMT"
+
+Viewpoint {
+  navigationInfo NavigationInfo {
+    type [
+      "WALK",
+      "ANY"
+    ]
+  }
+}
+
+DirectionalLight {
+  metadata MetadataSet {
+    name "DirectionalLight"
+    reference "https://create3000.github.io/sunrize/"
+    value MetadataFloat {
+      name "location"
+      value [
+        0,
+        0,
+        0
+      ]
+    }
+  }
+  direction -1 -1 -1
+}
+
+DEF Box_1 Transform {
+  translation 0 -1 0
+  children Shape {
+    appearance Appearance {
+      material Material { }
+      texture PixelTexture {
+        image 2 2 1
+          0xff 0x0
+          0x0 0xff
+      }
+      textureTransform TextureTransform {
+        scale 200 200
+      }
+    }
+    geometry Box {
+      size 200 1 200
+    }
+  }
+}
