@@ -2,12 +2,35 @@
 
 PROFILE Interchange
 
+COMPONENT Text : 1
+
 META "created" "Sat, 01 Feb 2025 09:48:46 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
-META "modified" "Sat, 01 Feb 2025 09:49:24 GMT"
+META "modified" "Sat, 01 Feb 2025 14:04:03 GMT"
 
 WorldInfo {
   title "Our Masterpiece"
   info "License GPLv3, https://www.gnu.org/licenses/gpl-3.0.en.html"
+}
+
+DEF Text Transform {
+  children Shape {
+    appearance Appearance {
+      material Material { }
+    }
+    geometry Text {
+      string [
+        "Select",
+        "Context Menu > Show World Info"
+      ]
+      fontStyle FontStyle {
+        size 0.61603
+        justify [
+          "MIDDLE",
+          "MIDDLE"
+        ]
+      }
+    }
+  }
 }
