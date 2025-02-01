@@ -31,7 +31,6 @@ function image (folder)
 {
    const base = path .basename (folder);
 
-   console .log (base);
    process .chdir (folder);
 
    systemSync (`npx --yes x3d-image -s 1000x562 -i ${base}.x3dv -o screenshot.png`);
@@ -58,6 +57,8 @@ function example (folder)
 
    if (includes .size && !includes .has (base))
       return;
+
+   console .log (base);
 
    html (folder);
    image (folder);
