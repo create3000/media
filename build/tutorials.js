@@ -59,9 +59,9 @@ function example (folder)
    if (includes .size && !includes .has (base))
       return;
 
-   // html (folder);
+   html (folder);
    image (folder);
-   // zip (folder);
+   zip (folder);
 }
 
 function main ()
