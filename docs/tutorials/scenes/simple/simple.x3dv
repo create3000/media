@@ -1,0 +1,23 @@
+#X3D V4.0 utf8 X_ITE V11.1.0
+
+PROFILE Interchange
+
+COMPONENT PointingDeviceSensor : 1
+
+META "created" "Sat, 01 Feb 2025 10:08:27 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
+META "modified" "Sat, 01 Feb 2025 10:10:23 GMT"
+
+DEF Sensor PlaneSensor {
+  offset 0 2 0
+}
+
+DEF XForm Transform {
+  translation 0 2 0
+  children Shape {
+    geometry Sphere { }
+  }
+}
+
+ROUTE Sensor.translation_changed TO XForm.set_translation
