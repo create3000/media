@@ -1,0 +1,50 @@
+#X3D V4.0 utf8 X_ITE V11.1.0
+
+PROFILE Interchange
+
+COMPONENT Text : 1
+
+META "created" "Thu, 18 Jul 2024 10:00:28 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.47, https://create3000.github.io/sunrize/"
+META "modified" "Sat, 01 Feb 2025 11:42:09 GMT"
+
+Viewpoint {
+  description "Home"
+  position 0 -1.01581 6.02612
+  centerOfRotation 0 -1.01581 0
+}
+
+Transform {
+  children Shape {
+    appearance Appearance {
+      texture ImageTexture {
+        url "earth.jpg"
+      }
+    }
+    geometry Sphere { }
+  }
+}
+
+Transform {
+  translation 0 -1.5 0
+  children Shape {
+    appearance Appearance {
+      material Material {
+        diffuseColor 0 0.5 1
+      }
+    }
+    geometry Text {
+      string [
+        "Hello",
+        "World!"
+      ]
+      fontStyle FontStyle {
+        justify [
+          "MIDDLE",
+          "BEGIN"
+        ]
+      }
+    }
+  }
+}
