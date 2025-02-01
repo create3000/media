@@ -17,8 +17,6 @@ function html (folder)
       file     = path .join (folder, basename),
       relative = path .relative (path .join (cwd, "docs/tutorials/"), file);
 
-   console .log (relative);
-
    let html = sh (`cat ${cwd}/example-template.html`);
    html = html .replace (/BASE/sg, base);
    html = html .replace (/FILE_NAME/sg, basename);
