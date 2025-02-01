@@ -31,13 +31,12 @@ function image (folder)
 {
    const base = path .basename (folder);
 
-   if (includes .size && !includes .has (base))
-      return;
-
    console .log (base);
-
    process .chdir (folder);
+
    systemSync (`npx --yes x3d-image -s 1000x562 -i ${base}.x3dv -o screenshot.png`);
+   systemSync (`convert screenshot.png screenshot.avif`);
+   systemSync (`rm screenshot.png`);
 }
 
 function zip (folder)
@@ -54,21 +53,22 @@ function example (folder)
 {
    const base = path .basename (folder);
 
+   if (base .startsWith ("."))
+      return;
+
    if (includes .size && !includes .has (base))
       return;
 
-   html (folder);
+   // html (folder);
    image (folder);
-   zip (folder);
+   // zip (folder);
 }
 
 function main ()
 {
    const
       scenes  = path .join (cwd, "docs/tutorials/scenes"),
-      folders = Array .from (fs .readdirSync (scenes))
-
-   folders .push (path .join (cwd, "docs/tutorials/hello-world"));
+      folders = Array .from (fs .readdirSync (scenes));
 
    for (const folder of folders)
       example (path .join (scenes, folder));
