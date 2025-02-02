@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.48, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.18, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:11:08 GMT"
+          "@content": "Sun, 02 Feb 2025 16:58:24 GMT"
         }
       ],
       "component": [
@@ -44,28 +44,10 @@
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
         { "Transform":
           {
-            "@DEF": "ElevationGrid",
-            "-children": [
-              { "Inline":
-                {
-                  "@DEF": "model",
-                  "@global": true,
-                  "@url": [ "model.x3d", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/Navigation/Billboard/model.x3d" ]
-                }
-              }
-            ]
-          }
-        },
-        { "Transform":
-          {
-            "@DEF": "North",
-            "@translation": [ 18.8727, 2.69088, 0 ],
+            "@DEF": "North_1",
+            "@translation": [ 18.8727, 3.931397, 0 ],
             "-children": [
               { "Billboard":
                 {
@@ -105,8 +87,8 @@
         },
         { "Transform":
           {
-            "@DEF": "East",
-            "@translation": [ 38.8519, 2.69088, 19.6852 ],
+            "@DEF": "East_1",
+            "@translation": [ 38.8519, 3.931397, 19.6852 ],
             "-children": [
               { "Billboard":
                 {
@@ -141,8 +123,8 @@
         },
         { "Transform":
           {
-            "@DEF": "South",
-            "@translation": [ 19.2866, 2.69088, 38.9015 ],
+            "@DEF": "South_1",
+            "@translation": [ 19.2866, 3.931397, 38.9015 ],
             "-children": [
               { "Billboard":
                 {
@@ -177,8 +159,8 @@
         },
         { "Transform":
           {
-            "@DEF": "West",
-            "@translation": [ -0.326128, 2.69088, 18.1129 ],
+            "@DEF": "West_1",
+            "@translation": [ -0.326128, 3.931397, 18.1129 ],
             "-children": [
               { "Billboard":
                 {
@@ -217,6 +199,12 @@
             "@position": [ 34.6873, 15.7369, 59.8055 ],
             "@orientation": [ -0.684959077473456, 0.728121297606291, 0.0258928206042409, 0.480507504601277 ],
             "@centerOfRotation": [ 19.481, 1.24912, 19.4962 ]
+          }
+        },
+        { "Inline":
+          {
+            "@DEF": "Gemany",
+            "@url": [ "assets/Gemany.x3d" ]
           }
         }
       ]
