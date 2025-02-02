@@ -1,19 +1,51 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.1.0
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:11:48 GMT"
+META "created" "Sun, 02 Feb 2025 15:25:49 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.48, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.18, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sun, 02 Feb 2025 15:30:52 GMT"
 
-NavigationInfo {
-  type "NONE"
-  headlight FALSE
+DEF CloudySky TextureBackground {
+  frontTexture ImageTexture {
+    url "assets/cloudy-sky/cloudy-sky-front.jpg"
+    textureProperties DEF _12 TextureProperties {
+      minificationFilter "DEFAULT"
+      magnificationFilter "DEFAULT"
+      boundaryModeS "CLAMP_TO_EDGE"
+      boundaryModeT "CLAMP_TO_EDGE"
+      boundaryModeR "CLAMP_TO_EDGE"
+      textureCompression "DEFAULT"
+    }
+  }
+  backTexture ImageTexture {
+    url "assets/cloudy-sky/cloudy-sky-back.jpg"
+    textureProperties USE _12
+  }
+  leftTexture ImageTexture {
+    url "assets/cloudy-sky/cloudy-sky-left.jpg"
+    textureProperties USE _12
+  }
+  rightTexture ImageTexture {
+    url "assets/cloudy-sky/cloudy-sky-right.jpg"
+    textureProperties USE _12
+  }
+  topTexture ImageTexture {
+    url "assets/cloudy-sky/cloudy-sky-top.jpg"
+    textureProperties USE _12
+  }
+  bottomTexture ImageTexture {
+    url "assets/cloudy-sky/cloudy-sky-bottom.jpg"
+    textureProperties USE _12
+  }
 }
 
 DEF ViewpointAnimationGroup Transform {
-  rotation 0 1 0 1.19642347297739
+  rotation 0 1 0 0.815138439533142
   children [
     DEF ViewpointAnimation Group {
       children [
@@ -37,53 +69,20 @@ DEF ViewpointAnimationGroup Transform {
     }
     DEF _11 Viewpoint {
       description "Initial View"
-      position 0.6278876 2.928707 11.40535
-      orientation -0.972836747446137 0.230001328980228 0.026230735516769 0.263562140648494
+      position 0.4852925 2.631094 12.79978
+      orientation -0.99018206656615 0.138835310278101 0.0162552044205437 0.205934670283968
       centerOfRotation 0.110902 -0.135934 -0.207341
+      navigationInfo NavigationInfo {
+        type "NONE"
+        headlight FALSE
+      }
     }
   ]
 }
 
-DEF Venus Group {
-  children [
-    DEF CloudySky TextureBackground {
-      frontTexture ImageTexture {
-        url "cloudy-sky/cloudy-sky-front.jpg"
-        textureProperties DEF _12 TextureProperties {
-          minificationFilter "DEFAULT"
-          magnificationFilter "DEFAULT"
-          boundaryModeS "CLAMP_TO_EDGE"
-          boundaryModeT "CLAMP_TO_EDGE"
-          boundaryModeR "CLAMP_TO_EDGE"
-          textureCompression "DEFAULT"
-        }
-      }
-      backTexture ImageTexture {
-        url "cloudy-sky/cloudy-sky-back.jpg"
-        textureProperties USE _12
-      }
-      leftTexture ImageTexture {
-        url "cloudy-sky/cloudy-sky-left.jpg"
-        textureProperties USE _12
-      }
-      rightTexture ImageTexture {
-        url "cloudy-sky/cloudy-sky-right.jpg"
-        textureProperties USE _12
-      }
-      topTexture ImageTexture {
-        url "cloudy-sky/cloudy-sky-top.jpg"
-        textureProperties USE _12
-      }
-      bottomTexture ImageTexture {
-        url "cloudy-sky/cloudy-sky-bottom.jpg"
-        textureProperties USE _12
-      }
-    }
-    DEF venus Inline {
-      global TRUE
-      url [ "venus.x3d", "file:///home/holger/Projekte/Library/Components/Navigation/Viewpoint/venus.x3d" ]
-    }
-  ]
+DEF Venus Inline {
+  global TRUE
+  url "assets/venus.x3d"
 }
 
 DEF EnterWorlScript Script {

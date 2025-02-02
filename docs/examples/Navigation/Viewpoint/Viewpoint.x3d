@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Scripting' level='1'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:11:45 GMT'/>
+    <meta name='created' content='Sun, 02 Feb 2025 15:25:49 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.48, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.0.18, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sun, 02 Feb 2025 15:30:52 GMT'/>
   </head>
   <Scene>
-    <NavigationInfo
-        type='"NONE"'
-        headlight='false'/>
+    <TextureBackground DEF='CloudySky'>
+      <ImageTexture containerField='frontTexture'
+          url='"assets/cloudy-sky/cloudy-sky-front.jpg"'>
+        <TextureProperties DEF='_12'
+            minificationFilter='DEFAULT'
+            magnificationFilter='DEFAULT'
+            boundaryModeS='CLAMP_TO_EDGE'
+            boundaryModeT='CLAMP_TO_EDGE'
+            boundaryModeR='CLAMP_TO_EDGE'
+            textureCompression='DEFAULT'/>
+      </ImageTexture>
+      <ImageTexture containerField='backTexture'
+          url='"assets/cloudy-sky/cloudy-sky-back.jpg"'>
+        <TextureProperties USE='_12'/>
+      </ImageTexture>
+      <ImageTexture containerField='leftTexture'
+          url='"assets/cloudy-sky/cloudy-sky-left.jpg"'>
+        <TextureProperties USE='_12'/>
+      </ImageTexture>
+      <ImageTexture containerField='rightTexture'
+          url='"assets/cloudy-sky/cloudy-sky-right.jpg"'>
+        <TextureProperties USE='_12'/>
+      </ImageTexture>
+      <ImageTexture containerField='topTexture'
+          url='"assets/cloudy-sky/cloudy-sky-top.jpg"'>
+        <TextureProperties USE='_12'/>
+      </ImageTexture>
+      <ImageTexture containerField='bottomTexture'
+          url='"assets/cloudy-sky/cloudy-sky-bottom.jpg"'>
+        <TextureProperties USE='_12'/>
+      </ImageTexture>
+    </TextureBackground>
     <Transform DEF='ViewpointAnimationGroup'
-        rotation='0 1 0 1.47937557509854'>
+        rotation='0 1 0 0.815138439533142'>
       <Group DEF='ViewpointAnimation'>
         <TimeSensor DEF='ViewpointAnimationTimer'
             cycleInterval='60'
@@ -28,47 +60,17 @@
       </Group>
       <Viewpoint DEF='_11'
           description='Initial View'
-          position='1.043896 2.470151 11.57713'
-          orientation='-0.929284859463679 0.367683204559937 0.0351953271915668 0.251741700589098'
-          centerOfRotation='0.110902 -0.135934 -0.207341'/>
+          position='0.4852925 2.631094 12.79978'
+          orientation='-0.99018206656615 0.138835310278101 0.0162552044205437 0.205934670283968'
+          centerOfRotation='0.110902 -0.135934 -0.207341'>
+        <NavigationInfo containerField='navigationInfo'
+            type='"NONE"'
+            headlight='false'/>
+      </Viewpoint>
     </Transform>
-    <Group DEF='Venus'>
-      <TextureBackground DEF='CloudySky'>
-        <ImageTexture containerField='frontTexture'
-            url='"cloudy-sky/cloudy-sky-front.jpg"'>
-          <TextureProperties DEF='_12'
-              minificationFilter='DEFAULT'
-              magnificationFilter='DEFAULT'
-              boundaryModeS='CLAMP_TO_EDGE'
-              boundaryModeT='CLAMP_TO_EDGE'
-              boundaryModeR='CLAMP_TO_EDGE'
-              textureCompression='DEFAULT'/>
-        </ImageTexture>
-        <ImageTexture containerField='backTexture'
-            url='"cloudy-sky/cloudy-sky-back.jpg"'>
-          <TextureProperties USE='_12'/>
-        </ImageTexture>
-        <ImageTexture containerField='leftTexture'
-            url='"cloudy-sky/cloudy-sky-left.jpg"'>
-          <TextureProperties USE='_12'/>
-        </ImageTexture>
-        <ImageTexture containerField='rightTexture'
-            url='"cloudy-sky/cloudy-sky-right.jpg"'>
-          <TextureProperties USE='_12'/>
-        </ImageTexture>
-        <ImageTexture containerField='topTexture'
-            url='"cloudy-sky/cloudy-sky-top.jpg"'>
-          <TextureProperties USE='_12'/>
-        </ImageTexture>
-        <ImageTexture containerField='bottomTexture'
-            url='"cloudy-sky/cloudy-sky-bottom.jpg"'>
-          <TextureProperties USE='_12'/>
-        </ImageTexture>
-      </TextureBackground>
-      <Inline DEF='venus'
-          global='true'
-          url='"venus.x3d", "file:///home/holger/Projekte/Library/Components/Navigation/Viewpoint/venus.x3d"'/>
-    </Group>
+    <Inline DEF='Venus'
+        global='true'
+        url='"assets/venus.x3d"'/>
     <Script DEF='EnterWorlScript'>
 <![CDATA[ecmascript:
 
