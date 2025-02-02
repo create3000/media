@@ -32,7 +32,7 @@ function image (folder)
    process .chdir (folder);
 
    systemSync (`npx --yes x3d-image -s 1000x562 -i ${base}.x3dv -o screenshot.png`);
-   systemSync (`convert screenshot.png screenshot.avif`);
+   systemSync (`magick screenshot.png screenshot.avif`);
    systemSync (`rm screenshot.png`);
 }
 

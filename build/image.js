@@ -34,7 +34,7 @@ function image (folder)
 
    process .chdir (folder);
    systemSync (`npx --yes x3d-image ${extra} -s 1000x562 -i ${base}.x3d -o screenshot.png`);
-   systemSync (`convert -resize 110x62 screenshot.png screenshot-small.png`);
+   systemSync (`magick screenshot.png -resize 110x62 screenshot-small.png`);
 }
 
 function main ()
