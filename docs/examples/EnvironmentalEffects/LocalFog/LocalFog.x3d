@@ -12,7 +12,7 @@
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
     <meta name='generator' content='x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Mon, 03 Feb 2025 11:44:36 GMT'/>
+    <meta name='modified' content='Mon, 03 Feb 2025 15:36:14 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -117,7 +117,7 @@
           </Transform>
           <LocalFog DEF='_2'
               color='0.792157 0.792157 0.792157'
-              visibilityRange='90.47181'/>
+              visibilityRange='90'/>
         </Transform>
       </Layer>
       <Layer>
@@ -202,6 +202,11 @@
               <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='90'/>
 <![CDATA[ecmascript:
 
+function initialize ()
+{
+	set_value (currentValue);
+}
+
 function set_translation (value)
 {
 	set_value (minValue + (value .x * (maxValue - minValue)));
@@ -209,9 +214,6 @@ function set_translation (value)
 
 function set_value (value)
 {
-	if (value == currentValue)
-		return;
-
 	currentValue       = value;
 	value_changed      = value;
 	string_changed [0] = description + " " + currentValue .toFixed (1);
@@ -299,6 +301,11 @@ function set_value (value)
               <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='50'/>
 <![CDATA[ecmascript:
 
+function initialize ()
+{
+	set_value (currentValue);
+}
+
 function set_translation (value)
 {
 	set_value (minValue + (value .x * (maxValue - minValue)));
@@ -306,9 +313,6 @@ function set_translation (value)
 
 function set_value (value)
 {
-	if (value == currentValue)
-		return;
-
 	currentValue       = value;
 	value_changed      = value;
 	string_changed [0] = description + " " + currentValue .toFixed (1);

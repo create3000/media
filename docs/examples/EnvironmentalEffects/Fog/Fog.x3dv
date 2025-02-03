@@ -13,7 +13,7 @@ META "created" "Mon, 04 Feb 2019 10:59:00 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Mon, 03 Feb 2025 11:44:24 GMT"
+META "modified" "Mon, 03 Feb 2025 15:36:07 GMT"
 
 WorldInfo { }
 
@@ -39,6 +39,7 @@ LayerSet {
         DEF _4 Fog {
           fogType "EXPONENTIAL"
           color 0.791 0.791 0.791
+          visibilityOffset 5
           visibilityRange 50.33668
         }
         DirectionalLight {
@@ -68,8 +69,8 @@ LayerSet {
         OrthoViewpoint { }
         DEF FogMenu Group {
           children [
-            DEF Header_1 Transform {
-              translation 1.6905 -0.859496 -1
+            DEF Header Transform {
+              translation 1.6905 -0.7499781 -1
               scale 0.0672307 0.0672307 0.0672307
               children Shape {
                 appearance Appearance {
@@ -91,15 +92,15 @@ LayerSet {
                 }
               }
             }
-            DEF visibilityRangeText Transform {
-              translation 1.6905 -0.945 -1
+            DEF visibilityOffsetText Transform {
+              translation 1.6905 -0.8430351 -1
               scale 0.0672307 0.0672307 0.0672307
               children Shape {
                 appearance Appearance {
                   material Material { }
                 }
                 geometry DEF _2 Text {
-                  string "visibilityRange 50.0"
+                  string "visibilityOffset 5.0"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -108,8 +109,8 @@ LayerSet {
                 }
               }
             }
-            DEF visibilityRangeSlider_1 Transform {
-              translation 0.0735 -0.9285 -3.51117e-6
+            DEF visibilityOffsetSlider Transform {
+              translation 0.0735 -0.8265351 -3.51117e-6
               center 0 -0.027 0
               children [
                 DEF IndexedLineSet Transform {
@@ -145,7 +146,91 @@ LayerSet {
                   offset 0.5084513 0 0
                   maxPosition 1 0
                 }
-                DEF visibilityRangeScript Script {
+                DEF visibilityOffsetScript Script {
+                  inputOnly      SFVec3f  set_translation
+                  inputOutput    SFString description "visibilityOffset"
+                  inputOutput    SFFloat  minValue 0
+                  inputOutput    SFFloat  maxValue 99
+                  outputOnly     SFFloat  value_changed
+                  outputOnly     MFString string_changed
+                  initializeOnly SFInt32  currentValue 5
+
+                  url "ecmascript:
+
+function initialize ()
+{
+	set_value (currentValue);
+}
+
+function set_translation (value)
+{
+	set_value (minValue + (value .x * (maxValue - minValue)));
+}
+
+function set_value (value)
+{
+	currentValue       = value;
+	value_changed      = value;
+	string_changed [0] = description + \" \" + currentValue .toFixed (1);
+}"
+                }
+              ]
+            }
+            DEF visibilityRangeText_1 Transform {
+              translation 1.6905 -0.945 -1
+              scale 0.0672307 0.0672307 0.0672307
+              children Shape {
+                appearance Appearance {
+                  material Material { }
+                }
+                geometry DEF _1 Text {
+                  string "visibilityRange 50.0"
+                  solid TRUE
+                  fontStyle FontStyle {
+                    family "SANS"
+                    justify "END"
+                  }
+                }
+              }
+            }
+            DEF visibilityRangeSlider Transform {
+              translation 0.0735 -0.9285 -3.51117e-6
+              center 0 -0.027 0
+              children [
+                DEF IndexedLineSet_1 Transform {
+                  children Shape {
+                    appearance Appearance {
+                      lineProperties LineProperties {
+                        linewidthScaleFactor 2
+                      }
+                      material DEF Artdeco31_2 Material {
+                        emissiveColor 0.721 0.721 0.721
+                      }
+                    }
+                    geometry IndexedLineSet {
+                      colorPerVertex FALSE
+                      coordIndex [ 0, 1, -1 ]
+                      coord Coordinate {
+                        point [ 0 0 0, 1 0 0 ]
+                      }
+                    }
+                  }
+                }
+                DEF Disk2D_1 Transform {
+                  translation 0.5084513 0 0
+                  scale 0.027 0.0267372 0.0267372
+                  children Shape {
+                    appearance Appearance {
+                      material Material { }
+                    }
+                    geometry Disk2D { }
+                  }
+                }
+                DEF _5 PlaneSensor {
+                  offset 0.5084513 0 0
+                  maxPosition 1 0
+                }
+                DEF visibilityRangeScript_1 Script {
                   inputOnly      SFVec3f  set_translation
                   inputOutput    SFString description "visibilityRange"
                   inputOutput    SFFloat  minValue 0
@@ -156,9 +241,9 @@ LayerSet {
 
                   url "ecmascript:
 
-function initialized ()
+function initialize ()
 {
-	set_value (value);
+	set_value (currentValue);
 }
 
 function set_translation (value)
@@ -168,11 +253,8 @@ function set_translation (value)
 
 function set_value (value)
 {
-	if (value == currentValue)
-		return;
-
-	currentValue   = value;
-	value_changed  = value;
+	currentValue       = value;
+	value_changed      = value;
 	string_changed [0] = description + \" \" + currentValue .toFixed (1);
 }"
                 }
@@ -185,7 +267,11 @@ function set_value (value)
   ]
 }
 
-ROUTE visibilityRangeScript.string_changed TO _2.set_string
+ROUTE visibilityRangeScript_1.string_changed TO _1.set_string
+ROUTE _5.translation_changed TO Disk2D_1.set_translation
+ROUTE _5.translation_changed TO visibilityRangeScript_1.set_translation
+ROUTE visibilityRangeScript_1.value_changed TO _4.set_visibilityRange
+ROUTE visibilityOffsetScript.string_changed TO _2.set_string
 ROUTE _3.translation_changed TO Disk2D.set_translation
-ROUTE _3.translation_changed TO visibilityRangeScript.set_translation
-ROUTE visibilityRangeScript.value_changed TO _4.set_visibilityRange
+ROUTE _3.translation_changed TO visibilityOffsetScript.set_translation
+ROUTE visibilityOffsetScript.value_changed TO _4.set_visibilityOffset

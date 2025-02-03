@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 03 Feb 2025 11:44:36 GMT"
+          "@content": "Mon, 03 Feb 2025 15:36:14 GMT"
         }
       ],
       "component": [
@@ -273,7 +273,7 @@
                             {
                               "@DEF": "_2",
                               "@color": [ 0.792157, 0.792157, 0.792157 ],
-                              "@visibilityRange": 90.47181
+                              "@visibilityRange": 90
                             }
                           }
                         ]
@@ -487,6 +487,11 @@
                                     "#sourceCode": [
 "ecmascript:",
 "",
+"function initialize ()",
+"{",
+"\tset_value (currentValue);",
+"}",
+"",
 "function set_translation (value)",
 "{",
 "\tset_value (minValue + (value .x * (maxValue - minValue)));",
@@ -494,9 +499,6 @@
 "",
 "function set_value (value)",
 "{",
-"\tif (value == currentValue)",
-"\t\treturn;",
-"",
 "\tcurrentValue       = value;",
 "\tvalue_changed      = value;",
 "\tstring_changed [0] = description + \" \" + currentValue .toFixed (1);",
@@ -708,6 +710,11 @@
                                     "#sourceCode": [
 "ecmascript:",
 "",
+"function initialize ()",
+"{",
+"\tset_value (currentValue);",
+"}",
+"",
 "function set_translation (value)",
 "{",
 "\tset_value (minValue + (value .x * (maxValue - minValue)));",
@@ -715,9 +722,6 @@
 "",
 "function set_value (value)",
 "{",
-"\tif (value == currentValue)",
-"\t\treturn;",
-"",
 "\tcurrentValue       = value;",
 "\tvalue_changed      = value;",
 "\tstring_changed [0] = description + \" \" + currentValue .toFixed (1);",

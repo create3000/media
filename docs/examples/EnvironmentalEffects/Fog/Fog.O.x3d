@@ -11,7 +11,7 @@
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 03 Feb 2025 11:42:33 GMT'/>
+    <meta name='modified' content='Mon, 03 Feb 2025 15:34:26 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -148,6 +148,7 @@
         <Fog DEF='_4'
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
+            visibilityOffset='5'
             visibilityRange='50.33668'/>
         <DirectionalLight
             direction='0 -1 -1'
@@ -179,8 +180,8 @@
       <Layer>
         <OrthoViewpoint/>
         <Group DEF='FogMenu'>
-          <Transform DEF='Header_1'
-              translation='1.6905 -0.859496 -1'
+          <Transform DEF='Header'
+              translation='1.6905 -0.7499781 -1'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance>
@@ -200,15 +201,15 @@
               </Text>
             </Shape>
           </Transform>
-          <Transform DEF='visibilityRangeText'
-              translation='1.6905 -0.945 -1'
+          <Transform DEF='visibilityOffsetText'
+              translation='1.6905 -0.8430351 -1'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance>
                 <Material/>
               </Appearance>
               <Text DEF='_2'
-                  string='"visibilityRange 50.0"'
+                  string='"visibilityOffset 5.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -216,8 +217,8 @@
               </Text>
             </Shape>
           </Transform>
-          <Transform DEF='visibilityRangeSlider_1'
-              translation='0.0735 -0.9285 -3.51117e-6'
+          <Transform DEF='visibilityOffsetSlider'
+              translation='0.0735 -0.8265351 -3.51117e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet'>
               <Shape>
@@ -248,19 +249,19 @@
             <PlaneSensor DEF='_3'
                 offset='0.5084513 0 0'
                 maxPosition='1 0'/>
-            <Script DEF='visibilityRangeScript'>
+            <Script DEF='visibilityOffsetScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
-              <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
+              <field accessType='inputOutput' type='SFString' name='description' value='visibilityOffset'/>
               <field accessType='inputOutput' type='SFFloat' name='minValue'/>
               <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
-              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='50'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='5'/>
 <![CDATA[ecmascript:
 
-function initialized ()
+function initialize ()
 {
-	set_value (value);
+	set_value (currentValue);
 }
 
 function set_translation (value)
@@ -270,11 +271,84 @@ function set_translation (value)
 
 function set_value (value)
 {
-	if (value == currentValue)
-		return;
+	currentValue       = value;
+	value_changed      = value;
+	string_changed [0] = description + " " + currentValue .toFixed (1);
+}]]>
+            </Script>
+          </Transform>
+          <Transform DEF='visibilityRangeText_1'
+              translation='1.6905 -0.945 -1'
+              scale='0.0672307 0.0672307 0.0672307'>
+            <Shape>
+              <Appearance>
+                <Material/>
+              </Appearance>
+              <Text DEF='_1'
+                  string='"visibilityRange 50.0"'
+                  solid='true'>
+                <FontStyle
+                    family='"SANS"'
+                    justify='"END"'/>
+              </Text>
+            </Shape>
+          </Transform>
+          <Transform DEF='visibilityRangeSlider'
+              translation='0.0735 -0.9285 -3.51117e-6'
+              center='0 -0.027 0'>
+            <Transform DEF='IndexedLineSet_1'>
+              <Shape>
+                <Appearance>
+                  <LineProperties
+                      linewidthScaleFactor='2'/>
+                  <Material DEF='Artdeco31_2'
+                      emissiveColor='0.721 0.721 0.721'/>
+                </Appearance>
+                <IndexedLineSet
+                    colorPerVertex='false'
+                    coordIndex='0, 1, -1'>
+                  <Coordinate
+                      point='0 0 0, 1 0 0'/>
+                </IndexedLineSet>
+              </Shape>
+            </Transform>
+            <Transform DEF='Disk2D_1'
+                translation='0.5084513 0 0'
+                scale='0.027 0.0267372 0.0267372'>
+              <Shape>
+                <Appearance>
+                  <Material/>
+                </Appearance>
+                <Disk2D/>
+              </Shape>
+            </Transform>
+            <PlaneSensor DEF='_5'
+                offset='0.5084513 0 0'
+                maxPosition='1 0'/>
+            <Script DEF='visibilityRangeScript_1'>
+              <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
+              <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
+              <field accessType='inputOutput' type='SFFloat' name='minValue'/>
+              <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
+              <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
+              <field accessType='outputOnly' type='MFString' name='string_changed'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='50'/>
+<![CDATA[ecmascript:
 
-	currentValue   = value;
-	value_changed  = value;
+function initialize ()
+{
+	set_value (currentValue);
+}
+
+function set_translation (value)
+{
+	set_value (minValue + (value .x * (maxValue - minValue)));
+}
+
+function set_value (value)
+{
+	currentValue       = value;
+	value_changed      = value;
 	string_changed [0] = description + " " + currentValue .toFixed (1);
 }]]>
             </Script>
@@ -282,9 +356,13 @@ function set_value (value)
         </Group>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='visibilityRangeScript' fromField='string_changed' toNode='_2' toField='set_string'/>
+    <ROUTE fromNode='visibilityRangeScript_1' fromField='string_changed' toNode='_1' toField='set_string'/>
+    <ROUTE fromNode='_5' fromField='translation_changed' toNode='Disk2D_1' toField='set_translation'/>
+    <ROUTE fromNode='_5' fromField='translation_changed' toNode='visibilityRangeScript_1' toField='set_translation'/>
+    <ROUTE fromNode='visibilityRangeScript_1' fromField='value_changed' toNode='_4' toField='set_visibilityRange'/>
+    <ROUTE fromNode='visibilityOffsetScript' fromField='string_changed' toNode='_2' toField='set_string'/>
     <ROUTE fromNode='_3' fromField='translation_changed' toNode='Disk2D' toField='set_translation'/>
-    <ROUTE fromNode='_3' fromField='translation_changed' toNode='visibilityRangeScript' toField='set_translation'/>
-    <ROUTE fromNode='visibilityRangeScript' fromField='value_changed' toNode='_4' toField='set_visibilityRange'/>
+    <ROUTE fromNode='_3' fromField='translation_changed' toNode='visibilityOffsetScript' toField='set_translation'/>
+    <ROUTE fromNode='visibilityOffsetScript' fromField='value_changed' toNode='_4' toField='set_visibilityOffset'/>
   </Scene>
 </X3D>

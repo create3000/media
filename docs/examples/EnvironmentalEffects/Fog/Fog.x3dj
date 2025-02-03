@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 03 Feb 2025 11:44:24 GMT"
+          "@content": "Mon, 03 Feb 2025 15:36:07 GMT"
         }
       ],
       "component": [
@@ -92,6 +92,7 @@
                         "@DEF": "_4",
                         "@fogType": "EXPONENTIAL",
                         "@color": [ 0.791, 0.791, 0.791 ],
+                        "@visibilityOffset": 5,
                         "@visibilityRange": 50.33668
                       }
                     },
@@ -149,8 +150,8 @@
                         "-children": [
                           { "Transform":
                             {
-                              "@DEF": "Header_1",
-                              "@translation": [ 1.6905, -0.859496, -1 ],
+                              "@DEF": "Header",
+                              "@translation": [ 1.6905, -0.7499781, -1 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -188,8 +189,8 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "visibilityRangeText",
-                              "@translation": [ 1.6905, -0.945, -1 ],
+                              "@DEF": "visibilityOffsetText",
+                              "@translation": [ 1.6905, -0.8430351, -1 ],
                               "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
                               "-children": [
                                 { "Shape":
@@ -205,7 +206,7 @@
                                     "-geometry": { "Text":
                                       {
                                         "@DEF": "_2",
-                                        "@string": [ "visibilityRange 50.0" ],
+                                        "@string": [ "visibilityOffset 5.0" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
@@ -222,8 +223,8 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "visibilityRangeSlider_1",
-                              "@translation": [ 0.0735, -0.9285, -3.51117e-6 ],
+                              "@DEF": "visibilityOffsetSlider",
+                              "@translation": [ 0.0735, -0.8265351, -3.51117e-6 ],
                               "@center": [ 0, -0.027, 0 ],
                               "-children": [
                                 { "Transform":
@@ -297,7 +298,184 @@
                                 },
                                 { "Script":
                                   {
-                                    "@DEF": "visibilityRangeScript",
+                                    "@DEF": "visibilityOffsetScript",
+                                    "field": [
+                                      {
+                                        "@accessType": "inputOnly",
+                                        "@type": "SFVec3f",
+                                        "@name": "set_translation"
+                                      },
+                                      {
+                                        "@accessType": "inputOutput",
+                                        "@type": "SFString",
+                                        "@name": "description",
+                                        "@value": "visibilityOffset"
+                                      },
+                                      {
+                                        "@accessType": "inputOutput",
+                                        "@type": "SFFloat",
+                                        "@name": "minValue"
+                                      },
+                                      {
+                                        "@accessType": "inputOutput",
+                                        "@type": "SFFloat",
+                                        "@name": "maxValue",
+                                        "@value": 99
+                                      },
+                                      {
+                                        "@accessType": "outputOnly",
+                                        "@type": "SFFloat",
+                                        "@name": "value_changed"
+                                      },
+                                      {
+                                        "@accessType": "outputOnly",
+                                        "@type": "MFString",
+                                        "@name": "string_changed"
+                                      },
+                                      {
+                                        "@accessType": "initializeOnly",
+                                        "@type": "SFInt32",
+                                        "@name": "currentValue",
+                                        "@value": 5
+                                      }
+                                    ],
+                                    "#sourceCode": [
+"ecmascript:",
+"",
+"function initialize ()",
+"{",
+"\tset_value (currentValue);",
+"}",
+"",
+"function set_translation (value)",
+"{",
+"\tset_value (minValue + (value .x * (maxValue - minValue)));",
+"}",
+"",
+"function set_value (value)",
+"{",
+"\tcurrentValue       = value;",
+"\tvalue_changed      = value;",
+"\tstring_changed [0] = description + \" \" + currentValue .toFixed (1);",
+"}"
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "visibilityRangeText_1",
+                              "@translation": [ 1.6905, -0.945, -1 ],
+                              "@scale": [ 0.0672307, 0.0672307, 0.0672307 ],
+                              "-children": [
+                                { "Shape":
+                                  {
+                                    "-appearance": { "Appearance":
+                                      {
+                                        "-material": { "Material":
+                                          {
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "-geometry": { "Text":
+                                      {
+                                        "@DEF": "_1",
+                                        "@string": [ "visibilityRange 50.0" ],
+                                        "@solid": true,
+                                        "-fontStyle": { "FontStyle":
+                                          {
+                                            "@family": [ "SANS" ],
+                                            "@justify": [ "END" ]
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          { "Transform":
+                            {
+                              "@DEF": "visibilityRangeSlider",
+                              "@translation": [ 0.0735, -0.9285, -3.51117e-6 ],
+                              "@center": [ 0, -0.027, 0 ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "IndexedLineSet_1",
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-lineProperties": { "LineProperties":
+                                                {
+                                                  "@linewidthScaleFactor": 2
+                                                }
+                                              },
+                                              "-material": { "Material":
+                                                {
+                                                  "@DEF": "Artdeco31_2",
+                                                  "@emissiveColor": [ 0.721, 0.721, 0.721 ]
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "IndexedLineSet":
+                                            {
+                                              "@colorPerVertex": false,
+                                              "@coordIndex": [ 0, 1, -1 ],
+                                              "-coord": { "Coordinate":
+                                                {
+                                                  "@point": [ 0, 0, 0, 1, 0, 0 ]
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "Transform":
+                                  {
+                                    "@DEF": "Disk2D_1",
+                                    "@translation": [ 0.5084513, 0, 0 ],
+                                    "@scale": [ 0.027, 0.0267372, 0.0267372 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-material": { "Material":
+                                                {
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Disk2D":
+                                            {
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                },
+                                { "PlaneSensor":
+                                  {
+                                    "@DEF": "_5",
+                                    "@offset": [ 0.5084513, 0, 0 ],
+                                    "@maxPosition": [ 1, 0 ]
+                                  }
+                                },
+                                { "Script":
+                                  {
+                                    "@DEF": "visibilityRangeScript_1",
                                     "field": [
                                       {
                                         "@accessType": "inputOnly",
@@ -341,9 +519,9 @@
                                     "#sourceCode": [
 "ecmascript:",
 "",
-"function initialized ()",
+"function initialize ()",
 "{",
-"\tset_value (value);",
+"\tset_value (currentValue);",
 "}",
 "",
 "function set_translation (value)",
@@ -353,11 +531,8 @@
 "",
 "function set_value (value)",
 "{",
-"\tif (value == currentValue)",
-"\t\treturn;",
-"",
-"\tcurrentValue   = value;",
-"\tvalue_changed  = value;",
+"\tcurrentValue       = value;",
+"\tvalue_changed      = value;",
 "\tstring_changed [0] = description + \" \" + currentValue .toFixed (1);",
 "}"
                                     ]
@@ -377,7 +552,39 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "visibilityRangeScript",
+            "@fromNode": "visibilityRangeScript_1",
+            "@fromField": "string_changed",
+            "@toNode": "_1",
+            "@toField": "set_string"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_5",
+            "@fromField": "translation_changed",
+            "@toNode": "Disk2D_1",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_5",
+            "@fromField": "translation_changed",
+            "@toNode": "visibilityRangeScript_1",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "visibilityRangeScript_1",
+            "@fromField": "value_changed",
+            "@toNode": "_4",
+            "@toField": "set_visibilityRange"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "visibilityOffsetScript",
             "@fromField": "string_changed",
             "@toNode": "_2",
             "@toField": "set_string"
@@ -395,16 +602,16 @@
           {
             "@fromNode": "_3",
             "@fromField": "translation_changed",
-            "@toNode": "visibilityRangeScript",
+            "@toNode": "visibilityOffsetScript",
             "@toField": "set_translation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "visibilityRangeScript",
+            "@fromNode": "visibilityOffsetScript",
             "@fromField": "value_changed",
             "@toNode": "_4",
-            "@toField": "set_visibilityRange"
+            "@toField": "set_visibilityOffset"
           }
         }
       ]
