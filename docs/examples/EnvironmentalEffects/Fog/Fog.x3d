@@ -33,7 +33,7 @@
         <Fog DEF='_4'
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
-            visibilityOffset='10'
+            visibilityStart='10'
             visibilityRange='50'/>
         <DirectionalLight
             direction='0 -1 -1'
@@ -78,7 +78,7 @@
               </Text>
             </Shape>
           </Transform>
-          <Transform DEF='visibilityOffsetText'
+          <Transform DEF='visibilityStartText'
               translation='1.6905 -0.8430351 -1'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
@@ -86,7 +86,7 @@
                 <Material/>
               </Appearance>
               <Text DEF='_2'
-                  string='"visibilityOffset 10.0"'
+                  string='"visibilityStart 10.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -94,7 +94,7 @@
               </Text>
             </Shape>
           </Transform>
-          <Transform DEF='visibilityOffsetSlider'
+          <Transform DEF='visibilityStartSlider'
               translation='0.0735 -0.8265351 -3.51117e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet'>
@@ -126,9 +126,9 @@
             <PlaneSensor DEF='_3'
                 offset='0.1 0 0'
                 maxPosition='1 0'/>
-            <Script DEF='visibilityOffsetScript'>
+            <Script DEF='visibilityStartScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
-              <field accessType='inputOutput' type='SFString' name='description' value='visibilityOffset'/>
+              <field accessType='inputOutput' type='SFString' name='description' value='visibilityStart'/>
               <field accessType='inputOutput' type='SFFloat' name='minValue'/>
               <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
@@ -237,9 +237,9 @@ function set_value (value)
     <ROUTE fromNode='_5' fromField='translation_changed' toNode='Disk2D_1' toField='set_translation'/>
     <ROUTE fromNode='_5' fromField='translation_changed' toNode='visibilityRangeScript_1' toField='set_translation'/>
     <ROUTE fromNode='visibilityRangeScript_1' fromField='value_changed' toNode='_4' toField='set_visibilityRange'/>
-    <ROUTE fromNode='visibilityOffsetScript' fromField='string_changed' toNode='_2' toField='set_string'/>
+    <ROUTE fromNode='visibilityStartScript' fromField='string_changed' toNode='_2' toField='set_string'/>
     <ROUTE fromNode='_3' fromField='translation_changed' toNode='Disk2D' toField='set_translation'/>
-    <ROUTE fromNode='_3' fromField='translation_changed' toNode='visibilityOffsetScript' toField='set_translation'/>
-    <ROUTE fromNode='visibilityOffsetScript' fromField='value_changed' toNode='_4' toField='set_visibilityOffset'/>
+    <ROUTE fromNode='_3' fromField='translation_changed' toNode='visibilityStartScript' toField='set_translation'/>
+    <ROUTE fromNode='visibilityStartScript' fromField='value_changed' toNode='_4' toField='set_visibilityStart'/>
   </Scene>
 </X3D>

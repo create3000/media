@@ -39,7 +39,7 @@ LayerSet {
         DEF _4 Fog {
           fogType "EXPONENTIAL"
           color 0.791 0.791 0.791
-          visibilityOffset 10
+          visibilityStart 10
           visibilityRange 50
         }
         DirectionalLight {
@@ -93,7 +93,7 @@ LayerSet {
                 }
               }
             }
-            DEF visibilityOffsetText Transform {
+            DEF visibilityStartText Transform {
               translation 1.6905 -0.8430351 -1
               scale 0.0672307 0.0672307 0.0672307
               children Shape {
@@ -101,7 +101,7 @@ LayerSet {
                   material Material { }
                 }
                 geometry DEF _2 Text {
-                  string "visibilityOffset 10.0"
+                  string "visibilityStart 10.0"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -110,7 +110,7 @@ LayerSet {
                 }
               }
             }
-            DEF visibilityOffsetSlider Transform {
+            DEF visibilityStartSlider Transform {
               translation 0.0735 -0.8265351 -3.51117e-6
               center 0 -0.027 0
               children [
@@ -147,9 +147,9 @@ LayerSet {
                   offset 0.1 0 0
                   maxPosition 1 0
                 }
-                DEF visibilityOffsetScript Script {
+                DEF visibilityStartScript Script {
                   inputOnly      SFVec3f  set_translation
-                  inputOutput    SFString description "visibilityOffset"
+                  inputOutput    SFString description "visibilityStart"
                   inputOutput    SFFloat  minValue 0
                   inputOutput    SFFloat  maxValue 99
                   outputOnly     SFFloat  value_changed
@@ -272,7 +272,7 @@ ROUTE visibilityRangeScript_1.string_changed TO _1.set_string
 ROUTE _5.translation_changed TO Disk2D_1.set_translation
 ROUTE _5.translation_changed TO visibilityRangeScript_1.set_translation
 ROUTE visibilityRangeScript_1.value_changed TO _4.set_visibilityRange
-ROUTE visibilityOffsetScript.string_changed TO _2.set_string
+ROUTE visibilityStartScript.string_changed TO _2.set_string
 ROUTE _3.translation_changed TO Disk2D.set_translation
-ROUTE _3.translation_changed TO visibilityOffsetScript.set_translation
-ROUTE visibilityOffsetScript.value_changed TO _4.set_visibilityOffset
+ROUTE _3.translation_changed TO visibilityStartScript.set_translation
+ROUTE visibilityStartScript.value_changed TO _4.set_visibilityStart
