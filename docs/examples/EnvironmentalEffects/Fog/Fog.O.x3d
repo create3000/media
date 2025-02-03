@@ -11,7 +11,7 @@
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 03 Feb 2025 15:34:26 GMT'/>
+    <meta name='modified' content='Mon, 03 Feb 2025 15:38:12 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -148,8 +148,8 @@
         <Fog DEF='_4'
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
-            visibilityOffset='5'
-            visibilityRange='50.33668'/>
+            visibilityOffset='10.30919'
+            visibilityRange='50'/>
         <DirectionalLight
             direction='0 -1 -1'
             shadows='true'/>
@@ -209,7 +209,7 @@
                 <Material/>
               </Appearance>
               <Text DEF='_2'
-                  string='"visibilityOffset 5.0"'
+                  string='"visibilityOffset 10.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -237,7 +237,7 @@
               </Shape>
             </Transform>
             <Transform DEF='Disk2D'
-                translation='0.5084513 0 0'
+                translation='0.1 0 0'
                 scale='0.027 0.0267372 0.0267372'>
               <Shape>
                 <Appearance>
@@ -247,7 +247,7 @@
               </Shape>
             </Transform>
             <PlaneSensor DEF='_3'
-                offset='0.5084513 0 0'
+                offset='0.1 0 0'
                 maxPosition='1 0'/>
             <Script DEF='visibilityOffsetScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
@@ -256,7 +256,7 @@
               <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
-              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='5'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='10'/>
 <![CDATA[ecmascript:
 
 function initialize ()
