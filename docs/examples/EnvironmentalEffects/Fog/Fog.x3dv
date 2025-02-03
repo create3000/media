@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.3.1
+#X3D V4.0 utf8 X_ITE V11.1.1
 
 PROFILE Interchange
 
@@ -11,9 +11,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Mon, 04 Feb 2019 10:59:00 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sun, 10 Mar 2024 19:14:08 GMT"
+META "generator" "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Mon, 03 Feb 2025 11:44:24 GMT"
 
 WorldInfo { }
 
@@ -108,7 +108,7 @@ LayerSet {
                 }
               }
             }
-            DEF visibilityRangeSlider Transform {
+            DEF visibilityRangeSlider_1 Transform {
               translation 0.0735 -0.9285 -3.51117e-6
               center 0 -0.027 0
               children [
@@ -131,23 +131,19 @@ LayerSet {
                     }
                   }
                 }
-                DEF Knob Transform {
-                  children [
-                    DEF Disk2D Transform {
-                      translation 0.5084513 0 0
-                      scale 0.027 0.0267372 0.0267372
-                      children Shape {
-                        appearance Appearance {
-                          material Material { }
-                        }
-                        geometry Disk2D { }
-                      }
+                DEF Disk2D Transform {
+                  translation 0.5084513 0 0
+                  scale 0.027 0.0267372 0.0267372
+                  children Shape {
+                    appearance Appearance {
+                      material Material { }
                     }
-                    DEF _3 PlaneSensor {
-                      offset 0.5084513 0 0
-                      maxPosition 1 0
-                    }
-                  ]
+                    geometry Disk2D { }
+                  }
+                }
+                DEF _3 PlaneSensor {
+                  offset 0.5084513 0 0
+                  maxPosition 1 0
                 }
                 DEF visibilityRangeScript Script {
                   inputOnly      SFVec3f  set_translation

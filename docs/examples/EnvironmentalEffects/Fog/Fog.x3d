@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
@@ -10,9 +10,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.129, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Sun, 10 Mar 2024 19:14:08 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Mon, 03 Feb 2025 11:44:24 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -92,7 +92,7 @@
               </Text>
             </Shape>
           </Transform>
-          <Transform DEF='visibilityRangeSlider'
+          <Transform DEF='visibilityRangeSlider_1'
               translation='0.0735 -0.9285 -3.51117e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet'>
@@ -111,21 +111,19 @@
                 </IndexedLineSet>
               </Shape>
             </Transform>
-            <Transform DEF='Knob'>
-              <Transform DEF='Disk2D'
-                  translation='0.5084513 0 0'
-                  scale='0.027 0.0267372 0.0267372'>
-                <Shape>
-                  <Appearance>
-                    <Material/>
-                  </Appearance>
-                  <Disk2D/>
-                </Shape>
-              </Transform>
-              <PlaneSensor DEF='_3'
-                  offset='0.5084513 0 0'
-                  maxPosition='1 0'/>
+            <Transform DEF='Disk2D'
+                translation='0.5084513 0 0'
+                scale='0.027 0.0267372 0.0267372'>
+              <Shape>
+                <Appearance>
+                  <Material/>
+                </Appearance>
+                <Disk2D/>
+              </Shape>
             </Transform>
+            <PlaneSensor DEF='_3'
+                offset='0.5084513 0 0'
+                maxPosition='1 0'/>
             <Script DEF='visibilityRangeScript'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
               <field accessType='inputOutput' type='SFString' name='description' value='visibilityRange'/>
