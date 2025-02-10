@@ -1,7 +1,8 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.1.1
 
 PROFILE Interchange
 
+COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 
 UNIT angle degree 0.017453292519943295
@@ -9,9 +10,9 @@ UNIT angle degree 0.017453292519943295
 META "created" "Tue, 07 Feb 2023 21:26:14 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:15:43 GMT"
+META "generator" "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Mon, 10 Feb 2025 19:16:54 GMT"
 
 PROTO PointingObjects [ ]
 {
@@ -28,7 +29,7 @@ PROTO PointingObjects [ ]
   }
 
   DEF Script Script {
-    inputOnly      SFBool set_over
+    inputOnly      SFBool set_state
     initializeOnly SFNode group USE _1
     initializeOnly SFNode texture PixelTexture {
       image 2 2 1 0x32 0x96 0x96 0x32
@@ -76,7 +77,8 @@ function createNode ()
 
    scene .addRoute (interpolator, \"value_changed\", transform, \"set_rotation\");
 
-   scene .addRoute (touchSensor, \"isOver\", self, \"set_over\");
+   scene .addRoute (touchSensor, \"isOver\",   self, \"set_state\");
+   scene .addRoute (touchSensor, \"isActive\", self, \"set_state\");
 
    group .children .push (transform);
    touchSensors .push (touchSensor);
@@ -88,21 +90,26 @@ function random (min = -16, max = 16)
    return min + Math .random () * (max - min)
 }
 
-let lastIndex = -1;
-
-function set_over (value, time)
+function set_state (value, time)
 {
-   const index = touchSensors .findIndex (s => s .isOver);
+   const 
+      over   = touchSensors .findIndex (s => s .isOver),
+      active = touchSensors .findIndex (s => s .isActive);
 
-   if (lastIndex > -1)
-      materials [lastIndex] .emissiveColor = new SFColor (0, 0, 0);
+   for (const material of materials)
+      material .emissiveColor = new SFColor (0, 0, 0);
 
-   if (index > -1)
-      materials [index] .emissiveColor = new SFColor (1, 1, 0);
+   if (over > -1)
+      materials [over] .emissiveColor = new SFColor (1, 1, 0);
 
-   lastIndex = index;
+   if (active > -1)
+      materials [active] .emissiveColor = new SFColor (1, 0, 0);
 }
 "
+  }
+
+  DEF Dummy TouchSensor {
+    enabled FALSE
   }
 
   ROUTE _2.fraction_changed TO _3.set_fraction

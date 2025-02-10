@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,18 +20,22 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:15:44 GMT"
+          "@content": "Mon, 10 Feb 2025 19:16:54 GMT"
         }
       ],
       "component": [
+        {
+          "@name": "PointingDeviceSensor",
+          "@level": 1
+        },
         {
           "@name": "Scripting",
           "@level": 1
@@ -81,7 +85,7 @@
                       {
                         "@accessType": "inputOnly",
                         "@type": "SFBool",
-                        "@name": "set_over"
+                        "@name": "set_state"
                       },
                       {
                         "@accessType": "initializeOnly",
@@ -184,7 +188,8 @@
 "",
 "   scene .addRoute (interpolator, \"value_changed\", transform, \"set_rotation\");",
 "",
-"   scene .addRoute (touchSensor, \"isOver\", self, \"set_over\");",
+"   scene .addRoute (touchSensor, \"isOver\",   self, \"set_state\");",
+"   scene .addRoute (touchSensor, \"isActive\", self, \"set_state\");",
 "",
 "   group .children .push (transform);",
 "   touchSensors .push (touchSensor);",
@@ -196,22 +201,29 @@
 "   return min + Math .random () * (max - min)",
 "}",
 "",
-"let lastIndex = -1;",
-"",
-"function set_over (value, time)",
+"function set_state (value, time)",
 "{",
-"   const index = touchSensors .findIndex (s => s .isOver);",
+"   const ",
+"      over   = touchSensors .findIndex (s => s .isOver),",
+"      active = touchSensors .findIndex (s => s .isActive);",
 "",
-"   if (lastIndex > -1)",
-"      materials [lastIndex] .emissiveColor = new SFColor (0, 0, 0);",
+"   for (const material of materials)",
+"      material .emissiveColor = new SFColor (0, 0, 0);",
 "",
-"   if (index > -1)",
-"      materials [index] .emissiveColor = new SFColor (1, 1, 0);",
+"   if (over > -1)",
+"      materials [over] .emissiveColor = new SFColor (1, 1, 0);",
 "",
-"   lastIndex = index;",
+"   if (active > -1)",
+"      materials [active] .emissiveColor = new SFColor (1, 0, 0);",
 "}",
 ""
                     ]
+                  }
+                },
+                { "TouchSensor":
+                  {
+                    "@DEF": "Dummy",
+                    "@enabled": false
                   }
                 },
                 { "ROUTE":

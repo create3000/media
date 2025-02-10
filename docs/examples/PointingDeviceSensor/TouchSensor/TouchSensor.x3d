@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='created' content='Tue, 07 Feb 2023 21:26:14 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:15:43 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Mon, 10 Feb 2025 19:16:54 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='PointingObjects'>
@@ -22,7 +23,7 @@
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0'/>
         <Script DEF='Script'>
-          <field accessType='inputOnly' type='SFBool' name='set_over'/>
+          <field accessType='inputOnly' type='SFBool' name='set_state'/>
           <field accessType='initializeOnly' type='SFNode' name='group'>
             <Group USE='_1'/>
           </field>
@@ -76,7 +77,8 @@ function createNode ()
 
    scene .addRoute (interpolator, "value_changed", transform, "set_rotation");
 
-   scene .addRoute (touchSensor, "isOver", self, "set_over");
+   scene .addRoute (touchSensor, "isOver",   self, "set_state");
+   scene .addRoute (touchSensor, "isActive", self, "set_state");
 
    group .children .push (transform);
    touchSensors .push (touchSensor);
@@ -88,22 +90,25 @@ function random (min = -16, max = 16)
    return min + Math .random () * (max - min)
 }
 
-let lastIndex = -1;
-
-function set_over (value, time)
+function set_state (value, time)
 {
-   const index = touchSensors .findIndex (s => s .isOver);
+   const 
+      over   = touchSensors .findIndex (s => s .isOver),
+      active = touchSensors .findIndex (s => s .isActive);
 
-   if (lastIndex > -1)
-      materials [lastIndex] .emissiveColor = new SFColor (0, 0, 0);
+   for (const material of materials)
+      material .emissiveColor = new SFColor (0, 0, 0);
 
-   if (index > -1)
-      materials [index] .emissiveColor = new SFColor (1, 1, 0);
+   if (over > -1)
+      materials [over] .emissiveColor = new SFColor (1, 1, 0);
 
-   lastIndex = index;
+   if (active > -1)
+      materials [active] .emissiveColor = new SFColor (1, 0, 0);
 }
 ]]>
         </Script>
+        <TouchSensor DEF='Dummy'
+            enabled='false'/>
         <ROUTE fromNode='_2' fromField='fraction_changed' toNode='_3' toField='set_fraction'/>
       </ProtoBody>
     </ProtoDeclare>
