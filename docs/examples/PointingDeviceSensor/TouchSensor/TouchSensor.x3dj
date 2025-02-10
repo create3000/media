@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 10 Feb 2025 19:16:54 GMT"
+          "@content": "Mon, 10 Feb 2025 20:15:02 GMT"
         }
       ],
       "component": [
@@ -204,16 +204,16 @@
 "function set_state (value, time)",
 "{",
 "   const ",
-"      over   = touchSensors .findIndex (s => s .isOver),",
-"      active = touchSensors .findIndex (s => s .isActive);",
+"      over   = Array .from (touchSensors, (t, i) => t .isOver   ? i : -1) .filter (i => i >= 0),",
+"      active = Array .from (touchSensors, (t, i) => t .isActive ? i : -1) .filter (i => i >= 0);",
 "",
 "   for (const material of materials)",
 "      material .emissiveColor = new SFColor (0, 0, 0);",
 "",
-"   if (over > -1)",
-"      materials [over] .emissiveColor = new SFColor (1, 1, 0);",
+"   for (const i of over)",
+"      materials [i] .emissiveColor = new SFColor (1, 1, 0);",
 "",
-"   if (active > -1)",
+"   for (const i of active)",
 "      materials [active] .emissiveColor = new SFColor (1, 0, 0);",
 "}",
 ""
