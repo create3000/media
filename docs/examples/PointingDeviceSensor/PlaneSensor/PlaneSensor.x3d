@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='PointingDeviceSensor' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Thu, 06 Oct 2016 10:49:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:15:36 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Mon, 10 Feb 2025 18:27:46 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
+    <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
       <field accessType='inputOutput' type='SFVec3f' name='translation'/>
       <field accessType='inputOutput' type='SFRotation' name='rotation'/>
       <field accessType='inputOutput' type='SFVec3f' name='scale'/>
@@ -45,12 +45,12 @@
     </ProtoInstance>
     <Transform DEF='Clone1'
         translation='-2 0 0'>
-      <Transform DEF='SimpleSlider'>
-        <Transform DEF='Cone'
+      <Transform DEF='SimpleSlider_1'>
+        <Transform DEF='Cone_1'
             scale='0.374845 0.374845 0.374845'>
           <Shape>
             <Appearance>
-              <Material DEF='Rococo23'
+              <Material DEF='Rococo23_1'
                   ambientIntensity='0.187004'
                   diffuseColor='0.25829 0.534482 0.748016'
                   specularColor='0.251984 0.251984 0.251984'
@@ -59,7 +59,7 @@
             <Cone/>
           </Shape>
         </Transform>
-        <PlaneSensor DEF='_3'
+        <PlaneSensor DEF='_1'
             maxPosition='0 2'/>
       </Transform>
     </Transform>
@@ -67,14 +67,33 @@
         translation='2 0 0'
         rotation='-3.57398802300153e-17 1.10915152794688e-16 1 180'
         scaleOrientation='-0.357406744336593 0.862856209461017 -0.357406744336593 258.947302582207'>
-      <Transform USE='SimpleSlider'/>
+      <Transform USE='SimpleSlider_1'/>
     </Transform>
     <Transform DEF='Clone3'
         translation='0 -3 6.66134e-16'
         rotation='1.72022019207585e-6 1.72022019207586e-6 -0.999999999997041 90.0000000001698'
         scaleOrientation='0.543313393239255 -0.839529958577022 -7.33383290662978e-5 0.000130177385127595'>
-      <Transform USE='SimpleSlider'/>
+      <Transform USE='SimpleSlider_1'/>
     </Transform>
-    <ROUTE fromNode='_3' fromField='translation_changed' toNode='Cone' toField='set_translation'/>
+    <Transform DEF='PlaneSensor'>
+      <Transform DEF='Box'
+          scale='0.374845 0.374845 0.374845'>
+        <Shape>
+          <Appearance>
+            <Material DEF='Rococo23'
+                ambientIntensity='0.187004'
+                diffuseColor='0.02546387 0.2408777 0.4074219'
+                specularColor='0.251984 0.251984 0.251984'
+                shininess='0.2530735'/>
+          </Appearance>
+          <Box/>
+        </Shape>
+      </Transform>
+      <PlaneSensor DEF='_3'
+          minPosition='-1 -1'
+          maxPosition='1 1'/>
+    </Transform>
+    <ROUTE fromNode='_1' fromField='translation_changed' toNode='Cone_1' toField='set_translation'/>
+    <ROUTE fromNode='_3' fromField='translation_changed' toNode='Box' toField='set_translation'/>
   </Scene>
 </X3D>

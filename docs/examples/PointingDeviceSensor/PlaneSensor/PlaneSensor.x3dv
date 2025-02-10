@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.1.1
 
 PROFILE Interchange
 
@@ -9,9 +9,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Thu, 06 Oct 2016 10:49:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:15:36 GMT"
+META "generator" "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Mon, 10 Feb 2025 18:27:46 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -28,7 +28,7 @@ EXTERNPROTO Grid [
   inputOutput    SFFloat    majorLineTransparency
   initializeOnly SFBool     solid
 ]
-"Grid.x3d#Grid"
+"assets/Grid.x3d#Grid"
 
 WorldInfo { }
 
@@ -56,13 +56,13 @@ Grid {
 
 DEF Clone1 Transform {
   translation -2 0 0
-  children DEF SimpleSlider Transform {
+  children DEF SimpleSlider_1 Transform {
     children [
-      DEF Cone Transform {
+      DEF Cone_1 Transform {
         scale 0.374845 0.374845 0.374845
         children Shape {
           appearance Appearance {
-            material DEF Rococo23 Material {
+            material DEF Rococo23_1 Material {
               ambientIntensity 0.187004
               diffuseColor 0.25829 0.534482 0.748016
               specularColor 0.251984 0.251984 0.251984
@@ -72,7 +72,7 @@ DEF Clone1 Transform {
           geometry Cone { }
         }
       }
-      DEF _3 PlaneSensor {
+      DEF _1 PlaneSensor {
         maxPosition 0 2
       }
     ]
@@ -83,14 +83,38 @@ DEF Clone2 Transform {
   translation 2 0 0
   rotation -3.57398802300153e-17 1.10915152794688e-16 1 180
   scaleOrientation -0.357406744336593 0.862856209461017 -0.357406744336593 258.947302582207
-  children USE SimpleSlider
+  children USE SimpleSlider_1
 }
 
 DEF Clone3 Transform {
   translation 0 -3 6.66134e-16
   rotation 1.72022019207585e-6 1.72022019207586e-6 -0.999999999997041 90.0000000001698
   scaleOrientation 0.543313393239255 -0.839529958577022 -7.33383290662978e-5 0.000130177385127595
-  children USE SimpleSlider
+  children USE SimpleSlider_1
 }
 
-ROUTE _3.translation_changed TO Cone.set_translation
+DEF PlaneSensor Transform {
+  children [
+    DEF Box Transform {
+      scale 0.374845 0.374845 0.374845
+      children Shape {
+        appearance Appearance {
+          material DEF Rococo23 Material {
+            ambientIntensity 0.187004
+            diffuseColor 0.02546387 0.2408777 0.4074219
+            specularColor 0.251984 0.251984 0.251984
+            shininess 0.2530735
+          }
+        }
+        geometry Box { }
+      }
+    }
+    DEF _3 PlaneSensor {
+      minPosition -1 -1
+      maxPosition 1 1
+    }
+  ]
+}
+
+ROUTE _1.translation_changed TO Cone_1.set_translation
+ROUTE _3.translation_changed TO Box.set_translation

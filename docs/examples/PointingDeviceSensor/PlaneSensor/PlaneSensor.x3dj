@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:15:45 GMT"
+          "@content": "Mon, 10 Feb 2025 18:27:46 GMT"
         }
       ],
       "component": [
@@ -117,7 +117,7 @@
                 "@name": "solid"
               }
             ],
-            "@url": [ "Grid.x3d#Grid" ]
+            "@url": [ "assets/Grid.x3d#Grid" ]
           }
         },
         { "WorldInfo":
@@ -173,11 +173,11 @@
             "-children": [
               { "Transform":
                 {
-                  "@DEF": "SimpleSlider",
+                  "@DEF": "SimpleSlider_1",
                   "-children": [
                     { "Transform":
                       {
-                        "@DEF": "Cone",
+                        "@DEF": "Cone_1",
                         "@scale": [ 0.374845, 0.374845, 0.374845 ],
                         "-children": [
                           { "Shape":
@@ -186,7 +186,7 @@
                                 {
                                   "-material": { "Material":
                                     {
-                                      "@DEF": "Rococo23",
+                                      "@DEF": "Rococo23_1",
                                       "@ambientIntensity": 0.187004,
                                       "@diffuseColor": [ 0.25829, 0.534482, 0.748016 ],
                                       "@specularColor": [ 0.251984, 0.251984, 0.251984 ],
@@ -206,7 +206,7 @@
                     },
                     { "PlaneSensor":
                       {
-                        "@DEF": "_3",
+                        "@DEF": "_1",
                         "@maxPosition": [ 0, 2 ]
                       }
                     }
@@ -225,7 +225,7 @@
             "-children": [
               { "Transform":
                 {
-                  "@USE": "SimpleSlider"
+                  "@USE": "SimpleSlider_1"
                 }
               }
             ]
@@ -240,7 +240,50 @@
             "-children": [
               { "Transform":
                 {
-                  "@USE": "SimpleSlider"
+                  "@USE": "SimpleSlider_1"
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "PlaneSensor",
+            "-children": [
+              { "Transform":
+                {
+                  "@DEF": "Box",
+                  "@scale": [ 0.374845, 0.374845, 0.374845 ],
+                  "-children": [
+                    { "Shape":
+                      {
+                        "-appearance": { "Appearance":
+                          {
+                            "-material": { "Material":
+                              {
+                                "@DEF": "Rococo23",
+                                "@ambientIntensity": 0.187004,
+                                "@diffuseColor": [ 0.02546387, 0.2408777, 0.4074219 ],
+                                "@specularColor": [ 0.251984, 0.251984, 0.251984 ],
+                                "@shininess": 0.2530735
+                              }
+                            }
+                          }
+                        },
+                        "-geometry": { "Box":
+                          {
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              { "PlaneSensor":
+                {
+                  "@DEF": "_3",
+                  "@minPosition": [ -1, -1 ],
+                  "@maxPosition": [ 1, 1 ]
                 }
               }
             ]
@@ -248,10 +291,18 @@
         },
         { "ROUTE":
           {
+            "@fromNode": "_1",
+            "@fromField": "translation_changed",
+            "@toNode": "Cone_1",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
             "@fromNode": "_3",
             "@fromField": "translation_changed",
-            "@toNode": "Cone",
-            "@toField": "translation"
+            "@toNode": "Box",
+            "@toField": "set_translation"
           }
         }
       ]

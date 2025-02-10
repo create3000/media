@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
-    <component name='Shape' level='4'/>
-    <unit category='angle' name='degree' conversionFactor='0.0174532925199432958'/>
+    <component name='Geometry2D' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Thu, 06 Oct 2016 10:49:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 21 Jan 2019 09:17:37 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 10 Feb 2025 18:26:49 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
+    <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
       <field accessType='inputOutput' type='SFVec3f' name='translation'/>
       <field accessType='inputOutput' type='SFRotation' name='rotation'/>
       <field accessType='inputOutput' type='SFVec3f' name='scale'/>
@@ -28,78 +29,78 @@
       <field accessType='initializeOnly' type='SFBool' name='solid'/>
     </ExternProtoDeclare>
     <WorldInfo>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='AngleGrid' containerField='value'
+        <MetadataSet DEF='AngleGrid'
             name='AngleGrid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
+          <MetadataBoolean DEF='enabled'
               name='enabled'
               reference='http://titania.create3000.de'
               value='false'/>
         </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
+        <MetadataSet DEF='Grid'
             name='Grid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_1' containerField='value'
+          <MetadataBoolean DEF='enabled_1'
               name='enabled'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataFloat DEF='rotation' containerField='value'
+          <MetadataFloat DEF='rotation'
               name='rotation'
               reference='http://titania.create3000.de'
               value='1, 0, 0, 1.5708'/>
         </MetadataSet>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
+        <MetadataSet DEF='NavigationInfo'
             name='NavigationInfo'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
+          <MetadataString DEF='type'
               name='type'
               reference='http://titania.create3000.de'
               value='"EXAMINE"'/>
         </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
+        <MetadataSet DEF='Viewpoint'
             name='Viewpoint'
             reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
+          <MetadataDouble DEF='position'
               name='position'
               reference='http://titania.create3000.de'
               value='0, 0, 10'/>
-          <MetadataDouble DEF='orientation' containerField='value'
+          <MetadataDouble DEF='orientation'
               name='orientation'
               reference='http://titania.create3000.de'
               value='0, 0, 1, 0'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
+          <MetadataDouble DEF='centerOfRotation'
               name='centerOfRotation'
               reference='http://titania.create3000.de'
               value='0, 0, 0'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='previous' containerField='value'
+          <MetadataSet DEF='previous'
               name='previous'
               reference='http://titania.create3000.de'/>
-          <MetadataSet DEF='children' containerField='value'
+          <MetadataSet DEF='children'
               name='children'
               reference='http://titania.create3000.de'>
             <Viewpoint DEF='_2' containerField='value'
                 position='0 0 12.9309'/>
           </MetadataSet>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
         </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
@@ -122,12 +123,12 @@
     </ProtoInstance>
     <Transform DEF='Clone1'
         translation='-2 0 0'>
-      <Transform DEF='SimpleSlider'>
-        <Transform DEF='Cone'
+      <Transform DEF='SimpleSlider_1'>
+        <Transform DEF='Cone_1'
             scale='0.374845 0.374845 0.374845'>
           <Shape>
             <Appearance>
-              <Material DEF='Rococo23'
+              <Material DEF='Rococo23_1'
                   ambientIntensity='0.187004'
                   diffuseColor='0.25829 0.534482 0.748016'
                   specularColor='0.251984 0.251984 0.251984'
@@ -136,7 +137,7 @@
             <Cone/>
           </Shape>
         </Transform>
-        <PlaneSensor DEF='_3'
+        <PlaneSensor DEF='_1'
             maxPosition='0 2'/>
       </Transform>
     </Transform>
@@ -144,14 +145,33 @@
         translation='2 0 0'
         rotation='-3.57398802300153e-17 1.10915152794688e-16 1 180'
         scaleOrientation='-0.357406744336593 0.862856209461017 -0.357406744336593 258.947302582207'>
-      <Transform USE='SimpleSlider'/>
+      <Transform USE='SimpleSlider_1'/>
     </Transform>
     <Transform DEF='Clone3'
         translation='0 -3 6.66134e-16'
-        rotation='1.72022019207585e-06 1.72022019207586e-06 -0.999999999997041 90.0000000001698'
-        scaleOrientation='0.543313393239255 -0.839529958577022 -7.33383290662978e-05 0.000130177385127595'>
-      <Transform USE='SimpleSlider'/>
+        rotation='1.72022019207585e-6 1.72022019207586e-6 -0.999999999997041 90.0000000001698'
+        scaleOrientation='0.543313393239255 -0.839529958577022 -7.33383290662978e-5 0.000130177385127595'>
+      <Transform USE='SimpleSlider_1'/>
     </Transform>
-    <ROUTE fromNode='_3' fromField='translation_changed' toNode='Cone' toField='set_translation'/>
+    <Transform DEF='PlaneSensor'>
+      <Transform DEF='Box'
+          scale='0.374845 0.374845 0.374845'>
+        <Shape>
+          <Appearance>
+            <Material DEF='Rococo23'
+                ambientIntensity='0.187004'
+                diffuseColor='0.02546387 0.2408777 0.4074219'
+                specularColor='0.251984 0.251984 0.251984'
+                shininess='0.2530735'/>
+          </Appearance>
+          <Box/>
+        </Shape>
+      </Transform>
+      <PlaneSensor DEF='_3'
+          minPosition='-1 -1'
+          maxPosition='1 1'/>
+    </Transform>
+    <ROUTE fromNode='_1' fromField='translation_changed' toNode='Cone_1' toField='set_translation'/>
+    <ROUTE fromNode='_3' fromField='translation_changed' toNode='Box' toField='set_translation'/>
   </Scene>
 </X3D>
