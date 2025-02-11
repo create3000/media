@@ -2,12 +2,15 @@
 
 PROFILE Interchange
 
+COMPONENT Geometry2D : 2
+COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
+COMPONENT X_ITE : 1
 
 META "created" "Wed, 30 Aug 2017 18:01:59 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
-META "modified" "Wed, 05 Feb 2025 14:21:17 GMT"
+META "modified" "Tue, 11 Feb 2025 00:09:41 GMT"
 
 Background {
   transparency 1
@@ -42,7 +45,7 @@ DEF EarthAnimation Group {
       direction 0.679326 -0.713432 -0.171844
     }
     DEF Earth Transform {
-      rotation 0 1 0 1.32261051914553
+      rotation 0 1 0 1.37811189897792
       children [
         DEF Animation Group {
           metadata DEF Animation_2 MetadataSet {
@@ -162,10 +165,86 @@ DEF EarthAnimation Group {
         }
       ]
     }
+    DEF _1 TouchSensor { }
+    DEF Pointer Switch {
+      children [
+        Group { }
+        DEF Circle2D Transform {
+          translation 0.5139468 -0.7445146 0.4105369
+          rotation 0.8229920271482 0.568052922931038 -0 1.14482232599158
+          children [
+            DEF Animation_1 Group {
+              children [
+                DEF _2 TimeSensor {
+                  cycleInterval 2
+                  loop TRUE
+                }
+                DEF _3 ScalarInterpolator {
+                  key [
+                    0,
+                    0.5,
+                    1
+                  ]
+                  keyValue [
+                    0.6,
+                    0.2,
+                    0.6
+                  ]
+                }
+              ]
+            }
+            Shape {
+              pointerEvents FALSE
+              appearance Appearance {
+                lineProperties LineProperties {
+                  linewidthScaleFactor 5
+                }
+                material DEF _4 UnlitMaterial {
+                  transparency 0.3148001
+                }
+                depthMode DepthMode {
+                  depthTest FALSE
+                  depthMask FALSE
+                }
+              }
+              geometry Circle2D {
+                radius 0.1
+              }
+            }
+          ]
+        }
+      ]
+    }
+    DEF PointerScript Script {
+      inputOnly  SFVec3f    set_hitNormal
+      inputOnly  SFBool     set_over
+      outputOnly SFRotation hitRotation_changed
+      outputOnly SFInt32    whichChoice_changed
+
+      url "ecmascript:
+
+const zAxis = new SFVec3f (0, 0, 1);
+
+function initialize ()
+{
+   whichChoice_changed = -1;
+}
+
+function set_hitNormal (value, time)
+{
+   hitRotation_changed = new SFRotation (zAxis, value);
+}
+
+function set_over (value, time)
+{
+   whichChoice_changed = value;
+}
+"
+    }
   ]
 }
 
-Group {
+DEF Text_1 Group {
   children [
     DEF TextLight DirectionalLight {
       metadata DEF DirectionalLight_3 MetadataSet {
@@ -36746,3 +36825,10 @@ function initialize ()
 
 ROUTE AnimationTimer.fraction_changed TO SphereRotationInterpolator.set_fraction
 ROUTE SphereRotationInterpolator.value_changed TO Earth.set_rotation
+ROUTE _1.hitPoint_changed TO Circle2D.set_translation
+ROUTE _1.hitNormal_changed TO PointerScript.set_hitNormal
+ROUTE PointerScript.hitRotation_changed TO Circle2D.set_rotation
+ROUTE _2.fraction_changed TO _3.set_fraction
+ROUTE _3.value_changed TO _4.set_transparency
+ROUTE PointerScript.whichChoice_changed TO Pointer.set_whichChoice
+ROUTE _1.isOver TO PointerScript.set_over
