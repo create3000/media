@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='Layering' level='1'/>
+    <component name='Scripting' level='1'/>
     <component name='Text' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 26 Nov 2017 02:44:30 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 27 Jul 2023 22:45:41 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sat, 15 Feb 2025 23:31:33 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -26,8 +27,7 @@
     <LayerSet
         activeLayer='1'
         order='0, 1, 2'>
-      <Layer DEF='Scene'
-          pickable='false'>
+      <Layer DEF='Scene'>
         <MetadataSet DEF='Titania_1' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
@@ -226,7 +226,7 @@
         </Collision>
       </Layer>
       <Layer DEF='HUD'
-          pickable='false'>
+          pointerEvents='false'>
         <MetadataSet DEF='Titania_2' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
@@ -275,7 +275,6 @@
           </Shape>
         </Transform>
         <ProtoInstance name='BooleanSwitch' DEF='_8'>
-          <fieldValue name='bboxSize' value='-1 -1 -1'/>
           <fieldValue name='children'>
             <Transform DEF='Box_4'
                 translation='-6.48007 2.88975 0'
@@ -317,7 +316,6 @@
           </fieldValue>
         </ProtoInstance>
         <ProtoInstance name='BooleanSwitch' DEF='_11'>
-          <fieldValue name='bboxSize' value='-1 -1 -1'/>
           <fieldValue name='children'>
             <Transform DEF='Box_5'
                 translation='-5.7679 2.88975 0'
@@ -333,7 +331,6 @@
           </fieldValue>
         </ProtoInstance>
         <ProtoInstance name='BooleanSwitch' DEF='_12'>
-          <fieldValue name='bboxSize' value='-1 -1 -1'/>
           <fieldValue name='children'>
             <Transform DEF='Box_6'
                 translation='-5.04484 2.88975 0'
@@ -349,7 +346,6 @@
           </fieldValue>
         </ProtoInstance>
         <ProtoInstance name='BooleanSwitch' DEF='_13'>
-          <fieldValue name='bboxSize' value='-1 -1 -1'/>
           <fieldValue name='children'>
             <Transform DEF='Box_7'
                 translation='-4.31686 2.88975 0'
