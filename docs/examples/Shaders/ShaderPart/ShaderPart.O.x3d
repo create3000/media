@@ -313,13 +313,14 @@ precision highp int;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Vertex;
 
 void
 main ()
 {
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 }
 ]]>
                 </ShaderPart>

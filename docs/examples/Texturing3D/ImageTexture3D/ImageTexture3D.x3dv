@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.2.0
 
 PROFILE Interchange
 
@@ -14,8 +14,8 @@ META "comment" "Rise and Shine"
 META "created" "Sun, 27 Oct 2019 05:58:52 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:22:36 GMT"
+META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Fri, 21 Feb 2025 11:26:07 GMT"
 
 PROTO Volume [
   inputOutput SFVec3f dimensions 1 1 1
@@ -45,6 +45,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat4 x3d_TextureMatrix [1];
 
 in vec4 x3d_Vertex;
@@ -56,7 +57,7 @@ out vec4 texCoord;
 void
 main ()
 {
-	vec4 position = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 position = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 
 	vertex   = position .xyz;
 	texCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;

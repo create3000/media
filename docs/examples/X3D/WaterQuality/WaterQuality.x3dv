@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.2.0
 
 PROFILE Interchange
 
@@ -18,8 +18,8 @@ META "comment" "Rise and Shine"
 META "created" "Thu, 24 Dec 2015 10:40:45 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:28:11 GMT"
+META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Fri, 21 Feb 2025 11:26:31 GMT"
 
 EXTERNPROTO SFNode [
   inputOnly   SFTime set_triggerTime
@@ -260,6 +260,7 @@ precision highp int;
 uniform mat3 x3d_NormalMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Vertex;
 
@@ -352,7 +353,7 @@ main ()
 	vec4 vertex = x3d_Vertex;
 	vec2 pos    = vec2 (vertex .x, vertex .z);
 	vertex .y   = getWaveHeight (pos);
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;
 
 	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
 	depth = 1.0 + gl_Position .w;
@@ -457,7 +458,7 @@ main ()
                   description "Sunset"
                 }
                 DEF _32 SFNode {
-                  keyValue DEF _33 ComposedCubeMapTexture {
+                  keyValue ComposedCubeMapTexture {
                     frontTexture USE _30
                     backTexture ImageTexture {
                       url "assets/Sunset/Sunset-back.jpg"
@@ -494,7 +495,7 @@ main ()
                   description "Cloudy Sky"
                 }
                 DEF _36 SFNode {
-                  keyValue DEF _37 ComposedCubeMapTexture {
+                  keyValue ComposedCubeMapTexture {
                     frontTexture USE _34
                     backTexture ImageTexture {
                       url "assets/CloudySky/CloudySky-back.jpg"
@@ -531,7 +532,7 @@ main ()
                   description "Lost Valley"
                 }
                 DEF _40 SFNode {
-                  keyValue DEF _41 ComposedCubeMapTexture {
+                  keyValue ComposedCubeMapTexture {
                     frontTexture USE _38
                     backTexture ImageTexture {
                       url "assets/LostValley/LostValley-back.jpg"
@@ -586,7 +587,7 @@ main ()
                   description "Violent Days"
                 }
                 DEF _46 SFNode {
-                  keyValue DEF _47 ComposedCubeMapTexture {
+                  keyValue ComposedCubeMapTexture {
                     frontTexture USE _44
                     backTexture ImageTexture {
                       url "assets/ViolentDays/ViolentDays-back.jpg"
@@ -623,7 +624,7 @@ main ()
                   description "Night Sky"
                 }
                 DEF _50 SFNode {
-                  keyValue DEF _51 ComposedCubeMapTexture {
+                  keyValue ComposedCubeMapTexture {
                     frontTexture USE _48
                     backTexture ImageTexture {
                       url "assets/NightSky/NightSky-back.jpg"
@@ -660,7 +661,7 @@ main ()
                   description "Interstellar"
                 }
                 DEF _54 SFNode {
-                  keyValue DEF _55 ComposedCubeMapTexture {
+                  keyValue ComposedCubeMapTexture {
                     frontTexture USE _52
                     backTexture ImageTexture {
                       url "assets/Interstellar/Interstellar-back.jpg"

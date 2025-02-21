@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='ParticleSystems' level='3'/>
     <component name='Shaders' level='1'/>
@@ -8,8 +8,8 @@
     <meta name='created' content='Sun, 17 Dec 2017 11:21:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:13:26 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Fri, 21 Feb 2025 11:25:26 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='ComposeSFVec3f' url='"ComposeSFVec3f.x3d#ComposeSFVec3f", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/ComposeSFVec3f.x3d#ComposeSFVec3f"'>
@@ -72,6 +72,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Particle;
 attribute mat4 x3d_ParticleMatrix;
@@ -135,7 +136,7 @@ main ()
 	color    = vec3 (random (), random (), random ());
 	texCoord = x3d_TexCoord0;
 
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;
 }]]>
           </ShaderPart>
           <ShaderPart DEF='FragmentShader'

@@ -61,7 +61,7 @@
 
 let up = true;
 
-const 
+const
    low  = Math .random () * 10,
    high = Math .random () * 10;
 
@@ -172,7 +172,7 @@ function set_fraction (value)
 
 function initialize ()
 {
-   const 
+   const
       scene   = Browser .currentScene,
       numbers = [ ];
 
@@ -398,6 +398,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Color;
 attribute vec4 x3d_TexCoord0;
@@ -435,7 +436,7 @@ main ()
 	color    = x3d_Color;
 	texCoord = x3d_TexCoord0;
 
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;
 }
 ]]>
               </ShaderPart>

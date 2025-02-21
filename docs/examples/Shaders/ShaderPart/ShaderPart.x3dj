@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:19:46 GMT"
+          "@content": "Fri, 21 Feb 2025 11:25:52 GMT"
         }
       ],
       "component": [
@@ -107,13 +107,14 @@
 "",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "",
 "attribute vec4 x3d_Vertex;",
 "",
 "void",
 "main ()",
 "{",
-"\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;",
 "}",
 ""
                                               ]
@@ -221,7 +222,7 @@
                                             "@accessType": "inputOutput",
                                             "@type": "SFFloat",
                                             "@name": "time",
-                                            "@value": 4786.042
+                                            "@value": 7152.246
                                           }
                                         ]
                                       }
@@ -257,7 +258,7 @@
             "@fromNode": "Interpolator",
             "@fromField": "value_changed",
             "@toNode": "ComposedShader",
-            "@toField": "time"
+            "@toField": "set_time"
           }
         }
       ]

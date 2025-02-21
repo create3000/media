@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:22:36 GMT"
+          "@content": "Fri, 21 Feb 2025 11:26:07 GMT"
         }
       ],
       "component": [
@@ -124,6 +124,7 @@
 "",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "uniform mat4 x3d_TextureMatrix [1];",
 "",
 "in vec4 x3d_Vertex;",
@@ -135,7 +136,7 @@
 "void",
 "main ()",
 "{",
-"\tvec4 position = x3d_ModelViewMatrix * x3d_Vertex;",
+"\tvec4 position = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;",
 "",
 "\tvertex   = position .xyz;",
 "\ttexCoord = x3d_TextureMatrix [0] * x3d_TexCoord0;",
@@ -322,7 +323,7 @@
                     "@fromNode": "_1",
                     "@fromField": "orientation_changed",
                     "@toNode": "_2",
-                    "@toField": "rotation"
+                    "@toField": "set_rotation"
                   }
                 },
                 { "ROUTE":
@@ -330,7 +331,7 @@
                     "@fromNode": "_1",
                     "@fromField": "orientation_changed",
                     "@toNode": "_3",
-                    "@toField": "rotation"
+                    "@toField": "set_rotation"
                   }
                 }
               ]
@@ -494,7 +495,7 @@
             "@fromNode": "ClipPlaneScript",
             "@fromField": "plane_changed",
             "@toNode": "_6",
-            "@toField": "plane"
+            "@toField": "set_plane"
           }
         },
         { "ROUTE":
@@ -502,7 +503,7 @@
             "@fromNode": "PlaneSensor",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":

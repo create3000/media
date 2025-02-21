@@ -46,6 +46,7 @@ uniform float reflection;
 uniform mat4 x3d_CameraSpaceMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 attribute vec3 x3d_Normal;
@@ -61,7 +62,7 @@ void
 main ()
 {
 	mat4 modelMatrix   = x3d_CameraSpaceMatrix * x3d_ModelViewMatrix;
-	vec4 position      = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 position      = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 	vec4 worldPosition = modelMatrix * x3d_Vertex;
 	vec3 worldNormal   = normalize (mat3 (modelMatrix [0] .xyz, modelMatrix [1] .xyz, modelMatrix [2] .xyz) * x3d_Normal);
 	vec3 I             = normalize (worldPosition .xyz - x3d_CameraSpaceMatrix [3] .xyz);

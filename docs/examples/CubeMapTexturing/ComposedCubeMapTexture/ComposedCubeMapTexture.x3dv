@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.2.0
 
 PROFILE Interchange
 
@@ -9,8 +9,8 @@ META "comment" "Rise and Shine"
 META "created" "Sat, 30 Apr 2016 02:18:39 GMT"
 META "creator" "holger"
 META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:02:00 GMT"
+META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Fri, 21 Feb 2025 11:24:44 GMT"
 
 EXTERNPROTO Dolphin [ ]
 "assets/Dolphin.x3d#Dolphin"
@@ -40,6 +40,7 @@ uniform float reflection;
 uniform mat4 x3d_CameraSpaceMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 attribute vec3 x3d_Normal;
@@ -55,7 +56,7 @@ void
 main ()
 {
 	mat4 modelMatrix   = x3d_CameraSpaceMatrix * x3d_ModelViewMatrix;
-	vec4 position      = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 position      = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 	vec4 worldPosition = modelMatrix * x3d_Vertex;
 	vec3 worldNormal   = normalize (mat3 (modelMatrix [0] .xyz, modelMatrix [1] .xyz, modelMatrix [2] .xyz) * x3d_Normal);
 	vec3 I             = normalize (worldPosition .xyz - x3d_CameraSpaceMatrix [3] .xyz);
@@ -187,12 +188,9 @@ DEF WideOcean TextureBackground {
   frontTexture DEF _3 ImageTexture {
     url "assets/WideOcean/WideOcean-front.jpg"
     textureProperties DEF _4 TextureProperties {
-      minificationFilter "DEFAULT"
-      magnificationFilter "DEFAULT"
       boundaryModeS "CLAMP_TO_EDGE"
       boundaryModeT "CLAMP_TO_EDGE"
       boundaryModeR "CLAMP_TO_EDGE"
-      textureCompression "DEFAULT"
     }
   }
   backTexture DEF _5 ImageTexture {
@@ -218,7 +216,7 @@ DEF WideOcean TextureBackground {
 }
 
 DEF _10 Transform {
-  rotation 0 -1 0 2.71697956908091
+  rotation 0 -1 0 3.414570133992
   children [
     DEF Animation Group {
       children [

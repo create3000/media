@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='CubeMapTexturing' level='3'/>
     <component name='Shaders' level='1'/>
@@ -8,12 +8,11 @@
     <meta name='created' content='Sat, 30 Apr 2016 02:18:39 GMT'/>
     <meta name='creator' content='holger'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:02:00 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Fri, 21 Feb 2025 11:24:44 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Dolphin' url='"assets/Dolphin.x3d#Dolphin"'>
-    </ExternProtoDeclare>
+    <ExternProtoDeclare name='Dolphin' url='"assets/Dolphin.x3d#Dolphin"'/>
     <ProtoDeclare name='FresnelShader'>
       <ProtoInterface>
         <field accessType='inputOutput' type='SFFloat' name='refraction' value='1'/>
@@ -43,6 +42,7 @@ uniform float reflection;
 uniform mat4 x3d_CameraSpaceMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 attribute vec3 x3d_Normal;
@@ -58,7 +58,7 @@ void
 main ()
 {
 	mat4 modelMatrix   = x3d_CameraSpaceMatrix * x3d_ModelViewMatrix;
-	vec4 position      = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 position      = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 	vec4 worldPosition = modelMatrix * x3d_Vertex;
 	vec3 worldNormal   = normalize (mat3 (modelMatrix [0] .xyz, modelMatrix [1] .xyz, modelMatrix [2] .xyz) * x3d_Normal);
 	vec3 I             = normalize (worldPosition .xyz - x3d_CameraSpaceMatrix [3] .xyz);
@@ -188,12 +188,9 @@ main ()
       <ImageTexture DEF='_3' containerField='frontTexture'
           url='"assets/WideOcean/WideOcean-front.jpg"'>
         <TextureProperties DEF='_4'
-            minificationFilter='DEFAULT'
-            magnificationFilter='DEFAULT'
             boundaryModeS='CLAMP_TO_EDGE'
             boundaryModeT='CLAMP_TO_EDGE'
-            boundaryModeR='CLAMP_TO_EDGE'
-            textureCompression='DEFAULT'/>
+            boundaryModeR='CLAMP_TO_EDGE'/>
       </ImageTexture>
       <ImageTexture DEF='_5' containerField='backTexture'
           url='"assets/WideOcean/WideOcean-back.jpg"'>
@@ -217,7 +214,7 @@ main ()
       </ImageTexture>
     </TextureBackground>
     <Transform DEF='_10'
-        rotation='0 -1 0 2.69263220084984'>
+        rotation='0 -1 0 3.414570133992'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
             cycleInterval='40'

@@ -43,6 +43,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Particle;
 attribute mat4 x3d_ParticleMatrix;
@@ -106,7 +107,7 @@ main ()
 	color    = vec3 (random (), random (), random ());
 	texCoord = x3d_TexCoord0;
 
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;
 }]]>
             </ShaderPart>
           </MetadataSet>

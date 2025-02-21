@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.2.0
 
 PROFILE Interchange
 
@@ -8,8 +8,8 @@ META "comment" "Rise and Shine"
 META "created" "Wed, 06 Dec 2017 01:50:04 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:19:21 GMT"
+META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Fri, 21 Feb 2025 11:25:39 GMT"
 
 PROTO BumpShader [
   inputOutput SFFloat heightScale 1
@@ -37,6 +37,7 @@ precision highp int;
 uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 uniform float x3d_LinewidthScaleFactor;
 
@@ -55,7 +56,7 @@ main ()
 {
 	gl_PointSize = x3d_LinewidthScaleFactor;
 
-	vec4 p = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 p = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 
 	vN = x3d_Normal;
 	t  = x3d_TextureMatrix [0] * x3d_TexCoord0;
@@ -216,7 +217,7 @@ Viewpoint {
 }
 
 DEF Box Transform {
-  rotation 0 -1 0 0.610647063146976
+  rotation 0 -1 0 4.09048447956163
   children [
     DEF Animation Group {
       children [

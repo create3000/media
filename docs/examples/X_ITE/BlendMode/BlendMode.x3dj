@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 09 Jan 2025 18:37:26 GMT"
+          "@content": "Fri, 21 Feb 2025 11:27:15 GMT"
         }
       ],
       "component": [
@@ -229,7 +229,7 @@
 "",
 "let up = true;",
 "",
-"const ",
+"const",
 "   low  = Math .random () * 10,",
 "   high = Math .random () * 10;",
 "",
@@ -513,7 +513,7 @@
 "",
 "function initialize ()",
 "{",
-"   const ",
+"   const",
 "      scene   = Browser .currentScene,",
 "      numbers = [ ];",
 "",
@@ -575,7 +575,7 @@
                     { "Transform":
                       {
                         "@DEF": "_30",
-                        "@rotation": [ -0.98950533437392, -0.096162679075131, -0.107851436701839, 1.65961277833489 ],
+                        "@rotation": [ -0.996032985024066, 0.0795968978336088, 0.0397822397473438, 1.50120925714704 ],
                         "@scale": [ 0.999999, 1, 1 ],
                         "@scaleOrientation": [ 0.612491025726436, -0.540118771611692, 0.577171080319566, 0.174185270591961 ],
                         "-children": [
@@ -794,6 +794,7 @@
 "",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "",
 "attribute vec4 x3d_Color;",
 "attribute vec4 x3d_TexCoord0;",
@@ -831,7 +832,7 @@
 "\tcolor    = x3d_Color;",
 "\ttexCoord = x3d_TexCoord0;",
 "",
-"\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;",
 "}",
 ""
                                         ]

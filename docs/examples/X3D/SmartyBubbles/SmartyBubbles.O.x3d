@@ -67,6 +67,7 @@ uniform x3d_PointPropertiesParameters x3d_PointProperties;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 in vec4 x3d_Particle;
@@ -113,7 +114,7 @@ main ()
 	normal = x3d_NormalMatrix * x3d_Normal;
 
 	gl_PointSize = x3d_PointProperties .pointSizeScaleFactor;
-	gl_Position  = x3d_ProjectionMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex));
+	gl_Position  = x3d_ProjectionMatrix * (x3d_EyeMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex)));
 }]]>
               </ShaderPart>
               <ShaderPart DEF='FragmentShader'

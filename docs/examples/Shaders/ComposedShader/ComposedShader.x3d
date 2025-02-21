@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Shaders' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 06 Dec 2017 01:50:04 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:19:20 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Fri, 21 Feb 2025 11:25:39 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='BumpShader'>
@@ -42,6 +42,7 @@ precision highp int;
 uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 uniform float x3d_LinewidthScaleFactor;
 
@@ -60,7 +61,7 @@ main ()
 {
 	gl_PointSize = x3d_LinewidthScaleFactor;
 
-	vec4 p = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 p = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 
 	vN = x3d_Normal;
 	t  = x3d_TextureMatrix [0] * x3d_TexCoord0;
@@ -216,7 +217,7 @@ main ()
         orientation='0.99991517384209 -0.012669170765548 -0.0030227855452985 5.8147171274952'
         centerOfRotation='-0.02 0 0'/>
     <Transform DEF='Box'
-        rotation='0 -0.999999999999997 0 0.187055645698468'>
+        rotation='0 -1 0 4.09048447956163'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
             cycleInterval='12'

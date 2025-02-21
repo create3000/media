@@ -41,6 +41,7 @@ precision highp int;
 uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 uniform float x3d_LinewidthScaleFactor;
 
@@ -59,7 +60,7 @@ main ()
 {
 	gl_PointSize = x3d_LinewidthScaleFactor;
 
-	vec4 p = x3d_ModelViewMatrix * x3d_Vertex;
+	vec4 p = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 
 	vN = x3d_Normal;
 	t  = x3d_TextureMatrix [0] * x3d_TexCoord0;

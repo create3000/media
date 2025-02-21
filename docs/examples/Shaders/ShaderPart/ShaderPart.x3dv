@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.2.0
 
 PROFILE Interchange
 
@@ -11,8 +11,8 @@ META "comment" "Rise and Shine"
 META "created" "Sun, 10 Dec 2017 16:14:16 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:19:41 GMT"
+META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Fri, 21 Feb 2025 11:25:52 GMT"
 
 WorldInfo { }
 
@@ -34,7 +34,7 @@ LayerSet {
         children Shape {
           appearance Appearance {
             shaders DEF ComposedShader ComposedShader {
-              inputOutput SFFloat time 4781.298
+              inputOutput SFFloat time 7152.246
 
               language "GLSL"
               parts [
@@ -46,13 +46,14 @@ precision highp int;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Vertex;
 
 void
 main ()
 {
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_Vertex;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
 }
 "
                 }

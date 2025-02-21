@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:02:01 GMT"
+          "@content": "Fri, 21 Feb 2025 11:24:44 GMT"
         }
       ],
       "component": [
@@ -96,6 +96,7 @@
 "uniform mat4 x3d_CameraSpaceMatrix;",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "uniform mat3 x3d_NormalMatrix;",
 "",
 "attribute vec3 x3d_Normal;",
@@ -111,7 +112,7 @@
 "main ()",
 "{",
 "\tmat4 modelMatrix   = x3d_CameraSpaceMatrix * x3d_ModelViewMatrix;",
-"\tvec4 position      = x3d_ModelViewMatrix * x3d_Vertex;",
+"\tvec4 position      = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;",
 "\tvec4 worldPosition = modelMatrix * x3d_Vertex;",
 "\tvec3 worldNormal   = normalize (mat3 (modelMatrix [0] .xyz, modelMatrix [1] .xyz, modelMatrix [2] .xyz) * x3d_Normal);",
 "\tvec3 I             = normalize (worldPosition .xyz - x3d_CameraSpaceMatrix [3] .xyz);",
@@ -294,12 +295,9 @@
                 "-textureProperties": { "TextureProperties":
                   {
                     "@DEF": "_4",
-                    "@minificationFilter": "DEFAULT",
-                    "@magnificationFilter": "DEFAULT",
                     "@boundaryModeS": "CLAMP_TO_EDGE",
                     "@boundaryModeT": "CLAMP_TO_EDGE",
-                    "@boundaryModeR": "CLAMP_TO_EDGE",
-                    "@textureCompression": "DEFAULT"
+                    "@boundaryModeR": "CLAMP_TO_EDGE"
                   }
                 }
               }
@@ -364,7 +362,7 @@
         { "Transform":
           {
             "@DEF": "_10",
-            "@rotation": [ 0, -1, 0, 2.72357692843222 ],
+            "@rotation": [ 0, -1, 0, 3.414570133992 ],
             "-children": [
               { "Group":
                 {
@@ -504,7 +502,7 @@
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_10",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         }
       ]

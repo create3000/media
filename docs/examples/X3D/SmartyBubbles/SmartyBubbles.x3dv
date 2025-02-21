@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.2.0
 
 PROFILE Interchange
 
@@ -14,8 +14,8 @@ META "comment" "Rise and Shine"
 META "created" "Sat, 19 Dec 2015 09:16:40 GMT"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:27:10 GMT"
+META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Fri, 21 Feb 2025 11:26:18 GMT"
 
 LayerSet {
   activeLayer 1
@@ -64,6 +64,7 @@ uniform x3d_PointPropertiesParameters x3d_PointProperties;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 in vec4 x3d_Particle;
@@ -110,7 +111,7 @@ main ()
 	normal = x3d_NormalMatrix * x3d_Normal;
 
 	gl_PointSize = x3d_PointProperties .pointSizeScaleFactor;
-	gl_Position  = x3d_ProjectionMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex));
+	gl_Position  = x3d_ProjectionMatrix * (x3d_EyeMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex)));
 }"
                 }
                 DEF FragmentShader ShaderPart {
@@ -294,7 +295,7 @@ main ()
                 Transform {
                   children [
                     DEF Rectangle2D_11 Transform {
-                      translation 0.9661798 0 0
+                      translation 0.2358598 0 0
                       scale 0.027 0.0267372 0.0267372
                       children Shape {
                         appearance Appearance {
@@ -304,7 +305,7 @@ main ()
                       }
                     }
                     DEF _12 PlaneSensor {
-                      offset 0.9661798 0 0
+                      offset 0.2358598 0 0
                       maxPosition 1 0
                     }
                   ]

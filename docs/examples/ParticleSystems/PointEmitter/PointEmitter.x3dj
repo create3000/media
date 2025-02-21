@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:13:35 GMT"
+          "@content": "Fri, 21 Feb 2025 11:25:26 GMT"
         }
       ],
       "component": [
@@ -237,6 +237,7 @@
 "",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "",
 "attribute vec4 x3d_Particle;",
 "attribute mat4 x3d_ParticleMatrix;",
@@ -300,7 +301,7 @@
 "\tcolor    = vec3 (random (), random (), random ());",
 "\ttexCoord = x3d_TexCoord0;",
 "",
-"\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;",
 "}"
                             ]
                           }
@@ -342,7 +343,7 @@
             "@fromNode": "X",
             "@fromField": "value_changed",
             "@toNode": "_1",
-            "@toField": "x"
+            "@toField": "set_x"
           }
         },
         { "ROUTE":
@@ -350,7 +351,7 @@
             "@fromNode": "Y",
             "@fromField": "value_changed",
             "@toNode": "_1",
-            "@toField": "y"
+            "@toField": "set_y"
           }
         },
         { "ROUTE":
@@ -358,7 +359,7 @@
             "@fromNode": "Z",
             "@fromField": "value_changed",
             "@toNode": "_1",
-            "@toField": "z"
+            "@toField": "set_z"
           }
         },
         { "ROUTE":
@@ -366,7 +367,7 @@
             "@fromNode": "_1",
             "@fromField": "value_changed",
             "@toNode": "_2",
-            "@toField": "position"
+            "@toField": "set_position"
           }
         }
       ]

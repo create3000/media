@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
@@ -13,8 +13,8 @@
     <meta name='created' content='Sat, 19 Dec 2015 09:16:40 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:27:08 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Fri, 21 Feb 2025 11:26:18 GMT'/>
   </head>
   <Scene>
     <LayerSet
@@ -56,6 +56,7 @@ uniform x3d_PointPropertiesParameters x3d_PointProperties;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 uniform mat3 x3d_NormalMatrix;
 
 in vec4 x3d_Particle;
@@ -102,7 +103,7 @@ main ()
 	normal = x3d_NormalMatrix * x3d_Normal;
 
 	gl_PointSize = x3d_PointProperties .pointSizeScaleFactor;
-	gl_Position  = x3d_ProjectionMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex));
+	gl_Position  = x3d_ProjectionMatrix * (x3d_EyeMatrix * (x3d_ModelViewMatrix * (x3d_ParticleMatrix * x3d_Vertex)));
 }]]>
               </ShaderPart>
               <ShaderPart DEF='FragmentShader'
@@ -264,7 +265,7 @@ main ()
             </Transform>
             <Transform>
               <Transform DEF='Rectangle2D_11'
-                  translation='0.2285292 0 0'
+                  translation='0.2358598 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
                   <Appearance>
@@ -274,7 +275,7 @@ main ()
                 </Shape>
               </Transform>
               <PlaneSensor DEF='_12'
-                  offset='0.2285292 0 0'
+                  offset='0.2358598 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Group>

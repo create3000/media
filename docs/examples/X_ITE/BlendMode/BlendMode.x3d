@@ -13,8 +13,8 @@
     <meta name='created' content='Tue, 19 Dec 2017 00:35:26 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Thu, 09 Jan 2025 18:37:26 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Fri, 21 Feb 2025 11:27:15 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Rotor' url='"assets/Rotor.x3d#Rotor"'>
@@ -62,7 +62,7 @@
 
 let up = true;
 
-const 
+const
    low  = Math .random () * 10,
    high = Math .random () * 10;
 
@@ -173,7 +173,7 @@ function set_fraction (value)
 
 function initialize ()
 {
-   const 
+   const
       scene   = Browser .currentScene,
       numbers = [ ];
 
@@ -221,7 +221,7 @@ function initialize ()
         order='1, 2, 3'>
       <Layer DEF='Background'>
         <Transform DEF='_30'
-            rotation='-0.98950533437392 -0.096162679075131 -0.107851436701839 1.65961277833489'
+            rotation='-0.996032985024066 0.0795968978336088 0.0397822397473438 1.50120925714704'
             scale='0.999999 1 1'
             scaleOrientation='0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961'>
           <Group DEF='Animation'>
@@ -314,6 +314,7 @@ precision mediump float;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Color;
 attribute vec4 x3d_TexCoord0;
@@ -351,7 +352,7 @@ main ()
 	color    = x3d_Color;
 	texCoord = x3d_TexCoord0;
 
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * v;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;
 }
 ]]>
               </ShaderPart>

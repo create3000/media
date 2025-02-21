@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:19:22 GMT"
+          "@content": "Fri, 21 Feb 2025 11:25:39 GMT"
         }
       ],
       "component": [
@@ -91,6 +91,7 @@
 "uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "",
 "uniform float x3d_LinewidthScaleFactor;",
 "",
@@ -109,7 +110,7 @@
 "{",
 "\tgl_PointSize = x3d_LinewidthScaleFactor;",
 "",
-"\tvec4 p = x3d_ModelViewMatrix * x3d_Vertex;",
+"\tvec4 p = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;",
 "",
 "\tvN = x3d_Normal;",
 "\tt  = x3d_TextureMatrix [0] * x3d_TexCoord0;",
@@ -327,7 +328,7 @@
         { "Transform":
           {
             "@DEF": "Box",
-            "@rotation": [ 0, -1, 0, 1.24315448774575 ],
+            "@rotation": [ 0, -1, 0, 4.09048447956163 ],
             "-children": [
               { "Group":
                 {
@@ -425,7 +426,7 @@
             "@fromNode": "BoxRotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "Box",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         }
       ]

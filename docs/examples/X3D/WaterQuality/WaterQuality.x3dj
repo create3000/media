@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:28:13 GMT"
+          "@content": "Fri, 21 Feb 2025 11:26:31 GMT"
         }
       ],
       "component": [
@@ -514,6 +514,7 @@
 "uniform mat3 x3d_NormalMatrix;",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
+"uniform mat4 x3d_EyeMatrix;",
 "",
 "attribute vec4 x3d_Vertex;",
 "",
@@ -606,7 +607,7 @@
 "\tvec4 vertex = x3d_Vertex;",
 "\tvec2 pos    = vec2 (vertex .x, vertex .z);",
 "\tvertex .y   = getWaveHeight (pos);",
-"\tgl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;",
 "",
 "\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
 "\tdepth = 1.0 + gl_Position .w;",
@@ -813,7 +814,6 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@DEF": "_33",
                                               "-frontTexture": { "ImageTexture":
                                                 {
                                                   "@USE": "_30"
@@ -894,7 +894,6 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@DEF": "_37",
                                               "-frontTexture": { "ImageTexture":
                                                 {
                                                   "@USE": "_34"
@@ -975,7 +974,6 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@DEF": "_41",
                                               "-frontTexture": { "ImageTexture":
                                                 {
                                                   "@USE": "_38"
@@ -1106,7 +1104,6 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@DEF": "_47",
                                               "-frontTexture": { "ImageTexture":
                                                 {
                                                   "@USE": "_44"
@@ -1187,7 +1184,6 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@DEF": "_51",
                                               "-frontTexture": { "ImageTexture":
                                                 {
                                                   "@USE": "_48"
@@ -1268,7 +1264,6 @@
                                         "-children": [
                                           { "ComposedCubeMapTexture":
                                             {
-                                              "@DEF": "_55",
                                               "-frontTexture": { "ImageTexture":
                                                 {
                                                   "@USE": "_52"
@@ -2806,7 +2801,7 @@
             "@fromNode": "_17",
             "@fromField": "position_changed",
             "@toNode": "CobwebWaterShader",
-            "@toField": "position"
+            "@toField": "set_position"
           }
         },
         { "ROUTE":
@@ -2830,7 +2825,7 @@
             "@fromNode": "pointSizeScriptSet_translationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_65",
-            "@toField": "offset"
+            "@toField": "set_offset"
           }
         },
         { "ROUTE":
@@ -2846,7 +2841,7 @@
             "@fromNode": "_65",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D_64",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -2854,7 +2849,7 @@
             "@fromNode": "pointSizeScriptSet_translationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "Rectangle2D_64",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -2862,7 +2857,7 @@
             "@fromNode": "AmplitudeScript",
             "@fromField": "string_changed",
             "@toNode": "_70",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -2878,7 +2873,7 @@
             "@fromNode": "AmplitudeScript",
             "@fromField": "value_changed",
             "@toNode": "CobwebWaterShader",
-            "@toField": "amplitude"
+            "@toField": "set_amplitude"
           }
         },
         { "ROUTE":
@@ -2894,7 +2889,7 @@
             "@fromNode": "_73",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D_72",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -2910,7 +2905,7 @@
             "@fromNode": "FequencyScript",
             "@fromField": "string_changed",
             "@toNode": "_76",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -2918,7 +2913,7 @@
             "@fromNode": "FequencyScript",
             "@fromField": "value_changed",
             "@toNode": "CobwebWaterShader",
-            "@toField": "frequency"
+            "@toField": "set_frequency"
           }
         },
         { "ROUTE":
@@ -2934,7 +2929,7 @@
             "@fromNode": "_80",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D_79",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -2950,7 +2945,7 @@
             "@fromNode": "SpeedScript",
             "@fromField": "string_changed",
             "@toNode": "_77",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -2958,7 +2953,7 @@
             "@fromNode": "SpeedScript",
             "@fromField": "value_changed",
             "@toNode": "CobwebWaterShader",
-            "@toField": "speed"
+            "@toField": "set_speed"
           }
         },
         { "ROUTE":
@@ -2966,7 +2961,7 @@
             "@fromNode": "_88",
             "@fromField": "translation_changed",
             "@toNode": "Rectangle2D_87",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -2990,7 +2985,7 @@
             "@fromNode": "TransparencyScript",
             "@fromField": "string_changed",
             "@toNode": "_85",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -2998,7 +2993,7 @@
             "@fromNode": "DirectionsScript",
             "@fromField": "directions_changed",
             "@toNode": "CobwebWaterShader",
-            "@toField": "direction"
+            "@toField": "set_direction"
           }
         },
         { "ROUTE":
@@ -3014,7 +3009,7 @@
             "@fromNode": "TransparencyScript",
             "@fromField": "value_changed",
             "@toNode": "_19",
-            "@toField": "transparency"
+            "@toField": "set_transparency"
           }
         },
         { "ROUTE":
@@ -3030,7 +3025,7 @@
             "@fromNode": "_36",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3046,7 +3041,7 @@
             "@fromNode": "_43",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3062,7 +3057,7 @@
             "@fromNode": "_54",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3078,7 +3073,7 @@
             "@fromNode": "_50",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3094,7 +3089,7 @@
             "@fromNode": "_32",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3110,7 +3105,7 @@
             "@fromNode": "_46",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3126,7 +3121,7 @@
             "@fromNode": "_40",
             "@fromField": "value_changed",
             "@toNode": "_18",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":

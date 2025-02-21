@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='CubeMapTexturing' level='3'/>
     <component name='EnvironmentalSensor' level='3'/>
@@ -16,8 +16,8 @@
     <meta name='created' content='Thu, 24 Dec 2015 10:40:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:28:07 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Fri, 21 Feb 2025 11:26:31 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFNode' url='"assets/SFNode.x3d#SFNode"'>
@@ -218,6 +218,7 @@ precision highp int;
 uniform mat3 x3d_NormalMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
+uniform mat4 x3d_EyeMatrix;
 
 attribute vec4 x3d_Vertex;
 
@@ -310,7 +311,7 @@ main ()
 	vec4 vertex = x3d_Vertex;
 	vec2 pos    = vec2 (vertex .x, vertex .z);
 	vertex .y   = getWaveHeight (pos);
-	gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vertex;
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;
 
 	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
 	depth = 1.0 + gl_Position .w;
@@ -404,7 +405,7 @@ main ()
                 description='Sunset'/>
             <ProtoInstance name='SFNode' DEF='_32'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_33'>
+                <ComposedCubeMapTexture>
                   <ImageTexture USE='_30' containerField='frontTexture'/>
                   <ImageTexture containerField='backTexture'
                       url='"assets/Sunset/Sunset-back.jpg"'/>
@@ -434,7 +435,7 @@ main ()
                 description='Cloudy Sky'/>
             <ProtoInstance name='SFNode' DEF='_36'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_37'>
+                <ComposedCubeMapTexture>
                   <ImageTexture USE='_34' containerField='frontTexture'/>
                   <ImageTexture containerField='backTexture'
                       url='"assets/CloudySky/CloudySky-back.jpg"'/>
@@ -464,7 +465,7 @@ main ()
                 description='Lost Valley'/>
             <ProtoInstance name='SFNode' DEF='_40'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_41'>
+                <ComposedCubeMapTexture>
                   <ImageTexture USE='_38' containerField='frontTexture'/>
                   <ImageTexture containerField='backTexture'
                       url='"assets/LostValley/LostValley-back.jpg"'/>
@@ -511,7 +512,7 @@ main ()
                 description='Violent Days'/>
             <ProtoInstance name='SFNode' DEF='_46'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_47'>
+                <ComposedCubeMapTexture>
                   <ImageTexture USE='_44' containerField='frontTexture'/>
                   <ImageTexture containerField='backTexture'
                       url='"assets/ViolentDays/ViolentDays-back.jpg"'/>
@@ -541,7 +542,7 @@ main ()
                 description='Night Sky'/>
             <ProtoInstance name='SFNode' DEF='_50'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_51'>
+                <ComposedCubeMapTexture>
                   <ImageTexture USE='_48' containerField='frontTexture'/>
                   <ImageTexture containerField='backTexture'
                       url='"assets/NightSky/NightSky-back.jpg"'/>
@@ -571,7 +572,7 @@ main ()
                 description='Interstellar'/>
             <ProtoInstance name='SFNode' DEF='_54'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_55'>
+                <ComposedCubeMapTexture>
                   <ImageTexture USE='_52' containerField='frontTexture'/>
                   <ImageTexture containerField='backTexture'
                       url='"assets/Interstellar/Interstellar-back.jpg"'/>
