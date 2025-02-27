@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Layout' level='2'/>
     <component name='Text' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 27 Nov 2017 03:58:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.48, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 02 Feb 2025 18:13:37 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.52, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 27 Feb 2025 11:17:57 GMT'/>
   </head>
   <Scene>
     <Transform DEF='North_1'
@@ -17,13 +17,12 @@
           axisOfRotation='0 0 0'>
         <Shape>
           <Appearance DEF='_14'>
-            <Material
-                diffuseColor='1 1 1'/>
+            <UnlitMaterial/>
           </Appearance>
           <Text
               string='"North"'
               solid='true'>
-            <ScreenFontStyle
+            <ScreenFontStyle DEF='_1'
                 family='"SANS"'
                 justify='"MIDDLE", "MIDDLE"'/>
           </Text>
@@ -39,9 +38,7 @@
           <Text
               string='"East"'
               solid='true'>
-            <ScreenFontStyle
-                family='"SANS"'
-                justify='"MIDDLE", "MIDDLE"'/>
+            <ScreenFontStyle USE='_1'/>
           </Text>
         </Shape>
       </Billboard>
@@ -55,9 +52,7 @@
           <Text
               string='"South"'
               solid='true'>
-            <ScreenFontStyle
-                family='"SANS"'
-                justify='"MIDDLE", "MIDDLE"'/>
+            <ScreenFontStyle USE='_1'/>
           </Text>
         </Shape>
       </Billboard>
@@ -71,9 +66,7 @@
           <Text
               string='"West"'
               solid='true'>
-            <ScreenFontStyle
-                family='"SANS"'
-                justify='"MIDDLE", "MIDDLE"'/>
+            <ScreenFontStyle USE='_1'/>
           </Text>
         </Shape>
       </Billboard>
