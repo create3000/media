@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Followers' level='1'/>
     <component name='NURBS' level='4'/>
@@ -8,8 +8,8 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 17 Jun 2019 10:51:39 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.15, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 31 May 2024 06:22:59 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.7.58, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Tue, 11 Mar 2025 11:58:23 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Bumps'>
@@ -48,14 +48,14 @@
           </field>
 <![CDATA[ecmascript:
 
-var
+const
 	numPoints = 16,
 	points    = [ ],
 	dest      = new MFVec3f ();
 
 function initialize ()
 {
-	for (var i = 0; i < numPoints; ++ i)
+	for (let i = 0; i < numPoints; ++ i)
 		dest [i] .x = i * 2;
 
 	set_time (0, 0);
@@ -65,7 +65,7 @@ function set_time (value, time)
 {
 	bumps (points, numPoints, 16);
 
-	for (var i = 0; i < numPoints; ++ i)
+	for (let i = 0; i < numPoints; ++ i)
 		dest [i] .y = points [i];
 
 	chaser .set_destination = dest;
