@@ -1,0 +1,27 @@
+#X3D V4.0 utf8 X_ITE V11.4.1
+
+PROFILE Interchange
+
+COMPONENT Scripting : 1
+
+META "comment" "Rise and Shine"
+META "created" "Wed, 26 Aug 2015 12:17:22 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.7.61, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.0.28, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Mon, 24 Mar 2025 18:22:53 GMT"
+META "title" "Apartment Entry"
+
+WorldInfo {
+  title "Capone"
+}
+
+DEF EnterWorldScript Script {
+  url "ecmascript:
+
+function initialize ()
+{
+	Browser .loadURL (new MFString (\"stage/index.wrl\"), new MFString ());
+}
+"
+}

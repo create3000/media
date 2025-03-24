@@ -1,0 +1,694 @@
+#VRML V2.0 utf8 Titania V0.6.7
+
+PROFILE Full
+
+META "generator" "Titania V0.6.7, http://titania.create3000.de"
+META "title" "Capone"
+
+EXTERNPROTO Int [
+  exposedField SFTime  startTime
+  exposedField SFInt32 keyValue
+  eventOut     SFInt32 value_changed
+]
+"Int_proto.wrl"
+
+EXTERNPROTO Number [
+  eventIn      SFInt32  set_int
+  exposedField SFFloat  keyValue
+  exposedField SFInt32  precision
+  exposedField SFVec2f  position
+  exposedField SFTime   insertTime
+  exposedField MFString string
+  exposedField SFNode   fontStyle
+  field        MFFloat  length
+  field        SFFloat  maxExtent
+]
+"Number_proto.wrl"
+
+EXTERNPROTO Button [
+  exposedField SFBool  enabled
+  eventOut     SFBool  isActive
+  eventOut     SFBool  isOver
+  eventOut     SFVec3f hitNormal_changed
+  eventOut     SFVec3f hitPoint_changed
+  eventOut     SFVec2f hitTexCoord_changed
+  eventOut     SFTime  touchTime
+  eventOut     SFTime  downTime
+  eventOut     SFTime  overTime
+  eventOut     SFTime  offTime
+  exposedField SFInt32 whichChoice
+  exposedField MFNode  offChildren
+  exposedField MFNode  isActiveChildren
+  exposedField MFNode  isOverChildren
+  exposedField MFNode  upChildren
+]
+"Button_proto.wrl"
+
+EXTERNPROTO Delay [
+  exposedField SFTime cycleInterval
+  exposedField SFBool enabled
+  exposedField SFTime startTime
+  exposedField SFTime stopTime
+  eventOut     SFBool isActive
+  eventOut     SFTime exitTime
+]
+"Delay_proto.wrl"
+
+EXTERNPROTO LoadVrmlFromURL [
+  exposedField MFString url
+  exposedField SFTime   startTime
+  eventOut     SFBool   isActive
+  eventOut     SFTime   exitTime
+  eventOut     MFNode   children_changed
+]
+"LoadVrmlFromURL_proto.wrl"
+
+EXTERNPROTO CountDown [
+  exposedField SFInt32 startValue
+  exposedField SFInt32 stopValue
+  exposedField SFTime  startTime
+  exposedField SFTime  nextTime
+  exposedField SFInt32 offset
+  eventOut     SFInt32 whichChoice_changed
+  eventOut     SFTime  exitTime
+]
+"CountDown_proto.wrl"
+
+WorldInfo {
+  info [
+    "Created in CosmoWorlds",
+    "Packaged by CosmoPackage"
+  ]
+}
+
+Transform {
+  children [
+    DEF _MainNavInfo NavigationInfo {
+      type "NONE"
+      avatarSize [
+        0.1,
+        1.2,
+        0.6
+      ]
+      headlight FALSE
+      transitionType "TELEPORT"
+    }
+    DEF MainVP Viewpoint {
+      description "Main Viewpoint"
+      position 0 0 0
+    }
+  ]
+}
+
+DEF Capone Transform {
+  children DEF _1 Switch {
+    whichChoice 1
+    choice [
+      DEF loading Transform {
+        translation 5.24708 0 0
+        children [
+          Transform {
+            children DEF _2 Int {
+              startTime 1
+            }
+          }
+          DEF Number Transform {
+            translation -4.33957 -0.804138 -39.09
+            scale 0.320536 0.320536 0.320543
+            children Shape {
+              geometry DEF _3 Number {
+                position 12 0
+                string [
+                  "Transfering 00000 %",
+                  ""
+                ]
+                fontStyle FontStyle {
+                  language "de"
+                  family "SANS"
+                  size 6
+                  justify "MIDDLE"
+                }
+                maxExtent 43
+              }
+            }
+          }
+        ]
+      }
+      DEF main Transform {
+        children [
+          Transform {
+            children DEF _4 Int {
+              startTime 1396340409.66718
+              keyValue 1
+            }
+          }
+          Transform {
+            children DEF _5 ProximitySensor {
+              size 100.03 100.03 100.03
+            }
+          }
+          Transform {
+            children Collision {
+              collide FALSE
+              children DEF HUDObj_1 Transform {
+                children [
+                  DEF HUDVP1_1 Viewpoint {
+                    description "HUDVP 1"
+                    position 0 0 0
+                  }
+                  Transform {
+                    translation 0.141068 -0.134888 -0.429591
+                    scale 0.539077 0.539077 0.539075
+                    children DEF _6 Button {
+                      offChildren Inline {
+                        url "st-represent.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter 0 -5.58011e-05 -0.0082446
+                      }
+                      isActiveChildren Inline {
+                        url "zoom-represent.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.00895745
+                      }
+                      isOverChildren Inline {
+                        url "zoom-represent.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.00895745
+                      }
+                      upChildren Inline {
+                        url "zoom-represent.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.00895745
+                      }
+                    }
+                  }
+                  Transform {
+                    translation 0.141068 -0.0612116 -0.429683
+                    scale 0.528014 0.528014 0.528014
+                    children DEF _7 Button {
+                      offChildren Inline {
+                        url "st-tactix.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter 0 -0.00128503 -0.0082446
+                      }
+                      isActiveChildren Inline {
+                        url "zoom-tactix.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.00895745
+                      }
+                      isOverChildren Inline {
+                        url "zoom-tactix.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.00895745
+                      }
+                      upChildren Inline {
+                        url "zoom-tactix.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.00895745
+                      }
+                    }
+                  }
+                  DEF Button Transform {
+                    translation 0.141068 0.0120877 -0.429605
+                    scale 0.537434 0.537434 0.537432
+                    children DEF _8 Button {
+                      offChildren Inline {
+                        url "st-clothing.wrl"
+                        bboxSize 0.6 0.5 0.5
+                        bboxCenter 0 -0.000754442 -0.0082446
+                      }
+                      isActiveChildren Inline {
+                        url "over-clothing.wrl"
+                        bboxSize 2 2 2
+                      }
+                      isOverChildren Inline {
+                        url "over-clothing.wrl"
+                        bboxSize 2 2 2
+                      }
+                      upChildren Inline {
+                        url "zoom-clothing.wrl"
+                        bboxSize 0.6 0.5 0.5
+                        bboxCenter -0.00916307 0 -0.22362
+                      }
+                    }
+                  }
+                  DEF actionSwitch Transform {
+                    children DEF _9 Switch {
+                      whichChoice 0
+                      choice [
+                        DEF s0 Transform {
+                          children [
+                            DEF l0 Transform {
+                              translation 0.0754311 0.0952966 -0.395289
+                              scale 0.184195 0.184195 0.184194
+                              children DEF _10 Inline {
+                                url "logo.wrl"
+                                bboxSize 0.495259 0.254657 0.465197
+                              }
+                            }
+                            DEF a0 Transform {
+                              children Inline {
+                                url "off.wrl"
+                                bboxSize 1 1 1
+                                bboxCenter 0.000648871 -0.000311449 -0.424036
+                              }
+                            }
+                            Transform {
+                              children DEF _11 Int {
+                                startTime 1396340444.02655
+                              }
+                            }
+                          ]
+                        }
+                        DEF s1 Transform {
+                          children [
+                            DEF l1 Transform {
+                              translation 0.154961 0.122442 -0.395289
+                              scale 0.187847 0.187847 0.187847
+                              children USE _10
+                            }
+                            DEF a1 Transform {
+                              children Inline {
+                                url "clothing.wrl"
+                                bboxSize 4 2 2
+                              }
+                            }
+                            Transform {
+                              children DEF _12 Int {
+                                startTime 1396340443.4044
+                                keyValue 1
+                              }
+                            }
+                          ]
+                        }
+                        DEF s2 Transform {
+                          children [
+                            DEF l2 Transform {
+                              translation 0.181117 0.135205 -0.377496
+                              scale 0.0993941 0.0993938 0.0993944
+                              children USE _10
+                            }
+                            DEF a2 Transform {
+                              children Inline {
+                                url "tactix.wrl"
+                                bboxSize 5 5 5
+                              }
+                            }
+                            Transform {
+                              children DEF _13 Int {
+                                startTime 1396340442.41153
+                                keyValue 2
+                              }
+                            }
+                          ]
+                        }
+                        DEF s3 Transform {
+                          children [
+                            DEF l3 Transform {
+                              translation -0.0561189 0.0266282 -0.395289
+                              scale 0.217466 0.217466 0.217466
+                              children USE _10
+                            }
+                            DEF a3 Transform {
+                              children Inline {
+                                url "represent.wrl"
+                                bboxSize 1 1 1
+                                bboxCenter 0.000648871 -0.000311449 -0.424036
+                              }
+                            }
+                            Transform {
+                              children DEF _14 Int {
+                                startTime 1396340441.98088
+                                keyValue 3
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                  DEF bg Transform {
+                    children Inline {
+                      url "bgdeco.wrl"
+                      bboxSize 2.10656 0.530006 0.149675
+                      bboxCenter 0.804712 -0.00346693 -0.478099
+                    }
+                  }
+                  DEF border Transform {
+                    children Inline {
+                      url "border.wrl"
+                      bboxSize 15 4 2
+                    }
+                  }
+                ]
+              }
+            }
+          }
+          DEF Light1 PointLight {
+            location 0 0 1.06987
+          }
+        ]
+      }
+      DEF liftdown Transform {
+        children [
+          Transform {
+            children DEF _15 Int {
+              keyValue 2
+            }
+          }
+          Inline {
+            url "lift-down.wrl"
+            bboxSize 8 110 8
+          }
+          Transform {
+            children DEF _16 Delay {
+              cycleInterval 21
+            }
+          }
+        ]
+      }
+      DEF ubahn Transform {
+        children [
+          Transform {
+            children DEF _17 Int {
+              keyValue 3
+            }
+          }
+          DEF world Transform {
+            children [
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+              NULL
+            ]
+          }
+          DEF LoadVrmlFromURL Transform {
+            children DEF _18 LoadVrmlFromURL {
+              url [
+                "ubahn.wrl",
+                "../../ubahn/ubahn.wrl"
+              ]
+              startTime 1
+            }
+          }
+          DEF ProximitySensor Transform {
+            children DEF _19 ProximitySensor {
+              size 83.1785 83.1784 83.1785
+            }
+          }
+          DEF HUD Transform {
+            children Collision {
+              collide FALSE
+              children DEF HUDObj_2 Transform {
+                children [
+                  DEF backButton Transform {
+                    translation 0.00838973 -0.000695281 0.264265
+                    scale 2.0954 2.0954 2.09537
+                    children DEF _20 Button {
+                      offChildren Inline {
+                        url "back.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter 0.229519 0.147966 -0.298572
+                      }
+                      isActiveChildren Inline {
+                        url "back.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter 0.229519 0.147966 -0.298572
+                      }
+                      isOverChildren Inline {
+                        url "back.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter 0.229519 0.147966 -0.298572
+                      }
+                      upChildren Inline {
+                        url "back.wrl"
+                        bboxSize 0.5 0.5 0.5
+                        bboxCenter 0.229519 0.147966 -0.298572
+                      }
+                    }
+                  }
+                  DEF nextShirt1 Transform {
+                    translation 0.00838973 -0.000695281 0.264265
+                    scale 2.0954 2.0954 2.09537
+                    children Anchor {
+                      url "#shirt1"
+                      parameter ""
+                      children Inline {
+                        url "next.wrl"
+                        bboxSize 1 1 1
+                        bboxCenter 0.237791 -0.170628 -0.299911
+                      }
+                    }
+                  }
+                  DEF HUDVP1 Viewpoint {
+                    description "Tube HUDVP 1"
+                    position 0 0 0
+                    fieldOfView 1.76201
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+      DEF liftup Transform {
+        children [
+          Inline {
+            url "lift-up.wrl"
+            bboxSize 8 110 8
+          }
+          DEF Int Transform {
+            children DEF _21 Int {
+              keyValue 4
+            }
+          }
+          DEF Delay Transform {
+            children DEF _22 Delay {
+              cycleInterval 21
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+DEF Sounds Transform {
+  children [
+    DEF rhythm Sound {
+      spatialize FALSE
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF rhythm_1 AudioClip {
+        description "rhythm"
+        url "rhythm.wav"
+        loop TRUE
+        startTime 1396340409.66718
+        stopTime 1
+      }
+    }
+    DEF clothing Sound {
+      spatialize FALSE
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF clothing_1 AudioClip {
+        description "clothing"
+        url "clothing.wav"
+        pitch 0.25
+        loop TRUE
+        startTime 1396340443.4044
+        stopTime 1396340444.02655
+      }
+    }
+    DEF tactix Sound {
+      spatialize FALSE
+      location -0.0928841 0.939311 -0.395147
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF tactix_1 AudioClip {
+        description "tactix"
+        url "tactix.wav"
+        loop TRUE
+        startTime 1396340442.41153
+        stopTime 1396340442.44671
+      }
+    }
+    DEF represent Sound {
+      spatialize FALSE
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF represent_1 AudioClip {
+        description "represent"
+        url "represent.wav"
+        pitch 0.5
+        startTime 1396340441.98088
+        stopTime 1396340442.35752
+      }
+    }
+    DEF error Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF error_1 AudioClip {
+        description "error"
+        url "error.wav"
+      }
+    }
+    DEF bell Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF bell_1 AudioClip {
+        description "bell"
+        url "bell.wav"
+      }
+    }
+    DEF door Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF door_1 AudioClip {
+        description "door"
+        url "door.wav"
+      }
+    }
+    DEF drive Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF drive_1 AudioClip {
+        description "drive"
+        url "drive.wav"
+      }
+    }
+    DEF lightsplat Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF lightsplat_1 AudioClip {
+        description "lightsplat"
+        url "lightsplat.wav"
+      }
+    }
+    DEF ambient Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF ambient_1 AudioClip {
+        description "ambient"
+        url "ambient.wav"
+      }
+    }
+    DEF train Sound {
+      minBack 3
+      minFront 3
+      maxBack 30
+      maxFront 30
+      source DEF train_1 AudioClip {
+        description "train"
+        url "train.wav"
+      }
+    }
+    DEF CountDown Transform {
+      children DEF _23 CountDown {
+        startValue 11
+        startTime 1
+        nextTime -1
+      }
+    }
+  ]
+}
+
+DEF ps Transform {
+  children DEF _24 ProximitySensor {
+    size 200 200 200
+  }
+}
+
+DEF Debug Script {
+  eventIn SFTime set_time
+
+  url "vrmlscript:
+function set_time (value)
+{
+	print (value);
+}"
+}
+
+ROUTE _24.isActive TO _MainNavInfo.set_bind
+ROUTE _24.isActive TO MainVP.set_bind
+ROUTE _23.whichChoice_changed TO _3.set_int
+ROUTE _22.exitTime TO _4.set_startTime
+ROUTE _23.exitTime TO _4.set_startTime
+ROUTE _5.isActive TO HUDVP1_1.set_bind
+ROUTE _6.offTime TO _11.set_startTime
+ROUTE _7.offTime TO _11.set_startTime
+ROUTE _8.offTime TO _11.set_startTime
+ROUTE _8.overTime TO _12.set_startTime
+ROUTE _7.overTime TO _13.set_startTime
+ROUTE _6.overTime TO _14.set_startTime
+ROUTE _11.value_changed TO _9.set_whichChoice
+ROUTE _12.value_changed TO _9.set_whichChoice
+ROUTE _13.value_changed TO _9.set_whichChoice
+ROUTE _14.value_changed TO _9.set_whichChoice
+ROUTE _5.position_changed TO HUDObj_1.set_translation
+ROUTE _5.orientation_changed TO HUDObj_1.set_rotation
+ROUTE _8.downTime TO _15.set_startTime
+ROUTE _15.startTime_changed TO _16.set_startTime
+ROUTE _16.exitTime TO _17.set_startTime
+ROUTE _18.children_changed TO world.set_children
+ROUTE _19.position_changed TO HUDObj_2.set_translation
+ROUTE _19.orientation_changed TO HUDObj_2.set_rotation
+ROUTE _20.touchTime TO _21.set_startTime
+ROUTE _21.startTime_changed TO _22.set_startTime
+ROUTE _2.value_changed TO _1.set_whichChoice
+ROUTE _4.value_changed TO _1.set_whichChoice
+ROUTE _15.value_changed TO _1.set_whichChoice
+ROUTE _17.value_changed TO _1.set_whichChoice
+ROUTE _21.value_changed TO _1.set_whichChoice
+ROUTE _4.startTime_changed TO rhythm_1.set_startTime
+ROUTE _8.downTime TO rhythm_1.set_stopTime
+ROUTE _8.overTime TO clothing_1.set_startTime
+ROUTE _8.downTime TO clothing_1.set_stopTime
+ROUTE _8.offTime TO clothing_1.set_stopTime
+ROUTE _7.overTime TO tactix_1.set_startTime
+ROUTE _7.offTime TO tactix_1.set_stopTime
+ROUTE _6.overTime TO represent_1.set_startTime
+ROUTE _6.offTime TO represent_1.set_stopTime
+ROUTE _6.downTime TO error_1.set_startTime
+ROUTE _7.downTime TO error_1.set_startTime
+ROUTE error_1.duration_changed TO _23.set_nextTime
+ROUTE represent_1.duration_changed TO _23.set_nextTime
+ROUTE tactix_1.duration_changed TO _23.set_nextTime
+ROUTE clothing_1.duration_changed TO _23.set_nextTime
+ROUTE rhythm_1.duration_changed TO _23.set_nextTime
+ROUTE drive_1.duration_changed TO _23.set_nextTime
+ROUTE door_1.duration_changed TO _23.set_nextTime
+ROUTE bell_1.duration_changed TO _23.set_nextTime
+ROUTE lightsplat_1.duration_changed TO _23.set_nextTime
+ROUTE ambient_1.duration_changed TO _23.set_nextTime
+ROUTE train_1.duration_changed TO _23.set_nextTime
+ROUTE _15.startTime_changed TO Debug.set_time
+ROUTE _16.exitTime TO Debug.set_time
