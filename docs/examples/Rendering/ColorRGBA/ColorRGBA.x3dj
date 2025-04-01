@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.62, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.31, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:16:24 GMT"
+          "@content": "Tue, 01 Apr 2025 12:50:24 GMT"
         }
       ],
       "component": [
@@ -183,9 +183,9 @@
                     "#sourceCode": [
 "ecmascript:",
 "",
-"var",
-"\tpoints   = [ ],",
-"\tlastTime = 0;",
+"const points = [ ];",
+"",
+"let lastTime = 0;",
 "",
 "function initialize ()",
 "{",
@@ -194,10 +194,10 @@
 "",
 "function set_value (value, time)",
 "{",
-"\tif (lastTime == 0)",
+"\tif (lastTime === 0)",
 "\t\tlastTime = time;",
 "",
-"\tvar dt = time - lastTime;",
+"\tconst dt = time - lastTime;",
 "",
 "\tif (dt < updateInterval)",
 "\t\treturn;",
@@ -234,7 +234,7 @@
 "",
 "function build ()",
 "{",
-"\tvar",
+"\tconst",
 "\t\thsva  = new SFColorRGBA (1, 1, 1, 1),",
 "\t\tcolor = geometry .color .color,",
 "\t\tcoord = geometry .coord .point;",
@@ -244,11 +244,11 @@
 "\tcolor .length  = 0;",
 "\tcoord .length  = 0;",
 "",
-"\tfor (var w = 0; w < width; ++ w)",
+"\tfor (let w = 0; w < width; ++ w)",
 "\t{",
-"\t\tfor (var h = 0; h < height; ++ h)",
+"\t\tfor (let h = 0; h < height; ++ h)",
 "\t\t{",
-"\t\t\tvar",
+"\t\t\tconst",
 "\t\t\t\tx1  = size .x * w + spacing .x * w,",
 "\t\t\t\tx2  = x1 + size .x,",
 "\t\t\t\ty1  = size .y * h + spacing .y * h,",
@@ -269,15 +269,15 @@
 "",
 "function animate ()",
 "{",
-"\tvar color = geometry .color .color;",
+"\tconst color = geometry .color .color;",
 "",
-"\tfor (var w = 0; w < points .length; ++ w)",
+"\tfor (let w = 0; w < width; ++ w)",
 "\t{",
-"\t\tvar value = (points [w] + 1) * 0.5 * height;",
+"\t\tconst value = (points [w] + 1) * 0.5 * height;",
 "",
 "\t\tfor (var h = 0; h < height; ++ h)",
 "\t\t{",
-"\t\t\tvar",
+"\t\t\tconst",
 "\t\t\t\ti = w * height + h,",
 "\t\t\t\tc = color [i];",
 "",
