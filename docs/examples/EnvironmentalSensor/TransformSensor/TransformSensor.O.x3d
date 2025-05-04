@@ -11,8 +11,8 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 24 Feb 2019 11:52:29 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 15 Feb 2025 23:32:12 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 04 May 2025 15:40:13 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -154,8 +154,8 @@
             global='true'
             url='"assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d"'/>
         <Transform DEF='CarRed'
-            translation='2.81904e-6 1.27034 -33.0293'
-            rotation='-2.22221844209501e-16 0.999999999999999 3.44686496173111e-16 336.240059461872'
+            translation='-2.945824e-6 1.27034 15.32989'
+            rotation='1.74315274949279e-32 1 1.22464681821076e-16 269.999996783548'
             scale='2.12352 2.12352 2.12352'
             scaleOrientation='3.9267146445042e-16 1 5.03693766912935e-16 90'
             center='0 0 7.06'>
@@ -229,8 +229,8 @@
               url='"assets/Murcielago640.x3d"'/>
         </Transform>
         <Transform DEF='CarYellow'
-            translation='-5.983072e-6 1.27034 12.51064'
-            rotation='0 1 0 89.9999861261438'
+            translation='1.43998e-5 1.27034 -38.2793'
+            rotation='0 -1 0 316.800121756802'
             scale='2.12352 2.12352 2.12352'
             center='0 0 11.4343'>
           <Group DEF='YellowCarAnimation'>
@@ -343,7 +343,7 @@
             scale='0.250539 0.250539 0.250539'>
           <Shape>
             <Text DEF='_32'
-                string='"00"'
+                string='"10"'
                 solid='true'>
               <FontStyle DEF='_33'
                   family='"assets/Readout-OneFront.otf"'
@@ -355,29 +355,25 @@
             <field accessType='inputOnly' type='SFTime' name='set_enterTime'/>
 <![CDATA[ecmascript:
 
-var lap = 0;
+let lap = 0;
 
 function initialize ()
 {
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
 function set_enterTime (value, time)
 {
-	lap += 1;
+   lap += 1;
 
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
-function pad (num, size)
+function set_string ()
 {
-	var string = num + "";
-
-	while (string .length < size)
-		string = "0" + string;
-
-	return string;
-}]]>
+   string_changed [0] = lap .toString () .padStart (2, 0);
+}
+]]>
           </Script>
         </Transform>
         <Transform DEF='YellowLapNumberText'
@@ -385,7 +381,7 @@ function pad (num, size)
             scale='0.250539 0.250539 0.250539'>
           <Shape>
             <Text DEF='_34'
-                string='"00"'
+                string='"02"'
                 solid='true'>
               <FontStyle
                   family='"assets/Readout-OneFront.otf"'
@@ -397,29 +393,25 @@ function pad (num, size)
             <field accessType='inputOnly' type='SFTime' name='set_enterTime'/>
 <![CDATA[ecmascript:
 
-var lap = 0;
+let lap = 0;
 
 function initialize ()
 {
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
 function set_enterTime (value, time)
 {
-	lap += 1;
+   lap += 1;
 
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
-function pad (num, size)
+function set_string ()
 {
-	var string = num + "";
-
-	while (string .length < size)
-		string = "0" + string;
-
-	return string;
-}]]>
+   string_changed [0] = lap .toString () .padStart (2, 0);
+}
+]]>
           </Script>
         </Transform>
         <Transform DEF='LapText'

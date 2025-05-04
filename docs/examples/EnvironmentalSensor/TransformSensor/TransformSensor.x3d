@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='Layering' level='1'/>
@@ -11,9 +11,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 24 Feb 2019 11:52:29 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:03:12 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.1.1, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sun, 04 May 2025 15:42:44 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -35,8 +35,8 @@
             global='true'
             url='"assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d"'/>
         <Transform DEF='CarRed'
-            translation='-3.41998e-6 1.27034 19.3074'
-            rotation='7.57803853202395e-17 1 4.66842951897694e-17 153.270051406218'
+            translation='2.81904e-6 1.27034 -33.0293'
+            rotation='-2.12155829014757e-17 1 1.43680261872051e-16 287.280139781058'
             scale='2.12352 2.12352 2.12352'
             scaleOrientation='3.9267146445042e-16 1 5.03693766912935e-16 90'
             center='0 0 7.06'>
@@ -56,8 +56,8 @@
               url='"assets/Murcielago640.x3d"'/>
         </Transform>
         <Transform DEF='CarYellow'
-            translation='-5.98828e-6 1.27034 14.88452'
-            rotation='0 1 0 232.724861724313'
+            translation='-4.613982e-6 1.27034 14.82527'
+            rotation='0 1 0 269.399759730772'
             scale='2.12352 2.12352 2.12352'
             center='0 0 11.4343'>
           <Group DEF='YellowCarAnimation'>
@@ -110,13 +110,13 @@
         </Transform>
       </Layer>
       <LayoutLayer DEF='HUD'
-          pickable='false'>
+          pointerEvents='false'>
         <Transform DEF='RedLapNumberText'
             translation='1.6484 0.678502 0'
             scale='0.250539 0.250539 0.250539'>
           <Shape>
             <Text DEF='_32'
-                string='"26"'
+                string='"10"'
                 solid='true'>
               <FontStyle DEF='_33'
                   family='"assets/Readout-OneFront.otf"'
@@ -128,29 +128,25 @@
             <field accessType='inputOnly' type='SFTime' name='set_enterTime'/>
 <![CDATA[ecmascript:
 
-var lap = 0;
+let lap = 0;
 
 function initialize ()
 {
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
 function set_enterTime (value, time)
 {
-	lap += 1;
+   lap += 1;
 
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
-function pad (num, size)
+function set_string ()
 {
-	var string = num + "";
-
-	while (string .length < size)
-		string = "0" + string;
-
-	return string;
-}]]>
+   string_changed [0] = lap .toString () .padStart (2, 0);
+}
+]]>
           </Script>
         </Transform>
         <Transform DEF='YellowLapNumberText'
@@ -158,7 +154,7 @@ function pad (num, size)
             scale='0.250539 0.250539 0.250539'>
           <Shape>
             <Text DEF='_34'
-                string='"21"'
+                string='"02"'
                 solid='true'>
               <FontStyle
                   family='"assets/Readout-OneFront.otf"'
@@ -170,29 +166,25 @@ function pad (num, size)
             <field accessType='inputOnly' type='SFTime' name='set_enterTime'/>
 <![CDATA[ecmascript:
 
-var lap = 0;
+let lap = 0;
 
 function initialize ()
 {
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
 function set_enterTime (value, time)
 {
-	lap += 1;
+   lap += 1;
 
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
-function pad (num, size)
+function set_string ()
 {
-	var string = num + "";
-
-	while (string .length < size)
-		string = "0" + string;
-
-	return string;
-}]]>
+   string_changed [0] = lap .toString () .padStart (2, 0);
+}
+]]>
           </Script>
         </Transform>
         <Transform DEF='LapText'

@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.1, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:03:17 GMT"
+          "@content": "Sun, 04 May 2025 15:42:44 GMT"
         }
       ],
       "component": [
@@ -103,8 +103,8 @@
                     { "Transform":
                       {
                         "@DEF": "CarRed",
-                        "@translation": [ -3.41998e-6, 1.27034, 19.3074 ],
-                        "@rotation": [ 8.30602499450054e-17, 1, 3.94044318415054e-17, 140.760049076121 ],
+                        "@translation": [ 2.81904e-6, 1.27034, -33.0293 ],
+                        "@rotation": [ -2.12155829014757e-17, 1, 1.43680261872051e-16, 287.280139781058 ],
                         "@scale": [ 2.12352, 2.12352, 2.12352 ],
                         "@scaleOrientation": [ 3.9267146445042e-16, 1, 5.03693766912935e-16, 90 ],
                         "@center": [ 0, 0, 7.06 ],
@@ -149,8 +149,8 @@
                     { "Transform":
                       {
                         "@DEF": "CarYellow",
-                        "@translation": [ -7.70175e-6, 1.27034, 15.21618 ],
-                        "@rotation": [ 0, 1, 0, 147.300060293911 ],
+                        "@translation": [ -4.613982e-6, 1.27034, 14.82527 ],
+                        "@rotation": [ 0, 1, 0, 269.399759730772 ],
                         "@scale": [ 2.12352, 2.12352, 2.12352 ],
                         "@center": [ 0, 0, 11.4343 ],
                         "-children": [
@@ -265,7 +265,7 @@
               { "LayoutLayer":
                 {
                   "@DEF": "HUD",
-                  "@pickable": false,
+                  "@pointerEvents": false,
                   "-children": [
                     { "Transform":
                       {
@@ -278,7 +278,7 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_32",
-                                  "@string": [ "26" ],
+                                  "@string": [ "10" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
@@ -309,29 +309,25 @@
                               "#sourceCode": [
 "ecmascript:",
 "",
-"var lap = 0;",
+"let lap = 0;",
 "",
 "function initialize ()",
 "{",
-"\tstring_changed [0] = pad (lap, 2);",
+"   set_string ();",
 "}",
 "",
 "function set_enterTime (value, time)",
 "{",
-"\tlap += 1;",
+"   lap += 1;",
 "",
-"\tstring_changed [0] = pad (lap, 2);",
+"   set_string ();",
 "}",
 "",
-"function pad (num, size)",
+"function set_string ()",
 "{",
-"\tvar string = num + \"\";",
-"",
-"\twhile (string .length < size)",
-"\t\tstring = \"0\" + string;",
-"",
-"\treturn string;",
-"}"
+"   string_changed [0] = lap .toString () .padStart (2, 0);",
+"}",
+""
                               ]
                             }
                           }
@@ -349,7 +345,7 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_34",
-                                  "@string": [ "21" ],
+                                  "@string": [ "02" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
@@ -379,29 +375,25 @@
                               "#sourceCode": [
 "ecmascript:",
 "",
-"var lap = 0;",
+"let lap = 0;",
 "",
 "function initialize ()",
 "{",
-"\tstring_changed [0] = pad (lap, 2);",
+"   set_string ();",
 "}",
 "",
 "function set_enterTime (value, time)",
 "{",
-"\tlap += 1;",
+"   lap += 1;",
 "",
-"\tstring_changed [0] = pad (lap, 2);",
+"   set_string ();",
 "}",
 "",
-"function pad (num, size)",
+"function set_string ()",
 "{",
-"\tvar string = num + \"\";",
-"",
-"\twhile (string .length < size)",
-"\t\tstring = \"0\" + string;",
-"",
-"\treturn string;",
-"}"
+"   string_changed [0] = lap .toString () .padStart (2, 0);",
+"}",
+""
                               ]
                             }
                           }
@@ -451,7 +443,7 @@
             "@fromNode": "Murcielago640TranslationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "CarRed",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -467,7 +459,7 @@
             "@fromNode": "Murcielago640RotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "CarRed",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -475,7 +467,7 @@
             "@fromNode": "LapScript",
             "@fromField": "string_changed",
             "@toNode": "_32",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -499,7 +491,7 @@
             "@fromNode": "CarYellowTranslationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "CarYellow",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -515,7 +507,7 @@
             "@fromNode": "CarYellowRotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "CarYellow",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -523,7 +515,7 @@
             "@fromNode": "LapScript_35",
             "@fromField": "string_changed",
             "@toNode": "_34",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
