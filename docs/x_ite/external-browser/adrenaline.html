@@ -63,7 +63,7 @@ function init ()
 {
   const
     scene = Browser .currentScene,                      // Get the scene.
-    timer = scene .getNamedNode ("SpinAnimationTimer"); // Get box TouchSensor node.
+    timer = scene .getNamedNode ("SpinAnimationTimer"); // Get box TimeSensor node.
 
   $("#center")            .on ("click",  center);
   $("#change-style")      .on ("change", changeStyle);
@@ -91,8 +91,8 @@ function center ()
 function changeStyle ()
 {
   const
-    scene      = Browser .currentScene,                   // Get the scene.
-    switchNode = scene .getNamedNode ("Adrenaline");      // Get Switch node.
+    scene      = Browser .currentScene,              // Get the scene.
+    switchNode = scene .getNamedNode ("Adrenaline"); // Get Switch node.
 
   // Change styles.
 
