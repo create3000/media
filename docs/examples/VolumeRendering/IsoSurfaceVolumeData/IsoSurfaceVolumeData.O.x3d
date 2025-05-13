@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='EnvironmentalEffects' level='3'/>
+    <component name='Scripting' level='1'/>
     <component name='Texturing3D' level='2'/>
-    <component name='VolumeRendering' level='3'/>
+    <component name='VolumeRendering' level='4'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='24 March 2011'/>
     <meta name='creator' content='Andrew Wood, Nicholas Polys: Virginia Tech'/>
+    <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Volume rendering of a CT scan of a skull, rendered as an isosurface with cartoon render style'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.7, https://create3000.github.io/sunrize/'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Tue, 22 Oct 2019 10:26:01 GMT'/>
+    <meta name='modified' content='Tue, 13 May 2025 09:35:13 GMT'/>
     <meta name='reference' content='IsoSurfaceSkull.x3d'/>
     <meta name='reference' content='Dataset, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/nrrd/skull.nrrd'/>
     <meta name='reference' content='All datasets, http://metagrid2.sv.vt.edu/~npolys/X3DVolexamples/X3DVolumeExamples/datasets/datasets.zip'/>
@@ -23,29 +24,29 @@
   <Scene>
     <WorldInfo
         title='IsoSurfaceVolumeData.O'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
             <Transform DEF='_1' containerField='value'
@@ -74,5 +75,15 @@
           skyColor='0.2 0.2 0.2'/>
       <Transform USE='_1'/>
     </Group>
+    <Script DEF='EnterWorldScript'>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   Browser .setBrowserOption ("PrimitiveQuality",  "HIGH");
+   Browser .setBrowserOption ("QualityWhenMoving", "LOW");
+}
+]]>
+    </Script>
   </Scene>
 </X3D>
