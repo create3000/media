@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.6.1
+#X3D V4.0 utf8 X_ITE V11.6.2
 
 PROFILE Interchange
 
@@ -11,9 +11,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.8.16, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.1.13, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Mon, 28 Jul 2025 15:42:42 GMT"
+META "generator" "Sunrize X3D Editor V1.8.17, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.1.14, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Tue, 29 Jul 2025 13:52:05 GMT"
 
 EXTERNPROTO SFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -33,7 +33,7 @@ LayerSet {
           centerOfRotation 0.8885 -0.5 0
           fieldOfView [ -0.8885, -0.5, 0.8885, 0.5 ]
         }
-        DEF Statics StaticGroup {
+        DEF Statics_1 StaticGroup {
           children [
             DEF design Inline {
               global TRUE
@@ -81,7 +81,7 @@ LayerSet {
             Shape {
               appearance USE _7
               geometry DEF _8 Text {
-                string ""
+                string ""
                 solid TRUE
                 fontStyle FontStyle {
                   family "assets/MaterialIcons.ttf"
@@ -228,15 +228,10 @@ function random (min, max)
         EnvironmentLight {
           specularTexture ImageCubeMapTexture {
             url [ "assets/helipad.avif", "assets/helipad.jpg" ]
-            textureProperties TextureProperties {
-              generateMipMaps TRUE
-              minificationFilter "NICEST"
-              magnificationFilter "NICEST"
-            }
           }
         }
         DEF _10 Transform {
-          rotation 0 -1 0 2.35845270779693
+          rotation 0 -1 0 0.445484792555662
           children [
             DEF RotationAnimation Group {
               visible FALSE
