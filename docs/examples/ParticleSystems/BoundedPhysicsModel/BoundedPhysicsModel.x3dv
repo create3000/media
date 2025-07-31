@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.5.2
+#X3D V4.0 utf8 X_ITE V11.6.3
 
 PROFILE Interchange
 
@@ -10,9 +10,9 @@ UNIT angle degree 0.017453292519943295
 
 META "created" "Sat, 23 Apr 2016 03:14:27 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.139, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Tue, 30 Apr 2024 09:15:50 GMT"
+META "generator" "Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Thu, 31 Jul 2025 08:59:06 GMT"
 
 WorldInfo {
   title "BoundedPhysicsModel"
@@ -37,17 +37,13 @@ EnvironmentLight {
   color 0.9764706 0.7960784 0.6117647
   intensity 0.45
   rotation 1 0 0 -45
-  diffuseTexture ImageCubeMapTexture {
-    url "assets/helipad-diffuse.jpg"
-    textureProperties DEF _1 TextureProperties {
+  specularTexture ImageCubeMapTexture {
+    url [ "assets/helipad.avif", "assets/helipad.jpg" ]
+    textureProperties TextureProperties {
       generateMipMaps TRUE
       minificationFilter "NICEST"
       magnificationFilter "NICEST"
     }
-  }
-  specularTexture ImageCubeMapTexture {
-    url "assets/helipad-specular.jpg"
-    textureProperties USE _1
   }
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='CubeMapTexturing' level='3'/>
     <component name='Geometry2D' level='2'/>
@@ -8,9 +8,9 @@
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='created' content='Sat, 23 Apr 2016 03:14:27 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.139, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Tue, 30 Apr 2024 09:15:50 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Thu, 31 Jul 2025 08:59:06 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -28,16 +28,12 @@
         color='0.9764706 0.7960784 0.6117647'
         intensity='0.45'
         rotation='1 0 0 -45'>
-      <ImageCubeMapTexture containerField='diffuseTexture'
-          url='"assets/helipad-diffuse.jpg"'>
-        <TextureProperties DEF='_1'
+      <ImageCubeMapTexture containerField='specularTexture'
+          url='"assets/helipad.avif", "assets/helipad.jpg"'>
+        <TextureProperties
             generateMipMaps='true'
             minificationFilter='NICEST'
             magnificationFilter='NICEST'/>
-      </ImageCubeMapTexture>
-      <ImageCubeMapTexture containerField='specularTexture'
-          url='"assets/helipad-specular.jpg"'>
-        <TextureProperties USE='_1'/>
       </ImageCubeMapTexture>
     </EnvironmentLight>
     <DirectionalLight
