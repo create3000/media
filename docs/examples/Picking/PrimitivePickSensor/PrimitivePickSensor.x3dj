@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.8.19, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.16, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:15:15 GMT"
+          "@content": "Thu, 31 Jul 2025 13:33:24 GMT"
         }
       ],
       "component": [
@@ -183,7 +183,7 @@
                     "@fromNode": "SphereTranslationInterpolator",
                     "@fromField": "value_changed",
                     "@toNode": "Sphere",
-                    "@toField": "translation"
+                    "@toField": "set_translation"
                   }
                 },
                 { "ROUTE":
@@ -266,7 +266,8 @@
         },
         { "Transform":
           {
-            "@DEF": "RocketShip",
+            "@DEF": "RocketShip_1",
+            "@rotation": [ 0, 0, 1, 3.14159265358979 ],
             "-children": [
               { "Inline":
                 {
@@ -382,7 +383,7 @@
             "@fromNode": "HitColorScript",
             "@fromField": "skyColor_changed",
             "@toNode": "_18",
-            "@toField": "skyColor"
+            "@toField": "set_skyColor"
           }
         },
         { "ROUTE":
@@ -398,7 +399,7 @@
             "@fromNode": "HitColorScriptColorInterpolator",
             "@fromField": "value_changed",
             "@toNode": "HitColorScript",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
@@ -406,7 +407,7 @@
             "@fromNode": "Bullet",
             "@fromField": "hitTime",
             "@toNode": "SkyAnimationTimer",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         }
       ]
