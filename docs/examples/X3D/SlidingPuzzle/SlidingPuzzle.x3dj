@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:27:11 GMT"
+          "@content": "Thu, 31 Jul 2025 08:23:19 GMT"
         }
       ],
       "component": [
@@ -2700,7 +2700,7 @@
                                         "-texture": { "MovieTexture":
                                           {
                                             "@DEF": "_124",
-                                            "@url": [ "campfire.512.avi", "http://titania.create3000.de/fileadmin/cobweb/videos/campfire.512.mp4", "campfire.512.mp4" ],
+                                            "@url": [ "campfire.512.mp4" ],
                                             "@loop": true
                                           }
                                         }
@@ -2793,7 +2793,7 @@
             "@fromNode": "_2",
             "@fromField": "touchTime",
             "@toNode": "MixScript",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -2801,7 +2801,7 @@
             "@fromNode": "MixTextScript",
             "@fromField": "string_changed",
             "@toNode": "_98",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -2817,7 +2817,7 @@
             "@fromNode": "_96",
             "@fromField": "touchTime",
             "@toNode": "MixScript",
-            "@toField": "solveTime"
+            "@toField": "set_solveTime"
           }
         },
         { "ROUTE":
@@ -3025,199 +3025,199 @@
             "@fromNode": "_126",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_25",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_31",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_34",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_85",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_82",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_79",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_13",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_19",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_22",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_76",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_73",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_70",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_67",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_64",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_61",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_58",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_55",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_52",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_49",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_46",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_43",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_40",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_28",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Image",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "_37",
-            "@toField": "texture"
+            "@toField": "set_texture"
           }
         },
         { "ROUTE":
@@ -3225,7 +3225,7 @@
             "@fromNode": "_122",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3241,7 +3241,7 @@
             "@fromNode": "_116",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3257,7 +3257,7 @@
             "@fromNode": "_101",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3273,7 +3273,7 @@
             "@fromNode": "_104",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3289,7 +3289,7 @@
             "@fromNode": "_107",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3305,7 +3305,7 @@
             "@fromNode": "_119",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3321,7 +3321,7 @@
             "@fromNode": "_110",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
@@ -3337,7 +3337,7 @@
             "@fromNode": "_113",
             "@fromField": "value_changed",
             "@toNode": "Image",
-            "@toField": "keyValue"
+            "@toField": "set_keyValue"
           }
         },
         { "ROUTE":
