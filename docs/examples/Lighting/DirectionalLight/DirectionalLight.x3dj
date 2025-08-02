@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.11, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.7.63, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.155, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.0.32, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 21 Aug 2024 15:29:00 GMT"
+          "@content": "Wed, 09 Apr 2025 11:03:56 GMT"
         }
       ],
       "component": [
@@ -128,39 +128,6 @@
                         "@visibilityRange": 200
                       }
                     },
-                    { "NavigationInfo":
-                      {
-                        "@DEF": "Examine",
-                        "@type": [ "EXAMINE" ],
-                        "@headlight": false,
-                        "@transitionType": [ "ANIMATE" ]
-                      }
-                    },
-                    { "NavigationInfo":
-                      {
-                        "@DEF": "Walk",
-                        "@type": [ "WALK" ],
-                        "@avatarSize": [ 0.25, 1.6, 0.8 ],
-                        "@headlight": false,
-                        "@transitionType": [ "ANIMATE" ]
-                      }
-                    },
-                    { "NavigationInfo":
-                      {
-                        "@DEF": "Animation",
-                        "@type": [ "NONE" ],
-                        "@headlight": false,
-                        "@transitionType": [ "ANIMATE" ]
-                      }
-                    },
-                    { "NavigationInfo":
-                      {
-                        "@DEF": "MagicBubble",
-                        "@type": [ "NONE" ],
-                        "@headlight": false,
-                        "@transitionType": [ "ANIMATE" ]
-                      }
-                    },
                     { "DirectionalLight":
                       {
                         "@DEF": "Light1",
@@ -191,7 +158,7 @@
                         "-children": [
                           { "Group":
                             {
-                              "@DEF": "Animation_1",
+                              "@DEF": "Animation_3",
                               "-children": [
                                 { "TimeSensor":
                                   {
@@ -219,42 +186,71 @@
                           },
                           { "Viewpoint":
                             {
-                              "@DEF": "_3",
+                              "@DEF": "Examine",
                               "@description": "Examine",
                               "@position": [ -19.9654, 18.5225, 27.1586 ],
                               "@orientation": [ -0.46000373731302, -0.86725623042962, -0.19042896953737, 51.033650076908 ],
                               "@centerOfRotation": [ 8.12904, 0.182928, -0.95897 ],
-                              "@fieldOfView": 34.2445
+                              "@fieldOfView": 34.2445,
+                              "-navigationInfo": { "NavigationInfo":
+                                {
+                                  "@type": [ "EXAMINE" ],
+                                  "@headlight": false,
+                                  "@transitionType": [ "ANIMATE" ]
+                                }
+                              }
                             }
                           },
                           { "Viewpoint":
                             {
-                              "@DEF": "_4",
+                              "@DEF": "Walk",
                               "@description": "Walk",
                               "@position": [ -2.66861, 1.59583, 20.6487 ],
                               "@orientation": [ -0.27422134021149, -0.96145213777611, -0.020308701050562, 8.8094562605301 ],
                               "@centerOfRotation": [ 10.0673, 22.6927, -1.25789 ],
-                              "@fieldOfView": 33.5106
+                              "@fieldOfView": 33.5106,
+                              "-navigationInfo": { "NavigationInfo":
+                                {
+                                  "@type": [ "WALK" ],
+                                  "@avatarSize": [ 0.25, 1.6, 0.8 ],
+                                  "@headlight": false,
+                                  "@transitionType": [ "ANIMATE" ]
+                                }
+                              }
                             }
                           },
                           { "Viewpoint":
                             {
-                              "@DEF": "_5",
+                              "@DEF": "Animation",
                               "@description": "Animation",
-                              "@position": [ 3.188402, 7.937308, -3.920676 ],
-                              "@orientation": [ 0.125362800564359, -0.941819503962646, -0.311865660485754, 219.718193801063 ],
+                              "@position": [ 5.47134, 6.714822, -3.307501 ],
+                              "@orientation": [ -0.0333873867988087, -0.96844373941488, -0.246985841680997, 160.44240107228 ],
                               "@centerOfRotation": [ -1.56442, 3.69681, 4.64169 ],
-                              "@fieldOfView": 33.5106
+                              "@fieldOfView": 33.5106,
+                              "-navigationInfo": { "NavigationInfo":
+                                {
+                                  "@type": [ "NONE" ],
+                                  "@headlight": false,
+                                  "@transitionType": [ "ANIMATE" ]
+                                }
+                              }
                             }
                           },
                           { "Viewpoint":
                             {
-                              "@DEF": "_6",
+                              "@DEF": "MagicBubble",
                               "@description": "Magic Bubble",
                               "@position": [ -4.42355, 5.30617, 3.65723 ],
                               "@orientation": [ 0.7086034088183, -0.59844528044223, -0.37382409677215, 208.04294843187 ],
                               "@centerOfRotation": [ -3.08302, 0.653541, 7.47848 ],
-                              "@fieldOfView": 33.5106
+                              "@fieldOfView": 33.5106,
+                              "-navigationInfo": { "NavigationInfo":
+                                {
+                                  "@type": [ "NONE" ],
+                                  "@headlight": false,
+                                  "@transitionType": [ "ANIMATE" ]
+                                }
+                              }
                             }
                           }
                         ]
@@ -563,8 +559,8 @@
                     { "Transform":
                       {
                         "@DEF": "Bird",
-                        "@translation": [ -4.373417, 4.55836, 9.18901 ],
-                        "@rotation": [ 0, -0.999999999999998, 0, 30.6292920117005 ],
+                        "@translation": [ 3.994161, 4.55836, 5.497097 ],
+                        "@rotation": [ 0, 1, 0, 32.6547282323863 ],
                         "@scale": [ 0.23, 0.23, 0.23 ],
                         "-children": [
                           { "Group":
@@ -1525,22 +1521,6 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
-            "@fromField": "isBound",
-            "@toNode": "Examine",
-            "@toField": "set_bind"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_4",
-            "@fromField": "isBound",
-            "@toNode": "Walk",
-            "@toField": "set_bind"
-          }
-        },
-        { "ROUTE":
-          {
             "@fromNode": "_18",
             "@fromField": "touchTime",
             "@toNode": "_19",
@@ -1551,7 +1531,7 @@
           {
             "@fromNode": "_19",
             "@fromField": "triggerTrue",
-            "@toNode": "_3",
+            "@toNode": "Examine",
             "@toField": "set_bind"
           }
         },
@@ -1567,7 +1547,7 @@
           {
             "@fromNode": "_22",
             "@fromField": "triggerTrue",
-            "@toNode": "_4",
+            "@toNode": "Walk",
             "@toField": "set_bind"
           }
         },
@@ -1583,14 +1563,6 @@
           {
             "@fromNode": "_25",
             "@fromField": "triggerTrue",
-            "@toNode": "_5",
-            "@toField": "set_bind"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_5",
-            "@fromField": "isBound",
             "@toNode": "Animation",
             "@toField": "set_bind"
           }
@@ -1655,7 +1627,7 @@
           {
             "@fromNode": "PositionInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_5",
+            "@toNode": "Animation",
             "@toField": "set_position"
           }
         },
@@ -1671,16 +1643,8 @@
           {
             "@fromNode": "OrientationInterpolator",
             "@fromField": "value_changed",
-            "@toNode": "_5",
+            "@toNode": "Animation",
             "@toField": "set_orientation"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_6",
-            "@fromField": "isBound",
-            "@toNode": "MagicBubble",
-            "@toField": "set_bind"
           }
         },
         { "ROUTE":
@@ -1693,7 +1657,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
+            "@fromNode": "Examine",
             "@fromField": "isBound",
             "@toNode": "_14",
             "@toField": "set_whichChoice"
@@ -1701,7 +1665,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_4",
+            "@fromNode": "Walk",
             "@fromField": "isBound",
             "@toNode": "_20",
             "@toField": "set_whichChoice"
@@ -1709,7 +1673,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_5",
+            "@fromNode": "Animation",
             "@fromField": "isBound",
             "@toNode": "_23",
             "@toField": "set_whichChoice"

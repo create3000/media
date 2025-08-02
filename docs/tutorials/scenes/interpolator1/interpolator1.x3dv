@@ -1,0 +1,38 @@
+#X3D V4.0 utf8 X_ITE V11.5.3
+
+PROFILE Interchange
+
+META "created" "Wed, 23 Apr 2025 17:05:11 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.8.2, https://create3000.github.io/sunrize/"
+META "modified" "Wed, 23 Apr 2025 17:09:04 GMT"
+
+DEF Particle1 Transform {
+  translation 0 1.109333 0
+  children Shape {
+    appearance Appearance {
+      material Material { }
+    }
+    geometry Cone { }
+  }
+}
+
+DEF Timer1 TimeSensor {
+  cycleInterval 12
+  loop TRUE
+  stopTime -1
+}
+
+DEF Position1 PositionInterpolator {
+  key [
+    0,
+    1
+  ]
+  keyValue [
+    0 0 0,
+    0 4 0
+  ]
+}
+
+ROUTE Timer1.fraction_changed TO Position1.set_fraction
+ROUTE Position1.value_changed TO Particle1.set_translation

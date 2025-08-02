@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.0 utf8 X_ITE V11.5.6
 
 PROFILE Interchange
 
@@ -13,9 +13,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Sun, 24 Feb 2019 11:52:29 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:03:14 GMT"
+META "generator" "Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.1.1, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sun, 04 May 2025 15:42:44 GMT"
 
 WorldInfo { }
 
@@ -43,7 +43,7 @@ LayerSet {
         }
         DEF CarRed Transform {
           translation 2.81904e-6 1.27034 -33.0293
-          rotation -1.54124463404487e-17 1 1.37877126090727e-16 283.140158997666
+          rotation -2.12155829014757e-17 1 1.43680261872051e-16 287.280139781058
           scale 2.12352 2.12352 2.12352
           scaleOrientation 3.9267146445042e-16 1 5.03693766912935e-16 90
           center 0 0 7.06
@@ -71,8 +71,8 @@ LayerSet {
           ]
         }
         DEF CarYellow Transform {
-          translation 1.43998e-5 1.27034 -38.2793
-          rotation 0 0.999999999999997 0 333.450043447486
+          translation -4.613982e-6 1.27034 14.82527
+          rotation 0 1 0 269.399759730772
           scale 2.12352 2.12352 2.12352
           center 0 0 11.4343
           children [
@@ -137,7 +137,7 @@ LayerSet {
       ]
     }
     DEF HUD LayoutLayer {
-      pickable FALSE
+      pointerEvents FALSE
       children [
         DEF RedLapNumberText Transform {
           translation 1.6484 0.678502 0
@@ -145,7 +145,7 @@ LayerSet {
           children [
             Shape {
               geometry DEF _32 Text {
-                string "26"
+                string "10"
                 solid TRUE
                 fontStyle DEF _33 FontStyle {
                   family "assets/Readout-OneFront.otf"
@@ -159,29 +159,25 @@ LayerSet {
 
               url "ecmascript:
 
-var lap = 0;
+let lap = 0;
 
 function initialize ()
 {
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
 function set_enterTime (value, time)
 {
-	lap += 1;
+   lap += 1;
 
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
-function pad (num, size)
+function set_string ()
 {
-	var string = num + \"\";
-
-	while (string .length < size)
-		string = \"0\" + string;
-
-	return string;
-}"
+   string_changed [0] = lap .toString () .padStart (2, 0);
+}
+"
             }
           ]
         }
@@ -191,7 +187,7 @@ function pad (num, size)
           children [
             Shape {
               geometry DEF _34 Text {
-                string "21"
+                string "02"
                 solid TRUE
                 fontStyle FontStyle {
                   family "assets/Readout-OneFront.otf"
@@ -205,29 +201,25 @@ function pad (num, size)
 
               url "ecmascript:
 
-var lap = 0;
+let lap = 0;
 
 function initialize ()
 {
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
 function set_enterTime (value, time)
 {
-	lap += 1;
+   lap += 1;
 
-	string_changed [0] = pad (lap, 2);
+   set_string ();
 }
 
-function pad (num, size)
+function set_string ()
 {
-	var string = num + \"\";
-
-	while (string .length < size)
-		string = \"0\" + string;
-
-	return string;
-}"
+   string_changed [0] = lap .toString () .padStart (2, 0);
+}
+"
             }
           ]
         }

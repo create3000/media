@@ -53,26 +53,27 @@ body {
     <script type="module">
 import X3D from "https://cdn.jsdelivr.net/npm/x_ite@latest/dist/x_ite.min.mjs";
 
+// Get X3DBrowser instance from x3d-canvas with class "browser".
 const Browser = X3D .getBrowser (".browser");
 
+// Fires when scene is loaded.
 Browser .addBrowserCallback ("init", X3D .X3DConstants .INITIALIZED_EVENT, init);
 
 function init ()
 {
   const
     scene = Browser .currentScene,                      // Get the scene.
-    timer = scene .getNamedNode ("SpinAnimationTimer"); // Get box TouchSensor node.
+    timer = scene .getNamedNode ("SpinAnimationTimer"); // Get box TimeSensor node.
 
   $("#center")            .on ("click",  center);
   $("#change-style")      .on ("change", changeStyle);
   $("#change-background") .on ("change", changeBackground);
   $("#spin")              .on ("click",  spin);
 
-  // Add a field callback to be notified when cycleTime is fired. "time" is an arbitrary
-  // string to identify the callback, for example if you want to remove the callback later.
-  timer .getField ("cycleTime") .addFieldCallback ("time", value =>
+  // Connect to cycleTime events.
+  timer .addFieldCallback ("check", "cycleTime", value =>
   {
-    console .log ("cycleTime: " + value);
+    console .log (`cycleTime: ${value}`);
   });
 
   changeStyle ();
@@ -81,14 +82,15 @@ function init ()
 
 function center ()
 {
+  // Rebind viewpoint and remove user offsets.
   Browser .changeViewpoint ("Viewpoint");
 }
 
 function changeStyle ()
 {
   const
-    scene      = Browser .currentScene,                   // Get the scene.
-    switchNode = scene .getNamedNode ("Adrenaline");      // Get Switch node.
+    scene      = Browser .currentScene,              // Get the scene.
+    switchNode = scene .getNamedNode ("Adrenaline"); // Get Switch node.
 
   // Change styles.
 
@@ -127,7 +129,7 @@ function spin ()
     </head>
   <body>
 
-    <X3d-canvas class="browser" timings="false" src="adrenaline.x3d" update="auto">
+    <X3d-canvas class="browser" timings="false" ´ update="auto" src="adrenaline.x3d">
       <img class="fallback" src="adrenaline.png"/>
     </X3d-canvas>
 

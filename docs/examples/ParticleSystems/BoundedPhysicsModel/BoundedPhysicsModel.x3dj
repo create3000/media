@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -16,15 +16,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.6.11, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.139, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 30 Apr 2024 09:15:46 GMT"
+          "@content": "Thu, 31 Jul 2025 08:59:06 GMT"
         }
       ],
       "component": [
@@ -80,25 +80,14 @@
             "@color": [ 0.9764706, 0.7960784, 0.6117647 ],
             "@intensity": 0.45,
             "@rotation": [ 1, 0, 0, -45 ],
-            "-diffuseTexture": { "ImageCubeMapTexture":
+            "-specularTexture": { "ImageCubeMapTexture":
               {
-                "@url": [ "assets/helipad-diffuse.jpg" ],
+                "@url": [ "assets/helipad.avif", "assets/helipad.jpg" ],
                 "-textureProperties": { "TextureProperties":
                   {
-                    "@DEF": "_1",
                     "@generateMipMaps": true,
                     "@minificationFilter": "NICEST",
                     "@magnificationFilter": "NICEST"
-                  }
-                }
-              }
-            },
-            "-specularTexture": { "ImageCubeMapTexture":
-              {
-                "@url": [ "assets/helipad-specular.jpg" ],
-                "-textureProperties": { "TextureProperties":
-                  {
-                    "@USE": "_1"
                   }
                 }
               }

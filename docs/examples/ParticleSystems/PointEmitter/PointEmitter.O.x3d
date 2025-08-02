@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
-    <component name='ParticleSystems' level='1'/>
+    <component name='ParticleSystems' level='3'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <component name='Shape' level='4'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 17 Dec 2017 11:21:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 11 Apr 2019 08:18:49 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 31 Jul 2025 08:39:41 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='ComposeSFVec3f' url='"ComposeSFVec3f.x3d#ComposeSFVec3f", "file:///home/holger/Projekte/Server/create3000.de/media/htdocs/components/ParticleSystems/PointEmitter/ComposeSFVec3f.x3d#ComposeSFVec3f"'>
@@ -27,32 +27,33 @@
     </ExternProtoDeclare>
     <WorldInfo
         title='scene'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
             <ShaderPart DEF='VertexShader' containerField='value'>
-<![CDATA[data:x-shader/x-vertex,
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
-precision mediump float;
+precision highp float;
+precision highp int;
 
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat4 x3d_EyeMatrix;
 
-attribute vec4 x3d_Particle;
-attribute mat4 x3d_ParticleMatrix;
-attribute vec4 x3d_Vertex;
-attribute vec4 x3d_TexCoord0;
-attribute vec4 x3d_Color;
+in vec4 x3d_Particle;
+in mat4 x3d_ParticleMatrix;
+in vec4 x3d_Vertex;
+in vec4 x3d_TexCoord0;
+in vec4 x3d_Color;
 
-varying vec3 color;
-varying vec4 texCoord;
+out vec3 color;
+out vec4 texCoord;
 
 /* Random number generation */
 
@@ -64,21 +65,21 @@ int seed = 1;
 void
 srand (in int value)
 {
-	seed = value;
+   seed = value;
 }
 
 // Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].
 int
 rand ()
 {
-	return seed = seed * 1103515245 + 12345;
+   return seed = seed * 1103515245 + 12345;
 }
 
 // Return a uniform distributed random floating point number in the interval [0, 1].
 float
 random ()
 {
-	return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;
+   return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;
 }
 
 #define PI 3.1415
@@ -86,56 +87,56 @@ random ()
 mat4
 getRotation (in float a)
 {
-	float s = sin (a);
-	float c = cos (a);
+   float s = sin (a);
+   float c = cos (a);
 
-	return mat4 (  c,   s, 0.0, 0.0,
-	              -s,   c, 0.0, 0.0,
-	             0.0, 0.0, 1.0, 0.0,
-               0.0, 0.0, 0.0, 1.0);
+   return mat4 (  c,   s, 0.0, 0.0,
+                 -s,   c, 0.0, 0.0,
+                0.0, 0.0, 1.0, 0.0,
+                0.0, 0.0, 0.0, 1.0);
 }
 
 void
 main ()
 {
-  float f = x3d_Particle [2] / x3d_Particle [1];
-	mat4  r = getRotation (-2.0 * f * 2.0 * PI);
-	vec4  v = x3d_ParticleMatrix * (r * x3d_Vertex);
+   float f = x3d_Particle [2] / x3d_Particle [1];
+   mat4  r = getRotation (-2.0 * f * 2.0 * PI);
+   vec4  v = x3d_ParticleMatrix * (r * x3d_Vertex);
 
-	srand (int (x3d_Particle [0] * 107.0));
+   srand (int (x3d_Particle [0] * 107.0));
 
-	color    = vec3 (random (), random (), random ());
-	texCoord = x3d_TexCoord0;
+   color    = vec3 (random (), random (), random ());
+   texCoord = x3d_TexCoord0;
 
-	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;
+   gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;
 }]]>
             </ShaderPart>
           </MetadataSet>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
         </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
-          <MetadataDouble DEF='browserRatio' containerField='value'
+          <MetadataDouble DEF='browserRatio'
               name='browserRatio'
               reference='http://titania.create3000.de'
               value='1.777777'/>
         </MetadataSet>
-        <MetadataSet DEF='Prototype' containerField='value'
+        <MetadataSet DEF='Prototype'
             name='Prototype'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='path' containerField='value'
+          <MetadataString DEF='path'
               name='path'
               reference='http://titania.create3000.de'
               value='"Noise"'/>
@@ -162,9 +163,9 @@ main ()
       <fieldValue name='amplitude' value='5'/>
     </ProtoInstance>
     <ProtoInstance name='ComposeSFVec3f' DEF='_1'>
-      <fieldValue name='x' value='5.6248'/>
-      <fieldValue name='y' value='4.54379'/>
-      <fieldValue name='z' value='3.6676'/>
+      <fieldValue name='x' value='-0.9932724'/>
+      <fieldValue name='y' value='1.045112'/>
+      <fieldValue name='z' value='4.043799'/>
     </ProtoInstance>
     <ParticleSystem
         maxParticles='500'
@@ -172,7 +173,7 @@ main ()
         particleSize='0.16 0.16'
         bboxSize='11 11 11'>
       <PointEmitter DEF='_2'
-          position='5.6248 4.54379 3.6676'
+          position='-0.9932724 1.045112 4.043799'
           direction='0 0 0'
           speed='1.49'/>
       <Appearance>
@@ -183,21 +184,24 @@ main ()
           <ShaderPart USE='VertexShader'/>
           <ShaderPart DEF='FragmentShader'
               type='FRAGMENT'>
-<![CDATA[data:x-shader/x-fragment,
+<![CDATA[data:x-shader/x-fragment,#version 300 es
 
-precision mediump float;
+precision highp float;
+precision highp int;
 
 uniform sampler2D x3d_Texture2D [1];
 
-varying vec3 color;
-varying vec4 texCoord;
+in vec3 color;
+in vec4 texCoord;
+
+out vec4 x3d_FragColor;
 
 void
 main ()
 {
-	float a = texture2D (x3d_Texture2D [0], texCoord .st) .a;
+   float a = texture (x3d_Texture2D [0], texCoord .st) .a;
 
-	gl_FragColor = vec4 (color, a);
+   x3d_FragColor = vec4 (color, a);
 }]]>
           </ShaderPart>
         </ComposedShader>

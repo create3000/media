@@ -10,9 +10,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 04 Feb 2019 10:59:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Mon, 03 Feb 2025 18:03:21 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.8, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.1.3, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sat, 17 May 2025 14:56:15 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -34,7 +34,7 @@
             fogType='EXPONENTIAL'
             color='0.791 0.791 0.791'
             visibilityStart='10'
-            visibilityRange='50'/>
+            visibilityRange='40.23628'/>
         <DirectionalLight
             direction='0 -1 -1'
             shadows='true'/>
@@ -162,7 +162,7 @@ function set_value (value)
                 <Material/>
               </Appearance>
               <Text DEF='_1'
-                  string='"visibilityRange 50.0"'
+                  string='"visibilityRange 40.0"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -190,7 +190,7 @@ function set_value (value)
               </Shape>
             </Transform>
             <Transform DEF='Disk2D_1'
-                translation='0.5084513 0 0'
+                translation='0.4064271 0 0'
                 scale='0.027 0.0267372 0.0267372'>
               <Shape>
                 <Appearance>
@@ -200,7 +200,7 @@ function set_value (value)
               </Shape>
             </Transform>
             <PlaneSensor DEF='_5'
-                offset='0.5084513 0 0'
+                offset='0.4064271 0 0'
                 maxPosition='1 0'/>
             <Script DEF='visibilityRangeScript_1'>
               <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
@@ -209,7 +209,7 @@ function set_value (value)
               <field accessType='inputOutput' type='SFFloat' name='maxValue' value='99'/>
               <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
               <field accessType='outputOnly' type='MFString' name='string_changed'/>
-              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='50'/>
+              <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='40'/>
 <![CDATA[ecmascript:
 
 function initialize ()

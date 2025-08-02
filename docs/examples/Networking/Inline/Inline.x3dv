@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.0.5
+#X3D V4.0 utf8 X_ITE V11.6.3
 
 PROFILE Interchange
 
@@ -13,9 +13,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Tue, 28 Nov 2017 11:47:53 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.45, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.15, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 23 Jan 2025 22:40:00 GMT"
+META "generator" "Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Thu, 31 Jul 2025 09:17:53 GMT"
 
 EXTERNPROTO BooleanSwitch [
   inputOutput    SFBool  whichChoice
@@ -34,14 +34,11 @@ EXTERNPROTO RoundedRectangle2D [
 ]
 "assets/RoundedRectangle2D.x3d#RoundedRectangle2D"
 
-WorldInfo { }
-
 LayerSet {
   activeLayer 2
   order [ 0, 1, 2, 3 ]
   layers [
     DEF Background Layer {
-      pickable FALSE
       children Background {
         skyAngle [ 1.09223, 1.5708 ]
         skyColor [ 0.1 0.1 0.1, 0.1 0.1 0.1, 0.2 0.2 0.2 ]
@@ -50,7 +47,6 @@ LayerSet {
       }
     }
     DEF Model Layer {
-      pickable FALSE
       children [
         Viewpoint {
           description "Inital View"
@@ -58,17 +54,13 @@ LayerSet {
         }
         EnvironmentLight {
           intensity 0.75
-          diffuseTexture ImageCubeMapTexture {
-            url "assets/helipad-diffuse.jpg"
-            textureProperties DEF _2 TextureProperties {
+          specularTexture ImageCubeMapTexture {
+            url [ "assets/helipad.avif", "assets/helipad.jpg" ]
+            textureProperties TextureProperties {
               generateMipMaps TRUE
               minificationFilter "NICEST"
               magnificationFilter "NICEST"
             }
-          }
-          specularTexture ImageCubeMapTexture {
-            url "assets/helipad-specular.jpg"
-            textureProperties USE _2
           }
         }
         Transform {
@@ -141,7 +133,7 @@ LayerSet {
               translation 0 -4 0
               children Shape {
                 geometry DEF _7 Text {
-                  string "591 ms"
+                  string "505 ms"
                   fontStyle FontStyle {
                     family "TYPEWRITER"
                     style "BOLD"
@@ -164,20 +156,20 @@ let startTime = 0;
 
 function initialize ()
 {
-   string_changed [0] = \"0 ms\"
+   string_changed [0] = \"0 ms\";
 }
 
 function set_active (value, time)
 {
    if (value)
    {
-      startTime = Date .now ()
+      startTime = Date .now ();
    }
    else
    {
-      const loadTime = Math .floor (Date .now () - startTime)
+      const loadTime = Math .floor (Date .now () - startTime);
 
-      string_changed [0] = `${loadTime .toLocaleString (\"en\")} ms`
+      string_changed [0] = `${loadTime .toLocaleString (\"en\")} ms`;
    }
 }
 "

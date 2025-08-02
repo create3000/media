@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V10.4.1
+#X3D V4.0 utf8 X_ITE V11.6.2
 
 PROFILE Interchange
 
@@ -11,9 +11,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.15, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.159, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 28 Aug 2024 15:12:32 GMT"
+META "generator" "Sunrize X3D Editor V1.8.17, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.1.14, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Tue, 29 Jul 2025 13:52:05 GMT"
 
 EXTERNPROTO SFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -33,14 +33,14 @@ LayerSet {
           centerOfRotation 0.8885 -0.5 0
           fieldOfView [ -0.8885, -0.5, 0.8885, 0.5 ]
         }
-        DEF Statics StaticGroup {
+        DEF Statics_1 StaticGroup {
           children [
             DEF design Inline {
               global TRUE
               url "assets/design.svg"
             }
-            DEF PBR_1 Transform {
-              translation 1.72614 -0.06 0
+            DEF PBR Transform {
+              translation 1.72614 -0.06 1
               scale 0.0743421 0.0743421 0.0743421
               children Shape {
                 appearance DEF _7 Appearance {
@@ -58,8 +58,8 @@ LayerSet {
                 }
               }
             }
-            DEF Exploration_1 Transform {
-              translation 0.0561412 -0.06 0
+            DEF Exploration Transform {
+              translation 0.0561412 -0.06 1
               scale 0.0743421 0.0743421 0.0743421
               children Shape {
                 appearance USE _7
@@ -75,13 +75,13 @@ LayerSet {
           ]
         }
         DEF Code Transform {
-          translation 1.72614 -0.1 0
+          translation 1.72614 -0.1 1
           scale 0.0269332 0.0269332 0.0269332
           children [
             Shape {
               appearance USE _7
               geometry DEF _8 Text {
-                string ""
+                string ""
                 solid TRUE
                 fontStyle FontStyle {
                   family "assets/MaterialIcons.ttf"
@@ -226,21 +226,12 @@ function random (min, max)
           }
         }
         EnvironmentLight {
-          diffuseTexture ImageCubeMapTexture {
-            url "assets/helipad-diffuse.jpg"
-            textureProperties DEF _1 TextureProperties {
-              generateMipMaps TRUE
-              minificationFilter "NICEST"
-              magnificationFilter "NICEST"
-            }
-          }
           specularTexture ImageCubeMapTexture {
-            url "assets/helipad-specular.jpg"
-            textureProperties USE _1
+            url [ "assets/helipad.avif", "assets/helipad.jpg" ]
           }
         }
         DEF _10 Transform {
-          rotation 0 -1 0 1.85988198702921
+          rotation 0 -1 0 0.445484792555662
           children [
             DEF RotationAnimation Group {
               visible FALSE

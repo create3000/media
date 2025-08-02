@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 21 Feb 2025 11:25:26 GMT"
+          "@content": "Thu, 31 Jul 2025 08:40:22 GMT"
         }
       ],
       "component": [
@@ -187,15 +187,15 @@
             "fieldValue": [
               {
                 "@name": "x",
-                "@value": 5.6248
+                "@value": -0.9932724
               },
               {
                 "@name": "y",
-                "@value": 4.54379
+                "@value": 1.045112
               },
               {
                 "@name": "z",
-                "@value": 3.6676
+                "@value": 4.043799
               }
             ]
           }
@@ -208,7 +208,7 @@
             "-emitter": { "PointEmitter":
               {
                 "@DEF": "_2",
-                "@position": [ 5.6248, 4.54379, 3.6676 ],
+                "@position": [ -0.9932724, 1.045112, 4.043799 ],
                 "@direction": [ 0, 0, 0 ],
                 "@speed": 1.49
               }
@@ -231,22 +231,23 @@
                           {
                             "@DEF": "VertexShader",
                             "#sourceCode": [
-"data:x-shader/x-vertex,",
+"data:x-shader/x-vertex,#version 300 es",
 "",
-"precision mediump float;",
+"precision highp float;",
+"precision highp int;",
 "",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
 "uniform mat4 x3d_EyeMatrix;",
 "",
-"attribute vec4 x3d_Particle;",
-"attribute mat4 x3d_ParticleMatrix;",
-"attribute vec4 x3d_Vertex;",
-"attribute vec4 x3d_TexCoord0;",
-"attribute vec4 x3d_Color;",
+"in vec4 x3d_Particle;",
+"in mat4 x3d_ParticleMatrix;",
+"in vec4 x3d_Vertex;",
+"in vec4 x3d_TexCoord0;",
+"in vec4 x3d_Color;",
 "",
-"varying vec3 color;",
-"varying vec4 texCoord;",
+"out vec3 color;",
+"out vec4 texCoord;",
 "",
 "/* Random number generation */",
 "",
@@ -258,21 +259,21 @@
 "void",
 "srand (in int value)",
 "{",
-"\tseed = value;",
+"   seed = value;",
 "}",
 "",
 "// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].",
 "int",
 "rand ()",
 "{",
-"\treturn seed = seed * 1103515245 + 12345;",
+"   return seed = seed * 1103515245 + 12345;",
 "}",
 "",
 "// Return a uniform distributed random floating point number in the interval [0, 1].",
 "float",
 "random ()",
 "{",
-"\treturn float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;",
+"   return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;",
 "}",
 "",
 "#define PI 3.1415",
@@ -280,28 +281,28 @@
 "mat4",
 "getRotation (in float a)",
 "{",
-"\tfloat s = sin (a);",
-"\tfloat c = cos (a);",
+"   float s = sin (a);",
+"   float c = cos (a);",
 "",
-"\treturn mat4 (  c,   s, 0.0, 0.0,",
-"\t              -s,   c, 0.0, 0.0,",
-"\t             0.0, 0.0, 1.0, 0.0,",
-"               0.0, 0.0, 0.0, 1.0);",
+"   return mat4 (  c,   s, 0.0, 0.0,",
+"                 -s,   c, 0.0, 0.0,",
+"                0.0, 0.0, 1.0, 0.0,",
+"                0.0, 0.0, 0.0, 1.0);",
 "}",
 "",
 "void",
 "main ()",
 "{",
-"  float f = x3d_Particle [2] / x3d_Particle [1];",
-"\tmat4  r = getRotation (-2.0 * f * 2.0 * PI);",
-"\tvec4  v = x3d_ParticleMatrix * (r * x3d_Vertex);",
+"   float f = x3d_Particle [2] / x3d_Particle [1];",
+"   mat4  r = getRotation (-2.0 * f * 2.0 * PI);",
+"   vec4  v = x3d_ParticleMatrix * (r * x3d_Vertex);",
 "",
-"\tsrand (int (x3d_Particle [0] * 107.0));",
+"   srand (int (x3d_Particle [0] * 107.0));",
 "",
-"\tcolor    = vec3 (random (), random (), random ());",
-"\ttexCoord = x3d_TexCoord0;",
+"   color    = vec3 (random (), random (), random ());",
+"   texCoord = x3d_TexCoord0;",
 "",
-"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;",
+"   gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * v;",
 "}"
                             ]
                           }
@@ -311,21 +312,24 @@
                             "@DEF": "FragmentShader",
                             "@type": "FRAGMENT",
                             "#sourceCode": [
-"data:x-shader/x-fragment,",
+"data:x-shader/x-fragment,#version 300 es",
 "",
-"precision mediump float;",
+"precision highp float;",
+"precision highp int;",
 "",
 "uniform sampler2D x3d_Texture2D [1];",
 "",
-"varying vec3 color;",
-"varying vec4 texCoord;",
+"in vec3 color;",
+"in vec4 texCoord;",
+"",
+"out vec4 x3d_FragColor;",
 "",
 "void",
 "main ()",
 "{",
-"\tfloat a = texture2D (x3d_Texture2D [0], texCoord .st) .a;",
+"   float a = texture (x3d_Texture2D [0], texCoord .st) .a;",
 "",
-"\tgl_FragColor = vec4 (color, a);",
+"   x3d_FragColor = vec4 (color, a);",
 "}"
                             ]
                           }

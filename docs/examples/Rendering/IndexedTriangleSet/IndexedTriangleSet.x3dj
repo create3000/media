@@ -2,8 +2,8 @@
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "http://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "http://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.15, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.8.17, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.159, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.14, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 28 Aug 2024 15:12:36 GMT"
+          "@content": "Tue, 29 Jul 2025 13:52:05 GMT"
         }
       ],
       "component": [
@@ -97,7 +97,7 @@
                     },
                     { "StaticGroup":
                       {
-                        "@DEF": "Statics",
+                        "@DEF": "Statics_1",
                         "-children": [
                           { "Inline":
                             {
@@ -108,8 +108,8 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "PBR_1",
-                              "@translation": [ 1.72614, -0.06, 0 ],
+                              "@DEF": "PBR",
+                              "@translation": [ 1.72614, -0.06, 1 ],
                               "@scale": [ 0.0743421, 0.0743421, 0.0743421 ],
                               "-children": [
                                 { "Shape":
@@ -143,8 +143,8 @@
                           },
                           { "Transform":
                             {
-                              "@DEF": "Exploration_1",
-                              "@translation": [ 0.0561412, -0.06, 0 ],
+                              "@DEF": "Exploration",
+                              "@translation": [ 0.0561412, -0.06, 1 ],
                               "@scale": [ 0.0743421, 0.0743421, 0.0743421 ],
                               "-children": [
                                 { "Shape":
@@ -176,7 +176,7 @@
                     { "Transform":
                       {
                         "@DEF": "Code",
-                        "@translation": [ 1.72614, -0.1, 0 ],
+                        "@translation": [ 1.72614, -0.1, 1 ],
                         "@scale": [ 0.0269332, 0.0269332, 0.0269332 ],
                         "-children": [
                           { "Shape":
@@ -189,7 +189,7 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_8",
-                                  "@string": [ "" ],
+                                  "@string": [ "" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
@@ -440,27 +440,9 @@
                     },
                     { "EnvironmentLight":
                       {
-                        "-diffuseTexture": { "ImageCubeMapTexture":
-                          {
-                            "@url": [ "assets/helipad-diffuse.jpg" ],
-                            "-textureProperties": { "TextureProperties":
-                              {
-                                "@DEF": "_1",
-                                "@generateMipMaps": true,
-                                "@minificationFilter": "NICEST",
-                                "@magnificationFilter": "NICEST"
-                              }
-                            }
-                          }
-                        },
                         "-specularTexture": { "ImageCubeMapTexture":
                           {
-                            "@url": [ "assets/helipad-specular.jpg" ],
-                            "-textureProperties": { "TextureProperties":
-                              {
-                                "@USE": "_1"
-                              }
-                            }
+                            "@url": [ "assets/helipad.avif", "assets/helipad.jpg" ]
                           }
                         }
                       }
@@ -468,7 +450,7 @@
                     { "Transform":
                       {
                         "@DEF": "_10",
-                        "@rotation": [ 0, -1, 0, 2.05780230797956 ],
+                        "@rotation": [ 0, -1, 0, 0.445484792555662 ],
                         "-children": [
                           { "Group":
                             {

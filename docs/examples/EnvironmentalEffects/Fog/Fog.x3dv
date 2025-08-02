@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.1.1
+#X3D V4.0 utf8 X_ITE V11.5.8
 
 PROFILE Interchange
 
@@ -11,9 +11,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Mon, 04 Feb 2019 10:59:00 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.19, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Mon, 03 Feb 2025 18:03:21 GMT"
+META "generator" "Sunrize X3D Editor V1.8.8, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.1.3, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sat, 17 May 2025 14:56:15 GMT"
 
 WorldInfo { }
 
@@ -40,7 +40,7 @@ LayerSet {
           fogType "EXPONENTIAL"
           color 0.791 0.791 0.791
           visibilityStart 10
-          visibilityRange 50
+          visibilityRange 40.23628
         }
         DirectionalLight {
           direction 0 -1 -1
@@ -185,7 +185,7 @@ function set_value (value)
                   material Material { }
                 }
                 geometry DEF _1 Text {
-                  string "visibilityRange 50.0"
+                  string "visibilityRange 40.0"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -218,7 +218,7 @@ function set_value (value)
                   }
                 }
                 DEF Disk2D_1 Transform {
-                  translation 0.5084513 0 0
+                  translation 0.4064271 0 0
                   scale 0.027 0.0267372 0.0267372
                   children Shape {
                     appearance Appearance {
@@ -228,7 +228,7 @@ function set_value (value)
                   }
                 }
                 DEF _5 PlaneSensor {
-                  offset 0.5084513 0 0
+                  offset 0.4064271 0 0
                   maxPosition 1 0
                 }
                 DEF visibilityRangeScript_1 Script {
@@ -238,7 +238,7 @@ function set_value (value)
                   inputOutput    SFFloat  maxValue 99
                   outputOnly     SFFloat  value_changed
                   outputOnly     MFString string_changed
-                  initializeOnly SFInt32  currentValue 50
+                  initializeOnly SFInt32  currentValue 40
 
                   url "ecmascript:
 
