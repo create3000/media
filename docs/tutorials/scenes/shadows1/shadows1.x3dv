@@ -1,0 +1,98 @@
+#X3D V4.0 utf8 X_ITE V11.6.6
+
+PROFILE Interchange
+
+COMPONENT Geometry2D : 2
+
+META "created" "Sun, 03 Aug 2025 11:36:30 GMT"
+META "creator" "Holger Seelig"
+META "generator" "Sunrize X3D Editor V1.8.21, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 03 Aug 2025 11:54:08 GMT"
+
+WorldInfo {
+  metadata MetadataSet {
+    name "Sunrize"
+    reference "https://create3000.github.io/sunrize/"
+    value MetadataSet {
+      name "GridTool"
+      reference "https://create3000.github.io/sunrize/"
+      value [
+        MetadataBoolean {
+          name "visible"
+          reference "https://create3000.github.io/sunrize/"
+          value TRUE
+        }
+        MetadataInteger {
+          name "dimension"
+          reference "https://create3000.github.io/sunrize/"
+          value [
+            20,
+            10,
+            20
+          ]
+        }
+      ]
+    }
+  }
+}
+
+Viewpoint {
+  description "Initial View"
+  position -4.769347 16.7084 23.91118
+  orientation -0.938353161410898 -0.333025028503589 -0.0926697084292173 0.576573241245295
+  centerOfRotation 0 2 0
+  navigationInfo NavigationInfo {
+    headlight FALSE
+  }
+}
+
+DirectionalLight {
+  direction -1 -1 -1
+  shadows TRUE
+  shadowBias 0.01
+  shadowMapSize 256
+}
+
+DEF Rectangle2D Transform {
+  rotation -1 0 0 1.5707963267949
+  scale 10 10 10
+  children Shape {
+    castShadow FALSE
+    appearance Appearance {
+      material Material { }
+    }
+    geometry Rectangle2D {
+      solid TRUE
+    }
+  }
+}
+
+DEF Cylinder_1 Transform {
+  translation -5 2 5
+  scale 1 2 1
+  children DEF _1 Shape {
+    appearance Appearance {
+      material Material { }
+    }
+    geometry Cylinder { }
+  }
+}
+
+DEF Cylinder_2 Transform {
+  translation 5 2 5
+  scale 1 2 1
+  children USE _1
+}
+
+DEF Cylinder_3 Transform {
+  translation 5 2 -4
+  scale 1 2 1
+  children USE _1
+}
+
+DEF Cylinder Transform {
+  translation -5 2 -5
+  scale 1 2 1
+  scaleOrientation -0 1 -0 1.5707963267949
+  children USE _1
+}
