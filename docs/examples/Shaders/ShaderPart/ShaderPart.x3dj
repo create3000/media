@@ -24,11 +24,11 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.18, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 21 Feb 2025 11:25:52 GMT"
+          "@content": "Mon, 04 Aug 2025 11:24:02 GMT"
         }
       ],
       "component": [
@@ -100,7 +100,7 @@
                                             {
                                               "@DEF": "VertexShader",
                                               "#sourceCode": [
-"data:x-shader/x-vertex,",
+"data:x-shader/x-vertex,#version 300 es",
 "",
 "precision highp float;",
 "precision highp int;",
@@ -109,7 +109,7 @@
 "uniform mat4 x3d_ModelViewMatrix;",
 "uniform mat4 x3d_EyeMatrix;",
 "",
-"attribute vec4 x3d_Vertex;",
+"in vec4 x3d_Vertex;",
 "",
 "void",
 "main ()",
@@ -125,7 +125,7 @@
                                               "@DEF": "FragmentShader",
                                               "@type": "FRAGMENT",
                                               "#sourceCode": [
-"data:x-shader/x-fragment,",
+"data:x-shader/x-fragment,#version 300 es",
 "",
 "precision highp float;",
 "precision highp int;",
@@ -133,6 +133,8 @@
 "uniform float time;",
 "",
 "uniform ivec4 x3d_Viewport;",
+"",
+"out vec4 x3d_FragColor;",
 "",
 "float",
 "cubefield (vec3 pos)",
@@ -209,7 +211,7 @@
 "",
 "\tfloat c = i / 64.0;",
 "",
-"\tgl_FragColor = vec4 (c * c * c, c * c, c, 1.0);",
+"\tx3d_FragColor = vec4 (c * c * c, c * c, c, 1.0);",
 "}",
 "",
 ""
@@ -222,7 +224,7 @@
                                             "@accessType": "inputOutput",
                                             "@type": "SFFloat",
                                             "@name": "time",
-                                            "@value": 7152.246
+                                            "@value": 6642.501
                                           }
                                         ]
                                       }

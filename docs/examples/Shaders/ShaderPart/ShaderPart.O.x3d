@@ -47,7 +47,7 @@
               reference='http://titania.create3000.de'>
             <ShaderPart DEF='FragmentShader' containerField='value'
                 type='FRAGMENT'>
-<![CDATA[data:x-shader/x-fragment,
+<![CDATA[data:x-shader/x-fragment,#version 300 es
 
 precision highp float;
 precision highp int;
@@ -55,6 +55,8 @@ precision highp int;
 uniform float time;
 
 uniform ivec4 x3d_Viewport;
+
+out vec4 x3d_FragColor;
 
 float
 cubefield (vec3 pos)
@@ -131,7 +133,7 @@ main ()
 
 	float c = i / 64.0;
 
-	gl_FragColor = vec4 (c * c * c, c * c, c, 1.0);
+	x3d_FragColor = vec4 (c * c * c, c * c, c, 1.0);
 }
 
 ]]>
@@ -306,7 +308,7 @@ main ()
                   language='GLSL'>
                 <field accessType='inputOutput' type='SFFloat' name='time' value='65.59'/>
                 <ShaderPart DEF='VertexShader'>
-<![CDATA[data:x-shader/x-vertex,
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
 precision highp float;
 precision highp int;
@@ -315,7 +317,7 @@ uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat4 x3d_EyeMatrix;
 
-attribute vec4 x3d_Vertex;
+in vec4 x3d_Vertex;
 
 void
 main ()

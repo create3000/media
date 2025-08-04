@@ -10,8 +10,8 @@
     <meta name='created' content='Sun, 10 Dec 2017 16:14:16 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Fri, 21 Feb 2025 11:25:52 GMT'/>
+    <meta name='generator' content='x3d-tidy V2.1.18, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Mon, 04 Aug 2025 11:24:02 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -31,9 +31,9 @@
             <Appearance>
               <ComposedShader DEF='ComposedShader'
                   language='GLSL'>
-                <field accessType='inputOutput' type='SFFloat' name='time' value='7152.246'/>
+                <field accessType='inputOutput' type='SFFloat' name='time' value='6642.501'/>
                 <ShaderPart DEF='VertexShader'>
-<![CDATA[data:x-shader/x-vertex,
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
 precision highp float;
 precision highp int;
@@ -42,7 +42,7 @@ uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat4 x3d_EyeMatrix;
 
-attribute vec4 x3d_Vertex;
+in vec4 x3d_Vertex;
 
 void
 main ()
@@ -53,7 +53,7 @@ main ()
                 </ShaderPart>
                 <ShaderPart DEF='FragmentShader'
                     type='FRAGMENT'>
-<![CDATA[data:x-shader/x-fragment,
+<![CDATA[data:x-shader/x-fragment,#version 300 es
 
 precision highp float;
 precision highp int;
@@ -61,6 +61,8 @@ precision highp int;
 uniform float time;
 
 uniform ivec4 x3d_Viewport;
+
+out vec4 x3d_FragColor;
 
 float
 cubefield (vec3 pos)
@@ -137,7 +139,7 @@ main ()
 
 	float c = i / 64.0;
 
-	gl_FragColor = vec4 (c * c * c, c * c, c, 1.0);
+	x3d_FragColor = vec4 (c * c * c, c * c, c, 1.0);
 }
 
 ]]>
