@@ -31,7 +31,7 @@
             <connect nodeField='bumpMap' protoField='bumpMap'/>
           </IS>
           <ShaderPart DEF='VertexShader'>
-<![CDATA[data:x-shader/x-vertex,
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
 // -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
 
@@ -45,15 +45,15 @@ uniform mat4 x3d_EyeMatrix;
 
 uniform float x3d_LinewidthScaleFactor;
 
-attribute vec4 x3d_Color;
-attribute vec4 x3d_TexCoord0;
-attribute vec3 x3d_Normal;
-attribute vec4 x3d_Vertex;
+in vec4 x3d_Color;
+in vec4 x3d_TexCoord0;
+in vec3 x3d_Normal;
+in vec4 x3d_Vertex;
 
-varying vec4 C;  // color
-varying vec4 t;  // texCoord
-varying vec3 vN; // normalized normal vector at this point on geometry
-varying vec3 v;  // point on geometry
+out vec4 C;  // color
+out vec4 t;  // texCoord
+out vec3 vN; // normalized normal vector at this point on geometry
+out vec3 v;  // point on geometry
 
 void
 main ()
@@ -73,7 +73,7 @@ main ()
           </ShaderPart>
           <ShaderPart DEF='FragmentShader'
               type='FRAGMENT'>
-<![CDATA[data:x-shader/x-fragment,
+<![CDATA[data:x-shader/x-fragment,#version 300 es
 
 // -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
 
@@ -92,19 +92,21 @@ uniform int       bumpMapWidth;
 uniform int       bumpMapHeight;
 uniform sampler2D bumpMap;
 
-varying vec4 C;  // color
-varying vec4 t;  // texCoord
-varying vec3 vN; // normalized normal vector at this point on geometry
-varying vec3 v;  // point on geometry
+in vec4 C;  // color
+in vec4 t;  // texCoord
+in vec3 vN; // normalized normal vector at this point on geometry
+in vec3 v;  // point on geometry
+
+out vec4 x3d_FragColor;
 
 vec3
 getNormal (in vec3 N)
 {
 	vec2 texCoord = vec2 (t);
 	vec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);
-	vec3 g        = vec3 (0.0, 0.0, heightScale * texture2D (bumpMap, texCoord) .r);
-	vec3 r        = vec3 (1.0, 0.0, heightScale * texture2D (bumpMap, texCoord + vec2 (s .x, 0)) .r);
-	vec3 a        = vec3 (0.0, 1.0, heightScale * texture2D (bumpMap, texCoord + vec2 (0, s .y)) .r);
+	vec3 g        = vec3 (0.0, 0.0, heightScale * texture (bumpMap, texCoord) .r);
+	vec3 r        = vec3 (1.0, 0.0, heightScale * texture (bumpMap, texCoord + vec2 (s .x, 0)) .r);
+	vec3 a        = vec3 (0.0, 1.0, heightScale * texture (bumpMap, texCoord + vec2 (0, s .y)) .r);
 
 	vec3 n = cross (r - g, a - g);
 	vec3 x = cross (vec3 (0.0, 1.0, 0.0), N);
@@ -124,7 +126,7 @@ getNormal (in vec3 N)
 vec4
 getTextureColor ()
 {
-  return texture2D (x3d_Texture2D [0], vec2 (t));
+  return texture (x3d_Texture2D [0], vec2 (t));
 }
 
 float
@@ -201,7 +203,7 @@ getMaterialColor (in x3d_MaterialParameters material)
 void
 main ()
 {
-	gl_FragColor = getMaterialColor (x3d_Material);
+	x3d_FragColor = getMaterialColor (x3d_Material);
 }
 ]]>
           </ShaderPart>
