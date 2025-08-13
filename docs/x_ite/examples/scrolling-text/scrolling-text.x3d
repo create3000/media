@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Text' level='1'/>
+    <meta name='comment' content='World of Titania'/>
+    <meta name='created' content='Sat, 19 Dec 2015 11:18:24 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Titania V2.0.1, http://titania.create3000.de'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.24, https://create3000.github.io/sunrize/'/>
+    <meta name='identifier' content='file:///home/holger/Projekte/Cobweb/excite/tests/Components/Text/scrolling-text.x3d'/>
+    <meta name='modified' content='Wed, 13 Aug 2025 21:51:37 GMT'/>
+  </head>
+  <Scene>
+    <Background DEF='Gray'
+        skyColor='0.2 0.2 0.2'/>
+    <Viewpoint
+        description='Initial View'/>
+    <Transform DEF='Header_1'
+        translation='-7.549643 4.102945 -1'
+        scale='0.4496309 0.4496309 0.4496309'>
+      <Shape>
+        <Appearance>
+          <Material/>
+        </Appearance>
+        <Text
+            string='"Far Away"'
+            solid='true'>
+          <FontStyle
+              family='"SANS"'
+              size='1.61'
+              justify='"BEGIN", "BEGIN"'/>
+        </Text>
+      </Shape>
+    </Transform>
+    <Transform DEF='ScrollingText'
+        translation='-0.771853 0 0'>
+      <Transform DEF='Text'
+          translation='-6.18513 15.23866 0'>
+        <Group DEF='Animation'>
+          <MetadataSet DEF='Animation_1' containerField='metadata'
+              name='Animation'
+              reference='http://titania.create3000.de'>
+            <MetadataInteger DEF='duration'
+                name='duration'
+                reference='http://titania.create3000.de'
+                value='1200'/>
+            <MetadataInteger DEF='framesPerSecond'
+                name='framesPerSecond'
+                reference='http://titania.create3000.de'
+                value='10'/>
+          </MetadataSet>
+          <TimeSensor DEF='_2'
+              cycleInterval='120'
+              loop='true'/>
+          <PositionInterpolator DEF='TextTranslationInterpolator'
+              key='0, 1'
+              keyValue='-6.18513 -3.82943 0, -6.18513 20.8337 0'>
+            <MetadataSet DEF='Interpolator' containerField='metadata'
+                name='Interpolator'
+                reference='http://titania.create3000.de'>
+              <MetadataInteger DEF='key'
+                  name='key'
+                  reference='http://titania.create3000.de'
+                  value='0, 1200'/>
+              <MetadataDouble DEF='keyValue'
+                  name='keyValue'
+                  reference='http://titania.create3000.de'
+                  value='-6.18512916564941, -3.829430103302, 0, -6.18513011932373, 20.8336639404297, 0'/>
+              <MetadataString DEF='keyType'
+                  name='keyType'
+                  reference='http://titania.create3000.de'
+                  value='"LINEAR", "LINEAR"'/>
+            </MetadataSet>
+          </PositionInterpolator>
+        </Group>
+        <Shape>
+          <Appearance>
+            <Material DEF='Summer7'
+                ambientIntensity='0'
+                diffuseColor='0 0 0'
+                shininess='0'/>
+          </Appearance>
+          <Text
+              string='"Far far away, behind the word mountains, far from the ", "countries Vokalia and Consonantia, there live the blind ", "texts. Separated they live in Bookmarksgrove right at ", "the coast of the Semantics, a large language ocean. A ", "small river named Duden flows by their place and ", "supplies it with the necessary regelialia. It is a ", "paradisematic country, in which roasted parts of ", "sentences fly into your mouth. Even the all-powerful ", "Pointing has no control about the blind texts it is an ", "almost unorthographic life One day however a small line ", "of blind text by the name of Lorem Ipsum decided to ", "leave for the far World of Grammar. The Big Oxmox ", "advised her not to do so, because there were thousands ", "of bad Commas, wild Question Marks and devious ", "Semikoli, but the Little Blind Text didn’t listen. She ", "packed her seven versalia, put her initial into the ", "belt and made herself on the way. When she reached the ", "first hills of the Italic Mountains, she had a last ", "view back on the skyline of her hometown ", "Bookmarksgrove, the headline of Alphabet Village and ", "the subline of her own road, the Line Lane. Pityful a ", "rethoric question ran over her cheek, then she ", "continued her way. On her way she met a copy. The copy ", "warned the Little Blind Text, that where it came from ", "it would have been rewritten a thousand times and ", "everything that was left from its origin would be the ", "word »and« and the Little Blind Text should turn around ", "and return to its own, safe country. But nothing the ", "copy said could convince her and so it didn’t take long ", "until a few insidious Copy Writers ambushed her, made ", "her drunk with Longe and Parole and dragged her into ", "their agency, where they abused her for their projects ", "again and again. And if she hasn’t been rewritten, then ", "they are still using her. Far far away, behind the word ", "mountains, far from the countries Vokalia and ", "Consonantia, there live the blind texts. Separated they ", "live in Bookmarksgrove right at the coast of the ", "Semantics, a large language ocean. A small river named ", "Duden flows by their place and supplies it with the ", "necessary regelialia. It is a paradisematic country,", "in which roasted parts of sentences fly into your mouth."'>
+            <FontStyle
+                size='0.42'
+                spacing='1.2'/>
+          </Text>
+        </Shape>
+      </Transform>
+      <ClipPlane
+          plane='0 -1 0 0'/>
+      <ClipPlane
+          plane='0 1 0 3.5'/>
+    </Transform>
+    <ROUTE fromNode='_2' fromField='fraction_changed' toNode='TextTranslationInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='TextTranslationInterpolator' fromField='value_changed' toNode='Text' toField='set_translation'/>
+  </Scene>
+</X3D>
