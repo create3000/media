@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Scripting' level='1'/>
+    <component name='X_ITE' level='1'/>
+    <meta name='created' content='Wed, 08 May 2024 13:06:31 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.24, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 13 Aug 2025 21:32:53 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='ParticleSimulation'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFBool' name='enabled' value='true'/>
+        <field accessType='inputOutput' type='MFVec3f' name='initialPositions'/>
+        <field accessType='inputOutput' type='MFVec3f' name='initialVelocities'/>
+        <field accessType='inputOutput' type='MFFloat' name='initialMasses'/>
+        <field accessType='inputOutput' type='SFFloat' name='gravitationalConstant' value='6.674302e-11'/>
+        <field accessType='inputOutput' type='SFTime' name='startTime'/>
+        <field accessType='inputOutput' type='SFTime' name='resumeTime'/>
+        <field accessType='inputOutput' type='SFTime' name='pauseTime'/>
+        <field accessType='inputOutput' type='SFTime' name='stopTime' value='1'/>
+        <field accessType='outputOnly' type='SFBool' name='isPaused'/>
+        <field accessType='outputOnly' type='SFBool' name='isActive'/>
+        <field accessType='inputOutput' type='SFBool' name='pointerEvents' value='true'/>
+        <field accessType='inputOutput' type='SFBool' name='castShadow' value='true'/>
+        <field accessType='initializeOnly' type='SFBool' name='visible' value='true'/>
+        <field accessType='inputOutput' type='SFBool' name='bboxDisplay'/>
+        <field accessType='initializeOnly' type='SFVec3f' name='bboxSize' value='-1 -1 -1'/>
+        <field accessType='initializeOnly' type='SFVec3f' name='bboxCenter'/>
+        <field accessType='inputOutput' type='SFNode' name='appearance'/>
+        <field accessType='inputOutput' type='SFNode' name='geometry'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <InstancedShape DEF='_1'>
+          <IS>
+            <connect nodeField='pointerEvents' protoField='pointerEvents'/>
+            <connect nodeField='castShadow' protoField='castShadow'/>
+            <connect nodeField='visible' protoField='visible'/>
+            <connect nodeField='bboxDisplay' protoField='bboxDisplay'/>
+            <connect nodeField='bboxSize' protoField='bboxSize'/>
+            <connect nodeField='bboxCenter' protoField='bboxCenter'/>
+            <connect nodeField='appearance' protoField='appearance'/>
+            <connect nodeField='geometry' protoField='geometry'/>
+          </IS>
+        </InstancedShape>
+        <TimeSensor DEF='_2'
+            loop='true'>
+          <IS>
+            <connect nodeField='enabled' protoField='enabled'/>
+            <connect nodeField='startTime' protoField='startTime'/>
+            <connect nodeField='resumeTime' protoField='resumeTime'/>
+            <connect nodeField='pauseTime' protoField='pauseTime'/>
+            <connect nodeField='stopTime' protoField='stopTime'/>
+            <connect nodeField='isPaused' protoField='isPaused'/>
+            <connect nodeField='isActive' protoField='isActive'/>
+          </IS>
+        </TimeSensor>
+        <Script DEF='ParticleSimulationScript'>
+          <field accessType='inputOutput' type='MFVec3f' name='initialPositions'/>
+          <field accessType='inputOutput' type='MFVec3f' name='initialVelocities'/>
+          <field accessType='inputOutput' type='MFFloat' name='initialMasses'/>
+          <field accessType='inputOutput' type='MFVec3f' name='positions'/>
+          <field accessType='inputOutput' type='MFRotation' name='rotations'/>
+          <field accessType='inputOutput' type='MFVec3f' name='velocities'/>
+          <field accessType='inputOutput' type='MFFloat' name='masses'/>
+          <field accessType='inputOutput' type='SFFloat' name='gravitationalConstant'/>
+          <field accessType='inputOutput' type='SFTime' name='startTime'/>
+          <field accessType='inputOutput' type='SFBool' name='active'/>
+          <field accessType='inputOnly' type='SFTime' name='set_time'/>
+          <IS>
+            <connect nodeField='initialPositions' protoField='initialPositions'/>
+            <connect nodeField='initialVelocities' protoField='initialVelocities'/>
+            <connect nodeField='initialMasses' protoField='initialMasses'/>
+            <connect nodeField='gravitationalConstant' protoField='gravitationalConstant'/>
+            <connect nodeField='startTime' protoField='startTime'/>
+          </IS>
+<![CDATA[ecmascript:
+
+const yAxis = new SFVec3f (0, 1, 0);
+
+function initialize ()
+{
+   set_startTime (0, 0);
+}
+
+function set_startTime (value, time)
+{
+   if (value && active)
+      return;
+
+   positions  = initialPositions;
+   velocities = initialVelocities;
+   masses     = initialMasses;
+
+   const numParticles = positions .length;
+
+   for (let p = 0; p < numParticles; ++ p)
+      rotations [p] = new SFRotation (yAxis, velocities [p]);
+}
+
+function set_time (value, time)
+{
+   const
+      dt           = 1 / Math .max (Browser .currentFrameRate, 10),
+      numParticles = positions .length,
+      forces       = new MFVec3f ();
+
+   for (let p1 = 0; p1 < numParticles; ++ p1)
+   {
+      for (let p0 = 0; p0 < p1; ++ p0)
+      {
+         const
+            p = positions [p0] .subtract (positions [p1]),
+            r = p .length (),
+            F = p .multiply ((masses [p0] * masses [p1] / Math .pow (r, 3)));
+
+         forces [p0] = forces [p0] .subtract (F);
+         forces [p1] = forces [p1] .add (F);
+      }
+   }
+
+   for (let p = 0; p < numParticles; ++ p)
+   {
+      const 
+         dv          = forces [p] .multiply (gravitationalConstant * dt / masses [p]),
+         velocity    = velocities [p] .add (dv),
+         translation = velocity .multiply (dt);
+
+      positions  [p] = positions [p] .add (translation);
+      rotations  [p] = new SFRotation (yAxis, velocity);
+      velocities [p] = velocity;
+   }
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_2' fromField='time' toNode='ParticleSimulationScript' toField='set_time'/>
+        <ROUTE fromNode='ParticleSimulationScript' fromField='positions_changed' toNode='_1' toField='set_translations'/>
+        <ROUTE fromNode='ParticleSimulationScript' fromField='rotations_changed' toNode='_1' toField='set_rotations'/>
+        <ROUTE fromNode='_2' fromField='isActive' toNode='ParticleSimulationScript' toField='set_active'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='ParticleGenerator'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFInt32' name='numParticles'/>
+        <field accessType='inputOutput' type='SFNode' name='particleSimulation'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Group DEF='_1'/>
+        <Script DEF='ParticleGeneratorScript'>
+          <field accessType='inputOutput' type='SFInt32' name='numParticles'/>
+          <field accessType='inputOutput' type='SFNode' name='particleSimulation'/>
+          <field accessType='initializeOnly' type='SFNode' name='group'>
+            <Group USE='_1'/>
+          </field>
+          <IS>
+            <connect nodeField='numParticles' protoField='numParticles'/>
+            <connect nodeField='particleSimulation' protoField='particleSimulation'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   set_particleSimulation ();
+}
+
+function set_numParticles ()
+{
+   if (!particleSimulation)
+      return;
+
+   particleSimulation .initialPositions  .length = 0;
+   particleSimulation .initialVelocities .length = 0;
+   particleSimulation .initialMasses     .length = 0;
+   
+   for (let p = 0; p < numParticles; ++ p)
+   {
+      particleSimulation .initialPositions .push (new SFVec3f (random (-10, 10), random (-10, 10), random (-10, 10)));
+      particleSimulation .initialVelocities .push (new SFVec3f (random (-2, 2), random (-2, 2), random (-2, 2)));
+      particleSimulation .initialMasses .push (1);
+   }
+}
+
+function set_particleSimulation (value, time)
+{
+   group .children [0] = particleSimulation;
+
+   set_numParticles ();
+}
+
+function random (min, max)
+{ 
+   return min + Math .random () * (max - min);
+}
+]]>
+        </Script>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet containerField='metadata'
+          name='Sunrize'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataSet
+            name='GridTool'>
+          <MetadataBoolean
+              name='visible'
+              value='true'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Viewpoint
+        description='Initial View'
+        position='13.79954 14.91044 23.38216'
+        orientation='-0.671263063550492 0.717524106724337 0.18591679800989 0.73676213543075'
+        centerOfRotation='-0.02171373 -0.01353645 0.3449655'/>
+    <ProtoInstance name='ParticleSimulation'>
+      <fieldValue name='initialPositions' value='-1 0 0, 1 0 0'/>
+      <fieldValue name='initialVelocities' value='0 0 0.5, 0 0 -0.5'/>
+      <fieldValue name='initialMasses' value='1, 1'/>
+      <fieldValue name='gravitationalConstant' value='1'/>
+      <fieldValue name='startTime' value='1715354319.075'/>
+      <fieldValue name='resumeTime' value='1715180583.386'/>
+      <fieldValue name='pauseTime' value='1715180582.069'/>
+      <fieldValue name='stopTime' value='1715354320.514'/>
+      <fieldValue name='visible' value='false'/>
+      <fieldValue name='appearance'>
+        <Appearance DEF='_2'>
+          <Material/>
+        </Appearance>
+      </fieldValue>
+      <fieldValue name='geometry'>
+        <Cone DEF='_1'
+            height='0.2'
+            bottomRadius='0.1'/>
+      </fieldValue>
+    </ProtoInstance>
+    <ProtoInstance name='ParticleGenerator'>
+      <fieldValue name='numParticles' value='100'/>
+      <fieldValue name='particleSimulation'>
+        <ProtoInstance name='ParticleSimulation' DEF='_3'>
+          <fieldValue name='initialPositions' value='-2.622089 9.487369 5.744864, 7.261169 9.330739 7.473617, -9.135612 -9.554276 -3.814205, -3.628881 1.978349 -8.414343, -9.558512 9.005077 9.497871, -3.799751 -6.302536 1.288047, 7.41784 2.806314 8.610455, -7.271522 0.4087077 9.954396, -9.117238 9.67076 7.595494, -3.708656 6.75836 -3.802774, 8.603322 -1.814535 8.371915, 1.964347 2.788707 2.799376, -6.349678 -7.298755 8.308775, -6.443739 -3.029891 -9.562164, 4.368841 5.079651 -9.778858, 7.229624 7.851074 -5.260055, -6.676362 2.135906 4.730279, -0.6006957 7.145353 3.144031, 5.385061 1.208053 9.531505, 8.16486 7.921038 -8.958694, -0.2325618 7.088313 -2.294705, -8.326138 7.746574 2.899884, -1.622704 9.59167 6.039408, 3.049746 0.8101423 2.12115, 2.164481 8.054192 4.614594, 9.088004 -4.524968 1.04239, 4.555663 -4.284417 4.169088, -7.220731 -9.159926 -2.252943, -9.369336 -4.159982 -3.827183, 5.613492 3.213703 -4.059183, -2.113834 3.614245 -4.109539, 7.557054 0.773477 1.861246, 4.615907 -0.09752107 -5.219715, 5.64404 -3.233428 -1.723201, 6.910524 -3.175782 -1.375315, 0.4546389 9.876511 3.624637, -2.630158 -6.271437 -9.661613, -9.469701 -3.206026 8.098954, 1.882847 -1.169093 6.969932, -8.670173 6.045436 -0.318652, 1.876168 -8.268204 5.657974, 7.170262 2.51565 -5.968427, 3.834314 -7.375896 -2.986711, 4.893963 1.992152 -9.254727, -3.82491 -9.273972 5.631989, 1.024741 -0.5009987 5.408438, 7.155358 -2.82201 8.792387, -0.7816533 -6.594272 -6.678545, 9.970285 9.878912 -1.281012, 1.340329 -2.784046 2.82735, 4.771593 9.441886 6.232141, 3.952517 7.234545 -1.712468, -3.952265 5.178368 -0.126908, -8.664056 6.07341 3.583437, 7.355344 -2.614903 -6.350413, -9.015263 3.074606 1.988216, 7.923682 2.674196 -0.2813596, 6.471756 -0.6975688 -1.993259, -5.685557 8.559211 9.881371, -6.754034 0.254257 -1.055045, -9.876788 5.233136 -7.3718, 6.331888 5.005666 -9.681802, -1.306996 -4.301219 0.1748839, -0.5387655 -8.399483 2.56977, 3.7183 6.606999 -9.552547, -4.079097 1.005132 -9.482966, 2.484457 4.554671 5.262146, -8.350126 5.326479 2.833298, -1.856527 9.518557 -8.939291, -0.3014698 6.298899 -0.8513263, 1.554898 1.045734 2.588121, -7.445251 -9.50672 7.218416, -4.757419 5.464626 -5.25256, 1.401016 -4.318133 6.632247, -5.643433 -4.374228 -2.912058, -1.760664 1.029956 1.716841, 5.7377 3.545002 -6.942136, 5.428925 -7.147967 -7.217594, 5.539914 4.774509 -0.3455234, 6.767425 2.376832 6.000995, -4.726328 7.118176 3.675037, 1.059275 -7.405258 0.5794839, 9.795838 -4.549995 3.255539, 6.898927 -5.931495 -6.400793, 0.6806032 6.132438 -3.198514, -1.157046 -5.43252 5.505697, 7.657835 9.827403 7.507753, -8.629489 -2.448448 7.29524, 0.4993875 7.254853 -4.732852, 4.030384 6.119914 -3.538274, 2.41679 3.717486 -4.267844, 8.454792 -4.472929 -2.045675, -2.30225 8.629173 4.272259, 4.214452 7.822058 9.954967, -8.333788 -1.818969 7.546503, -7.316455 -5.679039 -6.237776, 3.454503 5.240588 -3.189036, 3.21699 -0.8863008 5.891392, -7.609805 1.435584 5.226575, -7.776937 3.595773 4.60834'/>
+          <fieldValue name='initialVelocities' value='-1.31607 -1.865414 1.65187, -1.815756 1.864713 -1.043645, 0.2909102 0.7946793 -1.62457, -0.6287413 -0.290336 1.550744, -1.542987 -1.504919 -0.2486503, -1.802399 -0.7367312 1.912263, -1.764902 -1.759115 1.145506, -1.118443 -0.9698975 -1.557145, -1.404445 0.5199196 -1.40693, 1.178149 -0.5701304 -0.5888516, -0.9491851 -0.2992622 -0.6157296, 0.07331539 -0.8244646 -0.5882298, 1.186695 -1.36716 1.98613, -1.686942 -0.4510186 -1.175479, 1.633903 0.6618077 -1.151783, 0.9166209 0.2600184 -0.5261228, -1.667062 -0.4920555 1.505832, 0.4423837 1.517791 -0.8052729, 0.8384169 -0.5610361 1.989784, -0.1009381 0.7742237 -0.8034337, -1.443992 -0.3134259 -0.2112864, -0.2024487 0.1631834 -0.3904435, -0.6632074 1.818072 -0.399634, 0.1226953 0.6719011 1.205387, -1.123986 0.5934125 -0.7949606, 1.906883 0.902285 0.3626002, 1.888132 -0.04080954 -0.7673093, 0.6858324 1.404943 0.8891572, -1.666612 -1.932612 1.924152, 0.4180977 -0.7499831 1.547279, -1.654674 -0.5997977 0.6252336, -1.997221 -1.365365 -0.1306291, -0.2324809 0.662662 0.7226098, -0.3579219 1.891718 1.383471, -0.6149839 -0.522971 0.9990824, 1.921143 -1.944677 1.169325, -0.2229846 -1.532332 -0.3045282, -1.618373 0.8779684 -1.713014, 1.709262 0.5848201 -0.7986956, -1.006092 -0.09000862 -0.5970702, 1.929085 0.8481576 0.2300695, -1.440532 1.662226 0.5363962, 0.8652237 0.4607145 -1.466249, -0.841002 -1.767287 -1.705527, -1.065898 -1.561333 -1.551299, -0.4528337 0.7271328 1.281145, 0.07319221 -1.089378 0.4934583, -1.744696 -1.359859 -1.981228, -0.9155198 -0.01239951 -0.5936773, -0.245125 0.415857 -0.2860649, 0.5453456 0.02951189 0.1216596, -1.412344 -1.08336 -0.2251199, -1.515099 -1.395225 0.8081982, -0.1672139 0.7050908 0.7589127, -1.399147 -0.002266662 1.625898, -0.9367692 -0.9627301 0.8944997, -1.644319 -1.781638 1.239175, 0.8817266 0.7010548 1.803963, -1.625545 0.3768475 0.8081652, 0.4865205 -0.1407187 0.4225738, -0.03738946 1.178392 -0.1814529, 0.1023461 -0.7755448 -1.978243, -1.519744 1.260373 1.133008, -0.1609994 1.64534 -0.8528941, -0.825463 0.9688387 -1.435864, 1.287834 1.747925 0.06683241, 1.941022 0.8976581 0.5153541, -1.316604 -1.971265 -0.0088137, 1.393204 -1.779457 -1.74149, -1.161153 1.183646 1.453113, 1.535431 1.058898 0.4156469, 0.663923 -0.8349255 1.709495, 0.4939443 -1.774952 -0.6730543, -0.5844923 -0.3378039 1.584507, 1.540183 -0.1816379 -1.821764, -0.7223567 -0.02183307 -1.643572, 0.3817253 -1.110371 1.936162, 0.8150376 0.3947096 -1.113014, -1.878245 0.3663892 0.2233611, 1.131085 -1.126046 -1.786438, 1.004741 1.991991 -0.2126587, -0.4809018 0.002228451 -1.613026, -0.332 -0.1900188 -0.4666054, 0.935345 0.2723012 0.7830008, 0.315743 -0.5398471 1.959942, 0.6560399 0.5169786 0.1416118, -0.5879906 1.673069 1.529184, 0.706245 -0.3110933 0.6042444, -1.392342 -0.7631053 -0.002458054, 0.4838653 1.367065 0.8381104, -0.1450603 1.138834 1.860287, -0.9655407 -1.358629 -1.655095, 1.452241 -0.9299249 0.8890229, 1.910217 -1.097523 -1.258508, 1.146501 -1.008728 -1.28891, 1.675338 -0.03654489 0.5295114, -1.941262 -1.38342 0.5352213, -0.8329167 0.8091785 -1.424839, -0.652061 1.634324 1.365383, 0.7008418 -0.5631694 0.1864908'/>
+          <fieldValue name='initialMasses' value='1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1'/>
+          <fieldValue name='gravitationalConstant' value='1'/>
+          <fieldValue name='startTime' value='1715359816.972'/>
+          <fieldValue name='resumeTime' value='1715359464.14'/>
+          <fieldValue name='stopTime' value='1715359816.154'/>
+          <fieldValue name='bboxDisplay' value='true'/>
+          <fieldValue name='appearance'>
+            <Appearance USE='_2'/>
+          </fieldValue>
+          <fieldValue name='geometry'>
+            <Cone DEF='_4'/>
+          </fieldValue>
+        </ProtoInstance>
+      </fieldValue>
+    </ProtoInstance>
+  </Scene>
+</X3D>
