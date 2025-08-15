@@ -7,18 +7,18 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.24, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 15 Aug 2025 13:01:47 GMT'/>
+    <meta name='modified' content='Fri, 15 Aug 2025 13:04:14 GMT'/>
   </head>
   <Scene>
     <DirectionalLight
-        intensity='0.8'
         direction='-1 -1 -1'/>
     <Viewpoint DEF='VP1'
         description='Initial View'
         position='0 1.6 0'
         orientation='-1 0 0 0.2'>
       <NavigationInfo containerField='navigationInfo'
-          type='"NONE"'/>
+          type='"NONE"'
+          headlight='false'/>
     </Viewpoint>
     <Transform DEF='Floor'
         translation='-0 -1 0'
@@ -41,7 +41,7 @@
     <Script DEF='NavigationScript'>
       <field accessType='inputOnly' type='SFBool' name='set_active'/>
       <field accessType='inputOnly' type='SFTime' name='set_time'/>
-      <field accessType='inputOutput' type='SFInt32' name='actionKey' value='20'/>
+      <field accessType='inputOutput' type='SFInt32' name='actionKey' value='17'/>
       <field accessType='inputOutput' type='SFFloat' name='speed' value='2'/>
       <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
         <Viewpoint USE='VP1'/>
