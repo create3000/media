@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='KeyDeviceSensor' level='2'/>
+    <component name='Scripting' level='1'/>
+    <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.24, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Fri, 15 Aug 2025 11:46:27 GMT'/>
+  </head>
+  <Scene>
+    <Viewpoint DEF='VP1'
+        description='Initial View'
+        position='0 1.6 0'
+        orientation='-1 0 0 0.2'>
+      <NavigationInfo containerField='navigationInfo'
+          type='"NONE"'/>
+    </Viewpoint>
+    <Transform DEF='Box'
+        translation='-0 -1 0'
+        scale='50 1 50'>
+      <Shape>
+        <Appearance>
+          <Material>
+            <ImageTexture containerField='diffuseTexture'
+                url='"pattern.jpg"'/>
+          </Material>
+        </Appearance>
+        <Box/>
+      </Shape>
+    </Transform>
+    <KeySensor DEF='_1'/>
+    <TimeSensor DEF='_2'
+        enabled='false'
+        loop='true'/>
+    <Script DEF='NavigationScript'>
+      <field accessType='inputOnly' type='SFBool' name='set_active'/>
+      <field accessType='inputOnly' type='SFTime' name='set_time'/>
+      <field accessType='inputOutput' type='SFInt32' name='actionKey' value='20'/>
+      <field accessType='inputOutput' type='SFFloat' name='speed' value='2'/>
+      <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
+        <Viewpoint USE='VP1'/>
+      </field>
+<![CDATA[ecmascript:
+
+let lastTime = -1;
+
+function initialize ()
+{
+   viewpoint .position    = new SFVec3f (0, 1.6, 0);
+   viewpoint .orientation = new SFRotation (-1, 0, 0, 0.2);
+}
+
+function set_active (value, time)
+{
+   if (value)
+      lastTime = time;
+}
+
+function set_time (value, time)
+{
+   const dt = time - lastTime;
+
+   switch (actionKey)
+   {
+      case 17: // up
+      {
+         const translation = viewpoint .orientation 
+            .multVec (new SFVec3f (0, 0, speed * -dt)) // rotate vector
+            .multVec (new SFVec3f (1, 0, 1));          // set y-axis to 0
+
+         viewpoint .position = viewpoint .position .add (translation);
+         break;
+      }
+      case 18: // down
+      {
+         const translation = viewpoint .orientation 
+            .multVec (new SFVec3f (0, 0, speed * dt)) // rotate vector
+            .multVec (new SFVec3f (1, 0, 1));         // set y-axis to 0
+
+         viewpoint .position = viewpoint .position .add (translation);
+         break;
+      }
+      case 19: // left
+      {
+         const rotation = new SFRotation (0, 1, 0, dt);
+
+         viewpoint .orientation = viewpoint .orientation .multiply (rotation);
+         break;
+      }
+      case 20: // right
+      {
+         const rotation = new SFRotation (0, 1, 0, -dt);
+
+         viewpoint .orientation = viewpoint .orientation .multiply (rotation);
+         break;
+      }
+   }
+
+   lastTime = time;
+}
+]]>
+    </Script>
+    <ROUTE fromNode='_1' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
+    <ROUTE fromNode='_1' fromField='isActive' toNode='_2' toField='set_enabled'/>
+    <ROUTE fromNode='_2' fromField='time' toNode='NavigationScript' toField='set_time'/>
+    <ROUTE fromNode='_2' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
+  </Scene>
+</X3D>
