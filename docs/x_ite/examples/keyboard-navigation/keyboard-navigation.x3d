@@ -7,7 +7,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.24, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 15 Aug 2025 11:48:32 GMT'/>
+    <meta name='modified' content='Fri, 15 Aug 2025 11:53:46 GMT'/>
   </head>
   <Scene>
     <Viewpoint DEF='VP1'
@@ -67,7 +67,7 @@ function set_time (value, time)
       case 17: // up
       {
          const translation = viewpoint .orientation 
-            .multVec (new SFVec3f (0, 0, speed * -dt)) // rotate vector
+            .multVec (new SFVec3f (0, 0, speed * -dt)) // rotate vector; returns a vector
             .multVec (new SFVec3f (1, 0, 1));          // set y-axis to 0
 
          viewpoint .position = viewpoint .position .add (translation);
@@ -76,7 +76,7 @@ function set_time (value, time)
       case 18: // down
       {
          const translation = viewpoint .orientation 
-            .multVec (new SFVec3f (0, 0, speed * dt)) // rotate vector
+            .multVec (new SFVec3f (0, 0, speed * dt)) // rotate vector; returns a vector
             .multVec (new SFVec3f (1, 0, 1));         // set y-axis to 0
 
          viewpoint .position = viewpoint .position .add (translation);
