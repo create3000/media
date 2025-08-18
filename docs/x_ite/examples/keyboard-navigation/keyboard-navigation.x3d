@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 18 Aug 2025 21:20:42 GMT'/>
+    <meta name='modified' content='Mon, 18 Aug 2025 21:24:47 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -18,8 +18,8 @@
         direction='-1 -1 -1'/>
     <Viewpoint DEF='VP1'
         description='Initial View'
-        position='0.2825751 1.599998 -12.02935'
-        orientation='-0.244814113922395 0.965252655485884 0.0913967215048956 0.738099461379505'>
+        position='0 1.6 0'
+        orientation='-1 0 0 0.2'>
       <NavigationInfo containerField='navigationInfo'
           type='"WALK"'
           headlight='false'
@@ -79,9 +79,9 @@ function set_active (value, time)
 
 function set_time (value, time)
 {
-   // We use the poxy values here for calculation, because they include
-   // all user offsets + viewpoint position and orientation.
-   
+   // We use the proxy values here for calculations, because they include
+   // all user-offsets + viewpoint position and orientation.
+
    const dt = time - lastTime;
 
    switch (actionKey)
