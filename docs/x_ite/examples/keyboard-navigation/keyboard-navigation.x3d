@@ -2,12 +2,13 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
 <X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
+    <component name='EnvironmentalSensor' level='3'/>
     <component name='KeyDeviceSensor' level='2'/>
     <component name='Scripting' level='1'/>
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.8.24, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 15 Aug 2025 13:17:03 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 18 Aug 2025 20:59:26 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -20,9 +21,12 @@
         position='0 1.6 0'
         orientation='-1 0 0 0.2'>
       <NavigationInfo containerField='navigationInfo'
-          type='"NONE"'
-          headlight='false'/>
+          type='"WALK"'
+          headlight='false'
+          transitionType='"TELEPORT"'/>
     </Viewpoint>
+    <ProximitySensor DEF='_1'
+        size='-1 -1 -1'/>
     <Transform DEF='Floor'
         translation='-0 -1 0'
         scale='50 1 50'>
@@ -37,8 +41,8 @@
         <Box/>
       </Shape>
     </Transform>
-    <KeySensor DEF='_1'/>
-    <TimeSensor DEF='_2'
+    <KeySensor DEF='_2'/>
+    <TimeSensor DEF='_3'
         enabled='false'
         loop='true'/>
     <Script DEF='NavigationScript'>
@@ -48,6 +52,9 @@
       <field accessType='inputOutput' type='SFFloat' name='speed' value='2'/>
       <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
         <Viewpoint USE='VP1'/>
+      </field>
+      <field accessType='initializeOnly' type='SFNode' name='proxy'>
+        <ProximitySensor USE='_1'/>
       </field>
 <![CDATA[ecmascript:
 
@@ -61,8 +68,12 @@ function initialize ()
 
 function set_active (value, time)
 {
-   if (value)
-      lastTime = time;
+   if (!value)
+      return;
+
+   lastTime = time;
+
+   viewpoint .set_bind = true;
 }
 
 function set_time (value, time)
@@ -73,34 +84,38 @@ function set_time (value, time)
    {
       case 17: // up
       {
-         const translation = viewpoint .orientation 
+         const translation = proxy .orientation_changed
             .multVec (new SFVec3f (0, 0, speed * -dt)) // rotate vector; returns a vector
             .multVec (new SFVec3f (1, 0, 1));          // set y-axis to 0
 
-         viewpoint .position = viewpoint .position .add (translation);
+         viewpoint .position    = proxy .position_changed .add (translation);
+         viewpoint .orientation = proxy .orientation_changed;
          break;
       }
       case 18: // down
       {
-         const translation = viewpoint .orientation 
+         const translation = proxy .orientation_changed
             .multVec (new SFVec3f (0, 0, speed * dt)) // rotate vector; returns a vector
             .multVec (new SFVec3f (1, 0, 1));         // set y-axis to 0
 
-         viewpoint .position = viewpoint .position .add (translation);
+         viewpoint .position    = proxy .position_changed .add (translation);
+         viewpoint .orientation = proxy .orientation_changed;
          break;
       }
       case 19: // left
       {
          const rotation = new SFRotation (0, 1, 0, dt);
 
-         viewpoint .orientation = viewpoint .orientation .multiply (rotation);
+         viewpoint .position    = proxy .position_changed;
+         viewpoint .orientation = proxy .orientation_changed .multiply (rotation);
          break;
       }
       case 20: // right
       {
          const rotation = new SFRotation (0, 1, 0, -dt);
 
-         viewpoint .orientation = viewpoint .orientation .multiply (rotation);
+         viewpoint .position    = proxy .position_changed;
+         viewpoint .orientation = proxy .orientation_changed .multiply (rotation);
          break;
       }
    }
@@ -109,9 +124,9 @@ function set_time (value, time)
 }
 ]]>
     </Script>
-    <ROUTE fromNode='_1' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
-    <ROUTE fromNode='_1' fromField='isActive' toNode='_2' toField='set_enabled'/>
-    <ROUTE fromNode='_2' fromField='time' toNode='NavigationScript' toField='set_time'/>
-    <ROUTE fromNode='_2' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
+    <ROUTE fromNode='_2' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
+    <ROUTE fromNode='_2' fromField='isActive' toNode='_3' toField='set_enabled'/>
+    <ROUTE fromNode='_3' fromField='time' toNode='NavigationScript' toField='set_time'/>
+    <ROUTE fromNode='_3' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
   </Scene>
 </X3D>
