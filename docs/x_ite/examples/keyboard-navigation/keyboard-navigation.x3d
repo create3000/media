@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 18 Aug 2025 21:45:19 GMT'/>
+    <meta name='modified' content='Mon, 18 Aug 2025 22:25:46 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -74,14 +74,14 @@ function set_active (value, time)
 
    lastTime = time;
 
-   // Rebind viewpoint to reset user-offsets.
+   // Rebind viewpoint to reset any user-offsets.
    viewpoint .set_bind = true;
 }
 
 function set_time (value, time)
 {
    // We use the proxy values here for calculations, because they include
-   // all user-offsets + viewpoint position and orientation.
+   // all user-offsets + viewpoint position or orientation.
 
    const dt = time - lastTime;
 
