@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 18 Aug 2025 21:24:47 GMT'/>
+    <meta name='modified' content='Mon, 18 Aug 2025 21:28:34 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -25,7 +25,7 @@
           headlight='false'
           transitionType='"TELEPORT"'/>
     </Viewpoint>
-    <ProximitySensor DEF='_1'
+    <ProximitySensor DEF='Proxy'
         size='-1 -1 -1'/>
     <Transform DEF='Floor'
         translation='-0 -1 0'
@@ -41,8 +41,8 @@
         <Box/>
       </Shape>
     </Transform>
-    <KeySensor DEF='_2'/>
-    <TimeSensor DEF='_3'
+    <KeySensor DEF='Keys'/>
+    <TimeSensor DEF='Timer'
         enabled='false'
         loop='true'/>
     <Script DEF='NavigationScript'>
@@ -54,7 +54,7 @@
         <Viewpoint USE='VP1'/>
       </field>
       <field accessType='initializeOnly' type='SFNode' name='proxy'>
-        <ProximitySensor USE='_1'/>
+        <ProximitySensor USE='Proxy'/>
       </field>
 <![CDATA[ecmascript:
 
@@ -128,9 +128,9 @@ function set_time (value, time)
 }
 ]]>
     </Script>
-    <ROUTE fromNode='_2' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
-    <ROUTE fromNode='_2' fromField='isActive' toNode='_3' toField='set_enabled'/>
-    <ROUTE fromNode='_3' fromField='time' toNode='NavigationScript' toField='set_time'/>
-    <ROUTE fromNode='_3' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
+    <ROUTE fromNode='Keys' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
+    <ROUTE fromNode='Keys' fromField='isActive' toNode='Timer' toField='set_enabled'/>
+    <ROUTE fromNode='Timer' fromField='time' toNode='NavigationScript' toField='set_time'/>
+    <ROUTE fromNode='Timer' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
   </Scene>
 </X3D>
