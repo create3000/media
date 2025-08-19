@@ -11,7 +11,7 @@
     <meta name='generator' content='Titania V3.0.4, http://titania.create3000.de'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Cobweb/excite/tests/Components/Shape/Connectors.x3d'/>
-    <meta name='modified' content='Tue, 19 Aug 2025 11:20:18 GMT'/>
+    <meta name='modified' content='Tue, 19 Aug 2025 11:27:21 GMT'/>
     <meta name='title' content='Connectors'/>
   </head>
   <Scene>
@@ -44,45 +44,59 @@
 
 function initialize ()
 {
-	var point         = new SFVec3f (cornerRadius, 0, 0);
-	var startRotation = new SFRotation ();
-	var endRotation   = new SFRotation (0, 0, 1, Math .PI / 2);
-	var corner        = new MFVec3f ();
-	var coordIndex    = new MFInt32 ();
-	var points        = new MFVec3f ();
+   const point         = new SFVec3f (cornerRadius, 0, 0);
+   const startRotation = new SFRotation ();
+   const endRotation   = new SFRotation (0, 0, 1, Math .PI / 2);
+   const corner        = new MFVec3f ();
+   const coordIndex    = new MFInt32 ();
+   const points        = new MFVec3f ();
 
-	for (var i = 0; i < cornerDimension * 4; ++ i)
-		coordIndex [coordIndex .length] = i;
+   for (let i = 0; i < cornerDimension * 4; ++ i)
+      coordIndex [coordIndex .length] = i;
 
-	geometry .coordIndex = coordIndex;
+   geometry .coordIndex = coordIndex;
 
-	for (var i = 0; i < cornerDimension; ++i)
-		corner [i] = startRotation .slerp (endRotation, i / (cornerDimension - 1)) .multVec (point);
+   for (let i = 0; i < cornerDimension; ++ i)
+   {
+      corner [i] = startRotation .slerp (endRotation, i / (cornerDimension - 1)) .multVec (point);
+   }
 
-	var translation = new SFVec3f (size .x / 2 - cornerRadius, size .y / 2 - cornerRadius, 0);
+   // Corner 1
+   {
+      const translation = new SFVec3f (size .x / 2 - cornerRadius, size .y / 2 - cornerRadius, 0);
 
-	for (var i = 0; i < cornerDimension; ++ i)
-		points [points .length] = corner [i] .add (translation);
+      for (let i = 0; i < cornerDimension; ++ i)
+         points [points .length] = corner [i] .add (translation);
+   }
 
-	var translation = new SFVec3f (-size .x / 2 + cornerRadius, size .y / 2 - cornerRadius, 0);
-	var rotation    = new SFRotation (0, 0, 1, Math .PI * 0.5);
+   // Corner 2
+   {
+      const translation = new SFVec3f (-size .x / 2 + cornerRadius, size .y / 2 - cornerRadius, 0);
+      const rotation    = new SFRotation (0, 0, 1, Math .PI * 0.5);
 
-	for (var i = 0; i < cornerDimension; ++ i)
-		points [points .length] = rotation .multVec (corner [i]) .add (translation);
+      for (let i = 0; i < cornerDimension; ++ i)
+         points [points .length] = rotation .multVec (corner [i]) .add (translation);
+   }
 
-	var translation = new SFVec3f (-size .x / 2 + cornerRadius, -size .y / 2 + cornerRadius, 0);
-	var rotation    = new SFRotation (0, 0, 1, Math .PI);
+   // Corner 3
+   {
+      const translation = new SFVec3f (-size .x / 2 + cornerRadius, -size .y / 2 + cornerRadius, 0);
+      const rotation    = new SFRotation (0, 0, 1, Math .PI);
 
-	for (var i = 0; i < cornerDimension; ++ i)
-		points [points .length] = rotation .multVec (corner [i]) .add (translation);
+      for (let i = 0; i < cornerDimension; ++ i)
+         points [points .length] = rotation .multVec (corner [i]) .add (translation);
+   }
+   
+   // Corner 2
+   {
+      const translation = new SFVec3f (size .x / 2 - cornerRadius, -size .y / 2 + cornerRadius, 0);
+      const rotation    = new SFRotation (0, 0, 1, Math .PI * 1.5);
 
-	var translation = new SFVec3f (size .x / 2 - cornerRadius, -size .y / 2 + cornerRadius, 0);
-	var rotation    = new SFRotation (0, 0, 1, Math .PI * 1.5);
-
-	for (var i = 0; i < cornerDimension; ++ i)
-		points [points .length] = rotation .multVec (corner [i]) .add (translation);
-
-	geometry .coord .point = points;
+      for (let i = 0; i < cornerDimension; ++ i)
+         points [points .length] = rotation .multVec (corner [i]) .add (translation);
+   }
+   
+   geometry .coord .point = points;
 }
 ]]>
         </Script>
@@ -142,7 +156,7 @@ function initialize ()
 
 function initialize ()
 {
-	sensor .offset = translation;
+   sensor .offset = translation;
 }
 ]]>
         </Script>
@@ -198,37 +212,37 @@ function initialize ()
 
 function initialize ()
 {
-	const w = 1;
-	const h = 1;
-	
-	const outPoint = new SFVec3f ();
+   const w = 1;
+   const h = 1;
+   
+   const outPoint = new SFVec3f ();
 
-	geometry .vertexCount [0] = routeDimension;
+   geometry .vertexCount [0] = routeDimension;
 
-	for (let i = 0; i < routeDimension; ++ i)
-	{
-		const t = i / (routeDimension - 1);
-		const y = h / 2 * (Math .cos (t * Math .PI) - 1);
+   for (let i = 0; i < routeDimension; ++ i)
+   {
+      const t = i / (routeDimension - 1);
+      const y = h / 2 * (Math .cos (t * Math .PI) - 1);
 
-		geometry .coord .point [i] = outPoint .add (new SFVec3f (t * w, y, 0));
-	}
+      geometry .coord .point [i] = outPoint .add (new SFVec3f (t * w, y, 0));
+   }
 
-	Browser .addRoute (output, 'translation_changed', self, 'set_translation');
-	Browser .addRoute (input,  'translation_changed', self, 'set_translation');
+   Browser .addRoute (output, 'translation_changed', self, 'set_translation');
+   Browser .addRoute (input,  'translation_changed', self, 'set_translation');
 
-	set_translation ();
+   set_translation ();
 }
 
 function set_translation ()
 {
-	const outPoint = output .translation .add (new SFVec3f ( 1, 0, 0));
-	const inPoint  = input  .translation .add (new SFVec3f (-1, 0, 0));
+   const outPoint = output .translation .add (new SFVec3f ( 1, 0, 0));
+   const inPoint  = input  .translation .add (new SFVec3f (-1, 0, 0));
 
-	const w = inPoint .x - outPoint .x;
-	const h = outPoint .y - inPoint .y;
+   const w = inPoint .x - outPoint .x;
+   const h = outPoint .y - inPoint .y;
 
-	transform .translation = outPoint;
-	transform .scale       = new SFVec3f (w, h, 1);
+   transform .translation = outPoint;
+   transform .scale       = new SFVec3f (w, h, 1);
 }
 ]]>
         </Script>
@@ -248,7 +262,7 @@ function set_translation ()
       <ProtoInstance name='Route'>
         <fieldValue name='output'>
           <ProtoInstance name='Node' DEF='N1'>
-            <fieldValue name='translation' value='-4.298593 2.913717 0'/>
+            <fieldValue name='translation' value='-4.73525 2.792532 0'/>
           </ProtoInstance>
         </fieldValue>
         <fieldValue name='input'>
