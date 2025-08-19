@@ -11,7 +11,7 @@
     <meta name='generator' content='Titania V3.0.4, http://titania.create3000.de'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Cobweb/excite/tests/Components/Shape/Connectors.x3d'/>
-    <meta name='modified' content='Tue, 19 Aug 2025 10:48:19 GMT'/>
+    <meta name='modified' content='Tue, 19 Aug 2025 10:55:34 GMT'/>
     <meta name='title' content='Connectors'/>
   </head>
   <Scene>
@@ -28,7 +28,7 @@
           </IS>
           <Coordinate/>
         </IndexedFaceSet>
-        <Script DEF='RoundedRectangle2D'
+        <Script DEF='RoundedRectangle2DScript'
             directOutput='true'>
           <field accessType='initializeOnly' type='SFFloat' name='cornerDimension' value='10'/>
           <field accessType='initializeOnly' type='SFFloat' name='cornerRadius'/>
@@ -126,7 +126,7 @@ function initialize ()
             </Transform>
           </Transform>
         </Group>
-        <Script
+        <Script DEF='NodeScript'
             directOutput='true'>
           <field accessType='inputOutput' type='SFVec3f' name='translation'/>
           <field accessType='initializeOnly' type='SFNode' name='sensor'>
@@ -172,7 +172,7 @@ function initialize ()
                 point='-1 0 0, 1 0 0'/>
           </LineSet>
         </Shape>
-        <Script DEF='Route'
+        <Script DEF='RouteScript'
             directOutput='true'>
           <field accessType='inputOnly' type='SFVec3f' name='set_translation'/>
           <field accessType='initializeOnly' type='SFInt32' name='routeDimension' value='21'/>
@@ -182,7 +182,7 @@ function initialize ()
             <LineSet USE='Geometry_1'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='self'>
-            <Script USE='Route'/>
+            <Script USE='RouteScript'/>
           </field>
           <IS>
             <connect nodeField='output' protoField='output'/>
