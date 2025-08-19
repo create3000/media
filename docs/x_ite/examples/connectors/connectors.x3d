@@ -9,9 +9,9 @@
     <meta name='created' content='Fri, 04 Sep 2015 10:19:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Titania V3.0.4, http://titania.create3000.de'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.8.16, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
     <meta name='identifier' content='file:///home/holger/Projekte/Cobweb/excite/tests/Components/Shape/Connectors.x3d'/>
-    <meta name='modified' content='Fri, 25 Jul 2025 15:45:38 GMT'/>
+    <meta name='modified' content='Tue, 19 Aug 2025 10:48:19 GMT'/>
     <meta name='title' content='Connectors'/>
   </head>
   <Scene>
@@ -88,51 +88,6 @@ function initialize ()
         </Script>
       </ProtoBody>
     </ProtoDeclare>
-    <ProtoDeclare name='Widget'>
-      <ProtoInterface>
-        <field accessType='inputOutput' type='SFColor' name='fillColor' value='0.1 0.1 0.1'/>
-        <field accessType='inputOutput' type='SFColor' name='lineColor' value='0.4 0.4 0.4'/>
-        <field accessType='inputOutput' type='SFFloat' name='linewidthScaleFactor' value='1'/>
-        <field accessType='inputOutput' type='SFNode' name='geometry'/>
-      </ProtoInterface>
-      <ProtoBody>
-        <Transform DEF='Shape'>
-          <Shape>
-            <IS>
-              <connect nodeField='geometry' protoField='geometry'/>
-            </IS>
-            <Appearance>
-              <Material>
-                <IS>
-                  <connect nodeField='diffuseColor' protoField='fillColor'/>
-                </IS>
-              </Material>
-            </Appearance>
-          </Shape>
-          <Shape>
-            <IS>
-              <connect nodeField='geometry' protoField='geometry'/>
-            </IS>
-            <Appearance>
-              <LineProperties>
-                <IS>
-                  <connect nodeField='linewidthScaleFactor' protoField='linewidthScaleFactor'/>
-                </IS>
-              </LineProperties>
-              <FillProperties
-                  filled='false'
-                  hatched='false'/>
-              <Material
-                  diffuseColor='0 0 0'>
-                <IS>
-                  <connect nodeField='emissiveColor' protoField='lineColor'/>
-                </IS>
-              </Material>
-            </Appearance>
-          </Shape>
-        </Transform>
-      </ProtoBody>
-    </ProtoDeclare>
     <ProtoDeclare name='Node'>
       <ProtoInterface>
         <field accessType='inputOutput' type='SFVec3f' name='translation'/>
@@ -144,32 +99,30 @@ function initialize ()
             <IS>
               <connect nodeField='translation' protoField='translation'/>
             </IS>
-            <ProtoInstance name='Widget'>
-              <fieldValue name='geometry'>
-                <ProtoInstance name='RoundedRectangle2D'>
-                  <fieldValue name='cornerRadius' value='0.12'/>
-                  <fieldValue name='size' value='2 1'/>
-                </ProtoInstance>
-              </fieldValue>
-            </ProtoInstance>
+            <Shape>
+              <Appearance DEF='_5'>
+                <Material
+                    diffuseColor='0.1 0.1 0.1'/>
+              </Appearance>
+              <ProtoInstance name='RoundedRectangle2D' containerField='geometry'>
+                <fieldValue name='cornerRadius' value='0.12'/>
+                <fieldValue name='size' value='2 1'/>
+              </ProtoInstance>
+            </Shape>
             <Transform DEF='Input'
                 translation='-1 0 0'>
-              <ProtoInstance name='Widget'>
-                <fieldValue name='lineColor' value='0.72 0.14 0.23'/>
-                <fieldValue name='geometry'>
-                  <Disk2D DEF='Connector'
-                      outerRadius='0.2'/>
-                </fieldValue>
-              </ProtoInstance>
+              <Shape>
+                <Appearance USE='_5'/>
+                <Disk2D DEF='Connector'
+                    outerRadius='0.2'/>
+              </Shape>
             </Transform>
             <Transform DEF='Output'
                 translation='1 0 0'>
-              <ProtoInstance name='Widget'>
-                <fieldValue name='lineColor' value='0.44 0.5 0.72'/>
-                <fieldValue name='geometry'>
-                  <Disk2D USE='Connector'/>
-                </fieldValue>
-              </ProtoInstance>
+              <Shape>
+                <Appearance USE='_5'/>
+                <Disk2D USE='Connector'/>
+              </Shape>
             </Transform>
           </Transform>
         </Group>
@@ -210,12 +163,8 @@ function initialize ()
                 <connect nodeField='linewidthScaleFactor' protoField='linewidthScaleFactor'/>
               </IS>
             </LineProperties>
-            <Material
-                diffuseColor='0 0 0'>
-              <IS>
-                <connect nodeField='emissiveColor' protoField='lineColor'/>
-              </IS>
-            </Material>
+            <UnlitMaterial
+                emissiveColor='0.43 0.43 0.98'/>
           </Appearance>
           <LineSet DEF='Geometry_1'
               vertexCount='2'>
@@ -270,17 +219,16 @@ function set_translation ()
         </Script>
       </ProtoBody>
     </ProtoDeclare>
-    <NavigationInfo
-        type='"PLANE_create3000.de", "ANY"'/>
     <Background
         skyColor='0.2 0.2 0.2'/>
     <OrthoViewpoint
-        description='OrthoViewpoint'
+        description='Initial View'
         position='-3.13496 -4.19776 10'
         centerOfRotation='-3.13496 -4.19776 0'
-        fieldOfView='0, 0, 10, 10'/>
-    <Viewpoint
-        description='Viewpoint'/>
+        fieldOfView='0, 0, 10, 10'>
+      <NavigationInfo containerField='navigationInfo'
+          type='"PLANE", "PLANE_create3000.github.io"'/>
+    </OrthoViewpoint>
     <Transform DEF='Connectors'>
       <ProtoInstance name='Route'>
         <fieldValue name='output'>
