@@ -8,14 +8,14 @@
     <meta name='created' content='Fri, 04 Sep 2015 10:19:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Tue, 19 Aug 2025 11:34:34 GMT'/>
+    <meta name='modified' content='Tue, 19 Aug 2025 19:45:30 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='RoundedRectangle2D'>
       <ProtoInterface>
         <field accessType='initializeOnly' type='SFFloat' name='cornerRadius' value='1'/>
         <field accessType='initializeOnly' type='SFVec2f' name='size' value='2 2'/>
-        <field accessType='initializeOnly' type='SFBool' name='solid' value='true'/>
+        <field accessType='initializeOnly' type='SFBool' name='solid'/>
       </ProtoInterface>
       <ProtoBody>
         <IndexedFaceSet DEF='Geometry'>
@@ -38,60 +38,46 @@
           </IS>
 <![CDATA[ecmascript:
 
+const mirror = new MFVec3f (
+   new SFVec3f ( 1,  1, 1),
+   new SFVec3f (-1,  1, 1),
+   new SFVec3f (-1, -1, 1),
+   new SFVec3f ( 1, -1, 1),
+);
+
 function initialize ()
 {
    const point         = new SFVec3f (cornerRadius, 0, 0);
    const startRotation = new SFRotation ();
    const endRotation   = new SFRotation (0, 0, 1, Math .PI / 2);
+   const translation   = new SFVec3f (size .x / 2 - cornerRadius, size .y / 2 - cornerRadius, 0);
    const corner        = new MFVec3f ();
    const coordIndex    = new MFInt32 ();
    const points        = new MFVec3f ();
 
+   // Index
+
    for (let i = 0; i < cornerDimension * 4; ++ i)
       coordIndex [coordIndex .length] = i;
 
-   geometry .coordIndex = coordIndex;
+   geometry .set_coordIndex = coordIndex;
+
+   // Points
 
    for (let i = 0; i < cornerDimension; ++ i)
    {
-      corner [i] = startRotation .slerp (endRotation, i / (cornerDimension - 1)) .multVec (point);
+      corner .push (startRotation 
+         .slerp (endRotation, i / (cornerDimension - 1)) .multVec (point));
    }
 
-   // Corner 1
+   for (let c = 0; c < 4; ++ c)
    {
-      const translation = new SFVec3f (size .x / 2 - cornerRadius, size .y / 2 - cornerRadius, 0);
+      const rotation = new SFRotation (0, 0, 1, Math .PI * c/2);
 
       for (let i = 0; i < cornerDimension; ++ i)
-         points [points .length] = corner [i] .add (translation);
+         points .push (rotation .multVec (corner [i]) .add (translation .multVec (mirror [c])));
    }
 
-   // Corner 2
-   {
-      const translation = new SFVec3f (-size .x / 2 + cornerRadius, size .y / 2 - cornerRadius, 0);
-      const rotation    = new SFRotation (0, 0, 1, Math .PI * 0.5);
-
-      for (let i = 0; i < cornerDimension; ++ i)
-         points [points .length] = rotation .multVec (corner [i]) .add (translation);
-   }
-
-   // Corner 3
-   {
-      const translation = new SFVec3f (-size .x / 2 + cornerRadius, -size .y / 2 + cornerRadius, 0);
-      const rotation    = new SFRotation (0, 0, 1, Math .PI);
-
-      for (let i = 0; i < cornerDimension; ++ i)
-         points [points .length] = rotation .multVec (corner [i]) .add (translation);
-   }
-   
-   // Corner 4
-   {
-      const translation = new SFVec3f (size .x / 2 - cornerRadius, -size .y / 2 + cornerRadius, 0);
-      const rotation    = new SFRotation (0, 0, 1, Math .PI * 1.5);
-
-      for (let i = 0; i < cornerDimension; ++ i)
-         points [points .length] = rotation .multVec (corner [i]) .add (translation);
-   }
-   
    geometry .coord .point = points;
 }
 ]]>
@@ -117,6 +103,7 @@ function initialize ()
               <ProtoInstance name='RoundedRectangle2D' containerField='geometry'>
                 <fieldValue name='cornerRadius' value='0.12'/>
                 <fieldValue name='size' value='2 1'/>
+                <fieldValue name='solid' value='true'/>
               </ProtoInstance>
             </Shape>
             <Transform DEF='Input'
