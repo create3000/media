@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 20 Aug 2025 15:16:59 GMT'/>
+    <meta name='modified' content='Wed, 20 Aug 2025 20:27:40 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -106,10 +106,12 @@ function set_time (value, time)
             .multVec (new SFVec3f (1, 0, 1));          // set y-axis to 0 
 
          // Compare with first value of NavigationInfo.avatarSize (collision radius).
-         const collisionRadius = viewpoint .navigationInfo .avatarSize [0];
+         const 
+            closestObject   = Browser .getClosestObject (translation),
+            collisionRadius = viewpoint .navigationInfo .avatarSize [0];
 
          // Check if anything is within collision radius.
-         if (Browser .getCollisionDistance (translation) .distance < collisionRadius)
+         if (closestObject .distance < collisionRadius)
             break;
 
          // Here at this point the translation could be contrainted to not
@@ -125,10 +127,12 @@ function set_time (value, time)
             .multVec (new SFVec3f (1, 0, 1));         // set y-axis to 0
 
          // Compare with first value of NavigationInfo.avatarSize (collision radius).
-         const collisionRadius = viewpoint .navigationInfo .avatarSize [0];
+         const 
+            closestObject   = Browser .getClosestObject (translation),
+            collisionRadius = viewpoint .navigationInfo .avatarSize [0];
 
          // Check if anything is within collision radius.
-         if (Browser .getCollisionDistance (translation) .distance < collisionRadius)
+         if (closestObject .distance < collisionRadius)
             break;
 
          // Here at this point the translation could be contrainted to not
