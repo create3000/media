@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Tue, 19 Aug 2025 17:12:33 GMT'/>
+    <meta name='modified' content='Wed, 20 Aug 2025 11:00:53 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -18,8 +18,8 @@
         direction='-1 -1 -1'/>
     <Viewpoint DEF='VP1'
         description='Initial View'
-        position='0 1.6 0'
-        orientation='-1 0 0 0.2'>
+        position='9.092332 1.599999 5.982846'
+        orientation='-0.15218314806622 0.983933582396055 0.0933541369084469 1.11496701957243'>
       <NavigationInfo containerField='navigationInfo'
           type='"WALK"'
           headlight='false'
@@ -49,7 +49,7 @@
         directOutput='true'>
       <field accessType='inputOnly' type='SFBool' name='set_active'/>
       <field accessType='inputOnly' type='SFTime' name='set_time'/>
-      <field accessType='inputOutput' type='SFInt32' name='actionKey' value='18'/>
+      <field accessType='inputOutput' type='SFInt32' name='actionKey' value='17'/>
       <field accessType='inputOutput' type='SFFloat' name='speed' value='2'/>
       <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
         <Viewpoint USE='VP1'/>
@@ -89,11 +89,18 @@ function set_time (value, time)
    {
       case 17: // up
       {
-         const translation = proxy .orientation_changed
+         const translation = proxy .orientation_changed  
             .multVec (new SFVec3f (0, 0, speed * -dt)) // rotate vector; returns a vector
-            .multVec (new SFVec3f (1, 0, 1));          // set y-axis to 0
+            .multVec (new SFVec3f (1, 0, 1));          // set y-axis to 0 
 
-         viewpoint .position = viewpoint .position .add (translation);
+         // Compare with first value of NavigationInfo.avatarSize (collision radius).
+         const collisionRadius = viewpoint .navigationInfo .avatarSize [0];
+
+         // Check if anything is within collission radius.
+         if (Browser .checkDistance (translation) < collisionRadius)
+            break;
+
+         viewpoint .position = viewpoint .position .add (translation); 
          break;
       }
       case 18: // down
@@ -101,6 +108,13 @@ function set_time (value, time)
          const translation = proxy .orientation_changed
             .multVec (new SFVec3f (0, 0, speed * dt)) // rotate vector; returns a vector
             .multVec (new SFVec3f (1, 0, 1));         // set y-axis to 0
+
+         // Compare with first value of NavigationInfo.avatarSize (collision radius).
+         const collisionRadius = viewpoint .navigationInfo .avatarSize [0];
+
+         // Check if anything is within collission radius.
+         if (Browser .checkDistance (translation) < collisionRadius)
+            break;
 
          viewpoint .position = viewpoint .position .add (translation);
          break;
@@ -125,9 +139,52 @@ function set_time (value, time)
 }
 ]]>
     </Script>
+    <Collision DEF='CollisionBoxes'>
+      <Transform DEF='Box_1'
+          translation='-20 5 -20'
+          scale='10 5 10'>
+        <Shape DEF='_1'
+            bboxDisplay='true'>
+          <Appearance>
+            <UnlitMaterial
+                emissiveColor='0.3803922 0.8078431 0.1960784'
+                transparency='0.5'/>
+          </Appearance>
+          <Box/>
+        </Shape>
+      </Transform>
+      <Transform DEF='Box'
+          translation='20 5 20'
+          scale='10 5 10'>
+        <Shape USE='_1'/>
+      </Transform>
+      <Script DEF='CollisionScript'>
+        <field accessType='inputOnly' type='SFBool' name='set_active'/>
+<![CDATA[ecmascript:
+
+function set_active (value, time)
+{
+   print (`Collision active: ${value}`);
+}
+]]>
+      </Script>
+    </Collision>
+    <Group DEF='StepUpBoxes'>
+      <Transform DEF='Box_2'
+          translation='20 0.25 -20'
+          scale='10 0.25 10'>
+        <Shape USE='_1'/>
+      </Transform>
+      <Transform DEF='Box_3'
+          translation='-20 0.25 20'
+          scale='10 0.25 10'>
+        <Shape USE='_1'/>
+      </Transform>
+    </Group>
     <ROUTE fromNode='Keys' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
     <ROUTE fromNode='Keys' fromField='isActive' toNode='Timer' toField='set_enabled'/>
     <ROUTE fromNode='Timer' fromField='time' toNode='NavigationScript' toField='set_time'/>
     <ROUTE fromNode='Timer' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
+    <ROUTE fromNode='CollisionBoxes' fromField='isActive' toNode='CollisionScript' toField='set_active'/>
   </Scene>
 </X3D>
