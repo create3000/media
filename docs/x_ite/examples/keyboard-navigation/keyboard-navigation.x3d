@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 20 Aug 2025 12:09:59 GMT'/>
+    <meta name='modified' content='Wed, 20 Aug 2025 12:51:11 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -18,8 +18,8 @@
         direction='-1 -1 -1'/>
     <Viewpoint DEF='VP1'
         description='Initial View'
-        position='0 1.6 0'
-        orientation='-1 0 0 0.2'>
+        position='9.712349 1.6 -7.215732'
+        orientation='-0.026677081071751 0.99465004662044 0.0997978862674396 2.62185520423068'>
       <NavigationInfo containerField='navigationInfo'
           type='"WALK"'
           headlight='false'
@@ -97,8 +97,11 @@ function set_time (value, time)
          const collisionRadius = viewpoint .navigationInfo .avatarSize [0];
 
          // Check if anything is within collision radius.
-         if (Browser .checkDistance (translation) < collisionRadius)
+         if (Browser .checkDistance (translation) .distance < collisionRadius)
             break;
+
+         // Here at this point the translation could be contrainted to not
+         // walk into or thought an object.
 
          viewpoint .position = viewpoint .position .add (translation); 
          break;
@@ -113,8 +116,11 @@ function set_time (value, time)
          const collisionRadius = viewpoint .navigationInfo .avatarSize [0];
 
          // Check if anything is within collision radius.
-         if (Browser .checkDistance (translation) < collisionRadius)
+         if (Browser .checkDistance (translation) .distance < collisionRadius)
             break;
+
+         // Here at this point the translation could be contrainted to not
+         // walk into or thought an object.
 
          viewpoint .position = viewpoint .position .add (translation);
          break;
