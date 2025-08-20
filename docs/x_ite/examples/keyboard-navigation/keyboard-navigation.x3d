@@ -8,7 +8,7 @@
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.26, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 20 Aug 2025 14:08:32 GMT'/>
+    <meta name='modified' content='Wed, 20 Aug 2025 15:16:59 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -18,8 +18,8 @@
         direction='-1 -1 -1'/>
     <Viewpoint DEF='VP1'
         description='Initial View'
-        position='0 1.6 -0.3841863'
-        orientation='-0.999999999999994 0 0 0.200000000000001'>
+        position='0 1.6 0'
+        orientation='-1 0 0 0.2'>
       <NavigationInfo containerField='navigationInfo'
           type='"WALK"'
           headlight='false'
@@ -43,12 +43,14 @@
     </Transform>
     <KeySensor DEF='Keys'/>
     <TimeSensor DEF='Timer'
+        enabled='false'
         loop='true'/>
     <Script DEF='NavigationScript'
         directOutput='true'>
+      <field accessType='inputOnly' type='SFInt32' name='set_actionKeyPress'/>
+      <field accessType='inputOnly' type='SFInt32' name='set_actionKeyRelease'/>
       <field accessType='inputOnly' type='SFBool' name='set_active'/>
       <field accessType='inputOnly' type='SFTime' name='set_time'/>
-      <field accessType='inputOutput' type='SFInt32' name='actionKey' value='17'/>
       <field accessType='inputOutput' type='SFFloat' name='speed' value='2'/>
       <field accessType='initializeOnly' type='SFNode' name='viewpoint'>
         <Viewpoint USE='VP1'/>
@@ -58,12 +60,23 @@
       </field>
 <![CDATA[ecmascript:
 
-let lastTime = -1;
+let actionKey = -1;
+let lastTime  = -1;
 
 function initialize ()
 {
    viewpoint .position    = new SFVec3f (0, 1.6, 0);
    viewpoint .orientation = new SFRotation (-1, 0, 0, 0.2);
+}
+
+function set_actionKeyPress (value, time)
+{
+   actionKey = value;
+}
+
+function set_actionKeyRelease (value, time)
+{
+   actionKey = -1;
 }
 
 function set_active (value, time)
@@ -138,6 +151,7 @@ function set_time (value, time)
          viewpoint .orientation = viewpoint .orientation .multiply (rotation);
          break;
       }
+      d
    }
 
    lastTime = time;
@@ -186,10 +200,11 @@ function set_active (value, time)
         <Shape USE='_1'/>
       </Transform>
     </Group>
-    <ROUTE fromNode='Keys' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKey'/>
+    <ROUTE fromNode='Keys' fromField='actionKeyPress' toNode='NavigationScript' toField='set_actionKeyPress'/>
     <ROUTE fromNode='Keys' fromField='isActive' toNode='Timer' toField='set_enabled'/>
     <ROUTE fromNode='Timer' fromField='time' toNode='NavigationScript' toField='set_time'/>
     <ROUTE fromNode='Timer' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
     <ROUTE fromNode='CollisionBoxes' fromField='isActive' toNode='CollisionScript' toField='set_active'/>
+    <ROUTE fromNode='Keys' fromField='actionKeyRelease' toNode='NavigationScript' toField='set_actionKeyRelease'/>
   </Scene>
 </X3D>
