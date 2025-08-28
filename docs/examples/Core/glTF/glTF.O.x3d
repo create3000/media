@@ -10,7 +10,7 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.27, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 28 Aug 2025 08:40:34 GMT'/>
+    <meta name='modified' content='Thu, 28 Aug 2025 09:01:22 GMT'/>
   </head>
   <Scene>
     <Background DEF='White'
@@ -103,15 +103,15 @@ function set_toggle (value, time)
 }
 ]]>
     </Script>
-    <IMPORT inlineDEF='glTF' importedDEF='Timer1'/>
-    <IMPORT inlineDEF='glTF' importedDEF='Timer2'/>
+    <IMPORT inlineDEF='glTF' importedDEF='Timer1' AS='IdleTimer1'/>
+    <IMPORT inlineDEF='glTF' importedDEF='Timer2' AS='HoverTimer2'/>
     <ROUTE fromNode='Touch' fromField='touchTime' toNode='ToggleAnimScript' toField='set_toggle'/>
     <ROUTE fromNode='LoadSensor' fromField='loadTime' toNode='ToggleAnimScript' toField='set_toggle'/>
-    <ROUTE fromNode='ToggleAnimScript' fromField='loop1' toNode='Timer1' toField='set_loop'/>
-    <ROUTE fromNode='ToggleAnimScript' fromField='startTime1' toNode='Timer1' toField='set_startTime'/>
-    <ROUTE fromNode='ToggleAnimScript' fromField='stopTime1' toNode='Timer1' toField='set_stopTime'/>
-    <ROUTE fromNode='ToggleAnimScript' fromField='loop2' toNode='Timer2' toField='set_loop'/>
-    <ROUTE fromNode='ToggleAnimScript' fromField='startTime2' toNode='Timer2' toField='set_startTime'/>
-    <ROUTE fromNode='ToggleAnimScript' fromField='stopTime2' toNode='Timer2' toField='set_stopTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='loop1' toNode='IdleTimer1' toField='set_loop'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='startTime1' toNode='IdleTimer1' toField='set_startTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='stopTime1' toNode='IdleTimer1' toField='set_stopTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='loop2' toNode='HoverTimer2' toField='set_loop'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='startTime2' toNode='HoverTimer2' toField='set_startTime'/>
+    <ROUTE fromNode='ToggleAnimScript' fromField='stopTime2' toNode='HoverTimer2' toField='set_stopTime'/>
   </Scene>
 </X3D>

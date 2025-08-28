@@ -13,7 +13,7 @@ META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
 META "generator" "Sunrize X3D Editor V1.8.27, https://create3000.github.io/sunrize/"
 META "generator" "x3d-tidy V2.1.23, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 28 Aug 2025 08:41:05 GMT"
+META "modified" "Thu, 28 Aug 2025 09:01:51 GMT"
 
 DEF White Background {
   skyColor 1 1 1
@@ -104,14 +104,14 @@ function set_toggle (value, time)
 "
 }
 
-IMPORT glTF.Timer1
-IMPORT glTF.Timer2
+IMPORT glTF.Timer1 AS IdleTimer1
+IMPORT glTF.Timer2 AS HoverTimer2
 
 ROUTE Touch.touchTime TO ToggleAnimScript.set_toggle
 ROUTE LoadSensor.loadTime TO ToggleAnimScript.set_toggle
-ROUTE ToggleAnimScript.loop1 TO Timer1.set_loop
-ROUTE ToggleAnimScript.startTime1 TO Timer1.set_startTime
-ROUTE ToggleAnimScript.stopTime1 TO Timer1.set_stopTime
-ROUTE ToggleAnimScript.loop2 TO Timer2.set_loop
-ROUTE ToggleAnimScript.startTime2 TO Timer2.set_startTime
-ROUTE ToggleAnimScript.stopTime2 TO Timer2.set_stopTime
+ROUTE ToggleAnimScript.loop1 TO IdleTimer1.set_loop
+ROUTE ToggleAnimScript.startTime1 TO IdleTimer1.set_startTime
+ROUTE ToggleAnimScript.stopTime1 TO IdleTimer1.set_stopTime
+ROUTE ToggleAnimScript.loop2 TO HoverTimer2.set_loop
+ROUTE ToggleAnimScript.startTime2 TO HoverTimer2.set_startTime
+ROUTE ToggleAnimScript.stopTime2 TO HoverTimer2.set_stopTime

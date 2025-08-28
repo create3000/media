@@ -28,7 +28,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Thu, 28 Aug 2025 08:41:05 GMT"
+          "@content": "Thu, 28 Aug 2025 09:01:51 GMT"
         }
       ],
       "component": [
@@ -220,13 +220,15 @@
         { "IMPORT":
           {
             "@inlineDEF": "glTF",
-            "@importedDEF": "Timer1"
+            "@importedDEF": "Timer1",
+            "@AS": "IdleTimer1"
           }
         },
         { "IMPORT":
           {
             "@inlineDEF": "glTF",
-            "@importedDEF": "Timer2"
+            "@importedDEF": "Timer2",
+            "@AS": "HoverTimer2"
           }
         },
         { "ROUTE":
@@ -249,7 +251,7 @@
           {
             "@fromNode": "ToggleAnimScript",
             "@fromField": "loop1",
-            "@toNode": "Timer1",
+            "@toNode": "IdleTimer1",
             "@toField": "set_loop"
           }
         },
@@ -257,7 +259,7 @@
           {
             "@fromNode": "ToggleAnimScript",
             "@fromField": "startTime1",
-            "@toNode": "Timer1",
+            "@toNode": "IdleTimer1",
             "@toField": "set_startTime"
           }
         },
@@ -265,7 +267,7 @@
           {
             "@fromNode": "ToggleAnimScript",
             "@fromField": "stopTime1",
-            "@toNode": "Timer1",
+            "@toNode": "IdleTimer1",
             "@toField": "set_stopTime"
           }
         },
@@ -273,7 +275,7 @@
           {
             "@fromNode": "ToggleAnimScript",
             "@fromField": "loop2",
-            "@toNode": "Timer2",
+            "@toNode": "HoverTimer2",
             "@toField": "set_loop"
           }
         },
@@ -281,7 +283,7 @@
           {
             "@fromNode": "ToggleAnimScript",
             "@fromField": "startTime2",
-            "@toNode": "Timer2",
+            "@toNode": "HoverTimer2",
             "@toField": "set_startTime"
           }
         },
@@ -289,7 +291,7 @@
           {
             "@fromNode": "ToggleAnimScript",
             "@fromField": "stopTime2",
-            "@toNode": "Timer2",
+            "@toNode": "HoverTimer2",
             "@toField": "set_stopTime"
           }
         }
