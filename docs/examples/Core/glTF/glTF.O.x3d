@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
@@ -9,8 +9,8 @@
     <meta name='created' content='Fri, 14 Jul 2023 16:20:40 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 22 Jun 2024 19:40:43 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.27, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 28 Aug 2025 08:40:34 GMT'/>
   </head>
   <Scene>
     <Background DEF='White'
@@ -36,12 +36,12 @@
     </DirectionalLight>
     <Transform DEF='Bee'
         scale='3 3 3'>
-      <Inline DEF='_1'
+      <Inline DEF='glTF'
           url='"assets/animated_bee.glb"'/>
-      <LoadSensor DEF='_2'>
-        <Inline USE='_1'/>
+      <LoadSensor DEF='LoadSensor'>
+        <Inline USE='glTF'/>
       </LoadSensor>
-      <TouchSensor DEF='_3'/>
+      <TouchSensor DEF='Touch'/>
       <DirectionalLight
           intensity='3.25'
           direction='-0.2043322 -0.7004693 -0.6838064'>
@@ -68,7 +68,7 @@
       </Shape>
     </Transform>
     <Script DEF='ToggleAnimScript'>
-      <field accessType='inputOutput' type='SFTime' name='toggle' value='1719085097.717'/>
+      <field accessType='inputOutput' type='SFTime' name='toggle' value='1756370394.891'/>
       <field accessType='outputOnly' type='SFBool' name='loop1'/>
       <field accessType='outputOnly' type='SFTime' name='startTime1'/>
       <field accessType='outputOnly' type='SFTime' name='stopTime1'/>
@@ -103,10 +103,10 @@ function set_toggle (value, time)
 }
 ]]>
     </Script>
-    <IMPORT inlineDEF='_1' importedDEF='Timer1'/>
-    <IMPORT inlineDEF='_1' importedDEF='Timer2'/>
-    <ROUTE fromNode='_3' fromField='touchTime' toNode='ToggleAnimScript' toField='set_toggle'/>
-    <ROUTE fromNode='_2' fromField='loadTime' toNode='ToggleAnimScript' toField='set_toggle'/>
+    <IMPORT inlineDEF='glTF' importedDEF='Timer1'/>
+    <IMPORT inlineDEF='glTF' importedDEF='Timer2'/>
+    <ROUTE fromNode='Touch' fromField='touchTime' toNode='ToggleAnimScript' toField='set_toggle'/>
+    <ROUTE fromNode='LoadSensor' fromField='loadTime' toNode='ToggleAnimScript' toField='set_toggle'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='loop1' toNode='Timer1' toField='set_loop'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='startTime1' toNode='Timer1' toField='set_startTime'/>
     <ROUTE fromNode='ToggleAnimScript' fromField='stopTime1' toNode='Timer1' toField='set_stopTime'/>

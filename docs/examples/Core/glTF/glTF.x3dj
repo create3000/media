@@ -20,15 +20,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.0, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.8.27, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.152, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.1.23, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Sat, 03 Aug 2024 23:54:37 GMT"
+          "@content": "Thu, 28 Aug 2025 08:41:05 GMT"
         }
       ],
       "component": [
@@ -87,17 +87,17 @@
             "-children": [
               { "Inline":
                 {
-                  "@DEF": "_1",
+                  "@DEF": "glTF",
                   "@url": [ "assets/animated_bee.glb" ]
                 }
               },
               { "LoadSensor":
                 {
-                  "@DEF": "_2",
+                  "@DEF": "LoadSensor",
                   "-children": [
                     { "Inline":
                       {
-                        "@USE": "_1"
+                        "@USE": "glTF"
                       }
                     }
                   ]
@@ -105,7 +105,7 @@
               },
               { "TouchSensor":
                 {
-                  "@DEF": "_3"
+                  "@DEF": "Touch"
                 }
               },
               { "DirectionalLight":
@@ -153,7 +153,7 @@
                 "@accessType": "inputOutput",
                 "@type": "SFTime",
                 "@name": "toggle",
-                "@value": 1719085097.717
+                "@value": 1756370394.891
               },
               {
                 "@accessType": "outputOnly",
@@ -219,19 +219,19 @@
         },
         { "IMPORT":
           {
-            "@inlineDEF": "_1",
+            "@inlineDEF": "glTF",
             "@importedDEF": "Timer1"
           }
         },
         { "IMPORT":
           {
-            "@inlineDEF": "_1",
+            "@inlineDEF": "glTF",
             "@importedDEF": "Timer2"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_3",
+            "@fromNode": "Touch",
             "@fromField": "touchTime",
             "@toNode": "ToggleAnimScript",
             "@toField": "set_toggle"
@@ -239,7 +239,7 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_2",
+            "@fromNode": "LoadSensor",
             "@fromField": "loadTime",
             "@toNode": "ToggleAnimScript",
             "@toField": "set_toggle"
