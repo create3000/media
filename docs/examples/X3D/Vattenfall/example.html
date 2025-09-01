@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/noelboss/featherlight@1.7.8/release/featherlight.min.css"/>
   <script src="https://cdn.jsdelivr.net/gh/noelboss/featherlight@1.7.8/release/featherlight.min.js"></script>
 
-  <!-- X_ITE requirements -->
-  <script src="https://cdn.jsdelivr.net/npm/x_ite@latest/dist/x_ite.min.js"></script>
-
   <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic|Ubuntu+Mono:400);
 
@@ -167,89 +164,80 @@ footer a:hover {
 }
   </style>
 
-  <script type="text/javascript">
-X3D (function ()
+  <script type="module">
+import X3D from "https://cdn.jsdelivr.net/npm/x_ite@latest/dist/x_ite.min.mjs";
+
+var Browser = X3D .getBrowser ("#browser");
+
+$(".version") .text (Browser .name + " X3D Browser - Version " + Browser .version);
+
+$(".meta-data-button") .click (function ()
 {
-  var Browser = X3D .getBrowser ("#browser");
+  var
+    Browser      = X3D .getBrowser ("#browser"),
+    currentScene = Browser .currentScene,
+    metadata     = currentScene .getMetaDatas (),
+    names        = [... metadata .keys ()] .sort (),
+    tbody        = $(".meta-data-table tbody") .empty ();
 
-  $(".version") .text (Browser .name + " X3D Browser - Version " + Browser .version);
-
-  $(function ()
+  for (const name of names)
   {
-    $(".meta-data-button") .click (function ()
+    for (const value of metadata .get (name))
     {
-      var
-        Browser      = X3D .getBrowser ("#browser"),
-        currentScene = Browser .currentScene,
-        metadata     = currentScene .getMetaDatas (),
-        names        = [... metadata .keys ()] .sort (),
-        tbody        = $(".meta-data-table tbody") .empty ();
+      const tr = $("<tr>") .appendTo (tbody);
 
-      for (const name of names)
-      {
-        for (const value of metadata .get (name))
-        {
-          const tr = $("<tr>") .appendTo (tbody);
+      $("<td>") .text (name)  .appendTo (tr);
+      $("<td>") .text (value) .appendTo (tr);
+    }
+  }
 
-          $("<td>") .text (name)  .appendTo (tr);
-          $("<td>") .text (value) .appendTo (tr);
-        }
-      }
+  $.featherlight ($(".meta-data"));
 
-      $.featherlight ($(".meta-data"));
+  return false;
+});
 
-      return false;
-    });
+var scrollId;
 
-    var scrollId;
-
-    $(".console-button") .click (function ()
-    {
-      var clicked = false;
-
-      function updateScroll ()
-      {
-        if (clicked)
-          return;
-
-        var element = $(".x_ite-console");
-
-        element .scrollTop ($(".x_ite-console") .prop ("scrollHeight"));
-      }
-
-      var hidden = ($(".x_ite-console") .css ("display") == "none");
-
-      if (hidden)
-        scrollId = setInterval (updateScroll, 200);
-      else
-        clearInterval (scrollId);
-
-      $(".x_ite-console") .click (function () { clicked = true; });
-
-      $(".x_ite-console") .css ("display", hidden ? "block" : "none");
-
-      return false;
-    });
-
-    $(".clock-button") .click (function ()
-    {
-      Browser .getBrowserTimings () .setEnabled (! Browser .getBrowserTimings () .getEnabled ());
-
-      return false;
-    });
-
-    $(".fullscreen-button") .click (function ()
-    {
-      $("#browser") .fullScreen (true);
-
-      return false;
-    });
-  });
-},
-function (error)
+$(".console-button") .click (function ()
 {
-  console .error ("Please forgive me, your browser may not support all features required by X_ITE!");
-  console .error (error);
+  var clicked = false;
+
+  function updateScroll ()
+  {
+    if (clicked)
+      return;
+
+    var element = $(".x_ite-console");
+
+    element .scrollTop ($(".x_ite-console") .prop ("scrollHeight"));
+  }
+
+  var hidden = ($(".x_ite-console") .css ("display") == "none");
+
+  if (hidden)
+    scrollId = setInterval (updateScroll, 200);
+  else
+    clearInterval (scrollId);
+
+  $(".x_ite-console") .click (function () { clicked = true; });
+
+  $(".x_ite-console") .css ("display", hidden ? "block" : "none");
+
+  return false;
+});
+
+$(".clock-button") .click (function ()
+{
+  Browser .setBrowserOption ("Timings", !Browser .getBrowserOption ("Timings"));
+
+  return false;
+});
+
+$(".fullscreen-button") .click (function ()
+{
+  $("#browser") .fullScreen (true);
+
+  return false;
 });
   </script>
 </head>
