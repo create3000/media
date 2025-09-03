@@ -8,7 +8,7 @@
     <meta name='created' content='Tue, 02 Sep 2025 21:24:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.29, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 03 Sep 2025 12:26:57 GMT'/>
+    <meta name='modified' content='Wed, 03 Sep 2025 12:42:45 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Boxes'>
@@ -21,7 +21,7 @@
         <field accessType='inputOutput' type='SFFloat' name='zSpacing'/>
       </ProtoInterface>
       <ProtoBody>
-        <InstancedShape DEF='_1'>
+        <InstancedShape DEF='Shape'>
           <Appearance>
             <ComposedShader DEF='BoxesShader'
                 language='GLSL'>
@@ -139,7 +139,7 @@ main ()
           </Appearance>
           <Box/>
         </InstancedShape>
-        <TimeSensor DEF='_2'
+        <TimeSensor DEF='Timer'
             loop='true'>
           <IS>
             <connect nodeField='enabled' protoField='enabled'/>
@@ -151,7 +151,7 @@ main ()
           <field accessType='inputOutput' type='SFFloat' name='xSpacing'/>
           <field accessType='inputOutput' type='SFFloat' name='zSpacing'/>
           <field accessType='initializeOnly' type='SFNode' name='shape'>
-            <InstancedShape USE='_1'/>
+            <InstancedShape USE='Shape'/>
           </field>
           <IS>
             <connect nodeField='xDimension' protoField='xDimension'/>
@@ -178,7 +178,7 @@ function eventsProcessed ()
 }
 ]]>
         </Script>
-        <ROUTE fromNode='_2' fromField='elapsedTime' toNode='BoxesShader' toField='set_time'/>
+        <ROUTE fromNode='Timer' fromField='elapsedTime' toNode='BoxesShader' toField='set_time'/>
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo>
