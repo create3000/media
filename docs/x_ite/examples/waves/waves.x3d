@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Scripting' level='1'/>
+    <component name='Shaders' level='1'/>
+    <component name='X_ITE' level='1'/>
+    <meta name='created' content='Tue, 02 Sep 2025 21:24:45 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.8.29, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 03 Sep 2025 12:26:57 GMT'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Boxes'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFBool' name='enabled' value='true'/>
+        <field accessType='inputOutput' type='SFFloat' name='amplitude' value='1'/>
+        <field accessType='inputOutput' type='SFInt32' name='xDimension'/>
+        <field accessType='inputOutput' type='SFInt32' name='zDimension'/>
+        <field accessType='inputOutput' type='SFFloat' name='xSpacing'/>
+        <field accessType='inputOutput' type='SFFloat' name='zSpacing'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <InstancedShape DEF='_1'>
+          <Appearance>
+            <ComposedShader DEF='BoxesShader'
+                language='GLSL'>
+              <field accessType='inputOnly' type='SFTime' name='set_time'/>
+              <field accessType='inputOutput' type='SFFloat' name='amplitude'/>
+              <field accessType='inputOutput' type='SFInt32' name='xDimension'/>
+              <field accessType='inputOutput' type='SFInt32' name='zDimension'/>
+              <field accessType='inputOutput' type='SFColor' name='highColor' value='1 0.8509804 0.4'/>
+              <field accessType='inputOutput' type='SFColor' name='lowColor' value='0.8 0 0'/>
+              <IS>
+                <connect nodeField='amplitude' protoField='amplitude'/>
+                <connect nodeField='xDimension' protoField='xDimension'/>
+                <connect nodeField='zDimension' protoField='zDimension'/>
+              </IS>
+              <ShaderPart DEF='BoxesVertexShader'>
+<![CDATA[data:text/plain,#version 300 es
+
+precision highp float;
+precision highp int;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+uniform mat3 x3d_NormalMatrix;
+
+uniform x3d_PointPropertiesParameters x3d_PointProperties;
+
+in mat4 x3d_InstanceMatrix;
+in vec4 x3d_Vertex;
+in vec3 x3d_Normal;
+
+out vec3  vertex;
+out vec3  normal;
+out float height;
+
+uniform float set_time;
+uniform int   xDimension;
+uniform int   zDimension;
+uniform float amplitude;
+
+vec4
+wave (const in vec4 vertex)
+{
+   float x = float (gl_InstanceID %25 xDimension - xDimension / 2);
+   float z = float (gl_InstanceID / xDimension - zDimension / 2);
+
+   float y = sin (length (vec2 (x, z)) - set_time) * amplitude;
+
+   height = y;
+
+   return vec4 (vertex .x, vertex .y + y, vertex .zw);
+}
+
+void
+main ()
+{
+   gl_PointSize = x3d_PointProperties .pointSizeScaleFactor;
+
+   vertex = vec3 (x3d_ModelViewMatrix * wave (x3d_InstanceMatrix * x3d_Vertex));
+   normal = normalize (x3d_NormalMatrix * x3d_Normal);
+
+   gl_Position = x3d_ProjectionMatrix * vec4 (vertex, 1.0);
+}
+]]>
+              </ShaderPart>
+              <ShaderPart DEF='BoxesFragmentShader'
+                  type='FRAGMENT'>
+<![CDATA[data:text/plain,#version 300 es
+
+precision highp float;
+
+in vec3  vertex;
+in vec3  normal;
+in float height;
+
+out vec4 x3d_FragColor;
+
+uniform float set_time;
+uniform float amplitude;
+uniform vec3  highColor;
+uniform vec3  lowColor;
+
+vec3 
+hsv2rgb (const in vec3 c)
+{
+   vec4 K = vec4 (1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+   vec3 p = abs (fract (c .xxx + K .xyz) * 6.0 - K .www);
+
+   return c .z * mix (K .xxx, clamp (p - K .xxx, 0.0, 1.0), c .y);
+}
+
+void
+main ()
+{
+   vec3  finalColor = vec3 (0.0, 0.0, 0.0);
+
+   vec3 N = normalize (gl_FrontFacing ? normal : -normal);
+   vec3 V = normalize (-vertex); // normalized vector from point on geometry to viewer's position
+
+   vec3 d = vec3 (0.0, 0.0, -1.0); // light direction
+   vec3 L = -d;
+   vec3 H = normalize (L + V); // specular term
+
+   float c = height / amplitude * 0.5 + 0.5;
+
+   vec3 diffuseColor = mix (lowColor, highColor, c); 
+   vec3 diffuseTerm  = diffuseColor * max (dot (N, L), 0.0);
+
+   finalColor += diffuseTerm;
+
+   x3d_FragColor = vec4 (finalColor, 1.0);
+}
+]]>
+              </ShaderPart>
+            </ComposedShader>
+          </Appearance>
+          <Box/>
+        </InstancedShape>
+        <TimeSensor DEF='_2'
+            loop='true'>
+          <IS>
+            <connect nodeField='enabled' protoField='enabled'/>
+          </IS>
+        </TimeSensor>
+        <Script DEF='BoxesScript'>
+          <field accessType='inputOutput' type='SFInt32' name='xDimension'/>
+          <field accessType='inputOutput' type='SFInt32' name='zDimension'/>
+          <field accessType='inputOutput' type='SFFloat' name='xSpacing'/>
+          <field accessType='inputOutput' type='SFFloat' name='zSpacing'/>
+          <field accessType='initializeOnly' type='SFNode' name='shape'>
+            <InstancedShape USE='_1'/>
+          </field>
+          <IS>
+            <connect nodeField='xDimension' protoField='xDimension'/>
+            <connect nodeField='zDimension' protoField='zDimension'/>
+            <connect nodeField='xSpacing' protoField='xSpacing'/>
+            <connect nodeField='zSpacing' protoField='zSpacing'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+   for (let z = 0; z < zDimension; ++ z)
+   {
+      for (let x = 0; x < xDimension; ++ x)
+      {
+         shape .translations .push (new SFVec3f (x * xSpacing, 0, z * zSpacing));
+      }
+   }
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_2' fromField='elapsedTime' toNode='BoxesShader' toField='set_time'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo>
+      <MetadataSet containerField='metadata'
+          name='Sunrize'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataSet
+            name='GridTool'
+            reference='https://create3000.github.io/sunrize/'>
+          <MetadataBoolean
+              name='visible'
+              reference='https://create3000.github.io/sunrize/'
+              value='true'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <Viewpoint
+        description='Initial View'
+        position='333.6863 141.0132 429.7795'
+        orientation='-0.947735783522506 0.293632871339239 0.124806335977204 0.843181109099308'
+        centerOfRotation='298.5 0 298.5'/>
+    <ProtoInstance name='Boxes'>
+      <fieldValue name='amplitude' value='2'/>
+      <fieldValue name='xDimension' value='200'/>
+      <fieldValue name='zDimension' value='200'/>
+      <fieldValue name='xSpacing' value='3'/>
+      <fieldValue name='zSpacing' value='3'/>
+    </ProtoInstance>
+  </Scene>
+</X3D>
