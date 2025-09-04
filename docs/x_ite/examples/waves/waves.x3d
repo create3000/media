@@ -8,7 +8,7 @@
     <meta name='created' content='Tue, 02 Sep 2025 21:24:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.8.29, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 03 Sep 2025 12:45:20 GMT'/>
+    <meta name='modified' content='Thu, 04 Sep 2025 09:57:21 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Boxes'>
@@ -168,6 +168,8 @@ function initialize ()
 
 function eventsProcessed ()
 {
+   shape .translations .length = 0;
+   
    for (let z = 0; z < zDimension; ++ z)
    {
       for (let x = 0; x < xDimension; ++ x)
