@@ -15,6 +15,8 @@ const args = yargs (process .argv) .option ("delay",
 {
    type: "number",
    alias: "d",
+   requiresArg: true,
+   default: 0,
 })
 .argv;
 
