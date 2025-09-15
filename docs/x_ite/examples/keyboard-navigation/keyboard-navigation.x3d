@@ -7,8 +7,8 @@
     <component name='Scripting' level='1'/>
     <meta name='created' content='Fri, 15 Aug 2025 11:19:50 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.9.1, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 12 Sep 2025 07:19:48 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.10.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 15 Sep 2025 14:59:41 GMT'/>
   </head>
   <Scene>
     <WorldInfo
@@ -27,20 +27,6 @@
     </Viewpoint>
     <ProximitySensor DEF='Proxy'
         size='-1 -1 -1'/>
-    <Transform DEF='Floor'
-        translation='-0 -1 0'
-        scale='50 1 50'>
-      <Shape>
-        <Appearance>
-          <Material
-              diffuseColor='1 1 1'>
-            <ImageTexture containerField='diffuseTexture'
-                url='"pattern.jpg"'/>
-          </Material>
-        </Appearance>
-        <Box/>
-      </Shape>
-    </Transform>
     <KeySensor DEF='Keys'/>
     <TimeSensor DEF='Timer'
         enabled='false'
@@ -142,7 +128,21 @@ function set_time (value, time)
 }
 ]]>
     </Script>
-    <Collision DEF='CollisionBoxes'>
+    <Transform DEF='Floor_1'
+        translation='0 -1 0'
+        scale='50 1 50'>
+      <Shape>
+        <Appearance>
+          <Material
+              diffuseColor='1 1 1'>
+            <ImageTexture containerField='diffuseTexture'
+                url='"pattern.jpg"'/>
+          </Material>
+        </Appearance>
+        <Box/>
+      </Shape>
+    </Transform>
+    <Collision DEF='CollisionBoxes_1'>
       <Transform DEF='Box_1'
           translation='-20 5 -20'
           scale='10 5 10'>
@@ -172,7 +172,7 @@ function set_active (value, time)
 ]]>
       </Script>
     </Collision>
-    <Group DEF='StepUpBoxes'>
+    <Group DEF='StepUpBoxes_1'>
       <Transform DEF='Box_2'
           translation='20 0.25 -20'
           scale='10 0.25 10'>
@@ -188,7 +188,7 @@ function set_active (value, time)
     <ROUTE fromNode='Keys' fromField='isActive' toNode='Timer' toField='set_enabled'/>
     <ROUTE fromNode='Timer' fromField='time' toNode='NavigationScript' toField='set_time'/>
     <ROUTE fromNode='Timer' fromField='isActive' toNode='NavigationScript' toField='set_active'/>
-    <ROUTE fromNode='CollisionBoxes' fromField='isActive' toNode='CollisionScript' toField='set_active'/>
+    <ROUTE fromNode='CollisionBoxes_1' fromField='isActive' toNode='CollisionScript' toField='set_active'/>
     <ROUTE fromNode='Keys' fromField='actionKeyRelease' toNode='NavigationScript' toField='set_actionKeyRelease'/>
   </Scene>
 </X3D>
