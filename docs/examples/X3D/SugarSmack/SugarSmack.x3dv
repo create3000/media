@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.5.0
+#X3D V4.0 utf8 X_ITE V12.0.9
 
 PROFILE Interchange
 
@@ -17,9 +17,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Wed, 27 Sep 2017 11:50:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.138, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 24 Apr 2024 07:13:34 GMT"
+META "generator" "Sunrize X3D Editor V1.10.4, https://create3000.github.io/sunrize/"
+META "generator" "x3d-tidy V2.2.4, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sat, 27 Sep 2025 22:18:04 GMT"
 
 EXTERNPROTO MFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -190,10 +190,11 @@ function set_loadTime ()
 {
 	const collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");
 
-	proxy .geometry = collisionNode .proxy .geometry;
-
 	shape .appearance = collisionNode .children [0] .appearance;
 	shape .geometry   = collisionNode .children [0] .geometry;
+
+	proxy .appearance = collisionNode .proxy .appearance;
+	proxy .geometry   = collisionNode .proxy .geometry;
 }
 
 function set_maze (value, time)
@@ -298,16 +299,18 @@ function getIndex (x, y)
   IMPORT _1.MazeElement
 
   ROUTE _2.loadTime TO MazeGeometryScript.set_loadTime
+  ROUTE Shape.translations_changed TO Proxy.set_translations
+  ROUTE Shape.rotations_changed TO Proxy.set_rotations
 }
 
 PROTO Globe [
   inputOutput SFBool     enabled FALSE
   inputOnly   SFTime     set_turnTime
-  inputOutput SFTime     cycleInterval 0
+  inputOutput SFTime     cycleInterval -1
   inputOutput SFFloat    radius 1
   inputOutput SFVec3f    mazeElementSize 2 2 2
-  inputOutput SFTime     startTime 0
-  inputOutput SFTime     stopTime 0
+  inputOutput SFTime     startTime -1
+  inputOutput SFTime     stopTime -1
   outputOnly  SFTime     cycleTime
   outputOnly  SFInt32    direction_changed
   outputOnly  MFInt32    position_changed
@@ -876,7 +879,7 @@ function getIndex (x, y)
 }
 
 PROTO TimeControler [
-  inputOutput SFTime resetTime 0
+  inputOutput SFTime resetTime -1
   inputOutput SFNode timer NULL
 ]
 {
@@ -946,8 +949,8 @@ DEF _25 LayerSet {
             }
             DEF _62 Viewpoint {
               description "Maze"
-              position -20 2 -20
-              orientation 0 1 0 270
+              position 28 2 12
+              orientation 0 1 0 90
               centerOfRotation 2.30881 1.59995 -0.422763
             }
             DEF ViewpointPositionScript Script {
@@ -1049,7 +1052,6 @@ function getIndex (x, y)
             MazeCollisionManager {
               collidables [
                 DEF _64 Globe {
-                  enabled TRUE
                   cycleInterval 4
                   radius 2
                   mazeElementSize 4 2 4
@@ -1059,7 +1061,6 @@ function getIndex (x, y)
                   children USE Globe1
                 }
                 DEF _65 Globe {
-                  enabled TRUE
                   cycleInterval 4
                   radius 2
                   mazeElementSize 4 2 4
@@ -1099,13 +1100,13 @@ function getIndex (x, y)
               maxFront 60
               source DEF _70 AudioClip {
                 url "star-collect.mp3"
-                startTime 1713941812.847
+                startTime 1759010544.236
                 pauseTime 1510042948.99191
-                stopTime 1713941812.847
+                stopTime 1759010544.236
               }
             }
             DEF _71 TimeControler {
-              resetTime 1713941812.847
+              resetTime 1759010544.236
               timer USE _70
             }
           ]
@@ -1214,9 +1215,7 @@ function getIndex (x, y)
               geometry Box { }
             }
             DEF _89 BooleanTrigger { }
-            DEF _90 BooleanToggle {
-              toggle TRUE
-            }
+            DEF _90 BooleanToggle { }
             DEF _91 BooleanFilter { }
             USE _88
           ]

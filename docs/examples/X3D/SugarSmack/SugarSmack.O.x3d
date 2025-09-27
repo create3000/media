@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='EventUtilities' level='1'/>
@@ -15,8 +15,8 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 27 Sep 2017 11:50:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 24 Apr 2024 07:11:25 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.10.4, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sat, 27 Sep 2025 22:03:42 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFInt32' url='"MFInt32.x3d#MFInt32"'>
@@ -209,10 +209,11 @@ function set_loadTime ()
 {
 	const collisionNode = Browser .currentScene .getImportedNode ("MazeElement");
 
-	proxy .geometry = collisionNode .proxy .geometry;
-
 	shape .appearance = collisionNode .children [0] .appearance;
 	shape .geometry   = collisionNode .children [0] .geometry;
+
+	proxy .appearance = collisionNode .proxy .appearance;
+	proxy .geometry   = collisionNode .proxy .geometry;
 }
 
 function set_maze (value, time)
@@ -314,6 +315,8 @@ function getIndex (x, y)
         </Script>
         <IMPORT inlineDEF='_1' importedDEF='MazeElement'/>
         <ROUTE fromNode='_2' fromField='loadTime' toNode='MazeGeometryScript' toField='set_loadTime'/>
+        <ROUTE fromNode='Shape' fromField='translations_changed' toNode='Proxy' toField='set_translations'/>
+        <ROUTE fromNode='Shape' fromField='rotations_changed' toNode='Proxy' toField='set_rotations'/>
       </ProtoBody>
     </ProtoDeclare>
     <ProtoDeclare name='Globe'>
@@ -1362,8 +1365,8 @@ function set_resetTime (value, time)
               transitionType='"TELEPORT"'/>
           <Viewpoint DEF='_62'
               description='Maze'
-              position='-20 2 -20'
-              orientation='0 1 0 270'
+              position='28 2 12'
+              orientation='0 1 0 90'
               centerOfRotation='2.30881 1.59995 -0.422763'/>
           <Script DEF='ViewpointPositionScript'
               directOutput='true'>
@@ -1463,8 +1466,7 @@ function getIndex (x, y)
             bboxCenter='0 2 0'>
           <ProtoInstance name='MazeCollisionManager'>
             <fieldValue name='collidables'>
-              <ProtoInstance name='Globe' DEF='_64' containerField='collidables'>
-                <fieldValue name='enabled' value='true'/>
+              <ProtoInstance name='Globe' DEF='_64'>
                 <fieldValue name='cycleInterval' value='4'/>
                 <fieldValue name='radius' value='2'/>
                 <fieldValue name='mazeElementSize' value='4 2 4'/>
@@ -1477,8 +1479,7 @@ function getIndex (x, y)
                   <Inline USE='Globe1'/>
                 </fieldValue>
               </ProtoInstance>
-              <ProtoInstance name='Globe' DEF='_65' containerField='collidables'>
-                <fieldValue name='enabled' value='true'/>
+              <ProtoInstance name='Globe' DEF='_65'>
                 <fieldValue name='cycleInterval' value='4'/>
                 <fieldValue name='radius' value='2'/>
                 <fieldValue name='mazeElementSize' value='4 2 4'/>
@@ -1503,10 +1504,10 @@ function getIndex (x, y)
             <ProtoInstance name='Maze' USE='_63'/>
           </fieldValue>
           <fieldValue name='items'>
-            <Inline DEF='_67' containerField='items'
+            <Inline DEF='_67'
                 global='true'
                 url='"bonus-mint.x3d"'/>
-            <Inline DEF='_68' containerField='items'
+            <Inline DEF='_68'
                 global='true'
                 url='"bonus-blue.x3d"'/>
           </fieldValue>
@@ -1520,12 +1521,12 @@ function getIndex (x, y)
               maxFront='60'>
             <AudioClip DEF='_70'
                 url='"star-collect.mp3"'
-                startTime='1713941812.847'
+                startTime='1759010544.236'
                 pauseTime='1510042948.99191'
-                stopTime='1713941812.847'/>
+                stopTime='1759010544.236'/>
           </Sound>
           <ProtoInstance name='TimeControler' DEF='_71'>
-            <fieldValue name='resetTime' value='1713941812.847'/>
+            <fieldValue name='resetTime' value='1759010544.236'/>
             <fieldValue name='timer'>
               <AudioClip USE='_70'/>
             </fieldValue>
@@ -1673,8 +1674,7 @@ function getIndex (x, y)
               <Box/>
             </Shape>
             <BooleanTrigger DEF='_89'/>
-            <BooleanToggle DEF='_90'
-                toggle='true'/>
+            <BooleanToggle DEF='_90'/>
             <BooleanFilter DEF='_91'/>
             <TouchSensor USE='_88'/>
           </Transform>

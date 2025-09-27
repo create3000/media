@@ -1,4 +1,5 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.6.10, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V1.10.4, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.138, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V2.2.4, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 24 Apr 2024 07:13:35 GMT"
+          "@content": "Sat, 27 Sep 2025 22:18:04 GMT"
         }
       ],
       "component": [
@@ -500,10 +501,11 @@
 "{",
 "\tconst collisionNode = Browser .currentScene .getImportedNode (\"MazeElement\");",
 "",
-"\tproxy .geometry = collisionNode .proxy .geometry;",
-"",
 "\tshape .appearance = collisionNode .children [0] .appearance;",
 "\tshape .geometry   = collisionNode .children [0] .geometry;",
+"",
+"\tproxy .appearance = collisionNode .proxy .appearance;",
+"\tproxy .geometry   = collisionNode .proxy .geometry;",
 "}",
 "",
 "function set_maze (value, time)",
@@ -637,6 +639,22 @@
                     "@fromField": "loadTime",
                     "@toNode": "MazeGeometryScript",
                     "@toField": "set_loadTime"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "Shape",
+                    "@fromField": "translations_changed",
+                    "@toNode": "Proxy",
+                    "@toField": "set_translations"
+                  }
+                },
+                { "ROUTE":
+                  {
+                    "@fromNode": "Shape",
+                    "@fromField": "rotations_changed",
+                    "@toNode": "Proxy",
+                    "@toField": "set_rotations"
                   }
                 }
               ]
@@ -1814,8 +1832,8 @@
                             {
                               "@DEF": "_62",
                               "@description": "Maze",
-                              "@position": [ -20, 2, -20 ],
-                              "@orientation": [ 0, 1, 0, 270 ],
+                              "@position": [ 28, 2, 12 ],
+                              "@orientation": [ 0, 1, 0, 90 ],
                               "@centerOfRotation": [ 2.30881, 1.59995, -0.422763 ]
                             }
                           },
@@ -2038,10 +2056,6 @@
                                         "@name": "Globe",
                                         "fieldValue": [
                                           {
-                                            "@name": "enabled",
-                                            "@value": true
-                                          },
-                                          {
                                             "@name": "cycleInterval",
                                             "@value": 4
                                           },
@@ -2090,10 +2104,6 @@
                                         "@DEF": "_65",
                                         "@name": "Globe",
                                         "fieldValue": [
-                                          {
-                                            "@name": "enabled",
-                                            "@value": true
-                                          },
                                           {
                                             "@name": "cycleInterval",
                                             "@value": 4
@@ -2220,9 +2230,9 @@
                                 {
                                   "@DEF": "_70",
                                   "@url": [ "star-collect.mp3" ],
-                                  "@startTime": 1713941812.847,
+                                  "@startTime": 1759010544.236,
                                   "@pauseTime": 1510042948.99191,
-                                  "@stopTime": 1713941812.847
+                                  "@stopTime": 1759010544.236
                                 }
                               }
                             }
@@ -2234,7 +2244,7 @@
                               "fieldValue": [
                                 {
                                   "@name": "resetTime",
-                                  "@value": 1713941812.847
+                                  "@value": 1759010544.236
                                 },
                                 {
                                   "@name": "timer",
@@ -2465,8 +2475,7 @@
                                 },
                                 { "BooleanToggle":
                                   {
-                                    "@DEF": "_90",
-                                    "@toggle": true
+                                    "@DEF": "_90"
                                   }
                                 },
                                 { "BooleanFilter":
