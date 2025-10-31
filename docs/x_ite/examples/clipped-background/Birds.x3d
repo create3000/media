@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+  <head>
+    <component name='Scripting' level='1'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Birds'>
+      <ProtoInterface>
+        <field accessType='initializeOnly' type='SFInt32' name='numBirds' value='200'/>
+        <field accessType='initializeOnly' type='SFFloat' name='birdSize' value='5'/>
+        <field accessType='initializeOnly' type='SFVec3f' name='size' value='100 100 100'/>
+        <field accessType='initializeOnly' type='SFVec3f' name='center'/>
+        <field accessType='inputOutput' type='SFNode' name='appearance'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='Birds'>
+          <IS>
+            <connect nodeField='translation' protoField='center'/>
+          </IS>
+          <Shape>
+            <IS>
+              <connect nodeField='appearance' protoField='appearance'/>
+            </IS>
+            <IndexedTriangleFanSet DEF='_1'
+                solid='false'>
+              <Coordinate/>
+            </IndexedTriangleFanSet>
+          </Shape>
+        </Transform>
+        <TimeSensor DEF='_2'
+            loop='true'/>
+        <Script DEF='BirdsScript'
+            directOutput='true'>
+          <field accessType='inputOnly' type='SFTime' name='set_time'/>
+          <field accessType='initializeOnly' type='SFInt32' name='numBirds'/>
+          <field accessType='initializeOnly' type='SFFloat' name='birdSize'/>
+          <field accessType='initializeOnly' type='SFVec3f' name='size'/>
+          <field accessType='initializeOnly' type='SFNode' name='geometry'>
+            <IndexedTriangleFanSet USE='_1'/>
+          </field>
+          <IS>
+            <connect nodeField='numBirds' protoField='numBirds'/>
+            <connect nodeField='birdSize' protoField='birdSize'/>
+            <connect nodeField='size' protoField='size'/>
+          </IS>
+<![CDATA[ecmascript:
+
+const
+	boids = [ ],
+	zAxis = new SFVec3f (0, 0, 1);
+
+const template = [
+	new SFVec3f (0, 0, 1),
+	new SFVec3f (1, 0, 0),
+	new SFVec3f (0, 0, -1),
+	new SFVec3f (-1, 0, 0),
+];
+
+function initialize ()
+{
+	build ();
+}
+
+function set_time (value, time)
+{
+	const
+		dt     = 1 / Browser .currentFrameRate,
+		point  = geometry .coord .point,
+		points = template;
+
+	for (let i = 0, length = boids .length; i < length; ++ i)
+	{
+		const
+			boid  = boids [i],
+			run   = boid .run (boids),
+			speed = boid .velocity .length () * 10,
+			time  = boid .time += dt + Math .random () * 0.01;
+			x     = speed * time,
+			sin   = Math .abs (Math .sin (x)),
+			cos   = Math .cos (x);
+
+		points [1] .x = sin;
+		points [1] .y = cos;
+		points [3] .x = -sin;
+		points [3] .y = cos;
+
+		for (let p = 0; p < 4; ++ p)
+		{
+			const rotation = new SFRotation (zAxis, boid .velocity);
+
+			point [i * 4 + p] = rotation .multVec (points [p]) .multiply (birdSize) .add (boid .position);
+		}
+	}
+}
+
+function build ()
+{
+	const
+		index = new MFInt32 (),
+		point = geometry .coord .point;
+
+	point .length = 0;
+	boids .length = 0;
+
+	for (let i = 0; i < numBirds; ++ i)
+	{
+		const boid = boids [i] = new Boid ();
+
+		boid .time        = 0;
+		boid .position .x = Math .random () * size .x - size .x / 2;
+		boid .position .y = Math .random () * size .y - size .y / 2;
+		boid .position .z = Math .random () * size .z - size .z / 2;
+		boid .velocity .x = Math .random () * 2 - 1;
+		boid .velocity .y = Math .random () * 2 - 1;
+		boid .velocity .z = Math .random () * 2 - 1;
+		boid .setAvoidWalls (true);
+		boid .setWorldSize (... size);
+
+		for (var t = 0, tl = 4; t < tl; ++ t)
+		{
+			index .push (i * tl + t);
+		}
+
+		index .push (-1)
+	}
+
+	geometry .set_index = index;
+}
+
+// Based on https://www.openprocessing.org/sketch/6910
+
+const Boid = function ()
+{
+	let
+		vector              = new SFVec3f (),
+		_acceleration       = new SFVec3f (),
+		_width              = 500,
+		_height             = 500,
+		_depth              = 200,
+		_goal,
+		_neighborhoodRadius = 80,
+		_maxSpeed           = 4,
+		_maxSteerForce      = 0.1,
+		_avoidWalls         = false;
+
+	this .position = new SFVec3f ();
+	this .velocity = new SFVec3f ();
+
+	this .setGoal = function (target)
+	{
+		_goal = target;
+	};
+
+	this .setAvoidWalls = function (value)
+	{
+		_avoidWalls = value;
+	};
+
+	this.setWorldSize = function (width, height, depth)
+	{
+		_width  = width;
+		_height = height;
+		_depth  = depth;
+	};
+
+	this .run = function (boids)
+	{
+		if (_avoidWalls)
+		{
+			vector .x     = -_width;
+			vector .y     = this .position .y;
+			vector .z     = this .position .z;
+			vector        = this .avoid (vector);
+			vector        = vector .multiply (5);
+			_acceleration = _acceleration .add (vector);
+
+			vector .x     = _width;
+			vector .y     = this .position .y;
+			vector .z     = this .position .z;
+			vector        = this .avoid (vector);
+			vector        = vector .multiply (5);
+			_acceleration = _acceleration .add (vector);
+
+			vector .x     = this .position .x;
+			vector .y     = -_height;
+			vector .z     = this .position .z;
+			vector        = this .avoid (vector);
+			vector        = vector .multiply (5);
+			_acceleration = _acceleration .add (vector);
+
+			vector .x     = this .position .x;
+			vector .y     = _height;
+			vector .z     = this .position .z;
+			vector        = this .avoid (vector);
+			vector        = vector .multiply (5);
+			_acceleration = _acceleration .add (vector);
+
+			vector .x     = this .position .x;
+			vector .y     = this .position .y;
+			vector .z     = -_depth;
+			vector        = this .avoid (vector);
+			vector        = vector .multiply (5);
+			_acceleration = _acceleration .add (vector);
+
+			vector .x     = this .position .x;
+			vector .y     = this .position .y;
+			vector .z     = _depth;
+			vector        = this .avoid (vector);
+			vector        = vector .multiply (5);
+			_acceleration = _acceleration .add (vector);
+		}
+		/*
+		else
+		{
+			this .checkBounds ();
+		}
+		*/
+
+		if (Math .random () > 0.5)
+		{
+			this .flock (boids);
+		}
+
+		this .move ();
+	};
+
+	this .flock = function (boids)
+	{
+		if (_goal)
+		{
+			_acceleration = _acceleration .add (this .reach (_goal, 0.005));
+		}
+
+		_acceleration = _acceleration .add (this .alignment (boids));
+		_acceleration = _acceleration .add (this .cohesion (boids));
+		_acceleration = _acceleration .add (this .separation (boids));
+	};
+
+	this .move = function ()
+	{
+		this .velocity = this .velocity .add (_acceleration);
+
+		const l = this .velocity .length ();
+
+		if (l > _maxSpeed)
+		{
+			this .velocity = this .velocity .divide (l / _maxSpeed);
+		}
+
+		this .position = this .position .add (this .velocity);
+
+		_acceleration .x = 0;
+		_acceleration .y = 0;
+		_acceleration .z = 0;
+	};
+
+	this .checkBounds = function ()
+	{
+		if (this .position .x >   _width)  this .position .x = -_width;
+		if (this .position .x < - _width)  this .position .x =  _width;
+		if (this .position .y >   _height) this .position .y = -_height;
+		if (this .position .y < - _height) this .position .y =  _height;
+		if (this .position .z >   _depth)  this .position .z = -_depth;
+		if (this .position .z < - _depth)  this .position .z =  _depth;
+	};
+
+	//
+
+	this .avoid = function (target)
+	{
+		let
+			steer    = this .position .subtract (target),
+			distance = this .position .subtract (target);
+
+		steer = steer .multiply (1 / distance .dot (distance));
+
+		return steer;
+	};
+
+	this .repulse = function (target)
+	{
+		const distance = this .position .subtract (target) .length ();
+
+		if (distance < 150)
+		{
+			let steer = this .position .subtract (target);
+
+			steer = steer .multiply (0.5 / distance);
+
+			_acceleration = _acceleration .add (steer);
+		}
+	};
+
+	this .reach = function (target, amount)
+	{
+		let steer = target .subtract (this .position);
+
+		steer = steer .multiply (amount);
+
+		return steer;
+	};
+
+	this.alignment = function (boids)
+	{
+		let
+			count  = 0,
+			velSum = new SFVec3f ();
+
+		for (let i = 0, length = boids .length; i < length; ++ i)
+		{
+			if (Math .random () > 0.6)
+				continue;
+
+			const
+				boid     = boids [i],
+				distance = boid .position .subtract (this .position) .length ();
+
+			if (distance > 0 && distance <= _neighborhoodRadius)
+			{
+				velSum = velSum .add (boid .velocity);
+
+				++ count;
+			}
+		}
+
+		if (count > 0)
+		{
+			velSum = velSum .divide (count);
+
+			const l = velSum .length ();
+
+			if (l > _maxSteerForce)
+			{
+				velSum = velSum .divide (l / _maxSteerForce);
+			}
+		}
+
+		return velSum;
+	};
+
+	this .cohesion = function (boids)
+	{
+		let
+			count  = 0,
+			posSum = new SFVec3f (),
+			steer  = new SFVec3f ();
+
+		for (let i = 0, length = boids .length; i < length; ++ i)
+		{
+			if (Math .random () > 0.6)
+				continue;
+
+			const
+				boid     = boids [i],
+				distance = boid .position .subtract (this .position) .length ();
+
+			if (distance > 0 && distance <= _neighborhoodRadius)
+			{
+				posSum = posSum .add (boid .position);
+
+				++ count;
+			}
+		}
+
+		if (count > 0)
+		{
+			posSum = posSum .divide (count);
+		}
+
+		steer = posSum .subtract(this .position);
+
+		const l = steer .length ();
+
+		if (l > _maxSteerForce)
+		{
+			steer = steer .divide (l / _maxSteerForce);
+		}
+
+		return steer;
+	};
+
+	this .separation = function (boids)
+	{
+		let
+			posSum  = new SFVec3f (),
+			repulse = new SFVec3f ();
+
+		for (let i = 0, length = boids .length; i < length; ++ i)
+		{
+			if (Math .random () > 0.6)
+				continue;
+
+			const
+				boid     = boids [i],
+				distance = boid .position .subtract (this .position) .length ();
+
+			if (distance > 0 && distance <= _neighborhoodRadius)
+			{
+				repulse = this .position .subtract (boid.position );
+				repulse = repulse .normalize ();
+				repulse = repulse .divide (distance);
+				posSum  = posSum .add (repulse);
+
+			}
+		}
+
+		return posSum;
+	}
+}]]>
+        </Script>
+        <ROUTE fromNode='_2' fromField='time' toNode='BirdsScript' toField='set_time'/>
+      </ProtoBody>
+    </ProtoDeclare>
+  </Scene>
+</X3D>
