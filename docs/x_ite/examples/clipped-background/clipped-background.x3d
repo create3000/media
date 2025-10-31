@@ -91,7 +91,17 @@
         <Group DEF='DayBirds'>
           <Transform DEF='Birds'
               translation='0 200 0'>
-            <ProtoInstance name='Birds'/>
+            <ProtoInstance name='Birds'>
+              <fieldValue name='numBirds' value='100'/>
+              <fieldValue name='size' value='500 200 1000'/>
+              <fieldValue name='center' value='250 100 0'/>
+              <fieldValue name='appearance'>
+                <Appearance DEF='_16'>
+                  <Material
+                      diffuseColor='0.366785 0.224382 0.134316'/>
+                </Appearance>
+              </fieldValue>
+            </ProtoInstance>
           </Transform>
           <ClipPlane USE='DayPlane'/>
         </Group>
