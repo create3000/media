@@ -7,8 +7,8 @@
     <component name='X_ITE' level='1'/>
     <meta name='created' content='Tue, 02 Sep 2025 21:24:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.8.29, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 04 Sep 2025 09:57:21 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.11.3, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Fri, 31 Oct 2025 21:43:10 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Boxes'>
@@ -19,6 +19,8 @@
         <field accessType='inputOutput' type='SFInt32' name='zDimension'/>
         <field accessType='inputOutput' type='SFFloat' name='xSpacing'/>
         <field accessType='inputOutput' type='SFFloat' name='zSpacing'/>
+        <field accessType='inputOutput' type='SFColor' name='highColor' value='1 1 1'/>
+        <field accessType='inputOutput' type='SFColor' name='lowColor'/>
       </ProtoInterface>
       <ProtoBody>
         <InstancedShape DEF='Shape'>
@@ -29,12 +31,14 @@
               <field accessType='inputOutput' type='SFFloat' name='amplitude'/>
               <field accessType='inputOutput' type='SFInt32' name='xDimension'/>
               <field accessType='inputOutput' type='SFInt32' name='zDimension'/>
-              <field accessType='inputOutput' type='SFColor' name='highColor' value='1 0.8509804 0.4'/>
-              <field accessType='inputOutput' type='SFColor' name='lowColor' value='0.8 0 0'/>
+              <field accessType='inputOutput' type='SFColor' name='highColor'/>
+              <field accessType='inputOutput' type='SFColor' name='lowColor'/>
               <IS>
                 <connect nodeField='amplitude' protoField='amplitude'/>
                 <connect nodeField='xDimension' protoField='xDimension'/>
                 <connect nodeField='zDimension' protoField='zDimension'/>
+                <connect nodeField='highColor' protoField='highColor'/>
+                <connect nodeField='lowColor' protoField='lowColor'/>
               </IS>
               <ShaderPart DEF='BoxesVertexShader'>
 <![CDATA[data:text/plain,#version 300 es
@@ -208,6 +212,8 @@ function eventsProcessed ()
       <fieldValue name='zDimension' value='200'/>
       <fieldValue name='xSpacing' value='3'/>
       <fieldValue name='zSpacing' value='3'/>
+      <fieldValue name='highColor' value='0.2666667 0.5960784 0.8941176'/>
+      <fieldValue name='lowColor' value='0.02745098 0.1529412 0.2705882'/>
     </ProtoInstance>
   </Scene>
 </X3D>
