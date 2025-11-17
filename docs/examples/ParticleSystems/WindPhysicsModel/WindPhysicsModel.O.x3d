@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
+<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
   <head>
     <component name='ParticleSystems' level='3'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 02 Dec 2017 06:40:01 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 01:54:45 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V1.11.8, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 17 Nov 2025 11:47:35 GMT'/>
   </head>
   <Scene>
     <Background
@@ -22,7 +22,7 @@
         centerOfRotation='-0.300751 5.38755 0.400722'/>
     <Transform DEF='_2'
         translation='5 0 0'
-        rotation='0 -1 0 1.75698801988913'
+        rotation='0 -1 0 2.30446293555745'
         center='-5 0 0'>
       <Group DEF='Animation'>
         <TimeSensor DEF='AnimationTimer'
@@ -41,7 +41,8 @@
             maxParticles='2000'
             particleLifetime='1.5'
             lifetimeVariation='0.5'
-            particleSize='1 1'>
+            particleSize='1 1'
+            scaleKey='0, 0.8, 1'>
           <PointEmitter
               direction='0 0 0'
               speed='0.6'
@@ -56,6 +57,8 @@
           <WindPhysicsModel
               speed='0.6'
               gustiness='2'/>
+          <Coordinate containerField='scale'
+              point='1 1 1, 1 1 1, 0 0 0'/>
           <Appearance>
             <PointProperties
                 pointSizeScaleFactor='8'

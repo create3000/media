@@ -1,4 +1,5 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
     "@version": "4.0",
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V2.2.13, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V1.11.8, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:14:34 GMT"
+          "@content": "Mon, 17 Nov 2025 11:47:42 GMT"
         }
       ],
       "component": [
@@ -60,7 +61,7 @@
           {
             "@DEF": "_2",
             "@translation": [ 5, 0, 0 ],
-            "@rotation": [ 0, -1, 0, 0.808227081947827 ],
+            "@rotation": [ 0, -1, 0, 2.58867230274067 ],
             "@center": [ -5, 0, 0 ],
             "-children": [
               { "Group":
@@ -122,6 +123,12 @@
                             }
                           }
                         ],
+                        "@scaleKey": [ 0, 0.8, 1 ],
+                        "-scale": { "Coordinate":
+                          {
+                            "@point": [ 1, 1, 1, 1, 1, 1, 0, 0, 0 ]
+                          }
+                        },
                         "-appearance": { "Appearance":
                           {
                             "-pointProperties": { "PointProperties":
@@ -170,7 +177,7 @@
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_2",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         }
       ]
