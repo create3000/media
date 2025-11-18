@@ -8,7 +8,7 @@
     <meta name='created' content='Tue, 02 Sep 2025 21:24:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.11.8, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Tue, 18 Nov 2025 14:25:25 GMT'/>
+    <meta name='modified' content='Tue, 18 Nov 2025 14:27:03 GMT'/>
   </head>
   <Scene>
     <ProtoDeclare name='Boxes'>
@@ -80,7 +80,7 @@ void
 main ()
 {
    vertex = vec3 (x3d_ModelViewMatrix * wave (x3d_InstanceMatrix * x3d_Vertex));
-   normal = normalize (x3d_NormalMatrix * x3d_Normal);
+   normal = x3d_NormalMatrix * x3d_Normal;
 
    gl_Position = x3d_ProjectionMatrix * vec4 (vertex, 1.0);
 }
