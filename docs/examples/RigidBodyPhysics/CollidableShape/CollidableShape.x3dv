@@ -14,7 +14,7 @@ META "description" "Example scene for RigidBodyPhysics component"
 META "generator" "x3d-tidy V2.2.22, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V1.11.16, https://create3000.github.io/sunrize/"
 META "license" "../license.html"
-META "modified" "Mon, 29 Dec 2025 15:25:56 GMT"
+META "modified" "Mon, 29 Dec 2025 21:58:26 GMT"
 META "reference" "http://www.xj3d.org/extensions/index.html#Physics"
 META "reference" "originals/ball_bounce.x3dv"
 META "reference" "http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html"
@@ -90,219 +90,7 @@ DEF Collideables Group {
         }
       }
     }
-    DEF Primitives Group {
-      children [
-        DEF _1 CollidableShape {
-          translation -1.818616 0.9240901 1.658219
-          rotation 0.240010126378849 0.83461224130129 0.495799905108549 123.6347473568
-          shape DEF Box Shape {
-            appearance Appearance {
-              material DEF Santafe32 Material {
-                ambientIntensity 0.0869044
-                diffuseColor 0.335631 0.207672 0.238304
-                specularColor 0.198631 0.0754031 0.138803
-                emissiveColor 0.0106383 0.0106383 0.0106383
-                shininess 0.0212766
-              }
-              texture DEF _7 ImageTexture {
-                url "assets/pattern.png"
-                repeatS FALSE
-                repeatT FALSE
-              }
-            }
-            geometry Box {
-              size 0.5 0.5 0.5
-            }
-          }
-        }
-        DEF _2 CollidableShape {
-          translation 1.250306 0.6810532 1.341036
-          rotation -0.553260116425354 -0.433836956475575 0.711117949969633 237.883436385931
-          shape DEF Cone Shape {
-            appearance Appearance {
-              material DEF Santafe9 Material {
-                ambientIntensity 0.177947
-                diffuseColor 0.340537 0.37498 0.685837
-                specularColor 0.237073 0.295337 0.295337
-                shininess 0.466321
-              }
-              texture USE _7
-            }
-            geometry Cone {
-              height 0.5
-              bottomRadius 0.25
-            }
-          }
-        }
-        DEF _4 CollidableShape {
-          translation 1.900785 0.7511527 -0.1180763
-          rotation -0.628991498949399 0.350634179916455 -0.693848229891598 98.4413469184766
-          shape DEF Cylinder Shape {
-            appearance Appearance {
-              material DEF Santafe6 Material {
-                ambientIntensity 0.0450585
-                diffuseColor 0.191499 0.0265877 0.0665837
-                specularColor 0.367348 0.0557356 0.0557356
-                shininess 0.0585106
-              }
-              texture USE _7
-            }
-            geometry Cylinder {
-              height 0.5
-              radius 0.25
-            }
-          }
-        }
-        DEF _5 CollidableShape {
-          translation -0.8285521 1.155353 1.386363
-          rotation -0.424904260174881 0.79439683440314 -0.434039213868411 207.011360163253
-          shape DEF Sphere Shape {
-            appearance Appearance {
-              material DEF Santafe29 Material {
-                ambientIntensity 0.204082
-                diffuseColor 0.795918 0.505869 0.0933146
-                specularColor 0.923469 0.428866 0.00636875
-                shininess 0.397959
-              }
-              texture USE _7
-            }
-            geometry Sphere {
-              radius 0.25
-            }
-          }
-        }
-        DEF _6 CollidableShape {
-          translation 0.9052137 0.7519972 -0.3233648
-          rotation -0.005100175493365 -0.706926996017604 0.707268131977868 181.195878553997
-          shape USE Box
-        }
-        DEF _8 CollidableShape {
-          translation -0.4278614 0.6229852 -0.8338413
-          rotation 0.61119584331033 0.480378867218984 -0.629027650465049 200.050773677169
-          shape USE Cone
-        }
-        DEF _9 CollidableShape {
-          translation -0.6881565 1.024603 0.3098512
-          rotation -0.696297689785688 0.112607842743207 -0.708864585765035 261.942911161535
-          shape USE Cylinder
-        }
-        DEF _10 CollidableShape {
-          translation -0.4700101 2.509955 0.1001417
-          rotation -0.829086464254191 0.42600108437228 0.362130792537898 237.498067815409
-          shape USE Sphere
-        }
-        DEF _11 CollidableShape {
-          translation -0.01882018 4.029784 0.09691684
-          rotation 0.935466360843865 -0.0197953001165645 0.352860927027676 180.834522558026
-          shape USE Box
-        }
-        DEF _12 CollidableShape {
-          translation -0.006683307 5.003989 -0.02727231
-          rotation -0.300802324944784 0.285741889644173 -0.909873361413768 124.90582398328
-          shape USE Cone
-        }
-        DEF _13 CollidableShape {
-          translation -0.9570462 0.8161415 -0.09905159
-          rotation -0.800870964013713 -0.0194125609972171 -0.598522223042115 251.514230639242
-          shape USE Cylinder
-        }
-        DEF _14 CollidableShape {
-          translation 0.2170721 0.75 1.041831
-          rotation -0.228116700439325 0.834208084014167 -0.502055418799645 262.689002241176
-          shape USE Sphere
-        }
-        DEF _15 CollidableShape {
-          translation 1.719432 0.8456812 1.19115
-          rotation 0.490985235659708 -0.691222955107913 -0.530230444897372 223.780591490288
-          shape USE Box
-        }
-        DEF _16 CollidableShape {
-          translation 0.5936739 0.6117463 1.180627
-          rotation -0.372759012608081 -0.194868009229758 0.907236009811272 120.216534847135
-          shape USE Cone
-        }
-        DEF _17 CollidableShape {
-          translation 3.471837 0.3476515 1.434355
-          rotation -0.193103802878062 -0.531142716627698 -0.824983839773471 193.277023777441
-          shape USE Cylinder
-        }
-        DEF _18 CollidableShape {
-          translation -2.023141 0.7489725 -0.5063894
-          rotation 0.319045829399137 -0.589057074022827 0.742442942108471 192.970011096996
-          shape USE Sphere
-        }
-        DEF _19 CollidableShape {
-          translation -0.4363012 0.7505286 1.015939
-          rotation -0.998150687200703 2.71067428978463e-5 0.0607881970944046 179.86716677597
-          shape USE Box
-        }
-        DEF _20 CollidableShape {
-          translation 0.3996309 0.6118106 0.4943515
-          rotation 0.597207919378385 -0.473668548488513 -0.647287267914738 210.418810275171
-          shape USE Cone
-        }
-        DEF _21 CollidableShape {
-          translation 0.03357907 1.250942 1.063829
-          rotation -0.0935181091199649 0.511935057953562 0.85391853224105 299.830761647289
-          shape USE Cylinder
-        }
-        DEF _22 CollidableShape {
-          translation 0.6370347 0.75 -1.680119
-          rotation -0.909807165650936 -0.330712671662579 0.2507589482591 215.242519071388
-          shape USE Sphere
-        }
-        DEF _23 CollidableShape {
-          translation -0.04437521 0.7872859 0.4726947
-          rotation 0.737088190205182 0.0475394568333441 0.674122392376963 185.931269846929
-          shape USE Box
-        }
-        DEF _24 CollidableShape {
-          translation -1.219373 0.6109878 1.441858
-          rotation 0.909454430071236 -0.41491224484103 -0.0272115546189667 222.026366423784
-          shape USE Cone
-        }
-        DEF _25 CollidableShape {
-          translation -2.766652 0.3607569 -0.6850488
-          rotation -0.0233849513040127 -0.947142549515532 -0.319959583306591 248.074367709767
-          shape USE Cylinder
-        }
-        DEF _26 CollidableShape {
-          translation 0.1976531 0.75 -1.431967
-          rotation -0.911952001824457 0.202165451369942 -0.357033159021333 252.703676632644
-          shape USE Sphere
-        }
-        DEF _27 CollidableShape {
-          translation -3.649596 0.376838 1.483072
-          rotation -0.603180610362025 0.684806222048054 0.408917582805591 158.660192845386
-          shape USE Box
-        }
-        DEF _28 CollidableShape {
-          translation 0.3179548 0.6119149 -0.1109195
-          rotation -0.726340829898402 0.453633207511718 0.516377683353115 145.226972302563
-          shape USE Cone
-        }
-        DEF _29 CollidableShape {
-          translation 0.2110977 0.8433784 -0.8105575
-          rotation 0.962768248163893 0.267476320317771 -0.0391627169217646 174.389108690414
-          shape USE Cylinder
-        }
-        DEF _30 CollidableShape {
-          translation -0.4037984 0.7465171 2.042248
-          rotation 0.768132901845337 -0.270127451368336 0.580519599255623 78.2968431433684
-          shape USE Sphere
-        }
-        DEF _31 CollidableShape {
-          translation 1.969232 0.4016413 2.608082
-          rotation -0.428489923487164 0.429485267579749 0.794945778277938 132.027160687832
-          shape USE Box
-        }
-        DEF _32 CollidableShape {
-          translation -1.006318 0.8404158 -1.188147
-          rotation 0.495061779537578 0.72421226113579 -0.480031702350661 316.308422491328
-          shape USE Cone
-        }
-      ]
-    }
+    DEF Primitives Group { }
   ]
 }
 
@@ -332,211 +120,30 @@ DEF Logic Group {
             geometry USE Box_2
           }
           RigidBody {
-            position -1.818616 0.9240901 1.658219
-            orientation 0.240010126378849 0.83461224130129 0.495799905108549 123.6347473568
-            linearVelocity -0.3816968 0.02635501 0.5628112
-            angularVelocity 76.15371 0.1847731 51.63444
-            geometry USE _1
-          }
-          RigidBody {
-            position 1.250306 0.6810532 1.341036
-            orientation -0.553260116425354 -0.433836956475575 0.711117949969633 237.883436385931
-            linearVelocity 0.04831816 -0.07382654 0.1026722
-            angularVelocity 17.32016 -10.92054 -13.14939
-            geometry USE _2
-          }
-          RigidBody {
-            position 1.900785 0.7511527 -0.1180763
-            orientation -0.628991498949399 0.350634179916455 -0.693848229891598 98.4413469184766
-            linearVelocity 0.3980779 0.08183739 0.08300771
-            angularVelocity 19.04036 0.02194507 -91.32694
-            geometry USE _4
-          }
-          RigidBody {
-            position -0.8285521 1.155353 1.386363
-            orientation -0.424904260174881 0.79439683440314 -0.434039213868411 207.011360163253
-            linearVelocity -0.3214685 -0.4530991 0.2707982
-            angularVelocity 56.68598 10.08777 101.4086
-            geometry USE _5
-          }
-          RigidBody {
-            position 0.9052137 0.7519972 -0.3233648
-            orientation -0.005100175493365 -0.706926996017604 0.707268131977868 181.195878553997
-            linearVelocity 0.013256 -0.01477107 -0.003237371
-            angularVelocity -0.1894545 0.8110484 -3.480073
-            geometry USE _6
-          }
-          RigidBody {
-            position -0.4278614 0.6229852 -0.8338413
-            orientation 0.61119584331033 0.480378867218984 -0.629027650465049 200.050773677169
-            linearVelocity -0.1781912 -0.1280943 0.003284986
-            angularVelocity 16.7627 -22.63037 46.06643
-            geometry USE _8
-          }
-          RigidBody {
-            position -0.6881565 1.024603 0.3098512
-            orientation -0.696297689785688 0.112607842743207 -0.708864585765035 261.942911161535
-            linearVelocity 0.0893582 0.0743791 0.05257006
-            angularVelocity 100.3291 -12.47411 8.974906
-            geometry USE _9
-          }
-          RigidBody {
-            position -0.4700101 2.509955 0.1001417
-            orientation -0.829086464254191 0.42600108437228 0.362130792537898 237.498067815409
-            linearVelocity -0.7417539 -6.952866 0.1580402
-            geometry USE _10
-          }
-          RigidBody {
-            position -0.01882018 4.029784 0.09691684
-            orientation 0.935466360843865 -0.0197953001165645 0.352860927027676 180.834522558026
-            linearVelocity -0.0564792 -4.462761 0.2908466
-            geometry USE _11
-          }
-          RigidBody {
-            position -0.006683307 5.003989 -0.02727231
-            orientation -0.300802324944784 0.285741889644173 -0.909873361413768 124.90582398328
-            linearVelocity -0.2002963 0.03778255 -0.8173413
-            geometry USE _12
-          }
-          RigidBody {
-            position -0.9570462 0.8161415 -0.09905159
-            orientation -0.800870964013713 -0.0194125609972171 -0.598522223042115 251.514230639242
-            linearVelocity 0.2562061 -0.1748403 -0.2732584
-            angularVelocity -50.31529 -11.25395 -40.78881
-            geometry USE _13
-          }
-          RigidBody {
-            position 0.2170721 0.75 1.041831
-            orientation -0.228116700439325 0.834208084014167 -0.502055418799645 262.689002241176
-            linearVelocity 0.02612219 0 0.02994043
-            angularVelocity 6.40274 13.48012 -6.258119
-            geometry USE _14
-          }
-          RigidBody {
-            position 1.719432 0.8456812 1.19115
-            orientation 0.490985235659708 -0.691222955107913 -0.530230444897372 223.780591490288
-            linearVelocity 0.2396124 -0.2594829 0.2608597
-            angularVelocity 33.73637 -0.2615305 -52.94945
-            geometry USE _15
-          }
-          RigidBody {
-            position 0.5936739 0.6117463 1.180627
-            orientation -0.372759012608081 -0.194868009229758 0.907236009811272 120.216534847135
-            linearVelocity 0.02434289 -0.0036975 -0.02722894
-            angularVelocity -13.96308 -0.00072722 -12.46817
-            geometry USE _16
-          }
-          RigidBody {
-            position 3.471837 0.3476515 1.434355
-            orientation -0.193103802878062 -0.531142716627698 -0.824983839773471 193.277023777441
-            linearVelocity 0.506553 -0.1228467 -0.2217574
-            angularVelocity -38.29265 0.1095759 -87.55894
-            geometry USE _17
-          }
-          RigidBody {
-            position -2.023141 0.7489725 -0.5063894
-            orientation 0.319045829399137 -0.589057074022827 0.742442942108471 192.970011096996
-            linearVelocity -0.2848749 -0.02371673 0.07096873
-            angularVelocity 15.01327 17.58477 65.50701
-            geometry USE _18
-          }
-          RigidBody {
-            position -0.4363012 0.7505286 1.015939
-            orientation -0.998150687200703 2.71067428978463e-5 0.0607881970944046 179.86716677597
-            linearVelocity -0.0005635968 0.02284436 0.02116794
-            angularVelocity 5.231426 -0.850286 -0.5562409
-            geometry USE _19
-          }
-          RigidBody {
-            position 0.3996309 0.6118106 0.4943515
-            orientation 0.597207919378385 -0.473668548488513 -0.647287267914738 210.418810275171
-            linearVelocity -0.005194304 -0.01259647 -0.005685392
-            angularVelocity 1.74873 5.266692 1.739321
-            geometry USE _20
-          }
-          RigidBody {
-            position 0.03357907 1.250942 1.063829
-            orientation -0.0935181091199649 0.511935057953562 0.85391853224105 299.830761647289
-            linearVelocity -0.02761019 0.0318995 0.06308821
-            angularVelocity -5.276772 -12.35987 9.896706
-            geometry USE _21
-          }
-          RigidBody {
-            position 0.6370347 0.75 -1.680119
-            orientation -0.909807165650936 -0.330712671662579 0.2507589482591 215.242519071388
-            linearVelocity 0.0359285 0 -0.07208172
-            angularVelocity -16.51992 2.627751 -8.234205
-            geometry USE _22
-          }
-          RigidBody {
-            position -0.04437521 0.7872859 0.4726947
-            orientation 0.737088190205182 0.0475394568333441 0.674122392376963 185.931269846929
-            linearVelocity 0.01726735 0.0733099 0.007915055
-            angularVelocity 2.491768 -12.72294 -6.068802
-            geometry USE _23
-          }
-          RigidBody {
-            position -1.219373 0.6109878 1.441858
-            orientation 0.909454430071236 -0.41491224484103 -0.0272115546189667 222.026366423784
-            linearVelocity -0.01599722 -0.00279218 0.0214164
-            angularVelocity 11.04591 -0.01043093 8.252071
-            geometry USE _24
-          }
-          RigidBody {
-            position -2.766652 0.3607569 -0.6850488
-            orientation -0.0233849513040127 -0.947142549515532 -0.319959583306591 248.074367709767
-            linearVelocity -0.5751756 0.06804764 -0.2070729
-            angularVelocity -34.6848 -0.1823155 96.52733
-            geometry USE _25
-          }
-          RigidBody {
-            position 0.1976531 0.75 -1.431967
-            orientation -0.911952001824457 0.202165451369942 -0.357033159021333 252.703676632644
-            linearVelocity 0.02455595 0 -0.07414865
-            angularVelocity -16.99362 -4.556587 -5.627809
-            geometry USE _26
-          }
-          RigidBody {
-            position -3.649596 0.376838 1.483072
-            orientation -0.603180610362025 0.684806222048054 0.408917582805591 158.660192845386
-            linearVelocity 0.001149599 0.03354995 0.1246468
-            angularVelocity 23.94028 -12.34546 5.060082
-            geometry USE _27
-          }
-          RigidBody {
-            position 0.3179548 0.6119149 -0.1109195
-            orientation -0.726340829898402 0.453633207511718 0.516377683353115 145.226972302563
-            linearVelocity -0.001916623 -0.003811911 0.06068893
-            angularVelocity 31.05508 -0.07644031 0.9611441
-            geometry USE _28
-          }
-          RigidBody {
-            position 0.2110977 0.8433784 -0.8105575
-            orientation 0.962768248163893 0.267476320317771 -0.0391627169217646 174.389108690414
-            linearVelocity -0.5322534 0.140755 -0.1247598
-            angularVelocity -20.9601 0.008788279 89.42644
-            geometry USE _29
-          }
-          RigidBody {
-            position -0.4037984 0.7465171 2.042248
-            orientation 0.768132901845337 -0.270127451368336 0.580519599255623 78.2968431433684
-            linearVelocity -0.1492507 -0.06878002 0.4410251
-            angularVelocity 102.2778 4.18885 35.13293
-            geometry USE _30
-          }
-          RigidBody {
-            position 1.969232 0.4016413 2.608082
-            orientation -0.428489923487164 0.429485267579749 0.794945778277938 132.027160687832
-            linearVelocity 0.45248 0.3226754 0.7824587
-            angularVelocity 119.0226 2.850145 -70.07235
-            geometry USE _31
-          }
-          RigidBody {
-            position -1.006318 0.8404158 -1.188147
-            orientation 0.495061779537578 0.72421226113579 -0.480031702350661 316.308422491328
-            linearVelocity -0.4365892 0.06115177 -0.113648
-            angularVelocity -19.48702 1.289674 74.06608
-            geometry USE _32
+            position 0 5 0
+            linearVelocity -1.486742 -0.4215166 -0.7958796
+            geometry CollidableShape {
+              translation 0 5 0
+              shape DEF Box Shape {
+                appearance Appearance {
+                  material DEF Santafe32 Material {
+                    ambientIntensity 0.0869044
+                    diffuseColor 0.335631 0.207672 0.238304
+                    specularColor 0.198631 0.0754031 0.138803
+                    emissiveColor 0.0106383 0.0106383 0.0106383
+                    shininess 0.0212766
+                  }
+                  texture DEF _7 ImageTexture {
+                    url "assets/pattern.png"
+                    repeatS FALSE
+                    repeatT FALSE
+                  }
+                }
+                geometry Box {
+                  size 0.5 0.5 0.5
+                }
+              }
+            }
           }
         ]
       }
@@ -544,9 +151,50 @@ DEF Logic Group {
       initializeOnly SFNode  appearance NULL
       initializeOnly MFNode  shapes [
         USE Box
-        USE Cone
-        USE Cylinder
-        USE Sphere
+        DEF Cone Shape {
+          appearance Appearance {
+            material DEF Santafe9 Material {
+              ambientIntensity 0.177947
+              diffuseColor 0.340537 0.37498 0.685837
+              specularColor 0.237073 0.295337 0.295337
+              shininess 0.466321
+            }
+            texture USE _7
+          }
+          geometry Cone {
+            height 0.5
+            bottomRadius 0.25
+          }
+        }
+        DEF Cylinder Shape {
+          appearance Appearance {
+            material DEF Santafe6 Material {
+              ambientIntensity 0.0450585
+              diffuseColor 0.191499 0.0265877 0.0665837
+              specularColor 0.367348 0.0557356 0.0557356
+              shininess 0.0585106
+            }
+            texture USE _7
+          }
+          geometry Cylinder {
+            height 0.5
+            radius 0.25
+          }
+        }
+        DEF Sphere Shape {
+          appearance Appearance {
+            material DEF Santafe29 Material {
+              ambientIntensity 0.204082
+              diffuseColor 0.795918 0.505869 0.0933146
+              specularColor 0.923469 0.428866 0.00636875
+              shininess 0.397959
+            }
+            texture USE _7
+          }
+          geometry Sphere {
+            radius 0.25
+          }
+        }
       ]
 
       url "ecmascript:
