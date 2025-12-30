@@ -14,7 +14,7 @@ META "description" "Example scene for RigidBodyPhysics component"
 META "generator" "x3d-tidy V2.2.22, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V1.11.16, https://create3000.github.io/sunrize/"
 META "license" "../license.html"
-META "modified" "Mon, 29 Dec 2025 21:58:26 GMT"
+META "modified" "Tue, 30 Dec 2025 15:52:25 GMT"
 META "reference" "http://www.xj3d.org/extensions/index.html#Physics"
 META "reference" "originals/ball_bounce.x3dv"
 META "reference" "http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html"
@@ -119,38 +119,30 @@ DEF Logic Group {
             fixed TRUE
             geometry USE Box_2
           }
-          RigidBody {
-            position 0 5 0
-            linearVelocity -1.486742 -0.4215166 -0.7958796
-            geometry CollidableShape {
-              translation 0 5 0
-              shape DEF Box Shape {
-                appearance Appearance {
-                  material DEF Santafe32 Material {
-                    ambientIntensity 0.0869044
-                    diffuseColor 0.335631 0.207672 0.238304
-                    specularColor 0.198631 0.0754031 0.138803
-                    emissiveColor 0.0106383 0.0106383 0.0106383
-                    shininess 0.0212766
-                  }
-                  texture DEF _7 ImageTexture {
-                    url "assets/pattern.png"
-                    repeatS FALSE
-                    repeatT FALSE
-                  }
-                }
-                geometry Box {
-                  size 0.5 0.5 0.5
-                }
-              }
-            }
-          }
         ]
       }
       initializeOnly SFNode  primitives USE Primitives
       initializeOnly SFNode  appearance NULL
       initializeOnly MFNode  shapes [
-        USE Box
+        DEF Box Shape {
+          appearance Appearance {
+            material DEF Santafe32 Material {
+              ambientIntensity 0.0869044
+              diffuseColor 0.335631 0.207672 0.238304
+              specularColor 0.198631 0.0754031 0.138803
+              emissiveColor 0.0106383 0.0106383 0.0106383
+              shininess 0.0212766
+            }
+            texture DEF _7 ImageTexture {
+              url "assets/pattern.png"
+              repeatS FALSE
+              repeatT FALSE
+            }
+          }
+          geometry Box {
+            size 0.5 0.5 0.5
+          }
+        }
         DEF Cone Shape {
           appearance Appearance {
             material DEF Santafe9 Material {
@@ -232,6 +224,7 @@ function set_time (value, time)
 
 		rigidBody .position       = new SFVec3f (0, 5, 0);
 		rigidBody .linearVelocity = random3 () .multiply (1.5);
+		rigidBody .mass           = 10;
 
 		collidableShape .shape = shape;
 		rigidBody .geometry .push (collidableShape);

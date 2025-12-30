@@ -37,7 +37,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 29 Dec 2025 21:58:26 GMT"
+          "@content": "Tue, 30 Dec 2025 15:52:25 GMT"
         },
         {
           "@name": "reference",
@@ -270,51 +270,6 @@
                                     }
                                   ]
                                 }
-                              },
-                              { "RigidBody":
-                                {
-                                  "@position": [ 0, 5, 0 ],
-                                  "@linearVelocity": [ -1.486742, -0.4215166, -0.7958796 ],
-                                  "-geometry": [
-                                    { "CollidableShape":
-                                      {
-                                        "@translation": [ 0, 5, 0 ],
-                                        "-shape": { "Shape":
-                                          {
-                                            "@DEF": "Box",
-                                            "-appearance": { "Appearance":
-                                              {
-                                                "-material": { "Material":
-                                                  {
-                                                    "@DEF": "Santafe32",
-                                                    "@ambientIntensity": 0.0869044,
-                                                    "@diffuseColor": [ 0.335631, 0.207672, 0.238304 ],
-                                                    "@specularColor": [ 0.198631, 0.0754031, 0.138803 ],
-                                                    "@emissiveColor": [ 0.0106383, 0.0106383, 0.0106383 ],
-                                                    "@shininess": 0.0212766
-                                                  }
-                                                },
-                                                "-texture": { "ImageTexture":
-                                                  {
-                                                    "@DEF": "_7",
-                                                    "@url": [ "assets/pattern.png" ],
-                                                    "@repeatS": false,
-                                                    "@repeatT": false
-                                                  }
-                                                }
-                                              }
-                                            },
-                                            "-geometry": { "Box":
-                                              {
-                                                "@size": [ 0.5, 0.5, 0.5 ]
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
                               }
                             ]
                           }
@@ -345,7 +300,34 @@
                       "-children": [
                         { "Shape":
                           {
-                            "@USE": "Box"
+                            "@DEF": "Box",
+                            "-appearance": { "Appearance":
+                              {
+                                "-material": { "Material":
+                                  {
+                                    "@DEF": "Santafe32",
+                                    "@ambientIntensity": 0.0869044,
+                                    "@diffuseColor": [ 0.335631, 0.207672, 0.238304 ],
+                                    "@specularColor": [ 0.198631, 0.0754031, 0.138803 ],
+                                    "@emissiveColor": [ 0.0106383, 0.0106383, 0.0106383 ],
+                                    "@shininess": 0.0212766
+                                  }
+                                },
+                                "-texture": { "ImageTexture":
+                                  {
+                                    "@DEF": "_7",
+                                    "@url": [ "assets/pattern.png" ],
+                                    "@repeatS": false,
+                                    "@repeatT": false
+                                  }
+                                }
+                              }
+                            },
+                            "-geometry": { "Box":
+                              {
+                                "@size": [ 0.5, 0.5, 0.5 ]
+                              }
+                            }
                           }
                         },
                         { "Shape":
@@ -473,6 +455,7 @@
 "",
 "\t\trigidBody .position       = new SFVec3f (0, 5, 0);",
 "\t\trigidBody .linearVelocity = random3 () .multiply (1.5);",
+"\t\trigidBody .mass           = 10;",
 "",
 "\t\tcollidableShape .shape = shape;",
 "\t\trigidBody .geometry .push (collidableShape);",

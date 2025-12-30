@@ -11,7 +11,7 @@
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
     <meta name='generator' content='Sunrize X3D Editor V1.11.16, https://create3000.github.io/sunrize/'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Mon, 29 Dec 2025 21:57:47 GMT'/>
+    <meta name='modified' content='Tue, 30 Dec 2025 15:51:06 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -109,29 +109,6 @@
                 fixed='true'>
               <CollidableShape USE='Box_2' containerField='geometry'/>
             </RigidBody>
-            <RigidBody
-                position='0 5 0'
-                linearVelocity='-1.486742 -0.4215166 -0.7958796'>
-              <CollidableShape containerField='geometry'
-                  translation='0 5 0'>
-                <Shape DEF='Box' containerField='shape'>
-                  <Appearance>
-                    <Material DEF='Santafe32'
-                        ambientIntensity='0.0869044'
-                        diffuseColor='0.335631 0.207672 0.238304'
-                        specularColor='0.198631 0.0754031 0.138803'
-                        emissiveColor='0.0106383 0.0106383 0.0106383'
-                        shininess='0.0212766'/>
-                    <ImageTexture DEF='_7'
-                        url='"assets/pattern.png"'
-                        repeatS='false'
-                        repeatT='false'/>
-                  </Appearance>
-                  <Box
-                      size='0.5 0.5 0.5'/>
-                </Shape>
-              </CollidableShape>
-            </RigidBody>
           </RigidBodyCollection>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='primitives'>
@@ -139,7 +116,22 @@
         </field>
         <field accessType='initializeOnly' type='SFNode' name='appearance'/>
         <field accessType='initializeOnly' type='MFNode' name='shapes'>
-          <Shape USE='Box'/>
+          <Shape DEF='Box'>
+            <Appearance>
+              <Material DEF='Santafe32'
+                  ambientIntensity='0.0869044'
+                  diffuseColor='0.335631 0.207672 0.238304'
+                  specularColor='0.198631 0.0754031 0.138803'
+                  emissiveColor='0.0106383 0.0106383 0.0106383'
+                  shininess='0.0212766'/>
+              <ImageTexture DEF='_7'
+                  url='"assets/pattern.png"'
+                  repeatS='false'
+                  repeatT='false'/>
+            </Appearance>
+            <Box
+                size='0.5 0.5 0.5'/>
+          </Shape>
           <Shape DEF='Cone'>
             <Appearance>
               <Material DEF='Santafe9'
@@ -214,6 +206,7 @@ function set_time (value, time)
 
 		rigidBody .position       = new SFVec3f (0, 5, 0);
 		rigidBody .linearVelocity = random3 () .multiply (1.5);
+		rigidBody .mass           = 10;
 
 		collidableShape .shape = shape;
 		rigidBody .geometry .push (collidableShape);
