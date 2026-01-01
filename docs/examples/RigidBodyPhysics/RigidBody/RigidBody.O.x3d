@@ -10,7 +10,7 @@
     <meta name='created' content='Tue, 27 Mar 2018 07:50:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V1.11.16, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 01 Jan 2026 18:59:57 GMT'/>
+    <meta name='modified' content='Thu, 01 Jan 2026 19:06:13 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -762,6 +762,8 @@ function initialize ()
         <CollisionCollection
             appliedParameters='"FRICTION_COEFFICIENT_2"'
             frictionCoefficients='1 1'>
+          <CollidableShape USE='Ground' containerField='collidables'/>
+          <CollidableShape USE='Sphere' containerField='collidables'/>
           <CollidableShape USE='_1' containerField='collidables'/>
           <CollidableShape USE='_2' containerField='collidables'/>
           <CollidableShape USE='_3' containerField='collidables'/>
@@ -921,6 +923,7 @@ function set_resetTime (value, time)
    collision .collidables .length = 0;
    
    collection .bodies .push (ground, sphere);
+   collision .collidables .push (... ground .geometry, ... sphere .geometry);
 
    sphere .position        = new SFVec3f (25, 3, 0);
    sphere .orientation     = new SFRotation (0, 0, 1, 0);
