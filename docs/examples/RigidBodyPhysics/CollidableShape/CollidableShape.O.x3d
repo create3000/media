@@ -12,7 +12,7 @@
     <meta name='generator' content='Sunrize X3D Editor V1.11.16, https://create3000.github.io/sunrize/'/>
     <meta name='generator' content='x3d-tidy V2.2.22, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Thu, 01 Jan 2026 19:01:26 GMT'/>
+    <meta name='modified' content='Thu, 01 Jan 2026 19:07:51 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -175,8 +175,9 @@ var
 
 function initialize ()
 {
-   collection .bodies .length   = 2;
-   primitives .children .length = 0;
+   collection .bodies .length     = 2;
+   collision .collidables .length = 0;
+   primitives .children .length   = 0;
 }
 
 function set_time (value, time)
