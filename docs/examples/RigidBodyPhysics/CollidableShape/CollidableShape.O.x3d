@@ -10,8 +10,9 @@
     <meta name='creator' content='Holger Seelig'/>
     <meta name='description' content='Example scene for RigidBodyPhysics component'/>
     <meta name='generator' content='Sunrize X3D Editor V1.11.16, https://create3000.github.io/sunrize/'/>
+    <meta name='generator' content='x3d-tidy V2.2.22, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='license' content='../license.html'/>
-    <meta name='modified' content='Tue, 30 Dec 2025 15:51:06 GMT'/>
+    <meta name='modified' content='Thu, 01 Jan 2026 19:01:26 GMT'/>
     <meta name='reference' content='http://www.xj3d.org/extensions/index.html#Physics'/>
     <meta name='reference' content='originals/ball_bounce.x3dv'/>
     <meta name='reference' content='http://www.web3d.org/x3d/specifications/ISO-IEC-FDIS-19775-1.2-X3D-AbstractSpecification/Part01/components/rigid_physics.html'/>
@@ -36,18 +37,9 @@
     <DirectionalLight
         ambientIntensity='0.517564'
         direction='-0.576224 -0.484397 -0.658275'
-        shadows='true'>
-      <MetadataSet DEF='DirectionalLight' containerField='metadata'
-          name='DirectionalLight'
-          reference='http://titania.create3000.de'>
-        <MetadataFloat DEF='location'
-            name='location'
-            reference='http://titania.create3000.de'
-            value='0, 2.27923, 0'/>
-      </MetadataSet>
-    </DirectionalLight>
+        shadows='true'/>
     <Group DEF='Collideables'>
-      <CollidableShape DEF='Ground'>
+      <CollidableShape DEF='Ground_1'>
         <Shape containerField='shape'>
           <Appearance DEF='_3'>
             <Material DEF='Neon12'
@@ -92,8 +84,8 @@
           loop='true'/>
       <Script DEF='PrimitivesScript'
           directOutput='true'>
-        <field accessType='inputOutput' type='SFInt32' name='numBodies' value='30'/>
         <field accessType='inputOnly' type='SFTime' name='set_time'/>
+        <field accessType='inputOutput' type='SFInt32' name='numBodies' value='120'/>
         <field accessType='initializeOnly' type='SFNode' name='collection'>
           <RigidBodyCollection
               iterations='5'>
@@ -103,7 +95,7 @@
                 frictionCoefficients='0.5 0'/>
             <RigidBody
                 fixed='true'>
-              <CollidableShape USE='Ground' containerField='geometry'/>
+              <CollidableShape USE='Ground_1' containerField='geometry'/>
             </RigidBody>
             <RigidBody
                 fixed='true'>
@@ -111,10 +103,14 @@
             </RigidBody>
           </RigidBodyCollection>
         </field>
+        <field accessType='initializeOnly' type='SFNode' name='collision'>
+          <CollisionCollection
+              appliedParameters='"FRICTION_COEFFICIENT_2"'
+              frictionCoefficients='1 1'/>
+        </field>
         <field accessType='initializeOnly' type='SFNode' name='primitives'>
           <Group USE='Primitives'/>
         </field>
-        <field accessType='initializeOnly' type='SFNode' name='appearance'/>
         <field accessType='initializeOnly' type='MFNode' name='shapes'>
           <Shape DEF='Box'>
             <Appearance>
@@ -125,7 +121,7 @@
                   emissiveColor='0.0106383 0.0106383 0.0106383'
                   shininess='0.0212766'/>
               <ImageTexture DEF='_7'
-                  url='"assets/pattern.png"'
+                  url='"https://create3000.github.io/media/examples/RigidBodyPhysics/CollidableShape/assets/pattern.png"'
                   repeatS='false'
                   repeatT='false'/>
             </Appearance>
@@ -174,54 +170,52 @@
 <![CDATA[ecmascript:
 
 var
-	cache = [ ],
-	i     = 0;
+   cache = [ ],
+   i     = 0;
 
 function initialize ()
 {
-	collection .bodies .length   = 2;
-	primitives .children .length = 0;
+   collection .bodies .length   = 2;
+   primitives .children .length = 0;
 }
 
 function set_time (value, time)
 {
-	var rigidBody = cache [i % numBodies];
+   const rigidBody = cache [i % numBodies];
 
-	if (rigidBody)
-	{
-		rigidBody .position        = new SFVec3f (0, 5, 0);
-		rigidBody .linearVelocity  = random3 () .multiply (1.5);
-		rigidBody .angularVelocity = new SFVec3f (0, 0, 0);
+   if (rigidBody)
+   {
+      rigidBody .position        = new SFVec3f (0, 5, 0);
+      rigidBody .linearVelocity  = random3 () .multiply (1.5);
+      rigidBody .angularVelocity = new SFVec3f (0, 0, 0);
+   }
+   else
+   {
+      const
+         scene           = Browser .currentScene,
+         rigidBody       = scene .createNode ("RigidBody"),
+         collidableShape = scene .createNode ("CollidableShape"),
+         shape           = shapes [i % shapes .length];
 
-		//collection .bodies .push (rigidBody);
-		//primitives .children .push (rigidBody .geometry [0]);
-	}
-	else
-	{
-		var
-			scene           = Browser .currentScene,
-			rigidBody       = scene .createNode ("RigidBody"),
-			collidableShape = scene .createNode ("CollidableShape"),
-			shape           = shapes [i % shapes .length];
+      rigidBody .position       = new SFVec3f (0, 5, 0);
+      rigidBody .linearVelocity = random3 () .multiply (1.5);
+      rigidBody .mass           = 10;
 
-		rigidBody .position       = new SFVec3f (0, 5, 0);
-		rigidBody .linearVelocity = random3 () .multiply (1.5);
-		rigidBody .mass           = 10;
+      collidableShape .shape = shape;
+      rigidBody .geometry .push (collidableShape);
+      collection .bodies .push (rigidBody);
+      collision .collidables .push (collidableShape);
+      primitives .children .push (collidableShape);
 
-		collidableShape .shape = shape;
-		rigidBody .geometry .push (collidableShape);
-		collection .bodies .push (rigidBody);
-		primitives .children .push (collidableShape);
+      cache .push (rigidBody);
+   }
 
-		cache .push (rigidBody);
-	}
-
-	i ++;
+   i ++;
 }
 
 function random3 ()
 {
-	return new SFVec3f (Math .random () * 2 - 1, Math .random () * 2 - 1, Math .random () * 2 - 1);
+   return new SFVec3f (Math .random () * 2 - 1, Math .random () * 2 - 1, Math .random () * 2 - 1);
 }]]>
       </Script>
     </Group>
