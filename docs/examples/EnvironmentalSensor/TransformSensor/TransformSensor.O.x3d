@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='Layering' level='1'/>
     <component name='Layout' level='2'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 24 Feb 2019 11:52:29 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 04 May 2025 15:40:13 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 13:02:54 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
@@ -154,8 +154,8 @@
             global='true'
             url='"assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d"'/>
         <Transform DEF='CarRed'
-            translation='-2.945824e-6 1.27034 15.32989'
-            rotation='1.74315274949279e-32 1 1.22464681821076e-16 269.999996783548'
+            translation='-3.41998e-6 1.27034 19.3074'
+            rotation='6.25310148973984e-17 1 5.99336632893742e-17 177.569980907787'
             scale='2.12352 2.12352 2.12352'
             scaleOrientation='3.9267146445042e-16 1 5.03693766912935e-16 90'
             center='0 0 7.06'>
@@ -229,8 +229,8 @@
               url='"assets/Murcielago640.x3d"'/>
         </Transform>
         <Transform DEF='CarYellow'
-            translation='1.43998e-5 1.27034 -38.2793'
-            rotation='0 -1 0 316.800121756802'
+            translation='-5.229466e-6 1.27034 14.8518'
+            rotation='0 1 0 252.974792573782'
             scale='2.12352 2.12352 2.12352'
             center='0 0 11.4343'>
           <Group DEF='YellowCarAnimation'>
@@ -338,15 +338,18 @@
       </Layer>
       <LayoutLayer DEF='HUD'
           pointerEvents='false'>
+        <FontLibrary DEF='Readout-OneFront'
+            family='Readout-OneFront'
+            url='"assets/Readout-OneFront.otf"'/>
         <Transform DEF='RedLapNumberText'
             translation='1.6484 0.678502 0'
             scale='0.250539 0.250539 0.250539'>
           <Shape>
             <Text DEF='_32'
-                string='"10"'
+                string='"13"'
                 solid='true'>
               <FontStyle DEF='_33'
-                  family='"assets/Readout-OneFront.otf"'
+                  family='"Readout-OneFront"'
                   justify='"END"'/>
             </Text>
           </Shape>
@@ -381,11 +384,9 @@ function set_string ()
             scale='0.250539 0.250539 0.250539'>
           <Shape>
             <Text DEF='_34'
-                string='"02"'
+                string='"11"'
                 solid='true'>
-              <FontStyle
-                  family='"assets/Readout-OneFront.otf"'
-                  justify='"END"'/>
+              <FontStyle USE='_33'/>
             </Text>
           </Shape>
           <Script DEF='LapScript_35'>

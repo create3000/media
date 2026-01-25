@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='EventUtilities' level='1'/>
     <component name='Followers' level='1'/>
@@ -9,12 +9,12 @@
     <component name='Layout' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 08 Jul 2018 09:58:21 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 12 Apr 2023 21:42:05 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 13:12:49 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFFloat' url='"assets/SFFloat.x3d#SFFloat"'>
@@ -48,7 +48,7 @@
               <connect nodeField='string' protoField='string'/>
             </IS>
             <ScreenFontStyle DEF='_2'
-                family='"assets/georgia.ttf", "SERIF"'
+                family='"Georgia", "SERIF"'
                 justify='"MIDDLE", "MIDDLE"'/>
           </Text>
         </Shape>
@@ -57,15 +57,18 @@
             <connect nodeField='enabled' protoField='enabled'/>
           </IS>
         </ProtoInstance>
+        <FontLibrary DEF='Georgia'
+            family='Georgia'
+            url='"assets/georgia.ttf"'/>
         <Group DEF='Animation'>
-          <MetadataSet DEF='Animation_1'
+          <MetadataSet DEF='Animation_1' containerField='metadata'
               name='Animation'
               reference='http://titania.create3000.de'>
-            <MetadataInteger DEF='duration_1' containerField='value'
+            <MetadataInteger DEF='duration_1'
                 name='duration'
                 reference='http://titania.create3000.de'
                 value='5'/>
-            <MetadataInteger DEF='frameRate_1' containerField='value'
+            <MetadataInteger DEF='frameRate_1'
                 name='frameRate'
                 reference='http://titania.create3000.de'
                 value='10'/>
@@ -76,22 +79,22 @@
           <ScalarInterpolator DEF='TransparencyInterpolator'
               key='0, 0.2, 0.4, 0.6, 0.8, 1'
               keyValue='0.6, 0.5376, 0.3888, 0.2112, 0.0624, 0'>
-            <MetadataSet DEF='Interpolator_1'
+            <MetadataSet DEF='Interpolator_1' containerField='metadata'
                 name='Interpolator'
                 reference='http://titania.create3000.de'>
-              <MetadataInteger DEF='key_1' containerField='value'
+              <MetadataInteger DEF='key_1'
                   name='key'
                   reference='http://titania.create3000.de'
                   value='0, 5'/>
-              <MetadataDouble DEF='keyValue_1' containerField='value'
+              <MetadataDouble DEF='keyValue_1'
                   name='keyValue'
                   reference='http://titania.create3000.de'
                   value='0.600000023841858, 0'/>
-              <MetadataString DEF='keyType_1' containerField='value'
+              <MetadataString DEF='keyType_1'
                   name='keyType'
                   reference='http://titania.create3000.de'
                   value='"SPLINE", "SPLINE"'/>
-              <MetadataInteger DEF='keySize_1' containerField='value'
+              <MetadataInteger DEF='keySize_1'
                   name='keySize'
                   reference='http://titania.create3000.de'
                   value='1'/>
@@ -100,22 +103,22 @@
           <ScalarInterpolator DEF='PointSizeInterpolator'
               key='0, 0.2, 0.4, 0.6, 0.8, 1'
               keyValue='12, 12.728, 14.464, 16.536, 18.272, 19'>
-            <MetadataSet DEF='Interpolator'
+            <MetadataSet DEF='Interpolator' containerField='metadata'
                 name='Interpolator'
                 reference='http://titania.create3000.de'>
-              <MetadataInteger DEF='key' containerField='value'
+              <MetadataInteger DEF='key'
                   name='key'
                   reference='http://titania.create3000.de'
                   value='0, 5'/>
-              <MetadataDouble DEF='keyValue' containerField='value'
+              <MetadataDouble DEF='keyValue'
                   name='keyValue'
                   reference='http://titania.create3000.de'
                   value='12, 19'/>
-              <MetadataString DEF='keyType' containerField='value'
+              <MetadataString DEF='keyType'
                   name='keyType'
                   reference='http://titania.create3000.de'
                   value='"SPLINE", "SPLINE"'/>
-              <MetadataInteger DEF='keySize' containerField='value'
+              <MetadataInteger DEF='keySize'
                   name='keySize'
                   reference='http://titania.create3000.de'
                   value='1'/>
@@ -164,6 +167,12 @@ function initialize ()
 }
 ]]>
     </Script>
+    <FontLibrary DEF='Georgia'
+        family='Georgia'
+        url='"assets/georgia.ttf"'/>
+    <FontLibrary DEF='DejaVuSans'
+        family='DejaVuSans'
+        url='"assets/DejaVuSans.ttf"'/>
     <LayerSet
         activeLayer='1'
         order='0, 1, 2'>
@@ -199,25 +208,25 @@ function initialize ()
             url='"assets/cities.x3dz"'/>
       </Layer>
       <LayoutLayer DEF='HUD_1'>
-        <MetadataSet DEF='Titania_1'
+        <MetadataSet DEF='Titania_1' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='Grid_1' containerField='value'
+          <MetadataSet DEF='Grid_1'
               name='Grid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_1' containerField='value'
+            <MetadataBoolean DEF='enabled_1'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
-            <MetadataDouble DEF='rotation' containerField='value'
+            <MetadataDouble DEF='rotation'
                 name='rotation'
                 reference='http://titania.create3000.de'
                 value='1, 0, 0, 1.5707963267949'/>
-            <MetadataInteger DEF='dimension' containerField='value'
+            <MetadataInteger DEF='dimension'
                 name='dimension'
                 reference='http://titania.create3000.de'
                 value='96, 10, 54'/>
-            <MetadataFloat DEF='scale' containerField='value'
+            <MetadataFloat DEF='scale'
                 name='scale'
                 reference='http://titania.create3000.de'
                 value='10, 10, 10'/>
@@ -238,7 +247,7 @@ function initialize ()
                   string='"World Population "'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"assets/georgia.ttf", "SERIF"'
+                    family='"Georgia", "SERIF"'
                     pointSize='15'/>
               </Text>
             </Shape>
@@ -316,7 +325,7 @@ function initialize ()
                   string='"This is a"'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    family='"DejaVuSans", "SANS"'
                     pointSize='8'/>
               </Text>
             </Shape>
@@ -332,7 +341,7 @@ function initialize ()
                   string='"X3D", "Experiment"'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    family='"DejaVuSans", "SANS"'
                     pointSize='15'/>
               </Text>
             </Shape>
@@ -356,7 +365,7 @@ function initialize ()
                   string='"X3D Globe"'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"assets/DejaVuSans.ttf", "SANS"'
+                    family='"DejaVuSans", "SANS"'
                     style='BOLD'
                     pointSize='10'/>
               </Text>
@@ -375,7 +384,7 @@ function initialize ()
                     string='" •     Inspired by Chrome WebGL Gobe"'
                     solid='true'>
                   <ScreenFontStyle
-                      family='"assets/DejaVuSans.ttf", "SANS"'
+                      family='"DejaVuSans", "SANS"'
                       pointSize='10'/>
                 </Text>
               </Shape>
@@ -400,16 +409,16 @@ function initialize ()
     <ROUTE fromNode='Cities2005' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
     <ROUTE fromNode='Cities2000' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
     <ROUTE fromNode='Cities1995' fromField='value_changed' toNode='AnimateCities' toField='set_destination'/>
-    <ROUTE fromNode='_11' fromField='inputTrue' toNode='_9' toField='set_enabled'/>
-    <ROUTE fromNode='_7' fromField='inputNegate' toNode='_9' toField='set_enabled'/>
-    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_9' toField='set_enabled'/>
+    <ROUTE fromNode='AnimateCities' fromField='value_changed' toNode='PointInterpolator' toField='set_fraction'/>
+    <ROUTE fromNode='EnterWorldScript' fromField='initialized' toNode='EnableYear' toField='set_boolean'/>
     <ROUTE fromNode='_12' fromField='inputNegate' toNode='_1' toField='set_enabled'/>
     <ROUTE fromNode='_7' fromField='inputNegate' toNode='_1' toField='set_enabled'/>
     <ROUTE fromNode='EnableYear' fromField='inputTrue' toNode='_1' toField='set_enabled'/>
     <ROUTE fromNode='_12' fromField='inputNegate' toNode='_4' toField='set_enabled'/>
     <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_4' toField='set_enabled'/>
     <ROUTE fromNode='_6' fromField='inputTrue' toNode='_4' toField='set_enabled'/>
-    <ROUTE fromNode='AnimateCities' fromField='value_changed' toNode='PointInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='EnterWorldScript' fromField='initialized' toNode='EnableYear' toField='set_boolean'/>
+    <ROUTE fromNode='_11' fromField='inputTrue' toNode='_9' toField='set_enabled'/>
+    <ROUTE fromNode='_7' fromField='inputNegate' toNode='_9' toField='set_enabled'/>
+    <ROUTE fromNode='DisableOthers' fromField='inputNegate' toNode='_9' toField='set_enabled'/>
   </Scene>
 </X3D>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='EventUtilities' level='1'/>
@@ -9,14 +9,14 @@
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <component name='Sound' level='3'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <component name='X_ITE' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 27 Sep 2017 11:50:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.10.4, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 27 Sep 2025 22:03:42 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:01:13 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFInt32' url='"MFInt32.x3d#MFInt32"'>
@@ -1155,6 +1155,9 @@ function set_resetTime (value, time)
         </MetadataSet>
       </MetadataSet>
     </WorldInfo>
+    <FontLibrary DEF='Minimum-Toc'
+        family='Minimum-Toc'
+        url='"Minimum-Toc.otf"'/>
     <LayerSet DEF='_25'
         activeLayer='1'
         order='2, 3'>
@@ -1326,7 +1329,7 @@ function set_resetTime (value, time)
         <OrthoViewpoint
             position='0 50.1169 0'
             orientation='1 0 0 270'
-            fieldOfView='-36, -20, 36, 20'/>
+            fieldOfView='-36 -20 36 20'/>
         <Background DEF='_59'
             skyAngle='76.5191, 90.0002'
             skyColor='0.045 0.045 0.045, 0.195 0.195 0.195, 0.185 0.185 0.185'
@@ -1620,7 +1623,7 @@ function getIndex (x, y)
                 string='"Sugar Smack"'
                 solid='true'>
               <FontStyle
-                  family='"Minimum-Toc.otf"'
+                  family='"Minimum-Toc"'
                   size='0.6'
                   justify='"BEGIN", "BEGIN"'/>
             </Text>
@@ -1653,7 +1656,7 @@ function getIndex (x, y)
                   string='"Start New Game"'
                   solid='true'>
                 <FontStyle
-                    family='"Minimum-Toc.otf"'
+                    family='"Minimum-Toc"'
                     size='0.6'
                     justify='"BEGIN", "BEGIN"'/>
               </Text>

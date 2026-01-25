@@ -1,65 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
+    <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Shape' level='4'/>
-    <component name='Time' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Text' level='2'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 20 Dec 2015 16:23:08 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 07 Jan 2019 04:18:13 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 13:47:40 GMT'/>
   </head>
   <Scene>
     <WorldInfo>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
+        <MetadataSet DEF='NavigationInfo'
             name='NavigationInfo'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
+          <MetadataString DEF='type'
               name='type'
               reference='http://titania.create3000.de'
               value='"NONE"'/>
         </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
+        <MetadataSet DEF='Viewpoint'
             name='Viewpoint'
             reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
+          <MetadataDouble DEF='position'
               name='position'
               reference='http://titania.create3000.de'
               value='0, 0, 10'/>
-          <MetadataDouble DEF='orientation' containerField='value'
+          <MetadataDouble DEF='orientation'
               name='orientation'
               reference='http://titania.create3000.de'
               value='0, 0, 1, 0'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
+          <MetadataDouble DEF='centerOfRotation'
               name='centerOfRotation'
               reference='http://titania.create3000.de'
               value='0, 0, 0'/>
         </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'>
             <Script DEF='LightsScript' containerField='value'
@@ -139,10 +141,10 @@ function get_intensity (value)
             </Script>
           </MetadataSet>
         </MetadataSet>
-        <MetadataSet DEF='BrowserPanel' containerField='value'
+        <MetadataSet DEF='BrowserPanel'
             name='BrowserPanel'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='shading' containerField='value'
+          <MetadataString DEF='shading'
               name='shading'
               reference='http://titania.create3000.de'
               value='"", "PHONG", "", ""'/>
@@ -199,14 +201,14 @@ function initialize ()
         <Transform DEF='Lights'
             translation='0 0 0.15'>
           <Group DEF='ColorAnimation'>
-            <MetadataSet DEF='Animation'
+            <MetadataSet DEF='Animation' containerField='metadata'
                 name='Animation'
                 reference='http://titania.create3000.de'>
-              <MetadataInteger DEF='duration' containerField='value'
+              <MetadataInteger DEF='duration'
                   name='duration'
                   reference='http://titania.create3000.de'
                   value='300'/>
-              <MetadataInteger DEF='framesPerSecond' containerField='value'
+              <MetadataInteger DEF='framesPerSecond'
                   name='framesPerSecond'
                   reference='http://titania.create3000.de'
                   value='10'/>
@@ -217,18 +219,18 @@ function initialize ()
             <ColorInterpolator DEF='Light1ColorInterpolator'
                 key='0, 0.25, 0.5, 0.75, 1'
                 keyValue='1 0 0, 0.5 1 0, 0 1 1, 0.5 0 1, 1 0 0'>
-              <MetadataSet DEF='Interpolator'
+              <MetadataSet DEF='Interpolator' containerField='metadata'
                   name='Interpolator'
                   reference='http://titania.create3000.de'>
-                <MetadataInteger DEF='key' containerField='value'
+                <MetadataInteger DEF='key'
                     name='key'
                     reference='http://titania.create3000.de'
                     value='0, 75, 150, 225, 300'/>
-                <MetadataDouble DEF='keyValue' containerField='value'
+                <MetadataDouble DEF='keyValue'
                     name='keyValue'
                     reference='http://titania.create3000.de'
                     value='1, 0, 0, 0.5, 1, 0, 0, 1, 1, 0.5, 0, 1, 1, 0, 0'/>
-                <MetadataString DEF='keyType' containerField='value'
+                <MetadataString DEF='keyType'
                     name='keyType'
                     reference='http://titania.create3000.de'
                     value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
@@ -236,36 +238,36 @@ function initialize ()
             </ColorInterpolator>
           </Group>
           <PointLight DEF='Light1'
-              color='0 1 0.607978'
-              intensity='0.645102'
+              color='0 1 0.1666'
+              intensity='0.9913076'
               location='-1 0 0'/>
           <PointLight DEF='Light2'
-              color='0 1 0.607978'
-              intensity='0.19518'
-              location='-0.714286 0 0'/>
+              color='0 1 0.1666'
+              intensity='0.5152089'
+              location='-0.7142857 0 0'/>
           <PointLight DEF='Light3'
-              color='0 1 0.607978'
-              intensity='0.888487'
-              location='-0.428571 0 0'/>
+              color='0 1 0.1666'
+              intensity='0.3488525'
+              location='-0.4285714 0 0'/>
           <PointLight DEF='Light4'
-              color='0 1 0.607978'
-              intensity='0.912746'
-              location='-0.142857 0 0'/>
+              color='0 1 0.1666'
+              intensity='0.950221'
+              location='-0.1428571 0 0'/>
           <PointLight DEF='Light5'
-              color='0 1 0.607978'
-              intensity='0.249688'
-              location='0.142857 0 0'/>
+              color='0 1 0.1666'
+              intensity='0.8360535'
+              location='0.1428571 0 0'/>
           <PointLight DEF='Light6'
-              color='0 1 0.607978'
-              intensity='0.60139'
-              location='0.428571 0 0'/>
+              color='0 1 0.1666'
+              intensity='0.09232065'
+              location='0.4285714 0 0'/>
           <PointLight DEF='Light7'
-              color='0 1 0.607978'
-              intensity='0.999609'
-              location='0.714286 0 0'/>
+              color='0 1 0.1666'
+              intensity='0.7209315'
+              location='0.7142857 0 0'/>
           <PointLight DEF='Light8'
-              color='0 1 0.607978'
-              intensity='0.645102'
+              color='0 1 0.1666'
+              intensity='0.9913076'
               location='1 0 0'/>
         </Transform>
         <TimeSensor DEF='LightsTimer'
@@ -277,6 +279,12 @@ function initialize ()
             type='"NONE"'
             headlight='false'/>
         <OrthoViewpoint/>
+        <FontLibrary DEF='CharlotteSansBoldPlain'
+            family='CharlotteSansBoldPlain'
+            url='"./CharlotteSansBoldPlain.otf"'/>
+        <FontLibrary DEF='CharlotteSansBookPlain'
+            family='CharlotteSansBookPlain'
+            url='"./CharlotteSansBookPlain.otf"'/>
         <Transform DEF='lights'
             translation='0 0.248408 0'
             scale='0.449912 0.174422 4.39968'>
@@ -304,7 +312,7 @@ function initialize ()
                 string='"An Interactive X3D Experience"'
                 solid='true'>
               <FontStyle DEF='_5'
-                  family='"CharlotteSansBoldPlain.otf", "SERIF"'
+                  family='"CharlotteSansBoldPlain", "SERIF"'
                   size='0.08'
                   justify='"MIDDLE", "MIDDLE"'/>
             </Text>
@@ -371,7 +379,7 @@ function initialize ()
                 string='"Click and move your mouse to place", "the lights on the screen."'
                 solid='true'>
               <FontStyle
-                  family='"CharlotteSansBookPlain.otf", "SERIF"'
+                  family='"CharlotteSansBookPlain", "SERIF"'
                   size='0.08'
                   justify='"MIDDLE", "MIDDLE"'/>
             </Text>
