@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
     <component name='Layout' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Mon, 04 Apr 2016 01:15:14 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.6.8, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.136, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Fri, 12 Apr 2024 17:54:48 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:31:10 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFFloat' url='"MFFloat.x3d#MFFloat"'>
@@ -51,6 +51,9 @@
             offsetUnits='"FRACTION", "FRACTION"'
             sizeUnits='"FRACTION", "FRACTION"'
             scaleMode='"FRACTION", "FRACTION"'/>
+        <FontLibrary DEF='Voltaire'
+            family='Voltaire'
+            url='"Voltaire/Voltaire.ttf"'/>
         <Transform DEF='Rectangle2D'
             translation='0.0816685 0.413343 0'
             scale='0.417387 0.0830214 0.353753'>
@@ -178,7 +181,7 @@
                   string='"Universe", "Galaxy", "Pulsars"'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    family='"Voltaire", "SANS"'
                     style='BOLD'
                     pointSize='16'
                     spacing='1.6'
@@ -205,7 +208,7 @@
                   string='"Data Visualisation by", "Paul Bourke"'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    family='"Voltaire", "SANS"'
                     style='BOLD'
                     pointSize='9'
                     spacing='1.2'
@@ -233,7 +236,7 @@
                   length='236'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    family='"Voltaire", "SANS"'
                     style='BOLD'
                     pointSize='9'
                     spacing='1.2'
@@ -260,7 +263,7 @@
                   string='"MilkyWay and Beyond"'
                   solid='true'>
                 <ScreenFontStyle
-                    family='"Voltaire/Voltaire.ttf", "SANS"'
+                    family='"Voltaire", "SANS"'
                     style='BOLD'
                     pointSize='26'
                     spacing='1.6'
@@ -298,7 +301,7 @@
                     string='"Home"'
                     solid='true'>
                   <ScreenFontStyle
-                      family='"Voltaire/Voltaire.ttf", "SANS"'
+                      family='"Voltaire", "SANS"'
                       style='BOLD'
                       pointSize='16'
                       spacing='1.6'
@@ -369,9 +372,9 @@ function set_time (value, time)
           </Script>
           <ProtoInstance name='MFNode' DEF='Layers'>
             <fieldValue name='keyValue'>
-              <Layer USE='Background' containerField='keyValue'/>
-              <LayoutLayer USE='Layout' containerField='keyValue'/>
-              <Layer DEF='Pulsars' containerField='keyValue'>
+              <Layer USE='Background'/>
+              <LayoutLayer USE='Layout'/>
+              <Layer DEF='Pulsars'>
                 <Viewport DEF='_28'
                     clipBoundary='0.697, 1, 0, 0.29'/>
                 <Background
@@ -429,10 +432,10 @@ function set_time (value, time)
                   </Script>
                   <ProtoInstance name='MFNode' DEF='Layers_31'>
                     <fieldValue name='keyValue'>
-                      <Layer USE='Background' containerField='keyValue'/>
-                      <LayoutLayer USE='Layout' containerField='keyValue'/>
-                      <Layer USE='Galaxy' containerField='keyValue'/>
-                      <Layer DEF='Universe' containerField='keyValue'>
+                      <Layer USE='Background'/>
+                      <LayoutLayer USE='Layout'/>
+                      <Layer USE='Galaxy'/>
+                      <Layer DEF='Universe'>
                         <Viewport DEF='_32'
                             clipBoundary='0.165, 0.688, 0, 0.726'/>
                         <NavigationInfo
@@ -494,11 +497,11 @@ function set_time (value, time)
                           </Script>
                           <ProtoInstance name='MFNode' DEF='Layers_35'>
                             <fieldValue name='keyValue'>
-                              <Layer USE='Background' containerField='keyValue'/>
-                              <LayoutLayer USE='Layout' containerField='keyValue'/>
-                              <Layer USE='Galaxy' containerField='keyValue'/>
-                              <Layer USE='Pulsars' containerField='keyValue'/>
-                              <Layer USE='Universe' containerField='keyValue'/>
+                              <Layer USE='Background'/>
+                              <LayoutLayer USE='Layout'/>
+                              <Layer USE='Galaxy'/>
+                              <Layer USE='Pulsars'/>
+                              <Layer USE='Universe'/>
                             </fieldValue>
                           </ProtoInstance>
                           <ProtoInstance name='MFFloat' DEF='NormalSize'>
@@ -531,7 +534,7 @@ function set_time (value, time)
                           </Group>
                         </Transform>
                       </Layer>
-                      <Layer USE='Pulsars' containerField='keyValue'/>
+                      <Layer USE='Pulsars'/>
                     </fieldValue>
                   </ProtoInstance>
                   <ProtoInstance name='MFFloat' DEF='NormalSize_42'>
@@ -564,8 +567,8 @@ function set_time (value, time)
                   </Group>
                 </Transform>
               </Layer>
-              <Layer USE='Universe' containerField='keyValue'/>
-              <Layer USE='Galaxy' containerField='keyValue'/>
+              <Layer USE='Universe'/>
+              <Layer USE='Galaxy'/>
             </fieldValue>
           </ProtoInstance>
           <ProtoInstance name='MFFloat' DEF='NormalSize_50'>

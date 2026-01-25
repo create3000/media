@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.4.1
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -6,13 +6,13 @@ COMPONENT EnvironmentalSensor : 3
 COMPONENT Layering : 1
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "created" "Sat, 29 Aug 2015 07:24:31 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.61, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.28, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sun, 23 Mar 2025 15:37:58 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:13 GMT"
 
 EXTERNPROTO MFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -23,6 +23,11 @@ EXTERNPROTO MFInt32 [
 
 WorldInfo {
   title "Smashing Boxes"
+}
+
+DEF BertramLetPlain FontLibrary {
+  family "BertramLetPlain"
+  url "BertramLetPlain.otf"
 }
 
 DEF Resources Switch {
@@ -178,7 +183,7 @@ DEF _10 LayerSet {
             DEF Viewpoints Group {
               children [
                 DEF Inside Viewpoint {
-                  position 21 1.6 -7
+                  position -17 1.6 -9
                   orientation 0 1 0 0.785
                   centerOfRotation 0.587624 1.66016 -1.38991
                 }
@@ -554,452 +559,455 @@ DEF _10 LayerSet {
               translation 0 1 0
               children [
                 Transform {
-                  translation -25 0 9
+                  translation -13 0 15
                   children [
                     USE YellowBox
                     DEF _1 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -25 0 -9
-                  children USE RedBox
-                }
-                Transform {
-                  translation -17 0 -17
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -25 0 -13
-                  children USE RedBox
-                }
-                Transform {
-                  translation 31 0 17
+                  translation 5 0 1
                   children USE _7
                 }
                 Transform {
-                  translation 15 0 -9
+                  translation -27 0 11
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 17 0 -19
                   children [
                     USE YellowBox
                     DEF _3 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -29 0 -9
+                  translation -3 0 3
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 5 0 11
                   children [
                     USE YellowBox
                     DEF _4 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -31 0 -5
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 11 0 17
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 11 0 -13
-                  children USE _7
-                }
-                Transform {
-                  translation -21 0 -9
-                  children USE RedBox
-                }
-                Transform {
-                  translation -1 0 11
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 21 0 -1
-                  children USE _7
-                }
-                Transform {
-                  translation 25 0 5
+                  translation 19 0 -1
                   children [
                     USE YellowBox
                     DEF _5 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation 23 0 9
+                  translation -11 0 13
                   children USE RedBox
                 }
                 Transform {
-                  translation 15 0 -17
-                  children USE RedBox
-                }
-                Transform {
-                  translation -23 0 -13
-                  children USE RedBox
-                }
-                Transform {
-                  translation -7 0 5
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -29 0 5
-                  children USE RedBox
-                }
-                Transform {
-                  translation 5 0 -11
-                  children USE RedBox
-                }
-                Transform {
-                  translation 23 0 -1
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -25 0 -7
-                  children USE RedBox
-                }
-                Transform {
-                  translation -3 0 13
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -19 0 -17
-                  children USE _7
-                }
-                Transform {
-                  translation 5 0 13
-                  children USE RedBox
-                }
-                Transform {
-                  translation -7 0 7
-                  children USE RedBox
-                }
-                Transform {
-                  translation 25 0 -11
+                  translation 3 0 -11
                   children [
                     USE YellowBox
                     DEF _6 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -31 0 -15
+                  translation -13 0 -3
                   children USE OrangeBox
                 }
                 Transform {
-                  translation -9 0 11
+                  translation -17 0 -7
+                  children USE RedBox
+                }
+                Transform {
+                  translation 1 0 -13
+                  children USE RedBox
+                }
+                Transform {
+                  translation -11 0 19
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 23 0 -11
                   children [
                     USE YellowBox
                     DEF _8 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -21 0 -5
-                  children USE RedBox
-                }
-                Transform {
-                  translation 1 0 13
+                  translation -31 0 11
                   children USE OrangeBox
                 }
                 Transform {
-                  translation 19 0 -15
-                  children USE _7
-                }
-                Transform {
-                  translation 9 0 -9
-                  children USE _7
-                }
-                Transform {
-                  translation -31 0 -19
-                  children USE RedBox
-                }
-                Transform {
-                  translation 27 0 9
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 13 0 -9
+                  translation -19 0 -17
                   children [
                     USE YellowBox
                     DEF _11 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -17 0 -5
+                  translation 5 0 5
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -9 0 -13
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -15 0 7
+                  children USE _7
+                }
+                Transform {
+                  translation 27 0 -13
+                  children USE _7
+                }
+                Transform {
+                  translation -9 0 3
                   children [
                     USE YellowBox
                     DEF _12 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation 9 0 15
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -15 0 -17
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 1 0 -15
-                  children [
-                    USE YellowBox
-                    DEF _13 TouchSensor { }
-                  ]
-                }
-                Transform {
-                  translation 23 0 -11
+                  translation 9 0 -15
                   children USE RedBox
                 }
                 Transform {
-                  translation 23 0 15
+                  translation -17 0 -1
                   children USE OrangeBox
                 }
                 Transform {
-                  translation 19 0 -11
-                  children USE RedBox
-                }
-                Transform {
-                  translation -21 0 -3
+                  translation 17 0 -11
                   children USE _7
                 }
                 Transform {
-                  translation -15 0 -7
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -17 0 3
+                  translation -17 0 -19
                   children USE RedBox
                 }
                 Transform {
-                  translation 21 0 -11
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -29 0 -13
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -9 0 19
-                  children USE RedBox
-                }
-                Transform {
-                  translation -11 0 3
-                  children USE RedBox
-                }
-                Transform {
-                  translation 5 0 -7
+                  translation 13 0 -17
                   children USE _7
                 }
                 Transform {
-                  translation -27 0 17
-                  children USE OrangeBox
+                  translation -5 0 7
+                  children USE _7
                 }
                 Transform {
-                  translation 19 0 -7
-                  children [
-                    USE YellowBox
-                    DEF _14 TouchSensor { }
-                  ]
+                  translation -17 0 7
+                  children USE _7
+                }
+                Transform {
+                  translation -17 0 5
+                  children USE RedBox
                 }
                 Transform {
                   translation -21 0 9
                   children USE RedBox
                 }
                 Transform {
-                  translation 15 0 -3
-                  children USE _7
+                  translation -3 0 11
+                  children USE RedBox
                 }
                 Transform {
-                  translation -15 0 15
+                  translation -17 0 3
                   children USE OrangeBox
                 }
                 Transform {
-                  translation 27 0 -7
+                  translation 23 0 -17
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 9 0 -9
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 15 0 9
                   children USE RedBox
                 }
                 Transform {
-                  translation 25 0 17
+                  translation 9 0 -5
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -19 0 -5
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -17 0 -15
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 21 0 -5
                   children USE RedBox
                 }
                 Transform {
-                  translation -23 0 -9
-                  children USE _7
+                  translation -11 0 -7
+                  children USE OrangeBox
                 }
                 Transform {
-                  translation -21 0 -1
+                  translation -19 0 -11
+                  children USE RedBox
+                }
+                Transform {
+                  translation 27 0 1
+                  children [
+                    USE YellowBox
+                    DEF _13 TouchSensor { }
+                  ]
+                }
+                Transform {
+                  translation -17 0 11
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -27 0 17
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 13 0 -7
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 5 0 -3
                   children USE OrangeBox
                 }
                 Transform {
                   translation -1 0 9
+                  children USE _7
+                }
+                Transform {
+                  translation 11 0 5
+                  children USE RedBox
+                }
+                Transform {
+                  translation -21 0 5
                   children USE OrangeBox
                 }
                 Transform {
-                  translation 13 0 -19
+                  translation -13 0 5
+                  children USE _7
+                }
+                Transform {
+                  translation 25 0 15
                   children USE RedBox
                 }
                 Transform {
-                  translation 11 0 3
-                  children USE RedBox
-                }
-                Transform {
-                  translation -29 0 -15
-                  children USE RedBox
-                }
-                Transform {
-                  translation -27 0 19
-                  children USE RedBox
-                }
-                Transform {
-                  translation 1 0 -3
+                  translation -17 0 1
                   children USE OrangeBox
                 }
                 Transform {
-                  translation -21 0 -11
+                  translation -29 0 -1
+                  children USE RedBox
+                }
+                Transform {
+                  translation 17 0 7
+                  children USE _7
+                }
+                Transform {
+                  translation 27 0 5
                   children USE OrangeBox
                 }
                 Transform {
-                  translation 25 0 -1
+                  translation -5 0 3
+                  children USE _7
+                }
+                Transform {
+                  translation 21 0 -3
+                  children USE RedBox
+                }
+                Transform {
+                  translation -31 0 -19
+                  children [
+                    USE YellowBox
+                    DEF _14 TouchSensor { }
+                  ]
+                }
+                Transform {
+                  translation 13 0 -5
+                  children USE RedBox
+                }
+                Transform {
+                  translation -29 0 13
+                  children USE _7
+                }
+                Transform {
+                  translation -31 0 -7
+                  children USE RedBox
+                }
+                Transform {
+                  translation 21 0 15
+                  children USE _7
+                }
+                Transform {
+                  translation -19 0 -19
                   children [
                     USE YellowBox
                     DEF _16 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation 15 0 3
+                  translation -17 0 17
+                  children USE RedBox
+                }
+                Transform {
+                  translation -5 0 -1
+                  children USE RedBox
+                }
+                Transform {
+                  translation 15 0 -13
+                  children USE _7
+                }
+                Transform {
+                  translation -9 0 15
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 31 0 13
                   children [
                     USE YellowBox
                     DEF _18 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -19 0 3
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 31 0 -5
-                  children USE RedBox
-                }
-                Transform {
-                  translation 29 0 -5
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 1 0 -5
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -31 0 13
-                  children USE RedBox
-                }
-                Transform {
-                  translation 7 0 13
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -31 0 1
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 9 0 -13
-                  children USE RedBox
-                }
-                Transform {
-                  translation -25 0 15
-                  children USE RedBox
-                }
-                Transform {
-                  translation 21 0 -19
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 19 0 -9
-                  children USE RedBox
-                }
-                Transform {
-                  translation 27 0 -15
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation 31 0 19
-                  children USE RedBox
-                }
-                Transform {
-                  translation -15 0 13
-                  children USE _7
-                }
-                Transform {
-                  translation 31 0 11
+                  translation -7 0 -11
                   children [
                     USE YellowBox
                     DEF _19 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -27 0 -5
-                  children USE RedBox
+                  translation 19 0 7
+                  children USE _7
                 }
                 Transform {
-                  translation -7 0 -1
-                  children USE RedBox
-                }
-                Transform {
-                  translation -1 0 7
+                  translation -25 0 -15
                   children USE OrangeBox
                 }
                 Transform {
-                  translation 23 0 7
+                  translation 5 0 -1
+                  children USE RedBox
+                }
+                Transform {
+                  translation -11 0 -3
+                  children USE _7
+                }
+                Transform {
+                  translation 31 0 5
+                  children USE _7
+                }
+                Transform {
+                  translation -23 0 -11
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 23 0 -1
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -23 0 -13
+                  children USE RedBox
+                }
+                Transform {
+                  translation 19 0 -7
+                  children USE _7
+                }
+                Transform {
+                  translation 31 0 15
+                  children USE _7
+                }
+                Transform {
+                  translation 5 0 3
+                  children USE RedBox
+                }
+                Transform {
+                  translation -25 0 5
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -13 0 -19
+                  children USE RedBox
+                }
+                Transform {
+                  translation -31 0 1
+                  children USE _7
+                }
+                Transform {
+                  translation -23 0 15
                   children [
                     USE YellowBox
                     DEF _20 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation 19 0 19
-                  children USE _7
+                  translation 11 0 -1
+                  children USE RedBox
                 }
                 Transform {
-                  translation 29 0 3
-                  children USE OrangeBox
-                }
-                Transform {
-                  translation -23 0 3
+                  translation 27 0 -5
                   children [
                     USE YellowBox
                     DEF _21 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -25 0 13
+                  translation 9 0 17
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -7 0 3
+                  children USE RedBox
+                }
+                Transform {
+                  translation 31 0 3
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 11 0 11
+                  children USE RedBox
+                }
+                Transform {
+                  translation 15 0 -7
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation 11 0 -11
+                  children USE OrangeBox
+                }
+                Transform {
+                  translation -29 0 -7
                   children [
                     USE YellowBox
                     DEF _22 TouchSensor { }
                   ]
                 }
                 Transform {
-                  translation -19 0 -3
+                  translation 11 0 -7
+                  children USE RedBox
+                }
+                Transform {
+                  translation 19 0 13
                   children USE OrangeBox
                 }
                 Transform {
-                  translation -9 0 -17
-                  children USE RedBox
-                }
-                Transform {
-                  translation 21 0 -9
+                  translation 29 0 3
                   children USE _7
                 }
                 Transform {
-                  translation 9 0 19
+                  translation 29 0 17
                   children USE RedBox
                 }
                 Transform {
-                  translation 1 0 -19
+                  translation 25 0 7
+                  children [
+                    USE YellowBox
+                    DEF _23 TouchSensor { }
+                  ]
+                }
+                Transform {
+                  translation 15 0 1
                   children USE RedBox
                 }
                 Transform {
-                  translation -1 0 3
-                  children USE _7
-                }
-                Transform {
-                  translation 9 0 -1
-                  children USE _7
-                }
-                Transform {
-                  translation -25 0 5
-                  children USE OrangeBox
+                  translation 15 0 11
+                  children USE RedBox
                 }
               ]
             }
@@ -1014,7 +1022,7 @@ DEF _10 LayerSet {
           inputOutput    SFTime  startTime -1
           inputOutput    SFNode  viewpoint USE Inside
           inputOutput    SFNode  playground MFInt32 {
-            keyValue [ 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 2, 3, 1, 0, 0, 0, 0, 1, 0, 3, 4, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 1, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 2, 0, 3, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 0, 0, 0, 0, 0, 4, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 2, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 3, 0, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 1, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 2, 0, 2, 0, 3, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 3, 0, 0, 4, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 3 ]
+            keyValue [ 1, 0, 0, 0, 0, 0, 1, 3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 4, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1, 0, 0, 0, 0, 0, 3, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 2, 2, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 0, 0, 3, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 3, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3, 4, 2, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 0, 0, 0, 2, 0, 2, 0, 3, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, 0, 4, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 3, 0, 0, 4, 0, 0, 2, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 ]
           }
           inputOutput    SFNode  group USE Obstacles
           inputOutput    MFNode  children [
@@ -1214,7 +1222,7 @@ function random (max)
                   string "Smashing Boxes"
                   solid TRUE
                   fontStyle FontStyle {
-                    family [ "BertramLetPlain.otf", "SANS" ]
+                    family [ "BertramLetPlain", "SANS" ]
                     style "BOLD"
                     size 1.18
                     justify [ "END", "BEGIN" ]
@@ -1235,10 +1243,10 @@ function random (max)
                   }
                 }
                 geometry DEF _79 Text {
-                  string [ "Boxes left: 16", "Time: 00:00" ]
+                  string [ "Boxes left: 17", "Time: 00:00" ]
                   solid TRUE
                   fontStyle FontStyle {
-                    family [ "BertramLetPlain.otf", "SANS" ]
+                    family [ "BertramLetPlain", "SANS" ]
                     style "BOLD"
                     size 0.83
                     justify [ "END", "BEGIN" ]
@@ -1249,11 +1257,11 @@ function random (max)
             DEF _80 TimeSensor {
               loop TRUE
               startTime 1441724287.7888
-              stopTime 1742744144.004
+              stopTime 1769349528.812
             }
             DEF StatusScript Script {
               inputOnly      SFTime   set_cycleTime
-              inputOutput    SFInt32  boxesLeft 16
+              inputOutput    SFInt32  boxesLeft 17
               outputOnly     MFString string_changed
               outputOnly     SFTime   stopTime
               initializeOnly SFNode   timer USE _80
@@ -1300,7 +1308,7 @@ function eventsProcessed ()
                   string "Created with Titania"
                   solid TRUE
                   fontStyle FontStyle {
-                    family [ "BertramLetPlain.otf", "SANS" ]
+                    family [ "BertramLetPlain", "SANS" ]
                     style "BOLD"
                     size 0.83
                     justify [ "END", "END" ]
@@ -1334,13 +1342,13 @@ function eventsProcessed ()
             size 1 1 1
           }
           DEF StartNowText Transform {
-            scale 0.1627072 0.1627072 0.1627072
+            scale 0.1616918 0.1616918 0.1616918
             children [
               DEF StartNowAnim Group {
                 children [
                   DEF _85 TimeSensor {
                     loop TRUE
-                    startTime 1742744144.173
+                    startTime 1769349529.092
                     stopTime 1441729852.59986
                   }
                   DEF StartNowTextScaleInterpolator PositionInterpolator {
@@ -1362,7 +1370,7 @@ function eventsProcessed ()
                   string [ "Find all yellow boxes", "and destroy them!", "", "Start game now!" ]
                   solid TRUE
                   fontStyle FontStyle {
-                    family [ "BertramLetPlain.otf", "SANS" ]
+                    family [ "BertramLetPlain", "SANS" ]
                     style "BOLD"
                     size 0.83
                     justify [ "MIDDLE", "MIDDLE" ]
@@ -1429,7 +1437,7 @@ function eventsProcessed ()
                   string [ "Congratulations!", "You found all yellow boxes.", "", "Continue" ]
                   solid TRUE
                   fontStyle FontStyle {
-                    family [ "BertramLetPlain.otf", "SANS" ]
+                    family [ "BertramLetPlain", "SANS" ]
                     style "BOLD"
                     size 0.83
                     justify [ "MIDDLE", "MIDDLE" ]
@@ -1510,3 +1518,4 @@ ROUTE _19.touchTime TO PlayGroundScript.set_touchTime
 ROUTE _20.touchTime TO PlayGroundScript.set_touchTime
 ROUTE _21.touchTime TO PlayGroundScript.set_touchTime
 ROUTE _22.touchTime TO PlayGroundScript.set_touchTime
+ROUTE _23.touchTime TO PlayGroundScript.set_touchTime

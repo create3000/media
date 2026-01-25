@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -11,12 +12,24 @@
           "@content": "Rise and Shine"
         },
         {
-          "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 25 Jan 2026 13:03:36 GMT"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:03:39 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:38 GMT"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         }
       ],
       "component": [
@@ -26,7 +39,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -67,7 +80,7 @@
               { "Switch":
                 {
                   "@DEF": "_2",
-                  "@whichChoice": 21,
+                  "@whichChoice": 3,
                   "-children": [
                     { "Transform":
                       {
@@ -82,7 +95,7 @@
                                   "-fontStyle": { "FontStyle":
                                     {
                                       "@DEF": "_3",
-                                      "@family": [ "NewCenturySchlbk-Roman.otf", "SERIF" ],
+                                      "@family": [ "NewCenturySchlbk-Roman", "SERIF" ],
                                       "@size": 0.3,
                                       "@justify": [ "MIDDLE", "FIRST" ]
                                     }
@@ -790,6 +803,13 @@
                     }
                   ]
                 }
+              },
+              { "FontLibrary":
+                {
+                  "@DEF": "NewCenturySchlbk-Roman",
+                  "@family": "NewCenturySchlbk-Roman",
+                  "@url": [ "NewCenturySchlbk-Roman.otf" ]
+                }
               }
             ]
           }
@@ -812,7 +832,7 @@
             "@fromNode": "WhichChoiceInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_2",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         }
       ]

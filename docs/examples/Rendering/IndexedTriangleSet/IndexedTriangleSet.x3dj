@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.8.17, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.1.14, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Tue, 29 Jul 2025 13:52:05 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:57 GMT"
         }
       ],
       "component": [
@@ -50,7 +51,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -88,6 +89,20 @@
                 {
                   "@DEF": "HUD",
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "Mambo-Bold",
+                        "@family": "Mambo-Bold",
+                        "@url": [ "assets/Mambo-Bold.otf" ]
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "MaterialIcons",
+                        "@family": "MaterialIcons",
+                        "@url": [ "assets/MaterialIcons.ttf" ]
+                      }
+                    },
                     { "OrthoViewpoint":
                       {
                         "@position": [ 0.8885, -0.5, 10 ],
@@ -130,7 +145,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@family": [ "assets/Mambo-Bold.otf" ],
+                                            "@family": [ "Mambo-Bold" ],
                                             "@justify": [ "END" ]
                                           }
                                         }
@@ -160,7 +175,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
-                                            "@family": [ "assets/Mambo-Bold.otf" ]
+                                            "@family": [ "Mambo-Bold" ]
                                           }
                                         }
                                       }
@@ -189,11 +204,11 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_8",
-                                  "@string": [ "" ],
+                                  "@string": [ "" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "assets/MaterialIcons.ttf" ],
+                                      "@family": [ "MaterialIcons" ],
                                       "@justify": [ "END" ]
                                     }
                                   }
@@ -450,7 +465,7 @@
                     { "Transform":
                       {
                         "@DEF": "_10",
-                        "@rotation": [ 0, -1, 0, 0.445484792555662 ],
+                        "@rotation": [ 0, -1, 0, 3.15594594048606 ],
                         "-children": [
                           { "Group":
                             {

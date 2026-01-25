@@ -1,19 +1,19 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT EnvironmentalSensor : 3
 COMPONENT Layering : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 UNIT angle degree 0.017453292519943295
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 26 Nov 2017 02:44:30 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:02:53 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:34 GMT"
 
 EXTERNPROTO BooleanSwitch [
   inputOutput    SFBool  whichChoice
@@ -34,7 +34,6 @@ LayerSet {
   order [ 0, 1, 2 ]
   layers [
     DEF Scene Layer {
-      pickable FALSE
       children [
         DEF Walk NavigationInfo {
           type "WALK"
@@ -191,8 +190,12 @@ LayerSet {
       ]
     }
     DEF HUD Layer {
-      pickable FALSE
+      pointerEvents FALSE
       children [
+        DEF MetaBoldLf FontLibrary {
+          family "MetaBoldLf-Caps"
+          url "assets/MetaBoldLf-Caps.otf"
+        }
         DEF Text_1 Transform {
           translation -6.70092 3.38975 0
           scale 0.25 0.25 0.25
@@ -204,7 +207,7 @@ LayerSet {
               string "ProximitySensor"
               solid TRUE
               fontStyle FontStyle {
-                family "assets/MetaBoldLf-Caps.otf"
+                family "MetaBoldLf-Caps"
               }
             }
           }

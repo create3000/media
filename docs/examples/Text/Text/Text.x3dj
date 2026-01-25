@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,21 +21,21 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.18, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.162, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 12 Sep 2024 21:12:32 GMT"
+          "@content": "Sun, 25 Jan 2026 14:31:03 GMT"
         }
       ],
       "component": [
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -445,7 +446,7 @@
                             "@string": [ "Vonique 64" ],
                             "-fontStyle": { "FontStyle":
                               {
-                                "@family": [ "assets/vonique-64/Vonique%2064%20Bold.ttf", "SANS" ],
+                                "@family": [ "Vonique-Bold", "SANS" ],
                                 "@style": "BOLD",
                                 "@spacing": 1.2
                               }
@@ -467,7 +468,7 @@
                             "@string": [ "", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&/()=?\\'" ],
                             "-fontStyle": { "FontStyle":
                               {
-                                "@family": [ "assets/vonique-64/Vonique%2064.ttf", "SANS" ],
+                                "@family": [ "Vonique", "SANS" ],
                                 "@spacing": 1.2
                               }
                             }
@@ -476,6 +477,20 @@
                       }
                     }
                   ]
+                }
+              },
+              { "FontLibrary":
+                {
+                  "@DEF": "Vonique-Bold",
+                  "@family": "Vonique-Bold",
+                  "@url": [ "assets/vonique-64/Vonique%2064%20Bold.ttf" ]
+                }
+              },
+              { "FontLibrary":
+                {
+                  "@DEF": "Vonique",
+                  "@family": "Vonique",
+                  "@url": [ "assets/vonique-64/Vonique%2064.ttf" ]
                 }
               }
             ]

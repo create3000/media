@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:25:45 GMT"
+          "@content": "Sun, 25 Jan 2026 14:31:09 GMT"
         }
       ],
       "component": [
@@ -50,7 +51,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -195,64 +196,64 @@
                           { "PointLight":
                             {
                               "@DEF": "Light1",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.645102,
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.9913076,
                               "@location": [ -1, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light2",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.19518,
-                              "@location": [ -0.714286, 0, 0 ]
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.5152089,
+                              "@location": [ -0.7142857, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light3",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.888487,
-                              "@location": [ -0.428571, 0, 0 ]
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.3488525,
+                              "@location": [ -0.4285714, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light4",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.912746,
-                              "@location": [ -0.142857, 0, 0 ]
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.950221,
+                              "@location": [ -0.1428571, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light5",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.249688,
-                              "@location": [ 0.142857, 0, 0 ]
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.8360535,
+                              "@location": [ 0.1428571, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light6",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.60139,
-                              "@location": [ 0.428571, 0, 0 ]
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.09232065,
+                              "@location": [ 0.4285714, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light7",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.999609,
-                              "@location": [ 0.714286, 0, 0 ]
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.7209315,
+                              "@location": [ 0.7142857, 0, 0 ]
                             }
                           },
                           { "PointLight":
                             {
                               "@DEF": "Light8",
-                              "@color": [ 0.5708, 1, 0 ],
-                              "@intensity": 0.645102,
+                              "@color": [ 0.128, 1, 0 ],
+                              "@intensity": 0.9913076,
                               "@location": [ 1, 0, 0 ]
                             }
                           }
@@ -381,6 +382,20 @@
                       {
                       }
                     },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "CharlotteSansBoldPlain",
+                        "@family": "CharlotteSansBoldPlain",
+                        "@url": [ "./CharlotteSansBoldPlain.otf" ]
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "CharlotteSansBookPlain",
+                        "@family": "CharlotteSansBookPlain",
+                        "@url": [ "./CharlotteSansBookPlain.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "lights",
@@ -435,7 +450,7 @@
                                   "-fontStyle": { "FontStyle":
                                     {
                                       "@DEF": "_5",
-                                      "@family": [ "CharlotteSansBoldPlain.otf", "SERIF" ],
+                                      "@family": [ "CharlotteSansBoldPlain", "SERIF" ],
                                       "@size": 0.08,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
                                     }
@@ -582,7 +597,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "CharlotteSansBookPlain.otf", "SERIF" ],
+                                      "@family": [ "CharlotteSansBookPlain", "SERIF" ],
                                       "@size": 0.08,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
                                     }
@@ -619,57 +634,57 @@
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light2",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light3",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light4",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light5",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light6",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light7",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "Light1",
-            "@fromField": "color",
+            "@fromField": "color_changed",
             "@toNode": "Light8",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         },
         { "ROUTE":
@@ -685,7 +700,7 @@
             "@fromNode": "Light1ColorInterpolator",
             "@fromField": "value_changed",
             "@toNode": "Light1",
-            "@toField": "color"
+            "@toField": "set_color"
           }
         }
       ]

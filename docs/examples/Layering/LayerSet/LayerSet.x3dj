@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -11,12 +12,24 @@
           "@content": "Rise and Shine"
         },
         {
+          "@name": "created",
+          "@content": "Sat, 15 Feb 2025 23:26:14 GMT"
+        },
+        {
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:09:21 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:47 GMT"
         }
       ],
       "component": [
@@ -46,7 +59,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -180,13 +193,13 @@
               { "Layer":
                 {
                   "@DEF": "Skyline",
-                  "@pickable": false,
+                  "@pointerEvents": false,
                   "-children": [
                     { "Transform":
                       {
                         "@DEF": "skyline",
-                        "@translation": [ -1.180119, 0.4531243, 0 ],
-                        "@scale": [ 2.183844, 2.183844, 2.183844 ],
+                        "@translation": [ 0.04296032, 0.02054626, 0 ],
+                        "@scale": [ 1.934351, 1.934351, 1.934351 ],
                         "-children": [
                           { "Group":
                             {
@@ -253,7 +266,7 @@
               { "Layer":
                 {
                   "@DEF": "Plants",
-                  "@pickable": false,
+                  "@pointerEvents": false,
                   "-children": [
                     { "Transform":
                       {
@@ -294,6 +307,13 @@
                       {
                         "@DEF": "MenuItems",
                         "-children": [
+                          { "FontLibrary":
+                            {
+                              "@DEF": "BDFazer",
+                              "@family": "BDFazer",
+                              "@url": [ "BDFazer.otf" ]
+                            }
+                          },
                           { "Group":
                             {
                               "@DEF": "MainMenu",
@@ -321,7 +341,7 @@
                                               "@solid": true,
                                               "-fontStyle": { "FontStyle":
                                                 {
-                                                  "@family": [ "BDFazer.otf" ],
+                                                  "@family": [ "BDFazer" ],
                                                   "@size": 1.2
                                                 }
                                               }
@@ -371,7 +391,7 @@
                                                         "-fontStyle": { "FontStyle":
                                                           {
                                                             "@DEF": "_12",
-                                                            "@family": [ "BDFazer.otf" ],
+                                                            "@family": [ "BDFazer" ],
                                                             "@size": 0.6
                                                           }
                                                         }
@@ -1201,7 +1221,7 @@
             "@fromNode": "_20",
             "@fromField": "isOver",
             "@toNode": "_8",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1209,7 +1229,7 @@
             "@fromNode": "_28",
             "@fromField": "isOver",
             "@toNode": "_21",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1217,7 +1237,7 @@
             "@fromNode": "_36",
             "@fromField": "isOver",
             "@toNode": "_29",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1225,7 +1245,7 @@
             "@fromNode": "_44",
             "@fromField": "isOver",
             "@toNode": "_37",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1233,7 +1253,7 @@
             "@fromNode": "_52",
             "@fromField": "isOver",
             "@toNode": "_45",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1241,7 +1261,7 @@
             "@fromNode": "_60",
             "@fromField": "isOver",
             "@toNode": "_53",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1249,7 +1269,7 @@
             "@fromNode": "_69",
             "@fromField": "isOver",
             "@toNode": "_61",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -1265,7 +1285,7 @@
             "@fromNode": "skylineScaleInterpolator",
             "@fromField": "value_changed",
             "@toNode": "skyline",
-            "@toField": "scale"
+            "@toField": "set_scale"
           }
         },
         { "ROUTE":
@@ -1281,7 +1301,7 @@
             "@fromNode": "skylineTranslationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "skyline",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -1289,7 +1309,7 @@
             "@fromNode": "_69",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1297,7 +1317,7 @@
             "@fromNode": "_60",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1305,7 +1325,7 @@
             "@fromNode": "_52",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1313,7 +1333,7 @@
             "@fromNode": "_44",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1321,7 +1341,7 @@
             "@fromNode": "_36",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1329,7 +1349,7 @@
             "@fromNode": "_28",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1337,7 +1357,7 @@
             "@fromNode": "_20",
             "@fromField": "touchTime",
             "@toNode": "_70",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1345,7 +1365,7 @@
             "@fromNode": "_6",
             "@fromField": "enterTime",
             "@toNode": "SkylineAnimationTimer",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -1353,7 +1373,7 @@
             "@fromNode": "_6",
             "@fromField": "exitTime",
             "@toNode": "SkylineAnimationTimer",
-            "@toField": "stopTime"
+            "@toField": "set_stopTime"
           }
         }
       ]

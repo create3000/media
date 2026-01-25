@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:09:13 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:45 GMT"
         }
       ],
       "component": [
@@ -46,7 +47,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -55,6 +56,13 @@
         { "NavigationInfo":
           {
             "@type": [ "NONE" ]
+          }
+        },
+        { "FontLibrary":
+          {
+            "@DEF": "ATComputer",
+            "@family": "ATComputer",
+            "@url": [ "assets/ATComputer.otf" ]
           }
         },
         { "Transform":
@@ -81,7 +89,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.7,
                           "@justify": [ "MIDDLE" ]
                         }
@@ -111,7 +119,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4,
                           "@justify": [ "MIDDLE" ]
                         }
@@ -302,7 +310,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4,
                           "@justify": [ "MIDDLE" ]
                         }
@@ -329,11 +337,11 @@
                   "-geometry": { "Text":
                     {
                       "@DEF": "_21",
-                      "@string": [ "56374" ],
+                      "@string": [ "75859" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4,
                           "@justify": [ "MIDDLE" ]
                         }
@@ -363,7 +371,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4
                         }
                       }
@@ -392,7 +400,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4,
                           "@justify": [ "END" ]
                         }
@@ -423,7 +431,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4,
                           "@spacing": 1.2
                         }
@@ -454,7 +462,7 @@
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/ATComputer.otf" ],
+                          "@family": [ "ATComputer" ],
                           "@size": 0.4,
                           "@spacing": 1.2,
                           "@justify": [ "END" ]
@@ -508,7 +516,7 @@
             "@fromNode": "ScoreScript",
             "@fromField": "name_changed",
             "@toNode": "_20",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -516,7 +524,7 @@
             "@fromNode": "ScoreScript",
             "@fromField": "score_changed",
             "@toNode": "_21",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -524,7 +532,7 @@
             "@fromNode": "ScoreScript",
             "@fromField": "names_changed",
             "@toNode": "_22",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":
@@ -532,7 +540,7 @@
             "@fromNode": "ScoreScript",
             "@fromField": "scores_changed",
             "@toNode": "_23",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         }
       ]

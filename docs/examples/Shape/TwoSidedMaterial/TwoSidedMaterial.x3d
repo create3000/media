@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
     <component name='Layout' level='2'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 24 Sep 2017 07:51:00 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:20:40 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:30:58 GMT'/>
   </head>
   <Scene>
     <WorldInfo/>
@@ -48,11 +48,11 @@
         <NavigationInfo
             type='"NONE"'/>
         <Viewpoint DEF='Viewpoint_2'
-            position='-5.5 0 11.41385'/>
+            position='-5.5 0 13.41469'/>
         <Transform DEF='TiltAnimation'
-            rotation='0.999999999996627 1.83661056419437e-6 -1.83659456429371e-6 46.9671928918897'>
+            rotation='0.999999969875807 1.83661050887416e-6 -1.83659450897399e-6 0.00363286053892757'>
           <Transform DEF='RotationAnimation'
-              rotation='0 1.00000000000005 0 5.09017595535568'>
+              rotation='0 -1 0 119.548570709394'>
             <Group DEF='RotationAnimation_3'>
               <TimeSensor DEF='AnimationTimer'
                   cycleInterval='32'
@@ -102,7 +102,7 @@
                     texCoordIndex='3, 0, 1, -1, 1, 2, 3, -1'
                     coordIndex='3, 0, 1, -1, 1, 2, 3, -1'>
                   <Coordinate DEF='_34'
-                      point='-3 0.7729981 -0.1968988, 3 0.7729981 -0.78795, 3 -0.7729981 0.78795, -3 -0.7729981 0.1968988'/>
+                      point='-3 1.99675 0.0005215378, 3 1.99675 0.002087091, 3 -1.99675 -0.002087091, -3 -1.99675 -0.0005215378'/>
                 </IndexedFaceSet>
               </Shape>
             </Transform>
@@ -397,7 +397,10 @@
             direction='0.92903 0 -0.370005'/>
       </Layer>
       <Layer>
-        <Transform DEF='Text'
+        <FontLibrary DEF='NexusMixTF-BoldItalic'
+            family='NexusMixTF-BoldItalic'
+            url='"NexusMixTF-BoldItalic/NexusMixTF-BoldItalic.otf"'/>
+        <Transform DEF='Text_1'
             translation='-6.5342 -1.42636 0'>
           <Shape>
             <Appearance>
@@ -405,10 +408,10 @@
                   diffuseColor='0 0 0'/>
             </Appearance>
             <Text DEF='_50'
-                string='"Titania X3D Browser", "Version 4.3.10"'
+                string='"X_ITE X3D Browser", "Version 14.0.0"'
                 solid='true'>
               <FontStyle
-                  family='"NexusMixTF-BoldItalic/NexusMixTF-BoldItalic.otf", "SANS"'/>
+                  family='"NexusMixTF-BoldItalic", "SANS"'/>
             </Text>
           </Shape>
         </Transform>

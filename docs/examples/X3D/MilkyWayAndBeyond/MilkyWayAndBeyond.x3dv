@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.4.4
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -7,16 +7,16 @@ COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 UNIT angle degree 0.017453292519943295
 
 META "comment" "Rise and Shine"
 META "created" "Mon, 04 Apr 2016 01:15:14 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.8, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.136, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 12 Apr 2024 17:54:52 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:10 GMT"
 
 EXTERNPROTO MFFloat [
   inputOnly   SFTime  set_triggerTime
@@ -63,6 +63,10 @@ DEF _3 LayerSet {
         scaleMode [ "FRACTION", "FRACTION" ]
       }
       children [
+        DEF Voltaire FontLibrary {
+          family "Voltaire"
+          url "Voltaire/Voltaire.ttf"
+        }
         DEF Rectangle2D Transform {
           translation 0.0816685 0.413343 0
           scale 0.417387 0.0830214 0.353753
@@ -208,7 +212,7 @@ DEF _3 LayerSet {
                 string [ "Universe", "Galaxy", "Pulsars" ]
                 solid TRUE
                 fontStyle ScreenFontStyle {
-                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  family [ "Voltaire", "SANS" ]
                   style "BOLD"
                   pointSize 16
                   spacing 1.6
@@ -238,7 +242,7 @@ DEF _3 LayerSet {
                 string [ "Data Visualisation by", "Paul Bourke" ]
                 solid TRUE
                 fontStyle ScreenFontStyle {
-                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  family [ "Voltaire", "SANS" ]
                   style "BOLD"
                   pointSize 9
                   spacing 1.2
@@ -269,7 +273,7 @@ DEF _3 LayerSet {
                 length 236
                 solid TRUE
                 fontStyle ScreenFontStyle {
-                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  family [ "Voltaire", "SANS" ]
                   style "BOLD"
                   pointSize 9
                   spacing 1.2
@@ -299,7 +303,7 @@ DEF _3 LayerSet {
                 string "MilkyWay and Beyond"
                 solid TRUE
                 fontStyle ScreenFontStyle {
-                  family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                  family [ "Voltaire", "SANS" ]
                   style "BOLD"
                   pointSize 26
                   spacing 1.6
@@ -341,7 +345,7 @@ DEF _3 LayerSet {
                     string "Home"
                     solid TRUE
                     fontStyle ScreenFontStyle {
-                      family [ "Voltaire/Voltaire.ttf", "SANS" ]
+                      family [ "Voltaire", "SANS" ]
                       style "BOLD"
                       pointSize 16
                       spacing 1.6
@@ -387,7 +391,7 @@ DEF _3 LayerSet {
             DEF _27 TouchSensor { }
             DEF GalaxyToggleScript Script {
               inputOnly      SFTime set_time
-              inputOutput    SFTime resetTime 0
+              inputOutput    SFTime resetTime -1
               inputOutput    SFBool active FALSE
               outputOnly     SFTime triggerTrue
               outputOnly     SFTime triggerFalse
@@ -454,7 +458,7 @@ function set_time (value, time)
                         DEF _30 TouchSensor { }
                         DEF PulsarsToggleScript Script {
                           inputOnly      SFTime set_time
-                          inputOutput    SFTime resetTime 0
+                          inputOutput    SFTime resetTime -1
                           inputOutput    SFBool active FALSE
                           outputOnly     SFTime triggerTrue
                           outputOnly     SFTime triggerFalse
@@ -527,7 +531,7 @@ function set_time (value, time)
                                     DEF _34 TouchSensor { }
                                     DEF UniverseToggleScript Script {
                                       inputOnly      SFTime set_time
-                                      inputOutput    SFTime resetTime 0
+                                      inputOutput    SFTime resetTime -1
                                       inputOutput    SFBool active FALSE
                                       outputOnly     SFTime triggerTrue
                                       outputOnly     SFTime triggerFalse

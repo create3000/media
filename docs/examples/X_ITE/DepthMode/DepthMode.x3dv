@@ -1,8 +1,8 @@
-#X3D V4.0 utf8 X_ITE V9.1.0
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
-COMPONENT Text : 1
+COMPONENT Text : 2
 COMPONENT X_ITE : 1
 
 UNIT angle degree 0.017453292519943295
@@ -10,9 +10,9 @@ UNIT angle degree 0.017453292519943295
 META "created" "Thu, 23 Nov 2023 08:48:21 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.2.0, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.104, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 23 Nov 2023 20:26:57 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:17 GMT"
 
 DEF Gray Background {
   skyColor 0.2 0.2 0.2
@@ -31,7 +31,7 @@ DEF _2 OrientationInterpolator {
 DEF Box1_1 Transform {
   translation -3 0 0
   children DEF _3 Transform {
-    rotation 0 1 0 269.45999622345
+    rotation 0 1 0 282.888003587723
     children DEF Box_1 Transform {
       rotation -0.587480920443623 0.243342564883178 0.77178401397722 56.4445743079964
       children [
@@ -67,7 +67,7 @@ DEF Box1_1 Transform {
 
 DEF Box2 Transform {
   children DEF _6 Transform {
-    rotation 0 1 0 269.45999622345
+    rotation 0 1 0 282.888003587723
     children DEF Box_2 Transform {
       rotation -0.587480920443623 0.243342564883178 0.77178401397722 56.4445743079964
       children [
@@ -88,7 +88,7 @@ DEF Box2 Transform {
 DEF Box3 Transform {
   translation 3 0 0
   children DEF _7 Transform {
-    rotation 0 1 0 269.45999622345
+    rotation 0 1 0 282.888003587723
     children DEF Box Transform {
       rotation -0.587480920443623 0.243342564883178 0.77178401397722 56.4445743079964
       children [
@@ -117,7 +117,7 @@ DEF Title Transform {
     geometry Text {
       string "The Depth Corporation"
       fontStyle FontStyle {
-        family "assets/DotMatrix-TwoExtended.otf"
+        family "DotMatrix-TwoExtended"
         style "BOLD"
         justify [ "MIDDLE", "MIDDLE" ]
       }
@@ -136,13 +136,23 @@ DEF Subtitle Transform {
     geometry Text {
       string [ "Presents", "The DepthMode Node" ]
       fontStyle FontStyle {
-        family "assets/Days.otf"
+        family "Days"
         size 0.3
         spacing 1.2
         justify [ "MIDDLE", "MIDDLE" ]
       }
     }
   }
+}
+
+DEF DotMatrix-TwoExtended FontLibrary {
+  family "DotMatrix-TwoExtended"
+  url "assets/DotMatrix-TwoExtended.otf"
+}
+
+DEF Days FontLibrary {
+  family "Days"
+  url "assets/Days.otf"
 }
 
 ROUTE _2.value_changed TO _3.set_rotation

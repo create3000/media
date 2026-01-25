@@ -1,21 +1,26 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT KeyDeviceSensor : 2
 COMPONENT Scripting : 1
 COMPONENT Sound : 3
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Thu, 13 Dec 2018 13:18:33 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:09:13 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:45 GMT"
 
 NavigationInfo {
   type "NONE"
+}
+
+DEF ATComputer FontLibrary {
+  family "ATComputer"
+  url "assets/ATComputer.otf"
 }
 
 DEF YouWin Transform {
@@ -31,7 +36,7 @@ DEF YouWin Transform {
       string "You win"
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.7
         justify "MIDDLE"
       }
@@ -47,7 +52,7 @@ DEF EnterYourName Transform {
       string "enter your name"
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
         justify "MIDDLE"
       }
@@ -151,7 +156,7 @@ DEF Name Transform {
       string ""
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
         justify "MIDDLE"
       }
@@ -164,10 +169,10 @@ DEF Score Transform {
   children Shape {
     appearance USE _19
     geometry DEF _21 Text {
-      string "56374"
+      string "75859"
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
         justify "MIDDLE"
       }
@@ -183,7 +188,7 @@ DEF PlayersText Transform {
       string "Players"
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
       }
     }
@@ -198,7 +203,7 @@ DEF ScoresText Transform {
       string "Scores"
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
         justify "END"
       }
@@ -214,7 +219,7 @@ DEF Names Transform {
       string [ "nemesis", "gradius", "star gazer", "billy", "is an idiot", "Final bug" ]
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
         spacing 1.2
       }
@@ -230,7 +235,7 @@ DEF Scores Transform {
       string [ "64954", "90797", "76015", "75371", "59181", "93368" ]
       solid TRUE
       fontStyle FontStyle {
-        family "assets/ATComputer.otf"
+        family "ATComputer"
         size 0.4
         spacing 1.2
         justify "END"

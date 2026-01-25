@@ -1,18 +1,18 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
 COMPONENT Layout : 2
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Mon, 25 Sep 2017 05:26:15 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:08:17 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:41 GMT"
 
 WorldInfo { }
 
@@ -122,7 +122,7 @@ LayerSet {
               ]
             }
             DEF Red Transform {
-              translation 6 0 0
+              translation 5.52884 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -140,7 +140,7 @@ LayerSet {
               }
             }
             DEF Box Transform {
-              translation 3.074843 0 0
+              translation 1.528842 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -156,7 +156,7 @@ LayerSet {
               }
             }
             DEF Yellow Transform {
-              translation 1.074843 0 0
+              translation -0.4711583 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -172,7 +172,7 @@ LayerSet {
               }
             }
             DEF Box_65 Transform {
-              translation -0.9251568 0 0
+              translation -2.471158 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -188,7 +188,7 @@ LayerSet {
               }
             }
             DEF Box_66 Transform {
-              translation -4.925162 0 0
+              translation -6.471161 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -204,7 +204,7 @@ LayerSet {
               }
             }
             DEF Box_67 Transform {
-              translation -6.925161 0 0
+              translation -8.47116 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -220,7 +220,7 @@ LayerSet {
               }
             }
             DEF Box_68 Transform {
-              translation -8.925161 0 0
+              translation -10.47116 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -236,7 +236,7 @@ LayerSet {
               }
             }
             DEF Box_69 Transform {
-              translation -2.925162 0 0
+              translation -4.471161 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -252,7 +252,7 @@ LayerSet {
               }
             }
             DEF Box_70 Transform {
-              translation 5.074843 0 0
+              translation 3.528842 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -268,7 +268,7 @@ LayerSet {
               }
             }
             DEF Box_71 Transform {
-              translation -12.92516 0 0
+              translation 6 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -284,7 +284,7 @@ LayerSet {
               }
             }
             DEF Box_72 Transform {
-              translation -10.92516 0 0
+              translation -12.47116 0 0
               scale 0.138356 5 4
               children Shape {
                 appearance Appearance {
@@ -304,23 +304,29 @@ LayerSet {
       ]
     }
     Layer {
-      children DEF Text Transform {
-        translation -6.58324 -2.42055 0
-        children Shape {
-          appearance Appearance {
-            material Material {
-              diffuseColor 1 1 1
+      children [
+        FontLibrary {
+          family "Roice-BlackItalicSC"
+          url "Roice-BlackItalicSC.otf"
+        }
+        DEF Text Transform {
+          translation -6.58324 -2.42055 0
+          children Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 1 1 1
+              }
             }
-          }
-          geometry Text {
-            string [ "X3D is versatile,", "use X3D graphics everywhere." ]
-            solid TRUE
-            fontStyle FontStyle {
-              family [ "Roice-BlackItalicSC.otf", "SANS" ]
+            geometry Text {
+              string [ "X3D is versatile,", "use X3D graphics everywhere." ]
+              solid TRUE
+              fontStyle FontStyle {
+                family [ "Roice-BlackItalicSC", "SANS" ]
+              }
             }
           }
         }
-      }
+      ]
     }
   ]
 }

@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:10:26 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:49 GMT"
         }
       ],
       "component": [
@@ -54,7 +55,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -363,7 +364,7 @@
                     "@fromNode": "BoxRotationInterpolator",
                     "@fromField": "value_changed",
                     "@toNode": "_2",
-                    "@toField": "rotation"
+                    "@toField": "set_rotation"
                   }
                 }
               ]
@@ -436,6 +437,20 @@
                   "@DEF": "MachineLearning",
                   "@pickable": false,
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "BaskervilleOldFacDCD",
+                        "@family": "BaskervilleOldFacDCD",
+                        "@url": [ "assets/BaskervilleOldFacDCD.otf" ]
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "Canaro",
+                        "@family": "Canaro",
+                        "@url": [ "assets/Canaro-LightDEMO.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "Text",
@@ -456,7 +471,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "assets/BaskervilleOldFacDCD.otf" ],
+                                      "@family": [ "BaskervilleOldFacDCD" ],
                                       "@size": 0.49,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
                                     }
@@ -489,7 +504,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "assets/Canaro-LightDEMO.otf" ],
+                                      "@family": [ "Canaro" ],
                                       "@size": 0.11,
                                       "@justify": [ "MIDDLE", "MIDDLE" ]
                                     }

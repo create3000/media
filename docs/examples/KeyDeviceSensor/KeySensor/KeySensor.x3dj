@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:09:07 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:44 GMT"
         }
       ],
       "component": [
@@ -46,7 +47,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -532,12 +533,19 @@
                             "@solid": true,
                             "-fontStyle": { "FontStyle":
                               {
-                                "@family": [ "assets/Machine.otf" ],
+                                "@family": [ "Machine" ],
                                 "@justify": [ "MIDDLE", "MIDDLE" ]
                               }
                             }
                           }
                         }
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "Machine",
+                        "@family": "Machine",
+                        "@url": [ "assets/Machine.otf" ]
                       }
                     }
                   ]
@@ -629,7 +637,7 @@
                           { "TimeSensor":
                             {
                               "@DEF": "_16",
-                              "@startTime": 1700014146.999
+                              "@startTime": 1769351444.337
                             }
                           },
                           { "PositionInterpolator":
@@ -787,7 +795,7 @@
             "@fromNode": "SpaceInvadersScript",
             "@fromField": "translation_changed",
             "@toNode": "Pad",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -803,7 +811,7 @@
             "@fromNode": "_17",
             "@fromField": "value_changed",
             "@toNode": "Weapon",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -819,7 +827,7 @@
             "@fromNode": "WeaponScript",
             "@fromField": "whichChoice_changed",
             "@toNode": "_14",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -835,7 +843,7 @@
             "@fromNode": "SpaceInvadersScript",
             "@fromField": "fire",
             "@toNode": "_16",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -843,7 +851,7 @@
             "@fromNode": "_15",
             "@fromField": "cycleTime",
             "@toNode": "_16",
-            "@toField": "startTime"
+            "@toField": "set_startTime"
           }
         },
         { "ROUTE":
@@ -851,7 +859,7 @@
             "@fromNode": "_16",
             "@fromField": "isActive",
             "@toNode": "_19",
-            "@toField": "loop"
+            "@toField": "set_loop"
           }
         }
       ]

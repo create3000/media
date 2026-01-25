@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='Layering' level='1'/>
     <component name='ParticleSystems' level='3'/>
     <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <component name='X_ITE' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 19 Dec 2017 00:35:26 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Fri, 21 Feb 2025 11:27:15 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:31:16 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Rotor' url='"assets/Rotor.x3d#Rotor"'>
@@ -221,7 +221,7 @@ function initialize ()
         order='1, 2, 3'>
       <Layer DEF='Background'>
         <Transform DEF='_30'
-            rotation='-0.996032985024066 0.0795968978336088 0.0397822397473438 1.50120925714704'
+            rotation='-0.998748270675012 0.049111342109474 0.00948514100474601 1.48599948074619'
             scale='0.999999 1 1'
             scaleOrientation='0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961'>
           <Group DEF='Animation'>
@@ -263,11 +263,11 @@ function initialize ()
             <fieldValue name='loop' value='true'/>
           </ProtoInstance>
           <Transform DEF='BoxAnim'
-              rotation='0 0 1 0.929298451650349'>
+              rotation='0 0 1 5.45840229940528'>
             <Transform DEF='_32'
-                rotation='0 1 0 1.02976314912606'>
+                rotation='0 1 0 2.65218345164066'>
               <Transform DEF='Box_1'
-                  rotation='1 0 0 2.24248913076007'>
+                  rotation='1 0 0 1.74672554423297'>
                 <Shape>
                   <Appearance>
                     <Material
@@ -384,6 +384,9 @@ main ()
         </ParticleSystem>
       </Layer>
       <Layer DEF='HUD'>
+        <FontLibrary DEF='MinskaBoldITCTT'
+            family='MinskaBoldITCTT'
+            url='"assets/MinskaBoldITCTT.otf"'/>
         <Transform DEF='Fire_34'
             translation='-6.80942 3.70732 0'
             scale='1.48791 1.48791 1.48791'>
@@ -396,7 +399,7 @@ main ()
                 string='"Fire"'
                 solid='true'>
               <FontStyle DEF='_36'
-                  family='"assets/MinskaBoldITCTT.otf"'
+                  family='"MinskaBoldITCTT"'
                   justify='"BEGIN", "BEGIN"'/>
             </Text>
           </Shape>

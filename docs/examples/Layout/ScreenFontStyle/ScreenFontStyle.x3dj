@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.52, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.22, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 27 Feb 2025 15:53:19 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:48 GMT"
         }
       ],
       "component": [
@@ -38,7 +39,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -421,9 +422,23 @@
               },
               { "Transform":
                 {
-                  "@DEF": "Vonique64_1",
+                  "@DEF": "Airstrike",
                   "@translation": [ -5.89326, 0, 0 ],
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "airstrikehalf",
+                        "@family": "airstrikehalf",
+                        "@url": [ "assets/airstrike/airstrikehalf.ttf" ]
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "airstrike",
+                        "@family": "airstrike",
+                        "@url": [ "assets/airstrike/airstrike.ttf" ]
+                      }
+                    },
                     { "Shape":
                       {
                         "@DEF": "Name",
@@ -437,7 +452,7 @@
                             "@string": [ "airstrike" ],
                             "-fontStyle": { "ScreenFontStyle":
                               {
-                                "@family": [ "assets/airstrike/airstrikehalf.ttf", "SANS" ],
+                                "@family": [ "airstrikehalf", "SANS" ],
                                 "@style": "BOLD",
                                 "@pointSize": 42,
                                 "@spacing": 1.1
@@ -460,7 +475,7 @@
                             "@string": [ "", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&/()=?\\'" ],
                             "-fontStyle": { "ScreenFontStyle":
                               {
-                                "@family": [ "assets/airstrike/airstrike.ttf", "SANS" ],
+                                "@family": [ "airstrike", "SANS" ],
                                 "@pointSize": 42,
                                 "@spacing": 1.1
                               }

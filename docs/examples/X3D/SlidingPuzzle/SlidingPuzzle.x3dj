@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 31 Jul 2025 08:23:19 GMT"
+          "@content": "Sun, 25 Jan 2026 14:31:12 GMT"
         }
       ],
       "component": [
@@ -54,7 +55,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -305,7 +306,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_21",
-                              "@translation": [ 0, 0.8, 0 ],
+                              "@translation": [ 5.551115e-17, 0.8, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -525,7 +526,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_36",
-                              "@translation": [ 0, 0.4, 0 ],
+                              "@translation": [ 5.551115e-17, 0.4, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -657,7 +658,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_45",
-                              "@translation": [ -0.8, 0, 0 ],
+                              "@translation": [ -0.8, -5.551115e-17, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -701,7 +702,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_48",
-                              "@translation": [ -0.4, 0, 0 ],
+                              "@translation": [ -0.4, -5.551115e-17, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -745,6 +746,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_51",
+                              "@translation": [ 5.551115e-17, -5.551115e-17, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -788,7 +790,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_54",
-                              "@translation": [ 0.4, 0, 0 ],
+                              "@translation": [ 0.4, -5.551115e-17, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -832,7 +834,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_57",
-                              "@translation": [ 0.8, 0, 0 ],
+                              "@translation": [ 0.8, -5.551115e-17, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -964,7 +966,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_66",
-                              "@translation": [ 0, -0.4, 0 ],
+                              "@translation": [ 5.551115e-17, -0.4, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -1183,7 +1185,7 @@
                           { "Transform":
                             {
                               "@DEF": "Polyline2D_81",
-                              "@translation": [ 0, -0.8, 0 ],
+                              "@translation": [ 5.551115e-17, -0.8, 0 ],
                               "@scale": [ 0.18, 0.18, 1 ],
                               "-children": [
                                 { "Shape":
@@ -1870,6 +1872,20 @@
                         "@USE": "_11"
                       }
                     },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "AlienEncountersSolid",
+                        "@family": "AlienEncountersSolid",
+                        "@url": [ "AlienEncountersSolid.otf" ]
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "AlienEncountersItalic",
+                        "@family": "AlienEncountersItalic",
+                        "@url": [ "AlienEncountersItalic.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "HeaderText",
@@ -1897,7 +1913,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "AlienEncountersItalic.otf", "SANS" ],
+                                      "@family": [ "AlienEncountersItalic", "SANS" ],
                                       "@size": 0.2,
                                       "@justify": [ "BEGIN", "BEGIN" ]
                                     }
@@ -1959,7 +1975,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "AlienEncountersSolid.otf", "SANS" ],
+                                      "@family": [ "AlienEncountersSolid", "SANS" ],
                                       "@size": 0.12
                                     }
                                   }
@@ -2073,7 +2089,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "AlienEncountersSolid.otf", "SANS" ],
+                                      "@family": [ "AlienEncountersSolid", "SANS" ],
                                       "@size": 0.12
                                     }
                                   }

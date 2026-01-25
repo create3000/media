@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:20:45 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:59 GMT"
         }
       ],
       "component": [
@@ -50,7 +51,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ],
       "unit": [
@@ -138,18 +139,18 @@
                     { "Viewpoint":
                       {
                         "@DEF": "Viewpoint_2",
-                        "@position": [ -5.5, 0, 10.15 ]
+                        "@position": [ -5.5, 0, 13.41469 ]
                       }
                     },
                     { "Transform":
                       {
                         "@DEF": "TiltAnimation",
-                        "@rotation": [ 0.999999999996627, 1.83661056419437e-6, -1.83659456429371e-6, 89.9999999994204 ],
+                        "@rotation": [ 0.999999969875807, 1.83661050887416e-6, -1.83659450897399e-6, 0.00363286053892757 ],
                         "-children": [
                           { "Transform":
                             {
                               "@DEF": "RotationAnimation",
-                              "@rotation": [ 0, -1, 0, 43.768573234078 ],
+                              "@rotation": [ 0, -1, 0, 119.548570709394 ],
                               "-children": [
                                 { "Group":
                                   {
@@ -255,7 +256,7 @@
                                               "-coord": { "Coordinate":
                                                 {
                                                   "@DEF": "_34",
-                                                  "@point": [ -3, 3.93042e-17, -0.320943, 3, 1.57287e-16, -1.28435, 3, -1.57287e-16, 1.28435, -3, -3.93042e-17, 0.320943 ]
+                                                  "@point": [ -3, 1.99675, 0.0005215378, 3, 1.99675, 0.002087091, 3, -1.99675, -0.002087091, -3, -1.99675, -0.0005215378 ]
                                                 }
                                               }
                                             }
@@ -867,9 +868,16 @@
               { "Layer":
                 {
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "NexusMixTF-BoldItalic",
+                        "@family": "NexusMixTF-BoldItalic",
+                        "@url": [ "NexusMixTF-BoldItalic/NexusMixTF-BoldItalic.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
-                        "@DEF": "Text",
+                        "@DEF": "Text_1",
                         "@translation": [ -6.5342, -1.42636, 0 ],
                         "-children": [
                           { "Shape":
@@ -886,11 +894,11 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_50",
-                                  "@string": [ "Titania X3D Browser", "Version 4.3.10" ],
+                                  "@string": [ "X_ITE X3D Browser", "Version 14.0.0" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "NexusMixTF-BoldItalic/NexusMixTF-BoldItalic.otf", "SANS" ]
+                                      "@family": [ "NexusMixTF-BoldItalic", "SANS" ]
                                     }
                                   }
                                 }
@@ -996,7 +1004,7 @@
             "@fromNode": "RotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "RotationAnimation",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -1036,7 +1044,7 @@
             "@fromNode": "PointInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_34",
-            "@toField": "point"
+            "@toField": "set_point"
           }
         },
         { "ROUTE":
@@ -1044,7 +1052,7 @@
             "@fromNode": "TiltAnimationRotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "TiltAnimation",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -1052,7 +1060,7 @@
             "@fromNode": "ViewpointPositionInterpolator",
             "@fromField": "value_changed",
             "@toNode": "Viewpoint_2",
-            "@toField": "position"
+            "@toField": "set_position"
           }
         },
         { "ROUTE":
@@ -1060,7 +1068,7 @@
             "@fromNode": "BrowserScript",
             "@fromField": "string_changed",
             "@toNode": "_50",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         }
       ]

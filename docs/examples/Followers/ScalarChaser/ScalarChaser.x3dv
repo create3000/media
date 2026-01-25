@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -9,14 +9,14 @@ COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 08 Jul 2018 09:58:21 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:04:12 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:39 GMT"
 
 EXTERNPROTO SFFloat [
   inputOnly   SFTime  set_triggerTime
@@ -48,7 +48,7 @@ PROTO Year [
       string IS string
       solid TRUE
       fontStyle DEF _2 ScreenFontStyle {
-        family [ "assets/georgia.ttf", "SERIF" ]
+        family [ "Georgia", "SERIF" ]
         justify [ "MIDDLE", "MIDDLE" ]
       }
     }
@@ -56,6 +56,11 @@ PROTO Year [
 
   DEF _3 Fields {
     enabled IS enabled
+  }
+
+  DEF Georgia FontLibrary {
+    family "Georgia"
+    url "assets/georgia.ttf"
   }
 
   DEF Animation Group {
@@ -126,6 +131,16 @@ function initialize ()
 "
 }
 
+DEF Georgia FontLibrary {
+  family "Georgia"
+  url "assets/georgia.ttf"
+}
+
+DEF DejaVuSans FontLibrary {
+  family "DejaVuSans"
+  url "assets/DejaVuSans.ttf"
+}
+
 LayerSet {
   activeLayer 1
   order [ 0, 1, 2 ]
@@ -187,7 +202,7 @@ LayerSet {
                   string "World Population "
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/georgia.ttf", "SERIF" ]
+                    family [ "Georgia", "SERIF" ]
                     pointSize 15
                   }
                 }
@@ -278,7 +293,7 @@ LayerSet {
                   string "This is a"
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/DejaVuSans.ttf", "SANS" ]
+                    family [ "DejaVuSans", "SANS" ]
                     pointSize 8
                   }
                 }
@@ -295,7 +310,7 @@ LayerSet {
                   string [ "X3D", "Experiment" ]
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/DejaVuSans.ttf", "SANS" ]
+                    family [ "DejaVuSans", "SANS" ]
                     pointSize 15
                   }
                 }
@@ -324,7 +339,7 @@ LayerSet {
                   string "X3D Globe"
                   solid TRUE
                   fontStyle ScreenFontStyle {
-                    family [ "assets/DejaVuSans.ttf", "SANS" ]
+                    family [ "DejaVuSans", "SANS" ]
                     style "BOLD"
                     pointSize 10
                   }
@@ -344,7 +359,7 @@ LayerSet {
                     string " •     Inspired by Chrome WebGL Gobe"
                     solid TRUE
                     fontStyle ScreenFontStyle {
-                      family [ "assets/DejaVuSans.ttf", "SANS" ]
+                      family [ "DejaVuSans", "SANS" ]
                       pointSize 10
                     }
                   }
@@ -359,7 +374,6 @@ LayerSet {
 }
 
 IMPORT Cities.PointInterpolator
-ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction
 
 ROUTE _5.isOver TO _6.set_boolean
 ROUTE _10.isOver TO _11.set_boolean
@@ -376,13 +390,14 @@ ROUTE _11.inputTrue TO _13.set_boolean
 ROUTE Cities2005.value_changed TO AnimateCities.set_destination
 ROUTE Cities2000.value_changed TO AnimateCities.set_destination
 ROUTE Cities1995.value_changed TO AnimateCities.set_destination
-ROUTE _11.inputTrue TO _9.set_enabled
-ROUTE _7.inputNegate TO _9.set_enabled
-ROUTE DisableOthers.inputNegate TO _9.set_enabled
+ROUTE AnimateCities.value_changed TO PointInterpolator.set_fraction
+ROUTE EnterWorldScript.initialized TO EnableYear.set_boolean
 ROUTE _12.inputNegate TO _1.set_enabled
 ROUTE _7.inputNegate TO _1.set_enabled
 ROUTE EnableYear.inputTrue TO _1.set_enabled
 ROUTE _12.inputNegate TO _4.set_enabled
 ROUTE DisableOthers.inputNegate TO _4.set_enabled
 ROUTE _6.inputTrue TO _4.set_enabled
-ROUTE EnterWorldScript.initialized TO EnableYear.set_boolean
+ROUTE _11.inputTrue TO _9.set_enabled
+ROUTE _7.inputNegate TO _9.set_enabled
+ROUTE DisableOthers.inputNegate TO _9.set_enabled

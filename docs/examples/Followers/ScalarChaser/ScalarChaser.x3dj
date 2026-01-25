@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:04:16 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:39 GMT"
         }
       ],
       "component": [
@@ -62,7 +63,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -149,7 +150,7 @@
                         "-fontStyle": { "ScreenFontStyle":
                           {
                             "@DEF": "_2",
-                            "@family": [ "assets/georgia.ttf", "SERIF" ],
+                            "@family": [ "Georgia", "SERIF" ],
                             "@justify": [ "MIDDLE", "MIDDLE" ]
                           }
                         },
@@ -179,6 +180,13 @@
                         }
                       ]
                     }
+                  }
+                },
+                { "FontLibrary":
+                  {
+                    "@DEF": "Georgia",
+                    "@family": "Georgia",
+                    "@url": [ "assets/georgia.ttf" ]
                   }
                 },
                 { "Group":
@@ -285,7 +293,7 @@
                     "@fromNode": "TransparencyInterpolator",
                     "@fromField": "value_changed",
                     "@toNode": "_1",
-                    "@toField": "transparency"
+                    "@toField": "set_transparency"
                   }
                 },
                 { "ROUTE":
@@ -307,7 +315,7 @@
                 { "ROUTE":
                   {
                     "@fromNode": "_3",
-                    "@fromField": "enabled",
+                    "@fromField": "enabled_changed",
                     "@toNode": "_4",
                     "@toField": "set_boolean"
                   }
@@ -317,7 +325,7 @@
                     "@fromNode": "PointSizeInterpolator",
                     "@fromField": "value_changed",
                     "@toNode": "_2",
-                    "@toField": "pointSize"
+                    "@toField": "set_pointSize"
                   }
                 },
                 { "ROUTE":
@@ -383,6 +391,20 @@
 "}",
 ""
             ]
+          }
+        },
+        { "FontLibrary":
+          {
+            "@DEF": "Georgia",
+            "@family": "Georgia",
+            "@url": [ "assets/georgia.ttf" ]
+          }
+        },
+        { "FontLibrary":
+          {
+            "@DEF": "DejaVuSans",
+            "@family": "DejaVuSans",
+            "@url": [ "assets/DejaVuSans.ttf" ]
           }
         },
         { "LayerSet":
@@ -504,7 +526,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/georgia.ttf", "SERIF" ],
+                                            "@family": [ "Georgia", "SERIF" ],
                                             "@pointSize": 15
                                           }
                                         }
@@ -740,7 +762,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                            "@family": [ "DejaVuSans", "SANS" ],
                                             "@pointSize": 8
                                           }
                                         }
@@ -773,7 +795,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                            "@family": [ "DejaVuSans", "SANS" ],
                                             "@pointSize": 15
                                           }
                                         }
@@ -822,7 +844,7 @@
                                         "@solid": true,
                                         "-fontStyle": { "ScreenFontStyle":
                                           {
-                                            "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                            "@family": [ "DejaVuSans", "SANS" ],
                                             "@style": "BOLD",
                                             "@pointSize": 10
                                           }
@@ -860,7 +882,7 @@
                                               "@solid": true,
                                               "-fontStyle": { "ScreenFontStyle":
                                                 {
-                                                  "@family": [ "assets/DejaVuSans.ttf", "SANS" ],
+                                                  "@family": [ "DejaVuSans", "SANS" ],
                                                   "@pointSize": 10
                                                 }
                                               }
@@ -887,14 +909,6 @@
           {
             "@inlineDEF": "Cities",
             "@importedDEF": "PointInterpolator"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "AnimateCities",
-            "@fromField": "value_changed",
-            "@toNode": "PointInterpolator",
-            "@toField": "set_fraction"
           }
         },
         { "ROUTE":
@@ -1019,74 +1033,10 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_11",
-            "@fromField": "inputTrue",
-            "@toNode": "_9",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_7",
-            "@fromField": "inputNegate",
-            "@toNode": "_9",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "DisableOthers",
-            "@fromField": "inputNegate",
-            "@toNode": "_9",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_12",
-            "@fromField": "inputNegate",
-            "@toNode": "_1",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_7",
-            "@fromField": "inputNegate",
-            "@toNode": "_1",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "EnableYear",
-            "@fromField": "inputTrue",
-            "@toNode": "_1",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_12",
-            "@fromField": "inputNegate",
-            "@toNode": "_4",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "DisableOthers",
-            "@fromField": "inputNegate",
-            "@toNode": "_4",
-            "@toField": "enabled"
-          }
-        },
-        { "ROUTE":
-          {
-            "@fromNode": "_6",
-            "@fromField": "inputTrue",
-            "@toNode": "_4",
-            "@toField": "enabled"
+            "@fromNode": "AnimateCities",
+            "@fromField": "value_changed",
+            "@toNode": "PointInterpolator",
+            "@toField": "set_fraction"
           }
         },
         { "ROUTE":
@@ -1095,6 +1045,78 @@
             "@fromField": "initialized",
             "@toNode": "EnableYear",
             "@toField": "set_boolean"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_12",
+            "@fromField": "inputNegate",
+            "@toNode": "_1",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_7",
+            "@fromField": "inputNegate",
+            "@toNode": "_1",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "EnableYear",
+            "@fromField": "inputTrue",
+            "@toNode": "_1",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_12",
+            "@fromField": "inputNegate",
+            "@toNode": "_4",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DisableOthers",
+            "@fromField": "inputNegate",
+            "@toNode": "_4",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_6",
+            "@fromField": "inputTrue",
+            "@toNode": "_4",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_11",
+            "@fromField": "inputTrue",
+            "@toNode": "_9",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_7",
+            "@fromField": "inputNegate",
+            "@toNode": "_9",
+            "@toField": "set_enabled"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "DisableOthers",
+            "@fromField": "inputNegate",
+            "@toNode": "_9",
+            "@toField": "set_enabled"
           }
         }
       ]

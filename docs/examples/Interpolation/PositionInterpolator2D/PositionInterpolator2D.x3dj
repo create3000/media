@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:08:24 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:42 GMT"
         }
       ],
       "component": [
@@ -38,7 +39,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -141,7 +142,7 @@
                       "-textureTransform": { "TextureTransform":
                         {
                           "@DEF": "_2",
-                          "@translation": [ 0, 1.390333 ],
+                          "@translation": [ 0, 0.5291667 ],
                           "@scale": [ 1, 2 ]
                         }
                       }
@@ -189,11 +190,11 @@
                   "-geometry": { "Text":
                     {
                       "@DEF": "_3",
-                      "@string": [ "Titania" ],
+                      "@string": [ "X_ITE" ],
                       "@solid": true,
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "Nanami Outline/NanamiOutline-Oblq.otf" ],
+                          "@family": [ "NanamiOutline-Oblq" ],
                           "@size": 1.92,
                           "@justify": [ "MIDDLE", "MIDDLE" ]
                         }
@@ -226,6 +227,13 @@
             ]
           }
         },
+        { "FontLibrary":
+          {
+            "@DEF": "NanamiOutline-Oblq",
+            "@family": "NanamiOutline-Oblq",
+            "@url": [ "Nanami Outline/NanamiOutline-Oblq.otf" ]
+          }
+        },
         { "ROUTE":
           {
             "@fromNode": "GlowAnimationTimer",
@@ -239,7 +247,7 @@
             "@fromNode": "TranslationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_2",
-            "@toField": "translation"
+            "@toField": "set_translation"
           }
         },
         { "ROUTE":
@@ -247,7 +255,7 @@
             "@fromNode": "BrowserScript",
             "@fromField": "string_changed",
             "@toNode": "_3",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         }
       ]

@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -7,14 +7,14 @@ COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT NURBS : 4
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 12 Nov 2017 22:36:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:10:26 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:49 GMT"
 
 PROTO AnimatedCurve [
   inputOnly   SFTime     set_time
@@ -172,6 +172,14 @@ LayerSet {
     DEF MachineLearning LayoutLayer {
       pickable FALSE
       children [
+        DEF BaskervilleOldFacDCD FontLibrary {
+          family "BaskervilleOldFacDCD"
+          url "assets/BaskervilleOldFacDCD.otf"
+        }
+        DEF Canaro FontLibrary {
+          family "Canaro"
+          url "assets/Canaro-LightDEMO.otf"
+        }
         DEF Text Transform {
           children Shape {
             appearance Appearance {
@@ -181,7 +189,7 @@ LayerSet {
               string "Heuristics"
               solid TRUE
               fontStyle FontStyle {
-                family "assets/BaskervilleOldFacDCD.otf"
+                family "BaskervilleOldFacDCD"
                 size 0.49
                 justify [ "MIDDLE", "MIDDLE" ]
               }
@@ -198,7 +206,7 @@ LayerSet {
               string "MACHINE LEARNING"
               solid TRUE
               fontStyle FontStyle {
-                family "assets/Canaro-LightDEMO.otf"
+                family "Canaro"
                 size 0.11
                 justify [ "MIDDLE", "MIDDLE" ]
               }

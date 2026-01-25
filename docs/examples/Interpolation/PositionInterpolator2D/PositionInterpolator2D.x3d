@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 24 Sep 2017 10:08:54 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:08:23 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:30:42 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Torus' url='"Torus.x3d#Torus"'>
@@ -47,7 +47,7 @@
           <ImageTexture
               url='"glow.png"'/>
           <TextureTransform DEF='_2'
-              translation='0 1.338833'
+              translation='0 0.5291667'
               scale='1 2'/>
         </Appearance>
         <ProtoInstance name='Torus' containerField='geometry'>
@@ -64,10 +64,10 @@
               diffuseColor='1 1 1'/>
         </Appearance>
         <Text DEF='_3'
-            string='"Titania"'
+            string='"X_ITE"'
             solid='true'>
           <FontStyle
-              family='"Nanami Outline/NanamiOutline-Oblq.otf"'
+              family='"NanamiOutline-Oblq"'
               size='1.92'
               justify='"MIDDLE", "MIDDLE"'/>
         </Text>
@@ -83,6 +83,9 @@ function initialize ()
 ]]>
       </Script>
     </Transform>
+    <FontLibrary DEF='NanamiOutline-Oblq'
+        family='NanamiOutline-Oblq'
+        url='"Nanami Outline/NanamiOutline-Oblq.otf"'/>
     <ROUTE fromNode='GlowAnimationTimer' fromField='fraction_changed' toNode='TranslationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='TranslationInterpolator' fromField='value_changed' toNode='_2' toField='set_translation'/>
     <ROUTE fromNode='BrowserScript' fromField='string_changed' toNode='_3' toField='set_string'/>

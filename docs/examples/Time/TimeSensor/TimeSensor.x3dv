@@ -1,16 +1,16 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Fri, 21 Dec 2018 04:34:14 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:22:42 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:04 GMT"
 
 EXTERNPROTO ArcOpen2D [
   inputOutput    SFInt32 dimension
@@ -82,6 +82,10 @@ function fill (value)
 
 DEF Clock Group {
   children [
+    DEF Papertape-Letters FontLibrary {
+      family "Papertape-Letters"
+      url "assets/Papertape-Letters.otf"
+    }
     DEF Seconds_15 Shape {
       appearance DEF _16 Appearance {
         material UnlitMaterial {
@@ -90,7 +94,7 @@ DEF Clock Group {
       }
       geometry DEF _17 ArcOpen2D {
         dimension 64
-        startAngle -3.769911
+        startAngle -4.502949
         innerRadius 9
         outerRadius 10
         solid TRUE
@@ -100,7 +104,7 @@ DEF Clock Group {
       appearance USE _16
       geometry DEF _19 ArcOpen2D {
         dimension 64
-        startAngle 0.3298672
+        startAngle -2.823943
         innerRadius 10.3
         outerRadius 11.3
       }
@@ -109,7 +113,7 @@ DEF Clock Group {
       appearance USE _16
       geometry DEF _21 ArcOpen2D {
         dimension 64
-        startAngle 0.420188
+        startAngle 0.1573705
         innerRadius 11.6
         outerRadius 12.6
         solid TRUE
@@ -118,10 +122,10 @@ DEF Clock Group {
     DEF Text_22 Shape {
       appearance USE _16
       geometry DEF _23 Text {
-        string "02:11:51"
+        string "14:41:58"
         solid TRUE
         fontStyle FontStyle {
-          family "assets/Papertape-Letters.otf"
+          family "Papertape-Letters"
           size 2.63
           justify [ "MIDDLE", "MIDDLE" ]
         }
@@ -135,7 +139,7 @@ DEF Clock Group {
           string "Local Time"
           solid TRUE
           fontStyle FontStyle {
-            family "assets/Papertape-Letters.otf"
+            family "Papertape-Letters"
             size 1.01
             justify [ "MIDDLE", "MIDDLE" ]
           }

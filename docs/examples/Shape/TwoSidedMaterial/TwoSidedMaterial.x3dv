@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -6,16 +6,16 @@ COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 UNIT angle degree 0.017453292519943295
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 24 Sep 2017 07:51:00 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:20:43 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:58 GMT"
 
 WorldInfo { }
 
@@ -60,12 +60,12 @@ LayerSet {
           type "NONE"
         }
         DEF Viewpoint_2 Viewpoint {
-          position -5.5 0 10.20395
+          position -5.5 0 13.41469
         }
         DEF TiltAnimation Transform {
-          rotation 0.999999999996627 1.83661056419437e-6 -1.83659456429371e-6 88.4879539570197
+          rotation 0.999999969875807 1.83661050887416e-6 -1.83659450897399e-6 0.00363286053892757
           children DEF RotationAnimation Transform {
-            rotation 0 -1 0 28.2098251948317
+            rotation 0 -1 0 119.548570709394
             children [
               DEF RotationAnimation_3 Group {
                 children [
@@ -129,7 +129,7 @@ LayerSet {
                     texCoordIndex [ 3, 0, 1, -1, 1, 2, 3, -1 ]
                     coordIndex [ 3, 0, 1, -1, 1, 2, 3, -1 ]
                     coord DEF _34 Coordinate {
-                      point [ -3 0.03299694 -0.3156479, 3 0.03299694 -1.26316, 3 -0.03299694 1.26316, -3 -0.03299694 0.3156479 ]
+                      point [ -3 1.99675 0.0005215378, 3 1.99675 0.002087091, 3 -1.99675 -0.002087091, -3 -1.99675 -0.0005215378 ]
                     }
                   }
                 }
@@ -459,7 +459,11 @@ LayerSet {
     }
     Layer {
       children [
-        DEF Text Transform {
+        DEF NexusMixTF-BoldItalic FontLibrary {
+          family "NexusMixTF-BoldItalic"
+          url "NexusMixTF-BoldItalic/NexusMixTF-BoldItalic.otf"
+        }
+        DEF Text_1 Transform {
           translation -6.5342 -1.42636 0
           children Shape {
             appearance Appearance {
@@ -468,10 +472,10 @@ LayerSet {
               }
             }
             geometry DEF _50 Text {
-              string [ "Titania X3D Browser", "Version 4.3.10" ]
+              string [ "X_ITE X3D Browser", "Version 14.0.0" ]
               solid TRUE
               fontStyle FontStyle {
-                family [ "NexusMixTF-BoldItalic/NexusMixTF-BoldItalic.otf", "SANS" ]
+                family [ "NexusMixTF-BoldItalic", "SANS" ]
               }
             }
           }

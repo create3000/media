@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -6,14 +6,14 @@ COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 20 Dec 2015 16:23:08 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:25:47 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:09 GMT"
 
 WorldInfo { }
 
@@ -88,43 +88,43 @@ function initialize ()
               ]
             }
             DEF Light1 PointLight {
-              color 0.4278 1 0
-              intensity 0.645102
+              color 0.128 1 0
+              intensity 0.9913076
               location -1 0 0
             }
             DEF Light2 PointLight {
-              color 0.4278 1 0
-              intensity 0.19518
-              location -0.714286 0 0
+              color 0.128 1 0
+              intensity 0.5152089
+              location -0.7142857 0 0
             }
             DEF Light3 PointLight {
-              color 0.4278 1 0
-              intensity 0.888487
-              location -0.428571 0 0
+              color 0.128 1 0
+              intensity 0.3488525
+              location -0.4285714 0 0
             }
             DEF Light4 PointLight {
-              color 0.4278 1 0
-              intensity 0.912746
-              location -0.142857 0 0
+              color 0.128 1 0
+              intensity 0.950221
+              location -0.1428571 0 0
             }
             DEF Light5 PointLight {
-              color 0.4278 1 0
-              intensity 0.249688
-              location 0.142857 0 0
+              color 0.128 1 0
+              intensity 0.8360535
+              location 0.1428571 0 0
             }
             DEF Light6 PointLight {
-              color 0.4278 1 0
-              intensity 0.60139
-              location 0.428571 0 0
+              color 0.128 1 0
+              intensity 0.09232065
+              location 0.4285714 0 0
             }
             DEF Light7 PointLight {
-              color 0.4278 1 0
-              intensity 0.999609
-              location 0.714286 0 0
+              color 0.128 1 0
+              intensity 0.7209315
+              location 0.7142857 0 0
             }
             DEF Light8 PointLight {
-              color 0.4278 1 0
-              intensity 0.645102
+              color 0.128 1 0
+              intensity 0.9913076
               location 1 0 0
             }
           ]
@@ -217,6 +217,14 @@ function get_intensity (value)
           headlight FALSE
         }
         OrthoViewpoint { }
+        DEF CharlotteSansBoldPlain FontLibrary {
+          family "CharlotteSansBoldPlain"
+          url "./CharlotteSansBoldPlain.otf"
+        }
+        DEF CharlotteSansBookPlain FontLibrary {
+          family "CharlotteSansBookPlain"
+          url "./CharlotteSansBookPlain.otf"
+        }
         DEF lights Transform {
           translation 0 0.248408 0
           scale 0.449912 0.174422 4.39968
@@ -246,7 +254,7 @@ function get_intensity (value)
               string "An Interactive X3D Experience"
               solid TRUE
               fontStyle DEF _5 FontStyle {
-                family [ "CharlotteSansBoldPlain.otf", "SERIF" ]
+                family [ "CharlotteSansBoldPlain", "SERIF" ]
                 size 0.08
                 justify [ "MIDDLE", "MIDDLE" ]
               }
@@ -322,7 +330,7 @@ function get_intensity (value)
               string [ "Click and move your mouse to place", "the lights on the screen." ]
               solid TRUE
               fontStyle FontStyle {
-                family [ "CharlotteSansBookPlain.otf", "SERIF" ]
+                family [ "CharlotteSansBookPlain", "SERIF" ]
                 size 0.08
                 justify [ "MIDDLE", "MIDDLE" ]
               }

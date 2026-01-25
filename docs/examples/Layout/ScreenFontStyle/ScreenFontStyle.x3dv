@@ -1,16 +1,16 @@
-#X3D V4.0 utf8 X_ITE V11.2.2
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT Layout : 2
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 27 Jan 2019 12:29:03 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.52, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.22, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 27 Feb 2025 15:53:19 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:48 GMT"
 
 WorldInfo {
   title "Text.O"
@@ -192,15 +192,23 @@ Group {
         }
       ]
     }
-    DEF Vonique64_1 Transform {
+    DEF Airstrike Transform {
       translation -5.89326 0 0
       children [
+        DEF airstrikehalf FontLibrary {
+          family "airstrikehalf"
+          url "assets/airstrike/airstrikehalf.ttf"
+        }
+        DEF airstrike FontLibrary {
+          family "airstrike"
+          url "assets/airstrike/airstrike.ttf"
+        }
         DEF Name Shape {
           appearance USE _1
           geometry Text {
             string "airstrike"
             fontStyle ScreenFontStyle {
-              family [ "assets/airstrike/airstrikehalf.ttf", "SANS" ]
+              family [ "airstrikehalf", "SANS" ]
               style "BOLD"
               pointSize 42
               spacing 1.1
@@ -212,7 +220,7 @@ Group {
           geometry Text {
             string [ "", "ABCDEFGHIJKLMNOP", "QRSTUVWXYZ", "äöüß@€!\"§$%&/()=?\\'" ]
             fontStyle ScreenFontStyle {
-              family [ "assets/airstrike/airstrike.ttf", "SANS" ]
+              family [ "airstrike", "SANS" ]
               pointSize 42
               spacing 1.1
             }

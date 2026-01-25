@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V12.0.9
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -9,7 +9,7 @@ COMPONENT Layering : 1
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Sound : 3
-COMPONENT Text : 1
+COMPONENT Text : 2
 COMPONENT X_ITE : 1
 
 UNIT angle degree 0.017453292519943295
@@ -17,9 +17,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Wed, 27 Sep 2017 11:50:59 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.10.4, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.2.4, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sat, 27 Sep 2025 22:18:04 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:15 GMT"
 
 EXTERNPROTO MFInt32 [
   inputOnly   SFTime  set_triggerTime
@@ -904,6 +904,11 @@ function set_resetTime (value, time)
 
 WorldInfo { }
 
+DEF Minimum-Toc FontLibrary {
+  family "Minimum-Toc"
+  url "Minimum-Toc.otf"
+}
+
 DEF _25 LayerSet {
   activeLayer 1
   order [ 2, 3 ]
@@ -922,7 +927,7 @@ DEF _25 LayerSet {
         OrthoViewpoint {
           position 0 50.1169 0
           orientation 1 0 0 270
-          fieldOfView [ -36, -20, 36, 20 ]
+          fieldOfView -36 -20 36 20
         }
         DEF _59 Background {
           skyAngle [ 76.5191, 90.0002 ]
@@ -1153,7 +1158,7 @@ function getIndex (x, y)
               string "Sugar Smack"
               solid TRUE
               fontStyle FontStyle {
-                family "Minimum-Toc.otf"
+                family "Minimum-Toc"
                 size 0.6
                 justify [ "BEGIN", "BEGIN" ]
               }
@@ -1190,7 +1195,7 @@ function getIndex (x, y)
                   string "Start New Game"
                   solid TRUE
                   fontStyle FontStyle {
-                    family "Minimum-Toc.otf"
+                    family "Minimum-Toc"
                     size 0.6
                     justify [ "BEGIN", "BEGIN" ]
                   }

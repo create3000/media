@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.2.0
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -7,15 +7,15 @@ COMPONENT Layering : 1
 COMPONENT ParticleSystems : 3
 COMPONENT Scripting : 1
 COMPONENT Shaders : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 COMPONENT X_ITE : 1
 
 META "comment" "Rise and Shine"
 META "created" "Tue, 19 Dec 2017 00:35:26 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 21 Feb 2025 11:27:15 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:16 GMT"
 
 EXTERNPROTO Rotor [
   inputOutput SFBool     enabled
@@ -226,7 +226,7 @@ LayerSet {
   layers [
     DEF Background Layer {
       children DEF _30 Transform {
-        rotation -0.996032985024066 0.0795968978336088 0.0397822397473438 1.50120925714704
+        rotation -0.998748270675012 0.049111342109474 0.00948514100474601 1.48599948074619
         scale 0.999999 1 1
         scaleOrientation 0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961
         children [
@@ -278,11 +278,11 @@ LayerSet {
               loop TRUE
             }
             DEF BoxAnim Transform {
-              rotation 0 0 1 0.929298451650349
+              rotation 0 0 1 5.45840229940528
               children DEF _32 Transform {
-                rotation 0 1 0 1.02976314912606
+                rotation 0 1 0 2.65218345164066
                 children DEF Box_1 Transform {
-                  rotation 1 0 0 2.24248913076007
+                  rotation 1 0 0 1.74672554423297
                   children [
                     Shape {
                       appearance Appearance {
@@ -412,6 +412,10 @@ main ()
     }
     DEF HUD Layer {
       children [
+        DEF MinskaBoldITCTT FontLibrary {
+          family "MinskaBoldITCTT"
+          url "assets/MinskaBoldITCTT.otf"
+        }
         DEF Fire_34 Transform {
           translation -6.80942 3.70732 0
           scale 1.48791 1.48791 1.48791
@@ -425,7 +429,7 @@ main ()
               string "Fire"
               solid TRUE
               fontStyle DEF _36 FontStyle {
-                family "assets/MinskaBoldITCTT.otf"
+                family "MinskaBoldITCTT"
                 justify [ "BEGIN", "BEGIN" ]
               }
             }

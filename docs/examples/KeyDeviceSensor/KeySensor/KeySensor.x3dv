@@ -1,18 +1,18 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT KeyDeviceSensor : 2
 COMPONENT Scripting : 1
 COMPONENT Sound : 3
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Fri, 14 Dec 2018 17:54:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:09:06 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:44 GMT"
 
 WorldInfo { }
 
@@ -265,19 +265,25 @@ DEF Enemies Transform {
     DEF Text Transform {
       translation 0 2.25908 0
       scale 1.82761 1.82761 1.82761
-      children Shape {
-        appearance Appearance {
-          material Material { }
-        }
-        geometry Text {
-          string [ "Space", "Invaders" ]
-          solid TRUE
-          fontStyle FontStyle {
-            family "assets/Machine.otf"
-            justify [ "MIDDLE", "MIDDLE" ]
+      children [
+        Shape {
+          appearance Appearance {
+            material Material { }
+          }
+          geometry Text {
+            string [ "Space", "Invaders" ]
+            solid TRUE
+            fontStyle FontStyle {
+              family "Machine"
+              justify [ "MIDDLE", "MIDDLE" ]
+            }
           }
         }
-      }
+        DEF Machine FontLibrary {
+          family "Machine"
+          url "assets/Machine.otf"
+        }
+      ]
     }
   ]
 }
@@ -329,7 +335,7 @@ function set_active (value, time)
               loop TRUE
             }
             DEF _16 TimeSensor {
-              startTime 1700014145.967
+              startTime 1769351444.337
             }
             DEF _17 PositionInterpolator {
               key [ 0, 1 ]

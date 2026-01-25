@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.1.1, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 04 May 2025 15:42:44 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:35 GMT"
         }
       ],
       "component": [
@@ -50,7 +51,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ],
       "unit": [
@@ -103,8 +104,8 @@
                     { "Transform":
                       {
                         "@DEF": "CarRed",
-                        "@translation": [ 2.81904e-6, 1.27034, -33.0293 ],
-                        "@rotation": [ -2.12155829014757e-17, 1, 1.43680261872051e-16, 287.280139781058 ],
+                        "@translation": [ -3.41998e-6, 1.27034, 19.3074 ],
+                        "@rotation": [ 6.4264590771891e-17, 1, 5.82000877188587e-17, 174.329996744867 ],
                         "@scale": [ 2.12352, 2.12352, 2.12352 ],
                         "@scaleOrientation": [ 3.9267146445042e-16, 1, 5.03693766912935e-16, 90 ],
                         "@center": [ 0, 0, 7.06 ],
@@ -149,8 +150,8 @@
                     { "Transform":
                       {
                         "@DEF": "CarYellow",
-                        "@translation": [ -4.613982e-6, 1.27034, 14.82527 ],
-                        "@rotation": [ 0, 1, 0, 269.399759730772 ],
+                        "@translation": [ -7.324599e-6, 1.27034, 15.57065 ],
+                        "@rotation": [ 0, 1, 0, 100.275178344355 ],
                         "@scale": [ 2.12352, 2.12352, 2.12352 ],
                         "@center": [ 0, 0, 11.4343 ],
                         "-children": [
@@ -267,6 +268,13 @@
                   "@DEF": "HUD",
                   "@pointerEvents": false,
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "Readout-OneFront",
+                        "@family": "Readout-OneFront",
+                        "@url": [ "assets/Readout-OneFront.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "RedLapNumberText",
@@ -278,12 +286,12 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_32",
-                                  "@string": [ "10" ],
+                                  "@string": [ "13" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
                                       "@DEF": "_33",
-                                      "@family": [ "assets/Readout-OneFront.otf" ],
+                                      "@family": [ "Readout-OneFront" ],
                                       "@justify": [ "END" ]
                                     }
                                   }
@@ -345,12 +353,11 @@
                               "-geometry": { "Text":
                                 {
                                   "@DEF": "_34",
-                                  "@string": [ "02" ],
+                                  "@string": [ "11" ],
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "assets/Readout-OneFront.otf" ],
-                                      "@justify": [ "END" ]
+                                      "@USE": "_33"
                                     }
                                   }
                                 }

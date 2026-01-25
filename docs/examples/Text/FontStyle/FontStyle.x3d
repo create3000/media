@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <meta name='comment' content='Rise and Shine'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:21:13 GMT'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='created' content='Sun, 25 Jan 2026 13:38:24 GMT'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:31:01 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
     <Background
@@ -21,7 +24,7 @@
       <field accessType='outputOnly' type='MFString' name='string_changed'/>
       <field accessType='initializeOnly' type='MFString' name='string' value='"Lorem ipsum dolor", "sit amet, consetetur", "sadipscing elitr, sed", "diam nonumy eirmod", "tempor invidunt ut"'/>
       <field accessType='initializeOnly' type='SFInt32' name='length' value='94'/>
-      <field accessType='initializeOnly' type='SFInt32' name='currentLength' value='68'/>
+      <field accessType='initializeOnly' type='SFInt32' name='currentLength' value='87'/>
 <![CDATA[ecmascript:
 
 function initialize ()
@@ -69,15 +72,19 @@ function set_fraction (value, time)
               diffuseColor='0 0 0'
               shininess='0'/>
         </Appearance>
-        <Text DEF='Text'>
+        <Text DEF='Text'
+            string='"Lorem ipsum dolor", "sit amet, consetetur", "sadipscing elitr, sed", "diam nonumy eirmod", "tempor invi"'>
           <FontStyle
-              family='"Soopafresh.otf"'
+              family='"Soopafresh"'
               size='1.3'
               spacing='1.1'
               justify='"END", "BEGIN"'/>
         </Text>
       </Shape>
     </Transform>
+    <FontLibrary DEF='Soopafresh'
+        family='Soopafresh'
+        url='"Soopafresh.otf"'/>
     <ROUTE fromNode='TextWriterScript' fromField='string_changed' toNode='Text' toField='set_string'/>
     <ROUTE fromNode='Timer' fromField='fraction_changed' toNode='TextWriterScript' toField='set_fraction'/>
   </Scene>

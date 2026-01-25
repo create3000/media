@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='EnvironmentalSensor' level='3'/>
     <component name='Layering' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 26 Nov 2017 02:44:30 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:03:18 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 25 Jan 2026 14:30:37 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -27,8 +27,7 @@
     <LayerSet
         activeLayer='1'
         order='0, 1, 2'>
-      <Layer DEF='Scene'
-          pickable='false'>
+      <Layer DEF='Scene'>
         <NavigationInfo DEF='Walk'
             type='"WALK"'
             headlight='false'
@@ -59,7 +58,7 @@
           <Transform DEF='Box'
               translation='-51 1 0'
               scale='1 1 50'>
-            <Shape DEF='_1'>
+            <Shape DEF='_14'>
               <Appearance>
                 <Material DEF='Glass13_1'
                     ambientIntensity='0.405479'
@@ -73,19 +72,19 @@
           <Transform DEF='Box_1'
               translation='51 1 0'
               scale='1 1 50'>
-            <Shape USE='_1'/>
+            <Shape USE='_14'/>
           </Transform>
           <Transform DEF='Box_2'
               translation='0 1 51'
               rotation='0 1 0 89.9999863396233'
               scale='1 1 50'>
-            <Shape USE='_1'/>
+            <Shape USE='_14'/>
           </Transform>
           <Transform DEF='Box_3'
               translation='0 1 -51'
               rotation='0 1 0 89.9999863396235'
               scale='1 1 50'>
-            <Shape USE='_1'/>
+            <Shape USE='_14'/>
           </Transform>
         </Group>
         <Collision DEF='VisibilitySensors'
@@ -155,7 +154,10 @@
         </Collision>
       </Layer>
       <Layer DEF='HUD'
-          pickable='false'>
+          pointerEvents='false'>
+        <FontLibrary DEF='MetaBoldLf'
+            family='MetaBoldLf-Caps'
+            url='"assets/MetaBoldLf-Caps.otf"'/>
         <Transform DEF='Text_1'
             translation='-6.70092 3.38975 0'
             scale='0.25 0.25 0.25'>
@@ -167,7 +169,7 @@
                 string='"VisiblitySensor"'
                 solid='true'>
               <FontStyle
-                  family='"assets/MetaBoldLf-Caps.otf"'/>
+                  family='"MetaBoldLf-Caps"'/>
             </Text>
           </Shape>
         </Transform>
@@ -263,7 +265,7 @@
     </LayerSet>
     <ROUTE fromNode='_4' fromField='isActive' toNode='_8' toField='set_whichChoice'/>
     <ROUTE fromNode='_5' fromField='isActive' toNode='_11' toField='set_whichChoice'/>
-    <ROUTE fromNode='_7' fromField='isActive' toNode='_13' toField='set_whichChoice'/>
     <ROUTE fromNode='_6' fromField='isActive' toNode='_12' toField='set_whichChoice'/>
+    <ROUTE fromNode='_7' fromField='isActive' toNode='_13' toField='set_whichChoice'/>
   </Scene>
 </X3D>

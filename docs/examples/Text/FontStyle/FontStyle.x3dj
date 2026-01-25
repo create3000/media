@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -11,12 +12,24 @@
           "@content": "Rise and Shine"
         },
         {
-          "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@name": "creator",
+          "@content": "Holger Seelig"
+        },
+        {
+          "@name": "created",
+          "@content": "Sun, 25 Jan 2026 13:38:24 GMT"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:21:15 GMT"
+          "@content": "Sun, 25 Jan 2026 14:31:01 GMT"
+        },
+        {
+          "@name": "generator",
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+        },
+        {
+          "@name": "generator",
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         }
       ],
       "component": [
@@ -26,7 +39,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
@@ -79,7 +92,7 @@
                 "@accessType": "initializeOnly",
                 "@type": "SFInt32",
                 "@name": "currentLength",
-                "@value": 68
+                "@value": 87
               }
             ],
             "#sourceCode": [
@@ -144,9 +157,10 @@
                   "-geometry": { "Text":
                     {
                       "@DEF": "Text",
+                      "@string": [ "Lorem ipsum dolor", "sit amet, consetetur", "sadipscing elitr, sed", "diam nonumy eirmod", "tempor invi" ],
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "Soopafresh.otf" ],
+                          "@family": [ "Soopafresh" ],
                           "@size": 1.3,
                           "@spacing": 1.1,
                           "@justify": [ "END", "BEGIN" ]
@@ -159,12 +173,19 @@
             ]
           }
         },
+        { "FontLibrary":
+          {
+            "@DEF": "Soopafresh",
+            "@family": "Soopafresh",
+            "@url": [ "Soopafresh.otf" ]
+          }
+        },
         { "ROUTE":
           {
             "@fromNode": "TextWriterScript",
             "@fromField": "string_changed",
             "@toNode": "Text",
-            "@toField": "string"
+            "@toField": "set_string"
           }
         },
         { "ROUTE":

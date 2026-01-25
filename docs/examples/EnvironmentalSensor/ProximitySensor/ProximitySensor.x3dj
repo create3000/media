@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:03:12 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:34 GMT"
         }
       ],
       "component": [
@@ -42,7 +43,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ],
       "unit": [
@@ -106,7 +107,6 @@
               { "Layer":
                 {
                   "@DEF": "Scene",
-                  "@pickable": false,
                   "-children": [
                     { "NavigationInfo":
                       {
@@ -413,8 +413,15 @@
               { "Layer":
                 {
                   "@DEF": "HUD",
-                  "@pickable": false,
+                  "@pointerEvents": false,
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "MetaBoldLf",
+                        "@family": "MetaBoldLf-Caps",
+                        "@url": [ "assets/MetaBoldLf-Caps.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "Text_1",
@@ -437,7 +444,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "assets/MetaBoldLf-Caps.otf" ]
+                                      "@family": [ "MetaBoldLf-Caps" ]
                                     }
                                   }
                                 }
@@ -692,7 +699,7 @@
             "@fromNode": "_5",
             "@fromField": "isActive",
             "@toNode": "_11",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -700,7 +707,7 @@
             "@fromNode": "_4",
             "@fromField": "isActive",
             "@toNode": "_8",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -708,7 +715,7 @@
             "@fromNode": "_6",
             "@fromField": "isActive",
             "@toNode": "_12",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         },
         { "ROUTE":
@@ -716,7 +723,7 @@
             "@fromNode": "_7",
             "@fromField": "isActive",
             "@toNode": "_13",
-            "@toField": "whichChoice"
+            "@toField": "set_whichChoice"
           }
         }
       ]

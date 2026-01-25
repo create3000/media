@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -6,16 +6,14 @@ COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT ParticleSystems : 3
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 03 Dec 2017 04:29:28 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:13:57 GMT"
-
-WorldInfo { }
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:56 GMT"
 
 LayerSet {
   order [ 1, 2, 3, 4 ]
@@ -90,6 +88,14 @@ LayerSet {
     LayoutLayer {
       pickable FALSE
       children [
+        DEF Sari-Light FontLibrary {
+          family "Sari-Light"
+          url "Sari-Light.otf"
+        }
+        DEF Sari-Medium FontLibrary {
+          family "Sari-Medium"
+          url "Sari-Medium.otf"
+        }
         DEF Text Transform {
           children Shape {
             appearance Appearance {
@@ -99,7 +105,7 @@ LayerSet {
               string "CREATE MORE PARTICLES"
               solid TRUE
               fontStyle FontStyle {
-                family "Sari-Light.otf"
+                family "Sari-Light"
                 size 0.2
                 justify "MIDDLE"
               }
@@ -116,7 +122,7 @@ LayerSet {
               string "WITH X_ITE"
               solid TRUE
               fontStyle FontStyle {
-                family "Sari-Medium.otf"
+                family "Sari-Medium"
                 size 0.24
                 justify "MIDDLE"
               }

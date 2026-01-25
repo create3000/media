@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:13:57 GMT"
+          "@content": "Sun, 25 Jan 2026 14:30:56 GMT"
         }
       ],
       "component": [
@@ -50,16 +51,12 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ]
     },
     "Scene": {
       "-children": [
-        { "WorldInfo":
-          {
-          }
-        },
         { "LayerSet":
           {
             "@order": [ 1, 2, 3, 4 ],
@@ -203,6 +200,20 @@
                 {
                   "@pickable": false,
                   "-children": [
+                    { "FontLibrary":
+                      {
+                        "@DEF": "Sari-Light",
+                        "@family": "Sari-Light",
+                        "@url": [ "Sari-Light.otf" ]
+                      }
+                    },
+                    { "FontLibrary":
+                      {
+                        "@DEF": "Sari-Medium",
+                        "@family": "Sari-Medium",
+                        "@url": [ "Sari-Medium.otf" ]
+                      }
+                    },
                     { "Transform":
                       {
                         "@DEF": "Text",
@@ -223,7 +234,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "Sari-Light.otf" ],
+                                      "@family": [ "Sari-Light" ],
                                       "@size": 0.2,
                                       "@justify": [ "MIDDLE" ]
                                     }
@@ -256,7 +267,7 @@
                                   "@solid": true,
                                   "-fontStyle": { "FontStyle":
                                     {
-                                      "@family": [ "Sari-Medium.otf" ],
+                                      "@family": [ "Sari-Medium" ],
                                       "@size": 0.24,
                                       "@justify": [ "MIDDLE" ]
                                     }

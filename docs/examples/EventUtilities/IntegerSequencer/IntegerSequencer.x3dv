@@ -1,13 +1,16 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT EventUtilities : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:03:35 GMT"
+META "creator" "Holger Seelig"
+META "created" "Sun, 25 Jan 2026 13:03:36 GMT"
+META "modified" "Sun, 25 Jan 2026 14:30:38 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
 
 OrthoViewpoint {
   centerOfRotation -1.77636e-15 -7.10543e-15 3.55271e-15
@@ -30,7 +33,7 @@ DEF Words-Never-Spoken Group {
       ]
     }
     DEF _2 Switch {
-      whichChoice 19
+      whichChoice 3
       children [
         DEF Text Transform {
           children Shape {
@@ -38,7 +41,7 @@ DEF Words-Never-Spoken Group {
               string "I just want "
               solid TRUE
               fontStyle DEF _3 FontStyle {
-                family [ "NewCenturySchlbk-Roman.otf", "SERIF" ]
+                family [ "NewCenturySchlbk-Roman", "SERIF" ]
                 size 0.3
                 justify [ "MIDDLE", "FIRST" ]
               }
@@ -328,6 +331,10 @@ DEF Words-Never-Spoken Group {
         }
         Group { }
       ]
+    }
+    DEF NewCenturySchlbk-Roman FontLibrary {
+      family "NewCenturySchlbk-Roman"
+      url "NewCenturySchlbk-Roman.otf"
     }
   ]
 }

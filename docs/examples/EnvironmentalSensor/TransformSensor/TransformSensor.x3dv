@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.5.6
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -6,16 +6,16 @@ COMPONENT EnvironmentalSensor : 3
 COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 UNIT angle degree 0.017453292519943295
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 24 Feb 2019 11:52:29 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.8.5, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.1.1, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Sun, 04 May 2025 15:42:44 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:35 GMT"
 
 WorldInfo { }
 
@@ -42,8 +42,8 @@ LayerSet {
           url "assets/SlotCarRaceTrack/SlotCarRaceTrack.x3d"
         }
         DEF CarRed Transform {
-          translation 2.81904e-6 1.27034 -33.0293
-          rotation -2.12155829014757e-17 1 1.43680261872051e-16 287.280139781058
+          translation -3.41998e-6 1.27034 19.3074
+          rotation 6.4264590771891e-17 1 5.82000877188587e-17 174.329996744867
           scale 2.12352 2.12352 2.12352
           scaleOrientation 3.9267146445042e-16 1 5.03693766912935e-16 90
           center 0 0 7.06
@@ -71,8 +71,8 @@ LayerSet {
           ]
         }
         DEF CarYellow Transform {
-          translation -4.613982e-6 1.27034 14.82527
-          rotation 0 1 0 269.399759730772
+          translation -7.324599e-6 1.27034 15.57065
+          rotation 0 1 0 100.275178344355
           scale 2.12352 2.12352 2.12352
           center 0 0 11.4343
           children [
@@ -139,16 +139,20 @@ LayerSet {
     DEF HUD LayoutLayer {
       pointerEvents FALSE
       children [
+        DEF Readout-OneFront FontLibrary {
+          family "Readout-OneFront"
+          url "assets/Readout-OneFront.otf"
+        }
         DEF RedLapNumberText Transform {
           translation 1.6484 0.678502 0
           scale 0.250539 0.250539 0.250539
           children [
             Shape {
               geometry DEF _32 Text {
-                string "10"
+                string "13"
                 solid TRUE
                 fontStyle DEF _33 FontStyle {
-                  family "assets/Readout-OneFront.otf"
+                  family "Readout-OneFront"
                   justify "END"
                 }
               }
@@ -187,12 +191,9 @@ function set_string ()
           children [
             Shape {
               geometry DEF _34 Text {
-                string "02"
+                string "11"
                 solid TRUE
-                fontStyle FontStyle {
-                  family "assets/Readout-OneFront.otf"
-                  justify "END"
-                }
+                fontStyle USE _33
               }
             }
             DEF LapScript_35 Script {

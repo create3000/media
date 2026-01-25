@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,21 +21,21 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.2.0, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.104, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 23 Nov 2023 20:26:55 GMT"
+          "@content": "Sun, 25 Jan 2026 14:31:17 GMT"
         }
       ],
       "component": [
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         },
         {
           "@name": "X_ITE",
@@ -79,7 +80,7 @@
               { "Transform":
                 {
                   "@DEF": "_3",
-                  "@rotation": [ 0, 1, 0, 177.552001476288 ],
+                  "@rotation": [ 0, 1, 0, 282.888003587723 ],
                   "-children": [
                     { "Transform":
                       {
@@ -154,7 +155,7 @@
               { "Transform":
                 {
                   "@DEF": "_6",
-                  "@rotation": [ 0, 1, 0, 177.552001476288 ],
+                  "@rotation": [ 0, 1, 0, 282.888003587723 ],
                   "-children": [
                     { "Transform":
                       {
@@ -202,7 +203,7 @@
               { "Transform":
                 {
                   "@DEF": "_7",
-                  "@rotation": [ 0, 1, 0, 177.552001476288 ],
+                  "@rotation": [ 0, 1, 0, 282.888003587723 ],
                   "-children": [
                     { "Transform":
                       {
@@ -263,7 +264,7 @@
                       "@string": [ "The Depth Corporation" ],
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/DotMatrix-TwoExtended.otf" ],
+                          "@family": [ "DotMatrix-TwoExtended" ],
                           "@style": "BOLD",
                           "@justify": [ "MIDDLE", "MIDDLE" ]
                         }
@@ -296,7 +297,7 @@
                       "@string": [ "Presents", "The DepthMode Node" ],
                       "-fontStyle": { "FontStyle":
                         {
-                          "@family": [ "assets/Days.otf" ],
+                          "@family": [ "Days" ],
                           "@size": 0.3,
                           "@spacing": 1.2,
                           "@justify": [ "MIDDLE", "MIDDLE" ]
@@ -309,12 +310,26 @@
             ]
           }
         },
+        { "FontLibrary":
+          {
+            "@DEF": "DotMatrix-TwoExtended",
+            "@family": "DotMatrix-TwoExtended",
+            "@url": [ "assets/DotMatrix-TwoExtended.otf" ]
+          }
+        },
+        { "FontLibrary":
+          {
+            "@DEF": "Days",
+            "@family": "Days",
+            "@url": [ "assets/Days.otf" ]
+          }
+        },
         { "ROUTE":
           {
             "@fromNode": "_2",
             "@fromField": "value_changed",
             "@toNode": "_3",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -330,7 +345,7 @@
             "@fromNode": "_2",
             "@fromField": "value_changed",
             "@toNode": "_6",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         },
         { "ROUTE":
@@ -338,7 +353,7 @@
             "@fromNode": "_2",
             "@fromField": "value_changed",
             "@toNode": "_7",
-            "@toField": "rotation"
+            "@toField": "set_rotation"
           }
         }
       ]

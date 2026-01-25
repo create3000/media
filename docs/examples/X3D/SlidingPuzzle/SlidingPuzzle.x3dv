@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.6.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
@@ -7,14 +7,14 @@ COMPONENT Layering : 1
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Sound : 3
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Mon, 21 Dec 2015 20:19:56 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 31 Jul 2025 08:23:19 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:31:12 GMT"
 
 EXTERNPROTO SFNode [
   inputOnly   SFTime set_triggerTime
@@ -52,7 +52,7 @@ LayerSet {
           }
         }
         OrthoViewpoint {
-          fieldOfView [ -1.2, -1.2, 1.2, 1.2 ]
+          fieldOfView -1.2 -1.2 1.2 1.2
         }
       ]
     }
@@ -62,7 +62,7 @@ LayerSet {
       }
       children [
         DEF _11 OrthoViewpoint {
-          fieldOfView [ -1.2, -1.2, 1.2, 1.2 ]
+          fieldOfView -1.2 -1.2 1.2 1.2
         }
         DEF Rectangle2D_12 Transform {
           scale 1.04 1.04 1.04
@@ -135,7 +135,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_21 Transform {
-              translation 0 0.8 0
+              translation 5.551115e-17 0.8 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -225,7 +225,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_36 Transform {
-              translation 0 0.4 0
+              translation 5.551115e-17 0.4 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -279,7 +279,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_45 Transform {
-              translation -0.8 0 0
+              translation -0.8 -5.551115e-17 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -297,7 +297,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_48 Transform {
-              translation -0.4 0 0
+              translation -0.4 -5.551115e-17 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -315,6 +315,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_51 Transform {
+              translation 5.551115e-17 -5.551115e-17 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -332,7 +333,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_54 Transform {
-              translation 0.4 0 0
+              translation 0.4 -5.551115e-17 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -350,7 +351,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_57 Transform {
-              translation 0.8 0 0
+              translation 0.8 -5.551115e-17 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -404,7 +405,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_66 Transform {
-              translation 0 -0.4 0
+              translation 5.551115e-17 -0.4 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -493,7 +494,7 @@ LayerSet {
               ]
             }
             DEF Polyline2D_81 Transform {
-              translation 0 -0.8 0
+              translation 5.551115e-17 -0.8 0
               scale 0.18 0.18 1
               children [
                 Shape {
@@ -936,6 +937,14 @@ function random (min, max)
     Layer {
       children [
         USE _11
+        DEF AlienEncountersSolid FontLibrary {
+          family "AlienEncountersSolid"
+          url "AlienEncountersSolid.otf"
+        }
+        DEF AlienEncountersItalic FontLibrary {
+          family "AlienEncountersItalic"
+          url "AlienEncountersItalic.otf"
+        }
         DEF HeaderText Transform {
           translation -1.75 1 3.6747e-6
           children [
@@ -950,7 +959,7 @@ function random (min, max)
                 string [ "Sliding", "Puzzle" ]
                 solid TRUE
                 fontStyle FontStyle {
-                  family [ "AlienEncountersItalic.otf", "SANS" ]
+                  family [ "AlienEncountersItalic", "SANS" ]
                   size 0.2
                   justify [ "BEGIN", "BEGIN" ]
                 }
@@ -984,7 +993,7 @@ function random (min, max)
                 string "Mix Puzzle"
                 solid TRUE
                 fontStyle FontStyle {
-                  family [ "AlienEncountersSolid.otf", "SANS" ]
+                  family [ "AlienEncountersSolid", "SANS" ]
                   size 0.12
                 }
               }
@@ -1037,7 +1046,7 @@ function set_active (value)
               string "Images"
               solid TRUE
               fontStyle FontStyle {
-                family [ "AlienEncountersSolid.otf", "SANS" ]
+                family [ "AlienEncountersSolid", "SANS" ]
                 size 0.12
               }
             }

@@ -1,16 +1,16 @@
-#X3D V4.0 utf8 X_ITE V9.0.3
+#X3D V4.1 utf8 X_ITE V14.0.0
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 24 Sep 2017 10:08:54 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Wed, 15 Nov 2023 02:08:23 GMT"
+META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 25 Jan 2026 14:30:42 GMT"
 
 EXTERNPROTO Torus [
   inputOutput    SFFloat minorRadius
@@ -61,7 +61,7 @@ DEF Torus Transform {
           url "glow.png"
         }
         textureTransform DEF _2 TextureTransform {
-          translation 0 1.325667
+          translation 0 0.5291667
           scale 1 2
         }
       }
@@ -83,10 +83,10 @@ DEF Text Transform {
         }
       }
       geometry DEF _3 Text {
-        string "Titania"
+        string "X_ITE"
         solid TRUE
         fontStyle FontStyle {
-          family "Nanami Outline/NanamiOutline-Oblq.otf"
+          family "NanamiOutline-Oblq"
           size 1.92
           justify [ "MIDDLE", "MIDDLE" ]
         }
@@ -104,6 +104,11 @@ function initialize ()
 "
     }
   ]
+}
+
+DEF NanamiOutline-Oblq FontLibrary {
+  family "NanamiOutline-Oblq"
+  url "Nanami Outline/NanamiOutline-Oblq.otf"
 }
 
 ROUTE GlowAnimationTimer.fraction_changed TO TranslationInterpolator.set_fraction
