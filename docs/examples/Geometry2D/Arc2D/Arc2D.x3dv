@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V9.6.2
+#X3D V4.1 utf8 X_ITE V14.0.1
 
 PROFILE Interchange
 
@@ -6,9 +6,9 @@ COMPONENT Geometry2D : 2
 
 META "created" "Wed, 23 Jan 2019 11:38:33 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 24 May 2024 07:12:51 GMT"
+META "generator" "x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.1, https://create3000.github.io/sunrize/"
+META "modified" "Tue, 03 Feb 2026 18:28:12 GMT"
 
 WorldInfo {
   title "Arc2D.O"
@@ -45,6 +45,24 @@ DEF Arc2D Transform {
     geometry Arc2D {
       startAngle 5.55
       endAngle 3.88
+    }
+  }
+}
+
+DEF SmallArc2D Transform {
+  children Shape {
+    appearance Appearance {
+      lineProperties LineProperties {
+        linewidthScaleFactor 4
+      }
+      material UnlitMaterial {
+        emissiveColor 0.3372549 0.654902 0.5372549
+      }
+    }
+    geometry Arc2D {
+      startAngle 2.570796
+      endAngle 0.5707963
+      radius 0.5
     }
   }
 }

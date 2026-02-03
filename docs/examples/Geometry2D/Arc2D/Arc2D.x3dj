@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -16,15 +17,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.6.14, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.142, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.1, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 24 May 2024 07:12:55 GMT"
+          "@content": "Tue, 03 Feb 2026 18:28:12 GMT"
         }
       ],
       "component": [
@@ -86,6 +87,38 @@
                     {
                       "@startAngle": 5.55,
                       "@endAngle": 3.88
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        { "Transform":
+          {
+            "@DEF": "SmallArc2D",
+            "-children": [
+              { "Shape":
+                {
+                  "-appearance": { "Appearance":
+                    {
+                      "-lineProperties": { "LineProperties":
+                        {
+                          "@linewidthScaleFactor": 4
+                        }
+                      },
+                      "-material": { "UnlitMaterial":
+                        {
+                          "@emissiveColor": [ 0.3372549, 0.654902, 0.5372549 ]
+                        }
+                      }
+                    }
+                  },
+                  "-geometry": { "Arc2D":
+                    {
+                      "@startAngle": 2.570796,
+                      "@endAngle": 0.5707963,
+                      "@radius": 0.5
                     }
                   }
                 }
