@@ -7,9 +7,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Fri, 21 Dec 2018 04:34:14 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 25 Jan 2026 14:31:04 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.1, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 04 Feb 2026 12:27:47 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='ArcOpen2D' url='"assets/ArcOpen2D.x3d#ArcOpen2D", "file:///home/holger/Projekte/Sunrise/src/drive/user/test/components/Time/TimeSensor/assets/ArcOpen2D.x3d#ArcOpen2D"'>
@@ -69,9 +69,6 @@ function fill (value)
 ]]>
     </Script>
     <Group DEF='Clock'>
-      <FontLibrary DEF='Papertape-Letters'
-          family='Papertape-Letters'
-          url='"assets/Papertape-Letters.otf"'/>
       <Shape DEF='Seconds_15'>
         <Appearance DEF='_16'>
           <UnlitMaterial
@@ -79,7 +76,7 @@ function fill (value)
         </Appearance>
         <ProtoInstance name='ArcOpen2D' DEF='_17' containerField='geometry'>
           <fieldValue name='dimension' value='64'/>
-          <fieldValue name='startAngle' value='-4.502949'/>
+          <fieldValue name='startAngle' value='-3.665191'/>
           <fieldValue name='innerRadius' value='9'/>
           <fieldValue name='outerRadius' value='10'/>
           <fieldValue name='solid' value='true'/>
@@ -89,7 +86,7 @@ function fill (value)
         <Appearance USE='_16'/>
         <ProtoInstance name='ArcOpen2D' DEF='_19' containerField='geometry'>
           <fieldValue name='dimension' value='64'/>
-          <fieldValue name='startAngle' value='-2.823943'/>
+          <fieldValue name='startAngle' value='-1.134464'/>
           <fieldValue name='innerRadius' value='10.3'/>
           <fieldValue name='outerRadius' value='11.3'/>
         </ProtoInstance>
@@ -98,37 +95,12 @@ function fill (value)
         <Appearance USE='_16'/>
         <ProtoInstance name='ArcOpen2D' DEF='_21' containerField='geometry'>
           <fieldValue name='dimension' value='64'/>
-          <fieldValue name='startAngle' value='0.1573705'/>
+          <fieldValue name='startAngle' value='0.8217592'/>
           <fieldValue name='innerRadius' value='11.6'/>
           <fieldValue name='outerRadius' value='12.6'/>
           <fieldValue name='solid' value='true'/>
         </ProtoInstance>
       </Shape>
-      <Shape DEF='Text_22'>
-        <Appearance USE='_16'/>
-        <Text DEF='_23'
-            string='"14:41:58"'
-            solid='true'>
-          <FontStyle
-              family='"Papertape-Letters"'
-              size='2.63'
-              justify='"MIDDLE", "MIDDLE"'/>
-        </Text>
-      </Shape>
-      <Transform DEF='LocalTime'
-          translation='0 -2.67569 0'>
-        <Shape>
-          <Appearance USE='_16'/>
-          <Text
-              string='"Local Time"'
-              solid='true'>
-            <FontStyle
-                family='"Papertape-Letters"'
-                size='1.01'
-                justify='"MIDDLE", "MIDDLE"'/>
-          </Text>
-        </Shape>
-      </Transform>
       <Group DEF='Minutes5_24'>
         <Shape>
           <Appearance USE='_16'/>
@@ -189,6 +161,34 @@ function fill (value)
           </ProtoInstance>
         </Shape>
       </Group>
+      <FontLibrary DEF='Papertape-Letters'
+          family='Papertape-Letters'
+          url='"assets/Papertape-Letters.otf"'/>
+      <Shape DEF='Text_22'>
+        <Appearance USE='_16'/>
+        <Text DEF='_23'
+            string='"13:25:50"'
+            solid='true'>
+          <FontStyle
+              family='"Papertape-Letters"'
+              size='2.63'
+              justify='"MIDDLE", "MIDDLE"'/>
+        </Text>
+      </Shape>
+      <Transform DEF='LocalTime'
+          translation='0 -2.67569 0'>
+        <Shape>
+          <Appearance USE='_16'/>
+          <Text
+              string='"Local Time"'
+              solid='true'>
+            <FontStyle
+                family='"Papertape-Letters"'
+                size='1.01'
+                justify='"MIDDLE", "MIDDLE"'/>
+          </Text>
+        </Shape>
+      </Transform>
     </Group>
     <ROUTE fromNode='ClockScript' fromField='string_changed' toNode='_23' toField='set_string'/>
     <ROUTE fromNode='_14' fromField='cycleTime' toNode='ClockScript' toField='set_time'/>

@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V14.0.0
+#X3D V4.1 utf8 X_ITE V14.0.1
 
 PROFILE Interchange
 
@@ -8,9 +8,9 @@ COMPONENT Text : 2
 META "comment" "Rise and Shine"
 META "created" "Fri, 21 Dec 2018 04:34:14 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
-META "modified" "Sun, 25 Jan 2026 14:31:04 GMT"
+META "generator" "x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.1, https://create3000.github.io/sunrize/"
+META "modified" "Wed, 04 Feb 2026 12:27:47 GMT"
 
 EXTERNPROTO ArcOpen2D [
   inputOutput    SFInt32 dimension
@@ -82,10 +82,6 @@ function fill (value)
 
 DEF Clock Group {
   children [
-    DEF Papertape-Letters FontLibrary {
-      family "Papertape-Letters"
-      url "assets/Papertape-Letters.otf"
-    }
     DEF Seconds_15 Shape {
       appearance DEF _16 Appearance {
         material UnlitMaterial {
@@ -94,7 +90,7 @@ DEF Clock Group {
       }
       geometry DEF _17 ArcOpen2D {
         dimension 64
-        startAngle -4.502949
+        startAngle -3.665191
         innerRadius 9
         outerRadius 10
         solid TRUE
@@ -104,7 +100,7 @@ DEF Clock Group {
       appearance USE _16
       geometry DEF _19 ArcOpen2D {
         dimension 64
-        startAngle -2.823943
+        startAngle -1.134464
         innerRadius 10.3
         outerRadius 11.3
       }
@@ -113,37 +109,10 @@ DEF Clock Group {
       appearance USE _16
       geometry DEF _21 ArcOpen2D {
         dimension 64
-        startAngle 0.1573705
+        startAngle 0.8217592
         innerRadius 11.6
         outerRadius 12.6
         solid TRUE
-      }
-    }
-    DEF Text_22 Shape {
-      appearance USE _16
-      geometry DEF _23 Text {
-        string "14:41:58"
-        solid TRUE
-        fontStyle FontStyle {
-          family "Papertape-Letters"
-          size 2.63
-          justify [ "MIDDLE", "MIDDLE" ]
-        }
-      }
-    }
-    DEF LocalTime Transform {
-      translation 0 -2.67569 0
-      children Shape {
-        appearance USE _16
-        geometry Text {
-          string "Local Time"
-          solid TRUE
-          fontStyle FontStyle {
-            family "Papertape-Letters"
-            size 1.01
-            justify [ "MIDDLE", "MIDDLE" ]
-          }
-        }
       }
     }
     DEF Minutes5_24 Group {
@@ -207,6 +176,37 @@ DEF Clock Group {
           }
         }
       ]
+    }
+    DEF Papertape-Letters FontLibrary {
+      family "Papertape-Letters"
+      url "assets/Papertape-Letters.otf"
+    }
+    DEF Text_22 Shape {
+      appearance USE _16
+      geometry DEF _23 Text {
+        string "13:25:50"
+        solid TRUE
+        fontStyle FontStyle {
+          family "Papertape-Letters"
+          size 2.63
+          justify [ "MIDDLE", "MIDDLE" ]
+        }
+      }
+    }
+    DEF LocalTime Transform {
+      translation 0 -2.67569 0
+      children Shape {
+        appearance USE _16
+        geometry Text {
+          string "Local Time"
+          solid TRUE
+          fontStyle FontStyle {
+            family "Papertape-Letters"
+            size 1.01
+            justify [ "MIDDLE", "MIDDLE" ]
+          }
+        }
+      }
     }
   ]
 }
