@@ -1,4 +1,4 @@
-#X3D V4.0 utf8 X_ITE V11.0.3
+#X3D V4.1 utf8 X_ITE V14.0.1
 
 PROFILE Interchange
 
@@ -7,16 +7,16 @@ COMPONENT Layering : 1
 COMPONENT Layout : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 1
+COMPONENT Text : 2
 
 UNIT angle degree 0.017453292519943295
 
 META "comment" "Rise and Shine"
 META "created" "Sat, 02 Apr 2016 03:25:15 GMT"
 META "creator" "Holger Seelig"
+META "generator" "x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Thu, 09 Jan 2025 21:20:29 GMT"
+META "modified" "Wed, 04 Feb 2026 13:14:23 GMT"
 
 EXTERNPROTO RoundedExtrusion [
   initializeOnly SFBool     beginCap
@@ -1425,7 +1425,9 @@ async function set_loadTime ()
 {
 	try
 	{
-		const url = \"https://corsproxy.io/?url=\" + encodeURIComponent (\"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml\");
+    const url = new URL (\"https://api.codetabs.com/v1/proxy\");
+
+    url .searchParams .set (\"quest\", \"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml\");
 
 		const response = await fetch (url);
 
@@ -1589,7 +1591,7 @@ function get_trend (last2, last1)
       }
       DEF EuroSign Transform {
         translation 1.41973 0.373394 0.270001
-        rotation 0 1 0 332.423989700308
+        rotation 0 1 0 140.580008046611
         scale 0.208199 0.208199 0.208199
         children [
           DEF EuroSignAnimation Group {

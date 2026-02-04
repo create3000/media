@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
     <component name='Layout' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 02 Apr 2016 03:25:15 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
+    <meta name='generator' content='x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='generator' content='Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Thu, 09 Jan 2025 21:20:29 GMT'/>
+    <meta name='modified' content='Wed, 04 Feb 2026 13:14:23 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='RoundedExtrusion' url='"RoundedExtrusion.x3d#RoundedExtrusion", "file:///home/holger/Projekte/Cobweb/cobweb.js/examples/currencies/RoundedExtrusion.x3d#RoundedExtrusion"'>
@@ -1264,7 +1264,9 @@ async function set_loadTime ()
 {
 	try
 	{
-		const url = "https://corsproxy.io/?url=" + encodeURIComponent ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml");
+    const url = new URL ("https://api.codetabs.com/v1/proxy");
+
+    url .searchParams .set ("quest", "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml");
 
 		const response = await fetch (url);
 
@@ -1427,7 +1429,7 @@ function get_trend (last2, last1)
         </Script>
         <Transform DEF='EuroSign'
             translation='1.41973 0.373394 0.270001'
-            rotation='0 1 0 332.423989700308'
+            rotation='0 1 0 140.580008046611'
             scale='0.208199 0.208199 0.208199'>
           <Group DEF='EuroSignAnimation'>
             <TimeSensor DEF='_42'

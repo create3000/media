@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.1, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.13, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V1.7.41, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 09 Jan 2025 21:20:29 GMT"
+          "@content": "Wed, 04 Feb 2026 13:14:23 GMT"
         }
       ],
       "component": [
@@ -54,7 +55,7 @@
         },
         {
           "@name": "Text",
-          "@level": 1
+          "@level": 2
         }
       ],
       "unit": [
@@ -3112,7 +3113,9 @@
 "{",
 "\ttry",
 "\t{",
-"\t\tconst url = \"https://corsproxy.io/?url=\" + encodeURIComponent (\"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml\");",
+"    const url = new URL (\"https://api.codetabs.com/v1/proxy\");",
+"",
+"    url .searchParams .set (\"quest\", \"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml\");",
 "",
 "\t\tconst response = await fetch (url);",
 "",
@@ -3279,7 +3282,7 @@
                       {
                         "@DEF": "EuroSign",
                         "@translation": [ 1.41973, 0.373394, 0.270001 ],
-                        "@rotation": [ 0, 1, 0, 332.423989700308 ],
+                        "@rotation": [ 0, 1, 0, 140.580008046611 ],
                         "@scale": [ 0.208199, 0.208199, 0.208199 ],
                         "-children": [
                           { "Group":
