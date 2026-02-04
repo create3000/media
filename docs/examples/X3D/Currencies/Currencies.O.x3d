@@ -1295,7 +1295,9 @@ async function set_loadTime ()
 {
 	try
 	{
-		const url = "https://api.codetabs.com/v1/proxy?quest=" + encodeURIComponent ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml");
+    const url = new URL ("https://api.codetabs.com/v1/proxy");
+
+    url .searchParams .set ("quest", "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml");
 
 		const response = await fetch (url);
 
