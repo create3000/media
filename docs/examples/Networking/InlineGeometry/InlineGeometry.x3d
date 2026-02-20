@@ -2,10 +2,13 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
 <X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
+    <component name='Core' level='2'/>
     <component name='CubeMapTexturing' level='3'/>
     <component name='EventUtilities' level='1'/>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
+    <component name='Lighting' level='3'/>
+    <component name='Networking' level='4'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <component name='Text' level='2'/>
@@ -13,7 +16,7 @@
     <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 20 Feb 2026 22:14:40 GMT'/>
+    <meta name='modified' content='Fri, 20 Feb 2026 23:39:56 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -116,7 +119,7 @@
               translation='0 -4 0'>
             <Shape>
               <Text DEF='_7'
-                  string='"1,771,625,605,983 ms"'>
+                  string='"1,771,630,303,840 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -126,9 +129,7 @@
             </Shape>
           </Transform>
           <LoadSensor DEF='_8'>
-            <Inline DEF='Beethoven'
-                global='true'
-                url='"assets/Beethoven.x3d"'/>
+            <InlineGeometry USE='_1' containerField='children'/>
           </LoadSensor>
           <Script DEF='LoadTimeScript'>
             <field accessType='inputOnly' type='SFBool' name='set_active'/>
@@ -162,7 +163,6 @@ function set_active (value, time)
     </LayerSet>
     <ROUTE fromNode='_5' fromField='triggerTrue' toNode='_6' toField='set_boolean'/>
     <ROUTE fromNode='_4' fromField='touchTime' toNode='_5' toField='set_triggerTime'/>
-    <ROUTE fromNode='_6' fromField='toggle_changed' toNode='Beethoven' toField='set_load'/>
     <ROUTE fromNode='_8' fromField='isActive' toNode='LoadTimeScript' toField='set_active'/>
     <ROUTE fromNode='LoadTimeScript' fromField='string_changed' toNode='_7' toField='set_string'/>
     <ROUTE fromNode='_6' fromField='toggle_changed' toNode='_1' toField='set_load'/>
