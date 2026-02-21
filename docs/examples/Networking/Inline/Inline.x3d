@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='CubeMapTexturing' level='3'/>
     <component name='EventUtilities' level='1'/>
@@ -8,13 +8,13 @@
     <component name='Layering' level='1'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='1'/>
+    <component name='Text' level='2'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.8.18, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.1.15, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Thu, 31 Jul 2025 09:17:53 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.3, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sat, 21 Feb 2026 00:12:03 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -109,7 +109,7 @@
               translation='0 -4 0'>
             <Shape>
               <Text DEF='_7'
-                  string='"505 ms"'>
+                  string='"0 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -126,7 +126,7 @@
             <field accessType='outputOnly' type='MFString' name='string_changed'/>
 <![CDATA[ecmascript:
 
-let startTime = 0;
+let startTime = Date .now ();
 
 function initialize ()
 {

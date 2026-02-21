@@ -12,11 +12,10 @@
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <component name='Text' level='2'/>
-    <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Tue, 28 Nov 2017 11:47:53 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 20 Feb 2026 23:30:19 GMT'/>
+    <meta name='modified' content='Sat, 21 Feb 2026 00:11:14 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='BooleanSwitch' url='"assets/BooleanSwitch.x3d#BooleanSwitch"'>
@@ -119,7 +118,7 @@
               translation='0 -4 0'>
             <Shape>
               <Text DEF='_7'
-                  string='"1,354,626 ms"'>
+                  string='"0 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -136,7 +135,7 @@
             <field accessType='outputOnly' type='MFString' name='string_changed'/>
 <![CDATA[ecmascript:
 
-let startTime = 0;
+let startTime = Date .now ();
 
 function initialize ()
 {
