@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
-<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
+<X3D profile='Core' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Core' level='2'/>
     <component name='EventUtilities' level='1'/>
     <component name='Geometry2D' level='2'/>
+    <component name='Geometry3D' level='4'/>
+    <component name='Grouping' level='3'/>
     <component name='Layering' level='1'/>
+    <component name='Navigation' level='3'/>
     <component name='Networking' level='4'/>
     <component name='PointingDeviceSensor' level='1'/>
+    <component name='Rendering' level='5'/>
     <component name='Scripting' level='1'/>
+    <component name='Shape' level='4'/>
     <component name='Text' level='2'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Fri, 20 Feb 2026 20:45:17 GMT'/>
-    <meta name='modified' content='Sat, 21 Feb 2026 09:20:05 GMT'/>
+    <meta name='modified' content='Sat, 21 Feb 2026 15:08:28 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -54,20 +59,20 @@
             translation='-3 0 0'>
           <Shape>
             <Appearance>
-              <Material
+              <Material DEF='_1'
                   diffuseColor='0.5607843 0.8078431 0'/>
             </Appearance>
-            <InlineGeometry DEF='_1'
+            <InlineGeometry DEF='InlineBox'
                 url='"assets/Box.x3d"'/>
           </Shape>
         </Transform>
         <Transform DEF='Lines'>
           <Shape>
             <Appearance>
-              <UnlitMaterial
+              <UnlitMaterial DEF='_3'
                   emissiveColor='0.5607843 0.8078431 0'/>
             </Appearance>
-            <InlineGeometry DEF='_2'
+            <InlineGeometry DEF='InlineLines'
                 url='"assets/Lines.x3d"'/>
           </Shape>
         </Transform>
@@ -77,10 +82,9 @@
             <Appearance>
               <LineProperties
                   linewidthScaleFactor='5'/>
-              <UnlitMaterial
-                  emissiveColor='0.5607843 0.8078431 0'/>
+              <UnlitMaterial USE='_3'/>
             </Appearance>
-            <InlineGeometry USE='_2'/>
+            <InlineGeometry USE='InlineLines'/>
           </Shape>
         </Transform>
         <Transform DEF='Points'
@@ -91,10 +95,9 @@
                   pointSizeScaleFactor='10'
                   pointSizeMinValue='10'
                   pointSizeMaxValue='10'/>
-              <UnlitMaterial
-                  emissiveColor='0.5607843 0.8078431 0'/>
+              <UnlitMaterial USE='_3'/>
             </Appearance>
-            <InlineGeometry DEF='_3'
+            <InlineGeometry DEF='InlinePoints'
                 url='"assets/Points.x3d"'/>
           </Shape>
         </Transform>
@@ -104,12 +107,11 @@
           <ProtoInstance name='BooleanSwitch' DEF='_9'>
             <fieldValue name='whichChoice' value='true'/>
             <fieldValue name='children'>
-              <Transform DEF='RoundedRectangle2D'
+              <Transform DEF='RoundedRectangle2D_2'
                   translation='0 -3.55158 0'>
                 <Shape DEF='_10'>
                   <Appearance>
-                    <Material
-                        diffuseColor='0.5607843 0.8078431 0'/>
+                    <Material USE='_1'/>
                   </Appearance>
                   <ProtoInstance name='RoundedRectangle2D' containerField='geometry'>
                     <fieldValue name='size' value='0.7 0.4'/>
@@ -117,7 +119,7 @@
                 </Shape>
                 <Transform
                     translation='-0.13 0 0'>
-                  <Shape DEF='_4'>
+                  <Shape DEF='_6'>
                     <Appearance>
                       <Material
                           diffuseColor='0 0 0'/>
@@ -127,28 +129,28 @@
                   </Shape>
                 </Transform>
               </Transform>
-              <Transform DEF='RoundedRectangle2D_1'
+              <Transform DEF='RoundedRectangle2D_3'
                   translation='0 -3.55158 0'>
                 <Shape USE='_10'/>
                 <Transform
                     translation='0.13 0 0'>
-                  <Shape USE='_4'/>
+                  <Shape USE='_6'/>
                 </Transform>
               </Transform>
             </fieldValue>
           </ProtoInstance>
-          <TouchSensor DEF='_5'
+          <TouchSensor DEF='_7'
               description='Toggle Load'/>
-          <BooleanTrigger DEF='_6'/>
-          <BooleanToggle DEF='_7'
+          <BooleanTrigger DEF='_8'/>
+          <BooleanToggle DEF='_11'
               toggle='true'/>
         </Group>
         <Group DEF='LoadTime'>
           <Transform DEF='Text'
               translation='0 -4 0'>
             <Shape>
-              <Text DEF='_8'
-                  string='"30 ms"'>
+              <Text DEF='_12'
+                  string='"35 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -157,10 +159,10 @@
               </Text>
             </Shape>
           </Transform>
-          <LoadSensor DEF='_11'>
-            <InlineGeometry USE='_1' containerField='children'/>
-            <InlineGeometry USE='_2' containerField='children'/>
-            <InlineGeometry USE='_3' containerField='children'/>
+          <LoadSensor DEF='LoadSensor'>
+            <InlineGeometry USE='InlineBox' containerField='children'/>
+            <InlineGeometry USE='InlineLines' containerField='children'/>
+            <InlineGeometry USE='InlinePoints' containerField='children'/>
           </LoadSensor>
           <Script DEF='LoadTimeScript'>
             <field accessType='inputOnly' type='SFBool' name='set_active'/>
@@ -192,13 +194,13 @@ function set_active (value, time)
         </Group>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='_5' fromField='touchTime' toNode='_6' toField='set_triggerTime'/>
-    <ROUTE fromNode='_6' fromField='triggerTrue' toNode='_7' toField='set_boolean'/>
-    <ROUTE fromNode='LoadTimeScript' fromField='string_changed' toNode='_8' toField='set_string'/>
-    <ROUTE fromNode='_11' fromField='isActive' toNode='LoadTimeScript' toField='set_active'/>
-    <ROUTE fromNode='_7' fromField='toggle_changed' toNode='_9' toField='set_whichChoice'/>
-    <ROUTE fromNode='_7' fromField='toggle_changed' toNode='_3' toField='set_load'/>
-    <ROUTE fromNode='_7' fromField='toggle_changed' toNode='_2' toField='set_load'/>
-    <ROUTE fromNode='_7' fromField='toggle_changed' toNode='_1' toField='set_load'/>
+    <ROUTE fromNode='_7' fromField='touchTime' toNode='_8' toField='set_triggerTime'/>
+    <ROUTE fromNode='_8' fromField='triggerTrue' toNode='_11' toField='set_boolean'/>
+    <ROUTE fromNode='LoadTimeScript' fromField='string_changed' toNode='_12' toField='set_string'/>
+    <ROUTE fromNode='LoadSensor' fromField='isActive' toNode='LoadTimeScript' toField='set_active'/>
+    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='InlinePoints' toField='set_load'/>
+    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='InlineLines' toField='set_load'/>
+    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='InlineBox' toField='set_load'/>
+    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='_9' toField='set_whichChoice'/>
   </Scene>
 </X3D>
