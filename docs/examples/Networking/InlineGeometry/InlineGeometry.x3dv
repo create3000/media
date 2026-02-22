@@ -1,0 +1,314 @@
+#X3D V4.1 utf8 X_ITE V14.0.4
+
+PROFILE Interchange
+
+COMPONENT Core : 2
+COMPONENT EventUtilities : 1
+COMPONENT Geometry2D : 2
+COMPONENT Layering : 1
+COMPONENT Networking : 4
+COMPONENT PointingDeviceSensor : 1
+COMPONENT Scripting : 1
+COMPONENT Text : 2
+
+META "creator" "Holger Seelig"
+META "created" "Fri, 20 Feb 2026 20:45:17 GMT"
+META "modified" "Sun, 22 Feb 2026 11:16:37 GMT"
+META "generator" "x3d-tidy V3.0.4, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/"
+
+EXTERNPROTO RoundedRectangle2D [
+  inputOutput    SFFloat cornerRadius
+  inputOutput    SFVec2f size
+  initializeOnly SFBool  solid
+]
+"assets/RoundedRectangle2D.x3d#RoundedRectangle2D"
+
+EXTERNPROTO BooleanSwitch [
+  inputOutput    SFBool  whichChoice
+  initializeOnly SFVec3f bboxSize
+  initializeOnly SFVec3f bboxCenter
+  inputOnly      MFNode  addChildren
+  inputOnly      MFNode  removeChildren
+  inputOutput    MFNode  children
+]
+"assets/BooleanSwitch.x3d#BooleanSwitch"
+
+WorldInfo { }
+
+LayerSet {
+  activeLayer 1
+  order [ 0, 1, 2 ]
+  layers [
+    Layer {
+      children [
+        Viewpoint {
+          description "Initial View"
+          position 0 0 8.0353
+        }
+        DEF Box Transform {
+          translation -3 0 0
+          children Shape {
+            appearance Appearance {
+              material DEF _14 Material {
+                diffuseColor 0.5607843 0.8078431 0
+              }
+            }
+            geometry DEF InlineBox InlineGeometry {
+              url "assets/Box.x3d"
+            }
+          }
+        }
+        DEF Lines Transform {
+          children Shape {
+            appearance Appearance {
+              material DEF _3 UnlitMaterial {
+                emissiveColor 0.5607843 0.8078431 0
+              }
+            }
+            geometry DEF InlineLines InlineGeometry {
+              url "assets/Lines.x3d"
+            }
+          }
+        }
+        DEF ThickLines Transform {
+          scale 0.5810043 0.5810043 0.5810043
+          children Shape {
+            appearance Appearance {
+              lineProperties LineProperties {
+                linewidthScaleFactor 5
+              }
+              material USE _3
+            }
+            geometry USE InlineLines
+          }
+        }
+        DEF Points Transform {
+          translation 3 0 0
+          children Shape {
+            appearance Appearance {
+              pointProperties PointProperties {
+                pointSizeScaleFactor 10
+                pointSizeMinValue 10
+                pointSizeMaxValue 10
+              }
+              material USE _3
+            }
+            geometry DEF InlinePoints InlineGeometry {
+              url "assets/Points.x3d"
+            }
+          }
+        }
+      ]
+    }
+    DEF HUD Layer {
+      children [
+        DEF ColorButtons Group {
+          children [
+            DEF Amber Transform {
+              translation -0.4 -3.055499 0
+              children [
+                Shape {
+                  appearance Appearance {
+                    material DEF _1 Material {
+                      diffuseColor 0.7058824 0.372549 0.02352941
+                    }
+                  }
+                  geometry DEF _2 Disk2D {
+                    outerRadius 0.15
+                  }
+                }
+                DEF _4 TouchSensor {
+                  description "Change Color to Amber"
+                }
+              ]
+            }
+            DEF Green_1 Transform {
+              translation 0 -3.055499 0
+              children [
+                Shape {
+                  appearance Appearance {
+                    material DEF _5 Material {
+                      diffuseColor 0.5607843 0.8078431 0
+                    }
+                  }
+                  geometry USE _2
+                }
+                DEF _6 TouchSensor {
+                  description "Change Color to Green"
+                }
+              ]
+            }
+            DEF Lila Transform {
+              translation 0.4 -3.055499 0
+              children [
+                Shape {
+                  appearance Appearance {
+                    material DEF _7 Material {
+                      diffuseColor 0.4156863 0.1960784 0.6235294
+                    }
+                  }
+                  geometry USE _2
+                }
+                DEF _8 TouchSensor {
+                  description "Change Color to Lila"
+                }
+              ]
+            }
+            DEF ColorsScript Script {
+              inputOnly      SFTime  set_color1
+              inputOnly      SFTime  set_color2
+              inputOnly      SFTime  set_color3
+              outputOnly     SFColor color_changed
+              initializeOnly MFNode  colors [
+                USE _1
+                USE _5
+                USE _7
+              ]
+
+              url "ecmascript:
+
+function initialize ()
+{
+   set_color2 ();
+}
+
+function set_color1 ()
+{
+   color_changed = colors [0] .diffuseColor;
+}
+
+function set_color2 ()
+{
+   color_changed = colors [1] .diffuseColor;
+}
+
+function set_color3 ()
+{
+   color_changed = colors [2] .diffuseColor;
+}
+"
+            }
+          ]
+        }
+        DEF Button Group {
+          children [
+            DEF _9 BooleanSwitch {
+              whichChoice TRUE
+              children [
+                DEF RoundedRectangle2D_2 Transform {
+                  translation 0 -3.55158 0
+                  children [
+                    DEF _10 Shape {
+                      appearance Appearance {
+                        material USE _3
+                      }
+                      geometry RoundedRectangle2D {
+                        size 0.7 0.4
+                      }
+                    }
+                    Transform {
+                      translation -0.13 0 0
+                      children DEF _11 Shape {
+                        appearance Appearance {
+                          material UnlitMaterial {
+                            emissiveColor 0 0 0
+                          }
+                        }
+                        geometry USE _2
+                      }
+                    }
+                  ]
+                }
+                DEF RoundedRectangle2D_3 Transform {
+                  translation 0 -3.55158 0
+                  children [
+                    USE _10
+                    Transform {
+                      translation 0.13 0 0
+                      children USE _11
+                    }
+                  ]
+                }
+              ]
+            }
+            DEF _12 TouchSensor {
+              description "Toggle Load"
+            }
+            DEF _15 BooleanTrigger { }
+            DEF _16 BooleanToggle {
+              toggle TRUE
+            }
+          ]
+        }
+        DEF LoadTime Group {
+          children [
+            DEF Text Transform {
+              translation 0 -4 0
+              children Shape {
+                geometry DEF _17 Text {
+                  string "49 ms"
+                  fontStyle FontStyle {
+                    family "TYPEWRITER"
+                    style "BOLD"
+                    size 0.25
+                    justify "MIDDLE"
+                  }
+                }
+              }
+            }
+            DEF LoadSensor LoadSensor {
+              children [
+                USE InlineBox
+                USE InlineLines
+                USE InlinePoints
+              ]
+            }
+            DEF LoadTimeScript Script {
+              inputOnly  SFBool   set_active
+              outputOnly MFString string_changed
+
+              url "ecmascript:
+
+let startTime = 0;
+
+function initialize ()
+{
+   string_changed [0] = \"0 ms\";
+}
+
+function set_active (value, time)
+{
+   if (value)
+   {
+      startTime = Date .now ();
+   }
+   else
+   {
+      const loadTime = Math .floor (Date .now () - startTime);
+
+      string_changed [0] = `${loadTime .toLocaleString (\"en\")} ms`;
+   }
+}
+"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+ROUTE _12.touchTime TO _15.set_triggerTime
+ROUTE _15.triggerTrue TO _16.set_boolean
+ROUTE LoadTimeScript.string_changed TO _17.set_string
+ROUTE LoadSensor.isActive TO LoadTimeScript.set_active
+ROUTE _16.toggle_changed TO InlinePoints.set_load
+ROUTE _16.toggle_changed TO InlineLines.set_load
+ROUTE _16.toggle_changed TO InlineBox.set_load
+ROUTE _16.toggle_changed TO _9.set_whichChoice
+ROUTE _4.touchTime TO ColorsScript.set_color1
+ROUTE _6.touchTime TO ColorsScript.set_color2
+ROUTE _8.touchTime TO ColorsScript.set_color3
+ROUTE ColorsScript.color_changed TO _14.set_diffuseColor
+ROUTE ColorsScript.color_changed TO _3.set_emissiveColor

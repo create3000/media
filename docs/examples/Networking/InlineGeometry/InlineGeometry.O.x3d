@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
-<X3D profile='Core' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Core' level='2'/>
     <component name='EventUtilities' level='1'/>
     <component name='Geometry2D' level='2'/>
-    <component name='Geometry3D' level='4'/>
-    <component name='Grouping' level='3'/>
     <component name='Layering' level='1'/>
-    <component name='Navigation' level='3'/>
     <component name='Networking' level='4'/>
     <component name='PointingDeviceSensor' level='1'/>
-    <component name='Rendering' level='5'/>
     <component name='Scripting' level='1'/>
-    <component name='Shape' level='4'/>
     <component name='Text' level='2'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Fri, 20 Feb 2026 20:45:17 GMT'/>
-    <meta name='modified' content='Sat, 21 Feb 2026 15:08:10 GMT'/>
+    <meta name='modified' content='Sun, 22 Feb 2026 11:16:33 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -59,7 +54,7 @@
             translation='-3 0 0'>
           <Shape>
             <Appearance>
-              <Material DEF='_1'
+              <Material DEF='_14'
                   diffuseColor='0.5607843 0.8078431 0'/>
             </Appearance>
             <InlineGeometry DEF='InlineBox'
@@ -103,6 +98,78 @@
         </Transform>
       </Layer>
       <Layer DEF='HUD'>
+        <Group DEF='ColorButtons'>
+          <Transform DEF='Amber'
+              translation='-0.4 -3.055499 0'>
+            <Shape>
+              <Appearance>
+                <Material DEF='_1'
+                    diffuseColor='0.7058824 0.372549 0.02352941'/>
+              </Appearance>
+              <Disk2D DEF='_2'
+                  outerRadius='0.15'/>
+            </Shape>
+            <TouchSensor DEF='_4'
+                description='Change Color to Amber'/>
+          </Transform>
+          <Transform DEF='Green_1'
+              translation='0 -3.055499 0'>
+            <Shape>
+              <Appearance>
+                <Material DEF='_5'
+                    diffuseColor='0.5607843 0.8078431 0'/>
+              </Appearance>
+              <Disk2D USE='_2'/>
+            </Shape>
+            <TouchSensor DEF='_6'
+                description='Change Color to Green'/>
+          </Transform>
+          <Transform DEF='Lila'
+              translation='0.4 -3.055499 0'>
+            <Shape>
+              <Appearance>
+                <Material DEF='_7'
+                    diffuseColor='0.4156863 0.1960784 0.6235294'/>
+              </Appearance>
+              <Disk2D USE='_2'/>
+            </Shape>
+            <TouchSensor DEF='_8'
+                description='Change Color to Lila'/>
+          </Transform>
+          <Script DEF='ColorsScript'>
+            <field accessType='inputOnly' type='SFTime' name='set_color1'/>
+            <field accessType='inputOnly' type='SFTime' name='set_color2'/>
+            <field accessType='inputOnly' type='SFTime' name='set_color3'/>
+            <field accessType='outputOnly' type='SFColor' name='color_changed'/>
+            <field accessType='initializeOnly' type='MFNode' name='colors'>
+              <Material USE='_1'/>
+              <Material USE='_5'/>
+              <Material USE='_7'/>
+            </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   set_color2 ();
+}
+
+function set_color1 ()
+{
+   color_changed = colors [0] .diffuseColor;
+}
+
+function set_color2 ()
+{
+   color_changed = colors [1] .diffuseColor;
+}
+
+function set_color3 ()
+{
+   color_changed = colors [2] .diffuseColor;
+}
+]]>
+          </Script>
+        </Group>
         <Group DEF='Button'>
           <ProtoInstance name='BooleanSwitch' DEF='_9'>
             <fieldValue name='whichChoice' value='true'/>
@@ -111,7 +178,7 @@
                   translation='0 -3.55158 0'>
                 <Shape DEF='_10'>
                   <Appearance>
-                    <Material USE='_1'/>
+                    <UnlitMaterial USE='_3'/>
                   </Appearance>
                   <ProtoInstance name='RoundedRectangle2D' containerField='geometry'>
                     <fieldValue name='size' value='0.7 0.4'/>
@@ -119,13 +186,12 @@
                 </Shape>
                 <Transform
                     translation='-0.13 0 0'>
-                  <Shape DEF='_6'>
+                  <Shape DEF='_11'>
                     <Appearance>
-                      <Material
-                          diffuseColor='0 0 0'/>
+                      <UnlitMaterial
+                          emissiveColor='0 0 0'/>
                     </Appearance>
-                    <Disk2D
-                        outerRadius='0.15'/>
+                    <Disk2D USE='_2'/>
                   </Shape>
                 </Transform>
               </Transform>
@@ -134,23 +200,23 @@
                 <Shape USE='_10'/>
                 <Transform
                     translation='0.13 0 0'>
-                  <Shape USE='_6'/>
+                  <Shape USE='_11'/>
                 </Transform>
               </Transform>
             </fieldValue>
           </ProtoInstance>
-          <TouchSensor DEF='_7'
+          <TouchSensor DEF='_12'
               description='Toggle Load'/>
-          <BooleanTrigger DEF='_8'/>
-          <BooleanToggle DEF='_11'
+          <BooleanTrigger DEF='_15'/>
+          <BooleanToggle DEF='_16'
               toggle='true'/>
         </Group>
         <Group DEF='LoadTime'>
           <Transform DEF='Text'
               translation='0 -4 0'>
             <Shape>
-              <Text DEF='_12'
-                  string='"35 ms"'>
+              <Text DEF='_17'
+                  string='"49 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -194,13 +260,18 @@ function set_active (value, time)
         </Group>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='_7' fromField='touchTime' toNode='_8' toField='set_triggerTime'/>
-    <ROUTE fromNode='_8' fromField='triggerTrue' toNode='_11' toField='set_boolean'/>
-    <ROUTE fromNode='LoadTimeScript' fromField='string_changed' toNode='_12' toField='set_string'/>
+    <ROUTE fromNode='_12' fromField='touchTime' toNode='_15' toField='set_triggerTime'/>
+    <ROUTE fromNode='_15' fromField='triggerTrue' toNode='_16' toField='set_boolean'/>
+    <ROUTE fromNode='LoadTimeScript' fromField='string_changed' toNode='_17' toField='set_string'/>
     <ROUTE fromNode='LoadSensor' fromField='isActive' toNode='LoadTimeScript' toField='set_active'/>
-    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='InlinePoints' toField='set_load'/>
-    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='InlineLines' toField='set_load'/>
-    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='InlineBox' toField='set_load'/>
-    <ROUTE fromNode='_11' fromField='toggle_changed' toNode='_9' toField='set_whichChoice'/>
+    <ROUTE fromNode='_16' fromField='toggle_changed' toNode='InlinePoints' toField='set_load'/>
+    <ROUTE fromNode='_16' fromField='toggle_changed' toNode='InlineLines' toField='set_load'/>
+    <ROUTE fromNode='_16' fromField='toggle_changed' toNode='InlineBox' toField='set_load'/>
+    <ROUTE fromNode='_16' fromField='toggle_changed' toNode='_9' toField='set_whichChoice'/>
+    <ROUTE fromNode='_4' fromField='touchTime' toNode='ColorsScript' toField='set_color1'/>
+    <ROUTE fromNode='_6' fromField='touchTime' toNode='ColorsScript' toField='set_color2'/>
+    <ROUTE fromNode='_8' fromField='touchTime' toNode='ColorsScript' toField='set_color3'/>
+    <ROUTE fromNode='ColorsScript' fromField='color_changed' toNode='_14' toField='set_diffuseColor'/>
+    <ROUTE fromNode='ColorsScript' fromField='color_changed' toNode='_3' toField='set_emissiveColor'/>
   </Scene>
 </X3D>
