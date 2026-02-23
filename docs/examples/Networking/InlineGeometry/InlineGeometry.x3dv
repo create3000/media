@@ -13,7 +13,7 @@ COMPONENT Text : 2
 
 META "creator" "Holger Seelig"
 META "created" "Fri, 20 Feb 2026 20:45:17 GMT"
-META "modified" "Mon, 23 Feb 2026 14:45:07 GMT"
+META "modified" "Mon, 23 Feb 2026 21:51:55 GMT"
 META "generator" "x3d-tidy V3.0.4, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.0.4, https://create3000.github.io/sunrize/"
 
@@ -55,7 +55,7 @@ LayerSet {
               }
             }
             geometry DEF InlineBox InlineGeometry {
-              url "assets/Geometries.x3d#Box"
+              url "assets/Geometries.x3d#BoxGeometry"
             }
           }
         }
@@ -67,7 +67,7 @@ LayerSet {
               }
             }
             geometry DEF InlineLines InlineGeometry {
-              url "assets/Geometries.x3d#Lines"
+              url "assets/Geometries.x3d#LinesGeometry"
             }
           }
         }
@@ -95,7 +95,7 @@ LayerSet {
               material USE _3
             }
             geometry DEF InlinePoints InlineGeometry {
-              url "assets/Geometries.x3d#Points"
+              url "assets/Geometries.x3d#PointsGeometry"
             }
           }
         }
@@ -247,7 +247,7 @@ function set_color3 ()
               translation 0 -4 0
               children Shape {
                 geometry DEF _17 Text {
-                  string "40 ms"
+                  string "45 ms"
                   fontStyle FontStyle {
                     family "TYPEWRITER"
                     style "BOLD"
@@ -270,7 +270,7 @@ function set_color3 ()
 
               url "ecmascript:
 
-let startTime = 0;
+let startTime = Date .now ();
 
 function initialize ()
 {

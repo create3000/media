@@ -1,11 +1,14 @@
-#X3D V4.1 utf8 X_ITE V14.0.3
+#X3D V4.1 utf8 X_ITE V14.0.4
 
 PROFILE Interchange
 
+COMPONENT Core : 2
 COMPONENT CubeMapTexturing : 3
 COMPONENT EventUtilities : 1
 COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
+COMPONENT Lighting : 3
+COMPONENT Networking : 4
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Text : 2
@@ -13,9 +16,9 @@ COMPONENT Text : 2
 META "comment" "Rise and Shine"
 META "created" "Tue, 28 Nov 2017 11:47:53 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.3, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "x3d-tidy V3.0.4, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/"
-META "modified" "Sat, 21 Feb 2026 00:17:22 GMT"
+META "modified" "Mon, 23 Feb 2026 21:52:03 GMT"
 
 EXTERNPROTO BooleanSwitch [
   inputOutput    SFBool  whichChoice
@@ -152,7 +155,7 @@ LayerSet {
 
               url "ecmascript:
 
-let startTime = 0;
+let startTime = Date .now ();
 
 function initialize ()
 {
