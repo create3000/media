@@ -13,9 +13,9 @@ COMPONENT Text : 2
 
 META "creator" "Holger Seelig"
 META "created" "Fri, 20 Feb 2026 20:45:17 GMT"
-META "modified" "Sun, 22 Feb 2026 11:16:37 GMT"
+META "modified" "Mon, 23 Feb 2026 14:45:07 GMT"
 META "generator" "x3d-tidy V3.0.4, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.3, https://create3000.github.io/sunrize/"
+META "generator" "Sunrize X3D Editor V2.0.4, https://create3000.github.io/sunrize/"
 
 EXTERNPROTO RoundedRectangle2D [
   inputOutput    SFFloat cornerRadius
@@ -55,7 +55,7 @@ LayerSet {
               }
             }
             geometry DEF InlineBox InlineGeometry {
-              url "assets/Box.x3d"
+              url "assets/Geometries.x3d#Box"
             }
           }
         }
@@ -67,7 +67,7 @@ LayerSet {
               }
             }
             geometry DEF InlineLines InlineGeometry {
-              url "assets/Lines.x3d"
+              url "assets/Geometries.x3d#Lines"
             }
           }
         }
@@ -95,7 +95,7 @@ LayerSet {
               material USE _3
             }
             geometry DEF InlinePoints InlineGeometry {
-              url "assets/Points.x3d"
+              url "assets/Geometries.x3d#Points"
             }
           }
         }
@@ -247,7 +247,7 @@ function set_color3 ()
               translation 0 -4 0
               children Shape {
                 geometry DEF _17 Text {
-                  string "49 ms"
+                  string "40 ms"
                   fontStyle FontStyle {
                     family "TYPEWRITER"
                     style "BOLD"
