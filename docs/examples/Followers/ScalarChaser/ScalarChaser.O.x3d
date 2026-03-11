@@ -2,19 +2,22 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
 <X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
+    <component name='Core' level='2'/>
     <component name='EventUtilities' level='1'/>
     <component name='Followers' level='1'/>
-    <component name='Geometry2D' level='2'/>
+    <component name='Geometry2D' level='1'/>
     <component name='Layering' level='1'/>
-    <component name='Layout' level='2'/>
+    <component name='Layout' level='1'/>
+    <component name='Navigation' level='2'/>
+    <component name='Networking' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='2'/>
+    <component name='Text' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 08 Jul 2018 09:58:21 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 25 Jan 2026 13:12:49 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Wed, 11 Mar 2026 22:29:23 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFFloat' url='"assets/SFFloat.x3d#SFFloat"'>
@@ -354,8 +357,8 @@ function initialize ()
               sizeUnits='"PIXEL", "PIXEL"'
               size='200, 100'
               scaleMode='"PIXEL", "PIXEL"'/>
-          <Transform DEF='X3D-Globe'
-              translation='-258.396 -26.8189 0'>
+          <Transform DEF='X3D-Globe_1'
+              translation='-264.3927 -26.8189 0'>
             <Shape>
               <Appearance>
                 <Material
@@ -375,13 +378,13 @@ function initialize ()
               url='"http://globe.chromeexperiments.com/"'
               parameter='"target=_blank"'>
             <Transform
-                translation='-173.397 -26.8189 0'>
+                translation='-179.3937 -26.8189 0'>
               <Shape>
                 <Appearance>
                   <Material/>
                 </Appearance>
                 <Text
-                    string='" •     Inspired by Chrome WebGL Gobe"'
+                    string='" •     Inspired by Chrome WebGL Globe"'
                     solid='true'>
                   <ScreenFontStyle
                       family='"DejaVuSans", "SANS"'

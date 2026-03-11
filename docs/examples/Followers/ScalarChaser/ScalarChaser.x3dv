@@ -1,22 +1,25 @@
-#X3D V4.1 utf8 X_ITE V14.0.0
+#X3D V4.1 utf8 X_ITE V14.0.8
 
 PROFILE Interchange
 
+COMPONENT Core : 2
 COMPONENT EventUtilities : 1
 COMPONENT Followers : 1
-COMPONENT Geometry2D : 2
+COMPONENT Geometry2D : 1
 COMPONENT Layering : 1
-COMPONENT Layout : 2
+COMPONENT Layout : 1
+COMPONENT Navigation : 2
+COMPONENT Networking : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 2
+COMPONENT Text : 1
 
 META "comment" "Rise and Shine"
 META "created" "Sun, 08 Jul 2018 09:58:21 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
-META "modified" "Sun, 25 Jan 2026 14:30:39 GMT"
+META "generator" "x3d-tidy V3.0.7, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/"
+META "modified" "Wed, 11 Mar 2026 22:29:43 GMT"
 
 EXTERNPROTO SFFloat [
   inputOnly   SFTime  set_triggerTime
@@ -327,8 +330,8 @@ LayerSet {
             scaleMode [ "PIXEL", "PIXEL" ]
           }
           children [
-            DEF X3D-Globe Transform {
-              translation -258.396 -26.8189 0
+            DEF X3D-Globe_1 Transform {
+              translation -264.3927 -26.8189 0
               children Shape {
                 appearance Appearance {
                   material Material {
@@ -350,13 +353,13 @@ LayerSet {
               url "http://globe.chromeexperiments.com/"
               parameter "target=_blank"
               children Transform {
-                translation -173.397 -26.8189 0
+                translation -179.3937 -26.8189 0
                 children Shape {
                   appearance Appearance {
                     material Material { }
                   }
                   geometry Text {
-                    string " •     Inspired by Chrome WebGL Gobe"
+                    string " •     Inspired by Chrome WebGL Globe"
                     solid TRUE
                     fontStyle ScreenFontStyle {
                       family [ "DejaVuSans", "SANS" ]
