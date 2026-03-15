@@ -10,8 +10,8 @@
     <component name='X_ITE' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Sat, 14 Mar 2026 23:38:38 GMT'/>
-    <meta name='modified' content='Sun, 15 Mar 2026 12:25:09 GMT'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.8, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 15 Mar 2026 12:56:32 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
     <meta name='reference' content='https://threejs-journey.com/lessons/animated-galaxy'/>
   </head>
   <Scene>
@@ -138,7 +138,7 @@ uniform vec3 colorOutside;
 void
 main ()
 {
-   vec3  colorFinal = mix (colorInside, colorOutside, radiusRatio);
+   vec3  colorFinal = mix (colorInside, colorOutside, pow (radiusRatio, 2.0));
    float alpha      = 0.1 / length (texCoord - 0.5) - 0.2; 
 
    x3d_FragColor = vec4 (colorFinal, alpha);
