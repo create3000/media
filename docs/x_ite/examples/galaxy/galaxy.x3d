@@ -10,7 +10,7 @@
     <component name='X_ITE' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Sat, 14 Mar 2026 23:38:38 GMT'/>
-    <meta name='modified' content='Sun, 15 Mar 2026 23:27:40 GMT'/>
+    <meta name='modified' content='Sun, 15 Mar 2026 23:50:05 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
     <meta name='reference' content='https://threejs-journey.com/lessons/animated-galaxy'/>
   </head>
@@ -112,7 +112,7 @@ getPosition ()
 void
 main ()
 {
-   srand (gl_InstanceID);
+   srand (gl_InstanceID * 7919);
 
    vertex   = rotation * (getScale () * x3d_Vertex .xyz) + getPosition ();
    texCoord = x3d_TexCoord0 .xy;
