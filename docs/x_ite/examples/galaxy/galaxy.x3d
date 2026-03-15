@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
+  <head>
+    <component name='Core' level='2'/>
+    <component name='EnvironmentalSensor' level='1'/>
+    <component name='Geometry2D' level='1'/>
+    <component name='Scripting' level='1'/>
+    <component name='Shaders' level='1'/>
+    <component name='X_ITE' level='1'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='created' content='Sat, 14 Mar 2026 23:38:38 GMT'/>
+    <meta name='modified' content='Sun, 15 Mar 2026 09:46:32 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/'/>
+  </head>
+  <Scene>
+    <ProtoDeclare name='Galaxy'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFBool' name='enabled' value='true'/>
+        <field accessType='inputOutput' type='SFInt32' name='numStars'/>
+        <field accessType='inputOutput' type='SFColor' name='colorInside' value='1 0.6470588 0.4588235'/>
+        <field accessType='inputOutput' type='SFColor' name='colorOutside' value='0.1921569 0.08235294 0.6'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Group>
+          <ProximitySensor DEF='_2'
+              size='-1 -1 -1'/>
+          <InstancedShape DEF='_3'
+              translations='0 0 0, 1 0 0'>
+            <Appearance>
+              <ComposedShader DEF='GalaxyShader'
+                  language='GLSL'>
+                <field accessType='inputOutput' type='SFTime' name='time' value='0'/>
+                <field accessType='inputOutput' type='SFRotation' name='rotation'/>
+                <field accessType='inputOutput' type='SFColor' name='colorInside'/>
+                <field accessType='inputOutput' type='SFColor' name='colorOutside'/>
+                <IS>
+                  <connect nodeField='colorInside' protoField='colorInside'/>
+                  <connect nodeField='colorOutside' protoField='colorOutside'/>
+                </IS>
+                <ShaderPart DEF='GalaxyVertexShader'>
+<![CDATA[data:x-shader/x-vertex,#version 300 es
+
+precision highp float;
+precision highp int;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+in mat4 x3d_ParticleMatrix;
+
+in vec4 x3d_Vertex;
+in vec4 x3d_TexCoord0;
+
+out vec3  vertex;
+out vec2  texCoord;
+out float radiusRatio;
+
+uniform float time;
+uniform mat3  rotation;
+
+const float PI2 = 6.283185307179586;
+
+/* Random number generation */
+
+const int RAND_MAX = int (0x7fffffff);
+const int RAND_MIN = int (0x80000000);
+
+int seed = 1;
+
+void
+srand (in int value)
+{
+   seed = value;
+}
+
+// Return a uniform distributed random integral number in the interval [RAND_MIN, RAND_MAX].
+int
+rand ()
+{
+   return seed = seed * 1103515245 + 12345;
+}
+
+// Return a uniform distributed random floating point number in the interval [0, 1].
+float
+random ()
+{
+   return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;
+}
+
+vec3
+getPosition ()
+{
+   srand (gl_InstanceID);
+
+   radiusRatio = random ();
+   float radius = pow (radiusRatio, 1.5) * 5.0;
+
+   float branches    = 3.0;
+   float branchAngle = floor (random () * branches) * (PI2 / branches);
+   float angle       = branchAngle + (time * (1.0 - radiusRatio));
+
+   vec3 position = vec3 (cos (angle), 0, sin (angle)) * radius; 
+
+   vec3 randomOffset = pow (vec3 (random () * 2.0 - 1.0, random () * 2.0 - 1.0, random () * 2.0 - 1.0), vec3 (3.0)) * radiusRatio + 0.2;
+
+   return position + randomOffset;
+}
+
+void
+main ()
+{
+   vertex   = rotation * x3d_Vertex .xyz + getPosition ();
+   texCoord = x3d_TexCoord0 .xy;
+
+   gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vec4 (vertex, 1.0);
+}
+]]>
+                </ShaderPart>
+                <ShaderPart DEF='GalaxyFragmentShader'
+                    type='FRAGMENT'>
+<![CDATA[data:x-shader/x-fragment,#version 300 es
+
+precision highp float;
+precision highp int;
+
+out vec4 x3d_FragColor;
+
+in vec3  vertex;
+in vec2  texCoord;
+in float radiusRatio;
+
+uniform vec3 colorInside;
+uniform vec3 colorOutside;
+
+void
+main ()
+{
+   vec3  colorFinal = mix (colorInside, colorOutside, 1.0 - pow (1.0 - radiusRatio, 2.0));
+   float alpha      = 0.1 / length (texCoord - 0.5) - 0.2; 
+
+   x3d_FragColor = vec4 (colorFinal, alpha);
+}
+]]>
+                </ShaderPart>
+              </ComposedShader>
+              <BlendMode DEF='AdditiveBlending'
+                  destinationColorFactor='ONE'/>
+            </Appearance>
+            <Rectangle2D
+                size='0.08 0.08'/>
+          </InstancedShape>
+        </Group>
+        <TimeSensor DEF='_4'>
+          <IS>
+            <connect nodeField='loop' protoField='enabled'/>
+          </IS>
+        </TimeSensor>
+        <Script DEF='GalaxyScript'>
+          <field accessType='inputOutput' type='SFInt32' name='numStars'/>
+          <field accessType='initializeOnly' type='SFNode' name='shape'>
+            <InstancedShape USE='_3'/>
+          </field>
+          <IS>
+            <connect nodeField='numStars' protoField='numStars'/>
+          </IS>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   set_numStars ();
+}
+
+function set_numStars ()
+{
+   shape .translations .length = numStars;
+}]]>
+        </Script>
+        <ROUTE fromNode='_2' fromField='orientation_changed' toNode='GalaxyShader' toField='set_rotation'/>
+        <ROUTE fromNode='_4' fromField='elapsedTime' toNode='GalaxyShader' toField='set_time'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo/>
+    <Viewpoint
+        description='Initial View'
+        position='0 2.710643 5.929861'
+        orientation='0.999508160954139 -0.030169979601332 -0.00855619757438832 5.7302393891102'
+        centerOfRotation='0.01964749 -0.6864276 0.4231205'/>
+    <ProtoInstance name='Galaxy'>
+      <fieldValue name='numStars' value='20000'/>
+    </ProtoInstance>
+  </Scene>
+</X3D>
