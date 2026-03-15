@@ -10,7 +10,7 @@
     <component name='X_ITE' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Sat, 14 Mar 2026 23:38:38 GMT'/>
-    <meta name='modified' content='Sun, 15 Mar 2026 10:56:37 GMT'/>
+    <meta name='modified' content='Sun, 15 Mar 2026 11:22:06 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/'/>
     <meta name='reference' content='https://threejs-journey.com/lessons/animated-galaxy'/>
   </head>
@@ -88,6 +88,12 @@ random ()
    return float (rand ()) / float (RAND_MAX) / 2.0 + 0.5;
 }
 
+float
+getScale ()
+{
+   return random ();
+}
+
 vec3
 getPosition ()
 {
@@ -110,7 +116,7 @@ main ()
 {
    srand (gl_InstanceID);
 
-   vertex   = rotation * (random () * x3d_Vertex .xyz) + getPosition ();
+   vertex   = rotation * (getScale () * x3d_Vertex .xyz) + getPosition ();
    texCoord = x3d_TexCoord0 .xy;
 
    gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vec4 (vertex, 1.0);
