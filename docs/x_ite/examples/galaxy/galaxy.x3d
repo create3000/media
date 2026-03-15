@@ -10,7 +10,7 @@
     <component name='X_ITE' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Sat, 14 Mar 2026 23:38:38 GMT'/>
-    <meta name='modified' content='Sun, 15 Mar 2026 10:06:55 GMT'/>
+    <meta name='modified' content='Sun, 15 Mar 2026 10:48:45 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/'/>
     <meta name='reference' content='https://threejs-journey.com/lessons/animated-galaxy'/>
   </head>
@@ -28,7 +28,8 @@
               size='-1 -1 -1'/>
           <InstancedShape DEF='_3'
               translations='0 0 0, 1 0 0'>
-            <Appearance>
+            <Appearance
+                alphaMode='BLEND'>
               <ComposedShader DEF='GalaxyShader'
                   language='GLSL'>
                 <field accessType='inputOutput' type='SFTime' name='time' value='0'/>
@@ -90,8 +91,6 @@ random ()
 vec3
 getPosition ()
 {
-   srand (gl_InstanceID);
-
    radiusRatio = random ();
    float radius = pow (radiusRatio, 1.5) * 5.0;
 
@@ -109,7 +108,9 @@ getPosition ()
 void
 main ()
 {
-   vertex   = rotation * x3d_Vertex .xyz + getPosition ();
+   srand (gl_InstanceID);
+
+   vertex   = rotation * random () * x3d_Vertex .xyz + getPosition ();
    texCoord = x3d_TexCoord0 .xy;
 
    gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * vec4 (vertex, 1.0);
@@ -147,7 +148,7 @@ main ()
                   destinationColorFactor='ONE'/>
             </Appearance>
             <Rectangle2D
-                size='0.08 0.08'/>
+                size='0.04 0.04'/>
           </InstancedShape>
         </Group>
         <TimeSensor DEF='_4'>
