@@ -8,7 +8,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Tue, 17 Mar 2026 23:31:18 GMT'/>
+    <meta name='modified' content='Tue, 17 Mar 2026 23:33:06 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -63,7 +63,7 @@
     </Group>
     <Transform DEF='Mirror_1'
         translation='0 8.456679 -22.56728'
-        rotation='0 -1.00000000000003 0 0.144166705844298'>
+        rotation='0 -1 0 0.486666850944357'>
       <Group DEF='MirrorAnimation'>
         <MetadataSet DEF='Animation' containerField='metadata'
             name='Animation'
@@ -115,8 +115,8 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_1' containerField='viewpoint'
-                position='32.22684 9.386942 -54.18625'
-                orientation='-0.00432423823121766 0.999937596636074 0.0103006697545368 2.34671844210197'/>
+                position='44.96155 9.386942 -26.66455'
+                orientation='-0.00940434124556976 0.999902726253128 0.0103003105438148 1.66177048417653'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
           <TextureTransform
@@ -160,7 +160,7 @@
         size='-1 -1 -1'/>
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1.00000000000003 0 0.144166705844298'/>
+      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1 0 0.486666850944357'/>
       <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
@@ -168,7 +168,7 @@
 
 function initialize ()
 {
-   // Add code here.
+   eventsProcessed ();
 }
 
 function eventsProcessed ()
