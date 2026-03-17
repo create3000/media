@@ -8,7 +8,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Tue, 17 Mar 2026 23:11:26 GMT'/>
+    <meta name='modified' content='Tue, 17 Mar 2026 23:31:18 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -48,6 +48,18 @@
         <Inline
             url='"assets/stylized_pine_tree_tree.glb"'/>
       </Transform>
+      <Transform DEF='Floor'
+          rotation='1 0 0 4.71238898038469'
+          scale='19 19 19'>
+        <Shape>
+          <Appearance>
+            <Material/>
+          </Appearance>
+          <Rectangle2D/>
+        </Shape>
+      </Transform>
+      <DirectionalLight
+          direction='0 0 1'/>
     </Group>
     <Transform DEF='Mirror_1'
         translation='0 8.456679 -22.56728'
@@ -147,11 +159,11 @@
     <ProximitySensor DEF='_3'
         size='-1 -1 -1'/>
     <Script DEF='MirrorScript'>
-      <field accessType='inputOutput' type='SFVec3f' name='translation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='rotation' value='0 -1.00000000000003 0 0.144166705844298'/>
-      <field accessType='inputOutput' type='SFVec3f' name='position' value='21.90548 9.386942 16.91029'/>
-      <field accessType='outputOnly' type='SFVec3f' name='mirrorPosition_changed'/>
-      <field accessType='outputOnly' type='SFRotation' name='mirrorOrientation_changed'/>
+      <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
+      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1.00000000000003 0 0.144166705844298'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
+      <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
+      <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
 
 function initialize ()
@@ -162,32 +174,22 @@ function initialize ()
 function eventsProcessed ()
 {
    const 
-      normal    = rotation .multVec (new SFVec3f (0, 0, 1)),
-      direction = position .subtract (translation);
+      normal    = mirrorRotation .multVec (new SFVec3f (0, 0, 1)),
+      direction = viewpointPosition .subtract (mirrorTranslation);
 
    const reflect = direction .subtract (normal .multiply (2.0 * normal .dot (direction)));
 
-   mirrorPosition_changed = translation .add (reflect);
-   mirrorOrientation_changed = new SFRotation (new SFVec3f (0, 0, 1), reflect) .straighten ();
+   mirrorViewpointPosition_changed    = mirrorTranslation .add (reflect);
+   mirrorViewpointOrientation_changed = new SFRotation (new SFVec3f (0, 0, 1), reflect) .straighten ();
 }
 ]]>
     </Script>
-    <Transform DEF='Rectangle2D'
-        rotation='1 -0 0 4.71238898038469'
-        scale='19 19 19'>
-      <Shape>
-        <Appearance>
-          <Material/>
-        </Appearance>
-        <Rectangle2D/>
-      </Shape>
-    </Transform>
-    <ROUTE fromNode='Mirror_1' fromField='rotation_changed' toNode='MirrorScript' toField='set_rotation'/>
-    <ROUTE fromNode='Mirror_1' fromField='translation_changed' toNode='MirrorScript' toField='set_translation'/>
-    <ROUTE fromNode='_3' fromField='position_changed' toNode='MirrorScript' toField='set_position'/>
-    <ROUTE fromNode='MirrorScript' fromField='mirrorPosition_changed' toNode='_1' toField='set_position'/>
-    <ROUTE fromNode='MirrorScript' fromField='mirrorOrientation_changed' toNode='_1' toField='set_orientation'/>
     <ROUTE fromNode='MirrorAnimationTimer' fromField='fraction_changed' toNode='MirrorRotationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='MirrorRotationInterpolator' fromField='value_changed' toNode='Mirror_1' toField='set_rotation'/>
+    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointPosition_changed' toNode='_1' toField='set_position'/>
+    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointOrientation_changed' toNode='_1' toField='set_orientation'/>
+    <ROUTE fromNode='Mirror_1' fromField='translation_changed' toNode='MirrorScript' toField='set_mirrorTranslation'/>
+    <ROUTE fromNode='Mirror_1' fromField='rotation_changed' toNode='MirrorScript' toField='set_mirrorRotation'/>
+    <ROUTE fromNode='_3' fromField='position_changed' toNode='MirrorScript' toField='set_viewpointPosition'/>
   </Scene>
 </X3D>
