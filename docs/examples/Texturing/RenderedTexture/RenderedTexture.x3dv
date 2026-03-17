@@ -1,0 +1,165 @@
+#X3D V4.1 utf8 X_ITE V14.0.9
+
+PROFILE Interchange
+
+COMPONENT EnvironmentalSensor : 1
+COMPONENT Geometry2D : 1
+COMPONENT Networking : 2
+COMPONENT Scripting : 1
+
+META "creator" "Holger Seelig"
+META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
+META "modified" "Tue, 17 Mar 2026 23:04:20 GMT"
+META "generator" "x3d-tidy V3.0.8, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/"
+
+WorldInfo { }
+
+Viewpoint {
+  description "Initial View"
+  position 21.90548 9.386942 16.91029
+  orientation 0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893
+  centerOfRotation -3.244112 2 -2.059838
+}
+
+DEF Summer Background {
+  skyAngle [ 0.8, 1.3, 1.4, 1.5708 ]
+  skyColor [ 0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98 ]
+  groundAngle [ 0.659972, 1.2, 1.39912, 1.5708 ]
+  groundColor [ 0.105712 0.156051 0.297, 0.187629 0.255857 0.398, 0.33604 0.405546 0.542, 0.3612 0.469145 0.602, 0.39471 0.522059 0.669 ]
+}
+
+DEF Scene Group {
+  children [
+    DEF House Transform {
+      children DEF Beethoven Inline {
+        global TRUE
+        url "assets/house_muller.glb"
+      }
+    }
+    DEF Tree Transform {
+      translation 14.28465 0.01348858 -10.01353
+      scale 0.02454167 0.02454167 0.02454167
+      children Inline {
+        url "assets/stylized_pine_tree_tree.glb"
+      }
+    }
+  ]
+}
+
+DEF Mirror_1 Transform {
+  translation 0 8.456679 -22.56728
+  rotation 0 -1 0 0.443749937756627
+  children [
+    DEF MirrorAnimation Group {
+      children [
+        DEF MirrorAnimationTimer TimeSensor {
+          description "Mirror Animation"
+          cycleInterval 4.8
+          loop TRUE
+          startTime 1773788063.855
+          resumeTime 1773788067.148
+          pauseTime 1773788067.022
+          stopTime 1773788063.855
+        }
+        DEF MirrorRotationInterpolator OrientationInterpolator {
+          key [ 0, 0.25, 0.5, 0.75, 1 ]
+          keyValue [ 0 0 1 0, 0 -1 0 0.49999999254942, 0 0 0 0, 0 1 0 0.49999999254942, 0 0 0 0 ]
+        }
+      ]
+    }
+    Shape {
+      appearance Appearance {
+        material UnlitMaterial { }
+        textureTransform TextureTransform {
+          translation -1 0
+          scale -1 1
+        }
+      }
+      geometry Rectangle2D {
+        size 16 16
+        solid TRUE
+      }
+    }
+    DEF Frame Group {
+      children [
+        DEF Box_1 Transform {
+          translation 0 8 0
+          scale 8.3 0.3 0.3
+          children DEF _2 Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 1 1 1
+              }
+            }
+            geometry Box { }
+          }
+        }
+        DEF Box_2 Transform {
+          translation 0 -8 0
+          scale 8.3 0.3 0.3
+          children USE _2
+        }
+        DEF Box_3 Transform {
+          translation -8 0 0
+          scale 0.3 8.3 0.3
+          children USE _2
+        }
+        DEF Box Transform {
+          translation 8 0 0
+          scale 0.3 8.3 0.3
+          children USE _2
+        }
+      ]
+    }
+  ]
+}
+
+DEF _3 ProximitySensor {
+  size -1 -1 -1
+}
+
+DEF MirrorScript Script {
+  inputOutput SFVec3f    translation 0 8.456679 -22.56728
+  inputOutput SFRotation rotation 0 -1 0 0.443749937756627
+  inputOutput SFVec3f    position 21.90548 9.386942 16.91029
+  outputOnly  SFVec3f    mirrorPosition_changed
+  outputOnly  SFRotation mirrorOrientation_changed
+
+  url "ecmascript:
+
+function initialize ()
+{
+   // Add code here.
+}
+
+function eventsProcessed ()
+{
+   const 
+      normal    = rotation .multVec (new SFVec3f (0, 0, 1)),
+      direction = position .subtract (translation);
+
+   const reflect = direction .subtract (normal .multiply (2.0 * normal .dot (direction)));
+
+   mirrorPosition_changed = translation .add (reflect);
+   mirrorOrientation_changed = new SFRotation (new SFVec3f (0, 0, 1), reflect) .straighten ();
+}
+"
+}
+
+DEF Rectangle2D Transform {
+  rotation 1 -0 0 4.71238898038469
+  scale 19 19 19
+  children Shape {
+    appearance Appearance {
+      material Material { }
+    }
+    geometry Rectangle2D { }
+  }
+}
+
+ROUTE Mirror_1.rotation_changed TO MirrorScript.set_rotation
+ROUTE Mirror_1.translation_changed TO MirrorScript.set_translation
+ROUTE _3.position_changed TO MirrorScript.set_position
+ROUTE MirrorAnimationTimer.fraction_changed TO MirrorRotationInterpolator.set_fraction
+ROUTE MirrorRotationInterpolator.value_changed TO Mirror_1.set_rotation
