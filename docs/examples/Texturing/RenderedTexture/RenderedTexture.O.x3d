@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Wed, 18 Mar 2026 19:53:20 GMT'/>
+    <meta name='modified' content='Wed, 18 Mar 2026 21:36:04 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -71,7 +71,8 @@
       </Transform>
     </Group>
     <Transform DEF='Mirror_1'
-        translation='0 8.456679 -22.56728'>
+        translation='0 8.456679 -22.56728'
+        rotation='0 -1.00000000000029 0 0.0254164731688752'>
       <Group DEF='MirrorAnimation'>
         <MetadataSet DEF='Animation' containerField='metadata'
             name='Animation'
@@ -89,10 +90,10 @@
             description='Mirror Animation'
             cycleInterval='4.8'
             loop='true'
-            startTime='1773837335.686'
+            startTime='1773869718.066'
             resumeTime='1773837453.769'
             pauseTime='1773837453.653'
-            stopTime='1773837352.8'/>
+            stopTime='1773869763.618'/>
         <OrientationInterpolator DEF='MirrorRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 -1 0 0.49999999254942, 0 0 0 0, 0 1 0 0.49999999254942, 0 0 0 0'>
@@ -156,8 +157,9 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_3' containerField='viewpoint'
-                position='7.701223 9.792293 -60.63127'
-                orientation='-0.00172135086004498 0.999850789358087 0.0171882509647373 2.9419939577557'/>
+                position='7.937063 11.33297 -75.96797'
+                orientation='-0.00196676434498156 0.999643950928912 0.026610208741131 2.99409299976271'
+                fieldOfView='0.361389'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
           <TextureTransform
@@ -172,8 +174,8 @@
         size='-1 -1 -1'/>
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='7.701223 9.792293 15.49671'/>
+      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1.00000000000029 0 0.0254164731688752'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='5.213465 11.33297 31.16772'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
