@@ -2,13 +2,14 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
 <X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
+    <component name='CubeMapTexturing' level='2'/>
     <component name='EnvironmentalSensor' level='1'/>
     <component name='Geometry2D' level='1'/>
     <component name='Networking' level='2'/>
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Tue, 17 Mar 2026 23:33:06 GMT'/>
+    <meta name='modified' content='Wed, 18 Mar 2026 11:45:14 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -36,9 +37,13 @@
         skyColor='0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98'
         groundAngle='0.659972, 1.2, 1.39912, 1.5708'
         groundColor='0.105712 0.156051 0.297, 0.187629 0.255857 0.398, 0.33604 0.405546 0.542, 0.3612 0.469145 0.602, 0.39471 0.522059 0.669'/>
+    <EnvironmentLight DEF='CannonExterior'>
+      <ImageCubeMapTexture containerField='specularTexture'
+          url='"https://cdn.jsdelivr.net/npm/x3d-image@2.2.0/src/images/cannon-exterior.avif"'/>
+    </EnvironmentLight>
     <Group DEF='Scene'>
       <Transform DEF='House'>
-        <Inline DEF='Beethoven'
+        <Inline
             global='true'
             url='"assets/house_muller.glb"'/>
       </Transform>
@@ -59,11 +64,11 @@
         </Shape>
       </Transform>
       <DirectionalLight
-          direction='0 0 1'/>
+          direction='0 -1 1'/>
     </Group>
     <Transform DEF='Mirror_1'
         translation='0 8.456679 -22.56728'
-        rotation='0 -1 0 0.486666850944357'>
+        rotation='0 -1.00000000000001 0 0.304999903266629'>
       <Group DEF='MirrorAnimation'>
         <MetadataSet DEF='Animation' containerField='metadata'
             name='Animation'
@@ -81,10 +86,7 @@
             description='Mirror Animation'
             cycleInterval='4.8'
             loop='true'
-            startTime='1773788063.855'
-            resumeTime='1773788067.148'
-            pauseTime='1773788067.022'
-            stopTime='1773788063.855'/>
+            stopTime='1773826978.309'/>
         <OrientationInterpolator DEF='MirrorRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 -1 0 0.49999999254942, 0 0 0 0, 0 1 0 0.49999999254942, 0 0 0 0'>
@@ -115,8 +117,8 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_1' containerField='viewpoint'
-                position='44.96155 9.386942 -26.66455'
-                orientation='-0.00940434124556976 0.999902726253128 0.0103003105438148 1.66177048417653'/>
+                position='41.1393 6.381998 -41.95004'
+                orientation='0.0144554435365093 0.999635757202167 -0.0227901969059927 2.01142782642191'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
           <TextureTransform
@@ -124,8 +126,7 @@
               scale='-1 1'/>
         </Appearance>
         <Rectangle2D
-            size='16 16'
-            solid='true'/>
+            size='16 16'/>
       </Shape>
       <Group DEF='Frame'>
         <Transform DEF='Box_1'
@@ -160,8 +161,8 @@
         size='-1 -1 -1'/>
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1 0 0.486666850944357'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
+      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1.00000000000001 0 0.304999903266629'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='22.616 6.381998 16.88712'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
