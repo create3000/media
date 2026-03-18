@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Wed, 18 Mar 2026 13:22:44 GMT'/>
+    <meta name='modified' content='Wed, 18 Mar 2026 19:53:20 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -137,7 +137,7 @@
             scale='0.3 4.8 0.3'>
           <Shape USE='_2'/>
         </Transform>
-        <Transform DEF='Box'
+        <Transform DEF='Box_4'
             translation='8 0 0'
             scale='0.3 4.8 0.3'>
           <Shape USE='_2'/>
@@ -156,8 +156,8 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_3' containerField='viewpoint'
-                position='24.23537 1.236621 -60.14019'
-                orientation='0.023545783899379 0.996521331963951 -0.0799426732187269 2.57061074829395'/>
+                position='7.701223 9.792293 -60.63127'
+                orientation='-0.00172135086004498 0.999850789358087 0.0171882509647373 2.9419939577557'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
           <TextureTransform
@@ -173,7 +173,7 @@
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
       <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='24.23537 1.236621 15.00563'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='7.701223 9.792293 15.49671'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
@@ -186,13 +186,19 @@ function initialize ()
 function eventsProcessed ()
 {
    const 
-      normal    = mirrorRotation .multVec (new SFVec3f (0, 0, 1)),
-      direction = viewpointPosition .subtract (mirrorTranslation);
+      mirrorNormal      = mirrorRotation .multVec (new SFVec3f (0, 0, 1)),
+      viewpointToMirror = mirrorTranslation .subtract (viewpointPosition);
 
-   const reflect = direction .subtract (normal .multiply (2.0 * normal .dot (direction)));
+   const rDirection = reflect (viewpointToMirror, mirrorNormal);
 
-   mirrorViewpointPosition_changed    = mirrorTranslation .add (reflect);
-   mirrorViewpointOrientation_changed = new SFRotation (new SFVec3f (0, 0, 1), reflect) .straighten ();
+   mirrorViewpointPosition_changed = mirrorTranslation .subtract (rDirection);
+
+   mirrorViewpointOrientation_changed = new SFRotation (new SFVec3f (0, 0, 1), rDirection .negate ()) .straighten ();
+}
+
+function reflect (i, n)
+{
+   return i .subtract (n .multiply (2.0 * n .dot (i)));
 }
 ]]>
     </Script>
