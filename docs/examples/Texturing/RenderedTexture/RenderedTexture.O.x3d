@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Wed, 18 Mar 2026 11:45:14 GMT'/>
+    <meta name='modified' content='Wed, 18 Mar 2026 13:22:44 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -42,6 +42,10 @@
           url='"https://cdn.jsdelivr.net/npm/x3d-image@2.2.0/src/images/cannon-exterior.avif"'/>
     </EnvironmentLight>
     <Group DEF='Scene'>
+      <DirectionalLight
+          direction='0 -1 1'
+          shadows='true'
+          shadowIntensity='0.4739377'/>
       <Transform DEF='House'>
         <Inline
             global='true'
@@ -56,19 +60,18 @@
       <Transform DEF='Floor'
           rotation='1 0 0 4.71238898038469'
           scale='19 19 19'>
-        <Shape>
+        <Shape
+            castShadow='false'>
           <Appearance>
-            <Material/>
+            <Material
+                diffuseColor='0.3176471 0.2901961 0.2470588'/>
           </Appearance>
           <Rectangle2D/>
         </Shape>
       </Transform>
-      <DirectionalLight
-          direction='0 -1 1'/>
     </Group>
     <Transform DEF='Mirror_1'
-        translation='0 8.456679 -22.56728'
-        rotation='0 -1.00000000000001 0 0.304999903266629'>
+        translation='0 8.456679 -22.56728'>
       <Group DEF='MirrorAnimation'>
         <MetadataSet DEF='Animation' containerField='metadata'
             name='Animation'
@@ -86,7 +89,10 @@
             description='Mirror Animation'
             cycleInterval='4.8'
             loop='true'
-            stopTime='1773826978.309'/>
+            startTime='1773837335.686'
+            resumeTime='1773837453.769'
+            pauseTime='1773837453.653'
+            stopTime='1773837352.8'/>
         <OrientationInterpolator DEF='MirrorRotationInterpolator'
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 0 1 0, 0 -1 0 0.49999999254942, 0 0 0 0, 0 1 0 0.49999999254942, 0 0 0 0'>
@@ -108,61 +114,66 @@
           </MetadataSet>
         </OrientationInterpolator>
       </Group>
-      <Shape>
-        <Appearance>
-          <UnlitMaterial/>
-          <RenderedTexture DEF='Texture1'
-              update='ALWAYS'
-              dimensions='512, 512, 4, 1, 1'
-              repeatS='false'
-              repeatT='false'>
-            <Viewpoint DEF='_1' containerField='viewpoint'
-                position='41.1393 6.381998 -41.95004'
-                orientation='0.0144554435365093 0.999635757202167 -0.0227901969059927 2.01142782642191'/>
-            <Group USE='Scene' containerField='scene'/>
-          </RenderedTexture>
-          <TextureTransform
-              translation='-1 0'
-              scale='-1 1'/>
-        </Appearance>
-        <Rectangle2D
-            size='16 16'/>
-      </Shape>
       <Group DEF='Frame'>
         <Transform DEF='Box_1'
-            translation='0 8 0'
+            translation='0 4.5 0'
             scale='8.3 0.3 0.3'>
-          <Shape DEF='_2'>
+          <Shape DEF='_2'
+              castShadow='false'>
             <Appearance>
-              <Material
-                  diffuseColor='1 1 1'/>
+              <Material DEF='_1'
+                  diffuseColor='0.2666667 0.2666667 0.2666667'/>
             </Appearance>
             <Box/>
           </Shape>
         </Transform>
         <Transform DEF='Box_2'
-            translation='0 -8 0'
+            translation='0 -4.5 0'
             scale='8.3 0.3 0.3'>
           <Shape USE='_2'/>
         </Transform>
         <Transform DEF='Box_3'
             translation='-8 0 0'
-            scale='0.3 8.3 0.3'>
+            scale='0.3 4.8 0.3'>
           <Shape USE='_2'/>
         </Transform>
         <Transform DEF='Box'
             translation='8 0 0'
-            scale='0.3 8.3 0.3'>
+            scale='0.3 4.8 0.3'>
           <Shape USE='_2'/>
         </Transform>
       </Group>
+      <Shape
+          castShadow='false'>
+        <Appearance>
+          <PhysicalMaterial
+              metallic='0.3266949'
+              roughness='0'/>
+          <Material USE='_1' containerField='backMaterial'/>
+          <RenderedTexture
+              update='ALWAYS'
+              dimensions='1024, 1024, 1, 1'
+              repeatS='false'
+              repeatT='false'>
+            <Viewpoint DEF='_3' containerField='viewpoint'
+                position='24.23537 1.236621 -60.14019'
+                orientation='0.023545783899379 0.996521331963951 -0.0799426732187269 2.57061074829395'/>
+            <Group USE='Scene' containerField='scene'/>
+          </RenderedTexture>
+          <TextureTransform
+              translation='-1 0.28125'
+              scale='-1 0.5625'/>
+        </Appearance>
+        <Rectangle2D
+            size='16 9'/>
+      </Shape>
     </Transform>
-    <ProximitySensor DEF='_3'
+    <ProximitySensor DEF='_4'
         size='-1 -1 -1'/>
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1.00000000000001 0 0.304999903266629'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='22.616 6.381998 16.88712'/>
+      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='24.23537 1.236621 15.00563'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
@@ -187,10 +198,10 @@ function eventsProcessed ()
     </Script>
     <ROUTE fromNode='MirrorAnimationTimer' fromField='fraction_changed' toNode='MirrorRotationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='MirrorRotationInterpolator' fromField='value_changed' toNode='Mirror_1' toField='set_rotation'/>
-    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointPosition_changed' toNode='_1' toField='set_position'/>
-    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointOrientation_changed' toNode='_1' toField='set_orientation'/>
+    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointPosition_changed' toNode='_3' toField='set_position'/>
+    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointOrientation_changed' toNode='_3' toField='set_orientation'/>
     <ROUTE fromNode='Mirror_1' fromField='translation_changed' toNode='MirrorScript' toField='set_mirrorTranslation'/>
     <ROUTE fromNode='Mirror_1' fromField='rotation_changed' toNode='MirrorScript' toField='set_mirrorRotation'/>
-    <ROUTE fromNode='_3' fromField='position_changed' toNode='MirrorScript' toField='set_viewpointPosition'/>
+    <ROUTE fromNode='_4' fromField='position_changed' toNode='MirrorScript' toField='set_viewpointPosition'/>
   </Scene>
 </X3D>
