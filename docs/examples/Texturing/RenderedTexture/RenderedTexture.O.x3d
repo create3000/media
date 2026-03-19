@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Thu, 19 Mar 2026 09:45:43 GMT'/>
+    <meta name='modified' content='Thu, 19 Mar 2026 10:32:51 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -25,12 +25,37 @@
               reference='https://create3000.github.io/sunrize/'
               value='true'/>
         </MetadataSet>
+        <MetadataSet DEF='BrowserFrame'
+            name='BrowserFrame'
+            reference='https://create3000.github.io/sunrize/'>
+          <MetadataBoolean DEF='fixedSize'
+              name='fixedSize'
+              reference='https://create3000.github.io/sunrize/'
+              value='true'/>
+          <MetadataDouble DEF='aspectRatio'
+              name='aspectRatio'
+              reference='https://create3000.github.io/sunrize/'
+              value='16, 9'/>
+          <MetadataString DEF='backgroundColor'
+              name='backgroundColor'
+              reference='https://create3000.github.io/sunrize/'
+              value='""'/>
+        </MetadataSet>
       </MetadataSet>
     </WorldInfo>
-    <Viewpoint
-        description='Initial View'
-        position='21.90548 9.386942 16.91029'
-        orientation='0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893'/>
+    <ViewpointGroup>
+      <Viewpoint
+          description='Right View'
+          position='21.90548 9.386942 16.91029'
+          orientation='0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893'/>
+      <Viewpoint
+          description='Front View'
+          position='-3.255327 6.571719 36.85204'/>
+      <Viewpoint
+          description='Left View'
+          position='-34.05956 12.33925 9.977323'
+          orientation='-0.116363641800831 -0.990052226942619 -0.0790954536797794 1.20329240114773'/>
+    </ViewpointGroup>
     <Background DEF='Summer'
         skyAngle='0.8, 1.3, 1.4, 1.5708'
         skyColor='0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98'
@@ -126,7 +151,7 @@
           <Shape DEF='_2'
               castShadow='false'>
             <Appearance>
-              <Material DEF='_1'
+              <Material DEF='_5'
                   diffuseColor='0.2666667 0.2666667 0.2666667'/>
             </Appearance>
             <Box/>
@@ -154,17 +179,20 @@
           <PhysicalMaterial
               metallic='0.3266949'
               roughness='0'/>
-          <Material USE='_1' containerField='backMaterial'/>
+          <Material USE='_5' containerField='backMaterial'/>
           <RenderedTexture
               update='ALWAYS'
               dimensions='1024, 1024, 1, 1'
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_3' containerField='viewpoint'
-                position='67.55317 24.07006 -84.80571'
-                orientation='-0.0368381915632724 0.995782092264648 0.0840295922124318 2.31837321821919'
+                position='21.90548 9.386942 -62.04485'
+                orientation='-0.00266636686865063 0.999943391128025 0.0103007294454094 2.63503477583306'
                 fieldOfView='0.361389'/>
-            <Group USE='Scene' containerField='scene'/>
+            <Group containerField='scene'>
+              <EnvironmentLight USE='CannonExterior'/>
+              <Group USE='Scene'/>
+            </Group>
           </RenderedTexture>
           <TextureTransform
               translation='-1 0.28125'
@@ -179,7 +207,7 @@
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
       <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='67.55317 24.07006 39.67115'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
