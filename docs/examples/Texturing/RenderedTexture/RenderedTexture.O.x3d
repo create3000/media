@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Thu, 19 Mar 2026 01:14:30 GMT'/>
+    <meta name='modified' content='Thu, 19 Mar 2026 03:27:46 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -64,7 +64,13 @@
             castShadow='false'>
           <Appearance>
             <Material
-                diffuseColor='0.3176471 0.2901961 0.2470588'/>
+                diffuseColor='0.3176471 0.2901961 0.2470588'
+                occlusionStrength='0.6671939'>
+              <ImageTexture containerField='occlusionTexture'
+                  url='"assets/floor.avif"'
+                  repeatS='false'
+                  repeatT='false'/>
+            </Material>
           </Appearance>
           <Rectangle2D/>
         </Shape>
@@ -90,8 +96,8 @@
             cycleInterval='19.2'
             loop='true'
             startTime='1773882849.088'
-            resumeTime='1773878393.119'
-            pauseTime='1773878393.004'
+            resumeTime='1773890543.376'
+            pauseTime='1773890543.294'
             stopTime='1773882869.701'/>
         <OrientationInterpolator DEF='MirrorRotationInterpolator'
             key='0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1'
@@ -156,8 +162,8 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_3' containerField='viewpoint'
-                position='21.90548 9.386942 -62.04485'
-                orientation='-0.00266636686865063 0.999943391128025 0.0103007294454094 2.63503477583306'
+                position='-3.24357 58.06481 -43.17257'
+                orientation='-0.0432457049287866 -0.832168928692051 -0.552833323095431 3.01158230377563'
                 fieldOfView='0.361389'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
@@ -174,7 +180,7 @@
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
       <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='-3.24357 58.06481 -1.96199'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
