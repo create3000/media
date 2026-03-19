@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Wed, 18 Mar 2026 21:36:04 GMT'/>
+    <meta name='modified' content='Thu, 19 Mar 2026 01:14:30 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -71,8 +71,7 @@
       </Transform>
     </Group>
     <Transform DEF='Mirror_1'
-        translation='0 8.456679 -22.56728'
-        rotation='0 -1.00000000000029 0 0.0254164731688752'>
+        translation='0 8.456679 -22.56728'>
       <Group DEF='MirrorAnimation'>
         <MetadataSet DEF='Animation' containerField='metadata'
             name='Animation'
@@ -80,7 +79,7 @@
           <MetadataInteger DEF='duration'
               name='duration'
               reference='https://create3000.github.io/sunrize/'
-              value='48'/>
+              value='192'/>
           <MetadataInteger DEF='frameRate'
               name='frameRate'
               reference='https://create3000.github.io/sunrize/'
@@ -88,30 +87,30 @@
         </MetadataSet>
         <TimeSensor DEF='MirrorAnimationTimer'
             description='Mirror Animation'
-            cycleInterval='4.8'
+            cycleInterval='19.2'
             loop='true'
-            startTime='1773869718.066'
-            resumeTime='1773837453.769'
-            pauseTime='1773837453.653'
-            stopTime='1773869763.618'/>
+            startTime='1773882849.088'
+            resumeTime='1773878393.119'
+            pauseTime='1773878393.004'
+            stopTime='1773882869.701'/>
         <OrientationInterpolator DEF='MirrorRotationInterpolator'
-            key='0, 0.25, 0.5, 0.75, 1'
-            keyValue='0 0 1 0, 0 -1 0 0.49999999254942, 0 0 0 0, 0 1 0 0.49999999254942, 0 0 0 0'>
+            key='0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1'
+            keyValue='0 0 1 0, 0 -1 0 0.5, 0 0 0 0, 0 -1 0 -0.5, 0 0 0 0, -1 0 -0 0.25, 0 0 0 0, -1 0 0 -0.25, 0 0 0 0'>
           <MetadataSet DEF='Interpolator' containerField='metadata'
               name='Interpolator'
               reference='https://create3000.github.io/sunrize/'>
             <MetadataInteger DEF='key'
                 name='key'
                 reference='https://create3000.github.io/sunrize/'
-                value='0, 12, 24, 36, 48'/>
+                value='0, 24, 48, 72, 96, 120, 144, 168, 192'/>
             <MetadataDouble DEF='keyValue'
                 name='keyValue'
                 reference='https://create3000.github.io/sunrize/'
-                value='0, 0, 1, 0, 0, -1, 0, 0.49999999254942, 0, 0, 0, 0, 0, 1, 0, 0.49999999254942, 0, 0, 0, 0'/>
+                value='0, 0, 1, 0, 0, -1, 0, 0.5, 0, 0, 0, 0, 0, -1, 0, -0.5, 0, 0, 0, 0, -1, 0, -0, 0.25, 0, 0, 0, 0, -1, 0, 0, -0.25, 0, 0, 0, 0'/>
             <MetadataString DEF='keyType'
                 name='keyType'
                 reference='https://create3000.github.io/sunrize/'
-                value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
+                value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
           </MetadataSet>
         </OrientationInterpolator>
       </Group>
@@ -157,8 +156,8 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_3' containerField='viewpoint'
-                position='7.937063 11.33297 -75.96797'
-                orientation='-0.00196676434498156 0.999643950928912 0.026610208741131 2.99409299976271'
+                position='21.90548 9.386942 -62.04485'
+                orientation='-0.00266636686865063 0.999943391128025 0.0103007294454094 2.63503477583306'
                 fieldOfView='0.361389'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
@@ -174,8 +173,8 @@
         size='-1 -1 -1'/>
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation' value='0 -1.00000000000029 0 0.0254164731688752'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='5.213465 11.33297 31.16772'/>
+      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
@@ -187,7 +186,7 @@ function initialize ()
 
 function eventsProcessed ()
 {
-   const 
+   const
       mirrorNormal      = mirrorRotation .multVec (new SFVec3f (0, 0, 1)),
       viewpointToMirror = mirrorTranslation .subtract (viewpointPosition);
 
