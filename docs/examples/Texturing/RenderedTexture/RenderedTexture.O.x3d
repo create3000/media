@@ -9,7 +9,7 @@
     <component name='Scripting' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Thu, 19 Mar 2026 03:27:46 GMT'/>
+    <meta name='modified' content='Thu, 19 Mar 2026 09:45:43 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -30,8 +30,7 @@
     <Viewpoint
         description='Initial View'
         position='21.90548 9.386942 16.91029'
-        orientation='0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893'
-        centerOfRotation='-3.244112 2 -2.059838'/>
+        orientation='0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893'/>
     <Background DEF='Summer'
         skyAngle='0.8, 1.3, 1.4, 1.5708'
         skyColor='0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98'
@@ -57,7 +56,7 @@
         <Inline
             url='"assets/stylized_pine_tree_tree.glb"'/>
       </Transform>
-      <Transform DEF='Floor'
+      <Transform DEF='Floor_1'
           rotation='1 0 0 4.71238898038469'
           scale='19 19 19'>
         <Shape
@@ -65,7 +64,7 @@
           <Appearance>
             <Material
                 diffuseColor='0.3176471 0.2901961 0.2470588'
-                occlusionStrength='0.6671939'>
+                shininess='0'>
               <ImageTexture containerField='occlusionTexture'
                   url='"assets/floor.avif"'
                   repeatS='false'
@@ -162,8 +161,8 @@
               repeatS='false'
               repeatT='false'>
             <Viewpoint DEF='_3' containerField='viewpoint'
-                position='-3.24357 58.06481 -43.17257'
-                orientation='-0.0432457049287866 -0.832168928692051 -0.552833323095431 3.01158230377563'
+                position='67.55317 24.07006 -84.80571'
+                orientation='-0.0368381915632724 0.995782092264648 0.0840295922124318 2.31837321821919'
                 fieldOfView='0.361389'/>
             <Group USE='Scene' containerField='scene'/>
           </RenderedTexture>
@@ -180,7 +179,7 @@
     <Script DEF='MirrorScript'>
       <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
       <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='-3.24357 58.06481 -1.96199'/>
+      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='67.55317 24.07006 39.67115'/>
       <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
       <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
 <![CDATA[ecmascript:
