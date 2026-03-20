@@ -7,9 +7,11 @@
     <component name='Geometry2D' level='1'/>
     <component name='Networking' level='2'/>
     <component name='Scripting' level='1'/>
+    <component name='Texturing' level='4'/>
+    <component name='Texturing3D' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Fri, 20 Mar 2026 08:45:09 GMT'/>
+    <meta name='modified' content='Fri, 20 Mar 2026 11:48:49 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -48,19 +50,19 @@
           description='Right View'
           position='21.90548 9.386942 16.91029'
           orientation='0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893'>
-        <NavigationInfo DEF='_1' containerField='navigationInfo'
+        <NavigationInfo DEF='_6' containerField='navigationInfo'
             headlight='false'/>
       </Viewpoint>
       <Viewpoint
           description='Front View'
           position='-3.255327 6.571719 36.85204'>
-        <NavigationInfo USE='_1' containerField='navigationInfo'/>
+        <NavigationInfo USE='_6' containerField='navigationInfo'/>
       </Viewpoint>
       <Viewpoint
           description='Left View'
           position='-34.05956 12.33925 9.977323'
           orientation='-0.116363641800831 -0.990052226942619 -0.0790954536797794 1.20329240114773'>
-        <NavigationInfo USE='_1' containerField='navigationInfo'/>
+        <NavigationInfo USE='_6' containerField='navigationInfo'/>
       </Viewpoint>
     </ViewpointGroup>
     <Background DEF='Summer'
@@ -108,58 +110,58 @@
         </Shape>
       </Transform>
     </Group>
-    <Transform DEF='Mirror_1'
-        translation='0 8.456679 -22.56728'>
-      <Group DEF='MirrorAnimation'>
-        <MetadataSet DEF='Animation' containerField='metadata'
-            name='Animation'
-            reference='https://create3000.github.io/sunrize/'>
-          <MetadataInteger DEF='duration'
-              name='duration'
-              reference='https://create3000.github.io/sunrize/'
-              value='192'/>
-          <MetadataInteger DEF='frameRate'
-              name='frameRate'
-              reference='https://create3000.github.io/sunrize/'
-              value='10'/>
-        </MetadataSet>
-        <TimeSensor DEF='MirrorAnimationTimer'
-            description='Mirror Animation'
-            cycleInterval='19.2'
-            loop='true'
-            startTime='1773882849.088'
-            resumeTime='1773890543.376'
-            pauseTime='1773890543.294'
-            stopTime='1773882869.701'/>
-        <OrientationInterpolator DEF='MirrorRotationInterpolator'
-            key='0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1'
-            keyValue='0 0 1 0, 0 -1 0 0.5, 0 0 0 0, 0 -1 0 -0.5, 0 0 0 0, -1 0 -0 0.25, 0 0 0 0, -1 0 0 -0.25, 0 0 0 0'>
-          <MetadataSet DEF='Interpolator' containerField='metadata'
-              name='Interpolator'
+    <Group DEF='Mirror_2'>
+      <Transform DEF='Frame'
+          translation='0 8.456679 -22.56728'>
+        <Group DEF='MirrorAnimation'>
+          <MetadataSet DEF='Animation' containerField='metadata'
+              name='Animation'
               reference='https://create3000.github.io/sunrize/'>
-            <MetadataInteger DEF='key'
-                name='key'
+            <MetadataInteger DEF='duration'
+                name='duration'
                 reference='https://create3000.github.io/sunrize/'
-                value='0, 24, 48, 72, 96, 120, 144, 168, 192'/>
-            <MetadataDouble DEF='keyValue'
-                name='keyValue'
+                value='192'/>
+            <MetadataInteger DEF='frameRate'
+                name='frameRate'
                 reference='https://create3000.github.io/sunrize/'
-                value='0, 0, 1, 0, 0, -1, 0, 0.5, 0, 0, 0, 0, 0, -1, 0, -0.5, 0, 0, 0, 0, -1, 0, -0, 0.25, 0, 0, 0, 0, -1, 0, 0, -0.25, 0, 0, 0, 0'/>
-            <MetadataString DEF='keyType'
-                name='keyType'
-                reference='https://create3000.github.io/sunrize/'
-                value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
+                value='10'/>
           </MetadataSet>
-        </OrientationInterpolator>
-      </Group>
-      <Group DEF='Frame'>
+          <TimeSensor DEF='MirrorAnimationTimer'
+              description='Mirror Animation'
+              cycleInterval='19.2'
+              loop='true'
+              startTime='1773882849.088'
+              resumeTime='1773890543.376'
+              pauseTime='1773890543.294'
+              stopTime='1773882869.701'/>
+          <OrientationInterpolator DEF='MirrorRotationInterpolator'
+              key='0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1'
+              keyValue='0 0 1 0, 0 -1 0 0.5, 0 0 0 0, 0 -1 0 -0.5, 0 0 0 0, -1 0 -0 0.25, 0 0 0 0, -1 0 0 -0.25, 0 0 0 0'>
+            <MetadataSet DEF='Interpolator' containerField='metadata'
+                name='Interpolator'
+                reference='https://create3000.github.io/sunrize/'>
+              <MetadataInteger DEF='key'
+                  name='key'
+                  reference='https://create3000.github.io/sunrize/'
+                  value='0, 24, 48, 72, 96, 120, 144, 168, 192'/>
+              <MetadataDouble DEF='keyValue'
+                  name='keyValue'
+                  reference='https://create3000.github.io/sunrize/'
+                  value='0, 0, 1, 0, 0, -1, 0, 0.5, 0, 0, 0, 0, 0, -1, 0, -0.5, 0, 0, 0, 0, -1, 0, -0, 0.25, 0, 0, 0, 0, -1, 0, 0, -0.25, 0, 0, 0, 0'/>
+              <MetadataString DEF='keyType'
+                  name='keyType'
+                  reference='https://create3000.github.io/sunrize/'
+                  value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
+            </MetadataSet>
+          </OrientationInterpolator>
+        </Group>
         <Transform DEF='Box_1'
             translation='0 4.5 0'
             scale='8.3 0.3 0.3'>
           <Shape DEF='_2'
               castShadow='false'>
             <Appearance>
-              <Material DEF='_5'
+              <Material
                   diffuseColor='0.2666667 0.2666667 0.2666667'/>
             </Appearance>
             <Box/>
@@ -180,83 +182,90 @@
             scale='0.3 4.8 0.3'>
           <Shape USE='_2'/>
         </Transform>
-      </Group>
-      <Shape
-          castShadow='false'>
-        <Appearance>
-          <PhysicalMaterial
-              metallic='0.3266949'
-              roughness='0'/>
-          <Material USE='_5' containerField='backMaterial'/>
-          <RenderedTexture
-              update='ALWAYS'
-              dimensions='1024, 1024, 1, 1'
-              repeatS='false'
-              repeatT='false'>
-            <Viewpoint DEF='_3' containerField='viewpoint'
-                position='18.44287 12.73126 -63.88818'
-                orientation='-0.0100284345940088 0.998841087176267 0.0470734858293565 2.72226511156794'
-                fieldOfView='0.361389'/>
-            <Group containerField='scene'>
-              <EnvironmentLight USE='CannonExterior'/>
-              <Group USE='Scene'/>
-            </Group>
-            <TextureProperties
-                generateMipMaps='true'
-                minificationFilter='AVG_PIXEL_AVG_MIPMAP'
-                magnificationFilter='NEAREST_PIXEL'
-                boundaryModeS='CLAMP_TO_EDGE'
-                boundaryModeT='CLAMP_TO_EDGE'
-                boundaryModeR='CLAMP_TO_EDGE'/>
-          </RenderedTexture>
-          <TextureTransform
-              translation='-1 0.28125'
-              scale='-1 0.5625'/>
-        </Appearance>
-        <Rectangle2D
-            size='16 9'/>
-      </Shape>
-    </Transform>
-    <ProximitySensor DEF='_4'
-        size='-1 -1 -1'/>
-    <Script DEF='MirrorScript'>
-      <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
-      <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
-      <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='18.44287 12.73126 18.75362'/>
-      <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
-      <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
+      </Transform>
+      <Transform DEF='Mirror'
+          translation='0 8.456679 -22.56728'
+          scale='8 4.5 1'>
+        <Shape>
+          <Appearance>
+            <PhysicalMaterial
+                metallic='0.3266949'
+                roughness='0'/>
+            <RenderedTexture
+                update='ALWAYS'
+                dimensions='800, 450, 4, 1, 1'
+                repeatS='false'
+                repeatT='false'>
+              <Viewpoint DEF='_7' containerField='viewpoint'
+                  position='11.90727 9.667202 -58.17617'
+                  orientation='-0.00262277100618922 0.999866724694478 0.0161137804684483 2.81893337323728'
+                  fieldOfView='0.2384391'/>
+              <Group containerField='scene'>
+                <EnvironmentLight USE='CannonExterior'/>
+                <Group USE='Scene'/>
+              </Group>
+            </RenderedTexture>
+            <TextureTransformMatrix3D DEF='_3'
+                matrix='-1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1'/>
+          </Appearance>
+          <Rectangle2D
+              solid='true'/>
+        </Shape>
+        <Script DEF='MirrorFrontScript'>
+          <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='0 8.456679 -22.56728'/>
+          <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
+          <field accessType='inputOutput' type='SFVec3f' name='mirrorScale' value='8 4.5 1'/>
+          <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='11.90727 9.667202 13.04161'/>
+          <field accessType='inputOutput' type='SFRotation' name='viewpointOrientation' value='-0.410547336374278 0.897083855821764 0.16337515178246 0.835034894142306'/>
+          <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
+          <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
+          <field accessType='outputOnly' type='SFFloat' name='mirrorViewpointFieldOfView_changed'/>
+          <field accessType='outputOnly' type='SFMatrix4f' name='mirrorTextureMatrix_changed'/>
 <![CDATA[ecmascript:
 
 function initialize ()
 {
-   eventsProcessed ();
+   eventsProcessed .call (this);
 }
 
 function eventsProcessed ()
 {
-   const
-      mirrorNormal      = mirrorRotation .multVec (new SFVec3f (0, 0, 1)),
+   const 
+      mirrorNormal      = mirrorRotation .multVec (SFVec3f .Z_AXIS),
       viewpointToMirror = mirrorTranslation .subtract (viewpointPosition);
 
-   const rDirection = reflect (viewpointToMirror, mirrorNormal);
+   const rDirection = viewpointToMirror .reflect (mirrorNormal);
 
    mirrorViewpointPosition_changed = mirrorTranslation .subtract (rDirection);
 
-   mirrorViewpointOrientation_changed = new SFRotation (new SFVec3f (0, 0, 1), rDirection .negate ()) .straighten ();
-}
+   const
+      rForward  = mirrorViewpointPosition_changed .subtract (mirrorTranslation) .normalize (),
+      tUp       = mirrorRotation .multVec (SFVec3f .Y_AXIS),
+      rRight    = tUp .cross (rForward) .normalize (),
+      rUp       = rForward .cross (rRight) .normalize ();
 
-function reflect (i, n)
-{
-   return i .subtract (n .multiply (2.0 * n .dot (i)));
+   mirrorViewpointOrientation_changed = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));
+
+   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 2;
+
+   mirrorTextureMatrix_changed = new SFMatrix4f (-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
 }
 ]]>
-    </Script>
+        </Script>
+      </Transform>
+    </Group>
+    <ProximitySensor DEF='_4'
+        size='-1 -1 -1'/>
     <ROUTE fromNode='MirrorAnimationTimer' fromField='fraction_changed' toNode='MirrorRotationInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='MirrorRotationInterpolator' fromField='value_changed' toNode='Mirror_1' toField='set_rotation'/>
-    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointPosition_changed' toNode='_3' toField='set_position'/>
-    <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointOrientation_changed' toNode='_3' toField='set_orientation'/>
-    <ROUTE fromNode='Mirror_1' fromField='translation_changed' toNode='MirrorScript' toField='set_mirrorTranslation'/>
-    <ROUTE fromNode='Mirror_1' fromField='rotation_changed' toNode='MirrorScript' toField='set_mirrorRotation'/>
-    <ROUTE fromNode='_4' fromField='position_changed' toNode='MirrorScript' toField='set_viewpointPosition'/>
+    <ROUTE fromNode='MirrorFrontScript' fromField='mirrorViewpointPosition_changed' toNode='_7' toField='set_position'/>
+    <ROUTE fromNode='MirrorFrontScript' fromField='mirrorViewpointOrientation_changed' toNode='_7' toField='set_orientation'/>
+    <ROUTE fromNode='MirrorFrontScript' fromField='mirrorViewpointFieldOfView_changed' toNode='_7' toField='set_fieldOfView'/>
+    <ROUTE fromNode='MirrorFrontScript' fromField='mirrorTextureMatrix_changed' toNode='_3' toField='set_matrix'/>
+    <ROUTE fromNode='Mirror' fromField='translation_changed' toNode='MirrorFrontScript' toField='set_mirrorTranslation'/>
+    <ROUTE fromNode='Mirror' fromField='rotation_changed' toNode='MirrorFrontScript' toField='set_mirrorRotation'/>
+    <ROUTE fromNode='Mirror' fromField='scale_changed' toNode='MirrorFrontScript' toField='set_mirrorScale'/>
+    <ROUTE fromNode='_4' fromField='position_changed' toNode='MirrorFrontScript' toField='set_viewpointPosition'/>
+    <ROUTE fromNode='_4' fromField='orientation_changed' toNode='MirrorFrontScript' toField='set_viewpointOrientation'/>
+    <ROUTE fromNode='Mirror' fromField='translation_changed' toNode='Frame' toField='set_translation'/>
   </Scene>
 </X3D>
