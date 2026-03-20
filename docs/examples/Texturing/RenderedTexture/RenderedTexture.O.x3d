@@ -11,7 +11,7 @@
     <component name='Texturing3D' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Fri, 20 Mar 2026 12:30:39 GMT'/>
+    <meta name='modified' content='Fri, 20 Mar 2026 12:54:51 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -70,16 +70,15 @@
         skyColor='0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98'
         groundAngle='0.659972, 1.2, 1.39912, 1.5708'
         groundColor='0.105712 0.156051 0.297, 0.187629 0.255857 0.398, 0.33604 0.405546 0.542, 0.3612 0.469145 0.602, 0.39471 0.522059 0.669'/>
-    <EnvironmentLight DEF='CannonExterior'
-        intensity='3.25'>
+    <EnvironmentLight DEF='CannonExterior'>
       <ImageCubeMapTexture containerField='specularTexture'
           url='"https://cdn.jsdelivr.net/npm/x3d-image@2.2.0/src/images/cannon-exterior.avif"'/>
     </EnvironmentLight>
     <Group DEF='Scene'>
       <DirectionalLight
+          intensity='3.65'
           direction='0 -1 1'
-          shadows='true'
-          shadowIntensity='0.4739377'/>
+          shadows='true'/>
       <Transform DEF='House'>
         <Inline
             global='true'
@@ -97,14 +96,14 @@
         <Shape
             castShadow='false'>
           <Appearance>
-            <Material
-                diffuseColor='0.3176471 0.2901961 0.2470588'
-                shininess='0'>
-              <ImageTexture containerField='occlusionTexture'
+            <PhysicalMaterial
+                baseColor='0.005305682 0.03312758 0.0009937316'
+                metallic='0'>
+              <ImageTexture containerField='baseTexture'
                   url='"assets/floor.avif"'
                   repeatS='false'
                   repeatT='false'/>
-            </Material>
+            </PhysicalMaterial>
           </Appearance>
           <Rectangle2D/>
         </Shape>
@@ -194,9 +193,9 @@
                 repeatS='false'
                 repeatT='false'>
               <Viewpoint DEF='_7' containerField='viewpoint'
-                  position='21.90548 9.386942 -62.04485'
-                  orientation='-0.00397453267978982 0.999874214129658 0.0153544458895827 2.63506834050172'
-                  fieldOfView='0.3074999'/>
+                  position='23.2157 16.11643 -70.13465'
+                  orientation='-0.0175549679716002 0.996953791815332 0.075993158143003 2.68887937315403'
+                  fieldOfView='0.2599685'/>
               <Group containerField='scene'>
                 <EnvironmentLight USE='CannonExterior'/>
                 <Group USE='Scene'/>
@@ -219,8 +218,8 @@
           <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='-0 8 -22.56728'/>
           <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
           <field accessType='inputOutput' type='SFVec3f' name='mirrorScale' value='12 7 1'/>
-          <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='21.90548 9.386942 16.91029'/>
-          <field accessType='inputOutput' type='SFRotation' name='viewpointOrientation' value='-0.224713456136779 0.967970107322442 0.111972023118469 0.950797327110657'/>
+          <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='23.2157 16.11643 25.00009'/>
+          <field accessType='inputOutput' type='SFRotation' name='viewpointOrientation' value='-0.416320348272247 0.893996636112033 0.165672515025409 0.837593432634466'/>
           <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
           <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
           <field accessType='outputOnly' type='SFFloat' name='mirrorViewpointFieldOfView_changed'/>
