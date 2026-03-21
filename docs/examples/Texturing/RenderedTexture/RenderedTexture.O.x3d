@@ -11,7 +11,7 @@
     <component name='Texturing3D' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Fri, 20 Mar 2026 20:08:18 GMT'/>
+    <meta name='modified' content='Sat, 21 Mar 2026 15:10:45 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -152,7 +152,7 @@
       </Group>
       <Transform DEF='Frame'
           translation='-0 8 -22.56728'>
-        <Transform DEF='Box'
+        <Transform DEF='Box_1'
             translation='0 7 0'
             scale='12.3 0.3 0.3'>
           <Shape DEF='_2'
@@ -186,40 +186,43 @@
         <Shape>
           <Appearance>
             <UnlitMaterial
-                emissiveColor='0.9 0.9 0.9'/>
-            <RenderedTexture
-                update='ALWAYS'
-                dimensions='1200, 700, 4, 1, 1'
-                repeatS='false'
-                repeatT='false'>
-              <Viewpoint DEF='_7' containerField='viewpoint'
-                  position='22.71113 12.76607 -63.54461'
-                  orientation='-0.0131012604150259 0.998629788139445 0.0506646150296662 2.63616695181316'
-                  fieldOfView='0.2951297'/>
-              <Group containerField='scene'>
-                <EnvironmentLight USE='CannonExterior'/>
-                <Group USE='Scene'/>
-              </Group>
-              <TextureProperties
-                  generateMipMaps='true'
-                  minificationFilter='AVG_PIXEL_NEAREST_MIPMAP'
-                  magnificationFilter='NEAREST_PIXEL'
-                  boundaryModeS='CLAMP_TO_EDGE'
-                  boundaryModeT='CLAMP_TO_EDGE'
-                  boundaryModeR='CLAMP_TO_EDGE'/>
-            </RenderedTexture>
+                emissiveColor='0.9 0.9 0.9'>
+              <RenderedTexture containerField='emissiveTexture'
+                  update='ALWAYS'
+                  dimensions='1200, 700, 4, 1, 1'
+                  repeatS='false'
+                  repeatT='false'>
+                <Viewpoint DEF='_7' containerField='viewpoint'
+                    position='25.8923 13.53698 14.73603'
+                    orientation='-0.190151453618384 0.979948549321021 0.0595253338541237 0.61840259848183'
+                    fieldOfView='0.3036885'/>
+                <Group containerField='scene'>
+                  <EnvironmentLight USE='CannonExterior'/>
+                  <Group USE='Scene'/>
+                </Group>
+                <TextureProperties
+                    generateMipMaps='true'
+                    minificationFilter='AVG_PIXEL_NEAREST_MIPMAP'
+                    magnificationFilter='NEAREST_PIXEL'
+                    boundaryModeS='CLAMP_TO_EDGE'
+                    boundaryModeT='CLAMP_TO_EDGE'
+                    boundaryModeR='CLAMP_TO_EDGE'/>
+              </RenderedTexture>
+            </UnlitMaterial>
+            <PhysicalMaterial containerField='backMaterial'
+                baseColor='0.09166474 0.09166474 0.09166474'
+                metallic='0'/>
             <TextureTransformMatrix3D DEF='_3'
                 matrix='-1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1'/>
           </Appearance>
-          <Rectangle2D
-              solid='true'/>
+          <Rectangle2D/>
         </Shape>
         <Script DEF='MirrorFrontScript'>
           <field accessType='inputOutput' type='SFVec3f' name='mirrorTranslation' value='-0 8 -22.56728'/>
           <field accessType='inputOutput' type='SFRotation' name='mirrorRotation'/>
           <field accessType='inputOutput' type='SFVec3f' name='mirrorScale' value='12 7 1'/>
-          <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='22.71113 12.76607 18.41005'/>
-          <field accessType='inputOutput' type='SFRotation' name='viewpointOrientation' value='-0.315908678764894 0.936431208887976 0.152637799059157 0.952684002749242'/>
+          <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='25.8923 13.53698 -59.87059'/>
+          <field accessType='inputOutput' type='SFRotation' name='viewpointOrientation' value='-0.0165706467753608 0.996573999609663 0.0810288650262759 2.73949478418443'/>
           <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
           <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
           <field accessType='outputOnly' type='SFFloat' name='mirrorViewpointFieldOfView_changed'/>
@@ -228,7 +231,7 @@
 
 function initialize ()
 {
-   eventsProcessed .call (this);
+   eventsProcessed ();
 }
 
 function eventsProcessed ()
