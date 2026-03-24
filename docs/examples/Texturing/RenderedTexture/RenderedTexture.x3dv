@@ -2,6 +2,7 @@
 
 PROFILE Interchange
 
+COMPONENT Core : 2
 COMPONENT CubeMapTexturing : 2
 COMPONENT EnvironmentalSensor : 1
 COMPONENT Geometry2D : 1
@@ -12,9 +13,141 @@ COMPONENT Texturing3D : 1
 
 META "creator" "Holger Seelig"
 META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
-META "modified" "Sun, 22 Mar 2026 08:38:54 GMT"
+META "modified" "Tue, 24 Mar 2026 16:28:48 GMT"
 META "generator" "x3d-tidy V3.0.9, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.9, https://create3000.github.io/sunrize/"
+META "generator" "Sunrize X3D Editor V2.0.10, https://create3000.github.io/sunrize/"
+
+PROTO Mirror [
+  inputOutput SFVec3f    translation 0 0 0
+  inputOutput SFRotation rotation 0 0 1 0
+  inputOutput SFVec3f    scale 1 1 1
+  inputOutput SFVec3f    sensorSize 0 0 0
+  inputOutput SFInt32    textureSize 128
+  inputOutput SFNode     material NULL
+  inputOutput SFNode     backMaterial NULL
+  inputOutput SFNode     textureProperties NULL
+  inputOutput SFNode     scene NULL
+  inputOutput SFNode     geometry NULL
+]
+{
+  Group {
+    children [
+      DEF _8 ProximitySensor {
+        size IS sensorSize
+      }
+      DEF Mirror Transform {
+        translation IS translation
+        rotation IS rotation
+        scale IS scale
+        children Shape {
+          appearance DEF _1 Appearance {
+            backMaterial IS backMaterial
+            textureTransform DEF _2 TextureTransformMatrix3D {
+              matrix -1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1
+            }
+          }
+          geometry IS geometry
+        }
+      }
+    ]
+  }
+
+  DEF MirrorScript Script {
+    inputOutput    SFVec3f    mirrorTranslation IS translation
+    inputOutput    SFRotation mirrorRotation IS rotation
+    inputOutput    SFVec3f    mirrorScale IS scale
+    inputOutput    SFInt32    textureSize IS textureSize
+    inputOutput    SFNode     material IS material
+    inputOutput    SFVec3f    viewpointPosition -1.118549 6.556731 16.03942
+    inputOutput    SFRotation viewpointOrientation -0.914589430575436 -0.403127310041776 -0.0318519289558134 0.172353446868391
+    outputOnly     MFInt32    textureDimension_changed
+    outputOnly     SFNode     mirrorMaterial_changed
+    outputOnly     SFVec3f    mirrorViewpointPosition_changed
+    outputOnly     SFRotation mirrorViewpointOrientation_changed
+    outputOnly     SFFloat    mirrorViewpointFieldOfView_changed
+    outputOnly     SFMatrix4f mirrorTextureMatrix_changed
+    initializeOnly SFNode     renderedTexture DEF _4 RenderedTexture {
+      update "ALWAYS"
+      viewpoint DEF _10 Viewpoint {
+        position -1.118549 -6.556731 16.03942
+        orientation -0.0165361975453685 -0.195264792891879 0.980611143536332 2.97588477643724
+        fieldOfView 0.4528263
+      }
+      scene IS scene
+      repeatS FALSE
+      repeatT FALSE
+    }
+
+    url "ecmascript:
+
+function initialize ()
+{
+   set_textureSize ();
+   set_material ();
+   eventsProcessed ();
+}
+
+function set_mirrorScale ()
+{
+   set_textureSize ();
+}
+
+function set_textureSize ()
+{
+   const
+      x = mirrorScale .x,
+      y = mirrorScale .y,
+      w = x >= y ? textureSize : x * textureSize / y,
+      h = y >= x ? textureSize : y * textureSize / x;
+
+   textureDimension_changed = new MFInt32 (w, h, 4, 1, 1);
+}
+
+function set_material ()
+{
+   const mirrorMaterial = material 
+      ?? Browser .currentScene .createNode (\"UnlitMaterial\");
+
+   mirrorMaterial .emissiveColor   = new SFColor (1, 1, 1);
+   mirrorMaterial .emissiveTexture = renderedTexture;
+
+   mirrorMaterial_changed = mirrorMaterial;
+}
+
+function eventsProcessed ()
+{
+   const
+      mirrorNormal      = mirrorRotation .multVec (SFVec3f .Z_AXIS),
+      viewpointToMirror = mirrorTranslation .subtract (viewpointPosition);
+
+   const rDirection = viewpointToMirror .reflect (mirrorNormal);
+
+   mirrorViewpointPosition_changed = mirrorTranslation .subtract (rDirection);
+
+   const
+      rForward  = mirrorViewpointPosition_changed .subtract (mirrorTranslation) .normalize (),
+      tUp       = mirrorRotation .multVec (SFVec3f .Y_AXIS),
+      rRight    = tUp .cross (rForward) .normalize (),
+      rUp       = rForward .cross (rRight) .normalize ();
+
+   mirrorViewpointOrientation_changed = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));
+
+   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 2;
+
+   mirrorTextureMatrix_changed = new SFMatrix4f (-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
+}
+"
+  }
+
+  ROUTE _8.position_changed TO MirrorScript.set_viewpointPosition
+  ROUTE _8.orientation_changed TO MirrorScript.set_viewpointOrientation
+  ROUTE MirrorScript.mirrorViewpointPosition_changed TO _10.set_position
+  ROUTE MirrorScript.mirrorViewpointOrientation_changed TO _10.set_orientation
+  ROUTE MirrorScript.mirrorViewpointFieldOfView_changed TO _10.set_fieldOfView
+  ROUTE MirrorScript.mirrorTextureMatrix_changed TO _2.set_matrix
+  ROUTE MirrorScript.textureDimension_changed TO _4.set_dimensions
+  ROUTE MirrorScript.mirrorMaterial_changed TO _1.set_material
+}
 
 WorldInfo { }
 
@@ -83,13 +216,13 @@ DEF Scene Group {
         appearance Appearance {
           material PhysicalMaterial {
             baseColor 0.005305682 0.03312758 0.0009937316
-            baseTexture DEF _1 ImageTexture {
+            baseTexture DEF _7 ImageTexture {
               url "assets/floor.avif"
               repeatS FALSE
               repeatT FALSE
             }
             metallic 0
-            occlusionTexture USE _1
+            occlusionTexture USE _7
           }
         }
         geometry Rectangle2D { }
@@ -147,111 +280,29 @@ DEF Mirror_1 Group {
         }
       ]
     }
-    DEF Mirror Transform {
+    DEF _1 Mirror {
       translation -0 8 -22.56728
       scale 12 7 1
-      children [
-        Shape {
-          appearance Appearance {
-            material UnlitMaterial {
-              emissiveColor 0.9 0.9 0.9
-              emissiveTexture RenderedTexture {
-                update "ALWAYS"
-                dimensions [ 1200, 700, 4, 1, 1 ]
-                viewpoint DEF _7 Viewpoint {
-                  position 21.90548 9.386942 -62.04485
-                  orientation -0.00397453267978982 0.999874214129658 0.0153544458895827 2.63506834050172
-                  fieldOfView 0.3074999
-                }
-                scene Group {
-                  children [
-                    USE CannonExterior
-                    USE Scene
-                  ]
-                }
-                repeatS FALSE
-                repeatT FALSE
-                textureProperties TextureProperties {
-                  generateMipMaps TRUE
-                  minificationFilter "AVG_PIXEL_NEAREST_MIPMAP"
-                  magnificationFilter "NEAREST_PIXEL"
-                  boundaryModeS "CLAMP_TO_EDGE"
-                  boundaryModeT "CLAMP_TO_EDGE"
-                  boundaryModeR "CLAMP_TO_EDGE"
-                }
-              }
-            }
-            backMaterial PhysicalMaterial {
-              baseColor 0.09166474 0.09166474 0.09166474
-              metallic 0
-            }
-            textureTransform DEF _3 TextureTransformMatrix3D {
-              matrix -1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1
-            }
-          }
-          geometry Rectangle2D { }
-        }
-        DEF MirrorFrontScript Script {
-          inputOutput SFVec3f    mirrorTranslation -0 8 -22.56728
-          inputOutput SFRotation mirrorRotation 0 0 1 0
-          inputOutput SFVec3f    mirrorScale 12 7 1
-          inputOutput SFVec3f    viewpointPosition 21.90548 9.386942 16.91029
-          inputOutput SFRotation viewpointOrientation -0.224713456136779 0.967970107322442 0.111972023118469 0.950797327110657
-          outputOnly  SFVec3f    mirrorViewpointPosition_changed
-          outputOnly  SFRotation mirrorViewpointOrientation_changed
-          outputOnly  SFFloat    mirrorViewpointFieldOfView_changed
-          outputOnly  SFMatrix4f mirrorTextureMatrix_changed
-
-          url "ecmascript:
-
-function initialize ()
-{
-   eventsProcessed ();
-}
-
-function eventsProcessed ()
-{
-   const 
-      mirrorNormal      = mirrorRotation .multVec (SFVec3f .Z_AXIS),
-      viewpointToMirror = mirrorTranslation .subtract (viewpointPosition);
-
-   const rDirection = viewpointToMirror .reflect (mirrorNormal);
-
-   mirrorViewpointPosition_changed = mirrorTranslation .subtract (rDirection);
-
-   const
-      rForward  = mirrorViewpointPosition_changed .subtract (mirrorTranslation) .normalize (),
-      tUp       = mirrorRotation .multVec (SFVec3f .Y_AXIS),
-      rRight    = tUp .cross (rForward) .normalize (),
-      rUp       = rForward .cross (rRight) .normalize ();
-
-   mirrorViewpointOrientation_changed = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));
-
-   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 2;
-
-   mirrorTextureMatrix_changed = new SFMatrix4f (-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1);
-}
-"
-        }
-      ]
+      sensorSize -1 -1 -1
+      textureSize 1200
+      backMaterial DEF _3 PhysicalMaterial {
+        baseColor 0.09166474 0.09166474 0.09166474
+        metallic 0
+      }
+      scene DEF _4 Group {
+        children [
+          USE CannonExterior
+          USE Scene
+        ]
+      }
+      geometry DEF _8 Rectangle2D { }
     }
   ]
 }
 
-DEF _4 ProximitySensor {
+ProximitySensor {
   size -1 -1 -1
 }
 
 ROUTE MirrorAnimationTimer.fraction_changed TO MirrorRotationInterpolator.set_fraction
-ROUTE MirrorFrontScript.mirrorViewpointPosition_changed TO _7.set_position
-ROUTE MirrorFrontScript.mirrorViewpointOrientation_changed TO _7.set_orientation
-ROUTE MirrorFrontScript.mirrorViewpointFieldOfView_changed TO _7.set_fieldOfView
-ROUTE MirrorFrontScript.mirrorTextureMatrix_changed TO _3.set_matrix
-ROUTE Mirror.translation_changed TO MirrorFrontScript.set_mirrorTranslation
-ROUTE Mirror.rotation_changed TO MirrorFrontScript.set_mirrorRotation
-ROUTE Mirror.scale_changed TO MirrorFrontScript.set_mirrorScale
-ROUTE _4.position_changed TO MirrorFrontScript.set_viewpointPosition
-ROUTE _4.orientation_changed TO MirrorFrontScript.set_viewpointOrientation
-ROUTE Mirror.translation_changed TO Frame.set_translation
-ROUTE MirrorRotationInterpolator.value_changed TO Mirror.set_rotation
-ROUTE Mirror.rotation_changed TO Frame.set_rotation
+ROUTE MirrorRotationInterpolator.value_changed TO _1.set_rotation
