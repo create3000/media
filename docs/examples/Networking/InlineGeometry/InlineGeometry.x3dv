@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V14.0.4
+#X3D V4.1 utf8 X_ITE V14.1.0
 
 PROFILE Interchange
 
@@ -6,16 +6,16 @@ COMPONENT Core : 2
 COMPONENT EventUtilities : 1
 COMPONENT Geometry2D : 2
 COMPONENT Layering : 1
-COMPONENT Networking : 4
+COMPONENT Networking : 3
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
-COMPONENT Text : 2
+COMPONENT Text : 1
 
 META "creator" "Holger Seelig"
 META "created" "Fri, 20 Feb 2026 20:45:17 GMT"
-META "modified" "Mon, 23 Feb 2026 22:19:34 GMT"
-META "generator" "x3d-tidy V3.0.4, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.4, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 29 Mar 2026 08:27:24 GMT"
+META "generator" "x3d-tidy V3.0.9, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.10, https://create3000.github.io/sunrize/"
 
 EXTERNPROTO RoundedRectangle2D [
   inputOutput    SFFloat cornerRadius
@@ -247,7 +247,7 @@ function set_color3 ()
               translation 0 -4 0
               children Shape {
                 geometry DEF _17 Text {
-                  string "45 ms"
+                  string "0 ms"
                   fontStyle FontStyle {
                     family "TYPEWRITER"
                     style "BOLD"
@@ -265,6 +265,7 @@ function set_color3 ()
               ]
             }
             DEF LoadTimeScript Script {
+              inputOnly  SFBool   set_load
               inputOnly  SFBool   set_active
               outputOnly MFString string_changed
 
@@ -275,6 +276,11 @@ let startTime = Date .now ();
 function initialize ()
 {
    string_changed [0] = \"0 ms\";
+}
+
+function set_load ()
+{
+   startTime = Date .now ();
 }
 
 function set_active (value, time)
@@ -312,3 +318,4 @@ ROUTE _6.touchTime TO ColorsScript.set_color2
 ROUTE _8.touchTime TO ColorsScript.set_color3
 ROUTE ColorsScript.color_changed TO _14.set_diffuseColor
 ROUTE ColorsScript.color_changed TO _3.set_emissiveColor
+ROUTE _16.toggle_changed TO LoadTimeScript.set_load

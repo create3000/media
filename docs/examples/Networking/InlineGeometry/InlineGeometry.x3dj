@@ -17,15 +17,15 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 23 Feb 2026 22:19:34 GMT"
+          "@content": "Sun, 29 Mar 2026 08:27:24 GMT"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V3.0.4, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.9, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V2.0.4, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V2.0.10, https://create3000.github.io/sunrize/"
         }
       ],
       "component": [
@@ -47,7 +47,7 @@
         },
         {
           "@name": "Networking",
-          "@level": 4
+          "@level": 3
         },
         {
           "@name": "PointingDeviceSensor",
@@ -59,7 +59,7 @@
         },
         {
           "@name": "Text",
-          "@level": 2
+          "@level": 1
         }
       ]
     },
@@ -590,7 +590,7 @@
                                     "-geometry": { "Text":
                                       {
                                         "@DEF": "_17",
-                                        "@string": [ "45 ms" ],
+                                        "@string": [ "0 ms" ],
                                         "-fontStyle": { "FontStyle":
                                           {
                                             "@family": [ "TYPEWRITER" ],
@@ -635,6 +635,11 @@
                                 {
                                   "@accessType": "inputOnly",
                                   "@type": "SFBool",
+                                  "@name": "set_load"
+                                },
+                                {
+                                  "@accessType": "inputOnly",
+                                  "@type": "SFBool",
                                   "@name": "set_active"
                                 },
                                 {
@@ -651,6 +656,11 @@
 "function initialize ()",
 "{",
 "   string_changed [0] = \"0 ms\";",
+"}",
+"",
+"function set_load ()",
+"{",
+"   startTime = Date .now ();",
 "}",
 "",
 "function set_active (value, time)",
@@ -781,6 +791,14 @@
             "@fromField": "color_changed",
             "@toNode": "_3",
             "@toField": "set_emissiveColor"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_16",
+            "@fromField": "toggle_changed",
+            "@toNode": "LoadTimeScript",
+            "@toField": "set_load"
           }
         }
       ]

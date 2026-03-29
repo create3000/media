@@ -6,14 +6,14 @@
     <component name='EventUtilities' level='1'/>
     <component name='Geometry2D' level='2'/>
     <component name='Layering' level='1'/>
-    <component name='Networking' level='4'/>
+    <component name='Networking' level='3'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Text' level='2'/>
+    <component name='Text' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Fri, 20 Feb 2026 20:45:17 GMT'/>
-    <meta name='modified' content='Mon, 23 Feb 2026 18:57:43 GMT'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.4, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 29 Mar 2026 08:26:47 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.10, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='RoundedRectangle2D' url='"assets/RoundedRectangle2D.x3d#RoundedRectangle2D"'>
@@ -216,7 +216,7 @@ function set_color3 ()
               translation='0 -4 0'>
             <Shape>
               <Text DEF='_17'
-                  string='"45 ms"'>
+                  string='"0 ms"'>
                 <FontStyle
                     family='"TYPEWRITER"'
                     style='BOLD'
@@ -231,6 +231,7 @@ function set_color3 ()
             <InlineGeometry USE='InlinePoints' containerField='children'/>
           </LoadSensor>
           <Script DEF='LoadTimeScript'>
+            <field accessType='inputOnly' type='SFBool' name='set_load'/>
             <field accessType='inputOnly' type='SFBool' name='set_active'/>
             <field accessType='outputOnly' type='MFString' name='string_changed'/>
 <![CDATA[ecmascript:
@@ -240,6 +241,11 @@ let startTime = Date .now ();
 function initialize ()
 {
    string_changed [0] = "0 ms";
+}
+
+function set_load ()
+{
+   startTime = Date .now ();
 }
 
 function set_active (value, time)
@@ -273,5 +279,6 @@ function set_active (value, time)
     <ROUTE fromNode='_8' fromField='touchTime' toNode='ColorsScript' toField='set_color3'/>
     <ROUTE fromNode='ColorsScript' fromField='color_changed' toNode='_14' toField='set_diffuseColor'/>
     <ROUTE fromNode='ColorsScript' fromField='color_changed' toNode='_3' toField='set_emissiveColor'/>
+    <ROUTE fromNode='_16' fromField='toggle_changed' toNode='LoadTimeScript' toField='set_load'/>
   </Scene>
 </X3D>
