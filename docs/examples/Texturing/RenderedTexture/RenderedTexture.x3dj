@@ -17,7 +17,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Tue, 31 Mar 2026 13:31:31 GMT"
+          "@content": "Tue, 31 Mar 2026 13:35:31 GMT"
         },
         {
           "@name": "generator",
@@ -693,7 +693,8 @@
                         "@description": "Mirror Animation",
                         "@cycleInterval": 19.2,
                         "@loop": true,
-                        "@stopTime": 1774007633.776
+                        "@startTime": 1774964088.206,
+                        "@stopTime": 1774964088.206
                       }
                     },
                     { "OrientationInterpolator":
@@ -710,6 +711,7 @@
                 {
                   "@DEF": "Frame",
                   "@translation": [ -0, 8, -22.56728 ],
+                  "@rotation": [ 0, 1.00000000000009, 0, 0.0885416666666596 ],
                   "-children": [
                     { "Transform":
                       {
@@ -794,6 +796,10 @@
                       "@value": [ -0, 8, -22.56728 ]
                     },
                     {
+                      "@name": "rotation",
+                      "@value": [ 0, 1.00000000000009, 0, 0.0885416666666596 ]
+                    },
+                    {
                       "@name": "scale",
                       "@value": [ 12, 7, 1 ]
                     },
@@ -873,6 +879,14 @@
             "@fromNode": "MirrorRotationInterpolator",
             "@fromField": "value_changed",
             "@toNode": "_1",
+            "@toField": "set_rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_1",
+            "@fromField": "rotation_changed",
+            "@toNode": "Frame",
             "@toField": "set_rotation"
           }
         }

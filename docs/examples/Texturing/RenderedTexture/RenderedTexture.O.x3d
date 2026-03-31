@@ -12,7 +12,7 @@
     <component name='Texturing3D' level='1'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Tue, 31 Mar 2026 13:31:29 GMT'/>
+    <meta name='modified' content='Tue, 31 Mar 2026 13:34:49 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.11, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -348,7 +348,8 @@ const Camera =
             description='Mirror Animation'
             cycleInterval='19.2'
             loop='true'
-            stopTime='1774007633.776'/>
+            startTime='1774964088.206'
+            stopTime='1774964088.206'/>
         <OrientationInterpolator DEF='MirrorRotationInterpolator'
             key='0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1'
             keyValue='0 0 1 0, 0 -1 0 0.5, 0 0 0 0, 0 -1 0 -0.5, 0 0 0 0, -1 0 -0 0.25, 0 0 0 0, -1 0 0 -0.25, 0 0 0 0'>
@@ -371,7 +372,8 @@ const Camera =
         </OrientationInterpolator>
       </Group>
       <Transform DEF='Frame'
-          translation='-0 8 -22.56728'>
+          translation='-0 8 -22.56728'
+          rotation='-0.999999999999996 0 0 6.04214363196959'>
         <Transform DEF='Box_1'
             translation='0 7 0'
             scale='12.3 0.3 0.3'>
@@ -402,6 +404,7 @@ const Camera =
       </Transform>
       <ProtoInstance name='Mirror' DEF='_1'>
         <fieldValue name='translation' value='-0 8 -22.56728'/>
+        <fieldValue name='rotation' value='-0.999999999999996 0 0 6.04214363196959'/>
         <fieldValue name='scale' value='12 7 1'/>
         <fieldValue name='sensorSize' value='-1 -1 -1'/>
         <fieldValue name='textureSize' value='1200'/>
@@ -425,5 +428,6 @@ const Camera =
         size='-1 -1 -1'/>
     <ROUTE fromNode='MirrorAnimationTimer' fromField='fraction_changed' toNode='MirrorRotationInterpolator' toField='set_fraction'/>
     <ROUTE fromNode='MirrorRotationInterpolator' fromField='value_changed' toNode='_1' toField='set_rotation'/>
+    <ROUTE fromNode='_1' fromField='rotation_changed' toNode='Frame' toField='set_rotation'/>
   </Scene>
 </X3D>

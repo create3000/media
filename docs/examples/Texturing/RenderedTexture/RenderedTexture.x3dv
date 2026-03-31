@@ -13,7 +13,7 @@ COMPONENT Texturing3D : 1
 
 META "creator" "Holger Seelig"
 META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
-META "modified" "Tue, 31 Mar 2026 13:31:31 GMT"
+META "modified" "Tue, 31 Mar 2026 13:35:31 GMT"
 META "generator" "x3d-tidy V3.0.10, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.0.11, https://create3000.github.io/sunrize/"
 
@@ -313,7 +313,8 @@ DEF Mirror_1 Group {
           description "Mirror Animation"
           cycleInterval 19.2
           loop TRUE
-          stopTime 1774007633.776
+          startTime 1774964088.206
+          stopTime 1774964088.206
         }
         DEF MirrorRotationInterpolator OrientationInterpolator {
           key [ 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 ]
@@ -323,6 +324,7 @@ DEF Mirror_1 Group {
     }
     DEF Frame Transform {
       translation -0 8 -22.56728
+      rotation 0 1.00000000000009 0 0.0885416666666596
       children [
         DEF Box_1 Transform {
           translation 0 7 0
@@ -356,6 +358,7 @@ DEF Mirror_1 Group {
     }
     DEF _1 Mirror {
       translation -0 8 -22.56728
+      rotation 0 1.00000000000009 0 0.0885416666666596
       scale 12 7 1
       sensorSize -1 -1 -1
       textureSize 1200
@@ -380,3 +383,4 @@ ProximitySensor {
 
 ROUTE MirrorAnimationTimer.fraction_changed TO MirrorRotationInterpolator.set_fraction
 ROUTE MirrorRotationInterpolator.value_changed TO _1.set_rotation
+ROUTE _1.rotation_changed TO Frame.set_rotation
