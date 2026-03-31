@@ -11,9 +11,11 @@ COMPONENT Scripting : 1
 COMPONENT Texturing : 4
 COMPONENT Texturing3D : 1
 
+UNIT angle degree 0.017453292519943295
+
 META "creator" "Holger Seelig"
 META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
-META "modified" "Tue, 31 Mar 2026 13:35:31 GMT"
+META "modified" "Tue, 31 Mar 2026 20:54:22 GMT"
 META "generator" "x3d-tidy V3.0.10, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.0.11, https://create3000.github.io/sunrize/"
 
@@ -24,7 +26,6 @@ PROTO Mirror [
   inputOutput SFVec3f    sensorSize 0 0 0
   inputOutput SFInt32    textureSize 128
   inputOutput SFNode     material NULL
-  inputOutput SFNode     backMaterial NULL
   inputOutput SFNode     textureProperties NULL
   inputOutput SFNode     scene NULL
   inputOutput SFNode     geometry NULL
@@ -40,8 +41,19 @@ PROTO Mirror [
         rotation IS rotation
         scale IS scale
         children Shape {
-          appearance DEF _1 Appearance {
-            backMaterial IS backMaterial
+          appearance Appearance {
+            material IS material
+            texture DEF _4 RenderedTexture {
+              update "ALWAYS"
+              viewpoint DEF _10 Viewpoint {
+                position -1.118549 -6.556731 16.03942
+                orientation -0.0165361975453685 -0.195264792891879 0.980611143536332 170.505638007086
+                fieldOfView 25.94504
+              }
+              scene IS scene
+              repeatS FALSE
+              repeatT FALSE
+            }
             textureTransform DEF _2 TextureTransformMatrix3D {
               matrix -1 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1
             }
@@ -57,33 +69,20 @@ PROTO Mirror [
     inputOutput    SFRotation mirrorRotation IS rotation
     inputOutput    SFVec3f    mirrorScale IS scale
     inputOutput    SFInt32    textureSize IS textureSize
-    inputOutput    SFNode     material IS material
     inputOutput    SFVec3f    viewpointPosition -1.118549 6.556731 16.03942
-    inputOutput    SFRotation viewpointOrientation -0.914589430575436 -0.403127310041776 -0.0318519289558134 0.172353446868391
+    inputOutput    SFRotation viewpointOrientation -0.914589430575436 -0.403127310041776 -0.0318519289558134 9.87512509009108
     outputOnly     MFInt32    textureDimension_changed
-    outputOnly     SFNode     mirrorMaterial_changed
     outputOnly     SFVec3f    mirrorViewpointPosition_changed
     outputOnly     SFRotation mirrorViewpointOrientation_changed
     outputOnly     SFFloat    mirrorViewpointFieldOfView_changed
     outputOnly     SFMatrix4f mirrorTextureMatrix_changed
-    initializeOnly SFNode     renderedTexture DEF _4 RenderedTexture {
-      update "ALWAYS"
-      viewpoint DEF _10 Viewpoint {
-        position -1.118549 -6.556731 16.03942
-        orientation -0.0165361975453685 -0.195264792891879 0.980611143536332 2.97588477643724
-        fieldOfView 0.4528263
-      }
-      scene IS scene
-      repeatS FALSE
-      repeatT FALSE
-    }
+    initializeOnly SFNode     renderedTexture NULL
 
     url "ecmascript:
 
 function initialize ()
 {
    set_textureSize ();
-   set_material ();
    eventsProcessed ();
 }
 
@@ -101,17 +100,6 @@ function set_textureSize ()
       h = y >= x ? textureSize : y * textureSize / x;
 
    textureDimension_changed = new MFInt32 (w, h, 4, 1, 1);
-}
-
-function set_material ()
-{
-   const mirrorMaterial = material 
-      ?? Browser .currentScene .createNode (\"UnlitMaterial\");
-
-   mirrorMaterial .emissiveColor   = new SFColor (1, 1, 1);
-   mirrorMaterial .emissiveTexture = renderedTexture;
-
-   mirrorMaterial_changed = mirrorMaterial;
 }
 
 function eventsProcessed ()
@@ -132,7 +120,7 @@ function eventsProcessed ()
 
    mirrorViewpointOrientation_changed = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));
 
-   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Make fov a bit wider.
+   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Use 3 instead of 2 to make fov a bit wider.
 
    // Texture matrix
 
@@ -220,7 +208,6 @@ const Camera =
   ROUTE MirrorScript.mirrorViewpointFieldOfView_changed TO _10.set_fieldOfView
   ROUTE MirrorScript.mirrorTextureMatrix_changed TO _2.set_matrix
   ROUTE MirrorScript.textureDimension_changed TO _4.set_dimensions
-  ROUTE MirrorScript.mirrorMaterial_changed TO _1.set_material
 }
 
 WorldInfo { }
@@ -230,7 +217,7 @@ ViewpointGroup {
     Viewpoint {
       description "Right View"
       position 21.90548 9.386942 16.91029
-      orientation 0.224713456136779 -0.967970107322443 -0.111972023118469 5.33238798006893
+      orientation 0.224713456136779 -0.967970107322443 -0.111972023118469 305.52332598424
       navigationInfo DEF _6 NavigationInfo {
         headlight FALSE
       }
@@ -243,16 +230,16 @@ ViewpointGroup {
     Viewpoint {
       description "Left View"
       position -34.05956 12.33925 9.977323
-      orientation -0.116363641800831 -0.990052226942619 -0.0790954536797794 1.20329240114773
+      orientation -0.116363641800831 -0.990052226942619 -0.0790954536797794 68.9435761059278
       navigationInfo USE _6
     }
   ]
 }
 
 DEF Summer Background {
-  skyAngle [ 0.8, 1.3, 1.4, 1.5708 ]
+  skyAngle [ 45.83662, 74.48451, 80.21409, 90.00021 ]
   skyColor [ 0.21 0.31 0.59, 0.33 0.45 0.7, 0.57 0.66 0.85, 0.6 0.73 0.89, 0.7 0.83 0.98 ]
-  groundAngle [ 0.659972, 1.2, 1.39912, 1.5708 ]
+  groundAngle [ 37.81361, 68.75494, 80.16367, 90.00021 ]
   groundColor [ 0.105712 0.156051 0.297, 0.187629 0.255857 0.398, 0.33604 0.405546 0.542, 0.3612 0.469145 0.602, 0.39471 0.522059 0.669 ]
 }
 
@@ -283,7 +270,7 @@ DEF Scene Group {
       }
     }
     DEF Floor_1 Transform {
-      rotation 1 0 0 4.71238898038469
+      rotation 1 0 0 270
       scale 19 19 19
       children Shape {
         castShadow FALSE
@@ -313,18 +300,16 @@ DEF Mirror_1 Group {
           description "Mirror Animation"
           cycleInterval 19.2
           loop TRUE
-          startTime 1774964088.206
-          stopTime 1774964088.206
         }
         DEF MirrorRotationInterpolator OrientationInterpolator {
           key [ 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 ]
-          keyValue [ 0 0 1 0, 0 -1 0 0.5, 0 0 0 0, 0 -1 0 -0.5, 0 0 0 0, -1 0 -0 0.25, 0 0 0 0, -1 0 0 -0.25, 0 0 0 0 ]
+          keyValue [ 0 0 1 0, 0 -1 0 28.6478897565412, 0 0 0 0, 0 -1 0 -28.6478897565412, 0 0 0 0, -1 0 -0 14.3239448782706, 0 0 0 0, -1 0 0 -14.3239448782706, 0 0 0 0 ]
         }
       ]
     }
     DEF Frame Transform {
       translation -0 8 -22.56728
-      rotation 0 1.00000000000009 0 0.0885416666666596
+      rotation -0.999999999999995 0 0 349.400280653476
       children [
         DEF Box_1 Transform {
           translation 0 7 0
@@ -358,21 +343,36 @@ DEF Mirror_1 Group {
     }
     DEF _1 Mirror {
       translation -0 8 -22.56728
-      rotation 0 1.00000000000009 0 0.0885416666666596
+      rotation -0.999999999999995 0 0 349.400280653476
       scale 12 7 1
       sensorSize -1 -1 -1
       textureSize 1200
-      backMaterial DEF _3 PhysicalMaterial {
-        baseColor 0.09166474 0.09166474 0.09166474
-        metallic 0
-      }
       scene DEF _4 Group {
         children [
           USE CannonExterior
           USE Scene
         ]
       }
-      geometry DEF _8 Rectangle2D { }
+      geometry DEF _8 Rectangle2D {
+        solid TRUE
+      }
+    }
+    DEF MirrorBack Transform {
+      translation -0 8 -22.56728
+      rotation -0.999999999999995 0 0 349.400280653476
+      scale 12 7 1
+      children Transform {
+        rotation 0 1 0 180
+        children Shape {
+          appearance Appearance {
+            material PhysicalMaterial {
+              baseColor 0.09166474 0.09166474 0.09166474
+              metallic 0
+            }
+          }
+          geometry USE _8
+        }
+      }
     }
   ]
 }
@@ -382,5 +382,8 @@ ProximitySensor {
 }
 
 ROUTE MirrorAnimationTimer.fraction_changed TO MirrorRotationInterpolator.set_fraction
-ROUTE MirrorRotationInterpolator.value_changed TO _1.set_rotation
-ROUTE _1.rotation_changed TO Frame.set_rotation
+ROUTE MirrorRotationInterpolator.value_changed TO MirrorBack.set_rotation
+ROUTE MirrorBack.rotation_changed TO _1.set_rotation
+ROUTE MirrorBack.rotation_changed TO Frame.set_rotation
+ROUTE MirrorBack.translation_changed TO _1.set_translation
+ROUTE MirrorBack.scale_changed TO _1.set_scale

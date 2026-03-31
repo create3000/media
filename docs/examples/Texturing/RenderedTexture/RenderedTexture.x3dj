@@ -17,7 +17,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Tue, 31 Mar 2026 13:35:31 GMT"
+          "@content": "Tue, 31 Mar 2026 20:54:22 GMT"
         },
         {
           "@name": "generator",
@@ -60,6 +60,13 @@
         {
           "@name": "Texturing3D",
           "@level": 1
+        }
+      ],
+      "unit": [
+        {
+          "@category": "angle",
+          "@name": "degree",
+          "@conversionFactor": 0.017453292519943295
         }
       ]
     },
@@ -105,11 +112,6 @@
                 {
                   "@accessType": "inputOutput",
                   "@type": "SFNode",
-                  "@name": "backMaterial"
-                },
-                {
-                  "@accessType": "inputOutput",
-                  "@type": "SFNode",
                   "@name": "textureProperties"
                 },
                 {
@@ -151,7 +153,30 @@
                               {
                                 "-appearance": { "Appearance":
                                   {
-                                    "@DEF": "_1",
+                                    "-texture": { "RenderedTexture":
+                                      {
+                                        "@DEF": "_4",
+                                        "@update": "ALWAYS",
+                                        "-viewpoint": { "Viewpoint":
+                                          {
+                                            "@DEF": "_10",
+                                            "@position": [ -1.118549, -6.556731, 16.03942 ],
+                                            "@orientation": [ -0.0165361975453685, -0.195264792891879, 0.980611143536332, 170.505638007086 ],
+                                            "@fieldOfView": 25.94504
+                                          }
+                                        },
+                                        "@repeatS": false,
+                                        "@repeatT": false,
+                                        "IS": {
+                                          "connect": [
+                                            {
+                                              "@nodeField": "scene",
+                                              "@protoField": "scene"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
                                     "-textureTransform": { "TextureTransformMatrix3D":
                                       {
                                         "@DEF": "_2",
@@ -161,8 +186,8 @@
                                     "IS": {
                                       "connect": [
                                         {
-                                          "@nodeField": "backMaterial",
-                                          "@protoField": "backMaterial"
+                                          "@nodeField": "material",
+                                          "@protoField": "material"
                                         }
                                       ]
                                     }
@@ -226,11 +251,6 @@
                       },
                       {
                         "@accessType": "inputOutput",
-                        "@type": "SFNode",
-                        "@name": "material"
-                      },
-                      {
-                        "@accessType": "inputOutput",
                         "@type": "SFVec3f",
                         "@name": "viewpointPosition",
                         "@value": [ -1.118549, 6.556731, 16.03942 ]
@@ -239,17 +259,12 @@
                         "@accessType": "inputOutput",
                         "@type": "SFRotation",
                         "@name": "viewpointOrientation",
-                        "@value": [ -0.914589430575436, -0.403127310041776, -0.0318519289558134, 0.172353446868391 ]
+                        "@value": [ -0.914589430575436, -0.403127310041776, -0.0318519289558134, 9.87512509009108 ]
                       },
                       {
                         "@accessType": "outputOnly",
                         "@type": "MFInt32",
                         "@name": "textureDimension_changed"
-                      },
-                      {
-                        "@accessType": "outputOnly",
-                        "@type": "SFNode",
-                        "@name": "mirrorMaterial_changed"
                       },
                       {
                         "@accessType": "outputOnly",
@@ -274,33 +289,7 @@
                       {
                         "@accessType": "initializeOnly",
                         "@type": "SFNode",
-                        "@name": "renderedTexture",
-                        "-children": [
-                          { "RenderedTexture":
-                            {
-                              "@DEF": "_4",
-                              "@update": "ALWAYS",
-                              "-viewpoint": { "Viewpoint":
-                                {
-                                  "@DEF": "_10",
-                                  "@position": [ -1.118549, -6.556731, 16.03942 ],
-                                  "@orientation": [ -0.0165361975453685, -0.195264792891879, 0.980611143536332, 2.97588477643724 ],
-                                  "@fieldOfView": 0.4528263
-                                }
-                              },
-                              "@repeatS": false,
-                              "@repeatT": false,
-                              "IS": {
-                                "connect": [
-                                  {
-                                    "@nodeField": "scene",
-                                    "@protoField": "scene"
-                                  }
-                                ]
-                              }
-                            }
-                          }
-                        ]
+                        "@name": "renderedTexture"
                       }
                     ],
                     "#sourceCode": [
@@ -309,7 +298,6 @@
 "function initialize ()",
 "{",
 "   set_textureSize ();",
-"   set_material ();",
 "   eventsProcessed ();",
 "}",
 "",
@@ -327,17 +315,6 @@
 "      h = y >= x ? textureSize : y * textureSize / x;",
 "",
 "   textureDimension_changed = new MFInt32 (w, h, 4, 1, 1);",
-"}",
-"",
-"function set_material ()",
-"{",
-"   const mirrorMaterial = material ",
-"      ?? Browser .currentScene .createNode (\"UnlitMaterial\");",
-"",
-"   mirrorMaterial .emissiveColor   = new SFColor (1, 1, 1);",
-"   mirrorMaterial .emissiveTexture = renderedTexture;",
-"",
-"   mirrorMaterial_changed = mirrorMaterial;",
 "}",
 "",
 "function eventsProcessed ()",
@@ -358,7 +335,7 @@
 "",
 "   mirrorViewpointOrientation_changed = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));",
 "",
-"   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Make fov a bit wider.",
+"   mirrorViewpointFieldOfView_changed = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Use 3 instead of 2 to make fov a bit wider.",
 "",
 "   // Texture matrix",
 "",
@@ -455,10 +432,6 @@
                         {
                           "@nodeField": "textureSize",
                           "@protoField": "textureSize"
-                        },
-                        {
-                          "@nodeField": "material",
-                          "@protoField": "material"
                         }
                       ]
                     }
@@ -519,14 +492,6 @@
                     "@toNode": "_4",
                     "@toField": "set_dimensions"
                   }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "MirrorScript",
-                    "@fromField": "mirrorMaterial_changed",
-                    "@toNode": "_1",
-                    "@toField": "set_material"
-                  }
                 }
               ]
             }
@@ -543,7 +508,7 @@
                 {
                   "@description": "Right View",
                   "@position": [ 21.90548, 9.386942, 16.91029 ],
-                  "@orientation": [ 0.224713456136779, -0.967970107322443, -0.111972023118469, 5.33238798006893 ],
+                  "@orientation": [ 0.224713456136779, -0.967970107322443, -0.111972023118469, 305.52332598424 ],
                   "-navigationInfo": { "NavigationInfo":
                     {
                       "@DEF": "_6",
@@ -567,7 +532,7 @@
                 {
                   "@description": "Left View",
                   "@position": [ -34.05956, 12.33925, 9.977323 ],
-                  "@orientation": [ -0.116363641800831, -0.990052226942619, -0.0790954536797794, 1.20329240114773 ],
+                  "@orientation": [ -0.116363641800831, -0.990052226942619, -0.0790954536797794, 68.9435761059278 ],
                   "-navigationInfo": { "NavigationInfo":
                     {
                       "@USE": "_6"
@@ -581,9 +546,9 @@
         { "Background":
           {
             "@DEF": "Summer",
-            "@skyAngle": [ 0.8, 1.3, 1.4, 1.5708 ],
+            "@skyAngle": [ 45.83662, 74.48451, 80.21409, 90.00021 ],
             "@skyColor": [ 0.21, 0.31, 0.59, 0.33, 0.45, 0.7, 0.57, 0.66, 0.85, 0.6, 0.73, 0.89, 0.7, 0.83, 0.98 ],
-            "@groundAngle": [ 0.659972, 1.2, 1.39912, 1.5708 ],
+            "@groundAngle": [ 37.81361, 68.75494, 80.16367, 90.00021 ],
             "@groundColor": [ 0.105712, 0.156051, 0.297, 0.187629, 0.255857, 0.398, 0.33604, 0.405546, 0.542, 0.3612, 0.469145, 0.602, 0.39471, 0.522059, 0.669 ]
           }
         },
@@ -638,7 +603,7 @@
               { "Transform":
                 {
                   "@DEF": "Floor_1",
-                  "@rotation": [ 1, 0, 0, 4.71238898038469 ],
+                  "@rotation": [ 1, 0, 0, 270 ],
                   "@scale": [ 19, 19, 19 ],
                   "-children": [
                     { "Shape":
@@ -692,16 +657,14 @@
                         "@DEF": "MirrorAnimationTimer",
                         "@description": "Mirror Animation",
                         "@cycleInterval": 19.2,
-                        "@loop": true,
-                        "@startTime": 1774964088.206,
-                        "@stopTime": 1774964088.206
+                        "@loop": true
                       }
                     },
                     { "OrientationInterpolator":
                       {
                         "@DEF": "MirrorRotationInterpolator",
                         "@key": [ 0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 ],
-                        "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 0.5, 0, 0, 0, 0, 0, -1, 0, -0.5, 0, 0, 0, 0, -1, 0, -0, 0.25, 0, 0, 0, 0, -1, 0, 0, -0.25, 0, 0, 0, 0 ]
+                        "@keyValue": [ 0, 0, 1, 0, 0, -1, 0, 28.6478897565412, 0, 0, 0, 0, 0, -1, 0, -28.6478897565412, 0, 0, 0, 0, -1, 0, -0, 14.3239448782706, 0, 0, 0, 0, -1, 0, 0, -14.3239448782706, 0, 0, 0, 0 ]
                       }
                     }
                   ]
@@ -711,7 +674,7 @@
                 {
                   "@DEF": "Frame",
                   "@translation": [ -0, 8, -22.56728 ],
-                  "@rotation": [ 0, 1.00000000000009, 0, 0.0885416666666596 ],
+                  "@rotation": [ -0.999999999999995, 0, 0, 349.400280653476 ],
                   "-children": [
                     { "Transform":
                       {
@@ -797,7 +760,7 @@
                     },
                     {
                       "@name": "rotation",
-                      "@value": [ 0, 1.00000000000009, 0, 0.0885416666666596 ]
+                      "@value": [ -0.999999999999995, 0, 0, 349.400280653476 ]
                     },
                     {
                       "@name": "scale",
@@ -810,18 +773,6 @@
                     {
                       "@name": "textureSize",
                       "@value": 1200
-                    },
-                    {
-                      "@name": "backMaterial",
-                      "-children": [
-                        { "PhysicalMaterial":
-                          {
-                            "@DEF": "_3",
-                            "@baseColor": [ 0.09166474, 0.09166474, 0.09166474 ],
-                            "@metallic": 0
-                          }
-                        }
-                      ]
                     },
                     {
                       "@name": "scene",
@@ -850,10 +801,47 @@
                       "-children": [
                         { "Rectangle2D":
                           {
-                            "@DEF": "_8"
+                            "@DEF": "_8",
+                            "@solid": true
                           }
                         }
                       ]
+                    }
+                  ]
+                }
+              },
+              { "Transform":
+                {
+                  "@DEF": "MirrorBack",
+                  "@translation": [ -0, 8, -22.56728 ],
+                  "@rotation": [ -0.999999999999995, 0, 0, 349.400280653476 ],
+                  "@scale": [ 12, 7, 1 ],
+                  "-children": [
+                    { "Transform":
+                      {
+                        "@rotation": [ 0, 1, 0, 180 ],
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "PhysicalMaterial":
+                                    {
+                                      "@baseColor": [ 0.09166474, 0.09166474, 0.09166474 ],
+                                      "@metallic": 0
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "Rectangle2D":
+                                {
+                                  "@USE": "_8"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      }
                     }
                   ]
                 }
@@ -878,16 +866,40 @@
           {
             "@fromNode": "MirrorRotationInterpolator",
             "@fromField": "value_changed",
+            "@toNode": "MirrorBack",
+            "@toField": "set_rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "MirrorBack",
+            "@fromField": "rotation_changed",
             "@toNode": "_1",
             "@toField": "set_rotation"
           }
         },
         { "ROUTE":
           {
-            "@fromNode": "_1",
+            "@fromNode": "MirrorBack",
             "@fromField": "rotation_changed",
             "@toNode": "Frame",
             "@toField": "set_rotation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "MirrorBack",
+            "@fromField": "translation_changed",
+            "@toNode": "_1",
+            "@toField": "set_translation"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "MirrorBack",
+            "@fromField": "scale_changed",
+            "@toNode": "_1",
+            "@toField": "set_scale"
           }
         }
       ]
