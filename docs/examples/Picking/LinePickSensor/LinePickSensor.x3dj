@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,37 +21,45 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.14, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:14:46 GMT"
+          "@content": "Tue, 28 Apr 2026 10:17:35 GMT"
         }
       ],
       "component": [
         {
+          "@name": "Core",
+          "@level": 2
+        },
+        {
           "@name": "EnvironmentalSensor",
-          "@level": 3
+          "@level": 1
         },
         {
           "@name": "Geometry2D",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "KeyDeviceSensor",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "Layering",
           "@level": 1
         },
         {
+          "@name": "Networking",
+          "@level": 2
+        },
+        {
           "@name": "Picking",
-          "@level": 3
+          "@level": 1
         },
         {
           "@name": "PointingDeviceSensor",
@@ -1041,9 +1050,9 @@
 "",
 "function initialize ()",
 "{",
-"\tvar shapes = pickSensor .pickTarget;",
+"\tconst shapes = pickSensor .pickTarget;",
 "",
-"\tfor (var i = 0, length = shapes .length; i < length; ++ i)",
+"\tfor (let i = 0, length = shapes .length; i < length; ++ i)",
 "\t{",
 "\t\tshapes [i] .appearance .texture .image = wood;",
 "\t}",
@@ -1059,7 +1068,7 @@
 "",
 "function set_triggerShot (value, time)",
 "{",
-"\tvar direction = proxy .orientation_changed .multVec (new SFVec3f (0, 0, -15));",
+"\tconst direction = proxy .orientation_changed .multVec (new SFVec3f (0, 0, -15));",
 "",
 "\tinterpolator .keyValue = new MFVec3f (proxy .position_changed, proxy .position_changed .add (direction));",
 "\ttimer .startTime       = time;",
@@ -1067,29 +1076,29 @@
 "",
 "function set_pick (value, time)",
 "{",
-"\tif (! value)",
+"\tif (!value)",
 "\t\treturn;",
 "",
-"\tvar shape = getShape ();",
+"\tconst shape = getShape ();",
 "",
-"\tif (! shape)",
+"\tif (!shape)",
 "\t\treturn;",
 "",
-"\tvar",
+"\tconst",
 "\t\timage    = shape .appearance .texture .image,",
 "\t\ttexCoord = pickSensor .pickedTextureCoordinate [0],",
 "\t\tcx       = Math .floor (image .width  * texCoord .x),",
 "\t\tcy       = Math .floor (image .height * texCoord .y);",
 "",
-"\tvar",
+"\tconst",
 "\t\tsw = hole .width,",
 "\t\tsh = hole .height;",
 "",
-"\tfor (var sy = 0; sy < sh; ++ sy)",
+"\tfor (let sy = 0; sy < sh; ++ sy)",
 "\t{",
-"\t\tfor (var sx = 0; sx < sw; ++ sx)",
+"\t\tfor (let sx = 0; sx < sw; ++ sx)",
 "\t\t{",
-"\t\t\tvar",
+"\t\t\tconst",
 "\t\t\t\tx  = Math .floor (cx - sw / 2 + sx),",
 "\t\t\t\ty  = Math .floor (cy - sh / 2 + sy),",
 "\t\t\t\tsp = hole .array [sy * sw + sx],",
@@ -1107,13 +1116,13 @@
 "",
 "function getShape ()",
 "{",
-"\tvar",
+"\tconst",
 "\t\tshapes   = pickSensor .pickTarget,",
 "\t\tgeometry = pickSensor .pickedGeometry [0];",
 "",
-"\tfor (var i = 0, length = shapes .length; i < length; ++ i)",
+"\tfor (let i = 0, length = shapes .length; i < length; ++ i)",
 "\t{",
-"\t\tvar shape = shapes [i];",
+"\t\tconst shape = shapes [i];",
 "",
 "\t\tif (shape .geometry === geometry)",
 "\t\t\treturn shape;",
@@ -1180,7 +1189,7 @@
                     "@fromNode": "_1",
                     "@fromField": "orientation_changed",
                     "@toNode": "Bullet",
-                    "@toField": "rotation"
+                    "@toField": "set_rotation"
                   }
                 },
                 { "ROUTE":
@@ -1188,7 +1197,7 @@
                     "@fromNode": "_25",
                     "@fromField": "value_changed",
                     "@toNode": "Bullet",
-                    "@toField": "translation"
+                    "@toField": "set_translation"
                   }
                 },
                 { "ROUTE":
