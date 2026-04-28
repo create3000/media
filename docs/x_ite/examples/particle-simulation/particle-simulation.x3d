@@ -107,6 +107,8 @@ function set_time (value, time)
       numParticles = positions .length,
       forces       = new MFVec3f ();
 
+   forces .length = numParticles;
+
    for (let p1 = 0; p1 < numParticles; ++ p1)
    {
       for (let p0 = 0; p0 < p1; ++ p0)
@@ -123,7 +125,7 @@ function set_time (value, time)
 
    for (let p = 0; p < numParticles; ++ p)
    {
-      const 
+      const
          dv          = forces [p] .multiply (gravitationalConstant * dt / masses [p]),
          velocity    = velocities [p] .add (dv),
          translation = velocity .multiply (dt);
@@ -173,7 +175,7 @@ function set_numParticles ()
    particleSimulation .initialPositions  .length = 0;
    particleSimulation .initialVelocities .length = 0;
    particleSimulation .initialMasses     .length = 0;
-   
+
    for (let p = 0; p < numParticles; ++ p)
    {
       particleSimulation .initialPositions .push (new SFVec3f (random (-10, 10), random (-10, 10), random (-10, 10)));
@@ -190,7 +192,7 @@ function set_particleSimulation (value, time)
 }
 
 function random (min, max)
-{ 
+{
    return min + Math .random () * (max - min);
 }
 ]]>
