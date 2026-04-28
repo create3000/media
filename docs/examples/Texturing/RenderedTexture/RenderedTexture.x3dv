@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V14.1.4
+#X3D V4.1 utf8 X_ITE V14.2.0
 
 PROFILE Interchange
 
@@ -15,8 +15,8 @@ UNIT angle degree 0.017453292519943295
 
 META "creator" "Holger Seelig"
 META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
-META "modified" "Sun, 19 Apr 2026 07:39:33 GMT"
-META "generator" "x3d-tidy V3.0.12, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Tue, 28 Apr 2026 08:59:32 GMT"
+META "generator" "x3d-tidy V3.0.14, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.0.12, https://create3000.github.io/sunrize/"
 
 PROTO Mirror [
@@ -125,7 +125,7 @@ function eventsProcessed ()
       rRight    = tUp .cross (rForward) .normalize (),
       rUp       = rForward .cross (rRight) .normalize ();
 
-   mirrorViewpoint .orientation = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));
+   mirrorViewpoint .orientation = SFRotation .fromMatrix (new SFMatrix3f (... rRight, ... rUp, ... rForward));
 
    mirrorViewpoint .fieldOfView = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Use 3 instead of 2 to make fov a bit wider.
 
@@ -315,7 +315,7 @@ DEF Mirror_1 Group {
     }
     DEF Frame Transform {
       translation -0 8 -22.56728
-      rotation 0 -1 0 23.7300032899702
+      rotation 0 -1.00000000000001 0 12.1514802693429
       children [
         DEF Box_1 Transform {
           translation 0 7 0
@@ -349,7 +349,7 @@ DEF Mirror_1 Group {
     }
     DEF _1 Mirror {
       translation -0 8 -22.56728
-      rotation 0 -1 0 23.7300032899702
+      rotation 0 -1.00000000000001 0 12.1514802693429
       scale 12 7 1
       sensorSize -1 -1 -1
       textureSize 1200
@@ -363,7 +363,7 @@ DEF Mirror_1 Group {
     }
     DEF MirrorBack Transform {
       translation -0 8 -22.56728
-      rotation 0 -1 0 23.7300032899702
+      rotation 0 -1.00000000000001 0 12.1514802693429
       scale 12 7 1
       children Transform {
         rotation 0 1 0 180

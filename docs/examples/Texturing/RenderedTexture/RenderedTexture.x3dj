@@ -17,11 +17,11 @@
         },
         {
           "@name": "modified",
-          "@content": "Sun, 19 Apr 2026 07:39:33 GMT"
+          "@content": "Tue, 28 Apr 2026 08:59:32 GMT"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V3.0.12, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.14, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
@@ -347,7 +347,7 @@
 "      rRight    = tUp .cross (rForward) .normalize (),",
 "      rUp       = rForward .cross (rRight) .normalize ();",
 "",
-"   mirrorViewpoint .orientation = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));",
+"   mirrorViewpoint .orientation = SFRotation .fromMatrix (new SFMatrix3f (... rRight, ... rUp, ... rForward));",
 "",
 "   mirrorViewpoint .fieldOfView = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Use 3 instead of 2 to make fov a bit wider.",
 "",
@@ -684,7 +684,7 @@
                 {
                   "@DEF": "Frame",
                   "@translation": [ -0, 8, -22.56728 ],
-                  "@rotation": [ 0, -1, 0, 23.7300032899702 ],
+                  "@rotation": [ 0, -1.00000000000001, 0, 12.1514802693429 ],
                   "-children": [
                     { "Transform":
                       {
@@ -770,7 +770,7 @@
                     },
                     {
                       "@name": "rotation",
-                      "@value": [ 0, -1, 0, 23.7300032899702 ]
+                      "@value": [ 0, -1.00000000000001, 0, 12.1514802693429 ]
                     },
                     {
                       "@name": "scale",
@@ -817,7 +817,7 @@
                 {
                   "@DEF": "MirrorBack",
                   "@translation": [ -0, 8, -22.56728 ],
-                  "@rotation": [ 0, -1, 0, 23.7300032899702 ],
+                  "@rotation": [ 0, -1.00000000000001, 0, 12.1514802693429 ],
                   "@scale": [ 12, 7, 1 ],
                   "-children": [
                     { "Transform":

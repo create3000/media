@@ -136,7 +136,7 @@ function eventsProcessed ()
       rRight    = tUp .cross (rForward) .normalize (),
       rUp       = rForward .cross (rRight) .normalize ();
 
-   mirrorViewpoint .orientation = new SFRotation (new SFMatrix3f (rRight, rUp, rForward));
+   mirrorViewpoint .orientation = SFRotation .fromMatrix (new SFMatrix3f (... rRight, ... rUp, ... rForward));
 
    mirrorViewpoint .fieldOfView = Math .atan (Math .min (mirrorScale .x, mirrorScale .y) / viewpointToMirror .length ()) * 3; // Use 3 instead of 2 to make fov a bit wider.
 
