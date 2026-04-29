@@ -65,7 +65,7 @@ PROTO Rotor [
 
 function initialize ()
 {
-	eventsProcessed ();
+   eventsProcessed ();
 }
 
 function set_axis ()
@@ -76,12 +76,12 @@ function set_angle ()
 
 function eventsProcessed ()
 {
-	const keyValue = interpolator .keyValue;
+   const keyValue = interpolator .keyValue;
 
-	for (let i = 0; i < 4; ++ i)
-		keyValue [i] = new SFRotation (axis, angle + 2 * Math .PI / 4 * i);
+   for (let i = 0; i < 4; ++ i)
+      keyValue [i] = new SFRotation (axis, angle + 2 * Math .PI / 4 * i);
 
-	keyValue [4] = keyValue [0];
+   keyValue [4] = keyValue [0];
 }
 "
   }
