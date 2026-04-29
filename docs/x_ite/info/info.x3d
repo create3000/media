@@ -73,37 +73,37 @@
 
 function initialize ()
 {
-	eventsProcessed ();
+   eventsProcessed ();
 }
 
 function eventsProcessed ()
 {
-	var
-		length      = text .string .length,
-		size        = text .fontStyle .size * text .fontStyle .spacing,
-		key         = new MFFloat (),
-		keyValue    = new MFVec3f (),
-		keyVelocity = new MFVec3f ();
+   const
+      length      = text .string .length,
+      size        = text .fontStyle .size * text .fontStyle .spacing,
+      key         = new MFFloat (),
+      keyValue    = new MFVec3f (),
+      keyVelocity = new MFVec3f ();
 
-	for (var i = 0; i < length; ++ i)
-	{
-		key .push ((i + 1) / (length + 1));
-		keyValue .push (new SFVec3f (0, size * i, 0));
-	}
+   for (let i = 0; i < length; ++ i)
+   {
+      key .push ((i + 1) / (length + 1));
+      keyValue .push (new SFVec3f (0, size * i, 0));
+   }
 
-	key.unshift (0);
-	key .push (1);
+   key .unshift (0);
+   key .push (1);
 
-	keyValue .unshift (keyValue [0]);
-	keyValue .push (keyValue [keyValue .length - 1]);
+   keyValue .unshift (keyValue [0]);
+   keyValue .push (keyValue [keyValue .length - 1]);
 
-	keyVelocity .length = key .length;
+   keyVelocity .length = key .length;
 
-	interpolator .key         = key;
-	interpolator .keyValue    = keyValue;
-	interpolator .keyVelocity = keyVelocity;
+   interpolator .key         = key;
+   interpolator .keyValue    = keyValue;
+   interpolator .keyVelocity = keyVelocity;
 
-	timer .cycleInterval = (text .string .length + 2) * cycleInterval;
+   timer .cycleInterval = (text .string .length + 2) * cycleInterval;
 }]]>
         </Script>
         <ROUTE fromNode='_3' fromField='fraction_changed' toNode='_4' toField='set_fraction'/>
@@ -190,47 +190,45 @@ function eventsProcessed ()
 <![CDATA[ecmascript:
 
 const
-	width = Math .PI * 2,
-	depth = Math .PI;
+   width = Math .PI * 2,
+   depth = Math .PI;
 
 function initialize ()
 {
-	const colors = geometry .color .color;
+   const colors = geometry .color .color;
 
-	colors .length = 0;
+   colors .length = 0;
 
-	for (let z = 0; z < depth; z += 0.1)
-	{
-		const t = z / depth;
-		const c = color1 .lerp (color2, t);
+   for (let z = 0; z < depth; z += 0.1)
+   {
+      const t = z / depth;
+      const c = color1 .lerp (color2, t);
 
-		for (let x = 0; x < width; x += 0.1)
-		{
-			colors .push (c);
-		}
-	}
+      for (let x = 0; x < width; x += 0.1)
+      {
+         colors .push (c);
+      }
+   }
 
-	set_time (0, 0);
+   set_time (0, 0);
 }
 
 function set_time (value, time)
 {
-	const points = geometry .coord .point;
+   const points = geometry .coord .point;
 
-	points .length = 0;
+   for (let z = 0, i = 0; z < depth; z += 0.1)
+   {
+      for (let x = 0; x < width; x += 0.1, ++ i)
+      {
+         const y = Math .sin (x + z + value);
+         const p = points [i] ??= new SFVec3f ();
 
-	for (let z = 0, i = 0; z < depth; z += 0.1)
-	{
-		for (let x = 0; x < width; x += 0.1, ++ i)
-		{
-			const y = Math .sin (x + z + value);
-			const p = points [i];
-
-			p .x = x;
-			p .y = y;
-			p .z = z;
-		}
-	}
+         p .x = x;
+         p .y = y;
+         p .z = z;
+      }
+   }
 }
 ]]>
         </Script>
@@ -290,7 +288,7 @@ function set_time (value, time)
 
 function initialize ()
 {
-	text .string = new MFString ("v" + Browser .version);
+   text .string = new MFString ("v" + Browser .version);
 }
 ]]>
           </Script>
