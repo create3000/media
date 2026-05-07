@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,29 +21,33 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 21 Feb 2025 11:26:18 GMT"
+          "@content": "Thu, 07 May 2026 21:49:57 GMT"
         }
       ],
       "component": [
         {
           "@name": "Geometry2D",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "Layering",
           "@level": 1
         },
         {
-          "@name": "ParticleSystems",
+          "@name": "Navigation",
           "@level": 3
+        },
+        {
+          "@name": "ParticleSystems",
+          "@level": 2
         },
         {
           "@name": "PointingDeviceSensor",
@@ -110,7 +115,7 @@
                             "-pointProperties": { "PointProperties":
                               {
                                 "@DEF": "_3",
-                                "@pointSizeScaleFactor": 25.05152
+                                "@pointSizeScaleFactor": 61.38168
                               }
                             },
                             "-material": { "Material":
@@ -128,7 +133,7 @@
                                       {
                                         "@DEF": "VertexShader",
                                         "#sourceCode": [
-"data:text/plain,#version 300 es",
+"data:x-shader/x-vertex,#version 300 es",
 "",
 "precision mediump float;",
 "",
@@ -193,7 +198,7 @@
                                         "@DEF": "FragmentShader",
                                         "@type": "FRAGMENT",
                                         "#sourceCode": [
-"data:text/plain,#version 300 es",
+"data:x-shader/x-fragment,#version 300 es",
 "",
 "precision mediump float;",
 "",
@@ -451,7 +456,7 @@
                                     "-geometry": { "Text":
                                       {
                                         "@DEF": "_8",
-                                        "@string": [ "pointSize 25" ],
+                                        "@string": [ "pointSize 61" ],
                                         "@solid": true,
                                         "-fontStyle": { "FontStyle":
                                           {
@@ -515,7 +520,7 @@
                                       { "Transform":
                                         {
                                           "@DEF": "Rectangle2D_11",
-                                          "@translation": [ 0.2358598, 0, 0 ],
+                                          "@translation": [ 0.2115927, 0, 0 ],
                                           "@scale": [ 0.027, 0.0267372, 0.0267372 ],
                                           "-children": [
                                             { "Shape":
@@ -540,7 +545,7 @@
                                       { "PlaneSensor":
                                         {
                                           "@DEF": "_12",
-                                          "@offset": [ 0.2358598, 0, 0 ],
+                                          "@offset": [ 0.2115927, 0, 0 ],
                                           "@maxPosition": [ 1, 0 ]
                                         }
                                       }
@@ -616,7 +621,7 @@
                                               "@accessType": "initializeOnly",
                                               "@type": "SFInt32",
                                               "@name": "currentValue",
-                                              "@value": 25
+                                              "@value": 61
                                             }
                                           ],
                                           "#sourceCode": [

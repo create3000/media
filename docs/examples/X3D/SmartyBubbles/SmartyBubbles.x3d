@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "https://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
-    <component name='Geometry2D' level='2'/>
+    <component name='Geometry2D' level='1'/>
     <component name='Layering' level='1'/>
-    <component name='ParticleSystems' level='3'/>
+    <component name='Navigation' level='3'/>
+    <component name='ParticleSystems' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
@@ -12,9 +13,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 19 Dec 2015 09:16:40 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Fri, 21 Feb 2025 11:26:18 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 07 May 2026 21:49:57 GMT'/>
   </head>
   <Scene>
     <LayerSet
@@ -42,13 +43,13 @@
           </PolylineEmitter>
           <Appearance>
             <PointProperties DEF='_3'
-                pointSizeScaleFactor='25.05152'/>
+                pointSizeScaleFactor='61.38168'/>
             <Material
                 transparency='0.50591'/>
             <ComposedShader DEF='ComposedShader'
                 language='GLSL'>
               <ShaderPart DEF='VertexShader'>
-<![CDATA[data:text/plain,#version 300 es
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
 precision mediump float;
 
@@ -108,7 +109,7 @@ main ()
               </ShaderPart>
               <ShaderPart DEF='FragmentShader'
                   type='FRAGMENT'>
-<![CDATA[data:text/plain,#version 300 es
+<![CDATA[data:x-shader/x-fragment,#version 300 es
 
 precision mediump float;
 
@@ -236,7 +237,7 @@ main ()
                 <Material/>
               </Appearance>
               <Text DEF='_8'
-                  string='"pointSize 25"'
+                  string='"pointSize 61"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -265,7 +266,7 @@ main ()
             </Transform>
             <Transform>
               <Transform DEF='Rectangle2D_11'
-                  translation='0.2358598 0 0'
+                  translation='0.2115927 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
                   <Appearance>
@@ -275,7 +276,7 @@ main ()
                 </Shape>
               </Transform>
               <PlaneSensor DEF='_12'
-                  offset='0.2358598 0 0'
+                  offset='0.2115927 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Group>
@@ -298,7 +299,7 @@ main ()
                 <field accessType='inputOutput' type='SFFloat' name='maxValue' value='100'/>
                 <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
                 <field accessType='outputOnly' type='MFString' name='string_changed'/>
-                <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='25'/>
+                <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='61'/>
 <![CDATA[ecmascript:
 
 function initialized ()

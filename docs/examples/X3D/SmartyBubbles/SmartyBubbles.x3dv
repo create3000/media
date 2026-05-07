@@ -1,10 +1,11 @@
-#X3D V4.0 utf8 X_ITE V11.2.0
+#X3D V4.1 utf8 X_ITE V15.0.0
 
 PROFILE Interchange
 
-COMPONENT Geometry2D : 2
+COMPONENT Geometry2D : 1
 COMPONENT Layering : 1
-COMPONENT ParticleSystems : 3
+COMPONENT Navigation : 3
+COMPONENT ParticleSystems : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Shaders : 1
@@ -13,9 +14,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sat, 19 Dec 2015 09:16:40 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.9, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 21 Feb 2025 11:26:18 GMT"
+META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
+META "modified" "Thu, 07 May 2026 21:49:57 GMT"
 
 LayerSet {
   activeLayer 1
@@ -47,7 +48,7 @@ LayerSet {
           bboxCenter 10 6 0
           appearance Appearance {
             pointProperties DEF _3 PointProperties {
-              pointSizeScaleFactor 25.05152
+              pointSizeScaleFactor 61.38168
             }
             material Material {
               transparency 0.50591
@@ -56,7 +57,7 @@ LayerSet {
               language "GLSL"
               parts [
                 DEF VertexShader ShaderPart {
-                  url "data:text/plain,#version 300 es
+                  url "data:x-shader/x-vertex,#version 300 es
 
 precision mediump float;
 
@@ -116,7 +117,7 @@ main ()
                 }
                 DEF FragmentShader ShaderPart {
                   type "FRAGMENT"
-                  url "data:text/plain,#version 300 es
+                  url "data:x-shader/x-fragment,#version 300 es
 
 precision mediump float;
 
@@ -260,7 +261,7 @@ main ()
                   material Material { }
                 }
                 geometry DEF _8 Text {
-                  string "pointSize 25"
+                  string "pointSize 61"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -295,7 +296,7 @@ main ()
                 Transform {
                   children [
                     DEF Rectangle2D_11 Transform {
-                      translation 0.2358598 0 0
+                      translation 0.2115927 0 0
                       scale 0.027 0.0267372 0.0267372
                       children Shape {
                         appearance Appearance {
@@ -305,7 +306,7 @@ main ()
                       }
                     }
                     DEF _12 PlaneSensor {
-                      offset 0.2358598 0 0
+                      offset 0.2115927 0 0
                       maxPosition 1 0
                     }
                   ]
@@ -335,7 +336,7 @@ main ()
                       inputOutput    SFFloat  maxValue 100
                       outputOnly     SFFloat  value_changed
                       outputOnly     MFString string_changed
-                      initializeOnly SFInt32  currentValue 25
+                      initializeOnly SFInt32  currentValue 61
 
                       url "ecmascript:
 
