@@ -1,21 +1,22 @@
-#X3D V4.1 utf8 X_ITE V14.0.0
+#X3D V4.1 utf8 X_ITE V15.0.0
 
 PROFILE Interchange
 
-COMPONENT EnvironmentalSensor : 3
+COMPONENT Core : 2
+COMPONENT EnvironmentalSensor : 1
 COMPONENT Layering : 1
-COMPONENT ParticleSystems : 3
+COMPONENT ParticleSystems : 2
 COMPONENT Scripting : 1
 COMPONENT Shaders : 1
-COMPONENT Text : 2
+COMPONENT Text : 1
 COMPONENT X_ITE : 1
 
 META "comment" "Rise and Shine"
 META "created" "Tue, 19 Dec 2017 00:35:26 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
-META "modified" "Sun, 25 Jan 2026 14:31:16 GMT"
+META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
+META "modified" "Thu, 07 May 2026 22:08:06 GMT"
 
 EXTERNPROTO Rotor [
   inputOutput SFBool     enabled
@@ -226,7 +227,7 @@ LayerSet {
   layers [
     DEF Background Layer {
       children DEF _30 Transform {
-        rotation -0.998748270675012 0.049111342109474 0.00948514100474601 1.48599948074619
+        rotation 0.990583637075113 -0.10558753835692 -0.0871511887627888 4.4803704436913
         scale 0.999999 1 1
         scaleOrientation 0.612491025726436 -0.540118771611692 0.577171080319566 0.174185270591961
         children [
@@ -278,11 +279,11 @@ LayerSet {
               loop TRUE
             }
             DEF BoxAnim Transform {
-              rotation 0 0 1 5.45840229940528
+              rotation 0 0 1.00000000000001 0.17546946324746
               children DEF _32 Transform {
-                rotation 0 1 0 2.65218345164066
+                rotation 0 1 0 4.77946623202146
                 children DEF Box_1 Transform {
-                  rotation 1 0 0 1.74672554423297
+                  rotation 0.999999999999999 0 0 5.90720758978709
                   children [
                     Shape {
                       appearance Appearance {
@@ -332,7 +333,7 @@ LayerSet {
               language "GLSL"
               parts [
                 DEF VertexShader ShaderPart {
-                  url "data:x-shader/x-vertes,
+                  url "data:x-shader/x-vertex,
 
 precision mediump float;
 
