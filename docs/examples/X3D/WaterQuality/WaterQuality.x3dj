@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,29 +21,33 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Fri, 21 Feb 2025 11:26:31 GMT"
+          "@content": "Thu, 07 May 2026 22:17:57 GMT"
         }
       ],
       "component": [
         {
+          "@name": "Core",
+          "@level": 2
+        },
+        {
           "@name": "CubeMapTexturing",
-          "@level": 3
+          "@level": 1
         },
         {
           "@name": "EnvironmentalSensor",
-          "@level": 3
+          "@level": 1
         },
         {
           "@name": "Geometry2D",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "Layering",
@@ -50,6 +55,14 @@
         },
         {
           "@name": "Layout",
+          "@level": 1
+        },
+        {
+          "@name": "Navigation",
+          "@level": 3
+        },
+        {
+          "@name": "Networking",
           "@level": 2
         },
         {
@@ -506,7 +519,7 @@
                                             {
                                               "@DEF": "WaterVertex",
                                               "#sourceCode": [
-"data:text/plain,",
+"data:x-shader/x-vertex,",
 "",
 "precision highp float;",
 "precision highp int;",
@@ -565,7 +578,7 @@
 "{",
 "\tfloat height = 0.0;",
 "",
-"\tfor (int i = 0; i < WAVE_MAX; ++ i)",
+"\tfor (int i = 0; i %3C WAVE_MAX; ++ i)",
 "\t{",
 "\t\tif (amplitude [i] == 0.0)",
 "\t\t\tcontinue;",
@@ -601,7 +614,7 @@
 "void",
 "main ()",
 "{",
-"\tfor (int i = 0; i < WAVE_MAX; ++ i)",
+"\tfor (int i = 0; i %3C WAVE_MAX; ++ i)",
 "\t\toffset [i] = normalize (direction [i]) * set_time * speed [i];",
 "",
 "\tvec4 vertex = x3d_Vertex;",
@@ -625,7 +638,7 @@
                                               "@DEF": "WaterFragment",
                                               "@type": "FRAGMENT",
                                               "#sourceCode": [
-"data:text/plain,",
+"data:x-shader/x-fragment,",
 "",
 "#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
 "#extension GL_EXT_frag_depth : enable",
@@ -688,7 +701,7 @@
                                             "@accessType": "inputOutput",
                                             "@type": "MFVec2f",
                                             "@name": "direction",
-                                            "@value": [ 0.614732, 0.280669, 0.399569, 0.119423, 0.0577077, 0.166058, 0.751615, 0.454689, 0.28048, 0.871564 ]
+                                            "@value": [ 0.6868817, 0.7473208, 0.9224932, 0.3598923, 0.8253186, 0.1945006, 0.5673892, 0.9102064, 0.1882976, 0.4606971 ]
                                           },
                                           {
                                             "@accessType": "inputOutput",
@@ -1802,7 +1815,7 @@
 "",
 "function set_value (value)",
 "{",
-"\tvar rounded = value .toFixed (2);",
+"\tconst rounded = value .toFixed (2);",
 "",
 "\tif (rounded == currentValue)",
 "\t\treturn;",
@@ -1810,7 +1823,7 @@
 "\tcurrentValue       = rounded;",
 "\tstring_changed [0] = description + \" \" + rounded;",
 "",
-"\tfor (var i = 0, length = keyValue .length; i < length; ++ i)",
+"\tfor (let i = 0, length = keyValue .length; i < length; ++ i)",
 "\t\tvalue_changed [i] = keyValue [i] * value;",
 "}",
 ""
@@ -2055,7 +2068,7 @@
 "",
 "function set_value (value)",
 "{",
-"\tvar rounded = value .toFixed (2);",
+"\tconst rounded = value .toFixed (2);",
 "",
 "\tif (rounded == currentValue)",
 "\t\treturn;",
@@ -2063,7 +2076,7 @@
 "\tcurrentValue       = rounded;",
 "\tstring_changed [0] = description + \" \" + rounded;",
 "",
-"\tfor (var i = 0, length = keyValue .length; i < length; ++ i)",
+"\tfor (let i = 0, length = keyValue .length; i < length; ++ i)",
 "\t\tvalue_changed [i] = keyValue [i] * value;",
 "}",
 ""
@@ -2347,7 +2360,7 @@
 "",
 "function set_value (value)",
 "{",
-"\tvar rounded = value .toFixed (2);",
+"\tconst rounded = value .toFixed (2);",
 "",
 "\tif (rounded == currentValue)",
 "\t\treturn;",
@@ -2355,7 +2368,7 @@
 "\tcurrentValue       = rounded;",
 "\tstring_changed [0] = description + \" \" + rounded;",
 "",
-"\tfor (var i = 0, length = keyValue .length; i < length; ++ i)",
+"\tfor (let i = 0, length = keyValue .length; i < length; ++ i)",
 "\t\tvalue_changed [i] = keyValue [i] * value;",
 "}",
 ""
@@ -2525,7 +2538,9 @@
 "",
 "function set_triggerTime ()",
 "{",
-"\tfor (var i = 0; i < 5; ++ i)",
+"\tdirections_changed .length = 5;",
+"",
+"\tfor (let i = 0; i < 5; ++ i)",
 "\t{",
 "\t\tdirections_changed [i] .x = Math .random ();",
 "\t\tdirections_changed [i] .y = Math .random ();",
@@ -2691,7 +2706,7 @@
 "",
 "function set_value (value)",
 "{",
-"\tvar rounded = value .toFixed (2);",
+"\tconst rounded = value .toFixed (2);",
 "",
 "\tif (rounded == currentValue)",
 "\t\treturn;",

@@ -1,12 +1,15 @@
-#X3D V4.0 utf8 X_ITE V11.2.0
+#X3D V4.1 utf8 X_ITE V15.0.0
 
 PROFILE Interchange
 
-COMPONENT CubeMapTexturing : 3
-COMPONENT EnvironmentalSensor : 3
-COMPONENT Geometry2D : 2
+COMPONENT Core : 2
+COMPONENT CubeMapTexturing : 1
+COMPONENT EnvironmentalSensor : 1
+COMPONENT Geometry2D : 1
 COMPONENT Layering : 1
-COMPONENT Layout : 2
+COMPONENT Layout : 1
+COMPONENT Navigation : 3
+COMPONENT Networking : 2
 COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Shaders : 1
@@ -17,9 +20,9 @@ UNIT angle degree 0.0174532925199433
 META "comment" "Rise and Shine"
 META "created" "Thu, 24 Dec 2015 10:40:45 GMT"
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.0.20, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Fri, 21 Feb 2025 11:26:31 GMT"
+META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
+META "modified" "Thu, 07 May 2026 22:17:57 GMT"
 
 EXTERNPROTO SFNode [
   inputOnly   SFTime set_triggerTime
@@ -246,13 +249,13 @@ LayerSet {
                   inputOutput SFVec3f position 45.9028 5.15364 57.5263
                   inputOutput MFFloat amplitude [ 0.0281661, 0.0226434, 0.226434, 0.104933, 0.552277 ]
                   inputOutput MFFloat frequency [ 1.81667, 1.29885, 0.276864, 0.686006, 0.120633 ]
-                  inputOutput MFVec2f direction [ 0.614732 0.280669, 0.399569 0.119423, 0.0577077 0.166058, 0.751615 0.454689, 0.28048 0.871564 ]
+                  inputOutput MFVec2f direction [ 0.6868817 0.7473208, 0.9224932 0.3598923, 0.8253186 0.1945006, 0.5673892 0.9102064, 0.1882976 0.4606971 ]
                   inputOutput MFFloat speed [ 1.31383, 1.75177, 8.75887, 3.50355, 17.5177 ]
 
                   language "GLSL"
                   parts [
                     DEF WaterVertex ShaderPart {
-                      url "data:text/plain,
+                      url "data:x-shader/x-vertex,
 
 precision highp float;
 precision highp int;
@@ -311,7 +314,7 @@ getWaveHeight (in vec2 vertex)
 {
 	float height = 0.0;
 
-	for (int i = 0; i < WAVE_MAX; ++ i)
+	for (int i = 0; i %3C WAVE_MAX; ++ i)
 	{
 		if (amplitude [i] == 0.0)
 			continue;
@@ -347,7 +350,7 @@ getWaveNormal (in vec2 pos)
 void
 main ()
 {
-	for (int i = 0; i < WAVE_MAX; ++ i)
+	for (int i = 0; i %3C WAVE_MAX; ++ i)
 		offset [i] = normalize (direction [i]) * set_time * speed [i];
 
 	vec4 vertex = x3d_Vertex;
@@ -366,7 +369,7 @@ main ()
                     }
                     DEF WaterFragment ShaderPart {
                       type "FRAGMENT"
-                      url "data:text/plain,
+                      url "data:x-shader/x-fragment,
 
 #ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
 #extension GL_EXT_frag_depth : enable
@@ -938,7 +941,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -946,7 +949,7 @@ function set_value (value)
 	currentValue       = rounded;
 	string_changed [0] = description + \" \" + rounded;
 
-	for (var i = 0, length = keyValue .length; i < length; ++ i)
+	for (let i = 0, length = keyValue .length; i < length; ++ i)
 		value_changed [i] = keyValue [i] * value;
 }
 "
@@ -1059,7 +1062,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -1067,7 +1070,7 @@ function set_value (value)
 	currentValue       = rounded;
 	string_changed [0] = description + \" \" + rounded;
 
-	for (var i = 0, length = keyValue .length; i < length; ++ i)
+	for (let i = 0, length = keyValue .length; i < length; ++ i)
 		value_changed [i] = keyValue [i] * value;
 }
 "
@@ -1202,7 +1205,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -1210,7 +1213,7 @@ function set_value (value)
 	currentValue       = rounded;
 	string_changed [0] = description + \" \" + rounded;
 
-	for (var i = 0, length = keyValue .length; i < length; ++ i)
+	for (let i = 0, length = keyValue .length; i < length; ++ i)
 		value_changed [i] = keyValue [i] * value;
 }
 "
@@ -1298,7 +1301,9 @@ function initialize ()
 
 function set_triggerTime ()
 {
-	for (var i = 0; i < 5; ++ i)
+	directions_changed .length = 5;
+
+	for (let i = 0; i < 5; ++ i)
 	{
 		directions_changed [i] .x = Math .random ();
 		directions_changed [i] .y = Math .random ();
@@ -1375,7 +1380,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
-<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='CubeMapTexturing' level='1'/>
+    <component name='EnvironmentalSensor' level='1'/>
+    <component name='Geometry2D' level='1'/>
     <component name='Layering' level='1'/>
     <component name='Layout' level='1'/>
+    <component name='Navigation' level='3'/>
+    <component name='Networking' level='2'/>
+    <component name='PointingDeviceSensor' level='1'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <component name='Time' level='2'/>
+    <component name='Text' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.0174532925199433'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Thu, 24 Dec 2015 10:40:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 18 Oct 2019 14:28:56 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Thu, 07 May 2026 22:17:12 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFNode' url='"assets/SFNode.x3d#SFNode"'>
@@ -22,96 +28,96 @@
     </ExternProtoDeclare>
     <WorldInfo
         title='Water Quality 2'>
-      <MetadataSet DEF='Titania'
+      <MetadataSet DEF='Titania' containerField='metadata'
           name='Titania'
           reference='http://titania.create3000.de'>
-        <MetadataSet DEF='NavigationInfo' containerField='value'
+        <MetadataSet DEF='NavigationInfo'
             name='NavigationInfo'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='type' containerField='value'
+          <MetadataString DEF='type'
               name='type'
               reference='http://titania.create3000.de'
               value='"EXAMINE"'/>
         </MetadataSet>
-        <MetadataSet DEF='Viewpoint' containerField='value'
+        <MetadataSet DEF='Viewpoint'
             name='Viewpoint'
             reference='http://titania.create3000.de'>
-          <MetadataDouble DEF='position' containerField='value'
+          <MetadataDouble DEF='position'
               name='position'
               reference='http://titania.create3000.de'
               value='45.9028091430664, 5.15364408493042, 57.5262985229492'/>
-          <MetadataDouble DEF='orientation' containerField='value'
+          <MetadataDouble DEF='orientation'
               name='orientation'
               reference='http://titania.create3000.de'
               value='-0.761608797557173, 0.627576833184138, 0.161552957057695, 0.651879999999999'/>
-          <MetadataDouble DEF='centerOfRotation' containerField='value'
+          <MetadataDouble DEF='centerOfRotation'
               name='centerOfRotation'
               reference='http://titania.create3000.de'
               value='33.7441596984863, -11.3601493835449, 30.1557388305664'/>
         </MetadataSet>
-        <MetadataSet DEF='AngleGrid' containerField='value'
+        <MetadataSet DEF='AngleGrid'
             name='AngleGrid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled' containerField='value'
+          <MetadataBoolean DEF='enabled'
               name='enabled'
               reference='http://titania.create3000.de'
               value='false'/>
         </MetadataSet>
-        <MetadataSet DEF='Grid' containerField='value'
+        <MetadataSet DEF='Grid'
             name='Grid'
             reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_1' containerField='value'
+          <MetadataBoolean DEF='enabled_1'
               name='enabled'
               reference='http://titania.create3000.de'
               value='false'/>
-          <MetadataFloat DEF='rotation' containerField='value'
+          <MetadataFloat DEF='rotation'
               name='rotation'
               reference='http://titania.create3000.de'
               value='1, 0, 0, 1.5708'/>
-          <MetadataFloat DEF='scale' containerField='value'
+          <MetadataFloat DEF='scale'
               name='scale'
               reference='http://titania.create3000.de'
               value='0.2, 0.2, 0.2'/>
-          <MetadataInteger DEF='dimension' containerField='value'
+          <MetadataInteger DEF='dimension'
               name='dimension'
               reference='http://titania.create3000.de'
               value='100, 10, 50'/>
         </MetadataSet>
-        <MetadataSet DEF='LayerSet' containerField='value'
+        <MetadataSet DEF='LayerSet'
             name='LayerSet'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeLayer' containerField='value'
+          <MetadataInteger DEF='activeLayer'
               name='activeLayer'
               reference='http://titania.create3000.de'
               value='-1'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
+        <MetadataSet DEF='Selection'
             name='Selection'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='nodes' containerField='value'
+          <MetadataSet DEF='nodes'
               name='nodes'
               reference='http://titania.create3000.de'/>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
+          <MetadataBoolean DEF='selectGeometry'
               name='selectGeometry'
               reference='http://titania.create3000.de'
               value='false'/>
         </MetadataSet>
-        <MetadataSet DEF='Page' containerField='value'
+        <MetadataSet DEF='Page'
             name='Page'
             reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
+          <MetadataInteger DEF='activeView'
               name='activeView'
               reference='http://titania.create3000.de'
               value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
+          <MetadataInteger DEF='multiView'
               name='multiView'
               reference='http://titania.create3000.de'
               value='0'/>
         </MetadataSet>
-        <MetadataSet DEF='Prototype' containerField='value'
+        <MetadataSet DEF='Prototype'
             name='Prototype'
             reference='http://titania.create3000.de'>
-          <MetadataString DEF='path' containerField='value'
+          <MetadataString DEF='path'
               name='path'
               reference='http://titania.create3000.de'
               value='"SFNode"'/>
@@ -122,7 +128,7 @@
         activeLayer='2'
         order='1, 2, 3'>
       <LayoutLayer DEF='Backgound'
-          isPickable='false'>
+          pickable='false'>
         <Layout
             size='1'/>
         <Transform DEF='Rectangle2D'>
@@ -145,38 +151,38 @@
         </Transform>
       </LayoutLayer>
       <Layer DEF='Water'
-          isPickable='false'>
-        <MetadataSet DEF='Titania_2'
+          pickable='false'>
+        <MetadataSet DEF='Titania_2' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='AngleGrid_3' containerField='value'
+          <MetadataSet DEF='AngleGrid_3'
               name='AngleGrid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_4' containerField='value'
+            <MetadataBoolean DEF='enabled_4'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
           </MetadataSet>
-          <MetadataSet DEF='Grid_5' containerField='value'
+          <MetadataSet DEF='Grid_5'
               name='Grid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_6' containerField='value'
+            <MetadataBoolean DEF='enabled_6'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
-            <MetadataInteger DEF='dimension_7' containerField='value'
+            <MetadataInteger DEF='dimension_7'
                 name='dimension'
                 reference='http://titania.create3000.de'
                 value='108, 10, 112'/>
-            <MetadataFloat DEF='scale_8' containerField='value'
+            <MetadataFloat DEF='scale_8'
                 name='scale'
                 reference='http://titania.create3000.de'
                 value='1.25, 1.25, 1.25'/>
           </MetadataSet>
-          <MetadataSet DEF='AxonometricGrid' containerField='value'
+          <MetadataSet DEF='AxonometricGrid'
               name='AxonometricGrid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_9' containerField='value'
+            <MetadataBoolean DEF='enabled_9'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
@@ -215,7 +221,7 @@
                   texCoordIndex='0, 1, 2, 3, -1, 0, 1, 2, 3, -1, 7, 6, 5, 4, -1, 0, 1, 2, 3, -1, 0, 1, 2, 3, -1, 0, 1, 2, 3, -1'
                   coordIndex='0, 1, 2, 3, -1, 5, 4, 7, 6, -1, 4, 5, 1, 0, -1, 4, 0, 3, 7, -1, 1, 5, 6, 2, -1'>
                 <TextureCoordinate
-                    point='0 0, 1 0, 0.999869 0.499728, -0.000131071 0.499728, -4.94719e-06 0.99993, 0.999995 0.99993, 1 0, 0 0'/>
+                    point='0 0, 1 0, 0.999869 0.499728, -0.000131071 0.499728, -4.94719e-6 0.99993, 0.999995 0.99993, 1 0, 0 0'/>
                 <Coordinate
                     point='-1 -1 1, 1 -1 1, 1 1 1, -1 1 1, -1 -1 -1, 1 -1 -1, 1 1 -1, -1 1 -1'/>
               </IndexedFaceSet>
@@ -242,14 +248,14 @@
               translation='30.0042 5.00002 61.25'
               rotation='-0.577351935847832 0.577345935848499 0.577352935847721 119.999707654404'
               scale='1.25 30.0042 1.25'
-              scaleOrientation='1.37573999999847e-06 -0.999999999998891 5.70145999999368e-07 44.9801662983043'>
+              scaleOrientation='1.37573999999847e-6 -0.999999999998891 5.70145999999368e-7 44.9801662983043'>
             <Shape>
               <Appearance USE='_10'/>
               <IndexedFaceSet
                   texCoordIndex='0, 1, 2, 3, -1'
                   coordIndex='0, 1, 2, 3, -1'>
                 <TextureCoordinate
-                    point='0 0, 0.0419023 2.36034e-05, 0.0419097 0.999995, 7.40585e-06 0.999975'/>
+                    point='0 0, 0.0419023 2.36034e-5, 0.0419097 0.999995, 7.40585e-6 0.999975'/>
                 <Coordinate
                     point='-1 -1 0, 1 -1 0, 1 1 0, -1 1 0'/>
               </IndexedFaceSet>
@@ -259,14 +265,14 @@
               translation='30 5 -1.25'
               rotation='-0.577351935847832 0.577345935848499 0.577352935847721 119.999707654404'
               scale='1.25 30.0042 1.25'
-              scaleOrientation='3.78907999999885e-07 0.999999999999697 6.79481999999794e-07 31.7060519880519'>
+              scaleOrientation='3.78907999999885e-7 0.999999999999697 6.79481999999794e-7 31.7060519880519'>
             <Shape>
               <Appearance USE='_10'/>
               <IndexedFaceSet
                   texCoordIndex='0, 1, 2, 3, -1'
                   coordIndex='0, 1, 2, 3, -1'>
                 <TextureCoordinate
-                    point='0 0, 0.0419023 2.36034e-05, 0.0419097 0.999995, 7.40585e-06 0.999975'/>
+                    point='0 0, 0.0419023 2.36034e-5, 0.0419097 0.999995, 7.40585e-6 0.999975'/>
                 <Coordinate
                     point='-1 -1 0, 1 -1 0, 1 1 0, -1 1 0'/>
               </IndexedFaceSet>
@@ -274,7 +280,7 @@
           </Transform>
           <Transform DEF='Rectangle2D_14'
               translation='61.25 5 30'
-              rotation='0.99999999999273 3.80629999997233e-06 2.27044999998349e-07 270.000058419654'
+              rotation='0.99999999999273 3.80629999997233e-6 2.27044999998349e-7 270.000058419654'
               scale='1.25 32.5084 1.25'>
             <Shape>
               <Appearance USE='_10'/>
@@ -282,7 +288,7 @@
                   texCoordIndex='0, 1, 2, 3, -1'
                   coordIndex='0, 1, 2, 3, -1'>
                 <TextureCoordinate
-                    point='0 0, 0.0419023 2.36034e-05, 0.0418615 1.08298, -4.07547e-05 1.08296'/>
+                    point='0 0, 0.0419023 2.36034e-5, 0.0418615 1.08298, -4.07547e-5 1.08296'/>
                 <Coordinate
                     point='-1 -1 0, 1 -1 0, 1 1 0, -1 1 0'/>
               </IndexedFaceSet>
@@ -290,7 +296,7 @@
           </Transform>
           <Transform DEF='Rectangle2D_15'
               translation='-1.24988 5 30.008'
-              rotation='0.99999999999273 3.80629999997233e-06 2.27044999998349e-07 270.000058419654'
+              rotation='0.99999999999273 3.80629999997233e-6 2.27044999998349e-7 270.000058419654'
               scale='1.25 32.5084 1.25'>
             <Shape>
               <Appearance USE='_10'/>
@@ -298,7 +304,7 @@
                   texCoordIndex='0, 1, 2, 3, -1'
                   coordIndex='0, 1, 2, 3, -1'>
                 <TextureCoordinate
-                    point='0 0, 0.0419023 2.36034e-05, 0.0418615 1.08298, -4.07547e-05 1.08296'/>
+                    point='0 0, 0.0419023 2.36034e-5, 0.0418615 1.08298, -4.07547e-5 1.08296'/>
                 <Coordinate
                     point='-1 -1 0, 1 -1 0, 1 1 0, -1 1 0'/>
               </IndexedFaceSet>
@@ -315,17 +321,17 @@
             <Appearance DEF='_18'>
               <Material DEF='_19'/>
               <ComposedCubeMapTexture DEF='_20'>
-                <ImageTexture DEF='_21' containerField='front'
+                <ImageTexture DEF='_21' containerField='frontTexture'
                     url='"assets/WideOcean/WideOcean-front.jpg"'/>
-                <ImageTexture containerField='back'
+                <ImageTexture containerField='backTexture'
                     url='"assets/WideOcean/WideOcean-back.jpg"'/>
-                <ImageTexture containerField='left'
+                <ImageTexture containerField='leftTexture'
                     url='"assets/WideOcean/WideOcean-left.jpg"'/>
-                <ImageTexture containerField='right'
+                <ImageTexture containerField='rightTexture'
                     url='"assets/WideOcean/WideOcean-right.jpg"'/>
-                <ImageTexture containerField='top'
+                <ImageTexture containerField='topTexture'
                     url='"assets/WideOcean/WideOcean-top.jpg"'/>
-                <ImageTexture containerField='bottom'
+                <ImageTexture containerField='bottomTexture'
                     url='"assets/WideOcean/WideOcean-bottom.jpg"'/>
               </ComposedCubeMapTexture>
               <ComposedShader DEF='CobwebWaterShader'
@@ -334,10 +340,10 @@
                 <field accessType='inputOutput' type='SFVec3f' name='position' value='45.9028 5.15364 57.5263'/>
                 <field accessType='inputOutput' type='MFFloat' name='amplitude' value='0.0281661, 0.0226434, 0.226434, 0.104933, 0.552277'/>
                 <field accessType='inputOutput' type='MFFloat' name='frequency' value='1.81667, 1.29885, 0.276864, 0.686006, 0.120633'/>
-                <field accessType='inputOutput' type='MFVec2f' name='direction' value='0.614732 0.280669, 0.399569 0.119423, 0.0577077 0.166058, 0.751615 0.454689, 0.28048 0.871564'/>
+                <field accessType='inputOutput' type='MFVec2f' name='direction' value='0.6868817 0.7473208, 0.9224932 0.3598923, 0.8253186 0.1945006, 0.5673892 0.9102064, 0.1882976 0.4606971'/>
                 <field accessType='inputOutput' type='MFFloat' name='speed' value='1.31383, 1.75177, 8.75887, 3.50355, 17.5177'/>
                 <ShaderPart DEF='WaterVertex'>
-<![CDATA[data:text/plain,
+<![CDATA[data:x-shader/x-vertex,
 
 precision highp float;
 precision highp int;
@@ -396,7 +402,7 @@ getWaveHeight (in vec2 vertex)
 {
 	float height = 0.0;
 
-	for (int i = 0; i < WAVE_MAX; ++ i)
+	for (int i = 0; i %3C WAVE_MAX; ++ i)
 	{
 		if (amplitude [i] == 0.0)
 			continue;
@@ -432,7 +438,7 @@ getWaveNormal (in vec2 pos)
 void
 main ()
 {
-	for (int i = 0; i < WAVE_MAX; ++ i)
+	for (int i = 0; i %3C WAVE_MAX; ++ i)
 		offset [i] = normalize (direction [i]) * set_time * speed [i];
 
 	vec4 vertex = x3d_Vertex;
@@ -451,7 +457,7 @@ main ()
                 </ShaderPart>
                 <ShaderPart DEF='WaterFragment'
                     type='FRAGMENT'>
-<![CDATA[data:text/plain,
+<![CDATA[data:x-shader/x-fragment,
 
 #ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
 #extension GL_EXT_frag_depth : enable
@@ -511,10 +517,10 @@ main ()
             intensity='0.320482'
             ambientIntensity='0.563855'
             direction='0.682878 -0.704064 0.194862'>
-          <MetadataSet DEF='DirectionalLight'
+          <MetadataSet DEF='DirectionalLight' containerField='metadata'
               name='DirectionalLight'
               reference='http://titania.create3000.de'>
-            <MetadataFloat DEF='location' containerField='value'
+            <MetadataFloat DEF='location'
                 name='location'
                 reference='http://titania.create3000.de'
                 value='0, 0, 0'/>
@@ -522,33 +528,33 @@ main ()
         </DirectionalLight>
       </Layer>
       <Layer DEF='HUD'>
-        <MetadataSet DEF='Titania_22'
+        <MetadataSet DEF='Titania_22' containerField='metadata'
             name='Titania'
             reference='http://titania.create3000.de'>
-          <MetadataSet DEF='AngleGrid_23' containerField='value'
+          <MetadataSet DEF='AngleGrid_23'
               name='AngleGrid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_24' containerField='value'
+            <MetadataBoolean DEF='enabled_24'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='false'/>
           </MetadataSet>
-          <MetadataSet DEF='Grid_25' containerField='value'
+          <MetadataSet DEF='Grid_25'
               name='Grid'
               reference='http://titania.create3000.de'>
-            <MetadataBoolean DEF='enabled_26' containerField='value'
+            <MetadataBoolean DEF='enabled_26'
                 name='enabled'
                 reference='http://titania.create3000.de'
                 value='true'/>
-            <MetadataFloat DEF='rotation_27' containerField='value'
+            <MetadataFloat DEF='rotation_27'
                 name='rotation'
                 reference='http://titania.create3000.de'
                 value='1, 0, 0, 1.5708'/>
-            <MetadataFloat DEF='scale_28' containerField='value'
+            <MetadataFloat DEF='scale_28'
                 name='scale'
                 reference='http://titania.create3000.de'
                 value='0.05, 0.05, 0.05'/>
-            <MetadataInteger DEF='dimension_29' containerField='value'
+            <MetadataInteger DEF='dimension_29'
                 name='dimension'
                 reference='http://titania.create3000.de'
                 value='89, 10, 40'/>
@@ -560,7 +566,7 @@ main ()
         <OrthoViewpoint/>
         <Group DEF='CubeMapTextures'>
           <Transform DEF='Sunset'
-              translation='-1.575 -0.35 -1.28614e-06'
+              translation='-1.575 -0.35 -1.28614e-6'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -573,24 +579,24 @@ main ()
                 description='Sunset'/>
             <ProtoInstance name='SFNode' DEF='_32'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_33' containerField='keyValue'>
-                  <ImageTexture USE='_30' containerField='front'/>
-                  <ImageTexture containerField='back'
+                <ComposedCubeMapTexture DEF='_33'>
+                  <ImageTexture USE='_30' containerField='frontTexture'/>
+                  <ImageTexture containerField='backTexture'
                       url='"assets/Sunset/Sunset-back.jpg"'/>
-                  <ImageTexture containerField='left'
+                  <ImageTexture containerField='leftTexture'
                       url='"assets/Sunset/Sunset-left.jpg"'/>
-                  <ImageTexture containerField='right'
+                  <ImageTexture containerField='rightTexture'
                       url='"assets/Sunset/Sunset-right.jpg"'/>
-                  <ImageTexture containerField='top'
+                  <ImageTexture containerField='topTexture'
                       url='"assets/Sunset/Sunset-top.jpg"'/>
-                  <ImageTexture containerField='bottom'
+                  <ImageTexture containerField='bottomTexture'
                       url='"assets/Sunset/Sunset-bottom.jpg"'/>
                 </ComposedCubeMapTexture>
               </fieldValue>
             </ProtoInstance>
           </Transform>
           <Transform DEF='CloudySky'
-              translation='-1.575 0.65 2.38855e-06'
+              translation='-1.575 0.65 2.38855e-6'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -603,24 +609,24 @@ main ()
                 description='Cloudy Sky'/>
             <ProtoInstance name='SFNode' DEF='_36'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_37' containerField='keyValue'>
-                  <ImageTexture USE='_34' containerField='front'/>
-                  <ImageTexture containerField='back'
+                <ComposedCubeMapTexture DEF='_37'>
+                  <ImageTexture USE='_34' containerField='frontTexture'/>
+                  <ImageTexture containerField='backTexture'
                       url='"assets/CloudySky/CloudySky-back.jpg"'/>
-                  <ImageTexture containerField='left'
+                  <ImageTexture containerField='leftTexture'
                       url='"assets/CloudySky/CloudySky-left.jpg"'/>
-                  <ImageTexture containerField='right'
+                  <ImageTexture containerField='rightTexture'
                       url='"assets/CloudySky/CloudySky-right.jpg"'/>
-                  <ImageTexture containerField='top'
+                  <ImageTexture containerField='topTexture'
                       url='"assets/CloudySky/CloudySky-top.jpg"'/>
-                  <ImageTexture containerField='bottom'
+                  <ImageTexture containerField='bottomTexture'
                       url='"assets/CloudySky/CloudySky-bottom.jpg"'/>
                 </ComposedCubeMapTexture>
               </fieldValue>
             </ProtoInstance>
           </Transform>
           <Transform DEF='LostValley'
-              translation='-1.575 0.4 1.46988e-06'
+              translation='-1.575 0.4 1.46988e-6'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -633,24 +639,24 @@ main ()
                 description='Lost Valley'/>
             <ProtoInstance name='SFNode' DEF='_40'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_41' containerField='keyValue'>
-                  <ImageTexture USE='_38' containerField='front'/>
-                  <ImageTexture containerField='back'
+                <ComposedCubeMapTexture DEF='_41'>
+                  <ImageTexture USE='_38' containerField='frontTexture'/>
+                  <ImageTexture containerField='backTexture'
                       url='"assets/LostValley/LostValley-back.jpg"'/>
-                  <ImageTexture containerField='left'
+                  <ImageTexture containerField='leftTexture'
                       url='"assets/LostValley/LostValley-left.jpg"'/>
-                  <ImageTexture containerField='right'
+                  <ImageTexture containerField='rightTexture'
                       url='"assets/LostValley/LostValley-right.jpg"'/>
-                  <ImageTexture containerField='top'
+                  <ImageTexture containerField='topTexture'
                       url='"assets/LostValley/LostValley-top.jpg"'/>
-                  <ImageTexture containerField='bottom'
+                  <ImageTexture containerField='bottomTexture'
                       url='"assets/LostValley/LostValley-bottom.jpg"'/>
                 </ComposedCubeMapTexture>
               </fieldValue>
             </ProtoInstance>
           </Transform>
           <Transform DEF='WideOcean'
-              translation='-1.575 0.15 5.51205e-07'
+              translation='-1.575 0.15 5.51205e-7'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -662,12 +668,12 @@ main ()
                 description='Wide Ocean'/>
             <ProtoInstance name='SFNode' DEF='_43'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture USE='_20' containerField='keyValue'/>
+                <ComposedCubeMapTexture USE='_20'/>
               </fieldValue>
             </ProtoInstance>
           </Transform>
           <Transform DEF='ViolentDays'
-              translation='-1.575 -0.85 -3.12349e-06'
+              translation='-1.575 -0.85 -3.12349e-6'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -680,24 +686,24 @@ main ()
                 description='Violent Days'/>
             <ProtoInstance name='SFNode' DEF='_46'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_47' containerField='keyValue'>
-                  <ImageTexture USE='_44' containerField='front'/>
-                  <ImageTexture containerField='back'
+                <ComposedCubeMapTexture DEF='_47'>
+                  <ImageTexture USE='_44' containerField='frontTexture'/>
+                  <ImageTexture containerField='backTexture'
                       url='"assets/ViolentDays/ViolentDays-back.jpg"'/>
-                  <ImageTexture containerField='left'
+                  <ImageTexture containerField='leftTexture'
                       url='"assets/ViolentDays/ViolentDays-left.jpg"'/>
-                  <ImageTexture containerField='right'
+                  <ImageTexture containerField='rightTexture'
                       url='"assets/ViolentDays/ViolentDays-right.jpg"'/>
-                  <ImageTexture containerField='top'
+                  <ImageTexture containerField='topTexture'
                       url='"assets/ViolentDays/ViolentDays-top.jpg"'/>
-                  <ImageTexture containerField='bottom'
+                  <ImageTexture containerField='bottomTexture'
                       url='"assets/ViolentDays/ViolentDays-bottom.jpg"'/>
                 </ComposedCubeMapTexture>
               </fieldValue>
             </ProtoInstance>
           </Transform>
           <Transform DEF='NightSky'
-              translation='-1.575 -0.1 -3.6747e-07'
+              translation='-1.575 -0.1 -3.6747e-7'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -710,24 +716,24 @@ main ()
                 description='Night Sky'/>
             <ProtoInstance name='SFNode' DEF='_50'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_51' containerField='keyValue'>
-                  <ImageTexture USE='_48' containerField='front'/>
-                  <ImageTexture containerField='back'
+                <ComposedCubeMapTexture DEF='_51'>
+                  <ImageTexture USE='_48' containerField='frontTexture'/>
+                  <ImageTexture containerField='backTexture'
                       url='"assets/NightSky/NightSky-back.jpg"'/>
-                  <ImageTexture containerField='left'
+                  <ImageTexture containerField='leftTexture'
                       url='"assets/NightSky/NightSky-left.jpg"'/>
-                  <ImageTexture containerField='right'
+                  <ImageTexture containerField='rightTexture'
                       url='"assets/NightSky/NightSky-right.jpg"'/>
-                  <ImageTexture containerField='top'
+                  <ImageTexture containerField='topTexture'
                       url='"assets/NightSky/NightSky-top.jpg"'/>
-                  <ImageTexture containerField='bottom'
+                  <ImageTexture containerField='bottomTexture'
                       url='"assets/NightSky/NightSky-bottom.jpg"'/>
                 </ComposedCubeMapTexture>
               </fieldValue>
             </ProtoInstance>
           </Transform>
           <Transform DEF='Interstellar'
-              translation='-1.575 -0.6 -2.20482e-06'
+              translation='-1.575 -0.6 -2.20482e-6'
               scale='0.1 0.10535 0.10535'>
             <Shape>
               <Appearance>
@@ -740,17 +746,17 @@ main ()
                 description='Interstellar'/>
             <ProtoInstance name='SFNode' DEF='_54'>
               <fieldValue name='keyValue'>
-                <ComposedCubeMapTexture DEF='_55' containerField='keyValue'>
-                  <ImageTexture USE='_52' containerField='front'/>
-                  <ImageTexture containerField='back'
+                <ComposedCubeMapTexture DEF='_55'>
+                  <ImageTexture USE='_52' containerField='frontTexture'/>
+                  <ImageTexture containerField='backTexture'
                       url='"assets/Interstellar/Interstellar-back.jpg"'/>
-                  <ImageTexture containerField='left'
+                  <ImageTexture containerField='leftTexture'
                       url='"assets/Interstellar/Interstellar-left.jpg"'/>
-                  <ImageTexture containerField='right'
+                  <ImageTexture containerField='rightTexture'
                       url='"assets/Interstellar/Interstellar-right.jpg"'/>
-                  <ImageTexture containerField='top'
+                  <ImageTexture containerField='topTexture'
                       url='"assets/Interstellar/Interstellar-top.jpg"'/>
-                  <ImageTexture containerField='bottom'
+                  <ImageTexture containerField='bottomTexture'
                       url='"assets/Interstellar/Interstellar-bottom.jpg"'/>
                 </ComposedCubeMapTexture>
               </fieldValue>
@@ -812,7 +818,7 @@ main ()
               </Shape>
             </Transform>
             <Transform DEF='InvisiblePlane'
-                translation='1.48177 0.781966 2.87349e-06'
+                translation='1.48177 0.781966 2.87349e-6'
                 scale='0.245 0.040588 0.040588'>
               <Shape>
                 <Appearance DEF='_58'>
@@ -850,7 +856,7 @@ main ()
               </Shape>
             </Transform>
             <Transform DEF='InvisiblePlane_60'
-                translation='1.48177 0.68352 2.51173e-06'
+                translation='1.48177 0.68352 2.51173e-6'
                 scale='0.245 0.040588 0.040588'>
               <Shape>
                 <Appearance USE='_58'/>
@@ -882,7 +888,7 @@ main ()
               </Shape>
             </Transform>
             <Transform DEF='InvisiblePlane_62'
-                translation='1.48177 0.582484 2.14045e-06'
+                translation='1.48177 0.582484 2.14045e-6'
                 scale='0.245 0.040588 0.040588'>
               <Shape>
                 <Appearance USE='_58'/>
@@ -916,7 +922,7 @@ main ()
         </Transform>
         <Group DEF='Fields'>
           <Transform DEF='AmplitudeSlider'
-              translation='0.125 -0.523 -2.02108e-06'
+              translation='0.125 -0.523 -2.02108e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet'>
               <Shape>
@@ -944,14 +950,14 @@ main ()
             </Transform>
             <Group>
               <Group DEF='Animation'>
-                <MetadataSet DEF='Animation_66'
+                <MetadataSet DEF='Animation_66' containerField='metadata'
                     name='Animation'
                     reference='http://titania.create3000.de'>
-                  <MetadataInteger DEF='duration' containerField='value'
+                  <MetadataInteger DEF='duration'
                       name='duration'
                       reference='http://titania.create3000.de'
                       value='68'/>
-                  <MetadataInteger DEF='framesPerSecond' containerField='value'
+                  <MetadataInteger DEF='framesPerSecond'
                       name='framesPerSecond'
                       reference='http://titania.create3000.de'
                       value='10'/>
@@ -965,18 +971,18 @@ main ()
                 <PositionInterpolator DEF='pointSizeScriptSet_translationInterpolator'
                     key='0, 0.0147059, 0.0294118, 0.0441176, 0.0588235, 0.0735294, 0.0882353, 0.102941, 0.117647, 0.132353, 0.147059, 0.161765, 0.176471, 0.191176, 0.205882, 0.220588, 0.235294, 0.25, 0.264706, 0.279412, 0.294118, 0.308824, 0.323529, 0.338235, 0.352941, 0.367647, 0.382353, 0.397059, 0.411765, 0.426471, 0.441176, 0.455882, 0.470588, 0.485294, 0.5, 0.514706, 0.529412, 0.544118, 0.558824, 0.573529, 0.588235, 0.602941, 0.617647, 0.632353, 0.647059, 0.661765, 0.676471, 0.691176, 0.705882, 0.720588, 0.735294, 0.75, 0.764706, 0.779412, 0.794118, 0.808824, 0.823529, 0.838235, 0.852941, 0.867647, 0.882353, 0.897059, 0.911765, 0.926471, 0.941176, 0.955882, 0.970588, 0.985294, 1'
                     keyValue='0.200605 0 0, 0.201375 0 0, 0.203622 0 0, 0.207254 0 0, 0.212179 0 0, 0.218303 0 0, 0.225536 0 0, 0.233783 0 0, 0.242952 0 0, 0.252952 0 0, 0.263689 0 0, 0.275071 0 0, 0.287005 0 0, 0.299399 0 0, 0.312161 0 0, 0.325197 0 0, 0.338416 0 0, 0.351725 0 0, 0.365031 0 0, 0.378242 0 0, 0.391266 0 0, 0.404009 0 0, 0.41638 0 0, 0.428285 0 0, 0.439633 0 0, 0.45033 0 0, 0.460285 0 0, 0.469405 0 0, 0.477597 0 0, 0.484768 0 0, 0.490827 0 0, 0.495681 0 0, 0.499237 0 0, 0.501402 0 0, 0.502085 0 0, 0.501218 0 0, 0.498859 0 0, 0.495101 0 0, 0.490038 0 0, 0.483762 0 0, 0.476368 0 0, 0.467948 0 0, 0.458597 0 0, 0.448408 0 0, 0.437474 0 0, 0.425888 0 0, 0.413744 0 0, 0.401136 0 0, 0.388156 0 0, 0.374899 0 0, 0.361458 0 0, 0.347926 0 0, 0.334396 0 0, 0.320963 0 0, 0.307719 0 0, 0.294758 0 0, 0.282173 0 0, 0.270058 0 0, 0.258507 0 0, 0.247612 0 0, 0.237467 0 0, 0.228166 0 0, 0.219802 0 0, 0.212468 0 0, 0.206258 0 0, 0.201266 0 0, 0.197584 0 0, 0.195306 0 0, 0.194526 0 0'>
-                  <MetadataSet DEF='Interpolator'
+                  <MetadataSet DEF='Interpolator' containerField='metadata'
                       name='Interpolator'
                       reference='http://titania.create3000.de'>
-                    <MetadataInteger DEF='key' containerField='value'
+                    <MetadataInteger DEF='key'
                         name='key'
                         reference='http://titania.create3000.de'
                         value='0, 34, 68'/>
-                    <MetadataDouble DEF='keyValue' containerField='value'
+                    <MetadataDouble DEF='keyValue'
                         name='keyValue'
                         reference='http://titania.create3000.de'
                         value='0.20060533285141, 0, 0, 0.502085030078888, 0, 0, 0.194526299834251, 0, 0'/>
-                    <MetadataString DEF='keyType' containerField='value'
+                    <MetadataString DEF='keyType'
                         name='keyType'
                         reference='http://titania.create3000.de'
                         value='"SPLINE", "SPLINE", "SPLINE"'/>
@@ -1006,7 +1012,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -1014,7 +1020,7 @@ function set_value (value)
 	currentValue       = rounded;
 	string_changed [0] = description + " " + rounded;
 
-	for (var i = 0, length = keyValue .length; i < length; ++ i)
+	for (let i = 0, length = keyValue .length; i < length; ++ i)
 		value_changed [i] = keyValue [i] * value;
 }
 ]]>
@@ -1033,7 +1039,7 @@ function set_value (value)
                   directOutput='true'>
                 <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
                 <field accessType='initializeOnly' type='SFNode' name='timer'>
-                  <TimeSensor USE='_67' containerField='timer'/>
+                  <TimeSensor USE='_67'/>
                 </field>
 <![CDATA[ecmascript:
 
@@ -1053,7 +1059,7 @@ function set_touchTime (value, time)
             </Transform>
           </Transform>
           <Transform DEF='AmplitudeText'
-              translation='1.675 -0.55 -2.02108e-06'
+              translation='1.675 -0.55 -2.02108e-6'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance USE='_56'/>
@@ -1067,7 +1073,7 @@ function set_touchTime (value, time)
             </Shape>
           </Transform>
           <Transform DEF='FequencySlider'
-              translation='0.125 -0.623 -2.38855e-06'
+              translation='0.125 -0.623 -2.38855e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet_71'>
               <Shape>
@@ -1116,7 +1122,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -1124,7 +1130,7 @@ function set_value (value)
 	currentValue       = rounded;
 	string_changed [0] = description + " " + rounded;
 
-	for (var i = 0, length = keyValue .length; i < length; ++ i)
+	for (let i = 0, length = keyValue .length; i < length; ++ i)
 		value_changed [i] = keyValue [i] * value;
 }
 ]]>
@@ -1143,7 +1149,7 @@ function set_value (value)
                     directOutput='true'>
                   <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
                   <field accessType='initializeOnly' type='SFNode' name='timer'>
-                    <TimeSensor containerField='timer'
+                    <TimeSensor
                         cycleInterval='6.8'
                         loop='true'
                         startTime='1451028308.5169'
@@ -1170,7 +1176,7 @@ function set_touchTime (value, time)
             </Switch>
           </Transform>
           <Transform DEF='FequencyText'
-              translation='1.675 -0.65 -2.38855e-06'
+              translation='1.675 -0.65 -2.38855e-6'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance USE='_56'/>
@@ -1184,7 +1190,7 @@ function set_touchTime (value, time)
             </Shape>
           </Transform>
           <Transform DEF='SpeedText'
-              translation='1.675 -0.75 -2.75602e-06'
+              translation='1.675 -0.75 -2.75602e-6'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance USE='_56'/>
@@ -1198,7 +1204,7 @@ function set_touchTime (value, time)
             </Shape>
           </Transform>
           <Transform DEF='SpeedSlider'
-              translation='0.225 -0.723 -2.75602e-06'
+              translation='0.225 -0.723 -2.75602e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet_78'>
               <Shape>
@@ -1247,7 +1253,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -1255,7 +1261,7 @@ function set_value (value)
 	currentValue       = rounded;
 	string_changed [0] = description + " " + rounded;
 
-	for (var i = 0, length = keyValue .length; i < length; ++ i)
+	for (let i = 0, length = keyValue .length; i < length; ++ i)
 		value_changed [i] = keyValue [i] * value;
 }
 ]]>
@@ -1274,7 +1280,7 @@ function set_value (value)
                     directOutput='true'>
                   <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
                   <field accessType='initializeOnly' type='SFNode' name='timer'>
-                    <TimeSensor containerField='timer'
+                    <TimeSensor
                         cycleInterval='6.8'
                         loop='true'
                         startTime='1451028308.5169'
@@ -1301,7 +1307,7 @@ function set_touchTime (value, time)
             </Switch>
           </Transform>
           <Transform DEF='DirectionsText'
-              translation='1.675 -0.85 -3.12349e-06'
+              translation='1.675 -0.85 -3.12349e-6'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance USE='_56'/>
@@ -1315,7 +1321,7 @@ function set_touchTime (value, time)
             </Shape>
           </Transform>
           <Transform DEF='Rectangle2D_83'
-              translation='1.3 -0.825 -3.03163e-06'
+              translation='1.3 -0.825 -3.03163e-6'
               scale='0.025 0.0247567 0.0247567'>
             <Shape>
               <Appearance USE='_56'/>
@@ -1335,7 +1341,9 @@ function initialize ()
 
 function set_triggerTime ()
 {
-	for (var i = 0; i < 5; ++ i)
+	directions_changed .length = 5;
+
+	for (let i = 0; i < 5; ++ i)
 	{
 		directions_changed [i] .x = Math .random ();
 		directions_changed [i] .y = Math .random ();
@@ -1344,7 +1352,7 @@ function set_triggerTime ()
             </Script>
           </Transform>
           <Transform DEF='TransparencyText'
-              translation='1.675 -0.95 -3.49096e-06'
+              translation='1.675 -0.95 -3.49096e-6'
               scale='0.0672307 0.0672307 0.0672307'>
             <Shape>
               <Appearance USE='_56'/>
@@ -1358,7 +1366,7 @@ function set_triggerTime ()
             </Shape>
           </Transform>
           <Transform DEF='TransparancySlider'
-              translation='0.025 -0.923 -3.49096e-06'
+              translation='0.025 -0.923 -3.49096e-6'
               center='0 -0.027 0'>
             <Transform DEF='IndexedLineSet_86'>
               <Shape>
@@ -1404,7 +1412,7 @@ function set_translation (value)
 
 function set_value (value)
 {
-	var rounded = value .toFixed (2);
+	const rounded = value .toFixed (2);
 
 	if (rounded == currentValue)
 		return;
@@ -1429,7 +1437,7 @@ function set_value (value)
                     directOutput='true'>
                   <field accessType='inputOnly' type='SFTime' name='set_touchTime'/>
                   <field accessType='initializeOnly' type='SFNode' name='timer'>
-                    <TimeSensor containerField='timer'
+                    <TimeSensor
                         cycleInterval='6.8'
                         loop='true'
                         startTime='1451028308.5169'
