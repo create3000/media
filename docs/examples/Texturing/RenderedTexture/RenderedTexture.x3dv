@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V14.2.0
+#X3D V4.1 utf8 X_ITE V15.0.0
 
 PROFILE Interchange
 
@@ -15,9 +15,9 @@ UNIT angle degree 0.017453292519943295
 
 META "creator" "Holger Seelig"
 META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
-META "modified" "Tue, 28 Apr 2026 08:59:32 GMT"
-META "generator" "x3d-tidy V3.0.14, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.12, https://create3000.github.io/sunrize/"
+META "modified" "Sat, 09 May 2026 14:36:37 GMT"
+META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
 
 PROTO Mirror [
   inputOutput SFVec3f    translation 0 0 0
@@ -68,16 +68,13 @@ PROTO Mirror [
     inputOutput    MFNode     children IS children
     inputOutput    SFVec3f    viewpointPosition -1.118549 6.556731 16.03942
     inputOutput    SFRotation viewpointOrientation -0.914589430575436 -0.403127310041776 -0.0318519289558134 9.87512509009108
-    outputOnly     SFVec3f    mirrorViewpointPosition_changed
-    outputOnly     SFRotation mirrorViewpointOrientation_changed
-    outputOnly     SFFloat    mirrorViewpointFieldOfView_changed
-    outputOnly     SFMatrix4f mirrorTextureMatrix_changed
-    initializeOnly SFNode     mirrorViewpoint DEF _10 Viewpoint {
+    initializeOnly SFNode     mirrorViewpoint Viewpoint {
       position -1.118549 -6.556731 16.03942
       orientation -0.0165361975453685 -0.195264792891879 0.980611143536332 170.505638007086
       fieldOfView 25.94504
     }
     initializeOnly SFNode     renderedTexture USE _4
+    initializeOnly SFNode     textureTransform USE _2
 
     url "ecmascript:
 
@@ -163,7 +160,7 @@ function eventsProcessed ()
       .multLeft (modelMatrix)
       .multLeft (offset);
 
-   mirrorTextureMatrix_changed = textureMatrix;
+   textureTransform .matrix = textureMatrix;
 }
 
 const Camera =
@@ -210,10 +207,6 @@ const Camera =
 
   ROUTE _8.position_changed TO MirrorScript.set_viewpointPosition
   ROUTE _8.orientation_changed TO MirrorScript.set_viewpointOrientation
-  ROUTE MirrorScript.mirrorViewpointPosition_changed TO _10.set_position
-  ROUTE MirrorScript.mirrorViewpointOrientation_changed TO _10.set_orientation
-  ROUTE MirrorScript.mirrorViewpointFieldOfView_changed TO _10.set_fieldOfView
-  ROUTE MirrorScript.mirrorTextureMatrix_changed TO _2.set_matrix
 }
 
 WorldInfo { }
@@ -315,7 +308,7 @@ DEF Mirror_1 Group {
     }
     DEF Frame Transform {
       translation -0 8 -22.56728
-      rotation 0 -1.00000000000001 0 12.1514802693429
+      rotation 0 -1 0 344.554012135447
       children [
         DEF Box_1 Transform {
           translation 0 7 0
@@ -349,7 +342,7 @@ DEF Mirror_1 Group {
     }
     DEF _1 Mirror {
       translation -0 8 -22.56728
-      rotation 0 -1.00000000000001 0 12.1514802693429
+      rotation 0 -1 0 344.554012135447
       scale 12 7 1
       sensorSize -1 -1 -1
       textureSize 1200
@@ -363,7 +356,7 @@ DEF Mirror_1 Group {
     }
     DEF MirrorBack Transform {
       translation -0 8 -22.56728
-      rotation 0 -1.00000000000001 0 12.1514802693429
+      rotation 0 -1 0 344.554012135447
       scale 12 7 1
       children Transform {
         rotation 0 1 0 180

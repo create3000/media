@@ -17,15 +17,15 @@
         },
         {
           "@name": "modified",
-          "@content": "Tue, 28 Apr 2026 08:59:32 GMT"
+          "@content": "Sat, 09 May 2026 14:36:37 GMT"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V3.0.14, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V2.0.12, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
         }
       ],
       "component": [
@@ -253,33 +253,12 @@
                         "@value": [ -0.914589430575436, -0.403127310041776, -0.0318519289558134, 9.87512509009108 ]
                       },
                       {
-                        "@accessType": "outputOnly",
-                        "@type": "SFVec3f",
-                        "@name": "mirrorViewpointPosition_changed"
-                      },
-                      {
-                        "@accessType": "outputOnly",
-                        "@type": "SFRotation",
-                        "@name": "mirrorViewpointOrientation_changed"
-                      },
-                      {
-                        "@accessType": "outputOnly",
-                        "@type": "SFFloat",
-                        "@name": "mirrorViewpointFieldOfView_changed"
-                      },
-                      {
-                        "@accessType": "outputOnly",
-                        "@type": "SFMatrix4f",
-                        "@name": "mirrorTextureMatrix_changed"
-                      },
-                      {
                         "@accessType": "initializeOnly",
                         "@type": "SFNode",
                         "@name": "mirrorViewpoint",
                         "-children": [
                           { "Viewpoint":
                             {
-                              "@DEF": "_10",
                               "@position": [ -1.118549, -6.556731, 16.03942 ],
                               "@orientation": [ -0.0165361975453685, -0.195264792891879, 0.980611143536332, 170.505638007086 ],
                               "@fieldOfView": 25.94504
@@ -295,6 +274,18 @@
                           { "RenderedTexture":
                             {
                               "@USE": "_4"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "@accessType": "initializeOnly",
+                        "@type": "SFNode",
+                        "@name": "textureTransform",
+                        "-children": [
+                          { "TextureTransformMatrix3D":
+                            {
+                              "@USE": "_2"
                             }
                           }
                         ]
@@ -385,7 +376,7 @@
 "      .multLeft (modelMatrix)",
 "      .multLeft (offset);",
 "",
-"   mirrorTextureMatrix_changed = textureMatrix;",
+"   textureTransform .matrix = textureMatrix;",
 "}",
 "",
 "const Camera =",
@@ -469,38 +460,6 @@
                     "@fromField": "orientation_changed",
                     "@toNode": "MirrorScript",
                     "@toField": "set_viewpointOrientation"
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "MirrorScript",
-                    "@fromField": "mirrorViewpointPosition_changed",
-                    "@toNode": "_10",
-                    "@toField": "set_position"
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "MirrorScript",
-                    "@fromField": "mirrorViewpointOrientation_changed",
-                    "@toNode": "_10",
-                    "@toField": "set_orientation"
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "MirrorScript",
-                    "@fromField": "mirrorViewpointFieldOfView_changed",
-                    "@toNode": "_10",
-                    "@toField": "set_fieldOfView"
-                  }
-                },
-                { "ROUTE":
-                  {
-                    "@fromNode": "MirrorScript",
-                    "@fromField": "mirrorTextureMatrix_changed",
-                    "@toNode": "_2",
-                    "@toField": "set_matrix"
                   }
                 }
               ]
@@ -684,7 +643,7 @@
                 {
                   "@DEF": "Frame",
                   "@translation": [ -0, 8, -22.56728 ],
-                  "@rotation": [ 0, -1.00000000000001, 0, 12.1514802693429 ],
+                  "@rotation": [ 0, -1, 0, 344.554012135447 ],
                   "-children": [
                     { "Transform":
                       {
@@ -770,7 +729,7 @@
                     },
                     {
                       "@name": "rotation",
-                      "@value": [ 0, -1.00000000000001, 0, 12.1514802693429 ]
+                      "@value": [ 0, -1, 0, 344.554012135447 ]
                     },
                     {
                       "@name": "scale",
@@ -817,7 +776,7 @@
                 {
                   "@DEF": "MirrorBack",
                   "@translation": [ -0, 8, -22.56728 ],
-                  "@rotation": [ 0, -1.00000000000001, 0, 12.1514802693429 ],
+                  "@rotation": [ 0, -1, 0, 344.554012135447 ],
                   "@scale": [ 12, 7, 1 ],
                   "-children": [
                     { "Transform":

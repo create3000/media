@@ -13,8 +13,8 @@
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Thu, 16 Apr 2026 21:13:01 GMT'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.12, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sat, 09 May 2026 14:35:10 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
     <ProtoDeclare name='Mirror'>
@@ -70,18 +70,17 @@
           <field accessType='inputOutput' type='MFNode' name='children'/>
           <field accessType='inputOutput' type='SFVec3f' name='viewpointPosition' value='-1.118549 6.556731 16.03942'/>
           <field accessType='inputOutput' type='SFRotation' name='viewpointOrientation' value='-0.914589430575436 -0.403127310041776 -0.0318519289558134 9.87512509009108'/>
-          <field accessType='outputOnly' type='SFVec3f' name='mirrorViewpointPosition_changed'/>
-          <field accessType='outputOnly' type='SFRotation' name='mirrorViewpointOrientation_changed'/>
-          <field accessType='outputOnly' type='SFFloat' name='mirrorViewpointFieldOfView_changed'/>
-          <field accessType='outputOnly' type='SFMatrix4f' name='mirrorTextureMatrix_changed'/>
           <field accessType='initializeOnly' type='SFNode' name='mirrorViewpoint'>
-            <Viewpoint DEF='_10'
+            <Viewpoint
                 position='-1.118549 -6.556731 16.03942'
                 orientation='-0.0165361975453685 -0.195264792891879 0.980611143536332 170.505638007086'
                 fieldOfView='25.94504'/>
           </field>
           <field accessType='initializeOnly' type='SFNode' name='renderedTexture'>
             <RenderedTexture USE='_4'/>
+          </field>
+          <field accessType='initializeOnly' type='SFNode' name='textureTransform'>
+            <TextureTransformMatrix3D USE='_2'/>
           </field>
           <IS>
             <connect nodeField='mirrorTranslation' protoField='translation'/>
@@ -174,7 +173,7 @@ function eventsProcessed ()
       .multLeft (modelMatrix)
       .multLeft (offset);
 
-   mirrorTextureMatrix_changed = textureMatrix;
+   textureTransform .matrix = textureMatrix;
 }
 
 const Camera =
@@ -220,10 +219,6 @@ const Camera =
         </Script>
         <ROUTE fromNode='_8' fromField='position_changed' toNode='MirrorScript' toField='set_viewpointPosition'/>
         <ROUTE fromNode='_8' fromField='orientation_changed' toNode='MirrorScript' toField='set_viewpointOrientation'/>
-        <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointPosition_changed' toNode='_10' toField='set_position'/>
-        <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointOrientation_changed' toNode='_10' toField='set_orientation'/>
-        <ROUTE fromNode='MirrorScript' fromField='mirrorViewpointFieldOfView_changed' toNode='_10' toField='set_fieldOfView'/>
-        <ROUTE fromNode='MirrorScript' fromField='mirrorTextureMatrix_changed' toNode='_2' toField='set_matrix'/>
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo>
@@ -361,7 +356,8 @@ const Camera =
         </OrientationInterpolator>
       </Group>
       <Transform DEF='Frame'
-          translation='-0 8 -22.56728'>
+          translation='-0 8 -22.56728'
+          rotation='0 -0.999999999999995 0 341.164007681174'>
         <Transform DEF='Box_1'
             translation='0 7 0'
             scale='12.3 0.3 0.3'>
@@ -392,6 +388,7 @@ const Camera =
       </Transform>
       <ProtoInstance name='Mirror' DEF='_1'>
         <fieldValue name='translation' value='-0 8 -22.56728'/>
+        <fieldValue name='rotation' value='0 -0.999999999999995 0 341.164007681174'/>
         <fieldValue name='scale' value='12 7 1'/>
         <fieldValue name='sensorSize' value='-1 -1 -1'/>
         <fieldValue name='textureSize' value='1200'/>
@@ -406,6 +403,7 @@ const Camera =
       </ProtoInstance>
       <Transform DEF='MirrorBack'
           translation='-0 8 -22.56728'
+          rotation='0 -0.999999999999995 0 341.164007681174'
           scale='12 7 1'>
         <Transform
             rotation='0 1 0 180'>
