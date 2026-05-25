@@ -1,296 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
-    <component name='Scripting' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
-    <meta name='created' content='Sun, 02 Dec 2018 17:40:27 GMT'/>
+    <component name='Geometry2D' level='1'/>
+    <component name='Navigation' level='3'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.7.8, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 04 Aug 2024 08:09:37 GMT'/>
+    <meta name='created' content='Mon, 25 May 2026 18:40:00 GMT'/>
+    <meta name='modified' content='Mon, 25 May 2026 18:57:50 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.1.1, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
-    <ProtoDeclare name='Image'>
-      <ProtoInterface>
-        <field accessType='inputOutput' type='SFBool' name='loop'/>
-        <field accessType='inputOutput' type='SFTime' name='startTime'/>
-      </ProtoInterface>
-      <ProtoBody>
-        <Transform DEF='Rectangle2D'
-            translation='1044.12 -2617.58 -6880.61'>
-          <Shape>
-            <Appearance>
-              <ImageTexture DEF='_1'
-                  url='"https://picsum.photos/364/325/?random&amp;_stamp=0.8048866108647563"'/>
-            </Appearance>
-            <IndexedFaceSet DEF='_2'
-                solid='false'
-                texCoordIndex='0, 1, 2, 3, -1'
-                coordIndex='0, 1, 2, 3, -1'>
-              <TextureCoordinate
-                  point='0 0, 1 0, 1 1, 0 1'/>
-              <Coordinate
-                  point='-182 -162.5 0, 182 -162.5 0, 182 162.5 0, -182 162.5 0'/>
-            </IndexedFaceSet>
-          </Shape>
-        </Transform>
-        <TimeSensor DEF='_3'
-            cycleInterval='10'>
-          <IS>
-            <connect nodeField='loop' protoField='loop'/>
-            <connect nodeField='startTime' protoField='startTime'/>
-          </IS>
-        </TimeSensor>
-        <PositionInterpolator DEF='_4'
-            key='0, 1'
-            keyValue='1363 -3417 -10000, 340.75 -854.25 0'/>
-        <Script DEF='ImageScript'
-            directOutput='true'>
-          <field accessType='inputOnly' type='SFTime' name='set_cycleTime'/>
-          <field accessType='initializeOnly' type='SFNode' name='texture'>
-            <ImageTexture USE='_1'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='geometry'>
-            <IndexedFaceSet USE='_2'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='interpolator'>
-            <PositionInterpolator USE='_4'/>
-          </field>
-<![CDATA[ecmascript:
-
-var
-	minWidth  = 200,
-	minHeight = 200,
-	maxWidth  = 400,
-	maxHeidht = 400;
-
-function initialize ()
-{
-	set_cycleTime (0, 0);
-}
-
-function set_cycleTime (value, time)
-{
-	if (value === 0 || random (0, 100) < 10)
-	{
-		var
-			width  = random (minWidth, maxWidth),
-			height = random (minHeight, maxHeidht);
-
-		texture .url = new MFString ("https://picsum.photos/" + width + "/" + height + "/?random&_stamp=" + Math .random ());
-
-		geometry .coord .point = new MFVec3f (
-			new SFVec3f (-width/2, -height/2, 0),
-			new SFVec3f ( width/2, -height/2, 0),
-			new SFVec3f ( width/2,  height/2, 0),
-			new SFVec3f (-width/2,  height/2, 0)
-		);
-	}
-
-	var
-		x = random (-6000, 6000),
-		y = random (-4000, 4000);
-
-	interpolator .keyValue = new MFVec3f (
-		new SFVec3f (x, y, -10000),
-		new SFVec3f (x/4, y/4, 0)
-	);
-}
-
-function random (min, max)
-{
-	return Math .floor (min + Math .random () * (max - min));
-}
-]]>
-        </Script>
-        <ROUTE fromNode='_4' fromField='value_changed' toNode='Rectangle2D' toField='set_translation'/>
-        <ROUTE fromNode='_3' fromField='fraction_changed' toNode='_4' toField='set_fraction'/>
-        <ROUTE fromNode='_3' fromField='cycleTime' toNode='ImageScript' toField='set_cycleTime'/>
-      </ProtoBody>
-    </ProtoDeclare>
-    <ProtoDeclare name='Images'>
-      <ProtoBody>
-        <Group DEF='_5'/>
-        <Script DEF='ImagesScript'
-            directOutput='true'>
-          <field accessType='inputOnly' type='SFTime' name='set_time'/>
-          <field accessType='initializeOnly' type='SFNode' name='timeSensor'>
-            <TimeSensor DEF='_6'
-                cycleInterval='0.1'/>
-          </field>
-          <field accessType='initializeOnly' type='SFNode' name='group'>
-            <Group USE='_5'/>
-          </field>
-<![CDATA[ecmascript:
-
-var
-	numImages = 100,
-	n         = 0;
-
-function initialize ()
-{
-	n = 0;
-
-	group .children .length = 0;
-
-	timeSensor .startTime = 0;
-	timeSensor .loop      = true;
-}
-
-function set_time (value, time)
-{
-	if (n === numImages)
-	{
-		timeSensor .stopTime = time;
-		timeSensor .loop     = false;
-	}
-
-	++ n;
-
-	var image = Browser .currentScene .createProto ("Image");
-
-	image .startTime = n * timeSensor .cycleInterval;
-	image .loop      = true;
-
-	group .children .push (image);
-}
-]]>
-        </Script>
-        <ROUTE fromNode='_6' fromField='cycleTime' toNode='ImagesScript' toField='set_time'/>
-      </ProtoBody>
-    </ProtoDeclare>
     <WorldInfo>
-      <MetadataSet DEF='Titania' containerField='metadata'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='AngleGrid'
-            name='AngleGrid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled'
-              name='enabled'
-              reference='http://titania.create3000.de'
-              value='false'/>
-        </MetadataSet>
-        <MetadataSet DEF='Grid'
-            name='Grid'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='enabled_7'
-              name='enabled'
-              reference='http://titania.create3000.de'
+      <MetadataSet DEF='Sunrize' containerField='metadata'
+          name='Sunrize'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataSet DEF='GridTool'
+            name='GridTool'
+            reference='https://create3000.github.io/sunrize/'>
+          <MetadataBoolean DEF='visible'
+              name='visible'
+              reference='https://create3000.github.io/sunrize/'
               value='true'/>
+          <MetadataDouble DEF='rotation'
+              name='rotation'
+              reference='https://create3000.github.io/sunrize/'
+              value='1, 0, 0, 1.5707963267949'/>
+          <MetadataFloat DEF='scale'
+              name='scale'
+              reference='https://create3000.github.io/sunrize/'
+              value='0.1, 0.1, 0.1'/>
+          <MetadataInteger DEF='dimension'
+              name='dimension'
+              reference='https://create3000.github.io/sunrize/'
+              value='36, 10, 20'/>
         </MetadataSet>
-        <MetadataSet DEF='Selection'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes'
-              name='nodes'
-              reference='http://titania.create3000.de'/>
-        </MetadataSet>
-        <MetadataSet DEF='BrowserPanel'
-            name='BrowserPanel'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='type_8'
-              name='type'
-              reference='http://titania.create3000.de'
-              value='"TOP_VIEW", "MAIN_VIEW", "PERSPECTIVE_VIEW", "FRONT_VIEW"'/>
-          <MetadataSet DEF='viewpoints'
-              name='viewpoints'
-              reference='http://titania.create3000.de'>
-            <MetadataSet DEF='PerspectiveViewpoint'
-                name='PerspectiveViewpoint'
-                reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_9'
-                  name='position'
-                  reference='http://titania.create3000.de'
-                  value='207.611807439687, 228.520460563674, 489.279859451771'/>
-              <MetadataDouble DEF='orientation_10'
-                  name='orientation'
-                  reference='http://titania.create3000.de'
-                  value='-0.704047459582387, 0.695566763588041, 0.143192360296371, 0.568941728510567'/>
-              <MetadataDouble DEF='centerOfRotation_11'
-                  name='centerOfRotation'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale'
-                  name='fieldOfViewScale'
-                  reference='http://titania.create3000.de'
-                  value='1'/>
-            </MetadataSet>
-            <MetadataSet DEF='TopViewpoint'
-                name='TopViewpoint'
-                reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_12'
-                  name='position'
-                  reference='http://titania.create3000.de'
-                  value='0.769275893658083, 10000, 0.808550566053813'/>
-              <MetadataDouble DEF='orientation_13'
-                  name='orientation'
-                  reference='http://titania.create3000.de'
-                  value='1, 0, 0, 4.71238898038469'/>
-              <MetadataDouble DEF='centerOfRotation_14'
-                  name='centerOfRotation'
-                  reference='http://titania.create3000.de'
-                  value='0.737214641043536, 0, 0.90228258105046'/>
-              <MetadataDouble DEF='fieldOfViewScale_15'
-                  name='fieldOfViewScale'
-                  reference='http://titania.create3000.de'
-                  value='1.6076562613227'/>
-            </MetadataSet>
-            <MetadataSet DEF='FrontViewpoint'
-                name='FrontViewpoint'
-                reference='http://titania.create3000.de'>
-              <MetadataDouble DEF='position_16'
-                  name='position'
-                  reference='http://titania.create3000.de'
-                  value='-115.209188838443, -4.54237905808633, 10000'/>
-              <MetadataDouble DEF='orientation_17'
-                  name='orientation'
-                  reference='http://titania.create3000.de'
-                  value='0, 0, 1, 0'/>
-              <MetadataDouble DEF='centerOfRotation_18'
-                  name='centerOfRotation'
-                  reference='http://titania.create3000.de'
-                  value='-115.218036430473, -4.52460557675042, 0'/>
-              <MetadataDouble DEF='fieldOfViewScale_19'
-                  name='fieldOfViewScale'
-                  reference='http://titania.create3000.de'
-                  value='66.2510284389767'/>
-            </MetadataSet>
-          </MetadataSet>
-        </MetadataSet>
-        <MetadataSet DEF='Page'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-          <MetadataDouble DEF='browserRatio'
-              name='browserRatio'
-              reference='http://titania.create3000.de'
-              value='1.777777'/>
-        </MetadataSet>
-        <MetadataSet DEF='Prototype'
-            name='Prototype'
-            reference='http://titania.create3000.de'>
-          <MetadataString DEF='path'
-              name='path'
-              reference='http://titania.create3000.de'
-              value='"Image"'/>
+        <MetadataSet DEF='BrowserFrame'
+            name='BrowserFrame'
+            reference='https://create3000.github.io/sunrize/'>
+          <MetadataBoolean DEF='fixedSize'
+              name='fixedSize'
+              reference='https://create3000.github.io/sunrize/'
+              value='true'/>
+          <MetadataDouble DEF='aspectRatio'
+              name='aspectRatio'
+              reference='https://create3000.github.io/sunrize/'
+              value='16, 9'/>
+          <MetadataString DEF='backgroundColor'
+              name='backgroundColor'
+              reference='https://create3000.github.io/sunrize/'
+              value='""'/>
         </MetadataSet>
       </MetadataSet>
     </WorldInfo>
-    <Viewpoint
-        description='Initial View'
-        position='0 0 1000'/>
-    <ProtoInstance name='Images'/>
+    <OrthoViewpoint/>
+    <Transform DEF='Rectangle2D'
+        translation='-0.9 0.3518519 0'
+        scale='0.6666667 0.6481481 0.6481481'>
+      <Shape>
+        <Appearance>
+          <ImageTexture
+              url='"https://picsum.photos/720/520/?random"'/>
+        </Appearance>
+        <Rectangle2D DEF='_1'
+            size='2.7 2'/>
+      </Shape>
+    </Transform>
+    <Transform DEF='Rectangle2D_1'
+        translation='-1.193311 -0.7 0'
+        scale='0.4394895 0.3 0.6481481'>
+      <Shape>
+        <Appearance>
+          <ImageTexture
+              url='"https://picsum.photos/480/240/?random"'/>
+        </Appearance>
+        <Rectangle2D USE='_1'/>
+      </Shape>
+    </Transform>
+    <Transform DEF='Rectangle2D_2'
+        translation='-0.2497761 -0.7 0'
+        scale='0.185351 0.3 0.6481481'>
+      <Shape>
+        <Appearance>
+          <ImageTexture
+              url='"https://picsum.photos/200/240/?random"'/>
+        </Appearance>
+        <Rectangle2D
+            size='2.7 2'/>
+      </Shape>
+    </Transform>
+    <Transform DEF='Rectangle2D_3'
+        translation='0.95 -0.35 0'
+        scale='0.6296296 0.65 0.6481481'>
+      <Shape>
+        <Appearance>
+          <ImageTexture
+              url='"https://picsum.photos/680/520/?random"'/>
+        </Appearance>
+        <Rectangle2D
+            size='2.7 2'/>
+      </Shape>
+    </Transform>
+    <Transform DEF='Rectangle2D_4'
+        translation='0.95 0.7 0'
+        scale='0.6296296 0.3 0.5185185'>
+      <Shape>
+        <Appearance>
+          <ImageTexture
+              url='"https://picsum.photos/680/240/?random"'/>
+        </Appearance>
+        <Rectangle2D
+            size='2.7 2'/>
+      </Shape>
+    </Transform>
   </Scene>
 </X3D>
