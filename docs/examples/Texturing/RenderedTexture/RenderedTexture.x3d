@@ -13,8 +13,8 @@
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 17 Mar 2026 21:57:23 GMT'/>
-    <meta name='modified' content='Sat, 09 May 2026 15:06:58 GMT'/>
-    <meta name='generator' content='x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='modified' content='Sun, 31 May 2026 06:35:53 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.19, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='generator' content='Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -53,7 +53,7 @@
                 </IS>
                 <RenderedTexture DEF='_4'
                     enabled='false'
-                    update='ALWAYS'
+                    singleFrame='false'
                     updateInterval='0'
                     repeatS='false'
                     repeatT='false'/>
@@ -113,7 +113,8 @@ function set_textureSize ()
       w = x >= y ? textureSize : x * textureSize / y,
       h = y >= x ? textureSize : y * textureSize / x;
 
-   renderedTexture .dimensions = new MFInt32 (w, h, 4);
+   renderedTexture .width  = w;
+   renderedTexture .height = h;
 }
 
 function set_children ()
@@ -301,7 +302,7 @@ const Camera =
       </Group>
       <Transform DEF='Frame'
           translation='-0 8 -22.56728'
-          rotation='0 1 0 9.84771210381102'>
+          rotation='0 -1 0 19.0985920326626'>
         <Transform DEF='Box_1'
             translation='0 7 0'
             scale='12.3 0.3 0.3'>
@@ -332,7 +333,7 @@ const Camera =
       </Transform>
       <ProtoInstance name='Mirror' DEF='_1'>
         <fieldValue name='translation' value='-0 8 -22.56728'/>
-        <fieldValue name='rotation' value='0 1 0 9.84771210381102'/>
+        <fieldValue name='rotation' value='0 -1 0 19.0985920326626'/>
         <fieldValue name='scale' value='12 7 1'/>
         <fieldValue name='sensorSize' value='-1 -1 -1'/>
         <fieldValue name='textureSize' value='1200'/>
@@ -347,7 +348,7 @@ const Camera =
       </ProtoInstance>
       <Transform DEF='MirrorBack'
           translation='-0 8 -22.56728'
-          rotation='0 1 0 9.84771210381102'
+          rotation='0 -1 0 19.0985920326626'
           scale='12 7 1'>
         <Transform
             rotation='0 1 0 180'>

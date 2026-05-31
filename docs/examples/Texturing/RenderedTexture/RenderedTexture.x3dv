@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V15.0.0
+#X3D V4.1 utf8 X_ITE V15.1.0
 
 PROFILE Interchange
 
@@ -15,8 +15,8 @@ UNIT angle degree 0.017453292519943295
 
 META "creator" "Holger Seelig"
 META "created" "Tue, 17 Mar 2026 21:57:23 GMT"
-META "modified" "Sat, 09 May 2026 15:06:58 GMT"
-META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
+META "modified" "Sun, 31 May 2026 06:35:53 GMT"
+META "generator" "x3d-tidy V3.0.19, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
 
 PROTO Mirror [
@@ -45,7 +45,7 @@ PROTO Mirror [
             material IS material
             texture DEF _4 RenderedTexture {
               enabled FALSE
-              update "ALWAYS"
+              singleFrame FALSE
               updateInterval 0
               repeatS FALSE
               repeatT FALSE
@@ -98,7 +98,8 @@ function set_textureSize ()
       w = x >= y ? textureSize : x * textureSize / y,
       h = y >= x ? textureSize : y * textureSize / x;
 
-   renderedTexture .dimensions = new MFInt32 (w, h, 4);
+   renderedTexture .width  = w;
+   renderedTexture .height = h;
 }
 
 function set_children ()
@@ -309,7 +310,7 @@ DEF Mirror_1 Group {
     }
     DEF Frame Transform {
       translation -0 8 -22.56728
-      rotation 0 1 0 9.84771210381102
+      rotation 0 -1 0 19.0985920326626
       children [
         DEF Box_1 Transform {
           translation 0 7 0
@@ -343,7 +344,7 @@ DEF Mirror_1 Group {
     }
     DEF _1 Mirror {
       translation -0 8 -22.56728
-      rotation 0 1 0 9.84771210381102
+      rotation 0 -1 0 19.0985920326626
       scale 12 7 1
       sensorSize -1 -1 -1
       textureSize 1200
@@ -357,7 +358,7 @@ DEF Mirror_1 Group {
     }
     DEF MirrorBack Transform {
       translation -0 8 -22.56728
-      rotation 0 1 0 9.84771210381102
+      rotation 0 -1 0 19.0985920326626
       scale 12 7 1
       children Transform {
         rotation 0 1 0 180
