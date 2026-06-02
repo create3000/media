@@ -2,11 +2,13 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
 <X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
+    <component name='Geometry2D' level='1'/>
+    <component name='Layering' level='1'/>
     <component name='Networking' level='2'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Sat, 30 May 2026 05:26:30 GMT'/>
-    <meta name='modified' content='Sun, 31 May 2026 00:38:22 GMT'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.1.1, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Tue, 02 Jun 2026 07:35:01 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.1.3, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
     <WorldInfo
@@ -32,12 +34,60 @@
         </MetadataSet>
       </MetadataSet>
     </WorldInfo>
-    <Viewpoint
-        description='Initial View'
-        position='0.3193368 0.8510529 1.491291'
-        orientation='-0.917970710761992 0.385054407683762 0.0951991455131259 0.526171495114352'
-        centerOfRotation='0.001765529 0.03599942 -0.02335435'/>
-    <Inline DEF='Amethyst'
-        url='"assets/models-werner_amethyst.ply"'/>
+    <LayerSet
+        activeLayer='1'
+        order='0, 1, 2'>
+      <Layer DEF='Model'>
+        <Viewpoint
+            description='Initial View'
+            position='0.3193368 0.8510529 1.491291'
+            orientation='-0.917970710761992 0.385054407683762 0.0951991455131259 0.526171495114352'
+            centerOfRotation='0.001765529 0.03599942 -0.02335435'/>
+        <Inline DEF='Amethyst'
+            url='"assets/models-werner_amethyst.ply"'/>
+      </Layer>
+      <Layer DEF='Links'>
+        <Anchor DEF='TUBAF_1'
+            description='TU Bergakademie Freiberg'
+            url='"https://tu-freiberg.de/en"'
+            parameter='"target=_blank"'>
+          <Transform DEF='tubaf-logo'
+              translation='-6.125115 3.49358 0'
+              scale='2 2 2'>
+            <Shape>
+              <Appearance>
+                <ImageTexture
+                    description='tubaf_logo'
+                    url='"assets/tubaf_logo.png"'
+                    repeatS='false'
+                    repeatT='false'/>
+              </Appearance>
+              <Rectangle2D
+                  size='0.9031111 0.3175'/>
+            </Shape>
+          </Transform>
+        </Anchor>
+        <Anchor DEF='IFI'
+            description='Institut für Informatik'
+            url='"https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html"'
+            parameter='"target=_blank"'>
+          <Transform DEF='ifi-logo'
+              translation='-4.422601 3.521787 0'
+              scale='6 6 6'>
+            <Shape>
+              <Appearance>
+                <ImageTexture
+                    description='ifi_logo'
+                    url='"assets/ifi_logo.png"'
+                    repeatS='false'
+                    repeatT='false'/>
+              </Appearance>
+              <Rectangle2D
+                  size='0.1823861 0.08995833'/>
+            </Shape>
+          </Transform>
+        </Anchor>
+      </Layer>
+    </LayerSet>
   </Scene>
 </X3D>
