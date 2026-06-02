@@ -4,11 +4,12 @@ PROFILE Interchange
 
 COMPONENT Geometry2D : 1
 COMPONENT Layering : 1
+COMPONENT Layout : 1
 COMPONENT Networking : 2
 
 META "creator" "Holger Seelig"
 META "created" "Sat, 30 May 2026 05:26:30 GMT"
-META "modified" "Tue, 02 Jun 2026 07:35:59 GMT"
+META "modified" "Tue, 02 Jun 2026 09:38:25 GMT"
 META "generator" "x3d-tidy V3.0.20, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.1.3, https://create3000.github.io/sunrize/"
 
@@ -33,48 +34,79 @@ LayerSet {
         }
       ]
     }
-    DEF Links Layer {
+    LayoutLayer {
       children [
-        DEF TUBAF_1 Anchor {
-          description "TU Bergakademie Freiberg"
-          url "https://tu-freiberg.de/en"
-          parameter "target=_blank"
-          children DEF tubaf-logo Transform {
-            translation -6.125115 3.49358 0
-            scale 2 2 2
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "PIXEL", "PIXEL" ]
+            offset [ 0, -20 ]
+            sizeUnits [ "PIXEL", "PIXEL" ]
+            size [ 230, 50 ]
+          }
+          children DEF Rectangle2D Transform {
+            translation 0 0 -1
             children Shape {
-              appearance Appearance {
-                texture ImageTexture {
-                  description "tubaf_logo"
-                  url "assets/tubaf_logo.png"
-                  repeatS FALSE
-                  repeatT FALSE
-                }
-              }
-              geometry Rectangle2D {
-                size 0.9031111 0.3175
+              geometry DEF _1 Rectangle2D {
+                size 1 1
               }
             }
           }
         }
-        DEF IFI Anchor {
-          description "Institut für Informatik"
-          url "https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html"
-          parameter "target=_blank"
-          children DEF ifi-logo Transform {
-            translation -4.422601 3.521787 0
-            scale 6 6 6
-            children Shape {
-              appearance Appearance {
-                texture ImageTexture {
-                  description "ifi_logo"
-                  url "assets/ifi_logo.png"
-                  repeatS FALSE
-                  repeatT FALSE
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "PIXEL", "PIXEL" ]
+            offset [ 0, -20 ]
+            sizeUnits [ "PIXEL", "PIXEL" ]
+            size [ 2560, 900 ]
+          }
+          children DEF TUBAF Anchor {
+            description "TU Bergakademie Freiberg"
+            url "https://tu-freiberg.de/en"
+            parameter "target=_blank"
+            children DEF tubaf-logo Transform {
+              translation -0.4750489 0.4724857 0
+              scale 0.04418784 0.04418784 0.04418784
+              children Shape {
+                appearance Appearance {
+                  texture ImageTexture {
+                    description "tubaf_logo"
+                    url "assets/tubaf_logo.png"
+                    repeatS FALSE
+                    repeatT FALSE
+                  }
                 }
+                geometry USE _1
               }
-              geometry Rectangle2D {
-                size 0.1823861 0.08995833
+            }
+          }
+        }
+        LayoutGroup {
+          layout Layout {
+            align [ "LEFT", "TOP" ]
+            offsetUnits [ "PIXEL", "PIXEL" ]
+            offset [ 0, -20 ]
+            sizeUnits [ "PIXEL", "PIXEL" ]
+            size [ 517, 255 ]
+          }
+          children DEF IFI Anchor {
+            description "Institut für Informatik"
+            url "https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html"
+            parameter "target=_blank"
+            children DEF ifi-logo Transform {
+              translation -0.1592767 0.4069423 0
+              scale 0.151466 0.151466 0.151466
+              children Shape {
+                appearance Appearance {
+                  texture ImageTexture {
+                    description "ifi_logo"
+                    url "assets/ifi_logo.png"
+                    repeatS FALSE
+                    repeatT FALSE
+                  }
+                }
+                geometry USE _1
               }
             }
           }

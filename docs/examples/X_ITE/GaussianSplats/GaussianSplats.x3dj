@@ -17,7 +17,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Tue, 02 Jun 2026 07:35:59 GMT"
+          "@content": "Tue, 02 Jun 2026 09:38:25 GMT"
         },
         {
           "@name": "generator",
@@ -35,6 +35,10 @@
         },
         {
           "@name": "Layering",
+          "@level": 1
+        },
+        {
+          "@name": "Layout",
           "@level": 1
         },
         {
@@ -76,40 +80,32 @@
                   ]
                 }
               },
-              { "Layer":
+              { "LayoutLayer":
                 {
-                  "@DEF": "Links",
                   "-children": [
-                    { "Anchor":
+                    { "LayoutGroup":
                       {
-                        "@DEF": "TUBAF_1",
-                        "@description": "TU Bergakademie Freiberg",
-                        "@url": [ "https://tu-freiberg.de/en" ],
-                        "@parameter": [ "target=_blank" ],
+                        "-layout": { "Layout":
+                          {
+                            "@align": [ "LEFT", "TOP" ],
+                            "@offsetUnits": [ "PIXEL", "PIXEL" ],
+                            "@offset": [ 0, -20 ],
+                            "@sizeUnits": [ "PIXEL", "PIXEL" ],
+                            "@size": [ 230, 50 ]
+                          }
+                        },
                         "-children": [
                           { "Transform":
                             {
-                              "@DEF": "tubaf-logo",
-                              "@translation": [ -6.125115, 3.49358, 0 ],
-                              "@scale": [ 2, 2, 2 ],
+                              "@DEF": "Rectangle2D",
+                              "@translation": [ 0, 0, -1 ],
                               "-children": [
                                 { "Shape":
                                   {
-                                    "-appearance": { "Appearance":
-                                      {
-                                        "-texture": { "ImageTexture":
-                                          {
-                                            "@description": "tubaf_logo",
-                                            "@url": [ "assets/tubaf_logo.png" ],
-                                            "@repeatS": false,
-                                            "@repeatT": false
-                                          }
-                                        }
-                                      }
-                                    },
                                     "-geometry": { "Rectangle2D":
                                       {
-                                        "@size": [ 0.9031111, 0.3175 ]
+                                        "@DEF": "_1",
+                                        "@size": [ 1, 1 ]
                                       }
                                     }
                                   }
@@ -120,38 +116,108 @@
                         ]
                       }
                     },
-                    { "Anchor":
+                    { "LayoutGroup":
                       {
-                        "@DEF": "IFI",
-                        "@description": "Institut für Informatik",
-                        "@url": [ "https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html" ],
-                        "@parameter": [ "target=_blank" ],
+                        "-layout": { "Layout":
+                          {
+                            "@align": [ "LEFT", "TOP" ],
+                            "@offsetUnits": [ "PIXEL", "PIXEL" ],
+                            "@offset": [ 0, -20 ],
+                            "@sizeUnits": [ "PIXEL", "PIXEL" ],
+                            "@size": [ 2560, 900 ]
+                          }
+                        },
                         "-children": [
-                          { "Transform":
+                          { "Anchor":
                             {
-                              "@DEF": "ifi-logo",
-                              "@translation": [ -4.422601, 3.521787, 0 ],
-                              "@scale": [ 6, 6, 6 ],
+                              "@DEF": "TUBAF",
+                              "@description": "TU Bergakademie Freiberg",
+                              "@url": [ "https://tu-freiberg.de/en" ],
+                              "@parameter": [ "target=_blank" ],
                               "-children": [
-                                { "Shape":
+                                { "Transform":
                                   {
-                                    "-appearance": { "Appearance":
-                                      {
-                                        "-texture": { "ImageTexture":
-                                          {
-                                            "@description": "ifi_logo",
-                                            "@url": [ "assets/ifi_logo.png" ],
-                                            "@repeatS": false,
-                                            "@repeatT": false
+                                    "@DEF": "tubaf-logo",
+                                    "@translation": [ -0.4750489, 0.4724857, 0 ],
+                                    "@scale": [ 0.04418784, 0.04418784, 0.04418784 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@description": "tubaf_logo",
+                                                  "@url": [ "assets/tubaf_logo.png" ],
+                                                  "@repeatS": false,
+                                                  "@repeatT": false
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_1"
+                                            }
                                           }
                                         }
                                       }
-                                    },
-                                    "-geometry": { "Rectangle2D":
-                                      {
-                                        "@size": [ 0.1823861, 0.08995833 ]
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    { "LayoutGroup":
+                      {
+                        "-layout": { "Layout":
+                          {
+                            "@align": [ "LEFT", "TOP" ],
+                            "@offsetUnits": [ "PIXEL", "PIXEL" ],
+                            "@offset": [ 0, -20 ],
+                            "@sizeUnits": [ "PIXEL", "PIXEL" ],
+                            "@size": [ 517, 255 ]
+                          }
+                        },
+                        "-children": [
+                          { "Anchor":
+                            {
+                              "@DEF": "IFI",
+                              "@description": "Institut für Informatik",
+                              "@url": [ "https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html" ],
+                              "@parameter": [ "target=_blank" ],
+                              "-children": [
+                                { "Transform":
+                                  {
+                                    "@DEF": "ifi-logo",
+                                    "@translation": [ -0.1592767, 0.4069423, 0 ],
+                                    "@scale": [ 0.151466, 0.151466, 0.151466 ],
+                                    "-children": [
+                                      { "Shape":
+                                        {
+                                          "-appearance": { "Appearance":
+                                            {
+                                              "-texture": { "ImageTexture":
+                                                {
+                                                  "@description": "ifi_logo",
+                                                  "@url": [ "assets/ifi_logo.png" ],
+                                                  "@repeatS": false,
+                                                  "@repeatT": false
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "-geometry": { "Rectangle2D":
+                                            {
+                                              "@USE": "_1"
+                                            }
+                                          }
+                                        }
                                       }
-                                    }
+                                    ]
                                   }
                                 }
                               ]

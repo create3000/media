@@ -4,10 +4,11 @@
   <head>
     <component name='Geometry2D' level='1'/>
     <component name='Layering' level='1'/>
+    <component name='Layout' level='1'/>
     <component name='Networking' level='2'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Sat, 30 May 2026 05:26:30 GMT'/>
-    <meta name='modified' content='Tue, 02 Jun 2026 07:35:01 GMT'/>
+    <meta name='modified' content='Tue, 02 Jun 2026 09:36:10 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.1.3, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -46,48 +47,77 @@
         <Inline DEF='Amethyst'
             url='"assets/models-werner_amethyst.ply"'/>
       </Layer>
-      <Layer DEF='Links'>
-        <Anchor DEF='TUBAF_1'
-            description='TU Bergakademie Freiberg'
-            url='"https://tu-freiberg.de/en"'
-            parameter='"target=_blank"'>
-          <Transform DEF='tubaf-logo'
-              translation='-6.125115 3.49358 0'
-              scale='2 2 2'>
+      <LayoutLayer>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              offset='0, -20'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='230, 50'/>
+          <Transform DEF='Rectangle2D'
+              translation='0 0 -1'>
             <Shape>
-              <Appearance>
-                <ImageTexture
-                    description='tubaf_logo'
-                    url='"assets/tubaf_logo.png"'
-                    repeatS='false'
-                    repeatT='false'/>
-              </Appearance>
-              <Rectangle2D
-                  size='0.9031111 0.3175'/>
+              <Rectangle2D DEF='_1'
+                  size='1 1'/>
             </Shape>
           </Transform>
-        </Anchor>
-        <Anchor DEF='IFI'
-            description='Institut für Informatik'
-            url='"https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html"'
-            parameter='"target=_blank"'>
-          <Transform DEF='ifi-logo'
-              translation='-4.422601 3.521787 0'
-              scale='6 6 6'>
-            <Shape>
-              <Appearance>
-                <ImageTexture
-                    description='ifi_logo'
-                    url='"assets/ifi_logo.png"'
-                    repeatS='false'
-                    repeatT='false'/>
-              </Appearance>
-              <Rectangle2D
-                  size='0.1823861 0.08995833'/>
-            </Shape>
-          </Transform>
-        </Anchor>
-      </Layer>
+        </LayoutGroup>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              offset='0, -20'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='2560, 900'/>
+          <Anchor DEF='TUBAF'
+              description='TU Bergakademie Freiberg'
+              url='"https://tu-freiberg.de/en"'
+              parameter='"target=_blank"'>
+            <Transform DEF='tubaf-logo'
+                translation='-0.4750489 0.4724857 0'
+                scale='0.04418784 0.04418784 0.04418784'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture
+                      description='tubaf_logo'
+                      url='"assets/tubaf_logo.png"'
+                      repeatS='false'
+                      repeatT='false'/>
+                </Appearance>
+                <Rectangle2D USE='_1'/>
+              </Shape>
+            </Transform>
+          </Anchor>
+        </LayoutGroup>
+        <LayoutGroup>
+          <Layout
+              align='"LEFT", "TOP"'
+              offsetUnits='"PIXEL", "PIXEL"'
+              offset='0, -20'
+              sizeUnits='"PIXEL", "PIXEL"'
+              size='517, 255'/>
+          <Anchor DEF='IFI'
+              description='Institut für Informatik'
+              url='"https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html"'
+              parameter='"target=_blank"'>
+            <Transform DEF='ifi-logo'
+                translation='-0.1592767 0.4069423 0'
+                scale='0.151466 0.151466 0.151466'>
+              <Shape>
+                <Appearance>
+                  <ImageTexture
+                      description='ifi_logo'
+                      url='"assets/ifi_logo.png"'
+                      repeatS='false'
+                      repeatT='false'/>
+                </Appearance>
+                <Rectangle2D USE='_1'/>
+              </Shape>
+            </Transform>
+          </Anchor>
+        </LayoutGroup>
+      </LayoutLayer>
     </LayerSet>
   </Scene>
 </X3D>
