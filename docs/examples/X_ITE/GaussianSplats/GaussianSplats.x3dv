@@ -1,26 +1,85 @@
-#X3D V4.1 utf8 X_ITE V15.1.0
+#X3D V4.1 utf8 X_ITE V15.1.1
 
 PROFILE Interchange
 
+COMPONENT Geometry2D : 1
+COMPONENT Layering : 1
 COMPONENT Networking : 2
 
 META "creator" "Holger Seelig"
 META "created" "Sat, 30 May 2026 05:26:30 GMT"
-META "modified" "Sun, 31 May 2026 06:35:16 GMT"
-META "generator" "x3d-tidy V3.0.19, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.1.1, https://create3000.github.io/sunrize/"
+META "modified" "Tue, 02 Jun 2026 07:35:59 GMT"
+META "generator" "x3d-tidy V3.0.20, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.1.3, https://create3000.github.io/sunrize/"
 
 WorldInfo {
   title "GaussianSplats"
 }
 
-Viewpoint {
-  description "Initial View"
-  position 0.3193368 0.8510529 1.491291
-  orientation -0.917970710761992 0.385054407683762 0.0951991455131259 0.526171495114352
-  centerOfRotation 0.001765529 0.03599942 -0.02335435
-}
-
-DEF Amethyst Inline {
-  url "assets/models-werner_amethyst.ply"
+LayerSet {
+  activeLayer 1
+  order [ 0, 1, 2 ]
+  layers [
+    DEF Model Layer {
+      children [
+        Viewpoint {
+          description "Initial View"
+          position 0.3193368 0.8510529 1.491291
+          orientation -0.917970710761992 0.385054407683762 0.0951991455131259 0.526171495114352
+          centerOfRotation 0.001765529 0.03599942 -0.02335435
+        }
+        DEF Amethyst Inline {
+          url "assets/models-werner_amethyst.ply"
+        }
+      ]
+    }
+    DEF Links Layer {
+      children [
+        DEF TUBAF_1 Anchor {
+          description "TU Bergakademie Freiberg"
+          url "https://tu-freiberg.de/en"
+          parameter "target=_blank"
+          children DEF tubaf-logo Transform {
+            translation -6.125115 3.49358 0
+            scale 2 2 2
+            children Shape {
+              appearance Appearance {
+                texture ImageTexture {
+                  description "tubaf_logo"
+                  url "assets/tubaf_logo.png"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D {
+                size 0.9031111 0.3175
+              }
+            }
+          }
+        }
+        DEF IFI Anchor {
+          description "Institut für Informatik"
+          url "https://ifiweb.informatik.tu-freiberg.de/public/silversplat/list.html"
+          parameter "target=_blank"
+          children DEF ifi-logo Transform {
+            translation -4.422601 3.521787 0
+            scale 6 6 6
+            children Shape {
+              appearance Appearance {
+                texture ImageTexture {
+                  description "ifi_logo"
+                  url "assets/ifi_logo.png"
+                  repeatS FALSE
+                  repeatT FALSE
+                }
+              }
+              geometry Rectangle2D {
+                size 0.1823861 0.08995833
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
 }
