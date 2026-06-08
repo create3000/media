@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,21 +21,21 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.21, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V1.7.49, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:09:42 GMT"
+          "@content": "Mon, 08 Jun 2026 15:03:12 GMT"
         }
       ],
       "component": [
         {
           "@name": "Geometry2D",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "Layering",
@@ -42,11 +43,11 @@
         },
         {
           "@name": "Layout",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "ParticleSystems",
-          "@level": 3
+          "@level": 2
         }
       ]
     },
@@ -63,7 +64,7 @@
               { "Layer":
                 {
                   "@DEF": "Background",
-                  "@pickable": false,
+                  "@pointerEvents": false,
                   "-children": [
                     { "Background":
                       {
@@ -77,6 +78,7 @@
               { "LayoutLayer":
                 {
                   "@DEF": "UnderTheSea_14",
+                  "@pointerEvents": false,
                   "-layout": { "Layout":
                     {
                       "@scaleMode": [ "STRETCH", "NONE" ]
@@ -129,7 +131,7 @@
               { "Layer":
                 {
                   "@DEF": "Particles",
-                  "@pickable": false,
+                  "@pointerEvents": false,
                   "-viewport": { "Viewport":
                     {
                       "@USE": "_23"
