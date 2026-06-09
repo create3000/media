@@ -37,7 +37,7 @@ function image (folder)
    process .chdir (folder);
    systemSync (`npx --yes x3d-image ${extra} -s 1000x562 -i ${base}.x3d -o screenshot.png`);
    systemSync (`magick screenshot.png screenshot.avif`);
-   systemSync (`magick screenshot.png -resize 110x62 -define heic:lossless=true -define heic:chroma=444 screenshot-small.avif`);
+   systemSync (`magick screenshot.png -resize 110x62 -quality 99 -define heic:lossless=true -define heic:chroma=444 screenshot-small.avif`);
    systemSync (`rm screenshot.png`);
 }
 
