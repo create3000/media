@@ -9,7 +9,7 @@
     <component name='Texturing' level='4'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Tue, 07 Jul 2026 10:24:03 GMT'/>
-    <meta name='modified' content='Tue, 07 Jul 2026 10:55:43 GMT'/>
+    <meta name='modified' content='Tue, 07 Jul 2026 11:12:20 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.1.11, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -23,7 +23,7 @@
         description='Initial View'
         position='2.869677 3.854335 8.769781'
         orientation='-0.7765887 0.6177187 0.1238285 0.5052317'/>
-    <Viewpoint DEF='_1'
+    <Viewpoint DEF='LightViewpoint'
         description='Light View'
         position='6.643265 6.404905 -5.34221'
         orientation='0.149307260736234 -0.938498056261565 -0.311333808451166 3.98743062846413'
@@ -32,10 +32,10 @@
         translation='0.2579466 -0.086316 0'
         rotation='0 1 -0 1.5707963267949'
         scale='3.514723 3.514723 3.514723'>
-      <Inline DEF='_3'
+      <Inline DEF='DogInline'
           url='"assets/stylized_dog_low_poly.glb"'/>
-      <LoadSensor DEF='_4'>
-        <Inline USE='_3'/>
+      <LoadSensor DEF='LoadSensor'>
+        <Inline USE='DogInline'/>
       </LoadSensor>
     </Transform>
     <Group DEF='FloorWithShadowTexture'>
@@ -50,7 +50,7 @@
           <Rectangle2D/>
         </Shape>
       </Transform>
-      <TextureProjector DEF='_2'
+      <TextureProjector DEF='TextureProjector'
           global='false'
           location='6.643265 6.404905 -5.34221'
           direction='-0.6251828 -0.5976966 0.5019017'
@@ -66,7 +66,7 @@
               headlight='false'/>
           <Background
               transparency='1'/>
-          <Viewpoint USE='_1'/>
+          <Viewpoint USE='LightViewpoint'/>
           <Transform USE='Dog'/>
         </RenderedTexture>
       </TextureProjector>
@@ -90,11 +90,11 @@ function set_orientation (value)
 ]]>
       </Script>
     </Group>
-    <IMPORT inlineDEF='_3' importedDEF='Timer2'/>
-    <ROUTE fromNode='_4' fromField='isLoaded' toNode='Timer2' toField='set_loop'/>
-    <ROUTE fromNode='TextureProjectorScript' fromField='upVector_changed' toNode='_2' toField='set_upVector'/>
-    <ROUTE fromNode='TextureProjectorScript' fromField='direction_changed' toNode='_2' toField='set_direction'/>
-    <ROUTE fromNode='_1' fromField='orientation_changed' toNode='TextureProjectorScript' toField='set_orientation'/>
-    <ROUTE fromNode='_1' fromField='position_changed' toNode='_2' toField='set_location'/>
+    <IMPORT inlineDEF='DogInline' importedDEF='Timer2'/>
+    <ROUTE fromNode='LoadSensor' fromField='isLoaded' toNode='Timer2' toField='set_loop'/>
+    <ROUTE fromNode='TextureProjectorScript' fromField='upVector_changed' toNode='TextureProjector' toField='set_upVector'/>
+    <ROUTE fromNode='TextureProjectorScript' fromField='direction_changed' toNode='TextureProjector' toField='set_direction'/>
+    <ROUTE fromNode='LightViewpoint' fromField='orientation_changed' toNode='TextureProjectorScript' toField='set_orientation'/>
+    <ROUTE fromNode='LightViewpoint' fromField='position_changed' toNode='TextureProjector' toField='set_location'/>
   </Scene>
 </X3D>
