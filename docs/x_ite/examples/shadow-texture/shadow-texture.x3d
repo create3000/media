@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
+  <head>
+    <component name='Geometry2D' level='1'/>
+    <component name='Networking' level='3'/>
+    <component name='Scripting' level='1'/>
+    <component name='TextureProjection' level='2'/>
+    <component name='Texturing' level='4'/>
+    <meta name='creator' content='Holger Seelig'/>
+    <meta name='created' content='Tue, 07 Jul 2026 10:24:03 GMT'/>
+    <meta name='modified' content='Tue, 07 Jul 2026 10:42:40 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.1.11, https://create3000.github.io/sunrize/'/>
+  </head>
+  <Scene>
+    <WorldInfo/>
+    <Background DEF='White'
+        skyColor='1 1 1'/>
+    <Fog
+        visibilityStart='10'
+        visibilityRange='40'/>
+    <Viewpoint
+        description='Initial View'
+        position='2.869677 3.854335 8.769781'
+        orientation='-0.7765887 0.6177187 0.1238285 0.5052317'/>
+    <Viewpoint DEF='_1'
+        description='Initial View'
+        position='6.643265 6.404905 -5.34221'
+        orientation='0.149307260736234 -0.938498056261565 -0.311333808451166 3.98743062846413'
+        centerOfRotation='1.128134e-7 0.05371017 -0.008944505'/>
+    <Transform DEF='Dog_1'
+        translation='0.2579466 -0.086316 0'
+        rotation='0 1 -0 1.5707963267949'
+        scale='3.514723 3.514723 3.514723'>
+      <Inline DEF='_3'
+          url='"assets/stylized_dog_low_poly.glb"'/>
+      <LoadSensor DEF='_4'>
+        <Inline USE='_3'/>
+      </LoadSensor>
+    </Transform>
+    <Group DEF='FloorWithShadowTexture'>
+      <Transform DEF='Floor_1'
+          rotation='-1 -0 0 1.5707963267949'
+          scale='100 100 100'>
+        <Shape>
+          <Appearance>
+            <Material
+                diffuseColor='0.4117647 0.5019608 0.2509804'/>
+          </Appearance>
+          <Rectangle2D/>
+        </Shape>
+      </Transform>
+      <TextureProjector DEF='_2'
+          global='false'
+          location='6.643265 6.404905 -5.34221'
+          direction='-0.6251828 -0.5976966 0.5019017'
+          upVector='-0.4660836 0.8017224 0.3741756'
+          nearDistance='1'
+          farDistance='100'>
+        <RenderedTexture
+            singleFrame='false'
+            updateInterval='0'
+            width='512'
+            height='512'>
+          <NavigationInfo
+              headlight='false'/>
+          <Background
+              transparency='1'/>
+          <Viewpoint USE='_1'/>
+          <Transform USE='Dog_1'/>
+        </RenderedTexture>
+      </TextureProjector>
+      <Script DEF='TextureProjectorScript'
+          directOutput='true'>
+        <field accessType='inputOutput' type='SFRotation' name='orientation' value='0.149307260736234 -0.938498056261565 -0.311333808451166 3.98743062846413'/>
+        <field accessType='outputOnly' type='SFVec3f' name='direction_changed'/>
+        <field accessType='outputOnly' type='SFVec3f' name='upVector_changed'/>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   set_orientation (orientation);
+}
+
+function set_orientation (value)
+{
+   direction_changed = orientation .multVec (SFVec3f .NEGATIVE_Z_AXIS);
+   upVector_changed  = orientation .multVec (SFVec3f .Y_AXIS);
+}
+]]>
+      </Script>
+    </Group>
+    <IMPORT inlineDEF='_3' importedDEF='Timer2'/>
+    <ROUTE fromNode='_4' fromField='isLoaded' toNode='Timer2' toField='set_loop'/>
+    <ROUTE fromNode='TextureProjectorScript' fromField='upVector_changed' toNode='_2' toField='set_upVector'/>
+    <ROUTE fromNode='TextureProjectorScript' fromField='direction_changed' toNode='_2' toField='set_direction'/>
+    <ROUTE fromNode='_1' fromField='orientation_changed' toNode='TextureProjectorScript' toField='set_orientation'/>
+    <ROUTE fromNode='_1' fromField='position_changed' toNode='_2' toField='set_location'/>
+  </Scene>
+</X3D>
