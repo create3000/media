@@ -29,7 +29,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 27 Jul 2026 08:47:07 GMT"
+          "@content": "Mon, 27 Jul 2026 08:50:18 GMT"
         }
       ],
       "component": [
@@ -366,7 +366,7 @@
                       "fieldValue": [
                         {
                           "@name": "resetTime",
-                          "@value": 1785142027.428
+                          "@value": 1785142218.851
                         },
                         {
                           "@name": "point",
@@ -604,7 +604,7 @@
                         "#sourceCode": [
 "ecmascript:",
 "",
-"let velocityScale = 0.5;",
+"const VELOCITY_SCALE = 0.5;",
 "",
 "function initialize ()",
 "{",
@@ -624,7 +624,7 @@
 "    const",
 "      x = xInterpolator .keyValue [i],",
 "      y = yInterpolator .keyValue [i],",
-"      v = y + yInterpolator .keyVelocity [i] * velocityScale;",
+"      v = y + yInterpolator .keyVelocity [i] * VELOCITY_SCALE;",
 "",
 "    lines .vertexCount [i] = 2;",
 "",
@@ -819,9 +819,9 @@
 "ecmascript:",
 "",
 "const",
-"  velocityScale = 0.5,",
-"  SPLINE        = 0,",
-"  VELOCITY      = 1;",
+"  VELOCITY_SCALE = 0.5,",
+"  SPLINE         = 0,",
+"  VELOCITY       = 1;",
 "",
 "let",
 "  firstTime  = 0,",
@@ -878,7 +878,7 @@
 "      yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;",
 "      break;",
 "    case VELOCITY:",
-"      yInterpolator .keyVelocity [pointIndex] = ((hitPoint .y + offset .y) - yInterpolator .keyValue [pointIndex]) / velocityScale;",
+"      yInterpolator .keyVelocity [pointIndex] = ((hitPoint .y + offset .y) - yInterpolator .keyValue [pointIndex]) / VELOCITY_SCALE;",
 "      break;",
 "  }",
 "}",
@@ -900,7 +900,7 @@
 "    let yOffset = 0;",
 "",
 "    if (pointType == VELOCITY)",
-"      yOffset = yInterpolator .keyVelocity [i] * velocityScale;",
+"      yOffset = yInterpolator .keyVelocity [i] * VELOCITY_SCALE;",
 "",
 "    const point = new SFVec2f (xInterpolator .keyValue [i],",
 "                               yInterpolator .keyValue [i] + yOffset);",

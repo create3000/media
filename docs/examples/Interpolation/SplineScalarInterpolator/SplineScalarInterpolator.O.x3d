@@ -198,7 +198,7 @@ function eventsProcessed ()
           </field>
 <![CDATA[ecmascript:
 
-let velocityScale = 0.5;
+const VELOCITY_SCALE = 0.5;
 
 function initialize ()
 {
@@ -218,7 +218,7 @@ function eventsProcessed ()
     const
       x = xInterpolator .keyValue [i],
       y = yInterpolator .keyValue [i],
-      v = y + yInterpolator .keyVelocity [i] * velocityScale;
+      v = y + yInterpolator .keyVelocity [i] * VELOCITY_SCALE;
 
     lines .vertexCount [i] = 2;
 
@@ -291,9 +291,9 @@ function eventsProcessed ()
 <![CDATA[ecmascript:
 
 const
-  velocityScale = 0.5,
-  SPLINE        = 0,
-  VELOCITY      = 1;
+  VELOCITY_SCALE = 0.5,
+  SPLINE         = 0,
+  VELOCITY       = 1;
 
 let
   firstTime  = 0,
@@ -350,7 +350,7 @@ function set_hitPoint (value, time)
       yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;
       break;
     case VELOCITY:
-      yInterpolator .keyVelocity [pointIndex] = ((hitPoint .y + offset .y) - yInterpolator .keyValue [pointIndex]) / velocityScale;
+      yInterpolator .keyVelocity [pointIndex] = ((hitPoint .y + offset .y) - yInterpolator .keyValue [pointIndex]) / VELOCITY_SCALE;
       break;
   }
 }
@@ -372,7 +372,7 @@ function pick (hitPoint)
     let yOffset = 0;
 
     if (pointType == VELOCITY)
-      yOffset = yInterpolator .keyVelocity [i] * velocityScale;
+      yOffset = yInterpolator .keyVelocity [i] * VELOCITY_SCALE;
 
     const point = new SFVec2f (xInterpolator .keyValue [i],
                                yInterpolator .keyValue [i] + yOffset);
