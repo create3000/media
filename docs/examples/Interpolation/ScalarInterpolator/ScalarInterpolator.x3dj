@@ -29,7 +29,7 @@
         },
         {
           "@name": "modified",
-          "@content": "Mon, 27 Jul 2026 08:43:01 GMT"
+          "@content": "Mon, 27 Jul 2026 08:47:01 GMT"
         }
       ],
       "component": [
@@ -363,7 +363,7 @@
                       "fieldValue": [
                         {
                           "@name": "resetTime",
-                          "@value": 1785141781.336
+                          "@value": 1785142021.536
                         },
                         {
                           "@name": "point",
@@ -640,8 +640,6 @@
 "{",
 "  const length = xInterpolator .keyValue .length;",
 "",
-"  let pointIndex = -1;",
-"",
 "  for (let i = 0; i < length; ++ i)",
 "  {",
 "    const point = new SFVec2f (xInterpolator .keyValue [i],",
@@ -652,11 +650,10 @@
 "    if (offset .length () > pointSize)",
 "      continue;",
 "",
-"    pointIndex = i;",
-"    break;",
+"    return i;",
 "  }",
 "",
-"  return pointIndex;",
+"  return -1;",
 "}",
 "",
 "function addPoint ()",

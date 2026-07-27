@@ -242,8 +242,6 @@ function pick (hitPoint)
 {
   const length = xInterpolator .keyValue .length;
 
-  let pointIndex = -1;
-
   for (let i = 0; i < length; ++ i)
   {
     const point = new SFVec2f (xInterpolator .keyValue [i],
@@ -254,11 +252,10 @@ function pick (hitPoint)
     if (offset .length () > pointSize)
       continue;
 
-    pointIndex = i;
-    break;
+    return i;
   }
 
-  return pointIndex;
+  return -1;
 }
 
 function addPoint ()

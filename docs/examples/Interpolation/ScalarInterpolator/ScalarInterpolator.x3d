@@ -13,7 +13,7 @@
     <meta name='creator' content='Holger Seelig'/>
     <meta name='generator' content='x3d-tidy V3.0.32, https://www.npmjs.com/package/x3d-tidy'/>
     <meta name='generator' content='Sunrize X3D Editor V2.1.13, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Mon, 27 Jul 2026 08:43:01 GMT'/>
+    <meta name='modified' content='Mon, 27 Jul 2026 08:47:01 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
@@ -105,7 +105,7 @@ function set_y (value, time)
               emissiveColor='0.552941 0.270588 0.14902'/>
         </Appearance>
         <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1785141781.336'/>
+          <fieldValue name='resetTime' value='1785142021.536'/>
           <fieldValue name='point' value='3.176 -0.4506664 0'/>
           <fieldValue name='dimension' value='1000'/>
         </ProtoInstance>
@@ -242,8 +242,6 @@ function pick (hitPoint)
 {
   const length = xInterpolator .keyValue .length;
 
-  let pointIndex = -1;
-
   for (let i = 0; i < length; ++ i)
   {
     const point = new SFVec2f (xInterpolator .keyValue [i],
@@ -254,11 +252,10 @@ function pick (hitPoint)
     if (offset .length () > pointSize)
       continue;
 
-    pointIndex = i;
-    break;
+    return i;
   }
 
-  return pointIndex;
+  return -1;
 }
 
 function addPoint ()

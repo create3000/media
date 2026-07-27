@@ -15,7 +15,7 @@ META "created" "Fri, 22 Sep 2017 06:52:58 GMT"
 META "creator" "Holger Seelig"
 META "generator" "x3d-tidy V3.0.32, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.1.13, https://create3000.github.io/sunrize/"
-META "modified" "Mon, 27 Jul 2026 08:42:54 GMT"
+META "modified" "Mon, 27 Jul 2026 08:47:07 GMT"
 
 EXTERNPROTO Grid [
   inputOutput    SFVec3f    translation
@@ -120,7 +120,7 @@ function set_y (value, time)
         }
       }
       geometry DEF Trail LineTrail {
-        resetTime 1785141774.111
+        resetTime 1785142027.428
         point 9.116001 -4.8999 0
         dimension 1000
       }
@@ -386,8 +386,6 @@ function pick (hitPoint)
 {
   const length = xInterpolator .keyValue .length;
 
-  let pointIndex = -1;
-
   for (let i = 0; i < length; ++ i)
   {
     let yOffset = 0;
@@ -403,11 +401,10 @@ function pick (hitPoint)
     if (offset .length () > pointSize)
       continue;
 
-    pointIndex = i;
-    break;
+    return i;
   }
 
-  return pointIndex;
+  return -1;
 }
 
 function addPoint ()
