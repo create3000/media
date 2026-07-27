@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
-    <component name='Geometry2D' level='2'/>
+    <component name='Core' level='2'/>
+    <component name='Geometry2D' level='1'/>
     <component name='Layout' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
+    <component name='Text' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 22 Nov 2017 08:26:49 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Fri, 10 Feb 2023 23:51:36 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.1.13, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 27 Jul 2026 08:41:05 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
+    <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
       <field accessType='inputOutput' type='SFVec3f' name='translation'/>
       <field accessType='inputOutput' type='SFRotation' name='rotation'/>
       <field accessType='inputOutput' type='SFVec3f' name='scale'/>
@@ -33,44 +35,13 @@
       <field accessType='inputOutput' type='SFNode' name='numberFontStyle'/>
       <field accessType='initializeOnly' type='SFBool' name='solid'/>
     </ExternProtoDeclare>
-    <ExternProtoDeclare name='LineTrail' url='"LineTrail.x3d#LineTrail"'>
+    <ExternProtoDeclare name='LineTrail' url='"assets/LineTrail.x3d#LineTrail"'>
       <field accessType='inputOutput' type='SFTime' name='resetTime'/>
       <field accessType='inputOutput' type='SFVec3f' name='point'/>
       <field accessType='inputOutput' type='SFInt32' name='dimension'/>
     </ExternProtoDeclare>
     <WorldInfo
-        title='ScalarInterpolator.O'>
-      <MetadataSet DEF='Titania'
-          name='Titania'
-          reference='http://titania.create3000.de'>
-        <MetadataSet DEF='Page' containerField='value'
-            name='Page'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='activeView' containerField='value'
-              name='activeView'
-              reference='http://titania.create3000.de'
-              value='1'/>
-          <MetadataInteger DEF='multiView' containerField='value'
-              name='multiView'
-              reference='http://titania.create3000.de'
-              value='0'/>
-        </MetadataSet>
-        <MetadataSet DEF='Selection' containerField='value'
-            name='Selection'
-            reference='http://titania.create3000.de'>
-          <MetadataBoolean DEF='selectGeometry' containerField='value'
-              name='selectGeometry'
-              reference='http://titania.create3000.de'
-              value='false'/>
-          <MetadataSet DEF='nodes' containerField='value'
-              name='nodes'
-              reference='http://titania.create3000.de'>
-            <LineProperties DEF='_1' containerField='value'
-                linewidthScaleFactor='3'/>
-          </MetadataSet>
-        </MetadataSet>
-      </MetadataSet>
-    </WorldInfo>
+        title='ScalarInterpolator.O'/>
     <NavigationInfo
         type='"NONE"'/>
     <Viewpoint
@@ -87,13 +58,13 @@
       <fieldValue name='majorLineTransparency' value='0.4'/>
       <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
       <fieldValue name='numberAppearance'>
-        <Appearance DEF='_2' containerField='numberAppearance'>
+        <Appearance DEF='_2'>
           <Material
               diffuseColor='0 0 0'/>
         </Appearance>
       </fieldValue>
       <fieldValue name='numberFontStyle'>
-        <ScreenFontStyle DEF='_3' containerField='numberFontStyle'
+        <ScreenFontStyle DEF='_3'
             justify='"END", "BEGIN"'/>
       </fieldValue>
     </ProtoInstance>
@@ -112,29 +83,30 @@
         <field accessType='inputOnly' type='SFFloat' name='set_y'/>
         <field accessType='outputOnly' type='SFVec3f' name='point_changed'/>
         <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+          <ScalarInterpolator USE='XInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+          <ScalarInterpolator USE='YInterpolator'/>
         </field>
 <![CDATA[ecmascript:
 
 function set_y (value, time)
 {
-	point_changed .x = xInterpolator .value_changed;
-	point_changed .y = yInterpolator .value_changed;
+  point_changed .x = xInterpolator .value_changed;
+  point_changed .y = yInterpolator .value_changed;
 }
 ]]>
       </Script>
       <Shape>
         <Appearance>
-          <LineProperties USE='_1'/>
+          <LineProperties DEF='_1'
+              linewidthScaleFactor='3'/>
           <Material
               emissiveColor='0.552941 0.270588 0.14902'/>
         </Appearance>
         <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1676073090.3630009'/>
-          <fieldValue name='point' value='4.208 -1.138667 0'/>
+          <fieldValue name='resetTime' value='1785141660.294'/>
+          <fieldValue name='point' value='3.176 -0.4506664 0'/>
           <fieldValue name='dimension' value='1000'/>
         </ProtoInstance>
       </Shape>
@@ -145,31 +117,33 @@ function set_y (value, time)
         <field accessType='inputOnly' type='MFFloat' name='set_x'/>
         <field accessType='inputOnly' type='MFFloat' name='set_y'/>
         <field accessType='initializeOnly' type='SFNode' name='points'>
-          <Polypoint2D DEF='_4' containerField='points'
+          <Polypoint2D DEF='_4'
               point='-20 -10, -5 5, 10 -5, 20 10'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-          <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+          <ScalarInterpolator USE='XInterpolator'/>
         </field>
         <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-          <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+          <ScalarInterpolator USE='YInterpolator'/>
         </field>
 <![CDATA[ecmascript:
 
 function initialize ()
 {
-	eventsProcessed ();
+  eventsProcessed ();
 }
 
 function eventsProcessed ()
 {
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		points .point [i] .x = xInterpolator .keyValue [i];
-		points .point [i] .y = yInterpolator .keyValue [i];
-	}
+  const length = xInterpolator .keyValue .length;
 
-	points .point .length = i;
+  points .point .length = length;
+
+  for (let i = 0; i < length; ++ i)
+  {
+    points .point [i] .x = xInterpolator .keyValue [i];
+    points .point [i] .y = yInterpolator .keyValue [i];
+  }
 }
 ]]>
       </Script>
@@ -204,176 +178,179 @@ function eventsProcessed ()
       <field accessType='initializeOnly' type='SFTime' name='doubleClickInterval' value='0.3'/>
       <field accessType='initializeOnly' type='SFFloat' name='pointSize' value='0.5'/>
       <field accessType='initializeOnly' type='SFNode' name='xInterpolator'>
-        <ScalarInterpolator USE='XInterpolator' containerField='xInterpolator'/>
+        <ScalarInterpolator USE='XInterpolator'/>
       </field>
       <field accessType='initializeOnly' type='SFNode' name='yInterpolator'>
-        <ScalarInterpolator USE='YInterpolator' containerField='yInterpolator'/>
+        <ScalarInterpolator USE='YInterpolator'/>
       </field>
 <![CDATA[ecmascript:
 
-var
-	firstTime  = 0,
-	pointIndex = -1,
-	hitPoint   = new SFVec2f (),
-	offset     = new SFVec2f ();
+let
+  firstTime  = 0,
+  pointIndex = -1,
+  hitPoint      = new SFVec2f (),
+  offset        = new SFVec2f ();
 
 function initialize ()
 {
-	xInterpolator .key      = new MFFloat (0, 0.375, 0.75, 1);
-	xInterpolator .keyValue = new MFFloat (-20, -5, 10, 20);
-	yInterpolator .keyValue = new MFFloat (-10, 5, -5, 10);
+  xInterpolator .key      = new MFFloat (0, 0.375, 0.75, 1);
+  xInterpolator .keyValue = new MFFloat (-20, -5, 10, 20);
+  yInterpolator .keyValue = new MFFloat (-10, 5, -5, 10);
 }
 
 function set_touchTime (value, time)
 {
-	if (value - firstTime > doubleClickInterval)
-	{
-		firstTime = value;
-		return;
-	}
+  if (value - firstTime > doubleClickInterval)
+  {
+    firstTime = value;
+    return;
+  }
 
-	doubleClickTime = time;
+  doubleClickTime = time;
 
-	if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
-		addPoint ();
+  if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
+    addPoint ();
 
-	else
-		removePoint ();
+  else
+    removePoint ();
 }
 
 function set_hitPoint (value, time)
 {
-	hitPoint .x = value .x;
-	hitPoint .y = value .y;
+  hitPoint .x = value .x;
+  hitPoint .y = value .y;
 
-	if (! active)
-		return;
+  if (!active)
+    return;
 
-	if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
-		return;
+  if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
+    return;
 
-	xInterpolator .keyValue [pointIndex] = hitPoint .x + offset .x;
-	yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;
+  xInterpolator .keyValue [pointIndex] = hitPoint .x + offset .x;
+  yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;
 }
 
 function set_active (value, time)
 {
-	if (! active)
-		return;
+  if (!active)
+    return;
 
-	pointIndex = pick (hitPoint);
+  pointIndex = pick (hitPoint);
 }
 
 function pick (hitPoint)
 {
-	var pointIndex = -1;
+  const length = xInterpolator .keyValue .length;
 
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		var point = new SFVec2f (xInterpolator .keyValue [i],
-		                         yInterpolator .keyValue [i]);
+  let pointIndex = -1;
 
-		offset = point .subtract (hitPoint);
+  for (let i = 0; i < length; ++ i)
+  {
+    const point = new SFVec2f (xInterpolator .keyValue [i],
+                               yInterpolator .keyValue [i]);
 
-		if (offset .length () > pointSize)
-			continue;
+    offset = point .subtract (hitPoint);
 
-		pointIndex = i;
-		break;
-	}
+    if (offset .length () > pointSize)
+      continue;
 
-	return pointIndex;
+    pointIndex = i;
+    break;
+  }
+
+  return pointIndex;
 }
 
 function addPoint ()
 {
-	var pointIndex = getAddPointIndex ()
+  const pointIndex = getAddPointIndex ()
 
-	xInterpolator .keyValue .splice (pointIndex, 0, hitPoint .x);
-	yInterpolator .keyValue .splice (pointIndex, 0, hitPoint .y);
+  xInterpolator .keyValue .splice (pointIndex, 0, hitPoint .x);
+  yInterpolator .keyValue .splice (pointIndex, 0, hitPoint .y);
 
-	setXInterpolatorKey ();
+  setXInterpolatorKey ();
 }
 
 function removePoint ()
 {
-	var pointIndex = getRemovePointIndex ()
+  const pointIndex = getRemovePointIndex ()
 
-	xInterpolator .keyValue .splice (pointIndex, 1);
-	yInterpolator .keyValue .splice (pointIndex, 1);
+  xInterpolator .keyValue .splice (pointIndex, 1);
+  yInterpolator .keyValue .splice (pointIndex, 1);
 
-	setXInterpolatorKey ();
+  setXInterpolatorKey ();
 }
 
 function getAddPointIndex ()
 {
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		if (xInterpolator .keyValue [i] > hitPoint .x)
-			break;
-	}
+  const length = xInterpolator .keyValue .length;
 
-	return i;
+  for (let i = 0; i < length; ++ i)
+  {
+    if (xInterpolator .keyValue [i] > hitPoint .x)
+      return i;
+  }
+
+  return length;
 }
 
 function getRemovePointIndex ()
 {
-	var
-		first = xInterpolator .keyValue [0];
-		last  = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];
+  const
+    first = xInterpolator .keyValue [0],
+    last  = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];
 
-	if (hitPoint .x < first)
-		return 0;
+  if (hitPoint .x < first)
+    return 0;
 
-	if (hitPoint .x > last)
-		return xInterpolator .keyValue .length - 1;
+  if (hitPoint .x > last)
+    return xInterpolator .keyValue .length - 1;
 
-	return pick (hitPoint);
+  return pick (hitPoint);
 }
 
 function setXInterpolatorKey ()
 {
-	if (xInterpolator .keyValue .length)
-	{
-		var
-			first       = xInterpolator .keyValue [0];
-			last        = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];
-			distance    = last - first,
-			totalLength = 0,
-			lengthSoFar = 0;
+  if (xInterpolator .keyValue .length)
+  {
+    const length = xInterpolator .keyValue .length;
 
-		for (var i = 1, length = xInterpolator .keyValue .length; i < length; ++ i)
-		{
-			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
-				                       yInterpolator .keyValue [i - 1]);
+    let
+      totalLength = 0,
+      lengthSoFar = 0;
 
-			var point1 = new SFVec2f (xInterpolator .keyValue [i],
-				                       yInterpolator .keyValue [i]);
+    xInterpolator .key .length = length;
 
-			totalLength += point1 .subtract (point0) .length ();
-		}
+    for (let i = 1; i < length; ++ i)
+    {
+      const point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
+                                  yInterpolator .keyValue [i - 1]);
 
-		xInterpolator .key [0] = 0;
+      const point1 = new SFVec2f (xInterpolator .keyValue [i],
+                                  yInterpolator .keyValue [i]);
 
-		for (var i = 1, length = xInterpolator .keyValue .length; i < length; ++ i)
-		{
-			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
-				                       yInterpolator .keyValue [i - 1]);
+      totalLength += point1 .subtract (point0) .length ();
+    }
 
-			var point1 = new SFVec2f (xInterpolator .keyValue [i],
-				                       yInterpolator .keyValue [i]);
+    xInterpolator .key [0] = 0;
 
-			lengthSoFar += point1 .subtract (point0) .length ();
+    for (let i = 1; i < length; ++ i)
+    {
+      const point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
+                                  yInterpolator .keyValue [i - 1]);
 
-			xInterpolator .key [i] = lengthSoFar / totalLength;
-		}
+      const point1 = new SFVec2f (xInterpolator .keyValue [i],
+                                  yInterpolator .keyValue [i]);
 
-		xInterpolator .key .length = length;
-	}
-	else
-	{
-		xInterpolator .key .length = 0;
-	}
+      lengthSoFar += point1 .subtract (point0) .length ();
+
+      xInterpolator .key [i] = lengthSoFar / totalLength;
+    }
+  }
+  else
+  {
+    xInterpolator .key .length = 0;
+  }
 }
 ]]>
     </Script>

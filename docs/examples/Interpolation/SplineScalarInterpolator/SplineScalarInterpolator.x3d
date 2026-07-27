@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
-    <component name='Geometry2D' level='2'/>
+    <component name='Core' level='2'/>
+    <component name='Geometry2D' level='1'/>
+    <component name='Grouping' level='2'/>
+    <component name='Interpolation' level='4'/>
     <component name='Layout' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Fri, 22 Sep 2017 06:52:58 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='generator' content='x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='modified' content='Wed, 15 Nov 2023 02:08:42 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.32, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.1.13, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 27 Jul 2026 08:42:54 GMT'/>
   </head>
   <Scene>
-    <ExternProtoDeclare name='Grid' url='"Grid.x3d#Grid"'>
+    <ExternProtoDeclare name='Grid' url='"assets/Grid.x3d#Grid"'>
       <field accessType='inputOutput' type='SFVec3f' name='translation'/>
       <field accessType='inputOutput' type='SFRotation' name='rotation'/>
       <field accessType='inputOutput' type='SFVec3f' name='scale'/>
@@ -33,7 +36,7 @@
       <field accessType='inputOutput' type='SFNode' name='numberFontStyle'/>
       <field accessType='initializeOnly' type='SFBool' name='solid'/>
     </ExternProtoDeclare>
-    <ExternProtoDeclare name='LineTrail' url='"LineTrail.x3d#LineTrail"'>
+    <ExternProtoDeclare name='LineTrail' url='"assets/LineTrail.x3d#LineTrail"'>
       <field accessType='inputOutput' type='SFTime' name='resetTime'/>
       <field accessType='inputOutput' type='SFVec3f' name='point'/>
       <field accessType='inputOutput' type='SFInt32' name='dimension'/>
@@ -57,13 +60,13 @@
       <fieldValue name='majorLineTransparency' value='0.4'/>
       <fieldValue name='numberOffset' value='-0.1 0 0.14'/>
       <fieldValue name='numberAppearance'>
-        <Appearance DEF='_2'>
+        <Appearance>
           <Material
               diffuseColor='0 0 0'/>
         </Appearance>
       </fieldValue>
       <fieldValue name='numberFontStyle'>
-        <ScreenFontStyle DEF='_3'
+        <ScreenFontStyle
             justify='"END", "BEGIN"'/>
       </fieldValue>
     </ProtoInstance>
@@ -92,21 +95,21 @@
 
 function set_y (value, time)
 {
-	point_changed .x = xInterpolator .value_changed;
-	point_changed .y = yInterpolator .value_changed;
+  point_changed .x = xInterpolator .value_changed;
+  point_changed .y = yInterpolator .value_changed;
 }
 ]]>
       </Script>
       <Shape>
         <Appearance>
-          <LineProperties DEF='_1'
+          <LineProperties
               linewidthScaleFactor='3'/>
           <Material
               emissiveColor='0.552941 0.270588 0.14902'/>
         </Appearance>
         <ProtoInstance name='LineTrail' DEF='Trail' containerField='geometry'>
-          <fieldValue name='resetTime' value='1700014120.018'/>
-          <fieldValue name='point' value='-19.07199 -9.834865 0'/>
+          <fieldValue name='resetTime' value='1785141774.111'/>
+          <fieldValue name='point' value='9.116001 -4.8999 0'/>
           <fieldValue name='dimension' value='1000'/>
         </ProtoInstance>
       </Shape>
@@ -132,18 +135,20 @@ function set_y (value, time)
 
 function initialize ()
 {
-	eventsProcessed ();
+  eventsProcessed ();
 }
 
 function eventsProcessed ()
 {
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		points .point [i] .x = xInterpolator .keyValue [i];
-		points .point [i] .y = yInterpolator .keyValue [i];
-	}
+  const length = xInterpolator .keyValue .length;
 
-	points .point .length = i;
+  points .point .length = length;
+
+  for (let i = 0; i < length; ++ i)
+  {
+    points .point [i] .x = xInterpolator .keyValue [i];
+    points .point [i] .y = yInterpolator .keyValue [i];
+  }
 }
 ]]>
         </Script>
@@ -193,36 +198,38 @@ function eventsProcessed ()
           </field>
 <![CDATA[ecmascript:
 
-var velocityScale = 0.5;
+let velocityScale = 0.5;
 
 function initialize ()
 {
-	eventsProcessed ();
+  eventsProcessed ();
 }
 
 function eventsProcessed ()
 {
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		var
-			x = xInterpolator .keyValue [i],
-			y = yInterpolator .keyValue [i],
-			v = y + yInterpolator .keyVelocity [i] * velocityScale;
+  const length = xInterpolator .keyValue .length;
 
-		lines .vertexCount [i] = 2;
+  lines .vertexCount .length  = length;
+  lines .coord .point .length = length * 2;
+  points .point .length       = length;
 
-		lines .coord .point [i * 2 + 0] .x = x;
-		lines .coord .point [i * 2 + 0] .y = y;
-		lines .coord .point [i * 2 + 1] .x = x;
-		lines .coord .point [i * 2 + 1] .y = v;
+  for (let i = 0; i < length; ++ i)
+  {
+    const
+      x = xInterpolator .keyValue [i],
+      y = yInterpolator .keyValue [i],
+      v = y + yInterpolator .keyVelocity [i] * velocityScale;
 
-		points .point [i] .x = x;
-		points .point [i] .y = v;
-	}
+    lines .vertexCount [i] = 2;
 
-	lines .vertexCount .length  = i;
-	lines .coord .point .length = i * 2;
-	points .point .length       = i;
+    lines .coord .point [i * 2 + 0] .x = x;
+    lines .coord .point [i * 2 + 0] .y = y;
+    lines .coord .point [i * 2 + 1] .x = x;
+    lines .coord .point [i * 2 + 1] .y = v;
+
+    points .point [i] .x = x;
+    points .point [i] .y = v;
+  }
 }
 ]]>
         </Script>
@@ -283,194 +290,199 @@ function eventsProcessed ()
       </field>
 <![CDATA[ecmascript:
 
-var
-	firstTime     = 0,
-	pointIndex    = -1,
-	hitPoint      = new SFVec2f (),
-	offset        = new SFVec2f (),
-	velocityScale = 0.5,
-	SPLINE        = 0,
-	VELOCITY      = 1;
+const
+  velocityScale = 0.5,
+  SPLINE        = 0,
+  VELOCITY      = 1;
+
+let
+  firstTime  = 0,
+  pointIndex = -1,
+  hitPoint      = new SFVec2f (),
+  offset        = new SFVec2f ();
 
 function initialize ()
 {
-	xInterpolator .key         = new MFFloat (0, 0.375, 0.75, 1);
-	xInterpolator .keyValue    = new MFFloat (-20, -5, 10, 20);
-	yInterpolator .keyValue    = new MFFloat (-10, 5, -5, 10);
-	yInterpolator .keyVelocity = new MFFloat (0, 0, 0, 0);
+  xInterpolator .key         = new MFFloat (0, 0.375, 0.75, 1);
+  xInterpolator .keyValue    = new MFFloat (-20, -5, 10, 20);
+  yInterpolator .keyValue    = new MFFloat (-10, 5, -5, 10);
+  yInterpolator .keyVelocity = new MFFloat (0, 0, 0, 0);
 }
 
 function set_touchTime (value, time)
 {
-	if (pointType == VELOCITY)
-		return;
+  if (pointType == VELOCITY)
+    return;
 
-	if (value - firstTime > doubleClickInterval)
-	{
-		firstTime = value;
-		return;
-	}
+  if (value - firstTime > doubleClickInterval)
+  {
+    firstTime = value;
+    return;
+  }
 
-	doubleClickTime = time;
+  doubleClickTime = time;
 
-	if (pointType == SPLINE)
-	{
-		if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
-			addPoint ();
+  if (pointType == SPLINE)
+  {
+    if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
+      addPoint ();
 
-		else
-			removePoint ();
-	}
+    else
+      removePoint ();
+  }
 }
 
 function set_hitPoint (value, time)
 {
-	hitPoint .x = value .x;
-	hitPoint .y = value .y;
+  hitPoint .x = value .x;
+  hitPoint .y = value .y;
 
-	if (! active)
-		return;
+  if (!active)
+    return;
 
-	if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
-		return;
+  if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)
+    return;
 
-	switch (pointType)
-	{
-		case SPLINE:
-			xInterpolator .keyValue [pointIndex] = hitPoint .x + offset .x;
-			yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;
-			break;
-		case VELOCITY:
-			yInterpolator .keyVelocity [pointIndex] = ((hitPoint .y + offset .y) - yInterpolator .keyValue [pointIndex]) / velocityScale;
-			break;
-	}
+  switch (pointType)
+  {
+    case SPLINE:
+      xInterpolator .keyValue [pointIndex] = hitPoint .x + offset .x;
+      yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;
+      break;
+    case VELOCITY:
+      yInterpolator .keyVelocity [pointIndex] = ((hitPoint .y + offset .y) - yInterpolator .keyValue [pointIndex]) / velocityScale;
+      break;
+  }
 }
 
 function set_active (value, time)
 {
-	if (! active)
-		return;
+  if (!active)
+    return;
 
-	pointIndex = pick (hitPoint);
+  pointIndex = pick (hitPoint);
 }
 
 function pick (hitPoint)
 {
-	var pointIndex = -1;
+  const length = xInterpolator .keyValue .length;
 
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		var yOffset = 0;
+  let pointIndex = -1;
 
-		if (pointType == VELOCITY)
-			yOffset = yInterpolator .keyVelocity [i] * velocityScale;
+  for (let i = 0; i < length; ++ i)
+  {
+    let yOffset = 0;
 
-		var point = new SFVec2f (xInterpolator .keyValue [i],
-		                         yInterpolator .keyValue [i] + yOffset);
+    if (pointType == VELOCITY)
+      yOffset = yInterpolator .keyVelocity [i] * velocityScale;
 
-		offset = point .subtract (hitPoint);
+    const point = new SFVec2f (xInterpolator .keyValue [i],
+                               yInterpolator .keyValue [i] + yOffset);
 
-		if (offset .length () > pointSize)
-			continue;
+    offset = point .subtract (hitPoint);
 
-		pointIndex = i;
-		break;
-	}
+    if (offset .length () > pointSize)
+      continue;
 
-	return pointIndex;
+    pointIndex = i;
+    break;
+  }
+
+  return pointIndex;
 }
 
 function addPoint ()
 {
-	var pointIndex = getAddPointIndex ()
+  const pointIndex = getAddPointIndex ()
 
-	xInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .x);
-	yInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .y);
-	yInterpolator .keyVelocity .splice (pointIndex, 0, 0);
+  xInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .x);
+  yInterpolator .keyValue    .splice (pointIndex, 0, hitPoint .y);
+  yInterpolator .keyVelocity .splice (pointIndex, 0, 0);
 
-	setXInterpolatorKey ();
+  setXInterpolatorKey ();
 }
 
 function removePoint ()
 {
-	var pointIndex = getRemovePointIndex ()
+  const pointIndex = getRemovePointIndex ()
 
-	xInterpolator .keyValue    .splice (pointIndex, 1);
-	yInterpolator .keyValue    .splice (pointIndex, 1);
-	yInterpolator .keyVelocity .splice (pointIndex, 1);
+  xInterpolator .keyValue    .splice (pointIndex, 1);
+  yInterpolator .keyValue    .splice (pointIndex, 1);
+  yInterpolator .keyVelocity .splice (pointIndex, 1);
 
-	setXInterpolatorKey ();
+  setXInterpolatorKey ();
 }
 
 function getAddPointIndex ()
 {
-	for (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)
-	{
-		if (xInterpolator .keyValue [i] > hitPoint .x)
-			break;
-	}
+  const length = xInterpolator .keyValue .length;
 
-	return i;
+  for (let i = 0; i < length; ++ i)
+  {
+    if (xInterpolator .keyValue [i] > hitPoint .x)
+      return i;
+  }
+
+  return length;
 }
 
 function getRemovePointIndex ()
 {
-	var
-		first = xInterpolator .keyValue [0];
-		last  = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];
+  const
+    first = xInterpolator .keyValue [0],
+    last  = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];
 
-	if (hitPoint .x < first)
-		return 0;
+  if (hitPoint .x < first)
+    return 0;
 
-	if (hitPoint .x > last)
-		return xInterpolator .keyValue .length - 1;
+  if (hitPoint .x > last)
+    return xInterpolator .keyValue .length - 1;
 
-	return pick (hitPoint);
+  return pick (hitPoint);
 }
 
 function setXInterpolatorKey ()
 {
-	if (xInterpolator .keyValue .length)
-	{
-		var
-			first       = xInterpolator .keyValue [0];
-			last        = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];
-			distance    = last - first,
-			totalLength = 0,
-			lengthSoFar = 0;
+  if (xInterpolator .keyValue .length)
+  {
+    const length = xInterpolator .keyValue .length;
 
-		for (var i = 1, length = xInterpolator .keyValue .length; i < length; ++ i)
-		{
-			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
-				                       yInterpolator .keyValue [i - 1]);
+    let
+      totalLength = 0,
+      lengthSoFar = 0;
 
-			var point1 = new SFVec2f (xInterpolator .keyValue [i],
-				                       yInterpolator .keyValue [i]);
+    xInterpolator .key .length = length;
 
-			totalLength += point1 .subtract (point0) .length ();
-		}
+    for (let i = 1; i < length; ++ i)
+    {
+      const point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
+                                  yInterpolator .keyValue [i - 1]);
 
-		xInterpolator .key [0] = 0;
+      const point1 = new SFVec2f (xInterpolator .keyValue [i],
+                                  yInterpolator .keyValue [i]);
 
-		for (var i = 1, length = xInterpolator .keyValue .length; i < length; ++ i)
-		{
-			var point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
-				                       yInterpolator .keyValue [i - 1]);
+      totalLength += point1 .subtract (point0) .length ();
+    }
 
-			var point1 = new SFVec2f (xInterpolator .keyValue [i],
-				                       yInterpolator .keyValue [i]);
+    xInterpolator .key [0] = 0;
 
-			lengthSoFar += point1 .subtract (point0) .length ();
+    for (let i = 1; i < length; ++ i)
+    {
+      const point0 = new SFVec2f (xInterpolator .keyValue [i - 1],
+                                  yInterpolator .keyValue [i - 1]);
 
-			xInterpolator .key [i] = lengthSoFar / totalLength;
-		}
+      const point1 = new SFVec2f (xInterpolator .keyValue [i],
+                                  yInterpolator .keyValue [i]);
 
-		xInterpolator .key .length = length;
-	}
-	else
-	{
-		xInterpolator .key .length = 0;
-	}
+      lengthSoFar += point1 .subtract (point0) .length ();
+
+      xInterpolator .key [i] = lengthSoFar / totalLength;
+    }
+  }
+  else
+  {
+    xInterpolator .key .length = 0;
+  }
 }
 ]]>
     </Script>

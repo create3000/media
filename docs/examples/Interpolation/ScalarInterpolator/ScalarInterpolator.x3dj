@@ -1,9 +1,10 @@
-{ "X3D": {
+{ "X3D":
+  {
     "encoding": "UTF-8",
     "@profile": "Interchange",
-    "@version": "4.0",
-    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.0.xsd",
-    "JSON schema": "https://www.web3d.org/specifications/x3d-4.0-JSONSchema.json",
+    "@version": "4.1",
+    "@xsd:noNamespaceSchemaLocation": "https://www.web3d.org/specifications/x3d-4.1.xsd",
+    "JSON schema": "https://www.web3d.org/specifications/x3d-4.1-JSONSchema.json",
     "head": {
       "meta": [
         {
@@ -20,21 +21,25 @@
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
+          "@content": "x3d-tidy V3.0.32, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V1.0.102, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "Sunrize X3D Editor V2.1.13, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Wed, 15 Nov 2023 02:08:41 GMT"
+          "@content": "Mon, 27 Jul 2026 08:43:01 GMT"
         }
       ],
       "component": [
         {
-          "@name": "Geometry2D",
+          "@name": "Core",
           "@level": 2
+        },
+        {
+          "@name": "Geometry2D",
+          "@level": 1
         },
         {
           "@name": "Layout",
@@ -149,7 +154,7 @@
                 "@name": "solid"
               }
             ],
-            "@url": [ "Grid.x3d#Grid" ]
+            "@url": [ "assets/Grid.x3d#Grid" ]
           }
         },
         { "ExternProtoDeclare":
@@ -172,7 +177,7 @@
                 "@name": "dimension"
               }
             ],
-            "@url": [ "LineTrail.x3d#LineTrail" ]
+            "@url": [ "assets/LineTrail.x3d#LineTrail" ]
           }
         },
         { "WorldInfo":
@@ -236,7 +241,6 @@
                 "-children": [
                   { "Appearance":
                     {
-                      "@DEF": "_2",
                       "-material": { "Material":
                         {
                           "@diffuseColor": [ 0, 0, 0 ]
@@ -251,7 +255,6 @@
                 "-children": [
                   { "ScreenFontStyle":
                     {
-                      "@DEF": "_3",
                       "@justify": [ "END", "BEGIN" ]
                     }
                   }
@@ -330,8 +333,8 @@
 "",
 "function set_y (value, time)",
 "{",
-"\tpoint_changed .x = xInterpolator .value_changed;",
-"\tpoint_changed .y = yInterpolator .value_changed;",
+"  point_changed .x = xInterpolator .value_changed;",
+"  point_changed .y = yInterpolator .value_changed;",
 "}",
 ""
                   ]
@@ -343,7 +346,6 @@
                     {
                       "-lineProperties": { "LineProperties":
                         {
-                          "@DEF": "_1",
                           "@linewidthScaleFactor": 3
                         }
                       },
@@ -361,11 +363,11 @@
                       "fieldValue": [
                         {
                           "@name": "resetTime",
-                          "@value": 1700014118.904
+                          "@value": 1785141781.336
                         },
                         {
                           "@name": "point",
-                          "@value": [ 4.208, -1.138667, 0 ]
+                          "@value": [ 3.176, -0.4506664, 0 ]
                         },
                         {
                           "@name": "dimension",
@@ -441,18 +443,20 @@
 "",
 "function initialize ()",
 "{",
-"\teventsProcessed ();",
+"  eventsProcessed ();",
 "}",
 "",
 "function eventsProcessed ()",
 "{",
-"\tfor (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)",
-"\t{",
-"\t\tpoints .point [i] .x = xInterpolator .keyValue [i];",
-"\t\tpoints .point [i] .y = yInterpolator .keyValue [i];",
-"\t}",
+"  const length = xInterpolator .keyValue .length;",
 "",
-"\tpoints .point .length = i;",
+"  points .point .length = length;",
+"",
+"  for (let i = 0; i < length; ++ i)",
+"  {",
+"    points .point [i] .x = xInterpolator .keyValue [i];",
+"    points .point [i] .y = yInterpolator .keyValue [i];",
+"  }",
 "}",
 ""
                   ]
@@ -579,169 +583,172 @@
             "#sourceCode": [
 "ecmascript:",
 "",
-"var",
-"\tfirstTime  = 0,",
-"\tpointIndex = -1,",
-"\thitPoint   = new SFVec2f (),",
-"\toffset     = new SFVec2f ();",
+"let",
+"  firstTime  = 0,",
+"  pointIndex = -1,",
+"  hitPoint      = new SFVec2f (),",
+"  offset        = new SFVec2f ();",
 "",
 "function initialize ()",
 "{",
-"\txInterpolator .key      = new MFFloat (0, 0.375, 0.75, 1);",
-"\txInterpolator .keyValue = new MFFloat (-20, -5, 10, 20);",
-"\tyInterpolator .keyValue = new MFFloat (-10, 5, -5, 10);",
+"  xInterpolator .key      = new MFFloat (0, 0.375, 0.75, 1);",
+"  xInterpolator .keyValue = new MFFloat (-20, -5, 10, 20);",
+"  yInterpolator .keyValue = new MFFloat (-10, 5, -5, 10);",
 "}",
 "",
 "function set_touchTime (value, time)",
 "{",
-"\tif (value - firstTime > doubleClickInterval)",
-"\t{",
-"\t\tfirstTime = value;",
-"\t\treturn;",
-"\t}",
+"  if (value - firstTime > doubleClickInterval)",
+"  {",
+"    firstTime = value;",
+"    return;",
+"  }",
 "",
-"\tdoubleClickTime = time;",
+"  doubleClickTime = time;",
 "",
-"\tif (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)",
-"\t\taddPoint ();",
+"  if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)",
+"    addPoint ();",
 "",
-"\telse",
-"\t\tremovePoint ();",
+"  else",
+"    removePoint ();",
 "}",
 "",
 "function set_hitPoint (value, time)",
 "{",
-"\thitPoint .x = value .x;",
-"\thitPoint .y = value .y;",
+"  hitPoint .x = value .x;",
+"  hitPoint .y = value .y;",
 "",
-"\tif (! active)",
-"\t\treturn;",
+"  if (!active)",
+"    return;",
 "",
-"\tif (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)",
-"\t\treturn;",
+"  if (pointIndex < 0 || pointIndex >= xInterpolator .keyValue .length)",
+"    return;",
 "",
-"\txInterpolator .keyValue [pointIndex] = hitPoint .x + offset .x;",
-"\tyInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;",
+"  xInterpolator .keyValue [pointIndex] = hitPoint .x + offset .x;",
+"  yInterpolator .keyValue [pointIndex] = hitPoint .y + offset .y;",
 "}",
 "",
 "function set_active (value, time)",
 "{",
-"\tif (! active)",
-"\t\treturn;",
+"  if (!active)",
+"    return;",
 "",
-"\tpointIndex = pick (hitPoint);",
+"  pointIndex = pick (hitPoint);",
 "}",
 "",
 "function pick (hitPoint)",
 "{",
-"\tvar pointIndex = -1;",
+"  const length = xInterpolator .keyValue .length;",
 "",
-"\tfor (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)",
-"\t{",
-"\t\tvar point = new SFVec2f (xInterpolator .keyValue [i],",
-"\t\t                         yInterpolator .keyValue [i]);",
+"  let pointIndex = -1;",
 "",
-"\t\toffset = point .subtract (hitPoint);",
+"  for (let i = 0; i < length; ++ i)",
+"  {",
+"    const point = new SFVec2f (xInterpolator .keyValue [i],",
+"                               yInterpolator .keyValue [i]);",
 "",
-"\t\tif (offset .length () > pointSize)",
-"\t\t\tcontinue;",
+"    offset = point .subtract (hitPoint);",
 "",
-"\t\tpointIndex = i;",
-"\t\tbreak;",
-"\t}",
+"    if (offset .length () > pointSize)",
+"      continue;",
 "",
-"\treturn pointIndex;",
+"    pointIndex = i;",
+"    break;",
+"  }",
+"",
+"  return pointIndex;",
 "}",
 "",
 "function addPoint ()",
 "{",
-"\tvar pointIndex = getAddPointIndex ()",
+"  const pointIndex = getAddPointIndex ()",
 "",
-"\txInterpolator .keyValue .splice (pointIndex, 0, hitPoint .x);",
-"\tyInterpolator .keyValue .splice (pointIndex, 0, hitPoint .y);",
+"  xInterpolator .keyValue .splice (pointIndex, 0, hitPoint .x);",
+"  yInterpolator .keyValue .splice (pointIndex, 0, hitPoint .y);",
 "",
-"\tsetXInterpolatorKey ();",
+"  setXInterpolatorKey ();",
 "}",
 "",
 "function removePoint ()",
 "{",
-"\tvar pointIndex = getRemovePointIndex ()",
+"  const pointIndex = getRemovePointIndex ()",
 "",
-"\txInterpolator .keyValue .splice (pointIndex, 1);",
-"\tyInterpolator .keyValue .splice (pointIndex, 1);",
+"  xInterpolator .keyValue .splice (pointIndex, 1);",
+"  yInterpolator .keyValue .splice (pointIndex, 1);",
 "",
-"\tsetXInterpolatorKey ();",
+"  setXInterpolatorKey ();",
 "}",
 "",
 "function getAddPointIndex ()",
 "{",
-"\tfor (var i = 0, length = xInterpolator .keyValue .length; i < length; ++ i)",
-"\t{",
-"\t\tif (xInterpolator .keyValue [i] > hitPoint .x)",
-"\t\t\tbreak;",
-"\t}",
+"  const length = xInterpolator .keyValue .length;",
 "",
-"\treturn i;",
+"  for (let i = 0; i < length; ++ i)",
+"  {",
+"    if (xInterpolator .keyValue [i] > hitPoint .x)",
+"      return i;",
+"  }",
+"",
+"  return length;",
 "}",
 "",
 "function getRemovePointIndex ()",
 "{",
-"\tvar",
-"\t\tfirst = xInterpolator .keyValue [0];",
-"\t\tlast  = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];",
+"  const",
+"    first = xInterpolator .keyValue [0],",
+"    last  = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];",
 "",
-"\tif (hitPoint .x < first)",
-"\t\treturn 0;",
+"  if (hitPoint .x < first)",
+"    return 0;",
 "",
-"\tif (hitPoint .x > last)",
-"\t\treturn xInterpolator .keyValue .length - 1;",
+"  if (hitPoint .x > last)",
+"    return xInterpolator .keyValue .length - 1;",
 "",
-"\treturn pick (hitPoint);",
+"  return pick (hitPoint);",
 "}",
 "",
 "function setXInterpolatorKey ()",
 "{",
-"\tif (xInterpolator .keyValue .length)",
-"\t{",
-"\t\tvar",
-"\t\t\tfirst       = xInterpolator .keyValue [0];",
-"\t\t\tlast        = xInterpolator .keyValue [xInterpolator .keyValue .length - 1];",
-"\t\t\tdistance    = last - first,",
-"\t\t\ttotalLength = 0,",
-"\t\t\tlengthSoFar = 0;",
+"  if (xInterpolator .keyValue .length)",
+"  {",
+"    const length = xInterpolator .keyValue .length;",
 "",
-"\t\tfor (var i = 1, length = xInterpolator .keyValue .length; i < length; ++ i)",
-"\t\t{",
-"\t\t\tvar point0 = new SFVec2f (xInterpolator .keyValue [i - 1],",
-"\t\t\t\t                       yInterpolator .keyValue [i - 1]);",
+"    let",
+"      totalLength = 0,",
+"      lengthSoFar = 0;",
 "",
-"\t\t\tvar point1 = new SFVec2f (xInterpolator .keyValue [i],",
-"\t\t\t\t                       yInterpolator .keyValue [i]);",
+"    xInterpolator .key .length = length;",
 "",
-"\t\t\ttotalLength += point1 .subtract (point0) .length ();",
-"\t\t}",
+"    for (let i = 1; i < length; ++ i)",
+"    {",
+"      const point0 = new SFVec2f (xInterpolator .keyValue [i - 1],",
+"                                  yInterpolator .keyValue [i - 1]);",
 "",
-"\t\txInterpolator .key [0] = 0;",
+"      const point1 = new SFVec2f (xInterpolator .keyValue [i],",
+"                                  yInterpolator .keyValue [i]);",
 "",
-"\t\tfor (var i = 1, length = xInterpolator .keyValue .length; i < length; ++ i)",
-"\t\t{",
-"\t\t\tvar point0 = new SFVec2f (xInterpolator .keyValue [i - 1],",
-"\t\t\t\t                       yInterpolator .keyValue [i - 1]);",
+"      totalLength += point1 .subtract (point0) .length ();",
+"    }",
 "",
-"\t\t\tvar point1 = new SFVec2f (xInterpolator .keyValue [i],",
-"\t\t\t\t                       yInterpolator .keyValue [i]);",
+"    xInterpolator .key [0] = 0;",
 "",
-"\t\t\tlengthSoFar += point1 .subtract (point0) .length ();",
+"    for (let i = 1; i < length; ++ i)",
+"    {",
+"      const point0 = new SFVec2f (xInterpolator .keyValue [i - 1],",
+"                                  yInterpolator .keyValue [i - 1]);",
 "",
-"\t\t\txInterpolator .key [i] = lengthSoFar / totalLength;",
-"\t\t}",
+"      const point1 = new SFVec2f (xInterpolator .keyValue [i],",
+"                                  yInterpolator .keyValue [i]);",
 "",
-"\t\txInterpolator .key .length = length;",
-"\t}",
-"\telse",
-"\t{",
-"\t\txInterpolator .key .length = 0;",
-"\t}",
+"      lengthSoFar += point1 .subtract (point0) .length ();",
+"",
+"      xInterpolator .key [i] = lengthSoFar / totalLength;",
+"    }",
+"  }",
+"  else",
+"  {",
+"    xInterpolator .key .length = 0;",
+"  }",
 "}",
 ""
             ]
@@ -776,7 +783,7 @@
             "@fromNode": "TrailScript",
             "@fromField": "point_changed",
             "@toNode": "Trail",
-            "@toField": "point"
+            "@toField": "set_point"
           }
         },
         { "ROUTE":
@@ -784,21 +791,21 @@
             "@fromNode": "Timer",
             "@fromField": "cycleTime",
             "@toNode": "Trail",
-            "@toField": "resetTime"
+            "@toField": "set_resetTime"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "XInterpolator",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "YInterpolator",
-            "@toField": "key"
+            "@toField": "set_key"
           }
         },
         { "ROUTE":
           {
             "@fromNode": "XInterpolator",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "PointsScript",
             "@toField": "set_x"
           }
@@ -806,7 +813,7 @@
         { "ROUTE":
           {
             "@fromNode": "YInterpolator",
-            "@fromField": "keyValue",
+            "@fromField": "keyValue_changed",
             "@toNode": "PointsScript",
             "@toField": "set_y"
           }
@@ -816,7 +823,7 @@
             "@fromNode": "Touch",
             "@fromField": "isActive",
             "@toNode": "PickingScript",
-            "@toField": "active"
+            "@toField": "set_active"
           }
         },
         { "ROUTE":
@@ -840,7 +847,7 @@
             "@fromNode": "PickingScript",
             "@fromField": "doubleClickTime",
             "@toNode": "Trail",
-            "@toField": "resetTime"
+            "@toField": "set_resetTime"
           }
         }
       ]
