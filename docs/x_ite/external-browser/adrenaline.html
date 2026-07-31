@@ -3,7 +3,6 @@
   <head>
     <title>Accessing the External Browser</title>
     <meta charset="utf-8"/>
-    <script defer src="https://code.jquery.com/jquery-latest.js"></script>
     <style>
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400");
 
@@ -65,10 +64,10 @@ function init ()
     scene = Browser .currentScene,                      // Get the scene.
     timer = scene .getNamedNode ("SpinAnimationTimer"); // Get box TimeSensor node.
 
-  $("#center")            .on ("click",  center);
-  $("#change-style")      .on ("change", changeStyle);
-  $("#change-background") .on ("change", changeBackground);
-  $("#spin")              .on ("click",  spin);
+  document .getElementById ("center")            .addEventListener ("click",  center);
+  document .getElementById ("change-style")      .addEventListener ("change", changeStyle);
+  document .getElementById ("change-background") .addEventListener ("change", changeBackground);
+  document .getElementById ("spin")              .addEventListener ("click",  spin);
 
   // Connect to cycleTime events.
   timer .addFieldCallback ("check", "cycleTime", value =>
@@ -94,7 +93,7 @@ function changeStyle ()
 
   // Change styles.
 
-  switchNode .whichChoice = parseInt ($("#change-style") .val ());
+  switchNode .whichChoice = parseInt (document .getElementById ("change-style") .value);
 }
 
 function changeBackground ()
@@ -103,7 +102,7 @@ function changeBackground ()
     scene          = Browser .currentScene,              // Get the scene.
     backgroundNode = scene .getNamedNode ("Background"); // Get Background node.
 
-  switch (parseInt ($("#change-background") .val ()))
+  switch (parseInt (document .getElementById ("change-background") .value))
   {
     case 0:
       backgroundNode .skyColor [0] = new X3D .SFColor (1, 1, 1);
