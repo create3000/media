@@ -21,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V3.0.2, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.37, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V2.0.2, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V2.1.18, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Sat, 14 Feb 2026 12:01:22 GMT"
+          "@content": "Fri, 07 Aug 2026 07:46:24 GMT"
         }
       ],
       "component": [
@@ -38,8 +38,12 @@
           "@level": 1
         },
         {
+          "@name": "Networking",
+          "@level": 4
+        },
+        {
           "@name": "Text",
-          "@level": 2
+          "@level": 1
         }
       ]
     },
@@ -64,9 +68,31 @@
                         "@position": [ 0, 0, 16.67313 ]
                       }
                     },
-                    { "Inline":
+                    { "Transform":
                       {
-                        "@url": [ "assets/WikipediaGlobeOnePiece.stl.gz" ]
+                        "@DEF": "Sphere",
+                        "-children": [
+                          { "Shape":
+                            {
+                              "-appearance": { "Appearance":
+                                {
+                                  "-material": { "Material":
+                                    {
+                                      "@diffuseColor": [ 0.9333333, 0.9333333, 0.9333333 ],
+                                      "@specularColor": [ 0.1, 0.1, 0.1 ],
+                                      "@shininess": 0.03220936
+                                    }
+                                  }
+                                }
+                              },
+                              "-geometry": { "InlineGeometry":
+                                {
+                                  "@url": [ "assets/WikipediaGlobeOnePiece.stl.gz" ]
+                                }
+                              }
+                            }
+                          }
+                        ]
                       }
                     }
                   ]

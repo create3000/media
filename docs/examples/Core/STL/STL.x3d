@@ -3,13 +3,14 @@
 <X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
     <component name='Layering' level='1'/>
-    <component name='Text' level='2'/>
+    <component name='Networking' level='4'/>
+    <component name='Text' level='1'/>
     <meta name='created' content='Fri, 27 Jan 2023 00:38:16 GMT'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='x3d-tidy V3.0.2, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sat, 14 Feb 2026 12:01:22 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.37, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.1.18, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Fri, 07 Aug 2026 07:46:24 GMT'/>
   </head>
   <Scene>
     <LayerSet
@@ -21,8 +22,18 @@
         <Viewpoint
             description='Initial View'
             position='0 0 16.67313'/>
-        <Inline
-            url='"assets/WikipediaGlobeOnePiece.stl.gz"'/>
+        <Transform DEF='Sphere'>
+          <Shape>
+            <Appearance>
+              <Material
+                  diffuseColor='0.9333333 0.9333333 0.9333333'
+                  specularColor='0.1 0.1 0.1'
+                  shininess='0.03220936'/>
+            </Appearance>
+            <InlineGeometry
+                url='"assets/WikipediaGlobeOnePiece.stl.gz"'/>
+          </Shape>
+        </Transform>
       </Layer>
       <Layer>
         <Transform DEF='Text'

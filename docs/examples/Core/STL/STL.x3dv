@@ -1,16 +1,17 @@
-#X3D V4.1 utf8 X_ITE V14.0.2
+#X3D V4.1 utf8 X_ITE V16.0.5
 
 PROFILE Interchange
 
 COMPONENT Layering : 1
-COMPONENT Text : 2
+COMPONENT Networking : 4
+COMPONENT Text : 1
 
 META "created" "Fri, 27 Jan 2023 00:38:16 GMT"
 META "comment" "Rise and Shine"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.2, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.2, https://create3000.github.io/sunrize/"
-META "modified" "Sat, 14 Feb 2026 12:01:22 GMT"
+META "generator" "x3d-tidy V3.0.37, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.1.18, https://create3000.github.io/sunrize/"
+META "modified" "Fri, 07 Aug 2026 07:46:24 GMT"
 
 LayerSet {
   activeLayer 1
@@ -25,8 +26,19 @@ LayerSet {
           description "Initial View"
           position 0 0 16.67313
         }
-        Inline {
-          url "assets/WikipediaGlobeOnePiece.stl.gz"
+        DEF Sphere Transform {
+          children Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 0.9333333 0.9333333 0.9333333
+                specularColor 0.1 0.1 0.1
+                shininess 0.03220936
+              }
+            }
+            geometry InlineGeometry {
+              url "assets/WikipediaGlobeOnePiece.stl.gz"
+            }
+          }
         }
       ]
     }
