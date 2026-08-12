@@ -55,7 +55,7 @@ function image ()
 
       process .chdir (folder);
 
-      systemSync (`npx --yes x3d-image -s 1000x562 -a -b white -c LINEAR -m KHR_PBR_NEUTRAL -w CANNON -i '${basename}' -o screenshots/screenshot.png`);
+      systemSync (`npx --yes x3d-image -s 1000x562 -a -i '${basename}' -o screenshots/screenshot.png`);
       systemSync (`magick screenshots/screenshot.png screenshots/screenshot.avif`);
       systemSync (`magick screenshots/screenshot.png -resize 110x62 -quality 99 -define heic:lossless=true -define heic:chroma=444 screenshots/screenshot-small.avif`);
       systemSync (`rm screenshots/screenshot.png`);
