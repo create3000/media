@@ -5,45 +5,67 @@ const path = require ("node:path");
 const fs   = require ("node:fs");
 const { sh, systemSync } = require ("shell-tools");
 
+const
+   examples = path .join (__dirname, "../docs/glTF"),
+   includes = new Set (process .argv .slice (2));
+
 function config ()
 {
    console .log ("Updating docs/glTF/config.json...");
 
    const
-      examples = path .join (__dirname, "../docs/glTF"),
       filePath = path .join (examples, "config.json"),
       config   = require (filePath);
 
-   const tree = config .reduce ((p, c) => [p, Object .assign (p [c .component] ??= { }, { [c .name]: c })] [0], { });
-   const files = sh (`find '${examples}' -maxdepth 1 -mindepth 1 -type d`) .trim () .split ("\n") .sort ();
+   const tree = config .reduce ((p, c) => Object .assign (p, { [c .name]: c }), { });
+   const files = sh (`find '${examples}' -type f  -name "*.gltf" -o -name "*.glb"`) .trim () .split ("\n") .sort ();
 
-   for (const folder of files)
+   for (const filePath of files)
    {
-      const [component, name] = folder .split ("/") .splice (-2, 2);
+      const [name, basename] = filePath .split ("/") .splice (-2, 2);
 
-      tree [component]        ??= { };
-      tree [component] [name] ??= { };
+      const object = tree [name] ??= { };
 
-      const object = tree [component] [name];
-
-      object .name      = name;
-      object .component = component;
+      object .name     = name;
+      object .basename = basename;
    }
 
-   const modified = Object .values (tree) .flatMap (component => Object .values (component))
-      .sort ((a, b) => a .name .localeCompare (b .name))
-      .sort ((a, b) => a .component .localeCompare (b .component));
+   const modified = Object .values (tree)
+      .sort ((a, b) => a .name .localeCompare (b .name));
 
    fs .writeFileSync (filePath, JSON .stringify (modified, null, 2));
 }
 
-function image (folder)
+function image ()
 {
+   const
+      filePath = path .join (examples, "config.json"),
+      config   = require (filePath);
+
+   for (const { name, basename } of config)
+   {
+      if (includes .size && !includes .has (name))
+         continue;
+
+      console .log (name);
+
+      const folder = path .join (examples, name);
+
+      fs .mkdirSync (path .join (folder, "screenshots"), { recursive: true });
+
+      process .chdir (folder);
+
+      systemSync (`npx --yes x3d-image -s 1000x562 -a -b white -c LINEAR -m KHR_PBR_NEUTRAL -w CANNON -i '${basename}' -o screenshots/screenshot.png`);
+      systemSync (`magick screenshots/screenshot.png screenshots/screenshot.avif`);
+      systemSync (`magick screenshots/screenshot.png -resize 110x62 -quality 99 -define heic:lossless=true -define heic:chroma=444 screenshots/screenshot-small.avif`);
+      systemSync (`rm screenshots/screenshot.png`);
+   }
 }
 
 function main ()
 {
    config ();
+   image ();
 }
 
 main ();
