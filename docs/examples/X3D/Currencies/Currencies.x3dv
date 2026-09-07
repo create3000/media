@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V16.0.5
+#X3D V4.1 utf8 X_ITE V16.3.0
 
 PROFILE Interchange
 
@@ -15,9 +15,9 @@ UNIT angle degree 0.017453292519943295
 META "comment" "Rise and Shine"
 META "created" "Sat, 02 Apr 2016 03:25:15 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.37, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.1.18, https://create3000.github.io/sunrize/"
-META "modified" "Sat, 08 Aug 2026 22:34:23 GMT"
+META "generator" "x3d-tidy V3.0.43, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.3.2, https://create3000.github.io/sunrize/"
+META "modified" "Mon, 07 Sep 2026 13:54:57 GMT"
 
 EXTERNPROTO RoundedExtrusion [
   initializeOnly SFBool     beginCap
@@ -33,7 +33,7 @@ EXTERNPROTO RoundedExtrusion [
   inputOutput    SFFloat    cornerRadius
   inputOutput    SFInt32    cornerDimension
 ]
-[ "RoundedExtrusion.x3d#RoundedExtrusion", "file:///home/holger/Projekte/Cobweb/cobweb.js/examples/currencies/RoundedExtrusion.x3d#RoundedExtrusion" ]
+"assets/RoundedExtrusion.x3d#RoundedExtrusion"
 
 WorldInfo {
   title "Currencies"
@@ -1155,7 +1155,7 @@ LayerSet {
                   shininess 0.406061
                 }
                 texture ImageTexture {
-                  url "stripes.png"
+                  url "assets/stripes.png"
                 }
                 textureTransform TextureTransform {
                   rotation 12.5
@@ -1175,7 +1175,7 @@ LayerSet {
                 }
               }
               geometry DEF _34 Text {
-                string [ "USD", "US dollar", "1.1535", "▼" ]
+                string [ "USD", "US dollar", "N/A", "N/A" ]
                 solid TRUE
                 fontStyle FontStyle {
                   style "BOLD"
@@ -1195,7 +1195,7 @@ LayerSet {
                   shininess 0.406061
                 }
                 texture ImageTexture {
-                  url "stripes.png"
+                  url "assets/stripes.png"
                 }
                 textureTransform TextureTransform {
                   rotation 12.5
@@ -1217,7 +1217,7 @@ LayerSet {
                   shininess 0.0306122
                 }
                 texture ImageTexture {
-                  url [ "world.png", "file:///home/holger/Projekte/Cobweb/cobweb.js/examples/currencies/world.png" ]
+                  url "assets/world.png"
                   repeatS FALSE
                   repeatT FALSE
                 }
@@ -1307,7 +1307,7 @@ LayerSet {
                 solid FALSE
                 crossSection [ -1 0, 1 0 ]
                 scale 0.3 0.3
-                spine [ 1.384615 13.22 0, 2.769231 12.76131 0, 4.153846 12.37059 0, 5.538462 12.14974 0, 6.923077 10.89261 0, 8.307693 11.23237 0, 9.692307 10.7567 0, 11.07692 10.41694 0, 12.46154 10.39995 0, 13.84615 10.332 0, 15.23077 11.14743 0, 16.61539 10.99454 0, 18 11.0455 0, 19.38461 10.70574 0, 20.76923 11.16442 0, 22.15385 11.1984 0, 23.53846 11.24936 0, 24.92308 10.65477 0, 26.30769 11.09647 0, 27.69231 11.09647 0, 29.07692 9.397646 0, 30.46154 9.958258 0, 31.84615 9.380657 0, 33.23077 9.346682 0, 34.61538 9.856328 0, 36 10.53586 0, 37.38462 10.31501 0, 38.76923 10.26405 0, 40.15385 8.055575 0, 41.53846 8.157505 0, 42.92308 7.970634 0, 44.30769 6.883388 0, 45.69231 6 0, 47.07692 6.033977 0, 48.46154 7.036282 0, 49.84615 7.121223 0, 51.23077 6.917364 0, 52.61538 6.730494 0, 54 7.002306 0, 55.38462 7.834729 0, 56.76923 7.274117 0, 58.15385 7.579906 0, 59.53846 7.087247 0, 60.92308 7.613882 0, 62.30769 7.528941 0, 63.69231 7.427011 0, 65.07692 7.104235 0, 66.46154 7.121223 0, 67.84615 8.157505 0, 69.23077 7.613882 0, 70.61539 7.460988 0, 72 7.325082 0, 73.38461 7.1552 0, 74.76923 6.883388 0, 76.15385 6.628564 0, 77.53846 6.832423 0, 78.92308 6.458682 0, 80.30769 6.679529 0, 81.69231 8.310399 0, 83.07692 8.463293 0, 84.46154 9.312704 0, 85.84615 8.97294 0, 87.23077 9.635481 0, 88.61539 9.431623 0, 90 9.312704 0 ]
+                spine [ ]
                 cornerDimension 8
               }
             }
@@ -1352,8 +1352,8 @@ LayerSet {
         outputOnly     MFString text_changed
         initializeOnly SFNode   timer DEF _39 TimeSensor {
           cycleInterval 3
-          startTime 1786228398.755
-          stopTime 1786228398.755
+          startTime 1788788431.49
+          stopTime 1788788431.49
         }
         initializeOnly SFNode   easeInEaseOut DEF _40 EaseInEaseOut {
           key [ 0, 1 ]
@@ -1361,20 +1361,11 @@ LayerSet {
         }
         initializeOnly SFNode   interpolator DEF _41 CoordinateInterpolator {
           key [ 0, 1 ]
-          keyValue [ 1.384615 6 0, 2.769231 6 0, 4.153846 6 0, 5.538462 6 0, 6.923077 6 0, 8.307693 6 0, 9.692307 6 0, 11.07692 6 0, 12.46154 6 0, 13.84615 6 0, 15.23077 6 0, 16.61539 6 0, 18 6 0, 19.38461 6 0, 20.76923 6 0, 22.15385 6 0, 23.53846 6 0, 24.92308 6 0, 26.30769 6 0, 27.69231 6 0, 29.07692 6 0, 30.46154 6 0, 31.84615 6 0, 33.23077 6 0, 34.61538 6 0, 36 6 0, 37.38462 6 0, 38.76923 6 0, 40.15385 6 0, 41.53846 6 0, 42.92308 6 0, 44.30769 6 0, 45.69231 6 0, 47.07692 6 0, 48.46154 6 0, 49.84615 6 0, 51.23077 6 0, 52.61538 6 0, 54 6 0, 55.38462 6 0, 56.76923 6 0, 58.15385 6 0, 59.53846 6 0, 60.92308 6 0, 62.30769 6 0, 63.69231 6 0, 65.07692 6 0, 66.46154 6 0, 67.84615 6 0, 69.23077 6 0, 70.61539 6 0, 72 6 0, 73.38461 6 0, 74.76923 6 0, 76.15385 6 0, 77.53846 6 0, 78.92308 6 0, 80.30769 6 0, 81.69231 6 0, 83.07692 6 0, 84.46154 6 0, 85.84615 6 0, 87.23077 6 0, 88.61539 6 0, 90 6 0, 1.384615 42 0, 2.769231 39.71294 0, 4.153846 37.76471 0, 5.538462 36.66353 0, 6.923077 30.39529 0, 8.307693 32.08941 0, 9.692307 29.71765 0, 11.07692 28.02353 0, 12.46154 27.93882 0, 13.84615 27.6 0, 15.23077 31.66588 0, 16.61539 30.90353 0, 18 31.15765 0, 19.38461 29.46353 0, 20.76923 31.75059 0, 22.15385 31.92 0, 23.53846 32.17412 0, 24.92308 29.20941 0, 26.30769 31.41176 0, 27.69231 31.41176 0, 29.07692 22.94118 0, 30.46154 25.73647 0, 31.84615 22.85647 0, 33.23077 22.68706 0, 34.61538 25.22824 0, 36 28.61647 0, 37.38462 27.5153 0, 38.76923 27.26118 0, 40.15385 16.24941 0, 41.53846 16.75765 0, 42.92308 15.82588 0, 44.30769 10.40471 0, 45.69231 6 0, 47.07692 6.169412 0, 48.46154 11.16706 0, 49.84615 11.59059 0, 51.23077 10.57412 0, 52.61538 9.642353 0, 54 10.99765 0, 55.38462 15.14824 0, 56.76923 12.35294 0, 58.15385 13.87765 0, 59.53846 11.42118 0, 60.92308 14.04706 0, 62.30769 13.62353 0, 63.69231 13.11529 0, 65.07692 11.50588 0, 66.46154 11.59059 0, 67.84615 16.75765 0, 69.23077 14.04706 0, 70.61539 13.28471 0, 72 12.60706 0, 73.38461 11.76 0, 74.76923 10.40471 0, 76.15385 9.134118 0, 77.53846 10.15059 0, 78.92308 8.287059 0, 80.30769 9.388235 0, 81.69231 17.52 0, 83.07692 18.28235 0, 84.46154 22.51765 0, 85.84615 20.82353 0, 87.23077 24.12706 0, 88.61539 23.11059 0, 90 22.51765 0 ]
         }
         initializeOnly SFNode   self USE CurrenciesScript
 
         url "ecmascript:
-
-var
-	xml       = null,
-	currency  = \"USD\",
-	numValues = 90,
-	minY      = 6;
-	maxY      = 42;
-
-var currencies = {
+const currencies = {
 	USD: \"US dollar\",
 	JPY: \"Japanese yen\",
 	BGN: \"Bulgarian lev\",
@@ -1411,12 +1402,19 @@ var currencies = {
 	ISK: \"Icelandic krona\",
 };
 
+let
+	xml       = null,
+	currency  = \"USD\",
+	numValues = 90,
+	minY      = 6;
+	maxY      = 42;
+
 function initialize ()
 {
 	interpolator .keyValue .length = 0;
 	interpolator .keyValue .length = numValues * 2;
 
-	for (var i = 0; i < numValues * 2; ++ i)
+	for (let i = 0; i < numValues * 2; ++ i)
 		interpolator .keyValue [i] = new SFVec3f ((i % numValues) + 1, minY, 0);
 
 	set_loadTime ();
@@ -1426,13 +1424,15 @@ async function set_loadTime ()
 {
 	try
 	{
+    throw new Error (\"Need a CORS proxy to fetch ECB data.\");
+
     const url = new URL (\"https://api.allorigins.win/get\");
 
     url .searchParams .set (\"url\", \"https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml\");
 
-		const 
+		const
 			response = await fetch (url),
-			text     = JSON .parse (await response .text ()) .contents;
+			text     = JSON .parse (await response .json ()) .contents;
 
 		xml = new DOMParser () .parseFromString (text, \"text/xml\");
 	}
@@ -1441,7 +1441,7 @@ async function set_loadTime ()
 		console .error (error);
 
 		const
-			url      = new URL (\"eurofxref-hist-90d.xml\", Browser .currentScene .worldURL), // fallback, unused
+			url      = new URL (\"assets/eurofxref-hist-90d.xml\", Browser .currentScene .worldURL), // fallback, unused
 			response = await fetch (url);
 
 		xml = new DOMParser () .parseFromString (await response .text (), \"text/xml\");
@@ -1489,8 +1489,7 @@ function set_ISK (value, time) { set_currency (\"ISK\", time); }
 
 function set_currency (value, time)
 {
-	print (value);
-	print (xml);
+	console .log (value, xml);
 
 	currency = value;
 
@@ -1499,7 +1498,7 @@ function set_currency (value, time)
 
 	// Get new keyValues
 
-	var
+	const
 		keyValues = get_keyValues (currency),
 		minValue  = Math .min .apply (Math, keyValues),
 		maxValue  = Math .max .apply (Math, keyValues)
@@ -1508,9 +1507,9 @@ function set_currency (value, time)
 
 	// Move current keyValues
 
-	for (var i = 0; i < length; ++ i)
+	for (let i = 0; i < length; ++ i)
 	{
-		var x = (i + 1) / length * numValues;
+		const x = (i + 1) / length * numValues;
 
 		if (length2 - length + i >= 0)
 			var y = interpolator .value_changed [length2 - length + i] .y;
@@ -1522,9 +1521,9 @@ function set_currency (value, time)
 
 	// Set new keyValues
 
-	for (var i = 0; i < length; ++ i)
+	for (let i = 0; i < length; ++ i)
 	{
-		var x = (i + 1) / length * numValues;
+		const x = (i + 1) / length * numValues;
 
 		if (maxValue - minValue)
 			var y = ((keyValues [i] || minValue) - minValue) / (maxValue - minValue) * (maxY - minY) + minY;
@@ -1541,7 +1540,7 @@ function set_currency (value, time)
 
 	// Generate text
 
-	var
+	const
 		last1 = keyValues .length - 1,
 		last2 = keyValues .length - 2;
 
@@ -1553,7 +1552,7 @@ function set_currency (value, time)
 
 function get_keyValues (currency)
 {
-	var array = [ ];
+	const array = [ ];
 
 	get_keyValue (xml, array);
 
@@ -1562,9 +1561,9 @@ function get_keyValues (currency)
 
 function get_keyValue (xml, array)
 {
-	for (var i = 0; i < xml .childNodes .length; ++ i)
+	for (let i = 0; i < xml .childNodes .length; ++ i)
 	{
-		var child = xml .childNodes [i];
+		const child = xml .childNodes [i];
 
 		if (child .nodeName == \"Cube\")
 		{
@@ -1594,7 +1593,7 @@ function get_trend (last2, last1)
       }
       DEF EuroSign Transform {
         translation 1.41973 0.373394 0.270001
-        rotation 0 1 0 124.703998283385
+        rotation 0 1 0 267.443991846077
         scale 0.208199 0.208199 0.208199
         children [
           DEF EuroSignAnimation Group {
