@@ -1,263 +1,254 @@
-#X3D V4.0 utf8 X_ITE V11.6.6
+#X3D V4.1 utf8 X_ITE V16.3.1
 
 PROFILE Interchange
 
+COMPONENT Core : 2
+COMPONENT EnvironmentalSensor : 1
+COMPONENT Geometry2D : 1
+COMPONENT Layering : 1
+COMPONENT Scripting : 1
 COMPONENT Shaders : 1
+COMPONENT X_ITE : 1
 
-META "comment" "Rise and Shine"
-META "created" "Wed, 06 Dec 2017 01:50:04 GMT"
+UNIT angle degree 0.017453292519943295
+
 META "creator" "Holger Seelig"
-META "generator" "Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.1.18, https://www.npmjs.com/package/x3d-tidy"
-META "modified" "Mon, 04 Aug 2025 11:21:12 GMT"
+META "created" "Mon, 16 Feb 2026 21:47:35 GMT"
+META "modified" "Sun, 13 Sep 2026 19:33:12 GMT"
+META "generator" "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/"
 
-PROTO BumpShader [
-  inputOutput SFFloat heightScale 1
-  inputOutput SFInt32 bumpMapWidth 1024
-  inputOutput SFInt32 bumpMapHeight 1024
-  inputOutput SFNode  bumpMap NULL
+PROTO WaveDots [
+  inputOutput SFNode appearance NULL
 ]
 {
-  DEF ComposedShader ComposedShader {
-    inputOutput SFFloat heightScale IS heightScale
-    inputOutput SFInt32 bumpMapWidth IS bumpMapWidth
-    inputOutput SFInt32 bumpMapHeight IS bumpMapHeight
-    inputOutput SFNode  bumpMap IS bumpMap
-
-    language "GLSL"
-    parts [
-      DEF VertexShader ShaderPart {
-        url "data:x-shader/x-vertex,#version 300 es
-
-// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
-
-precision highp float;
-precision highp int;
-
-uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
-uniform mat4 x3d_ProjectionMatrix;
-uniform mat4 x3d_ModelViewMatrix;
-uniform mat4 x3d_EyeMatrix;
-
-uniform float x3d_LinewidthScaleFactor;
-
-in vec4 x3d_Color;
-in vec4 x3d_TexCoord0;
-in vec3 x3d_Normal;
-in vec4 x3d_Vertex;
-
-out vec4 C;  // color
-out vec4 t;  // texCoord
-out vec3 vN; // normalized normal vector at this point on geometry
-out vec3 v;  // point on geometry
-
-void
-main ()
-{
-	gl_PointSize = x3d_LinewidthScaleFactor;
-
-	vec4 p = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
-
-	vN = x3d_Normal;
-	t  = x3d_TextureMatrix [0] * x3d_TexCoord0;
-	C  = x3d_Color;
-	v  = p .xyz;
-
-	gl_Position = x3d_ProjectionMatrix * p;
-}
-"
+  Group {
+    children [
+      DEF _2 InstancedShape {
+        appearance IS appearance
+        geometry Rectangle2D {
+          size 1 1
+        }
       }
-      DEF FragmentShader ShaderPart {
-        type "FRAGMENT"
-        url "data:x-shader/x-fragment,#version 300 es
-
-// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
-
-precision highp float;
-precision highp int;
-
-uniform x3d_LightSourceParameters x3d_LightSource [1];
-uniform x3d_MaterialParameters x3d_Material;
-
-uniform sampler2D x3d_Texture2D [1];
-
-uniform mat3 x3d_NormalMatrix;
-
-uniform float     heightScale;
-uniform int       bumpMapWidth;
-uniform int       bumpMapHeight;
-uniform sampler2D bumpMap;
-
-in vec4 C;  // color
-in vec4 t;  // texCoord
-in vec3 vN; // normalized normal vector at this point on geometry
-in vec3 v;  // point on geometry
-
-out vec4 x3d_FragColor;
-
-vec3
-getNormal (in vec3 N)
-{
-	vec2 texCoord = vec2 (t);
-	vec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);
-	vec3 g        = vec3 (0.0, 0.0, heightScale * texture (bumpMap, texCoord) .r);
-	vec3 r        = vec3 (1.0, 0.0, heightScale * texture (bumpMap, texCoord + vec2 (s .x, 0)) .r);
-	vec3 a        = vec3 (0.0, 1.0, heightScale * texture (bumpMap, texCoord + vec2 (0, s .y)) .r);
-
-	vec3 n = cross (r - g, a - g);
-	vec3 x = cross (vec3 (0.0, 1.0, 0.0), N);
-
-	if (dot (x, x) == 0.0)
-		x = vec3 (1.0, 0.0, 0.0);
-
-	vec3 y = cross (N, x);
-
-	n = normalize (n);
-	x = normalize (x);
-	y = normalize (y);
-
-	return x3d_NormalMatrix * mat3 (x, y, N) * n;
-}
-
-vec4
-getTextureColor ()
-{
-  return texture (x3d_Texture2D [0], vec2 (t));
-}
-
-float
-getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
-{
-	float spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));
-
-	if (spotAngle >= cutOffAngle)
-		return 0.0;
-	else if (spotAngle <= beamWidth)
-		return 1.0;
-
-	return (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);
-}
-
-vec4
-getMaterialColor (in x3d_MaterialParameters material)
-{
-  vec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));
-  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
-  float dV = length (v);
-
-  // Calculate diffuseFactor & alpha
-
-  vec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);
-  float alpha         = 1.0 - material .transparency;
-
-  vec4 T = getTextureColor ();
-
-  diffuseFactor  = T .rgb * material .diffuseColor;
-  alpha         *= T .a;
-
-  vec3 ambientTerm = diffuseFactor * material .ambientIntensity;
-
-  // Apply light sources
-
-  vec3 finalColor = vec3 (0.0, 0.0, 0.0);
-
-  for (int i = 0; i < 1; ++ i)
-  {
-    x3d_LightSourceParameters light = x3d_LightSource [i];
-
-    vec3  vL = light .location - v;
-    float dL = length (vL);
-    bool  di = light .type == x3d_DirectionalLight;
-
-    if (di || dL <= light .radius)
-    {
-      vec3 d = light .direction;
-      vec3 c = light .attenuation;
-      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
-      vec3 H = normalize (L + V);             // Specular term
-
-      float lightAngle     = dot (N, L);      // Angle between normal and light ray.
-      vec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);
-      float specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;
-      vec3  specularTerm   = material .specularColor * specularFactor;
-
-      float attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);
-      float spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;
-      float attenuationSpotFactor       = attenuationFactor * spotFactor;
-      vec3  ambientColor                = light .ambientIntensity * ambientTerm;
-      vec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);
-
-      finalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);
-    }
-  }
-
-  finalColor += material .emissiveColor;
-
-  return vec4 (finalColor, alpha);
-}
-
-void
-main ()
-{
-	x3d_FragColor = getMaterialColor (x3d_Material);
-}
-"
+      DEF _3 ProximitySensor {
+        size -1 -1 -1
       }
     ]
   }
+
+  DEF DotsScript Script {
+    inputOutput    SFTime     time 1771279968.488
+    inputOutput    SFRotation rotation -0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151
+    inputOutput    SFInt32    xDimension 50
+    inputOutput    SFInt32    zDimension 50
+    inputOutput    SFFloat    xSpacing 2
+    inputOutput    SFFloat    zSpacing 2
+    initializeOnly SFNode     shape USE _2
+
+    url "ecmascript:
+
+function initialize ()
+{
+   eventsProcessed ();
 }
 
-DEF Gray Background {
-  skyColor 0.2 0.2 0.2
+function eventsProcessed ()
+{
+   const translations = shape .translations;
+
+   translations .length = xDimension * zDimension;
+
+   for (let z = 0, t = 0; z < zDimension; ++ z)
+   {
+      for (let x = 0; x < xDimension; ++ x, ++ t)
+      {
+         const translation = translations [t];
+
+         translation .x = x * xSpacing;
+         translation .y = 0;
+         translation .z = z * zSpacing;
+      }
+   }
+
+   shape .rotations [0] = rotation;
+}
+"
+  }
+
+  ROUTE _3.orientation_changed TO DotsScript.set_rotation
 }
 
-Viewpoint {
-  description "Initial View"
-  position 0.0230918 1.93258 3.8192
-  orientation 0.99991517384209 -0.012669170765548 -0.0030227855452985 5.8147171274952
-  centerOfRotation -0.02 0 0
-}
-
-DEF Box Transform {
-  rotation 0 -1 0 2.16207022523273
-  children [
-    DEF Animation Group {
-      children [
-        DEF AnimationTimer TimeSensor {
-          cycleInterval 12
-          loop TRUE
-          startTime 1512868952.01575
-          stopTime 1512868952.01575
-        }
-        DEF BoxRotationInterpolator OrientationInterpolator {
-          key [ 0, 0.25, 0.5, 0.75, 1 ]
-          keyValue [ 0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.1415925343805, 0 1 0 1.5707964460042, 0 0 1 0 ]
-        }
-      ]
-    }
-    Shape {
-      appearance Appearance {
-        material Material { }
-        texture ImageTexture {
-          url "diffuse.png"
-          repeatS FALSE
-          repeatT FALSE
-        }
-        shaders BumpShader {
-          heightScale -20
-          bumpMapWidth 256
-          bumpMapHeight 256
-          bumpMap DEF _1 ImageTexture {
-            url "depth.png"
-            repeatS FALSE
-            repeatT FALSE
-          }
+PROTO SphereDots [
+  inputOutput SFNode appearance NULL
+]
+{
+  DEF _5 Transform {
+    children [
+      DEF _2 InstancedShape {
+        appearance IS appearance
+        geometry Rectangle2D {
+          size 10 10
         }
       }
-      geometry Box { }
+      DEF _3 ProximitySensor {
+        size -1 -1 -1
+      }
+    ]
+  }
+
+  DEF _4 TimeSensor {
+    cycleInterval 50
+    loop TRUE
+  }
+
+  DEF _1 OrientationInterpolator {
+    key [ 0, 0.25, 0.5, 0.75, 1 ]
+    keyValue [ 0 1 0 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0 ]
+  }
+
+  DEF DotsScript Script {
+    inputOutput    SFRotation rotation -0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151
+    inputOutput    SFInt32    numPoints 100
+    inputOutput    SFFloat    radius 100
+    initializeOnly SFNode     shape USE _2
+
+    url "ecmascript:
+
+function initialize ()
+{
+   shape .translations .length = 0;
+
+   for (let n = 0; n < numPoints; ++ n)
+   {
+      shape .translations .push (new SFVec3f (rand (), rand (), rand ()) .normalize () .multiply (radius));
+   }
+}
+
+function eventsProcessed ()
+{
+   shape .rotations [0] = rotation;
+}
+
+function rand ()
+{
+   return Math .random () * 2 - 1;
+}
+"
+  }
+
+  ROUTE _3.orientation_changed TO DotsScript.set_rotation
+  ROUTE _4.fraction_changed TO _1.set_fraction
+  ROUTE _1.value_changed TO _5.set_rotation
+}
+
+WorldInfo {
+  title "teaser"
+}
+
+LayerSet {
+  activeLayer -1
+  order [ 1, 2, 3 ]
+  layers [
+    DEF Background Layer {
+      children DEF Dark_3 Background { }
+    }
+    DEF Dots Layer {
+      children [
+        Viewpoint {
+          description "Initial View"
+          position 14.79146 -7.528232 -5.746468
+          orientation 0.0166324608058983 -0.998177702773089 0.0580054733122635 148.055974954014
+          centerOfRotation 49 0 49
+        }
+        DEF _4 TimeSensor {
+          loop TRUE
+        }
+        WaveDots {
+          appearance DEF _2 Appearance {
+            shaders DEF NewShader ComposedShader {
+              inputOutput SFTime  time 0
+              inputOutput SFColor color 0.9019608 0.5686275 0.2196078
+              inputOutput SFNode  dot DEF _5 ImageTexture {
+                url "assets/dot.png"
+              }
+
+              language "GLSL"
+              parts [
+                DEF WaveVertexShader ShaderPart {
+                  url "data:x-shader/x-vertex,#version 300 es
+
+precision highp float;
+precision highp int;
+
+uniform mat4 x3d_ProjectionMatrix;
+uniform mat4 x3d_ModelViewMatrix;
+uniform float time;
+
+in mat4 x3d_ParticleMatrix;
+in vec4 x3d_Vertex;
+in vec4 x3d_TexCoord0;
+
+out vec4 texCoord;
+
+const float PI = 3.14159;
+
+void
+main ()
+{
+   texCoord = x3d_TexCoord0;
+
+   float x = float (gl_InstanceID %25 50);
+   float z = float (gl_InstanceID / 50);
+
+   float y = sin (x / 50.0 * PI + time) * 10.0 + cos (z / 50.0 * PI + time) * 10.0;
+
+   gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_ParticleMatrix * vec4 (x3d_Vertex .x, x3d_Vertex .y + y, x3d_Vertex .zw);
+}
+"
+                }
+                DEF WaveFragmentShader ShaderPart {
+                  type "FRAGMENT"
+                  url "data:x-shader/x-fragment,#version 300 es
+
+precision highp float;
+precision highp int;
+
+uniform vec3 color;
+uniform sampler2D dot;
+
+in vec4 texCoord;
+
+out vec4 x3d_FragColor;
+
+void
+main ()
+{
+   x3d_FragColor = texture (dot, texCoord .xy) * vec4 (color, 1.0);
+}
+"
+                }
+              ]
+            }
+            blendMode DEF _6 BlendMode {
+              destinationColorFactor "ONE"
+            }
+          }
+        }
+        Transform {
+          translation 50.06304 -0.008614063 51.14143
+          children SphereDots {
+            appearance DEF _7 Appearance {
+              material UnlitMaterial {
+                emissiveColor 0.9019608 0.5686275 0.2196078
+                emissiveTexture USE _5
+              }
+              blendMode USE _6
+            }
+          }
+        }
+      ]
     }
   ]
 }
 
-ROUTE AnimationTimer.fraction_changed TO BoxRotationInterpolator.set_fraction
-ROUTE BoxRotationInterpolator.value_changed TO Box.set_rotation
+ROUTE _4.elapsedTime TO NewShader.set_time

@@ -1,290 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.0//EN" "http://www.web3d.org/specifications/x3d-4.0.dtd">
-<X3D profile='Interchange' version='4.0' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-4.0.xsd'>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
+<X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
+    <component name='Core' level='2'/>
+    <component name='EnvironmentalSensor' level='1'/>
+    <component name='Geometry2D' level='1'/>
+    <component name='Layering' level='1'/>
+    <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
-    <meta name='comment' content='Rise and Shine'/>
-    <meta name='created' content='Wed, 06 Dec 2017 01:50:04 GMT'/>
+    <component name='X_ITE' level='1'/>
+    <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V1.1.2, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Tue, 17 Oct 2023 08:59:25 GMT'/>
+    <meta name='created' content='Mon, 16 Feb 2026 21:47:35 GMT'/>
+    <meta name='modified' content='Sun, 13 Sep 2026 19:29:46 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
-    <ProtoDeclare name='BumpShader'>
+    <ProtoDeclare name='WaveDots'>
       <ProtoInterface>
-        <field accessType='inputOutput' type='SFFloat' name='heightScale' value='1'/>
-        <field accessType='inputOutput' type='SFInt32' name='bumpMapWidth' value='1024'/>
-        <field accessType='inputOutput' type='SFInt32' name='bumpMapHeight' value='1024'/>
-        <field accessType='inputOutput' type='SFNode' name='bumpMap'/>
+        <field accessType='inputOutput' type='SFNode' name='appearance'/>
       </ProtoInterface>
       <ProtoBody>
-        <ComposedShader DEF='ComposedShader'
-            language='GLSL'>
-          <field accessType='inputOutput' type='SFFloat' name='heightScale'/>
-          <field accessType='inputOutput' type='SFInt32' name='bumpMapWidth'/>
-          <field accessType='inputOutput' type='SFInt32' name='bumpMapHeight'/>
-          <field accessType='inputOutput' type='SFNode' name='bumpMap'/>
-          <IS>
-            <connect nodeField='heightScale' protoField='heightScale'/>
-            <connect nodeField='bumpMapWidth' protoField='bumpMapWidth'/>
-            <connect nodeField='bumpMapHeight' protoField='bumpMapHeight'/>
-            <connect nodeField='bumpMap' protoField='bumpMap'/>
-          </IS>
-          <ShaderPart DEF='VertexShader'>
-<![CDATA[data:x-shader/x-vertex,#version 300 es
+        <Group>
+          <InstancedShape DEF='_2'>
+            <IS>
+              <connect nodeField='appearance' protoField='appearance'/>
+            </IS>
+            <Rectangle2D
+                size='1 1'/>
+          </InstancedShape>
+          <ProximitySensor DEF='_3'
+              size='-1 -1 -1'/>
+        </Group>
+        <Script DEF='DotsScript'>
+          <field accessType='inputOutput' type='SFTime' name='time' value='1771279968.488'/>
+          <field accessType='inputOutput' type='SFRotation' name='rotation' value='-0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151'/>
+          <field accessType='inputOutput' type='SFInt32' name='xDimension' value='50'/>
+          <field accessType='inputOutput' type='SFInt32' name='zDimension' value='50'/>
+          <field accessType='inputOutput' type='SFFloat' name='xSpacing' value='2'/>
+          <field accessType='inputOutput' type='SFFloat' name='zSpacing' value='2'/>
+          <field accessType='initializeOnly' type='SFNode' name='shape'>
+            <InstancedShape USE='_2'/>
+          </field>
+<![CDATA[ecmascript:
 
-// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
+function initialize ()
+{
+   eventsProcessed ();
+}
+
+function eventsProcessed ()
+{
+   const translations = shape .translations;
+
+   translations .length = xDimension * zDimension;
+
+   for (let z = 0, t = 0; z < zDimension; ++ z)
+   {
+      for (let x = 0; x < xDimension; ++ x, ++ t)
+      {
+         const translation = translations [t];
+
+         translation .x = x * xSpacing;
+         translation .y = 0;
+         translation .z = z * zSpacing;
+      }
+   }
+
+   shape .rotations [0] = rotation;
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_3' fromField='orientation_changed' toNode='DotsScript' toField='set_rotation'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <ProtoDeclare name='SphereDots'>
+      <ProtoInterface>
+        <field accessType='inputOutput' type='SFNode' name='appearance'/>
+      </ProtoInterface>
+      <ProtoBody>
+        <Transform DEF='_5'>
+          <InstancedShape DEF='_2'>
+            <IS>
+              <connect nodeField='appearance' protoField='appearance'/>
+            </IS>
+            <Rectangle2D
+                size='10 10'/>
+          </InstancedShape>
+          <ProximitySensor DEF='_3'
+              size='-1 -1 -1'/>
+        </Transform>
+        <TimeSensor DEF='_4'
+            cycleInterval='50'
+            loop='true'/>
+        <OrientationInterpolator DEF='_1'
+            key='0, 0.25, 0.5, 0.75, 1'
+            keyValue='0 1 0 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0'/>
+        <Script DEF='DotsScript'>
+          <field accessType='inputOutput' type='SFRotation' name='rotation' value='-0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151'/>
+          <field accessType='inputOutput' type='SFInt32' name='numPoints' value='100'/>
+          <field accessType='inputOutput' type='SFFloat' name='radius' value='100'/>
+          <field accessType='initializeOnly' type='SFNode' name='shape'>
+            <InstancedShape USE='_2'/>
+          </field>
+<![CDATA[ecmascript:
+
+function initialize ()
+{
+   shape .translations .length = 0;
+
+   for (let n = 0; n < numPoints; ++ n)
+   {
+      shape .translations .push (new SFVec3f (rand (), rand (), rand ()) .normalize () .multiply (radius));
+   }
+}
+
+function eventsProcessed ()
+{
+   shape .rotations [0] = rotation;
+}
+
+function rand ()
+{
+   return Math .random () * 2 - 1;
+}
+]]>
+        </Script>
+        <ROUTE fromNode='_3' fromField='orientation_changed' toNode='DotsScript' toField='set_rotation'/>
+        <ROUTE fromNode='_4' fromField='fraction_changed' toNode='_1' toField='set_fraction'/>
+        <ROUTE fromNode='_1' fromField='value_changed' toNode='_5' toField='set_rotation'/>
+      </ProtoBody>
+    </ProtoDeclare>
+    <WorldInfo
+        title='teaser'>
+      <MetadataSet DEF='Sunrize' containerField='metadata'
+          name='Sunrize'
+          reference='https://create3000.github.io/sunrize/'>
+        <MetadataSet DEF='BrowserFrame'
+            name='BrowserFrame'
+            reference='https://create3000.github.io/sunrize/'>
+          <MetadataBoolean DEF='fixedSize'
+              name='fixedSize'
+              reference='https://create3000.github.io/sunrize/'
+              value='false'/>
+          <MetadataDouble DEF='aspectRatio'
+              name='aspectRatio'
+              reference='https://create3000.github.io/sunrize/'
+              value='16, 5'/>
+          <MetadataString DEF='backgroundColor'
+              name='backgroundColor'
+              reference='https://create3000.github.io/sunrize/'
+              value='""'/>
+        </MetadataSet>
+      </MetadataSet>
+    </WorldInfo>
+    <LayerSet
+        activeLayer='-1'
+        order='1, 2, 3'>
+      <Layer DEF='Background'>
+        <Background DEF='Dark_3'/>
+      </Layer>
+      <Layer DEF='Dots'>
+        <Viewpoint
+            description='Initial View'
+            position='14.79146 -7.528232 -5.746468'
+            orientation='0.0166324608058983 -0.998177702773089 0.0580054733122635 148.055974954014'
+            centerOfRotation='49 0 49'/>
+        <TimeSensor DEF='_4'
+            loop='true'/>
+        <ProtoInstance name='WaveDots'>
+          <fieldValue name='appearance'>
+            <Appearance DEF='_2'>
+              <ComposedShader DEF='NewShader'
+                  language='GLSL'>
+                <field accessType='inputOutput' type='SFTime' name='time' value='193.955999851227'/>
+                <field accessType='inputOutput' type='SFColor' name='color' value='0.9019608 0.5686275 0.2196078'/>
+                <field accessType='inputOutput' type='SFNode' name='dot'>
+                  <ImageTexture DEF='_5'
+                      url='"assets/dot.png"'/>
+                </field>
+                <ShaderPart DEF='WaveVertexShader'>
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
 precision highp float;
 precision highp int;
 
-uniform mat4 x3d_TextureMatrix [x3d_MaxTextures];
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
-uniform mat4 x3d_EyeMatrix;
+uniform float time;
 
-uniform float x3d_LinewidthScaleFactor;
-
-in vec4 x3d_Color;
-in vec4 x3d_TexCoord0;
-in vec3 x3d_Normal;
+in mat4 x3d_ParticleMatrix;
 in vec4 x3d_Vertex;
+in vec4 x3d_TexCoord0;
 
-out vec4 C;  // color
-out vec4 t;  // texCoord
-out vec3 vN; // normalized normal vector at this point on geometry
-out vec3 v;  // point on geometry
+out vec4 texCoord;
+
+const float PI = 3.14159;
 
 void
 main ()
 {
-	gl_PointSize = x3d_LinewidthScaleFactor;
+   texCoord = x3d_TexCoord0;
 
-	vec4 p = x3d_EyeMatrix * x3d_ModelViewMatrix * x3d_Vertex;
+   float x = float (gl_InstanceID %25 50);
+   float z = float (gl_InstanceID / 50);
 
-	vN = x3d_Normal;
-	t  = x3d_TextureMatrix [0] * x3d_TexCoord0;
-	C  = x3d_Color;
-	v  = p .xyz;
+   float y = sin (x / 50.0 * PI + time) * 10.0 + cos (z / 50.0 * PI + time) * 10.0;
 
-	gl_Position = x3d_ProjectionMatrix * p;
+   gl_Position = x3d_ProjectionMatrix * x3d_ModelViewMatrix * x3d_ParticleMatrix * vec4 (x3d_Vertex .x, x3d_Vertex .y + y, x3d_Vertex .zw);
 }
 ]]>
-          </ShaderPart>
-          <ShaderPart DEF='FragmentShader'
-              type='FRAGMENT'>
+                </ShaderPart>
+                <ShaderPart DEF='WaveFragmentShader'
+                    type='FRAGMENT'>
 <![CDATA[data:x-shader/x-fragment,#version 300 es
-
-// -*- Mode: C++; coding: utf-8; tab-width: 3; indent-tabs-mode: tab; c-basic-offset: 3 -*-
 
 precision highp float;
 precision highp int;
 
-uniform x3d_LightSourceParameters x3d_LightSource [1];
-uniform x3d_MaterialParameters x3d_Material;
+uniform vec3 color;
+uniform sampler2D dot;
 
-uniform sampler2D x3d_Texture2D [1];
-
-uniform mat3 x3d_NormalMatrix;
-
-uniform float     heightScale;
-uniform int       bumpMapWidth;
-uniform int       bumpMapHeight;
-uniform sampler2D bumpMap;
-
-in vec4 C;  // color
-in vec4 t;  // texCoord
-in vec3 vN; // normalized normal vector at this point on geometry
-in vec3 v;  // point on geometry
+in vec4 texCoord;
 
 out vec4 x3d_FragColor;
 
-vec3
-getNormal (in vec3 N)
-{
-	vec2 texCoord = vec2 (t);
-	vec2 s        = 1.0 / vec2 (bumpMapWidth, bumpMapHeight);
-	vec3 g        = vec3 (0.0, 0.0, heightScale * texture (bumpMap, texCoord) .r);
-	vec3 r        = vec3 (1.0, 0.0, heightScale * texture (bumpMap, texCoord + vec2 (s .x, 0)) .r);
-	vec3 a        = vec3 (0.0, 1.0, heightScale * texture (bumpMap, texCoord + vec2 (0, s .y)) .r);
-
-	vec3 n = cross (r - g, a - g);
-	vec3 x = cross (vec3 (0.0, 1.0, 0.0), N);
-
-	if (dot (x, x) == 0.0)
-		x = vec3 (1.0, 0.0, 0.0);
-
-	vec3 y = cross (N, x);
-
-	n = normalize (n);
-	x = normalize (x);
-	y = normalize (y);
-
-	return x3d_NormalMatrix * mat3 (x, y, N) * n;
-}
-
-vec4
-getTextureColor ()
-{
-  return texture (x3d_Texture2D [0], vec2 (t));
-}
-
-float
-getSpotFactor (in float cutOffAngle, in float beamWidth, in vec3 L, in vec3 d)
-{
-	float spotAngle = acos (clamp (dot (-L, d), -1.0, 1.0));
-
-	if (spotAngle >= cutOffAngle)
-		return 0.0;
-	else if (spotAngle <= beamWidth)
-		return 1.0;
-
-	return (spotAngle - cutOffAngle) / (beamWidth - cutOffAngle);
-}
-
-vec4
-getMaterialColor (in x3d_MaterialParameters material)
-{
-  vec3  N  = getNormal (normalize (gl_FrontFacing ? vN : -vN));
-  vec3  V  = normalize (-v); // normalized vector from point on geometry to viewer's position
-  float dV = length (v);
-
-  // Calculate diffuseFactor & alpha
-
-  vec3  diffuseFactor = vec3 (1.0, 1.0, 1.0);
-  float alpha         = 1.0 - material .transparency;
-
-  vec4 T = getTextureColor ();
-
-  diffuseFactor  = T .rgb * material .diffuseColor;
-  alpha         *= T .a;
-
-  vec3 ambientTerm = diffuseFactor * material .ambientIntensity;
-
-  // Apply light sources
-
-  vec3 finalColor = vec3 (0.0, 0.0, 0.0);
-
-  for (int i = 0; i < 1; ++ i)
-  {
-    x3d_LightSourceParameters light = x3d_LightSource [i];
-
-    vec3  vL = light .location - v;
-    float dL = length (vL);
-    bool  di = light .type == x3d_DirectionalLight;
-
-    if (di || dL <= light .radius)
-    {
-      vec3 d = light .direction;
-      vec3 c = light .attenuation;
-      vec3 L = di ? -d : normalize (vL);      // Normalized vector from point on geometry to light source i position.
-      vec3 H = normalize (L + V);             // Specular term
-
-      float lightAngle     = dot (N, L);      // Angle between normal and light ray.
-      vec3  diffuseTerm    = diffuseFactor * clamp (lightAngle, 0.0, 1.0);
-      float specularFactor = material .shininess > 0.0 ? pow (max (dot (N, H), 0.0), material .shininess * 128.0) : 1.0;
-      vec3  specularTerm   = material .specularColor * specularFactor;
-
-      float attenuationFactor           = di ? 1.0 : 1.0 / max (c [0] + c [1] * dL + c [2] * (dL * dL), 1.0);
-      float spotFactor                  = light .type == x3d_SpotLight ? getSpotFactor (light .cutOffAngle, light .beamWidth, L, d) : 1.0;
-      float attenuationSpotFactor       = attenuationFactor * spotFactor;
-      vec3  ambientColor                = light .ambientIntensity * ambientTerm;
-      vec3  ambientDiffuseSpecularColor = ambientColor + light .intensity * (diffuseTerm + specularTerm);
-
-      finalColor += attenuationSpotFactor * (light .color * ambientDiffuseSpecularColor);
-    }
-  }
-
-  finalColor += material .emissiveColor;
-
-  return vec4 (finalColor, alpha);
-}
-
 void
 main ()
 {
-	x3d_FragColor = getMaterialColor (x3d_Material);
+   x3d_FragColor = texture (dot, texCoord .xy) * vec4 (color, 1.0);
 }
 ]]>
-          </ShaderPart>
-        </ComposedShader>
-      </ProtoBody>
-    </ProtoDeclare>
-    <Background DEF='Gray'
-        skyColor='0.2 0.2 0.2'/>
-    <Viewpoint
-        description='Initial View'
-        position='0.0230918 1.93258 3.8192'
-        orientation='0.99991517384209 -0.012669170765548 -0.0030227855452985 5.8147171274952'
-        centerOfRotation='-0.02 0 0'/>
-    <Transform DEF='Box'
-        rotation='0 1 0 0.904647761315522'>
-      <Group DEF='Animation'>
-        <MetadataSet DEF='Animation_1' containerField='metadata'
-            name='Animation'
-            reference='http://titania.create3000.de'>
-          <MetadataInteger DEF='duration'
-              name='duration'
-              reference='http://titania.create3000.de'
-              value='120'/>
-          <MetadataInteger DEF='frameRate'
-              name='frameRate'
-              reference='http://titania.create3000.de'
-              value='10'/>
-        </MetadataSet>
-        <TimeSensor DEF='AnimationTimer'
-            cycleInterval='12'
-            loop='true'
-            startTime='1512868952.01575'
-            stopTime='1512868952.01575'/>
-        <OrientationInterpolator DEF='BoxRotationInterpolator'
-            key='0, 0.25, 0.5, 0.75, 1'
-            keyValue='0 0 1 0, 0 -1 0 1.5707963267949, 0 -1 0 3.1415925343805, 0 1 0 1.5707964460042, 0 0 1 0'>
-          <MetadataSet DEF='Interpolator' containerField='metadata'
-              name='Interpolator'
-              reference='http://titania.create3000.de'>
-            <MetadataInteger DEF='key'
-                name='key'
-                reference='http://titania.create3000.de'
-                value='0, 30, 60, 90, 120'/>
-            <MetadataDouble DEF='keyValue'
-                name='keyValue'
-                reference='http://titania.create3000.de'
-                value='0, 0, 1, 0, 0, -1, 0, 1.5707963267949, 0, -1, 0, 3.1415925343805, 0, 1, 0, 1.5707964460042, 0, 0, 1, 0'/>
-            <MetadataString DEF='keyType'
-                name='keyType'
-                reference='http://titania.create3000.de'
-                value='"LINEAR", "LINEAR", "LINEAR", "LINEAR", "LINEAR"'/>
-            <MetadataInteger DEF='keySize'
-                name='keySize'
-                reference='http://titania.create3000.de'
-                value='1'/>
-          </MetadataSet>
-        </OrientationInterpolator>
-      </Group>
-      <Shape>
-        <Appearance>
-          <Material/>
-          <ImageTexture
-              url='"diffuse.png"'
-              repeatS='false'
-              repeatT='false'/>
-          <ProtoInstance name='BumpShader' containerField='shaders'>
-            <fieldValue name='heightScale' value='-20'/>
-            <fieldValue name='bumpMapWidth' value='256'/>
-            <fieldValue name='bumpMapHeight' value='256'/>
-            <fieldValue name='bumpMap'>
-              <ImageTexture DEF='_1'
-                  url='"depth.png"'
-                  repeatS='false'
-                  repeatT='false'/>
+                </ShaderPart>
+              </ComposedShader>
+              <BlendMode DEF='_6'
+                  destinationColorFactor='ONE'/>
+            </Appearance>
+          </fieldValue>
+        </ProtoInstance>
+        <Transform
+            translation='50.06304 -0.008614063 51.14143'>
+          <ProtoInstance name='SphereDots'>
+            <fieldValue name='appearance'>
+              <Appearance DEF='_7'>
+                <UnlitMaterial
+                    emissiveColor='0.9019608 0.5686275 0.2196078'>
+                  <ImageTexture USE='_5' containerField='emissiveTexture'/>
+                </UnlitMaterial>
+                <BlendMode USE='_6'/>
+              </Appearance>
             </fieldValue>
           </ProtoInstance>
-        </Appearance>
-        <Box/>
-      </Shape>
-    </Transform>
-    <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='BoxRotationInterpolator' toField='set_fraction'/>
-    <ROUTE fromNode='BoxRotationInterpolator' fromField='value_changed' toNode='Box' toField='set_rotation'/>
+        </Transform>
+      </Layer>
+    </LayerSet>
+    <ROUTE fromNode='_4' fromField='elapsedTime' toNode='NewShader' toField='set_time'/>
   </Scene>
 </X3D>
