@@ -1,15 +1,15 @@
-#X3D V4.0 utf8 X_ITE V11.5.8
+#X3D V4.1 utf8 X_ITE V16.3.1
 
 PROFILE Interchange
 
 COMPONENT Scripting : 1
 COMPONENT Texturing3D : 2
-COMPONENT VolumeRendering : 4
+COMPONENT VolumeRendering : 1
 
 META "title" "ProjectionMaxVentricles.x3d"
 META "description" "Volume rendering of a segmented brain dataset, rendered with maximum projection render style"
 META "created" "29 February 2011"
-META "modified" "Wed, 14 May 2025 18:47:23 GMT"
+META "modified" "Sun, 13 Sep 2026 20:48:57 GMT"
 META "creator" "Andrew Wood, Nicholas Polys: Virginia Tech"
 META "creator" "Holger Seelig"
 META "reference" "ProjectionMaxVentricles.x3d"
@@ -19,10 +19,10 @@ META "reference" "Run the download target in the Ant build.xml file to install r
 META "reference" "build.xml"
 META "reference" "Volume Data obtained from http://www.volvis.org"
 META "identifier" "http://www.web3d.org/x3d/content/examples/Basic/VolumeRendering/ProjectionMaxVentricles.x3d"
+META "generator" "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "X3D-Edit 3.3, https://savage.nps.edu/X3D-Edit"
 META "generator" "Nrrd conversion utility located at http://teem.sourceforge.net/unrrdu"
 META "generator" "Sunrize X3D Editor V1.8.7, https://create3000.github.io/sunrize/"
-META "generator" "x3d-tidy V2.1.3, https://www.npmjs.com/package/x3d-tidy"
 META "license" "../license.html"
 
 Viewpoint {
@@ -38,7 +38,7 @@ VolumeData {
   dimensions 2.304 2.304 1.116
   renderStyle ProjectionVolumeStyle { }
   voxels ImageTexture3D {
-    url "assets/mri_ventricles.nrrd"
+    url "assets/mri_ventricles.nrrd.gz"
   }
 }
 
