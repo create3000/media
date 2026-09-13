@@ -17,9 +17,9 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Thu, 24 Dec 2015 10:40:45 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 May 2026 22:24:31 GMT'/>
+    <meta name='generator' content='x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Sun, 13 Sep 2026 16:45:46 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFNode' url='"assets/SFNode.x3d#SFNode"'>
@@ -203,28 +203,29 @@
                 <ImageTexture containerField='bottomTexture'
                     url='"assets/WideOcean/WideOcean-bottom.jpg"'/>
               </ComposedCubeMapTexture>
-              <ComposedShader DEF='CobwebWaterShader'
+              <ComposedShader DEF='WaterShader'
                   language='GLSL'>
                 <field accessType='inputOnly' type='SFTime' name='set_time'/>
                 <field accessType='inputOutput' type='SFVec3f' name='position' value='45.9028 5.15364 57.5263'/>
                 <field accessType='inputOutput' type='MFFloat' name='amplitude' value='0.0281661, 0.0226434, 0.226434, 0.104933, 0.552277'/>
                 <field accessType='inputOutput' type='MFFloat' name='frequency' value='1.81667, 1.29885, 0.276864, 0.686006, 0.120633'/>
-                <field accessType='inputOutput' type='MFVec2f' name='direction' value='0.0885355 0.643347, 0.7356986 0.6366277, 0.8556576 0.2409928, 0.0949584 0.2065234, 0.8857434 0.4126358'/>
+                <field accessType='inputOutput' type='MFVec2f' name='direction' value='0.174208 0.4867307, 0.9356737 0.5033161, 0.7042889 0.7166258, 0.7233501 0.9033141, 0.705256 0.02444695'/>
                 <field accessType='inputOutput' type='MFFloat' name='speed' value='1.31383, 1.75177, 8.75887, 3.50355, 17.5177'/>
                 <ShaderPart DEF='WaterVertex'>
-<![CDATA[data:x-shader/x-vertex,
+<![CDATA[data:x-shader/x-vertex,#version 300 es
 
 precision highp float;
 precision highp int;
+precision highp samplerCube;
 
 uniform mat3 x3d_NormalMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat4 x3d_EyeMatrix;
 
-attribute vec4 x3d_Vertex;
+in vec4 x3d_Vertex;
 
-#define WAVE_MAX 8
+#define WAVE_MAX 5
 
 uniform float set_time;
 uniform vec3  position;
@@ -233,11 +234,7 @@ uniform float frequency [WAVE_MAX];
 uniform float speed [WAVE_MAX];
 uniform vec2  direction [WAVE_MAX];
 
-varying vec3 texCoord;
-
-#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-varying float depth;
-#endif
+out vec3 texCoord;
 
 vec2 offset [WAVE_MAX];
 
@@ -311,13 +308,11 @@ main ()
 		offset [i] = normalize (direction [i]) * set_time * speed [i];
 
 	vec4 vertex = x3d_Vertex;
-	vec2 pos    = vec2 (vertex .x, vertex .z);
-	vertex .y   = getWaveHeight (pos);
-	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;
+	vec2 pos    = vertex .xz;
 
-	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-	depth = 1.0 + gl_Position .w;
-	#endif
+	vertex .y = getWaveHeight (pos);
+
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;
 
 	vec3 eye    = position - vertex .xyz / vertex .w;
 	vec3 normal = getWaveNormal (pos);
@@ -326,35 +321,24 @@ main ()
                 </ShaderPart>
                 <ShaderPart DEF='WaterFragment'
                     type='FRAGMENT'>
-<![CDATA[data:x-shader/x-fragment,
-
-#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-#extension GL_EXT_frag_depth : enable
-#endif
+<![CDATA[data:x-shader/x-fragment,#version 300 es
 
 precision highp float;
 precision highp int;
+precision highp samplerCube;
 
 uniform x3d_MaterialParameters x3d_Material;
 uniform samplerCube x3d_TextureCube [x3d_MaxTextures];
 
-varying vec3 texCoord;
+in vec3 texCoord;
 
-#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-uniform float x3d_LogarithmicFarFactor;
-varying float depth;
-#endif
+out vec4 x3d_FragColor;
 
 void
 main ()
 {
-	vec3 color   = vec3 (textureCube (x3d_TextureCube [0], texCoord));
-	gl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);
-
-	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-	//http://outerra.blogspot.com/2013/07/logarithmic-depth-buffer-optimizations.html
-	gl_FragDepthEXT = log2 (depth) * x3d_LogarithmicFarFactor * 0.5;
-	#endif
+	vec3 color    = vec3 (texture (x3d_TextureCube [0], texCoord));
+	x3d_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);
 }
 ]]>
                 </ShaderPart>
@@ -1269,7 +1253,7 @@ function set_touchTime (value, time)
         </Group>
       </Layer>
     </LayerSet>
-    <ROUTE fromNode='_17' fromField='position_changed' toNode='CobwebWaterShader' toField='set_position'/>
+    <ROUTE fromNode='_17' fromField='position_changed' toNode='WaterShader' toField='set_position'/>
     <ROUTE fromNode='_65' fromField='translation_changed' toNode='AmplitudeScript' toField='set_translation'/>
     <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='AmplitudeScript' toField='set_translation'/>
     <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='_65' toField='set_offset'/>
@@ -1278,22 +1262,22 @@ function set_touchTime (value, time)
     <ROUTE fromNode='pointSizeScriptSet_translationInterpolator' fromField='value_changed' toNode='Rectangle2D_64' toField='set_translation'/>
     <ROUTE fromNode='AmplitudeScript' fromField='string_changed' toNode='_70' toField='set_string'/>
     <ROUTE fromNode='_69' fromField='touchTime' toNode='ToggleAmplitudeAnim' toField='set_touchTime'/>
-    <ROUTE fromNode='AmplitudeScript' fromField='value_changed' toNode='CobwebWaterShader' toField='set_amplitude'/>
+    <ROUTE fromNode='AmplitudeScript' fromField='value_changed' toNode='WaterShader' toField='set_amplitude'/>
     <ROUTE fromNode='_73' fromField='translation_changed' toNode='FequencyScript' toField='set_translation'/>
     <ROUTE fromNode='_73' fromField='translation_changed' toNode='Rectangle2D_72' toField='set_translation'/>
     <ROUTE fromNode='_75' fromField='touchTime' toNode='ToggleFequencyAnim' toField='set_touchTime'/>
     <ROUTE fromNode='FequencyScript' fromField='string_changed' toNode='_76' toField='set_string'/>
-    <ROUTE fromNode='FequencyScript' fromField='value_changed' toNode='CobwebWaterShader' toField='set_frequency'/>
+    <ROUTE fromNode='FequencyScript' fromField='value_changed' toNode='WaterShader' toField='set_frequency'/>
     <ROUTE fromNode='_80' fromField='translation_changed' toNode='SpeedScript' toField='set_translation'/>
     <ROUTE fromNode='_80' fromField='translation_changed' toNode='Rectangle2D_79' toField='set_translation'/>
     <ROUTE fromNode='_82' fromField='touchTime' toNode='ToggleSpeedAnim' toField='set_touchTime'/>
     <ROUTE fromNode='SpeedScript' fromField='string_changed' toNode='_77' toField='set_string'/>
-    <ROUTE fromNode='SpeedScript' fromField='value_changed' toNode='CobwebWaterShader' toField='set_speed'/>
+    <ROUTE fromNode='SpeedScript' fromField='value_changed' toNode='WaterShader' toField='set_speed'/>
     <ROUTE fromNode='_88' fromField='translation_changed' toNode='Rectangle2D_87' toField='set_translation'/>
     <ROUTE fromNode='_88' fromField='translation_changed' toNode='TransparencyScript' toField='set_translation'/>
     <ROUTE fromNode='_90' fromField='touchTime' toNode='ToggleTransparencyAnim' toField='set_touchTime'/>
     <ROUTE fromNode='TransparencyScript' fromField='string_changed' toNode='_85' toField='set_string'/>
-    <ROUTE fromNode='DirectionsScript' fromField='directions_changed' toNode='CobwebWaterShader' toField='set_direction'/>
+    <ROUTE fromNode='DirectionsScript' fromField='directions_changed' toNode='WaterShader' toField='set_direction'/>
     <ROUTE fromNode='_84' fromField='touchTime' toNode='DirectionsScript' toField='set_triggerTime'/>
     <ROUTE fromNode='TransparencyScript' fromField='value_changed' toNode='_19' toField='set_transparency'/>
     <ROUTE fromNode='_35' fromField='touchTime' toNode='_36' toField='set_triggerTime'/>
@@ -1310,6 +1294,6 @@ function set_touchTime (value, time)
     <ROUTE fromNode='_46' fromField='value_changed' toNode='_18' toField='set_texture'/>
     <ROUTE fromNode='_39' fromField='touchTime' toNode='_40' toField='set_triggerTime'/>
     <ROUTE fromNode='_40' fromField='value_changed' toNode='_18' toField='set_texture'/>
-    <ROUTE fromNode='Timer' fromField='elapsedTime' toNode='CobwebWaterShader' toField='set_time'/>
+    <ROUTE fromNode='Timer' fromField='elapsedTime' toNode='WaterShader' toField='set_time'/>
   </Scene>
 </X3D>

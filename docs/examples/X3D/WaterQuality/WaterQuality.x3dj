@@ -21,15 +21,15 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Thu, 07 May 2026 22:24:31 GMT"
+          "@content": "Sun, 13 Sep 2026 16:45:46 GMT"
         }
       ],
       "component": [
@@ -512,26 +512,27 @@
                                   "-shaders": [
                                     { "ComposedShader":
                                       {
-                                        "@DEF": "CobwebWaterShader",
+                                        "@DEF": "WaterShader",
                                         "@language": "GLSL",
                                         "-parts": [
                                           { "ShaderPart":
                                             {
                                               "@DEF": "WaterVertex",
                                               "#sourceCode": [
-"data:x-shader/x-vertex,",
+"data:x-shader/x-vertex,#version 300 es",
 "",
 "precision highp float;",
 "precision highp int;",
+"precision highp samplerCube;",
 "",
 "uniform mat3 x3d_NormalMatrix;",
 "uniform mat4 x3d_ProjectionMatrix;",
 "uniform mat4 x3d_ModelViewMatrix;",
 "uniform mat4 x3d_EyeMatrix;",
 "",
-"attribute vec4 x3d_Vertex;",
+"in vec4 x3d_Vertex;",
 "",
-"#define WAVE_MAX 8",
+"#define WAVE_MAX 5",
 "",
 "uniform float set_time;",
 "uniform vec3  position;",
@@ -540,11 +541,7 @@
 "uniform float speed [WAVE_MAX];",
 "uniform vec2  direction [WAVE_MAX];",
 "",
-"varying vec3 texCoord;",
-"",
-"#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
-"varying float depth;",
-"#endif",
+"out vec3 texCoord;",
 "",
 "vec2 offset [WAVE_MAX];",
 "",
@@ -618,13 +615,11 @@
 "\t\toffset [i] = normalize (direction [i]) * set_time * speed [i];",
 "",
 "\tvec4 vertex = x3d_Vertex;",
-"\tvec2 pos    = vec2 (vertex .x, vertex .z);",
-"\tvertex .y   = getWaveHeight (pos);",
-"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;",
+"\tvec2 pos    = vertex .xz;",
 "",
-"\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
-"\tdepth = 1.0 + gl_Position .w;",
-"\t#endif",
+"\tvertex .y = getWaveHeight (pos);",
+"",
+"\tgl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;",
 "",
 "\tvec3 eye    = position - vertex .xyz / vertex .w;",
 "\tvec3 normal = getWaveNormal (pos);",
@@ -638,35 +633,24 @@
                                               "@DEF": "WaterFragment",
                                               "@type": "FRAGMENT",
                                               "#sourceCode": [
-"data:x-shader/x-fragment,",
-"",
-"#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
-"#extension GL_EXT_frag_depth : enable",
-"#endif",
+"data:x-shader/x-fragment,#version 300 es",
 "",
 "precision highp float;",
 "precision highp int;",
+"precision highp samplerCube;",
 "",
 "uniform x3d_MaterialParameters x3d_Material;",
 "uniform samplerCube x3d_TextureCube [x3d_MaxTextures];",
 "",
-"varying vec3 texCoord;",
+"in vec3 texCoord;",
 "",
-"#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
-"uniform float x3d_LogarithmicFarFactor;",
-"varying float depth;",
-"#endif",
+"out vec4 x3d_FragColor;",
 "",
 "void",
 "main ()",
 "{",
-"\tvec3 color   = vec3 (textureCube (x3d_TextureCube [0], texCoord));",
-"\tgl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);",
-"",
-"\t#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER",
-"\t//http://outerra.blogspot.com/2013/07/logarithmic-depth-buffer-optimizations.html",
-"\tgl_FragDepthEXT = log2 (depth) * x3d_LogarithmicFarFactor * 0.5;",
-"\t#endif",
+"\tvec3 color    = vec3 (texture (x3d_TextureCube [0], texCoord));",
+"\tx3d_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);",
 "}",
 ""
                                               ]
@@ -701,7 +685,7 @@
                                             "@accessType": "inputOutput",
                                             "@type": "MFVec2f",
                                             "@name": "direction",
-                                            "@value": [ 0.0885355, 0.643347, 0.7356986, 0.6366277, 0.8556576, 0.2409928, 0.0949584, 0.2065234, 0.8857434, 0.4126358 ]
+                                            "@value": [ 0.174208, 0.4867307, 0.9356737, 0.5033161, 0.7042889, 0.7166258, 0.7233501, 0.9033141, 0.705256, 0.02444695 ]
                                           },
                                           {
                                             "@accessType": "inputOutput",
@@ -2819,7 +2803,7 @@
           {
             "@fromNode": "_17",
             "@fromField": "position_changed",
-            "@toNode": "CobwebWaterShader",
+            "@toNode": "WaterShader",
             "@toField": "set_position"
           }
         },
@@ -2891,7 +2875,7 @@
           {
             "@fromNode": "AmplitudeScript",
             "@fromField": "value_changed",
-            "@toNode": "CobwebWaterShader",
+            "@toNode": "WaterShader",
             "@toField": "set_amplitude"
           }
         },
@@ -2931,7 +2915,7 @@
           {
             "@fromNode": "FequencyScript",
             "@fromField": "value_changed",
-            "@toNode": "CobwebWaterShader",
+            "@toNode": "WaterShader",
             "@toField": "set_frequency"
           }
         },
@@ -2971,7 +2955,7 @@
           {
             "@fromNode": "SpeedScript",
             "@fromField": "value_changed",
-            "@toNode": "CobwebWaterShader",
+            "@toNode": "WaterShader",
             "@toField": "set_speed"
           }
         },
@@ -3011,7 +2995,7 @@
           {
             "@fromNode": "DirectionsScript",
             "@fromField": "directions_changed",
-            "@toNode": "CobwebWaterShader",
+            "@toNode": "WaterShader",
             "@toField": "set_direction"
           }
         },
@@ -3147,7 +3131,7 @@
           {
             "@fromNode": "Timer",
             "@fromField": "elapsedTime",
-            "@toNode": "CobwebWaterShader",
+            "@toNode": "WaterShader",
             "@toField": "set_time"
           }
         }

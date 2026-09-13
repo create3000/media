@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V15.0.0
+#X3D V4.1 utf8 X_ITE V16.3.1
 
 PROFILE Interchange
 
@@ -20,9 +20,9 @@ UNIT angle degree 0.0174532925199433
 META "comment" "Rise and Shine"
 META "created" "Thu, 24 Dec 2015 10:40:45 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
-META "modified" "Thu, 07 May 2026 22:24:31 GMT"
+META "generator" "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/"
+META "modified" "Sun, 13 Sep 2026 16:45:46 GMT"
 
 EXTERNPROTO SFNode [
   inputOnly   SFTime set_triggerTime
@@ -244,30 +244,31 @@ LayerSet {
                     url "assets/WideOcean/WideOcean-bottom.jpg"
                   }
                 }
-                shaders DEF CobwebWaterShader ComposedShader {
+                shaders DEF WaterShader ComposedShader {
                   inputOnly   SFTime  set_time
                   inputOutput SFVec3f position 45.9028 5.15364 57.5263
                   inputOutput MFFloat amplitude [ 0.0281661, 0.0226434, 0.226434, 0.104933, 0.552277 ]
                   inputOutput MFFloat frequency [ 1.81667, 1.29885, 0.276864, 0.686006, 0.120633 ]
-                  inputOutput MFVec2f direction [ 0.0885355 0.643347, 0.7356986 0.6366277, 0.8556576 0.2409928, 0.0949584 0.2065234, 0.8857434 0.4126358 ]
+                  inputOutput MFVec2f direction [ 0.174208 0.4867307, 0.9356737 0.5033161, 0.7042889 0.7166258, 0.7233501 0.9033141, 0.705256 0.02444695 ]
                   inputOutput MFFloat speed [ 1.31383, 1.75177, 8.75887, 3.50355, 17.5177 ]
 
                   language "GLSL"
                   parts [
                     DEF WaterVertex ShaderPart {
-                      url "data:x-shader/x-vertex,
+                      url "data:x-shader/x-vertex,#version 300 es
 
 precision highp float;
 precision highp int;
+precision highp samplerCube;
 
 uniform mat3 x3d_NormalMatrix;
 uniform mat4 x3d_ProjectionMatrix;
 uniform mat4 x3d_ModelViewMatrix;
 uniform mat4 x3d_EyeMatrix;
 
-attribute vec4 x3d_Vertex;
+in vec4 x3d_Vertex;
 
-#define WAVE_MAX 8
+#define WAVE_MAX 5
 
 uniform float set_time;
 uniform vec3  position;
@@ -276,11 +277,7 @@ uniform float frequency [WAVE_MAX];
 uniform float speed [WAVE_MAX];
 uniform vec2  direction [WAVE_MAX];
 
-varying vec3 texCoord;
-
-#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-varying float depth;
-#endif
+out vec3 texCoord;
 
 vec2 offset [WAVE_MAX];
 
@@ -354,13 +351,11 @@ main ()
 		offset [i] = normalize (direction [i]) * set_time * speed [i];
 
 	vec4 vertex = x3d_Vertex;
-	vec2 pos    = vec2 (vertex .x, vertex .z);
-	vertex .y   = getWaveHeight (pos);
-	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;
+	vec2 pos    = vertex .xz;
 
-	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-	depth = 1.0 + gl_Position .w;
-	#endif
+	vertex .y = getWaveHeight (pos);
+
+	gl_Position = x3d_ProjectionMatrix * x3d_EyeMatrix * x3d_ModelViewMatrix * vertex;
 
 	vec3 eye    = position - vertex .xyz / vertex .w;
 	vec3 normal = getWaveNormal (pos);
@@ -369,35 +364,24 @@ main ()
                     }
                     DEF WaterFragment ShaderPart {
                       type "FRAGMENT"
-                      url "data:x-shader/x-fragment,
-
-#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-#extension GL_EXT_frag_depth : enable
-#endif
+                      url "data:x-shader/x-fragment,#version 300 es
 
 precision highp float;
 precision highp int;
+precision highp samplerCube;
 
 uniform x3d_MaterialParameters x3d_Material;
 uniform samplerCube x3d_TextureCube [x3d_MaxTextures];
 
-varying vec3 texCoord;
+in vec3 texCoord;
 
-#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-uniform float x3d_LogarithmicFarFactor;
-varying float depth;
-#endif
+out vec4 x3d_FragColor;
 
 void
 main ()
 {
-	vec3 color   = vec3 (textureCube (x3d_TextureCube [0], texCoord));
-	gl_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);
-
-	#ifdef X3D_LOGARITHMIC_DEPTH_BUFFER
-	//http://outerra.blogspot.com/2013/07/logarithmic-depth-buffer-optimizations.html
-	gl_FragDepthEXT = log2 (depth) * x3d_LogarithmicFarFactor * 0.5;
-	#endif
+	vec3 color    = vec3 (texture (x3d_TextureCube [0], texCoord));
+	x3d_FragColor = vec4 (color, 1.0 - x3d_Material .transparency);
 }
 "
                     }
@@ -1446,7 +1430,7 @@ function set_touchTime (value, time)
   ]
 }
 
-ROUTE _17.position_changed TO CobwebWaterShader.set_position
+ROUTE _17.position_changed TO WaterShader.set_position
 ROUTE _65.translation_changed TO AmplitudeScript.set_translation
 ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO AmplitudeScript.set_translation
 ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO _65.set_offset
@@ -1455,22 +1439,22 @@ ROUTE _65.translation_changed TO Rectangle2D_64.set_translation
 ROUTE pointSizeScriptSet_translationInterpolator.value_changed TO Rectangle2D_64.set_translation
 ROUTE AmplitudeScript.string_changed TO _70.set_string
 ROUTE _69.touchTime TO ToggleAmplitudeAnim.set_touchTime
-ROUTE AmplitudeScript.value_changed TO CobwebWaterShader.set_amplitude
+ROUTE AmplitudeScript.value_changed TO WaterShader.set_amplitude
 ROUTE _73.translation_changed TO FequencyScript.set_translation
 ROUTE _73.translation_changed TO Rectangle2D_72.set_translation
 ROUTE _75.touchTime TO ToggleFequencyAnim.set_touchTime
 ROUTE FequencyScript.string_changed TO _76.set_string
-ROUTE FequencyScript.value_changed TO CobwebWaterShader.set_frequency
+ROUTE FequencyScript.value_changed TO WaterShader.set_frequency
 ROUTE _80.translation_changed TO SpeedScript.set_translation
 ROUTE _80.translation_changed TO Rectangle2D_79.set_translation
 ROUTE _82.touchTime TO ToggleSpeedAnim.set_touchTime
 ROUTE SpeedScript.string_changed TO _77.set_string
-ROUTE SpeedScript.value_changed TO CobwebWaterShader.set_speed
+ROUTE SpeedScript.value_changed TO WaterShader.set_speed
 ROUTE _88.translation_changed TO Rectangle2D_87.set_translation
 ROUTE _88.translation_changed TO TransparencyScript.set_translation
 ROUTE _90.touchTime TO ToggleTransparencyAnim.set_touchTime
 ROUTE TransparencyScript.string_changed TO _85.set_string
-ROUTE DirectionsScript.directions_changed TO CobwebWaterShader.set_direction
+ROUTE DirectionsScript.directions_changed TO WaterShader.set_direction
 ROUTE _84.touchTime TO DirectionsScript.set_triggerTime
 ROUTE TransparencyScript.value_changed TO _19.set_transparency
 ROUTE _35.touchTime TO _36.set_triggerTime
@@ -1487,4 +1471,4 @@ ROUTE _45.touchTime TO _46.set_triggerTime
 ROUTE _46.value_changed TO _18.set_texture
 ROUTE _39.touchTime TO _40.set_triggerTime
 ROUTE _40.value_changed TO _18.set_texture
-ROUTE Timer.elapsedTime TO CobwebWaterShader.set_time
+ROUTE Timer.elapsedTime TO WaterShader.set_time
