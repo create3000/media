@@ -2,21 +2,25 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 4.1//EN" "https://www.web3d.org/specifications/x3d-4.1.dtd">
 <X3D profile='Interchange' version='4.1' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='https://www.web3d.org/specifications/x3d-4.1.xsd'>
   <head>
-    <component name='EnvironmentalSensor' level='3'/>
+    <component name='Core' level='2'/>
+    <component name='EnvironmentalSensor' level='2'/>
     <component name='EventUtilities' level='1'/>
-    <component name='Geometry2D' level='2'/>
+    <component name='Geometry2D' level='1'/>
+    <component name='Grouping' level='2'/>
     <component name='Layering' level='1'/>
+    <component name='Navigation' level='2'/>
+    <component name='Networking' level='2'/>
     <component name='PointingDeviceSensor' level='1'/>
     <component name='Scripting' level='1'/>
-    <component name='Sound' level='3'/>
-    <component name='Text' level='2'/>
+    <component name='Sound' level='1'/>
+    <component name='Text' level='1'/>
     <component name='X_ITE' level='1'/>
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Wed, 27 Sep 2017 11:50:59 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Sun, 25 Jan 2026 14:01:13 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 14 Sep 2026 14:16:18 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='MFInt32' url='"MFInt32.x3d#MFInt32"'>
@@ -1709,7 +1713,6 @@ function initialize ()
     <ROUTE fromNode='_92' fromField='inputNegate' toNode='_90' toField='set_toggle'/>
     <ROUTE fromNode='_72' fromField='isActive' toNode='Walk' toField='set_bind'/>
     <ROUTE fromNode='_91' fromField='inputTrue' toNode='_57' toField='set_boolean'/>
-    <ROUTE fromNode='_91' fromField='inputFalse' toNode='_86' toField='set_boolean'/>
     <ROUTE fromNode='_57' fromField='triggerTime' toNode='_63' toField='set_triggerTime'/>
     <ROUTE fromNode='_72' fromField='isActive' toNode='_64' toField='set_enabled'/>
     <ROUTE fromNode='_72' fromField='isActive' toNode='_65' toField='set_enabled'/>
@@ -1718,5 +1721,6 @@ function initialize ()
     <ROUTE fromNode='_86' fromField='triggerTime' toNode='_87' toField='set_triggerTime'/>
     <ROUTE fromNode='_58' fromField='value_changed' toNode='_25' toField='set_order'/>
     <ROUTE fromNode='_57' fromField='triggerTime' toNode='_58' toField='set_triggerTime'/>
+    <ROUTE fromNode='_91' fromField='inputNegate' toNode='_86' toField='set_boolean'/>
   </Scene>
 </X3D>
