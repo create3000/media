@@ -21,21 +21,25 @@
         },
         {
           "@name": "generator",
-          "@content": "x3d-tidy V3.0.0, https://www.npmjs.com/package/x3d-tidy"
+          "@content": "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
         },
         {
           "@name": "generator",
-          "@content": "Sunrize X3D Editor V2.0.0, https://create3000.github.io/sunrize/"
+          "@content": "Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/"
         },
         {
           "@name": "modified",
-          "@content": "Sun, 25 Jan 2026 14:31:15 GMT"
+          "@content": "Mon, 14 Sep 2026 14:22:25 GMT"
         }
       ],
       "component": [
         {
+          "@name": "Core",
+          "@level": 2
+        },
+        {
           "@name": "EnvironmentalSensor",
-          "@level": 3
+          "@level": 2
         },
         {
           "@name": "EventUtilities",
@@ -43,11 +47,23 @@
         },
         {
           "@name": "Geometry2D",
+          "@level": 1
+        },
+        {
+          "@name": "Grouping",
           "@level": 2
         },
         {
           "@name": "Layering",
           "@level": 1
+        },
+        {
+          "@name": "Navigation",
+          "@level": 2
+        },
+        {
+          "@name": "Networking",
+          "@level": 2
         },
         {
           "@name": "PointingDeviceSensor",
@@ -59,11 +75,11 @@
         },
         {
           "@name": "Sound",
-          "@level": 3
+          "@level": 1
         },
         {
           "@name": "Text",
-          "@level": 2
+          "@level": 1
         },
         {
           "@name": "X_ITE",
@@ -2633,14 +2649,6 @@
         },
         { "ROUTE":
           {
-            "@fromNode": "_91",
-            "@fromField": "inputFalse",
-            "@toNode": "_86",
-            "@toField": "set_boolean"
-          }
-        },
-        { "ROUTE":
-          {
             "@fromNode": "_57",
             "@fromField": "triggerTime",
             "@toNode": "_63",
@@ -2701,6 +2709,14 @@
             "@fromField": "triggerTime",
             "@toNode": "_58",
             "@toField": "set_triggerTime"
+          }
+        },
+        { "ROUTE":
+          {
+            "@fromNode": "_91",
+            "@fromField": "inputNegate",
+            "@toNode": "_86",
+            "@toField": "set_boolean"
           }
         }
       ]
