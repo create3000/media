@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V14.0.8
+#X3D V4.1 utf8 X_ITE V16.3.1
 
 PROFILE Interchange
 
@@ -17,9 +17,9 @@ COMPONENT Text : 1
 META "comment" "Rise and Shine"
 META "created" "Sun, 08 Jul 2018 09:58:21 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.7, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/"
-META "modified" "Wed, 11 Mar 2026 22:29:43 GMT"
+META "generator" "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/"
+META "modified" "Mon, 14 Sep 2026 14:21:57 GMT"
 
 EXTERNPROTO SFFloat [
   inputOnly   SFTime  set_triggerTime
@@ -102,7 +102,6 @@ PROTO Year [
   ROUTE _6.triggerTime TO To1.set_triggerTime
   ROUTE _5.triggerTime TO To0.set_triggerTime
   ROUTE _4.inputTrue TO _6.set_boolean
-  ROUTE _4.inputFalse TO _5.set_boolean
   ROUTE TransparencyInterpolator.value_changed TO _1.set_transparency
   ROUTE AnimationTimer.fraction_changed TO PointSizeInterpolator.set_fraction
   ROUTE AnimationTimer.fraction_changed TO TransparencyInterpolator.set_fraction
@@ -112,6 +111,7 @@ PROTO Year [
   ROUTE _7.value_changed TO PointSizeInterpolator.set_fraction
   ROUTE To1.value_changed TO _7.set_destination
   ROUTE To0.value_changed TO _7.set_destination
+  ROUTE _4.inputNegate TO _5.set_boolean
 }
 
 DEF EnterWorldScript Script {
