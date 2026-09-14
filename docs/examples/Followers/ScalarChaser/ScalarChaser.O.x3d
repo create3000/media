@@ -16,8 +16,8 @@
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sun, 08 Jul 2018 09:58:21 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.7, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Wed, 11 Mar 2026 22:29:23 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Mon, 14 Sep 2026 14:13:48 GMT'/>
   </head>
   <Scene>
     <ExternProtoDeclare name='SFFloat' url='"assets/SFFloat.x3d#SFFloat"'>
@@ -140,7 +140,6 @@
         <ROUTE fromNode='_6' fromField='triggerTime' toNode='To1' toField='set_triggerTime'/>
         <ROUTE fromNode='_5' fromField='triggerTime' toNode='To0' toField='set_triggerTime'/>
         <ROUTE fromNode='_4' fromField='inputTrue' toNode='_6' toField='set_boolean'/>
-        <ROUTE fromNode='_4' fromField='inputFalse' toNode='_5' toField='set_boolean'/>
         <ROUTE fromNode='TransparencyInterpolator' fromField='value_changed' toNode='_1' toField='set_transparency'/>
         <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='PointSizeInterpolator' toField='set_fraction'/>
         <ROUTE fromNode='AnimationTimer' fromField='fraction_changed' toNode='TransparencyInterpolator' toField='set_fraction'/>
@@ -150,6 +149,7 @@
         <ROUTE fromNode='_7' fromField='value_changed' toNode='PointSizeInterpolator' toField='set_fraction'/>
         <ROUTE fromNode='To1' fromField='value_changed' toNode='_7' toField='set_destination'/>
         <ROUTE fromNode='To0' fromField='value_changed' toNode='_7' toField='set_destination'/>
+        <ROUTE fromNode='_4' fromField='inputNegate' toNode='_5' toField='set_boolean'/>
       </ProtoBody>
     </ProtoDeclare>
     <Script DEF='EnterWorldScript'>
