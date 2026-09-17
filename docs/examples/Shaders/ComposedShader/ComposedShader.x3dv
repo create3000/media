@@ -14,7 +14,7 @@ UNIT angle degree 0.017453292519943295
 
 META "creator" "Holger Seelig"
 META "created" "Mon, 16 Feb 2026 21:47:35 GMT"
-META "modified" "Sun, 13 Sep 2026 19:33:12 GMT"
+META "modified" "Thu, 17 Sep 2026 13:42:25 GMT"
 META "generator" "x3d-tidy V3.0.44, https://www.npmjs.com/package/x3d-tidy"
 META "generator" "Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/"
 
@@ -36,7 +36,7 @@ PROTO WaveDots [
     ]
   }
 
-  DEF DotsScript Script {
+  DEF WaveDotsScript Script {
     inputOutput    SFTime     time 1771279968.488
     inputOutput    SFRotation rotation -0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151
     inputOutput    SFInt32    xDimension 50
@@ -75,7 +75,7 @@ function eventsProcessed ()
 "
   }
 
-  ROUTE _3.orientation_changed TO DotsScript.set_rotation
+  ROUTE _3.orientation_changed TO WaveDotsScript.set_rotation
 }
 
 PROTO SphereDots [
@@ -106,7 +106,7 @@ PROTO SphereDots [
     keyValue [ 0 1 0 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0 ]
   }
 
-  DEF DotsScript Script {
+  DEF SphereDotsScript Script {
     inputOutput    SFRotation rotation -0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151
     inputOutput    SFInt32    numPoints 100
     inputOutput    SFFloat    radius 100
@@ -136,13 +136,13 @@ function rand ()
 "
   }
 
-  ROUTE _3.orientation_changed TO DotsScript.set_rotation
+  ROUTE _3.orientation_changed TO SphereDotsScript.set_rotation
   ROUTE _4.fraction_changed TO _1.set_fraction
   ROUTE _1.value_changed TO _5.set_rotation
 }
 
 WorldInfo {
-  title "teaser"
+  title "Shader Dots"
 }
 
 LayerSet {

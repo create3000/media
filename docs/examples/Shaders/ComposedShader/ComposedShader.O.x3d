@@ -12,7 +12,7 @@
     <unit category='angle' name='degree' conversionFactor='0.017453292519943295'/>
     <meta name='creator' content='Holger Seelig'/>
     <meta name='created' content='Mon, 16 Feb 2026 21:47:35 GMT'/>
-    <meta name='modified' content='Sun, 13 Sep 2026 19:29:46 GMT'/>
+    <meta name='modified' content='Thu, 17 Sep 2026 13:41:25 GMT'/>
     <meta name='generator' content='Sunrize X3D Editor V2.3.3, https://create3000.github.io/sunrize/'/>
   </head>
   <Scene>
@@ -32,7 +32,7 @@
           <ProximitySensor DEF='_3'
               size='-1 -1 -1'/>
         </Group>
-        <Script DEF='DotsScript'>
+        <Script DEF='WaveDotsScript'>
           <field accessType='inputOutput' type='SFTime' name='time' value='1771279968.488'/>
           <field accessType='inputOutput' type='SFRotation' name='rotation' value='-0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151'/>
           <field accessType='inputOutput' type='SFInt32' name='xDimension' value='50'/>
@@ -71,7 +71,7 @@ function eventsProcessed ()
 }
 ]]>
         </Script>
-        <ROUTE fromNode='_3' fromField='orientation_changed' toNode='DotsScript' toField='set_rotation'/>
+        <ROUTE fromNode='_3' fromField='orientation_changed' toNode='WaveDotsScript' toField='set_rotation'/>
       </ProtoBody>
     </ProtoDeclare>
     <ProtoDeclare name='SphereDots'>
@@ -96,7 +96,7 @@ function eventsProcessed ()
         <OrientationInterpolator DEF='_1'
             key='0, 0.25, 0.5, 0.75, 1'
             keyValue='0 1 0 0, 0 1 0 90, 0 1 0 180, 0 1 0 270, 0 1 0 0'/>
-        <Script DEF='DotsScript'>
+        <Script DEF='SphereDotsScript'>
           <field accessType='inputOutput' type='SFRotation' name='rotation' value='-0.122064293097597 -0.987011974025243 -0.104439798359519 81.8422039053151'/>
           <field accessType='inputOutput' type='SFInt32' name='numPoints' value='100'/>
           <field accessType='inputOutput' type='SFFloat' name='radius' value='100'/>
@@ -126,13 +126,13 @@ function rand ()
 }
 ]]>
         </Script>
-        <ROUTE fromNode='_3' fromField='orientation_changed' toNode='DotsScript' toField='set_rotation'/>
+        <ROUTE fromNode='_3' fromField='orientation_changed' toNode='SphereDotsScript' toField='set_rotation'/>
         <ROUTE fromNode='_4' fromField='fraction_changed' toNode='_1' toField='set_fraction'/>
         <ROUTE fromNode='_1' fromField='value_changed' toNode='_5' toField='set_rotation'/>
       </ProtoBody>
     </ProtoDeclare>
     <WorldInfo
-        title='teaser'>
+        title='Shader Dots'>
       <MetadataSet DEF='Sunrize' containerField='metadata'
           name='Sunrize'
           reference='https://create3000.github.io/sunrize/'>
@@ -173,7 +173,7 @@ function rand ()
             <Appearance DEF='_2'>
               <ComposedShader DEF='NewShader'
                   language='GLSL'>
-                <field accessType='inputOutput' type='SFTime' name='time' value='193.955999851227'/>
+                <field accessType='inputOutput' type='SFTime' name='time' value='37.3340001106262'/>
                 <field accessType='inputOutput' type='SFColor' name='color' value='0.9019608 0.5686275 0.2196078'/>
                 <field accessType='inputOutput' type='SFNode' name='dot'>
                   <ImageTexture DEF='_5'
