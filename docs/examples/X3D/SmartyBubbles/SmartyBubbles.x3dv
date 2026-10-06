@@ -1,4 +1,4 @@
-#X3D V4.1 utf8 X_ITE V15.0.0
+#X3D V4.1 utf8 X_ITE V16.4.3
 
 PROFILE Interchange
 
@@ -10,13 +10,14 @@ COMPONENT PointingDeviceSensor : 1
 COMPONENT Scripting : 1
 COMPONENT Shaders : 1
 COMPONENT Text : 1
+COMPONENT X_ITE : 1
 
 META "comment" "Rise and Shine"
 META "created" "Sat, 19 Dec 2015 09:16:40 GMT"
 META "creator" "Holger Seelig"
-META "generator" "x3d-tidy V3.0.15, https://www.npmjs.com/package/x3d-tidy"
-META "generator" "Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/"
-META "modified" "Thu, 07 May 2026 22:08:32 GMT"
+META "generator" "x3d-tidy V3.0.48, https://www.npmjs.com/package/x3d-tidy"
+META "generator" "Sunrize X3D Editor V2.4.1, https://create3000.github.io/sunrize/"
+META "modified" "Tue, 06 Oct 2026 22:37:13 GMT"
 
 LayerSet {
   activeLayer 1
@@ -25,7 +26,7 @@ LayerSet {
     Layer {
       children [
         DEF Gray Background {
-          skyColor 0.2 0.2 0.2
+          skyColor 0.1 0.1 0.1
         }
         Viewpoint {
           description "Initial View"
@@ -48,7 +49,7 @@ LayerSet {
           bboxCenter 10 6 0
           appearance Appearance {
             pointProperties DEF _3 PointProperties {
-              pointSizeScaleFactor 61.38168
+              pointSizeScaleFactor 99.80745
             }
             material Material {
               transparency 0.50591
@@ -142,6 +143,9 @@ main ()
 "
                 }
               ]
+            }
+            blendMode BlendMode {
+              destinationColorFactor "ONE"
             }
           }
         }
@@ -261,7 +265,7 @@ main ()
                   material Material { }
                 }
                 geometry DEF _8 Text {
-                  string "pointSize 61"
+                  string "pointSize 99"
                   solid TRUE
                   fontStyle FontStyle {
                     family "SANS"
@@ -296,7 +300,7 @@ main ()
                 Transform {
                   children [
                     DEF Rectangle2D_11 Transform {
-                      translation 0.1954828 0 0
+                      translation 0.4161065 0 0
                       scale 0.027 0.0267372 0.0267372
                       children Shape {
                         appearance Appearance {
@@ -306,7 +310,7 @@ main ()
                       }
                     }
                     DEF _12 PlaneSensor {
-                      offset 0.1954828 0 0
+                      offset 0.4161065 0 0
                       maxPosition 1 0
                     }
                   ]
@@ -336,7 +340,7 @@ main ()
                       inputOutput    SFFloat  maxValue 100
                       outputOnly     SFFloat  value_changed
                       outputOnly     MFString string_changed
-                      initializeOnly SFInt32  currentValue 61
+                      initializeOnly SFInt32  currentValue 99
 
                       url "ecmascript:
 

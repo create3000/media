@@ -10,11 +10,12 @@
     <component name='Scripting' level='1'/>
     <component name='Shaders' level='1'/>
     <component name='Text' level='1'/>
+    <component name='X_ITE' level='1'/>
     <meta name='comment' content='Rise and Shine'/>
     <meta name='created' content='Sat, 19 Dec 2015 09:16:40 GMT'/>
     <meta name='creator' content='Holger Seelig'/>
-    <meta name='generator' content='Sunrize X3D Editor V2.0.16, https://create3000.github.io/sunrize/'/>
-    <meta name='modified' content='Thu, 07 May 2026 21:49:01 GMT'/>
+    <meta name='generator' content='Sunrize X3D Editor V2.4.1, https://create3000.github.io/sunrize/'/>
+    <meta name='modified' content='Tue, 06 Oct 2026 22:35:06 GMT'/>
   </head>
   <Scene>
     <LayerSet
@@ -34,7 +35,7 @@
           </MetadataSet>
         </MetadataSet>
         <Background DEF='Gray'
-            skyColor='0.2 0.2 0.2'/>
+            skyColor='0.1 0.1 0.1'/>
         <Viewpoint
             description='Initial View'
             position='9.63408 6.42306 13.0349'
@@ -54,7 +55,7 @@
           </PolylineEmitter>
           <Appearance>
             <PointProperties DEF='_3'
-                pointSizeScaleFactor='61.38168'/>
+                pointSizeScaleFactor='99.80745'/>
             <Material
                 transparency='0.50591'/>
             <ComposedShader DEF='ComposedShader'
@@ -145,6 +146,8 @@ main ()
 ]]>
               </ShaderPart>
             </ComposedShader>
+            <BlendMode
+                destinationColorFactor='ONE'/>
           </Appearance>
         </ParticleSystem>
       </Layer>
@@ -248,7 +251,7 @@ main ()
                 <Material/>
               </Appearance>
               <Text DEF='_8'
-                  string='"pointSize 61"'
+                  string='"pointSize 99"'
                   solid='true'>
                 <FontStyle
                     family='"SANS"'
@@ -277,7 +280,7 @@ main ()
             </Transform>
             <Transform>
               <Transform DEF='Rectangle2D_11'
-                  translation='0.609916 0 0'
+                  translation='0.9980551 0 0'
                   scale='0.027 0.0267372 0.0267372'>
                 <Shape>
                   <Appearance>
@@ -287,7 +290,7 @@ main ()
                 </Shape>
               </Transform>
               <PlaneSensor DEF='_12'
-                  offset='0.609916 0 0'
+                  offset='0.9980551 0 0'
                   maxPosition='1 0'/>
             </Transform>
             <Group>
@@ -310,7 +313,7 @@ main ()
                 <field accessType='inputOutput' type='SFFloat' name='maxValue' value='100'/>
                 <field accessType='outputOnly' type='SFFloat' name='value_changed'/>
                 <field accessType='outputOnly' type='MFString' name='string_changed'/>
-                <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='61'/>
+                <field accessType='initializeOnly' type='SFInt32' name='currentValue' value='99'/>
 <![CDATA[ecmascript:
 
 function initialized ()
