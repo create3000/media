@@ -26,7 +26,8 @@ function config ()
 
       const object = tree [name] ??= { };
 
-      object .name = name;
+      object .name     = name;
+      object .filePath = filePath .replace (`${examples}/`, "");
    }
 
    const modified = Object .values (tree)
@@ -41,7 +42,7 @@ function image ()
       filePath = path .join (examples, "config.json"),
       config   = require (filePath);
 
-   for (const { name } of config)
+   for (const { name, filePath } of config)
    {
       if (includes .size && !includes .has (name))
          continue;
@@ -50,13 +51,14 @@ function image ()
 
       const
          folder = path .join (examples, name),
-         files  = sh (`find '${folder}' -type f -name "*.gltf" -o -name "*.glb"`) .trim () .split ("\n") .sort ();
+         file   = path .join (examples, filePath);
 
       fs .mkdirSync (path .join (folder, "screenshots"), { recursive: true });
 
       process .chdir (folder);
 
-      systemSync (`npx --yes x3d-image -s 1000x562 -a -i '${files [0]}' -o screenshots/screenshot.png`);
+      systemSync (`npx --yes x3d-image -s 1000x562 -a -i '${file
+      }' -o screenshots/screenshot.png`);
       systemSync (`magick screenshots/screenshot.png screenshots/screenshot.avif`);
       systemSync (`magick screenshots/screenshot.png -resize 110x62 -quality 99 -define heic:lossless=true -define heic:chroma=444 screenshots/screenshot-small.avif`);
       systemSync (`rm screenshots/screenshot.png`);
